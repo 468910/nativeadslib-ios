@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 Pocket Media. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-protocol NativeAdConnectionProtocol {
+public protocol NativeAdConnectionProtocol {
   func didRecieveError(error: NSError)
   func didRecieveResults(nativeAds: [NativeAd])
 }
 
-struct NativeAd {
+public struct NativeAd {
   
   var campaignName        : String!
   var campaignDescription : String!
@@ -41,13 +41,14 @@ struct NativeAd {
   }
 }
 
-class NativeAdsRequest {
+public class NativeAdsRequest {
   
   var delegate: NativeAdConnectionProtocol
   
-  init(delegate: NativeAdConnectionProtocol) {
+  public init(delegate: NativeAdConnectionProtocol) {
     self.delegate = delegate
   }
+    
   func retrieveAds(limit: UInt){
     let nativeAdURL = getNativeAdsURL(limit);
     print(nativeAdURL, terminator: "")
