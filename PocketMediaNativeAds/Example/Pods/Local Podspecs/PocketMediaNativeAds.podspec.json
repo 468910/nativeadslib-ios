@@ -1,16 +1,16 @@
 {
   "name": "PocketMediaNativeAds",
-  "version": "0.1.0",
-  "summary": "A short description of PocketMediaNativeAds.",
-  "description": "",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/PocketMediaNativeAds",
+  "version": "0.0.1",
+  "summary": "PocketMediaNativeAds allows you to integrate Native Ads in your app quickly.",
+  "description": "With PocketMediaNativeAds you can quickstart the process of adding native ads to your iOS project.\nEverything is customizable, but this library allows you to testdrive the implementation real fast.",
+  "homepage": "https://bitbucket.org/pocketbrain/nativeadslib-ios",
   "license": "MIT",
   "authors": {
-    "Adrián Moreno Peña": "adrian@pocketmedia.mobi"
+    "Pocket Media Tech Team": "techteam@pocketmedia.mobi"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/PocketMediaNativeAds.git",
-    "tag": "0.1.0"
+    "git": "https://bitbucket.org/pocketbrain/nativeadslib-ios.git",
+    "tag": "0.0.1"
   },
   "platforms": {
     "ios": "8.0"

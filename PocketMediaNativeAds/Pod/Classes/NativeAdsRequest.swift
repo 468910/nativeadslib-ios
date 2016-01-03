@@ -15,12 +15,12 @@ public protocol NativeAdConnectionProtocol {
 
 public struct NativeAd {
   
-  var campaignName        : String!
-  var campaignDescription : String!
-  var clickURL            : NSURL!
-  var campaignImage       : NSURL!
+  public var campaignName        : String!
+  public var campaignDescription : String!
+  public var clickURL            : NSURL!
+  public var campaignImage       : NSURL!
   
-  init?(adDictionary: NSDictionary){
+  public init?(adDictionary: NSDictionary){
     if let name = adDictionary["campaign_name"] as? String {
       self.campaignName = name
     } else {
@@ -41,22 +41,26 @@ public struct NativeAd {
   }
 }
 
-public class NativeAdsRequest {
+public class NativeAdsRequestXXX {
   
-  var delegate: NativeAdConnectionProtocol
+  public var delegate: NativeAdConnectionProtocol?
   
+  public init() {
+    self.delegate = nil
+  }
+
   public init(delegate: NativeAdConnectionProtocol) {
     self.delegate = delegate
   }
     
-  func retrieveAds(limit: UInt){
+  public func retrieveAds(limit: UInt){
     let nativeAdURL = getNativeAdsURL(limit);
     print(nativeAdURL, terminator: "")
     if let url = NSURL(string: nativeAdURL) {
       let request = NSURLRequest(URL: url)
       NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
         if error != nil {
-          self.delegate.didRecieveError(error!)
+          self.delegate?.didRecieveError(error!)
         } else {
           if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
             var nativeAds: [NativeAd] = []
@@ -66,11 +70,11 @@ public class NativeAdsRequest {
               }
             }
             if nativeAds.count > 0 {
-              self.delegate.didRecieveResults(nativeAds)
+              self.delegate?.didRecieveResults(nativeAds)
             } else {
               let userInfo = ["No ads available from server": NSLocalizedDescriptionKey]
               let error = NSError(domain: "NativeAd", code: -42, userInfo: userInfo)
-              self.delegate.didRecieveError(error)
+              self.delegate?.didRecieveError(error)
             }
           }
         }
@@ -78,14 +82,14 @@ public class NativeAdsRequest {
     }
   }
   
-  func getNativeAdsURL(limit: UInt) -> String {
-    var token = NSUserDefaults.standardUserDefaults().objectForKey(Constants.NativeAds.tokenAdKey) as? String
+  public func getNativeAdsURL(limit: UInt) -> String {
+    var token = NSUserDefaults.standardUserDefaults().objectForKey(NativeAdsConstants.NativeAds.tokenAdKey) as? String
     if token == nil {
       token = "nativeAd\(NSDate().timeIntervalSince1970 * 100000)\(arc4random_uniform(9999999))\(arc4random_uniform(9999999))\(arc4random_uniform(9999999))\(arc4random_uniform(9999999))"
-      NSUserDefaults.standardUserDefaults().setObject(token, forKey: Constants.NativeAds.tokenAdKey)
+      NSUserDefaults.standardUserDefaults().setObject(token, forKey: NativeAdsConstants.NativeAds.tokenAdKey)
       NSUserDefaults.standardUserDefaults().synchronize()
     }
-    return Constants.NativeAds.baseURL + "&os=ios&limit=\(limit)&version=\(Constants.Device.iosVersion)&model=\(Constants.Device.model)&token=\(token!)&affiliate_id=\(Constants.NativeAds.affiliateId)"
+    return NativeAdsConstants.NativeAds.baseURL + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&affiliate_id=\(NativeAdsConstants.NativeAds.affiliateId)"
   }
   
 }

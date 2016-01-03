@@ -1,12 +1,12 @@
+platform :ios, '8.0'
+
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'PocketMediaNativeAds_Example', :exclusive => true do
-  pod "PocketMediaNativeAds", :path => "../"
+target 'PocketMediaNativeAds_Example' do
+  pod "PocketMediaNativeAds", :path => "~/Documents/Projects/iOS/PocketMediaNativeAds/PocketMediaNativeAds"
 end
 
-target 'PocketMediaNativeAds_Tests', :exclusive => true do
-  pod "PocketMediaNativeAds", :path => "../"
-
-  
+target 'PocketMediaNativeAds_Tests' do
+  pod "PocketMediaNativeAds", :path => "~/Documents/Projects/iOS/PocketMediaNativeAds/PocketMediaNativeAds"
 end

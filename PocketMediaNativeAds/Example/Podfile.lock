@@ -1,14 +1,16 @@
 PODS:
-  - PocketMediaNativeAds (0.1.0)
+  - PocketMediaNativeAds (0.0.1)
 
 DEPENDENCIES:
-  - PocketMediaNativeAds (from `../`)
+  - PocketMediaNativeAds (from `~/Documents/Projects/iOS/PocketMediaNativeAds/PocketMediaNativeAds`)
 
 EXTERNAL SOURCES:
   PocketMediaNativeAds:
-    :path: ../
+    :path: ~/Documents/Projects/iOS/PocketMediaNativeAds/PocketMediaNativeAds
 
 SPEC CHECKSUMS:
-  PocketMediaNativeAds: 49e8f260a212ed677a38bb11038063b7e29d3dfa
+  PocketMediaNativeAds: 68c2c1c4739cd1c9abf8bff024f2972fd16a6531
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: f02b00cd6fb3443a9b8129dd772bb92a9265673d
+
+COCOAPODS: 1.0.0.beta.1
