@@ -26,7 +26,7 @@ s.homepage         = "http://pocketmedia.mobi"
   s.license          = 'MIT'
   s.author           = { "Pocket Media Tech Team" => "techteam@pocketmedia.mobi" }
   s.source           = { :git => "https://bitbucket.org/pocketbrain/nativeadslib-ios.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/PocketMediaBV'
+  s.social_media_url = 'https://twitter.com/PocketMediaBV'
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
