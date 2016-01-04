@@ -22,7 +22,7 @@ pod "PocketMediaNativeAds"
 
 ## Author
 
-Adrián Moreno Peña, adrian@pocketmedia.mobi
+Pocket Media Tech Team, techteam@pocketmedia.mobi
 
 ## License
 
