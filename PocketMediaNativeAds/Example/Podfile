@@ -4,9 +4,9 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'PocketMediaNativeAds_Example' do
-  pod "PocketMediaNativeAds", :path => "~/Documents/Projects/iOS/PocketMediaNativeAds/PocketMediaNativeAds"
+  pod "PocketMediaNativeAds", :path => "../"
 end
 
 target 'PocketMediaNativeAds_Tests' do
-  pod "PocketMediaNativeAds", :path => "~/Documents/Projects/iOS/PocketMediaNativeAds/PocketMediaNativeAds"
+  pod "PocketMediaNativeAds", :path => "../"
 end

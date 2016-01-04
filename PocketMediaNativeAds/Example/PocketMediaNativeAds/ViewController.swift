@@ -19,6 +19,7 @@ class ViewController: UITableViewController, NativeAdConnectionProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadLocalJSON()
+        //todo: 
         let adRequest = NativeAdsRequest()
         adRequest.retrieveAds(1)
     }
@@ -28,13 +29,22 @@ class ViewController: UITableViewController, NativeAdConnectionProtocol {
     }
     
     func loadLocalJSON(){
-        if let path = NSBundle.mainBundle().pathForResource(NativeAdsConstants.DummyFile, ofType: "json"), jsonData = NSData(contentsOfFile: path), json: NSArray = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSArray {
-            for itemJson in json {
+        do{
+            let path = NSBundle.mainBundle().pathForResource(NativeAdsConstants.DummyFile, ofType: "json")
+            let jsonData : NSData =  NSData(contentsOfFile: path!)!
+            var jsonArray : NSArray = NSArray()
+            jsonArray = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+            
+            for itemJson in jsonArray {
                 if let itemDictionary = itemJson as? NSDictionary, item = ItemTableView(dictionary: itemDictionary) {
                     itemsTable.append(item)
                 }
             }
+            
+        }catch _{
+        
         }
+        
     }
     
     func loadImageAsynchronouslyFromUrl(url: NSURL, imageView: UIImageView){

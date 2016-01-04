@@ -41,7 +41,7 @@ public struct NativeAd {
   }
 }
 
-public class NativeAdsRequestXXX {
+public class NativeAdsRequest {
   
   public var delegate: NativeAdConnectionProtocol?
   
@@ -49,7 +49,7 @@ public class NativeAdsRequestXXX {
     self.delegate = nil
   }
 
-  public init(delegate: NativeAdConnectionProtocol) {
+  public init(delegate: NativeAdConnectionProtocol?) {
     self.delegate = delegate
   }
     
