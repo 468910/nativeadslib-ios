@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AdSupport
 
 public protocol NativeAdConnectionProtocol {
   func didRecieveError(error: NSError)
@@ -81,14 +82,17 @@ public class NativeAdsRequest {
       }
     }
   }
+    
+    func provideIdentifierForAdvertisingIfAvailable() -> String? {
+        if ASIdentifierManager.sharedManager().advertisingTrackingEnabled {
+            return ASIdentifierManager.sharedManager().advertisingIdentifier?.UUIDString ?? nil
+        } else {
+            return nil
+        }
+    }
   
   public func getNativeAdsURL(limit: UInt) -> String {
-    var token = NSUserDefaults.standardUserDefaults().objectForKey(NativeAdsConstants.NativeAds.tokenAdKey) as? String
-    if token == nil {
-      token = "nativeAd\(NSDate().timeIntervalSince1970 * 100000)\(arc4random_uniform(9999999))\(arc4random_uniform(9999999))\(arc4random_uniform(9999999))\(arc4random_uniform(9999999))"
-      NSUserDefaults.standardUserDefaults().setObject(token, forKey: NativeAdsConstants.NativeAds.tokenAdKey)
-      NSUserDefaults.standardUserDefaults().synchronize()
-    }
+    let token = provideIdentifierForAdvertisingIfAvailable()
     return NativeAdsConstants.NativeAds.baseURL + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&affiliate_id=\(NativeAdsConstants.NativeAds.affiliateId)"
   }
   
