@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A75F26A1C3FF6CC00F81318 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F2691C3FF6CC00F81318 /* TableViewController.swift */; };
+		3A75F26E1C3FF8A300F81318 /* DummyData.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A75F26D1C3FF8A300F81318 /* DummyData.json */; };
+		3A75F2731C3FFA7B00F81318 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F2701C3FFA7B00F81318 /* AdCell.swift */; };
+		3A75F2741C3FFA7B00F81318 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F2711C3FFA7B00F81318 /* ItemCell.swift */; };
+		3A75F2751C3FFA7B00F81318 /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F2721C3FFA7B00F81318 /* ItemTableView.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -33,11 +37,15 @@
 		22D91080BAEFEF8E4B2B7412 /* Pods-PocketMediaNativeAds_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds_Tests/Pods-PocketMediaNativeAds_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		2B2AACEBEFE9FE77EE22B0D9 /* Pods-PocketMediaNativeAds_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds_Example/Pods-PocketMediaNativeAds_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		2EF579B9BC4FF1F86A87F4B3 /* Pods-PocketMediaNativeAds_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds_Tests/Pods-PocketMediaNativeAds_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		3A75F2691C3FF6CC00F81318 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		3A75F26D1C3FF8A300F81318 /* DummyData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DummyData.json; sourceTree = "<group>"; };
+		3A75F2701C3FFA7B00F81318 /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
+		3A75F2711C3FFA7B00F81318 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		3A75F2721C3FFA7B00F81318 /* ItemTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableView.swift; sourceTree = "<group>"; };
 		44BE49B0E6D8F96E6500AB62 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* PocketMediaNativeAds_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketMediaNativeAds_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -78,6 +86,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3A75F26F1C3FFA7200F81318 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A75F2701C3FFA7B00F81318 /* AdCell.swift */,
+				3A75F2711C3FFA7B00F81318 /* ItemCell.swift */,
+				3A75F2721C3FFA7B00F81318 /* ItemTableView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		47262D97947BB10EFAB58B67 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,8 +131,10 @@
 		607FACD21AFB9204008FA782 /* Example for PocketMediaNativeAds */ = {
 			isa = PBXGroup;
 			children = (
+				3A75F26F1C3FFA7200F81318 /* Views */,
+				3A75F26D1C3FF8A300F81318 /* DummyData.json */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				3A75F2691C3FF6CC00F81318 /* TableViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -246,6 +266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A75F26E1C3FF8A300F81318 /* DummyData.json in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -359,7 +380,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				3A75F2741C3FFA7B00F81318 /* ItemCell.swift in Sources */,
+				3A75F2751C3FFA7B00F81318 /* ItemTableView.swift in Sources */,
+				3A75F2731C3FFA7B00F81318 /* AdCell.swift in Sources */,
+				3A75F26A1C3FF6CC00F81318 /* TableViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Pocket Media. All rights reserved.
 //
 
+import UIKit
+
 public struct ItemTableView {
   
   public var title           : String!
