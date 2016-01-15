@@ -5,8 +5,10 @@ use_frameworks!
 
 target 'PocketMediaNativeAds_Example' do
   pod "PocketMediaNativeAds", :path => "../"
+  pod 'AlamofireImage', '~> 2.0'
 end
 
 target 'PocketMediaNativeAds_Tests' do
   pod "PocketMediaNativeAds", :path => "../"
+  pod 'AlamofireImage', '~> 2.0'
 end

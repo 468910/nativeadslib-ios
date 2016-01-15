@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 import PocketMediaNativeAds
 
 class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
@@ -55,24 +56,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
   }
   
   func loadImageAsynchronouslyFromUrl(url: NSURL, imageView: UIImageView){
-    if let img = imageCache[url.path!] {
-      imageView.image = img
-    } else {
-      let request: NSURLRequest = NSURLRequest(URL: url)
-      let mainQueue = NSOperationQueue.mainQueue()
-      NSURLConnection.sendAsynchronousRequest(request, queue: mainQueue, completionHandler: { (response, data, error) -> Void in
-        if let data = data {
-          let image = UIImage(data: data)
-          self.imageCache[url.path!] = image
-          dispatch_async(dispatch_get_main_queue(), {
-            imageView.image = image
-          })
-        }
-        else if let error = error {
-          print("Error: \(error.localizedDescription)")
-        }
-      })
-    }
+    imageView.af_setImageWithURL(url)
   }
   
   // MARK : - Native Ads Protocol
