@@ -25,7 +25,8 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
     //backgroundWebView.backgroundColor = UIColor.redColor()
     
     
-    let adRequest = NativeAdsRequest(affiliateId: "1234-sample", delegate: self, parentView: self.view, followRedirectsInBackground: true)
+    var adRequest = NativeAdsRequest(affiliateId: "1234-sample", delegate: self, parentView: self.view, followRedirectsInBackground: true)
+    adRequest.debugModeEnabled = true
     adRequest.retrieveAds(1)
   }
 

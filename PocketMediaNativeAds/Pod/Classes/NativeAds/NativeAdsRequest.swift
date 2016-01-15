@@ -15,6 +15,8 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     public var delegate: NativeAdsConnectionProtocol?
     // Needed to "sign" the ad requests to the server
     public var affiliateId : String?
+    // To avoid more verbose logging and behaviour
+    public var debugModeEnabled : Bool = false
     
     // Background redirects //
     public var followRedirectsInBackground : Bool = false
@@ -34,6 +36,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     }
 
     public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?, followRedirectsInBackground : Bool, webViewDelegate : UIWebViewDelegate?) {
+        super.init()
         self.affiliateId = affiliateId;
         self.delegate = delegate
         self.parentView = parentView
@@ -43,6 +46,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
 
     
     public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?) {
+        super.init()
         self.affiliateId = affiliateId;
         self.delegate = delegate
         self.followRedirectsInBackground = false
@@ -144,7 +148,10 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
         if (self.adUnitsToBeFollowed.isEmpty){
             self.adUnitsToBeFollowed[0].clickURL = NSURL(string: (error?.userInfo["NSErrorFailingURLStringKey"])! as! String)
         
-            print("Final URL: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
+            print("/nFinal URL: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
+            checkSimulatorURL()
+            
+ 
         
             self.adUnitsToBeFollowed.removeFirst()
             print("Removing element, processing next")
@@ -155,16 +162,33 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     }
     
     public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        print("Webview should load \(request.URL!.absoluteURL)")
         self.adUnitsToBeFollowed[0].clickURL = request.URL
+        print("Updated URL: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
+        checkSimulatorURL()
         return true;
     }
     
     public func webViewDidStartLoad(webView: UIWebView) {
-        print("Webview started Loading")
+        
     }
     
     public func webViewDidFinishLoad(webView: UIWebView) {
-        print("Webview did finish load")
     }
+    
+    private func checkSimulatorURL(){
+        if (debugModeEnabled){
+            if (Platform.isSimulator){
+                
+                if(self.adUnitsToBeFollowed[0].clickURL.scheme != "http" &&
+                    self.adUnitsToBeFollowed[0].clickURL.scheme != "https"  ){
+                
+                self.adUnitsToBeFollowed[0].clickURL = NSURL(string: self.adUnitsToBeFollowed[0].clickURL.absoluteString.stringByReplacingOccurrencesOfString("itms-apps", withString: "http"))
+                print("/nURL is app store one and running in the simulator. Transforming to: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
+                }
+                
+            }
+        }
+    }
+    
+    
 }
