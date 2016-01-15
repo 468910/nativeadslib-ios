@@ -118,7 +118,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     
     private func processQueue(){
         
-        print("Queue process, size = \(self.adUnitsToBeFollowed.count)")
+        print("'\nQueue process, size = \(self.adUnitsToBeFollowed.count)")
         if (self.adUnitsToBeFollowed.count > 0){
             startFollowingRedirects(self.adUnitsToBeFollowed[0])
         }//else, we wait for it to finish with the current one.
@@ -148,13 +148,13 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
         if (self.adUnitsToBeFollowed.isEmpty){
             self.adUnitsToBeFollowed[0].clickURL = NSURL(string: (error?.userInfo["NSErrorFailingURLStringKey"])! as! String)
         
-            print("/nFinal URL: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
+            print("\nFinal URL: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
             checkSimulatorURL()
             
  
         
             self.adUnitsToBeFollowed.removeFirst()
-            print("Removing element, processing next")
+            print("\nRemoving element, processing next")
         
             processQueue()
             self.webView = nil
@@ -163,7 +163,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     
     public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         self.adUnitsToBeFollowed[0].clickURL = request.URL
-        print("Updated URL: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
+        print("\nUpdated URL: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
         checkSimulatorURL()
         return true;
     }
@@ -183,7 +183,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
                     self.adUnitsToBeFollowed[0].clickURL.scheme != "https"  ){
                 
                 self.adUnitsToBeFollowed[0].clickURL = NSURL(string: self.adUnitsToBeFollowed[0].clickURL.absoluteString.stringByReplacingOccurrencesOfString("itms-apps", withString: "http"))
-                print("/nURL is app store one and running in the simulator. Transforming to: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
+                print("\nURL is app store one and running in the simulator. Transforming to: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
                 }
                 
             }

@@ -27,7 +27,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
     
     var adRequest = NativeAdsRequest(affiliateId: "1234-sample", delegate: self, parentView: self.view, followRedirectsInBackground: true)
     adRequest.debugModeEnabled = true
-    adRequest.retrieveAds(1)
+    adRequest.retrieveAds(5)
   }
 
   override func didReceiveMemoryWarning() {
@@ -122,7 +122,8 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if let ad = itemsTable[indexPath.row] as? NativeAd{
-      UIApplication.sharedApplication().openURL(ad.clickURL)
+        print("Opening url: \(ad.clickURL.absoluteString)")
+        UIApplication.sharedApplication().openURL(ad.clickURL)
     }
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }

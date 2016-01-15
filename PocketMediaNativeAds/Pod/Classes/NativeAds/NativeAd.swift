@@ -37,5 +37,7 @@ public class NativeAd : NSObject{
         }
     }
     
-
+    override public var description: String {return "NativeAd.\(campaignName): \(clickURL.absoluteURL)"}
+    override public var debugDescription: String {return "NativeAd.\(campaignName): \(clickURL.absoluteURL)"}
+    
 }
