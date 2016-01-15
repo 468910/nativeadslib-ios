@@ -85,7 +85,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
     self.nativeAds = nativeAds
     if itemsTable.count > 0 {
       for ad in nativeAds {
-        itemsTable.insert(ad, atIndex: Int(arc4random_uniform(4))+1)
+        itemsTable.insert(ad, atIndex: Int(arc4random_uniform(UInt32(itemsTable.count))))
       }
       tableView.reloadData()
     }
