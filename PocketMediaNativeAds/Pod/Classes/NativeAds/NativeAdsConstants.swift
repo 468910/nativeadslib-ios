@@ -15,6 +15,5 @@ public struct NativeAdsConstants {
   public struct NativeAds {
     public static let tokenAdKey = "nativeAdToken"
     public static let baseURL = "http://offerwall.12trackway.com/ow.php?output=json"
-    public static let affiliateId = "XXXXXXXXXXXXXXXXX"
   }
 }

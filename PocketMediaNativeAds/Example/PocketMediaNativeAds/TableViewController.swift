@@ -9,7 +9,7 @@
 import UIKit
 import PocketMediaNativeAds
 
-class TableViewController: UITableViewController, NativeAdConnectionProtocol {
+class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
 
   var itemsTable: [Any] = []
   var nativeAds: [NativeAd] = []
@@ -19,7 +19,13 @@ class TableViewController: UITableViewController, NativeAdConnectionProtocol {
   override func viewDidLoad() {
     super.viewDidLoad()
     loadLocalJSON()
-    let adRequest = NativeAdsRequest(delegate: self)
+    
+    //let backgroundWebView : UIWebView = UIWebView(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
+    //self.view.addSubview(backgroundWebView)
+    //backgroundWebView.backgroundColor = UIColor.redColor()
+    
+    
+    let adRequest = NativeAdsRequest(affiliateId: "1234-sample", delegate: self, parentView: self.view, followRedirectsInBackground: true)
     adRequest.retrieveAds(1)
   }
 

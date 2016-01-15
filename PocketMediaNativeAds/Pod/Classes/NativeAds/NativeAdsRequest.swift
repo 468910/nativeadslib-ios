@@ -9,79 +9,84 @@
 import UIKit
 import AdSupport
 
-public protocol NativeAdConnectionProtocol {
-  func didRecieveError(error: NSError)
-  func didRecieveResults(nativeAds: [NativeAd])
-}
+public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDelegate {
+    
+    // Object to notify about the updates related with the ad request
+    public var delegate: NativeAdsConnectionProtocol?
+    // Needed to "sign" the ad requests to the server
+    public var affiliateId : String?
+    
+    // Background redirects //
+    public var followRedirectsInBackground : Bool = false
+    public var parentView : UIView?
+    public var webView : UIWebView?
+    public var webViewDelegate : UIWebViewDelegate?
+    // currently followed AdUnit
+    private var adUnitsToBeFollowed : [NativeAd] = [NativeAd]()
+    
+    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?, followRedirectsInBackground : Bool) {
+        super.init()
+        self.affiliateId = affiliateId;
+        self.delegate = delegate
+        self.parentView = parentView
+        self.followRedirectsInBackground = followRedirectsInBackground
+        self.webViewDelegate = self
+    }
 
-public struct NativeAd {
-  
-  public var campaignName        : String!
-  public var campaignDescription : String!
-  public var clickURL            : NSURL!
-  public var campaignImage       : NSURL!
-  
-  public init?(adDictionary: NSDictionary){
-    if let name = adDictionary["campaign_name"] as? String {
-      self.campaignName = name
-    } else {
-      return nil
+    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?, followRedirectsInBackground : Bool, webViewDelegate : UIWebViewDelegate?) {
+        self.affiliateId = affiliateId;
+        self.delegate = delegate
+        self.parentView = parentView
+        self.followRedirectsInBackground = followRedirectsInBackground
+        self.webViewDelegate = webViewDelegate
     }
-    if let urlClick = adDictionary["click_url"] as? String, url = NSURL(string: urlClick) {
-      self.clickURL = url
-    } else {
-      return nil
-    }
-    if let description = adDictionary["campaign_description"] as? String {
-      self.campaignDescription = description
-    }
-    if let urlImage = adDictionary["campaign_image"] as? String, url = NSURL(string: urlImage) {
-      self.campaignImage = url
+
+    
+    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?) {
+        self.affiliateId = affiliateId;
+        self.delegate = delegate
+        self.followRedirectsInBackground = false
     }
     
-  }
-}
-
-public class NativeAdsRequest {
-  
-  public var delegate: NativeAdConnectionProtocol?
-  
-  public init() {
-    self.delegate = nil
-  }
-
-  public init(delegate: NativeAdConnectionProtocol?) {
-    self.delegate = delegate
-  }
-    
-  public func retrieveAds(limit: UInt){
-    let nativeAdURL = getNativeAdsURL(limit);
-    print(nativeAdURL, terminator: "")
-    if let url = NSURL(string: nativeAdURL) {
-      let request = NSURLRequest(URL: url)
-      NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-        if error != nil {
-          self.delegate?.didRecieveError(error!)
-        } else {
-          if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
-            var nativeAds: [NativeAd] = []
-            for itemJson in json {
-              if let itemAdDictionary = itemJson as? NSDictionary, ad = NativeAd(adDictionary: itemAdDictionary) {
-                nativeAds.append(ad)
-              }
+    public func retrieveAds(limit: UInt){
+        
+        let nativeAdURL = getNativeAdsURL(self.affiliateId, limit: limit);
+        print(nativeAdURL, terminator: "")
+        
+        if let url = NSURL(string: nativeAdURL) {
+        
+            let request = NSURLRequest(URL: url)
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+            
+                if error != nil {
+                    
+                    self.delegate?.didRecieveError(error!)
+                    
+                } else {
+                    
+                    if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
+                        var nativeAds: [NativeAd] = []
+                        for itemJson in json {
+                            if let itemAdDictionary = itemJson as? NSDictionary, ad = NativeAd(adDictionary: itemAdDictionary) {
+                                nativeAds.append(ad)
+                                
+                                if (self.followRedirectsInBackground){
+                                    self.followRedirects(ad)
+                                }
+                            }
+                        }
+                        if nativeAds.count > 0 {
+                            self.delegate?.didRecieveResults(nativeAds)
+                        } else {
+                            let userInfo = ["No ads available from server": NSLocalizedDescriptionKey]
+                            let error = NSError(domain: "NativeAd", code: -42, userInfo: userInfo)
+                            self.delegate?.didRecieveError(error)
+                        }
+                    }
+                }
             }
-            if nativeAds.count > 0 {
-              self.delegate?.didRecieveResults(nativeAds)
-            } else {
-              let userInfo = ["No ads available from server": NSLocalizedDescriptionKey]
-              let error = NSError(domain: "NativeAd", code: -42, userInfo: userInfo)
-              self.delegate?.didRecieveError(error)
-            }
-          }
         }
-      }
     }
-  }
     
     func provideIdentifierForAdvertisingIfAvailable() -> String? {
         if ASIdentifierManager.sharedManager().advertisingTrackingEnabled {
@@ -90,10 +95,76 @@ public class NativeAdsRequest {
             return nil
         }
     }
-  
-  public func getNativeAdsURL(limit: UInt) -> String {
-    let token = provideIdentifierForAdvertisingIfAvailable()
-    return NativeAdsConstants.NativeAds.baseURL + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&affiliate_id=\(NativeAdsConstants.NativeAds.affiliateId)"
-  }
-  
+    
+    public func getNativeAdsURL(affiliateID: String?, limit: UInt) -> String {
+        let token = provideIdentifierForAdvertisingIfAvailable()
+        return NativeAdsConstants.NativeAds.baseURL + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&affiliate_id=\(affiliateID!)"
+    }
+
+    
+    
+    
+    public func followRedirects(adUnit : NativeAd?) -> Void{
+        
+        print("\nFollowing redirects for \(adUnit!.clickURL)")
+        self.adUnitsToBeFollowed.append(adUnit!)
+        
+        processQueue()
+    }
+    
+    private func processQueue(){
+        
+        print("Queue process, size = \(self.adUnitsToBeFollowed.count)")
+        if (self.adUnitsToBeFollowed.count > 0){
+            startFollowingRedirects(self.adUnitsToBeFollowed[0])
+        }//else, we wait for it to finish with the current one.
+    }
+    
+    private func startFollowingRedirects(adUnit : NativeAd?){
+        
+        print("\nFollowing redirects for \(adUnit!.clickURL)")
+        
+        if (webView == nil){
+            webView = UIWebView(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
+        }
+        
+        webView?.delegate = self
+        webView?.hidden = true
+        
+        if ((webView) != nil){
+            self.parentView!.addSubview(webView!)
+        }
+        
+        let request : NSURLRequest = NSURLRequest(URL: (adUnit?.clickURL)!)
+        webView?.loadRequest(request)
+    }
+    
+    public func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+        
+        if (self.adUnitsToBeFollowed.isEmpty){
+            self.adUnitsToBeFollowed[0].clickURL = NSURL(string: (error?.userInfo["NSErrorFailingURLStringKey"])! as! String)
+        
+            print("Final URL: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
+        
+            self.adUnitsToBeFollowed.removeFirst()
+            print("Removing element, processing next")
+        
+            processQueue()
+            self.webView = nil
+        }
+    }
+    
+    public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        print("Webview should load \(request.URL!.absoluteURL)")
+        self.adUnitsToBeFollowed[0].clickURL = request.URL
+        return true;
+    }
+    
+    public func webViewDidStartLoad(webView: UIWebView) {
+        print("Webview started Loading")
+    }
+    
+    public func webViewDidFinishLoad(webView: UIWebView) {
+        print("Webview did finish load")
+    }
 }
