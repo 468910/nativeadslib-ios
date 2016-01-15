@@ -107,7 +107,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if let ad = itemsTable[indexPath.row] as? NativeAd{
         print("Opening url: \(ad.clickURL.absoluteString)")
-        UIApplication.sharedApplication().openURL(ad.clickURL)
+        ad.openCampaign()
     }
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
