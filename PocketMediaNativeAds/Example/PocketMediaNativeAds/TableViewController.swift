@@ -26,7 +26,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
     //backgroundWebView.backgroundColor = UIColor.redColor()
     
     
-    var adRequest = NativeAdsRequest(affiliateId: "1234-sample", delegate: self, parentView: self.view, followRedirectsInBackground: true)
+    let adRequest = NativeAdsRequest(affiliateId: "1234-sample", delegate: self, parentView: self.view, followRedirectsInBackground: true)
     adRequest.debugModeEnabled = true
     adRequest.retrieveAds(5)
   }
@@ -107,7 +107,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if let ad = itemsTable[indexPath.row] as? NativeAd{
         print("Opening url: \(ad.clickURL.absoluteString)")
-        ad.openCampaign()
+        ad.openCampaign(parentViewController : self)
     }
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }

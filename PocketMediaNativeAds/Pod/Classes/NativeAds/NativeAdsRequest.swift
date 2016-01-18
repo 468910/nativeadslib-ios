@@ -83,7 +83,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
                             self.delegate?.didRecieveResults(nativeAds)
                         } else {
                             let userInfo = ["No ads available from server": NSLocalizedDescriptionKey]
-                            let error = NSError(domain: "NativeAd", code: -42, userInfo: userInfo)
+                            let error = NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: userInfo)
                             self.delegate?.didRecieveError(error)
                         }
                     }

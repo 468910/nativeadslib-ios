@@ -15,6 +15,8 @@
 		26A2CED61BF6F5B2395EECE400DB3096 /* AlamofireImage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 86C85A525B62C3E48CE52F4870666E90 /* AlamofireImage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C5450AC69398958CF6F7539EF7D99E5 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AFE19430665495E6561C3FCA1C86B7EE /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DBAF3DED202D8805C6D6FFAB332849C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45D2243B5D899FE9BACC8638F2FD802 /* Foundation.framework */; };
+		3AFB400F1C4CD81100514B32 /* NativeAdsWebviewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB400D1C494DE100514B32 /* NativeAdsWebviewDelegate.swift */; };
+		3AFB40111C4D044A00514B32 /* FullscreenBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB40101C4D044A00514B32 /* FullscreenBrowser.swift */; };
 		435C5BD5982240CB47FA06F8038FA088 /* PocketMediaNativeAds-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 44481C9DF3CA33BF9D6677485E1431C8 /* PocketMediaNativeAds-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B1842C48335CAC61C729280B5DCD5A8 /* Pods-PocketMediaNativeAds_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F89FC89E7DE7FFC01A52C1A1370EB /* Pods-PocketMediaNativeAds_Example-dummy.m */; };
 		4DE5FCC41D100B113B6645EA64410F16 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A1359217BD27666AB480A03F01F0EB /* ParameterEncoding.swift */; };
@@ -128,6 +130,8 @@
 		28C6E042ADABBE8935CFD5385CDC504C /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
 		2D1D893A8E68764A3A1EF8696B36FE45 /* PocketMediaNativeAds-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PocketMediaNativeAds-dummy.m"; sourceTree = "<group>"; };
 		37706C0CD67753B426520132F64192E3 /* Pods-PocketMediaNativeAds_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PocketMediaNativeAds_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3AFB400D1C494DE100514B32 /* NativeAdsWebviewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdsWebviewDelegate.swift; sourceTree = "<group>"; };
+		3AFB40101C4D044A00514B32 /* FullscreenBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenBrowser.swift; sourceTree = "<group>"; };
 		3DA2298968EA08EACF3803F11DEAE903 /* AlamofireImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AlamofireImage-prefix.pch"; sourceTree = "<group>"; };
 		40F1BBFD23F17E4DEFB86E01CD5F0DBE /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
 		4116619EA173201685B478BC51800400 /* ImageDownloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Source/ImageDownloader.swift; sourceTree = "<group>"; };
@@ -281,6 +285,8 @@
 				015DAEE0E15D2047AA0E0AE955FF222E /* NativeAdsConnectionProtocol.swift */,
 				43DA150F91EA484E6152F02441DDA94F /* NativeAdsConstants.swift */,
 				9FD49667B12E2C0A80DCA36F47A55571 /* NativeAdsRequest.swift */,
+				3AFB400D1C494DE100514B32 /* NativeAdsWebviewDelegate.swift */,
+				3AFB40101C4D044A00514B32 /* FullscreenBrowser.swift */,
 				7C3753FE16B4A9F4E8D94D78ADFB4029 /* NativeAdsUtils.swift */,
 			);
 			path = NativeAds;
@@ -631,6 +637,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					432ECC54282C84882B482CCB4CF227FC = {
+						DevelopmentTeam = L7E3AY2W7R;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -716,9 +727,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C5720DFE11350E76B57F5B499BDBC00 /* NativeAd.swift in Sources */,
+				3AFB40111C4D044A00514B32 /* FullscreenBrowser.swift in Sources */,
 				AEF80C8F25A9273C7CBCC0AA9880191F /* NativeAdsConnectionProtocol.swift in Sources */,
 				F519E7CDD82AD8CB9A525C4D8EF0E36E /* NativeAdsConstants.swift in Sources */,
 				F2B1EA61746DF3871F303E1F786806F0 /* NativeAdsRequest.swift in Sources */,
+				3AFB400F1C4CD81100514B32 /* NativeAdsWebviewDelegate.swift in Sources */,
 				E9A4DBA6630DEAD6961F8CA039B47CB5 /* NativeAdsUtils.swift in Sources */,
 				6D5E112B047991C3528AF11EF87D36F9 /* PocketMediaNativeAds-dummy.m in Sources */,
 			);
@@ -1015,6 +1028,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A1B1F1F2FE882E766F01FFD99EF5346 /* Alamofire.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1032,6 +1046,7 @@
 				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = Alamofire;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1077,6 +1092,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A1B1F1F2FE882E766F01FFD99EF5346 /* Alamofire.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1094,6 +1110,7 @@
 				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = Alamofire;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
