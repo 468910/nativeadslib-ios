@@ -165,7 +165,11 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
         self.adUnitsToBeFollowed[0].clickURL = request.URL
         print("\nUpdated URL: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
         checkSimulatorURL()
-        return true;
+        return urlIsLoadable(request.URL!)
+    }
+    
+    private func urlIsLoadable(url : NSURL) -> Bool{
+        return (url.scheme == "http" || url.scheme == "https")
     }
     
     public func webViewDidStartLoad(webView: UIWebView) {

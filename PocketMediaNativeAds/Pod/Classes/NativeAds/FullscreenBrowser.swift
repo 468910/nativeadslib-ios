@@ -27,13 +27,11 @@ public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsP
     }
     
     override public func viewDidLoad() {
-    
+        if (self.webView != nil){
+            self.view.addSubview(self.webView!)
+        }
     }
-    
-    public override func viewWillAppear(animated: Bool) {
-        NSLog("FullscreenBrowser - ViewWillAppear")
-    }
-    
+
     public func load(adUnit : NativeAd){
         print("\nFollowing link: \(adUnit.clickURL)")
         
@@ -45,7 +43,6 @@ public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsP
             self.webViewDelegate = NativeAdsWebviewDelegate(debugMode: true, delegate: self)
         }
         
-        webView?.backgroundColor = UIColor.redColor()
         webView?.delegate = self.webViewDelegate
         
         
