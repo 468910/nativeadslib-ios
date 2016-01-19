@@ -10,4 +10,11 @@
 public protocol NativeAdsConnectionProtocol {
     func didRecieveError(error: NSError)
     func didRecieveResults(nativeAds: [NativeAd])
+    // Optional method, used in conjunction with the 'followRedirectsInBackground'
+    // flag enabled in the NativeAdsRequest
+    func didUpdateNativeAd(adUnit : NativeAd)
+}
+
+extension NativeAdsConnectionProtocol{
+    func didUpdateNativeAd(adUnit : NativeAd){}
 }

@@ -110,7 +110,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     
     public func followRedirects(adUnit : NativeAd?) -> Void{
         
-        print("\nFollowing redirects for \(adUnit!.clickURL)")
+        NSLog("Following redirects for \(adUnit!.clickURL)")
         self.adUnitsToBeFollowed.append(adUnit!)
         
         processQueue()
@@ -118,7 +118,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     
     private func processQueue(){
         
-        print("'\nQueue process, size = \(self.adUnitsToBeFollowed.count)")
+        NSLog("'Queue process, size = \(self.adUnitsToBeFollowed.count)")
         if (self.adUnitsToBeFollowed.count > 0){
             startFollowingRedirects(self.adUnitsToBeFollowed[0])
         }//else, we wait for it to finish with the current one.
@@ -126,7 +126,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     
     private func startFollowingRedirects(adUnit : NativeAd?){
         
-        print("\nFollowing redirects for \(adUnit!.clickURL)")
+        NSLog("Following redirects for \(adUnit!.clickURL)")
         
         if (webView == nil){
             webView = UIWebView(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
@@ -145,26 +145,30 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     
     public func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         
-        if (self.adUnitsToBeFollowed.isEmpty){
+        
+        if (!self.adUnitsToBeFollowed.isEmpty){
             self.adUnitsToBeFollowed[0].clickURL = NSURL(string: (error?.userInfo["NSErrorFailingURLStringKey"])! as! String)
         
-            print("\nFinal URL: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
+            NSLog("Final URL: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
             checkSimulatorURL()
             
- 
+            delegate?.didUpdateNativeAd(adUnitsToBeFollowed[0])
         
             self.adUnitsToBeFollowed.removeFirst()
-            print("\nRemoving element, processing next")
-        
+            NSLog("'Queue element removed, size = \(self.adUnitsToBeFollowed.count)")
+
+            
             processQueue()
             self.webView = nil
         }
     }
     
     public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        self.adUnitsToBeFollowed[0].clickURL = request.URL
-        print("\nUpdated URL: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
-        checkSimulatorURL()
+        if (!self.adUnitsToBeFollowed.isEmpty){
+            self.adUnitsToBeFollowed[0].clickURL = request.URL
+            NSLog("Updated URL: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
+            checkSimulatorURL()
+        }
         return urlIsLoadable(request.URL!)
     }
     
@@ -187,7 +191,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
                     self.adUnitsToBeFollowed[0].clickURL.scheme != "https"  ){
                 
                 self.adUnitsToBeFollowed[0].clickURL = NSURL(string: self.adUnitsToBeFollowed[0].clickURL.absoluteString.stringByReplacingOccurrencesOfString("itms-apps", withString: "http"))
-                print("\nURL is app store one and running in the simulator. Transforming to: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
+                NSLog("URL is app store one and running in the simulator. Transforming to: \(self.adUnitsToBeFollowed[0].clickURL.absoluteString)")
                 }
                 
             }

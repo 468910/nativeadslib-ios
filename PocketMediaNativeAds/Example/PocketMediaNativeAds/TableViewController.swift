@@ -26,7 +26,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
     
     func loadNativeAds(){
         
-        let adRequest = NativeAdsRequest(affiliateId: "1234-sample", delegate: self, parentView: self.view, followRedirectsInBackground: false)
+        let adRequest = NativeAdsRequest(affiliateId: "1234-sample", delegate: self, parentView: self.view, followRedirectsInBackground: true)
         adRequest.debugModeEnabled = true
         adRequest.retrieveAds(5)
     }
@@ -69,6 +69,10 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
             }
             tableView.reloadData()
         }
+    }
+    
+    func didUpdateNativeAd(updatedAd : NativeAd){
+        NSLog("Updated ad: %@. New url: %@", updatedAd.originalClickUrl, updatedAd.clickURL)
     }
     
     // MARK: - Table view data source
