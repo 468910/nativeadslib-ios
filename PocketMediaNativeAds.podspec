@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "PocketMediaNativeAds"
-  s.version          = "0.1.1"
+  s.version          = "0.1.2"
   s.summary          = "PocketMediaNativeAds allows you to integrate customizable Native Ads in your app, easily and quickly."
   s.description      = <<-DESC
 With Pocket Media Native Ads you can quickstart the process of adding native ads to your iOS project.
@@ -16,7 +16,7 @@ Everything is customizable, but this library allows you to testdrive the impleme
                        DESC
 
 s.homepage         = "http://pocketmedia.mobi"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.screenshots    = "https://bitbucket.org/repo/46g5gL/images/3807516826-Simulator%20Screen%20Shot%2022%20Jan%202016%2015.26.27.png"
   s.license          = 'MIT'
   s.author           = { "Pocket Media Tech Team" => "techteam@pocketmedia.mobi" }
   s.source           = { :git => "https://bitbucket.org/pocketbrain/nativeadslib-ios.git", :tag => s.version.to_s }
