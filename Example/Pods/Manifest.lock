@@ -1,8 +1,8 @@
 PODS:
-  - Alamofire (3.1.4)
-  - AlamofireImage (2.2.0):
+  - Alamofire (3.1.5)
+  - AlamofireImage (2.3.0):
     - Alamofire (~> 3.1)
-  - PocketMediaNativeAds (0.0.1)
+  - PocketMediaNativeAds (0.1.1)
 
 DEPENDENCIES:
   - AlamofireImage (~> 2.0)
@@ -13,10 +13,10 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
-  AlamofireImage: bedb8a4bdfb98eda81ba12952fba6e9e90420922
-  PocketMediaNativeAds: 2a0aea20186c9d0f153899b234699b41fc4e6abf
+  Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
+  AlamofireImage: 4013fb5b99b10117bf2554a67b9bd2231d476b45
+  PocketMediaNativeAds: 7902dfc0cb8cbef07198f26b8a72c1bb8a15dc19
 
-PODFILE CHECKSUM: 4b07a54e311bc9cfe5a373ed6ce7e138fa23fde9
+PODFILE CHECKSUM: 4c9e5652a9e8325c1107a358edf28e37587c346c
 
-COCOAPODS: 1.0.0.beta.1
+COCOAPODS: 1.0.0.beta.2
