@@ -9,15 +9,9 @@
 Pod::Spec.new do |s|
   s.name             = "PocketMediaNativeAds"
   s.version          = "0.1.0"
-  s.summary          = "PocketMediaNativeAds allows you to integrate Native Ads in your app quickly."
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.summary          = "PocketMediaNativeAds allows you to integrate customizable Native Ads in your app, easily and quickly."
   s.description      = <<-DESC
-With PocketMediaNativeAds you can quickstart the process of adding native ads to your iOS project.
+With Pocket Media Native Ads you can quickstart the process of adding native ads to your iOS project.
 Everything is customizable, but this library allows you to testdrive the implementation real fast.
                        DESC
 
@@ -31,7 +25,7 @@ s.homepage         = "http://pocketmedia.mobi"
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
+  s.source_files = 'Pod/Classes/*.swift'
   s.resource_bundles = {
     'PocketMediaNativeAds' => ['Pod/Assets/*.png']
   }
