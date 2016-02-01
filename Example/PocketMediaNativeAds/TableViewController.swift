@@ -97,7 +97,11 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
             let cell = tableView.dequeueReusableCellWithIdentifier("AdCell", forIndexPath:indexPath) as! AdCell
             cell.campaignNameLabel.text = ad.campaignName
             cell.campaignDescriptionLabel.text = ad.campaignDescription
+            
+            if(ad.campaignImage != nil){
             loadImageAsynchronouslyFromUrl(ad.campaignImage, imageView: cell.campaignImageView)
+            }
+            
             return cell
         default:
             return UITableViewCell()
