@@ -47,11 +47,10 @@ public class NativeAd : NSObject{
         if let description = adDictionary["campaign_description"] as? String {
             self.campaignDescription = description
         }else{
-          return nil
+          self.campaignDescription = ""
         }
       
-        //Changed to default_icon -> will be changed to campaign_image
-        if let urlImage = adDictionary["default_icon"] as? String, url = NSURL(string: urlImage) {
+        if let urlImage = adDictionary["campaign_image"] as? String, url = NSURL(string: urlImage) {
             self.campaignImage = url
           
         }else{
