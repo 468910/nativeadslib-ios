@@ -52,7 +52,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
         let finalUrl : NSURL = NSURL(string: (error?.userInfo["NSErrorFailingURLStringKey"])! as! String)!
         webView.stopLoading()
         self.openSystemBrowser(finalUrl)
-        NSLog("Could not open URL: \(finalUrl)")
+        NSLog("Could not open URL")
         
     }
     
