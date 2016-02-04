@@ -35,7 +35,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
         
         
         do{
-            let path = NSBundle.mainBundle().pathForResource(NativeAdsConstants.DummyFile, ofType: "json")
+            let path = NSBundle.mainBundle().pathForResource("DummyData", ofType: "json")
             let jsonData : NSData =  NSData(contentsOfFile: path!)!
             var jsonArray : NSArray = NSArray()
             jsonArray = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
