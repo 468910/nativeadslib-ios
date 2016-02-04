@@ -52,7 +52,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
         let finalUrl : NSURL = NSURL(string: (error?.userInfo["NSErrorFailingURLStringKey"])! as! String)!
         webView.stopLoading()
         self.openSystemBrowser(finalUrl)
-        NSLog("Could not open URL: \(finalUrl.absoluteString)")
+        NSLog("Could not open URL")
         
     }
     
@@ -73,16 +73,19 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     }
     
     public func webViewDidFinishLoad(webView: UIWebView) {
-        loadingView?.removeFromSuperview()
-    
+        loadingView?.hidden = true
     }
     
 
     public func openSystemBrowser(url : NSURL){
         
         let urlToOpen : NSURL = checkSimulatorURL(url)
-        NSLog("\n\nRequesting to Safari: %@\n\n", urlToOpen.absoluteString)
-        UIApplication.sharedApplication().openURL(urlToOpen)
+        if (debugModeEnabled){
+            NSLog("\n\nRequesting to Safari: %@\n\n", urlToOpen.absoluteString)
+        }
+        if UIApplication.sharedApplication().canOpenURL(url) {
+            UIApplication.sharedApplication().openURL(url)
+        }
         
         delegate?.didOpenBrowser(url)
         

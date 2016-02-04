@@ -26,8 +26,9 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
     
     func loadNativeAds(){
         
-        let adRequest = NativeAdsRequest(affiliateId: "1234-sample", delegate: self, parentView: self.view, followRedirectsInBackground: true)
+        let adRequest = NativeAdsRequest(affiliateId: "provided-by-pocket-media", delegate: self, parentView: self.view, followRedirectsInBackground: true)
         adRequest.debugModeEnabled = true
+        adRequest.betaModeEnabled = true
         adRequest.retrieveAds(5)
     }
     
@@ -35,7 +36,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
         
         
         do{
-            let path = NSBundle.mainBundle().pathForResource(NativeAdsConstants.DummyFile, ofType: "json")
+            let path = NSBundle.mainBundle().pathForResource("DummyData", ofType: "json")
             let jsonData : NSData =  NSData(contentsOfFile: path!)!
             var jsonArray : NSArray = NSArray()
             jsonArray = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
