@@ -67,7 +67,9 @@ public class NativeAd : NSObject{
     
     public func openCampaign(inTheForeground : Bool = false, parentViewController : UIViewController){
         if (inTheForeground){
-            UIApplication.sharedApplication().openURL(clickURL)
+            if UIApplication.sharedApplication().canOpenURL(clickURL) {
+                UIApplication.sharedApplication().openURL(clickURL)
+            }
         }else{
             self.openCampaignWithWebview(parentViewController)
         }
