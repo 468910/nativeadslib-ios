@@ -67,18 +67,20 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
                     self.delegate?.didRecieveError(error!)
                     
                 } else {
-                    
+                      var nativeAds: [NativeAd] = []
                     if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
-                        var nativeAds: [NativeAd] = []
-                        for itemJson in json {
-                            if let itemAdDictionary = itemJson as? NSDictionary, ad = NativeAd(adDictionary: itemAdDictionary) {
-                                nativeAds.append(ad)
-                                
-                                if (self.followRedirectsInBackground){
-                                    self.followRedirects(ad)
-                                }
+                      
+                          json.filter({ ($0 as? NSDictionary) != nil}).forEach({ (element) -> () in
+                            if let ad = NativeAd(adDictionary: element as! NSDictionary){
+                              nativeAds.append(ad)
+                              
+                              if(self.followRedirectsInBackground){
+                                self.followRedirects(ad)
+                              }
                             }
-                        }
+                            
+                          })
+                           
                         if nativeAds.count > 0 {
                             self.delegate?.didRecieveResults(nativeAds)
                         } else {
