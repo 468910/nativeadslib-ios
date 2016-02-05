@@ -6,7 +6,9 @@
 //
 //
 
-
+/**
+    - NativeAd Model Object
+*/
 public class NativeAd : NSObject{
     
     public var campaignName        : String!
@@ -25,7 +27,11 @@ public class NativeAd : NSObject{
   
   
   
-    // Fallible Constructor
+    /**
+        -Fallible Constructor
+        
+        -Parameter adDictionary: JSON containing NativeAd Data
+    */
     public init?(adDictionary: NSDictionary){
         // Swift Requires all properties to be initialized before its possible to return nil
         super.init()

@@ -9,10 +9,14 @@
 import UIKit
 import AdSupport
 
+/**
+    -Object which is used to make a NativeAdsRequest has to be used in combination with the NativeAdsConnectionDelegate
+ 
+*/
 public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDelegate {
     
     // Object to notify about the updates related with the ad request
-    public var delegate: NativeAdsConnectionProtocol?
+    public var delegate: NativeAdsConnectionDelegate?
     // Needed to "sign" the ad requests to the server
     public var affiliateId : String?
     // To avoid more verbose logging and behaviour
@@ -26,7 +30,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     // currently followed AdUnit
     private var adUnitsToBeFollowed : [NativeAd] = [NativeAd]()
     
-    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?, followRedirectsInBackground : Bool) {
+    public init(affiliateId : String?, delegate: NativeAdsConnectionDelegate?, parentView : UIView?, followRedirectsInBackground : Bool) {
         super.init()
         self.affiliateId = affiliateId;
         self.delegate = delegate
@@ -35,7 +39,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
         self.webViewDelegate = self
     }
 
-    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?, followRedirectsInBackground : Bool, webViewDelegate : UIWebViewDelegate?) {
+    public init(affiliateId : String?, delegate: NativeAdsConnectionDelegate?, parentView : UIView?, followRedirectsInBackground : Bool, webViewDelegate : UIWebViewDelegate?) {
         super.init()
         self.affiliateId = affiliateId;
         self.delegate = delegate
@@ -45,13 +49,18 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     }
 
     
-    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?) {
+    public init(affiliateId : String?, delegate: NativeAdsConnectionDelegate?) {
         super.init()
         self.affiliateId = affiliateId;
         self.delegate = delegate
         self.followRedirectsInBackground = false
     }
-    
+  
+    /**
+        -Method used to retrieve native ads which are later accessed by using the delegate.
+   
+        -Parameter limit: Limit on how many native ads are to be retrieved.
+    */
     public func retrieveAds(limit: UInt){
         
         let nativeAdURL = getNativeAdsURL(self.affiliateId, limit: limit);

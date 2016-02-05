@@ -10,7 +10,7 @@ import UIKit
 import AlamofireImage
 import PocketMediaNativeAds
 
-class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
+class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
     
     var itemsTable: [Any] = []
     var nativeAds: [NativeAd] = []
