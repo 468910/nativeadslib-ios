@@ -121,6 +121,7 @@ In order to avoid that bad experience, we provide you the ```openCampaign``` met
     }
 ```
 
+![Simulator Screen Shot 05 Feb 2016 17.32.48.png](https://bitbucket.org/repo/46g5gL/images/2129250798-Simulator%20Screen%20Shot%2005%20Feb%202016%2017.32.48.png)
 
 ## Look and feel
 
