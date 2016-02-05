@@ -25,8 +25,17 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     public var webViewDelegate : UIWebViewDelegate?
     // currently followed AdUnit
     private var adUnitsToBeFollowed : [NativeAd] = [NativeAd]()
+
+    private init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?) {
+        super.init()
+        self.affiliateId = affiliateId;
+        self.delegate = delegate
+        self.parentView = parentView
+        self.followRedirectsInBackground = false
+        self.webViewDelegate = self
+    }
     
-    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?, followRedirectsInBackground : Bool) {
+    private init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?, followRedirectsInBackground : Bool) {
         super.init()
         self.affiliateId = affiliateId;
         self.delegate = delegate
@@ -35,7 +44,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
         self.webViewDelegate = self
     }
 
-    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?, followRedirectsInBackground : Bool, webViewDelegate : UIWebViewDelegate?) {
+    private init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?, followRedirectsInBackground : Bool, webViewDelegate : UIWebViewDelegate?) {
         super.init()
         self.affiliateId = affiliateId;
         self.delegate = delegate
