@@ -95,6 +95,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
         
         // Box config:
         let loadingView = UIView(frame: CGRect(x: 115, y: 110, width: 80, height: 80))
+        loadingView.center = parentView.center
         loadingView.backgroundColor = UIColor.blackColor()
         loadingView.alpha = 0.9
         loadingView.layer.cornerRadius = 10
