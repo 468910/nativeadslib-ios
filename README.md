@@ -104,9 +104,27 @@ Together with the method were the table cell is displayed:
     }
 ```
 
+### Opening the URL
+
+One of the possible moments when the ads might create a bad experience for the users is in the moment of the click. As we have to notify the different partners that provide the ads about the click, to be able to know that the users come from your app, we need to follow some tracking link redirections. 
+
+In order to avoid that bad experience, we provide you the ```openCampaign``` method in the ```NativeAd``` class. The method receives the parent view as an argument, and it will create a UIWebView inside of your app, where the links will be followed.
+
+```swift
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let ad = itemsTable[indexPath.row] as? NativeAd{
+            print("Opening url: \(ad.clickURL.absoluteString)")
+            // This method will take of opening the ad inside of the app, until we have an iTunes url
+            ad.openCampaign(parentViewController : self)
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+```
+
+
 ## Look and feel
 
-The look of the ads is totally customisable, that's the root objective of the project. One of the easiest ad units to adapt would be the in-feed native ads, but you can use the data we provide you in any way, as long as you don't trick the users and don't force them to click your ads.
+The look of the ads is totally customisable, that's the main objective of the project. One of the easiest ad units to adapt would be the in-feed native ads, but you can use the data we provide you in any way, as long as you don't trick the users and don't force them to click your ads.
 
 ![Simulator Screen Shot 22 Jan 2016 15.26.27.png](https://bitbucket.org/repo/46g5gL/images/3807516826-Simulator%20Screen%20Shot%2022%20Jan%202016%2015.26.27.png)
 
