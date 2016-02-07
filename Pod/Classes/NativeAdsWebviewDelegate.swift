@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+@objc
 public protocol NativeAdsWebviewRedirectionsProtocol {
     func didOpenBrowser(url: NSURL)
 }
@@ -21,6 +21,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
 
     private var delegate : NativeAdsWebviewRedirectionsProtocol?
     
+    @objc
     public init(debugMode : Bool, delegate : NativeAdsWebviewRedirectionsProtocol?) {
         super.init()
         self.debugModeEnabled = debugMode

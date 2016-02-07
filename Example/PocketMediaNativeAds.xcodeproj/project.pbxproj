@@ -12,6 +12,7 @@
 		3A75F2731C3FFA7B00F81318 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F2701C3FFA7B00F81318 /* AdCell.swift */; };
 		3A75F2741C3FFA7B00F81318 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F2711C3FFA7B00F81318 /* ItemCell.swift */; };
 		3A75F2751C3FFA7B00F81318 /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F2721C3FFA7B00F81318 /* ItemTableView.swift */; };
+		3AF66C1B1C6802A300913C04 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = 3AF66C1A1C6802A300913C04 /* CHANGELOG.md */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
@@ -42,6 +43,7 @@
 		3A75F2701C3FFA7B00F81318 /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
 		3A75F2711C3FFA7B00F81318 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		3A75F2721C3FFA7B00F81318 /* ItemTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableView.swift; sourceTree = "<group>"; };
+		3AF66C1A1C6802A300913C04 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		44BE49B0E6D8F96E6500AB62 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* PocketMediaNativeAds_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketMediaNativeAds_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				058EEE27CA345A751A7FE3B5 /* PocketMediaNativeAds.podspec */,
+				3AF66C1A1C6802A300913C04 /* CHANGELOG.md */,
 				E068E3C236A822499D514E06 /* README.md */,
 				44BE49B0E6D8F96E6500AB62 /* LICENSE */,
 			);
@@ -382,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A75F2741C3FFA7B00F81318 /* ItemCell.swift in Sources */,
+				3AF66C1B1C6802A300913C04 /* CHANGELOG.md in Sources */,
 				3A75F2751C3FFA7B00F81318 /* ItemTableView.swift in Sources */,
 				3A75F2731C3FFA7B00F81318 /* AdCell.swift in Sources */,
 				3A75F26A1C3FF6CC00F81318 /* TableViewController.swift in Sources */,

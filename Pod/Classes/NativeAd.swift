@@ -26,6 +26,7 @@ public class NativeAd : NSObject{
     
     
     // Fallible Constructor
+    @objc
     public init?(adDictionary: NSDictionary){
         // Swift Requires all properties to be initialized before its possible to return nil
         super.init()
@@ -65,6 +66,7 @@ public class NativeAd : NSObject{
     override public var description: String {return "NativeAd.\(campaignName): \(clickURL.absoluteURL)"}
     override public var debugDescription: String {return "NativeAd.\(campaignName): \(clickURL.absoluteURL)"}
     
+    @objc
     public func openCampaign(inTheForeground : Bool = false, parentViewController : UIViewController){
         if (inTheForeground){
             if UIApplication.sharedApplication().canOpenURL(clickURL) {

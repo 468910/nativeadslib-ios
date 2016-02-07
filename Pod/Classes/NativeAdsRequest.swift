@@ -57,7 +57,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
         self.webViewDelegate = webViewDelegate
     }
 
-    
+    @objc
     public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?) {
         super.init()
         self.affiliateId = affiliateId;
@@ -65,6 +65,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
         self.followRedirectsInBackground = false
     }
     
+    @objc
     public func retrieveAds(limit: UInt){
         
         let nativeAdURL = getNativeAdsURL(self.affiliateId, limit: limit);

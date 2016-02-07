@@ -1,5 +1,6 @@
 Pocket Media Native Ads iOS library Changelog
 
+* 0.1.5: improved Objective-C compatibility by exposing more methods trough ```@objc```
 * 0.1.4: bugfixing and validity checking of the JSON received. 
 * 0.1.3: code cleanup.
 * 0.1.2: added screenshots to readme file.

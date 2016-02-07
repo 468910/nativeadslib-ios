@@ -15,7 +15,7 @@ public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsP
     public var webView : UIWebView?
     public var webViewDelegate : UIWebViewDelegate?
     
-    
+    @objc
     public init(parentViewController : UIViewController, adUnit : NativeAd){
         super.init(nibName: nil, bundle: NSBundle.mainBundle())
         self.originalViewController = parentViewController
@@ -32,6 +32,7 @@ public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsP
         }
     }
 
+    @objc
     public func load(adUnit : NativeAd){
         print("\nFollowing link: \(adUnit.clickURL)")
         
@@ -54,6 +55,7 @@ public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsP
         webView?.loadRequest(request)
     }
     
+    @objc
     public func didOpenBrowser(url : NSURL){
         self.originalViewController!.navigationController?.popViewControllerAnimated(true)
         NSLog("Dismissed View Controller for FullScreenBrowser")

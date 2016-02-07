@@ -7,12 +7,18 @@
 //
 
 
+@objc
 public protocol NativeAdsConnectionProtocol {
+    
+    @objc
     func didRecieveError(error: NSError)
+    
+    @objc
     func didRecieveResults(nativeAds: [NativeAd])
   
     // Optional method, used in conjunction with the 'followRedirectsInBackground'
     // flag enabled in the NativeAdsRequest
+    @objc
     func didUpdateNativeAd(adUnit : NativeAd)
 }
 
