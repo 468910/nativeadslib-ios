@@ -10,7 +10,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-In order to use the library and have monetization tracking you need to get an advertiser token from Pocket Media. Contact support@pocketmedia.mobi to create an account and get a token.
+In order to use the library and have monetization tracking you need to get an advertiser token from Pocket Media. You can get it online, at [our sign up page](http://nativeads.pocketmedia.mobi/signup.html):
+
+[![LandingPage 2016-02-15 10-19-32.png](https://bitbucket.org/repo/46g5gL/images/3248517185-LandingPage%202016-02-15%2010-19-32.png)](http://nativeads.pocketmedia.mobi/signup.html)
 
 The project is developed in Swift but contains bridging headers to also work with Objective-C.
 
