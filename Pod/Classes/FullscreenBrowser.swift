@@ -79,8 +79,15 @@ public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsP
     
     @objc
     public func didOpenBrowser(url : NSURL){
-        self.originalViewController!.navigationController?.popViewControllerAnimated(true)
+        
+        if let _ = self.originalViewController?.navigationController{
+            self.originalViewController?.navigationController?.popViewControllerAnimated(true)
+        }else{
+            self.closeAction()
+        }
+
         NSLog("Dismissed View Controller for FullScreenBrowser")
+
     }
     
     public func closeAction(){
