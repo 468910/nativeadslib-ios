@@ -4,17 +4,19 @@
 [![License](https://img.shields.io/cocoapods/l/PocketMediaNativeAds.svg?style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 [![Platform](https://img.shields.io/cocoapods/p/PocketMediaNativeAds.svg?style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 
-## Building the demo
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Requirements
 
 In order to use the library and have monetization tracking you need to get an advertiser token from Pocket Media. You can get it online, at [our sign up page](http://nativeads.pocketmedia.mobi/signup.html):
 
 [![LandingPage 2016-02-15 10-19-32.png](https://bitbucket.org/repo/46g5gL/images/3248517185-LandingPage%202016-02-15%2010-19-32.png)](http://nativeads.pocketmedia.mobi/signup.html)
 
+
+## Building the demo
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
 The project is developed in Swift but contains bridging headers to also work with Objective-C.
+
 
 ## Installation
 
@@ -133,7 +135,7 @@ The look of the ads is totally customisable, that's the main objective of the pr
 
 ## Author
 
-Pocket Media Tech Team, [techteam@pocketmedia.mobi](mailto:techteam@pocketmedia.mobi). Feel free to contact us for any suggestion improvements you might have. 
+Pocket Media Tech Team, [support@pocketmedia.mobi](mailto:support@pocketmedia.mobi). Feel free to contact us for any suggestion improvements you might have. 
 
 We work for you, we want you to be able to implement the ads in 5 minutes and start monetizing your audience with a totally native and tailored experience! Tell us what you are missing, what else you need our library to make for you - and it will happen.
 
