@@ -36,6 +36,7 @@ public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsP
     public func load(adUnit : NativeAd){
         print("\nFollowing link: \(adUnit.clickURL)")
         
+        
         if (webView == nil){
             webView = UIWebView(frame: CGRect.init(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height))
         }
@@ -46,13 +47,34 @@ public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsP
         
         webView?.delegate = self.webViewDelegate
         
-        
-        if ((webView) != nil){
-            self.originalViewController!.navigationController!.pushViewController(self, animated: true)
+        // In case the original controller is attached to a UINavigationController, we use it
+        // to push our new fullscreen browser
+        if(((self.originalViewController!.navigationController)) != nil){
+            
+            if ((webView) != nil){
+                self.originalViewController!.navigationController!.pushViewController(self, animated: true)
+            }
+            
+            let request : NSURLRequest = NSURLRequest(URL: (adUnit.clickURL)!)
+            webView?.loadRequest(request)
+            
+        }else{
+        // If the originall view controller doesn't have an UINavigationController
+        // we will display a new view
+            
+            let button = UIButton(type: UIButtonType.System)
+            button.frame = CGRectMake(UIScreen.mainScreen().bounds.width - UIScreen.mainScreen().bounds.width * 0.10, 0, UIScreen.mainScreen().bounds.width * 0.10, UIScreen.mainScreen().bounds.height * 0.10)
+            button.backgroundColor = UIColor.clearColor()
+            button.setImage(UIImage(named: "close"), forState: UIControlState.Normal)
+            button.addTarget(self, action: "closeAction", forControlEvents: UIControlEvents.TouchUpInside)
+            self.view.addSubview(button)
+            
+            originalViewController!.presentViewController(self, animated: true, completion: { () -> Void in
+                let request : NSURLRequest = NSURLRequest(URL: (adUnit.clickURL)!)
+                self.webView?.loadRequest(request)
+            })
+
         }
-        
-        let request : NSURLRequest = NSURLRequest(URL: (adUnit.clickURL)!)
-        webView?.loadRequest(request)
     }
     
     @objc
@@ -60,5 +82,10 @@ public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsP
         self.originalViewController!.navigationController?.popViewControllerAnimated(true)
         NSLog("Dismissed View Controller for FullScreenBrowser")
     }
+    
+    public func closeAction(){
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
     
 }
