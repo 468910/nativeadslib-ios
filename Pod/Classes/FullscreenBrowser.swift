@@ -7,7 +7,11 @@
 //
 
 import UIKit
-public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsProtocol {
+
+/** 
+  - Used to display the NativeAd can be safely subclassed.
+**/
+public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsProtocol, NativeAdDisplayProtocol {
 
     private var adUnit : NativeAd?
     public var originalViewController : UIViewController?

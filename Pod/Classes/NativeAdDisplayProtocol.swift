@@ -6,4 +6,7 @@
 //
 //
 
-import Foundation
+
+public protocol NativeAdDisplayProtocol {
+  func load(adUnit : NativeAd)
+}

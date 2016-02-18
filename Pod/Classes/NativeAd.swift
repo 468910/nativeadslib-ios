@@ -22,8 +22,6 @@ public class NativeAd : NSObject{
     public var originalClickUrl    : NSURL!
     public var destinationURL      : NSURL?
     
-    //public var webViewDelegate     : NativeAdsWebviewDelegate?
-    public var webviewController   : FullscreenBrowser?
   
   
   
@@ -67,23 +65,7 @@ public class NativeAd : NSObject{
   
     override public var description: String {return "NativeAd.\(campaignName): \(clickURL.absoluteURL)"}
     override public var debugDescription: String {return "NativeAd.\(campaignName): \(clickURL.absoluteURL)"}
-    
-    public func openCampaign(inTheForeground : Bool = false, parentViewController : UIViewController){
-        if (inTheForeground){
-            UIApplication.sharedApplication().openURL(clickURL)
-        }else{
-            self.openCampaignWithWebview(parentViewController)
-        }
-    }
-    
-    private func openCampaignWithWebview(parentViewController : UIViewController){
-        NSLog("Pushing fullscreen webview, opening: \(clickURL.absoluteString)")
-        
-        if self.webviewController == nil{
-            self.webviewController = FullscreenBrowser(parentViewController: parentViewController, adUnit: self)
-        }
-        
-        self.webviewController?.load(self)
-        
-    }
 }
+  
+ 
+ 
