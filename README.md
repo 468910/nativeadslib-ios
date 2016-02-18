@@ -4,15 +4,19 @@
 [![License](https://img.shields.io/cocoapods/l/PocketMediaNativeAds.svg?style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 [![Platform](https://img.shields.io/cocoapods/p/PocketMediaNativeAds.svg?style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 
+## Requirements
+
+In order to use the library and have monetization tracking you need to get an advertiser token from Pocket Media. You can get it online, at [our sign up page](http://nativeads.pocketmedia.mobi/signup.html):
+
+[![LandingPage 2016-02-15 10-19-32.png](https://bitbucket.org/repo/46g5gL/images/3248517185-LandingPage%202016-02-15%2010-19-32.png)](http://nativeads.pocketmedia.mobi/signup.html)
+
+
 ## Building the demo
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
-
-In order to use the library and have monetization tracking you need to get an advertiser token from Pocket Media. Contact support@pocketmedia.mobi to create an account and get a token.
-
 The project is developed in Swift but contains bridging headers to also work with Objective-C.
+
 
 ## Installation
 
@@ -104,15 +108,34 @@ Together with the method were the table cell is displayed:
     }
 ```
 
+### Opening the URL
+
+One of the possible moments when the ads might create a bad experience for the users is in the moment of the click. As we have to notify the different partners that provide the ads about the click, to be able to know that the users come from your app, we need to follow some tracking link redirections. 
+
+In order to avoid that bad experience, we provide you the ```openCampaign``` method in the ```NativeAd``` class. The method receives the parent view as an argument, and it will create a UIWebView inside of your app, where the links will be followed.
+
+```swift
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let ad = itemsTable[indexPath.row] as? NativeAd{
+            print("Opening url: \(ad.clickURL.absoluteString)")
+            // This method will take of opening the ad inside of the app, until we have an iTunes url
+            ad.openCampaign(parentViewController : self)
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+```
+
+![Simulator Screen Shot 05 Feb 2016 17.32.48.png](https://bitbucket.org/repo/46g5gL/images/2129250798-Simulator%20Screen%20Shot%2005%20Feb%202016%2017.32.48.png)
+
 ## Look and feel
 
-The look of the ads is totally customisable, that's the root objective of the project. One of the easiest ad units to adapt would be the in-feed native ads, but you can use the data we provide you in any way, as long as you don't trick the users and don't force them to click your ads.
+The look of the ads is totally customisable, that's the main objective of the project. One of the easiest ad units to adapt would be the in-feed native ads, but you can use the data we provide you in any way, as long as you don't trick the users and don't force them to click your ads.
 
 ![Simulator Screen Shot 22 Jan 2016 15.26.27.png](https://bitbucket.org/repo/46g5gL/images/3807516826-Simulator%20Screen%20Shot%2022%20Jan%202016%2015.26.27.png)
 
 ## Author
 
-Pocket Media Tech Team, [techteam@pocketmedia.mobi](mailto:techteam@pocketmedia.mobi). Feel free to contact us for any suggestion improvements you might have. 
+Pocket Media Tech Team, [support@pocketmedia.mobi](mailto:support@pocketmedia.mobi). Feel free to contact us for any suggestion improvements you might have. 
 
 We work for you, we want you to be able to implement the ads in 5 minutes and start monetizing your audience with a totally native and tailored experience! Tell us what you are missing, what else you need our library to make for you - and it will happen.
 

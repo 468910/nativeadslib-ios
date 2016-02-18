@@ -6,16 +6,8 @@
 //
 //
 
-/**
-  The delegate of an NativeAdsRequest object must adopt the NativeAdsConnectionDelegate protocol.
-*/
-public protocol NativeAdsConnectionDelegate {
-    /**
-        This method is invoked when there is an error in the NativeAdRequest.
-         
-        -Parameter error: Contains error information
-   
-    */
+
+public protocol NativeAdsConnectionProtocol {
     func didRecieveError(error: NSError)
   
     /**

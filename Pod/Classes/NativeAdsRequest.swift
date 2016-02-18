@@ -19,18 +19,22 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     public var delegate: NativeAdsConnectionDelegate?
     // Needed to "sign" the ad requests to the server
     public var affiliateId : String?
-    // To avoid more verbose logging and behaviour
+    // To allow more verbose logging and behaviour
     public var debugModeEnabled : Bool = false
+    // To allow testing with links without impacting impressions and clicks
+    public var betaModeEnabled : Bool = false
     
     // Background redirects //
     public var followRedirectsInBackground : Bool = false
+    private var prefetchLinks : Bool = false
+    
     public var parentView : UIView?
     public var webView : UIWebView?
     public var webViewDelegate : UIWebViewDelegate?
     // currently followed AdUnit
     private var adUnitsToBeFollowed : [NativeAd] = [NativeAd]()
     
-    public init(affiliateId : String?, delegate: NativeAdsConnectionDelegate?, parentView : UIView?, followRedirectsInBackground : Bool) {
+    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?, followRedirectsInBackground : Bool) {
         super.init()
         self.affiliateId = affiliateId;
         self.delegate = delegate
@@ -39,7 +43,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
         self.webViewDelegate = self
     }
 
-    public init(affiliateId : String?, delegate: NativeAdsConnectionDelegate?, parentView : UIView?, followRedirectsInBackground : Bool, webViewDelegate : UIWebViewDelegate?) {
+    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?, followRedirectsInBackground : Bool, webViewDelegate : UIWebViewDelegate?) {
         super.init()
         self.affiliateId = affiliateId;
         self.delegate = delegate
@@ -49,7 +53,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     }
 
     
-    public init(affiliateId : String?, delegate: NativeAdsConnectionDelegate?) {
+    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?) {
         super.init()
         self.affiliateId = affiliateId;
         self.delegate = delegate
@@ -80,10 +84,10 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
                     if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
                       
                           json.filter({ ($0 as? NSDictionary) != nil}).forEach({ (element) -> () in
-                            if let ad = NativeAd(adDictionary: element as! NSDictionary){
+                            if let ad = NativeAd( adDictionary: element as! NSDictionary){
                               nativeAds.append(ad)
-                              
-                              if(self.followRedirectsInBackground){
+                              // disabled due to data problems caused by the "automated clicks"
+                              if(self.prefetchLinks){
                                 self.followRedirects(ad)
                               }
                             }
@@ -113,7 +117,8 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     
     public func getNativeAdsURL(affiliateID: String?, limit: UInt) -> String {
         let token = provideIdentifierForAdvertisingIfAvailable()
-        return NativeAdsConstants.NativeAds.baseURL + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&affiliate_id=\(affiliateID!)"
+        let baseUrl = betaModeEnabled ? NativeAdsConstants.NativeAds.baseURLBeta : NativeAdsConstants.NativeAds.baseURL;
+        return baseUrl + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&affiliate_id=\(affiliateID!)"
     }
 
     

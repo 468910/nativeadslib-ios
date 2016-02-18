@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+@objc
 public protocol NativeAdsWebviewRedirectionsProtocol {
     func didOpenBrowser(url: NSURL)
 }
@@ -21,6 +21,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
 
     private var delegate : NativeAdsWebviewRedirectionsProtocol?
     
+    @objc
     public init(debugMode : Bool, delegate : NativeAdsWebviewRedirectionsProtocol?) {
         super.init()
         self.debugModeEnabled = debugMode
@@ -52,7 +53,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
         let finalUrl : NSURL = NSURL(string: (error?.userInfo["NSErrorFailingURLStringKey"])! as! String)!
         webView.stopLoading()
         self.openSystemBrowser(finalUrl)
-        NSLog("Could not open URL: \(finalUrl.absoluteString)")
+        NSLog("Could not open URL")
         
     }
     
@@ -73,16 +74,19 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     }
     
     public func webViewDidFinishLoad(webView: UIWebView) {
-        loadingView?.removeFromSuperview()
-    
+        loadingView?.hidden = true
     }
     
 
     public func openSystemBrowser(url : NSURL){
         
         let urlToOpen : NSURL = checkSimulatorURL(url)
-        NSLog("\n\nRequesting to Safari: %@\n\n", urlToOpen.absoluteString)
-        UIApplication.sharedApplication().openURL(urlToOpen)
+        if (debugModeEnabled){
+            NSLog("\n\nRequesting to Safari: %@\n\n", urlToOpen.absoluteString)
+        }
+        if UIApplication.sharedApplication().canOpenURL(url) {
+            UIApplication.sharedApplication().openURL(url)
+        }
         
         delegate?.didOpenBrowser(url)
         
@@ -92,6 +96,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
         
         // Box config:
         let loadingView = UIView(frame: CGRect(x: 115, y: 110, width: 80, height: 80))
+        loadingView.center = parentView.center
         loadingView.backgroundColor = UIColor.blackColor()
         loadingView.alpha = 0.9
         loadingView.layer.cornerRadius = 10
