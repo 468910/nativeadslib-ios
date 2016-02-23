@@ -112,7 +112,8 @@ class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
         if let ad = itemsTable[indexPath.row] as? NativeAd{
             print("Opening url: \(ad.clickURL.absoluteString)")
             // This method will take of opening the ad inside of the app, until we have an iTunes url
-            //ad.(parentViewController : self)
+            
+          ad.openAdUrl(parentViewController: self))
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }

@@ -34,7 +34,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     // currently followed AdUnit
     private var adUnitsToBeFollowed : [NativeAd] = [NativeAd]()
     
-    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?, followRedirectsInBackground : Bool) {
+    public init(affiliateId : String?, delegate: NativeAdsConnectionDelegate?, parentView : UIView?, followRedirectsInBackground : Bool) {
         super.init()
         self.affiliateId = affiliateId;
         self.delegate = delegate
@@ -43,7 +43,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
         self.webViewDelegate = self
     }
 
-    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?, parentView : UIView?, followRedirectsInBackground : Bool, webViewDelegate : UIWebViewDelegate?) {
+    public init(affiliateId : String?, delegate: NativeAdsConnectionDelegate?, parentView : UIView?, followRedirectsInBackground : Bool, webViewDelegate : UIWebViewDelegate?) {
         super.init()
         self.affiliateId = affiliateId;
         self.delegate = delegate
@@ -53,7 +53,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     }
 
     
-    public init(affiliateId : String?, delegate: NativeAdsConnectionProtocol?) {
+    public init(affiliateId : String?, delegate: NativeAdsConnectionDelegate?) {
         super.init()
         self.affiliateId = affiliateId;
         self.delegate = delegate

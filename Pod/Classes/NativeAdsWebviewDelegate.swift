@@ -8,6 +8,10 @@
 
 import UIKit
 
+
+/**
+ - todo
+*/
 @objc
 public protocol NativeAdsWebviewRedirectionsProtocol {
     func didOpenBrowser(url: NSURL)

@@ -9,35 +9,34 @@
 import UIKit
 
 /** 
-  - Used to display the NativeAd can be safely subclassed.
+  - Class that is used to open the NativeAd in An FullScreen Embedded WebView
+    Default implementation for the NativeAdOpenerProtocol
 **/
-public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsProtocol, NativeAdDisplayProtocol {
+internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsProtocol, NativeAdOpenerProtocol {
 
-    private var adUnit : NativeAd?
-    public var originalViewController : UIViewController?
+    private var originalViewController : UIViewController?
     
-    public var webView : UIWebView?
-    public var webViewDelegate : UIWebViewDelegate?
+    private var webView : UIWebView?
+    private var webViewDelegate : UIWebViewDelegate?
     
     @objc
-    public init(parentViewController : UIViewController, adUnit : NativeAd){
+    internal init(parentViewController : UIViewController){
         super.init(nibName: nil, bundle: NSBundle.mainBundle())
         self.originalViewController = parentViewController
-        self.adUnit = adUnit
     }
 
-    required public init?(coder aDecoder: NSCoder)  {
+    required internal init?(coder aDecoder: NSCoder)  {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override public func viewDidLoad() {
+    override internal func viewDidLoad() {
         if (self.webView != nil){
             self.view.addSubview(self.webView!)
         }
     }
 
     @objc
-    public func load(adUnit : NativeAd){
+   internal func load(adUnit : NativeAd){
         print("\nFollowing link: \(adUnit.clickURL)")
         
         
@@ -82,7 +81,7 @@ public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsP
     }
     
     @objc
-    public func didOpenBrowser(url : NSURL){
+    internal func didOpenBrowser(url : NSURL){
         
         if let _ = self.originalViewController?.navigationController{
             self.originalViewController?.navigationController?.popViewControllerAnimated(true)
@@ -94,7 +93,7 @@ public class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsP
 
     }
     
-    public func closeAction(){
+    internal func closeAction(){
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 

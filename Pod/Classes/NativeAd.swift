@@ -5,7 +5,7 @@
 //  Created by Adrián Moreno Peña | Pocket Media on 14/01/16.
 //
 //
-
+import UIKit
 /**
     - NativeAd Model Object
 */
@@ -69,23 +69,30 @@ public class NativeAd : NSObject{
     
     override public var description: String {return "NativeAd.\(campaignName): \(clickURL.absoluteURL)"}
     override public var debugDescription: String {return "NativeAd.\(campaignName): \(clickURL.absoluteURL)"}
-    
-    public func openCampaign(inTheForeground : Bool = false, parentViewController : UIViewController){
-        if (inTheForeground){
-            UIApplication.sharedApplication().openURL(clickURL)
-        }else{
-            self.openCampaignWithWebview(parentViewController)
-        }
+  
+  
+    /** 
+      - Opens NativeAd in an closeable embedded webview.
+    */
+    public func openAdUrl(parentViewController: UIViewController){
+        FullscreenBrowser(parentViewController: parentViewController).load(self)
     }
-    
-    private func openCampaignWithWebview(parentViewController : UIViewController){
-        NSLog("Pushing fullscreen webview, opening: \(clickURL.absoluteString)")
-        
-        if self.webviewController == nil{
-            self.webviewController = FullscreenBrowser(parentViewController: parentViewController, adUnit: self)
-        }
-        
-        self.webviewController?.load(self)
-        
+  
+  
+   /**
+    - Opens Native Ad in an View handled by the NativeAdOpener 
+      - paramater opener: NativeAdOpener handling the opening of the view where the NativeAd will be displayed.
+   */
+   public func openAdUrl(parentViewController: UIViewController, opener: NativeAdOpenerProtocol){
+      opener.load(self)
     }
+  
+    /**
+      - Opens NativeAd in foreground.
+    */
+    public func openAdUrlinForeground(){
+      UIApplication.sharedApplication().openURL(self.clickURL)
+    }
+  
+  
 }

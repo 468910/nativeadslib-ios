@@ -12,7 +12,10 @@
 		065EEEAAEE109C0C6F5542EAABA0E8A0 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990E0B2A168F58CE64C46888BF5E9D1B /* Request.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		07BECE24E34C6B8F38C3C4DBF872F09F /* UIImage+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33107D201ED4DC274C847AF1303AE7EC /* UIImage+AlamofireImage.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0DBC6167CA6AB7012FE50280EE84B2C9 /* NativeAdsConnectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32C35C877BEB45C797B0F03870305AA /* NativeAdsConnectionProtocol.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		18D95CB61C76000A003C5D90 /* NativeAdOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D95CB51C76000A003C5D90 /* NativeAdOpener.swift */; };
+		181D98FE1C7C5CB100BA81EC /* Highlight-St.-Barts-Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 181D98FD1C7C5CB100BA81EC /* Highlight-St.-Barts-Image.jpg */; };
+		181D99001C7C5CBA00BA81EC /* BigNativeAd.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D98FF1C7C5CBA00BA81EC /* BigNativeAd.xib */; };
+		181D99021C7C5CC400BA81EC /* Test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D99011C7C5CC400BA81EC /* Test.xib */; };
+		181D99041C7C6B2800BA81EC /* BigNativeAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D99031C7C6B2800BA81EC /* BigNativeAdTableViewCell.swift */; };
 		18D95CBE1C7605DB003C5D90 /* NativeAdDisplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D95CB91C76049E003C5D90 /* NativeAdDisplayProtocol.swift */; };
 		19CD84CEB6D468F320546AA090E51D3D /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C9549E497883A579CAF4910F9A8BD6 /* Response.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		270F09D0280AFC8B991B530EB9FB8F9C /* PocketMediaNativeAds.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E8D8F263B4CB4169AEA942826F1ACD80 /* PocketMediaNativeAds.bundle */; };
@@ -124,7 +127,11 @@
 		065AB41D15678A1CB10E77E20234F4FB /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
 		09B7BE92F3947573A027322893C92855 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		171C74CD4BD41588B7CDF7EB4F3345DE /* PocketMediaNativeAds-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PocketMediaNativeAds-prefix.pch"; sourceTree = "<group>"; };
-		18D95CB51C76000A003C5D90 /* NativeAdOpener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdOpener.swift; sourceTree = "<group>"; };
+		181D98FC1C7C5C3200BA81EC /* Loud_Speaker_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Loud_Speaker_64.png; sourceTree = "<group>"; };
+		181D98FD1C7C5CB100BA81EC /* Highlight-St.-Barts-Image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Highlight-St.-Barts-Image.jpg"; sourceTree = "<group>"; };
+		181D98FF1C7C5CBA00BA81EC /* BigNativeAd.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BigNativeAd.xib; sourceTree = "<group>"; };
+		181D99011C7C5CC400BA81EC /* Test.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test.xib; sourceTree = "<group>"; };
+		181D99031C7C6B2800BA81EC /* BigNativeAdTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigNativeAdTableViewCell.swift; sourceTree = "<group>"; };
 		18D95CB91C76049E003C5D90 /* NativeAdDisplayProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdDisplayProtocol.swift; sourceTree = "<group>"; };
 		1CD847DCF21CE8A39008052E91ECB509 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F1023FDF3BD8C26A282768A84FD2547 /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
@@ -296,6 +303,10 @@
 		3A4150181C748F9C00D07D8A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				181D99011C7C5CC400BA81EC /* Test.xib */,
+				181D98FF1C7C5CBA00BA81EC /* BigNativeAd.xib */,
+				181D98FD1C7C5CB100BA81EC /* Highlight-St.-Barts-Image.jpg */,
+				181D98FC1C7C5C3200BA81EC /* Loud_Speaker_64.png */,
 				3A4150191C748FAA00D07D8A /* close.png */,
 				3A41501A1C748FAA00D07D8A /* close@2x.png */,
 			);
@@ -438,13 +449,13 @@
 			isa = PBXGroup;
 			children = (
 				0139D452802A212C45C9B65149B91385 /* FullscreenBrowser.swift */,
-				18D95CB51C76000A003C5D90 /* NativeAdOpener.swift */,
 				225A566B4FAAF556615F82D2CC4B3135 /* NativeAd.swift */,
 				E32C35C877BEB45C797B0F03870305AA /* NativeAdsConnectionProtocol.swift */,
 				18D95CB91C76049E003C5D90 /* NativeAdDisplayProtocol.swift */,
 				E4780E0BBC7DC211CD3834E174703E3D /* NativeAdsConstants.swift */,
 				FB2719C1470AA302A97BB19505726B6A /* NativeAdsRequest.swift */,
 				900FA9E9ED0275AB5E6E9C41CBCE5CF6 /* NativeAdsWebviewDelegate.swift */,
+				181D99031C7C6B2800BA81EC /* BigNativeAdTableViewCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -680,9 +691,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181D99001C7C5CBA00BA81EC /* BigNativeAd.xib in Resources */,
+				181D99021C7C5CC400BA81EC /* Test.xib in Resources */,
 				3A41501C1C748FAA00D07D8A /* close@2x.png in Resources */,
 				3A41501B1C748FAA00D07D8A /* close.png in Resources */,
 				270F09D0280AFC8B991B530EB9FB8F9C /* PocketMediaNativeAds.bundle in Resources */,
+				181D98FE1C7C5CB100BA81EC /* Highlight-St.-Barts-Image.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,7 +750,6 @@
 				7B01E037BD5A310074BCDDDB7C549D0B /* Alamofire.swift in Sources */,
 				59BDD0605A645E7A557CA76076B50603 /* Download.swift in Sources */,
 				8E4605D767E337FAEEFA6096E5FEC949 /* Error.swift in Sources */,
-				18D95CB61C76000A003C5D90 /* NativeAdOpener.swift in Sources */,
 				FD827628BC36F9D907F700BE456BDE21 /* Manager.swift in Sources */,
 				F5466AB5187F836038F95DA160887D05 /* MultipartFormData.swift in Sources */,
 				78C9ED07C7E2BF3A26D549D72779CC8E /* ParameterEncoding.swift in Sources */,
@@ -759,6 +772,7 @@
 				0328B4F6AACBFF025DD2F5A6BD88CADA /* NativeAd.swift in Sources */,
 				0DBC6167CA6AB7012FE50280EE84B2C9 /* NativeAdsConnectionProtocol.swift in Sources */,
 				5CF5FC589A894BE00B792BEE0F5C3EE0 /* NativeAdsConstants.swift in Sources */,
+				181D99041C7C6B2800BA81EC /* BigNativeAdTableViewCell.swift in Sources */,
 				18D95CBE1C7605DB003C5D90 /* NativeAdDisplayProtocol.swift in Sources */,
 				E979EA1DCC44CAD7ACC901962413C211 /* NativeAdsRequest.swift in Sources */,
 				32B5E3128F3D1D9B93DCCFB783534B59 /* NativeAdsWebviewDelegate.swift in Sources */,

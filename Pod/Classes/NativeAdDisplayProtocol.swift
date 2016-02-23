@@ -6,7 +6,12 @@
 //
 //
 
-
-public protocol NativeAdDisplayProtocol {
-  func load(adUnit : NativeAd)
+/**
+  - Protocol for the opening of the Native ads
+*/
+public protocol NativeAdOpenerProtocol {
+   /**
+    - Method to be implemented which must contain  NativeAd opening logic.
+   */
+   func load(adUnit : NativeAd)
 }
