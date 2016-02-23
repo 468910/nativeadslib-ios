@@ -1,5 +1,6 @@
 Pocket Media Native Ads iOS library Changelog
 
+* 0.1.8: solved an issue when the user had the option to limit Advertising Tracking enabled
 * 0.1.7: improved the handling of the post-install even in ViewControllers without UINavigationController
 * 0.1.6: improved compatibility with ViewControllers without UINavigationController
 * 0.1.5: improved Objective-C compatibility by exposing more methods trough ```@objc```
