@@ -10,7 +10,7 @@ import UIKit
 
 
 /**
- - todo
+ todo
 */
 @objc
 public protocol NativeAdsWebviewRedirectionsProtocol {
