@@ -65,6 +65,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
    
         -Parameter limit: Limit on how many native ads are to be retrieved.
     */
+    @objc
     public func retrieveAds(limit: UInt){
         
         let nativeAdURL = getNativeAdsURL(self.affiliateId, limit: limit);

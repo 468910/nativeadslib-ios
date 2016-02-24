@@ -6,7 +6,7 @@
 //
 //
 
-
+@objc
 public protocol NativeAdsConnectionDelegate {
   
     /**

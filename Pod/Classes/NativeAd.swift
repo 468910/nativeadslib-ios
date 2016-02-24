@@ -30,6 +30,7 @@ public class NativeAd : NSObject{
         
         -Parameter adDictionary: JSON containing NativeAd Data
     */
+    @objc
     public init?(adDictionary: NSDictionary){
         // Swift Requires all properties to be initialized before its possible to return nil
         super.init()
@@ -74,6 +75,7 @@ public class NativeAd : NSObject{
     /** 
       - Opens NativeAd in an closeable embedded webview.
     */
+    @objc
     public func openAdUrl(parentViewController: UIViewController){
         FullscreenBrowser(parentViewController: parentViewController).load(self)
     }
@@ -83,6 +85,7 @@ public class NativeAd : NSObject{
     - Opens Native Ad in an View handled by the NativeAdOpener 
       - paramater opener: NativeAdOpener handling the opening of the view where the NativeAd will be displayed.
    */
+   @objc
    public func openAdUrl(parentViewController: UIViewController, opener: NativeAdOpenerProtocol){
       opener.load(self)
     }
@@ -90,6 +93,7 @@ public class NativeAd : NSObject{
     /**
       - Opens NativeAd in foreground.
     */
+    @objc
     public func openAdUrlinForeground(){
       UIApplication.sharedApplication().openURL(self.clickURL)
     }
