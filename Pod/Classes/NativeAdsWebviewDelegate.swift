@@ -88,6 +88,9 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     }
     
 
+    /**
+    Opens the system URL, will be invoked when we must not display the URL in the webview.
+    */
     public func openSystemBrowser(url : NSURL){
         
         let urlToOpen : NSURL = checkSimulatorURL(url)
