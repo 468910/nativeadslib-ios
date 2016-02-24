@@ -68,12 +68,14 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     }
     
     public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        //NSLog("Loading %@", (request.URL?.absoluteString)!)
         
-        if ( request.URL?.absoluteString.rangeOfString("itunes.apple.com") != nil) {
-            NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
-            openSystemBrowser((request.URL!))
-            return false;
+        if let host = request.URL?.host{
+            if ( host.hasPrefix("itunes.apple.com") )  {
+                NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
+                openSystemBrowser((request.URL!))
+                return false;
+            }
+            
         }
         
         return true;
