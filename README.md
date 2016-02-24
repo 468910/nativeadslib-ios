@@ -53,6 +53,16 @@ After that, two more interactions are done:
 
 You also have the "betaModeEnabled" mode available. Enabling it avoid the clicks count towards the statistics. Take into account that it will also make the clicks NOT tracked for valid conversions, so this must be disabled in production - but can be useful in the development phase. 
 
+
+#### App Transport Security
+
+**Important:** the server to download the ads is ```http://offerwall.12trackway.com```. This is not *yet* under https, so you will need to add certain values to your plist, to indicate App Transport Security. 
+
+![Info.plist — Edited 2016-02-21 18-14-09.png](https://bitbucket.org/repo/46g5gL/images/2846838342-Info.plist%20%E2%80%94%20Edited%202016-02-21%2018-14-09.png)
+
+In the future all the content will be downloaded through https, following Apple recommendations.
+
+
 ### Receiving the results
 After the request is started, the library will notify of the changes in it trough a delegate that implements the ```NativeAdsConnectionProtocol``` protocol.
 
@@ -61,7 +71,6 @@ This protocol has three methods:
 - ```didRecieveError```: compulsory method, to be invoked in case there is an error retrieving the ads. This can happen due to network conditions, some systems error, parsing error...
 - ```didRecieveResults```: when the library gets the JSON, parses it and delivers to your app, you will be notified with an Array of the NativeAd objects retrieved.
 - ```didUpdateNativeAd```: not required method. In case some of the ads is modified after it has been delivered, your class will be notified trough this method.
-
 
 ### Displaying the ads
 
@@ -125,7 +134,6 @@ In order to avoid that bad experience, we provide you the ```openCampaign``` met
     }
 ```
 
-![Simulator Screen Shot 05 Feb 2016 17.32.48.png](https://bitbucket.org/repo/46g5gL/images/2129250798-Simulator%20Screen%20Shot%2005%20Feb%202016%2017.32.48.png)
 
 ## Look and feel
 

@@ -68,32 +68,32 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     public func retrieveAds(limit: UInt){
         
         let nativeAdURL = getNativeAdsURL(self.affiliateId, limit: limit);
-        print(nativeAdURL, terminator: "")
+        NSLog("Invoking: %@", nativeAdURL)
         
         if let url = NSURL(string: nativeAdURL) {
-        
+            
             let request = NSURLRequest(URL: url)
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-            
+                
                 if error != nil {
                     
                     self.delegate?.didRecieveError(error!)
                     
                 } else {
-                      var nativeAds: [NativeAd] = []
+                    var nativeAds: [NativeAd] = []
                     if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
-                      
-                          json.filter({ ($0 as? NSDictionary) != nil}).forEach({ (element) -> () in
+                        
+                        json.filter({ ($0 as? NSDictionary) != nil}).forEach({ (element) -> () in
                             if let ad = NativeAd( adDictionary: element as! NSDictionary){
-                              nativeAds.append(ad)
-                              // disabled due to data problems caused by the "automated clicks"
-                              if(self.prefetchLinks){
-                                self.followRedirects(ad)
-                              }
+                                nativeAds.append(ad)
+                                // disabled due to data problems caused by the "automated clicks"
+                                if(self.prefetchLinks){
+                                    self.followRedirects(ad)
+                                }
                             }
                             
-                          })
-                           
+                        })
+                        
                         if nativeAds.count > 0 {
                             self.delegate?.didRecieveResults(nativeAds)
                         } else {
@@ -108,19 +108,25 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     }
     
     func provideIdentifierForAdvertisingIfAvailable() -> String? {
-        if ASIdentifierManager.sharedManager().advertisingTrackingEnabled {
-            return ASIdentifierManager.sharedManager().advertisingIdentifier?.UUIDString ?? nil
-        } else {
-            return nil
-        }
+        return ASIdentifierManager.sharedManager().advertisingIdentifier?.UUIDString
     }
+    
     
     public func getNativeAdsURL(affiliateID: String?, limit: UInt) -> String {
         let token = provideIdentifierForAdvertisingIfAvailable()
+        
         let baseUrl = betaModeEnabled ? NativeAdsConstants.NativeAds.baseURLBeta : NativeAdsConstants.NativeAds.baseURL;
-        return baseUrl + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&affiliate_id=\(affiliateID!)"
+        //token
+        var apiUrl = baseUrl + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)"
+        apiUrl = apiUrl + "&token=" + token!
+        apiUrl = apiUrl + "&affiliate_id=" + affiliateID!
+        
+        if (!ASIdentifierManager.sharedManager().advertisingTrackingEnabled){
+            apiUrl = apiUrl + "&optout=1"
+        }
+        
+        return apiUrl
     }
-
     
     
     
