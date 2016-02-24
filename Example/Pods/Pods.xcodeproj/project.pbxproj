@@ -15,7 +15,6 @@
 		181D98FE1C7C5CB100BA81EC /* Highlight-St.-Barts-Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 181D98FD1C7C5CB100BA81EC /* Highlight-St.-Barts-Image.jpg */; };
 		181D99001C7C5CBA00BA81EC /* BigNativeAd.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D98FF1C7C5CBA00BA81EC /* BigNativeAd.xib */; };
 		181D99021C7C5CC400BA81EC /* Test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D99011C7C5CC400BA81EC /* Test.xib */; };
-		181D99041C7C6B2800BA81EC /* BigNativeAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D99031C7C6B2800BA81EC /* BigNativeAdTableViewCell.swift */; };
 		18D95CBE1C7605DB003C5D90 /* NativeAdDisplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D95CB91C76049E003C5D90 /* NativeAdDisplayProtocol.swift */; };
 		19CD84CEB6D468F320546AA090E51D3D /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C9549E497883A579CAF4910F9A8BD6 /* Response.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		270F09D0280AFC8B991B530EB9FB8F9C /* PocketMediaNativeAds.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E8D8F263B4CB4169AEA942826F1ACD80 /* PocketMediaNativeAds.bundle */; };
@@ -131,7 +130,6 @@
 		181D98FD1C7C5CB100BA81EC /* Highlight-St.-Barts-Image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Highlight-St.-Barts-Image.jpg"; sourceTree = "<group>"; };
 		181D98FF1C7C5CBA00BA81EC /* BigNativeAd.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BigNativeAd.xib; sourceTree = "<group>"; };
 		181D99011C7C5CC400BA81EC /* Test.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test.xib; sourceTree = "<group>"; };
-		181D99031C7C6B2800BA81EC /* BigNativeAdTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigNativeAdTableViewCell.swift; sourceTree = "<group>"; };
 		18D95CB91C76049E003C5D90 /* NativeAdDisplayProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdDisplayProtocol.swift; sourceTree = "<group>"; };
 		1CD847DCF21CE8A39008052E91ECB509 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F1023FDF3BD8C26A282768A84FD2547 /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
@@ -455,7 +453,6 @@
 				E4780E0BBC7DC211CD3834E174703E3D /* NativeAdsConstants.swift */,
 				FB2719C1470AA302A97BB19505726B6A /* NativeAdsRequest.swift */,
 				900FA9E9ED0275AB5E6E9C41CBCE5CF6 /* NativeAdsWebviewDelegate.swift */,
-				181D99031C7C6B2800BA81EC /* BigNativeAdTableViewCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -772,7 +769,6 @@
 				0328B4F6AACBFF025DD2F5A6BD88CADA /* NativeAd.swift in Sources */,
 				0DBC6167CA6AB7012FE50280EE84B2C9 /* NativeAdsConnectionProtocol.swift in Sources */,
 				5CF5FC589A894BE00B792BEE0F5C3EE0 /* NativeAdsConstants.swift in Sources */,
-				181D99041C7C6B2800BA81EC /* BigNativeAdTableViewCell.swift in Sources */,
 				18D95CBE1C7605DB003C5D90 /* NativeAdDisplayProtocol.swift in Sources */,
 				E979EA1DCC44CAD7ACC901962413C211 /* NativeAdsRequest.swift in Sources */,
 				32B5E3128F3D1D9B93DCCFB783534B59 /* NativeAdsWebviewDelegate.swift in Sources */,
