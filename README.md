@@ -4,15 +4,19 @@
 [![License](https://img.shields.io/cocoapods/l/PocketMediaNativeAds.svg?style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 [![Platform](https://img.shields.io/cocoapods/p/PocketMediaNativeAds.svg?style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 
+## Requirements
+
+In order to use the library and have monetization tracking you need to get an advertiser token from Pocket Media. You can get it online, at [our sign up page](http://nativeads.pocketmedia.mobi/signup.html):
+
+[![LandingPage 2016-02-15 10-19-32.png](https://bitbucket.org/repo/46g5gL/images/3248517185-LandingPage%202016-02-15%2010-19-32.png)](http://nativeads.pocketmedia.mobi/signup.html)
+
+
 ## Building the demo
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
-
-In order to use the library and have monetization tracking you need to get an advertiser token from Pocket Media. Contact support@pocketmedia.mobi to create an account and get a token.
-
 The project is developed in Swift but contains bridging headers to also work with Objective-C.
+
 
 ## Installation
 
@@ -49,6 +53,16 @@ After that, two more interactions are done:
 
 You also have the "betaModeEnabled" mode available. Enabling it avoid the clicks count towards the statistics. Take into account that it will also make the clicks NOT tracked for valid conversions, so this must be disabled in production - but can be useful in the development phase. 
 
+
+#### App Transport Security
+
+**Important:** the server to download the ads is ```http://offerwall.12trackway.com```. This is not *yet* under https, so you will need to add certain values to your plist, to indicate App Transport Security. 
+
+![Info.plist — Edited 2016-02-21 18-14-09.png](https://bitbucket.org/repo/46g5gL/images/2846838342-Info.plist%20%E2%80%94%20Edited%202016-02-21%2018-14-09.png)
+
+In the future all the content will be downloaded through https, following Apple recommendations.
+
+
 ### Receiving the results
 After the request is started, the library will notify of the changes in it trough a delegate that implements the ```NativeAdsConnectionProtocol``` protocol.
 
@@ -57,7 +71,6 @@ This protocol has three methods:
 - ```didRecieveError```: compulsory method, to be invoked in case there is an error retrieving the ads. This can happen due to network conditions, some systems error, parsing error...
 - ```didRecieveResults```: when the library gets the JSON, parses it and delivers to your app, you will be notified with an Array of the NativeAd objects retrieved.
 - ```didUpdateNativeAd```: not required method. In case some of the ads is modified after it has been delivered, your class will be notified trough this method.
-
 
 ### Displaying the ads
 
@@ -121,7 +134,6 @@ In order to avoid that bad experience, we provide you the ```openCampaign``` met
     }
 ```
 
-![Simulator Screen Shot 05 Feb 2016 17.32.48.png](https://bitbucket.org/repo/46g5gL/images/2129250798-Simulator%20Screen%20Shot%2005%20Feb%202016%2017.32.48.png)
 
 ## Look and feel
 
@@ -131,7 +143,7 @@ The look of the ads is totally customisable, that's the main objective of the pr
 
 ## Author
 
-Pocket Media Tech Team, [techteam@pocketmedia.mobi](mailto:techteam@pocketmedia.mobi). Feel free to contact us for any suggestion improvements you might have. 
+Pocket Media Tech Team, [support@pocketmedia.mobi](mailto:support@pocketmedia.mobi). Feel free to contact us for any suggestion improvements you might have. 
 
 We work for you, we want you to be able to implement the ads in 5 minutes and start monetizing your audience with a totally native and tailored experience! Tell us what you are missing, what else you need our library to make for you - and it will happen.
 

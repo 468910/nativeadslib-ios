@@ -8,21 +8,31 @@
 
 import UIKit
 
+
+/**
+ Protocol to be implemented by the classes that want to implement some behaviour
+ when the final url was opened in the external browser (this will usually an app store one)
+*/
 @objc
-public protocol NativeAdsWebviewRedirectionsProtocol {
+public protocol NativeAdsWebviewRedirectionsDelegate {
+    /// Will be invoked when the external browser is opened with the final URL
     func didOpenBrowser(url: NSURL)
 }
 
+/**
+ Creates a webview with a native load indicator to tell the user we are loading some content
+ */
+@objc
 public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
 
     // To allow more verbose logging and behaviour
     public var debugModeEnabled : Bool = false
     public var loadingView : UIView?
 
-    private var delegate : NativeAdsWebviewRedirectionsProtocol?
+    private var delegate : NativeAdsWebviewRedirectionsDelegate?
     
     @objc
-    public init(debugMode : Bool, delegate : NativeAdsWebviewRedirectionsProtocol?) {
+    public init(debugMode : Bool, delegate : NativeAdsWebviewRedirectionsDelegate?) {
         super.init()
         self.debugModeEnabled = debugMode
         self.delegate = delegate
@@ -58,12 +68,14 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     }
     
     public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        //NSLog("Loading %@", (request.URL?.absoluteString)!)
         
-        if ( request.URL?.absoluteString.rangeOfString("itunes.apple.com") != nil) {
-            NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
-            openSystemBrowser((request.URL!))
-            return false;
+        if let host = request.URL?.host{
+            if ( host.hasPrefix("itunes.apple.com") )  {
+                NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
+                openSystemBrowser((request.URL!))
+                return false;
+            }
+            
         }
         
         return true;
@@ -78,6 +90,9 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     }
     
 
+    /**
+    Opens the system URL, will be invoked when we must not display the URL in the webview.
+    */
     public func openSystemBrowser(url : NSURL){
         
         let urlToOpen : NSURL = checkSimulatorURL(url)

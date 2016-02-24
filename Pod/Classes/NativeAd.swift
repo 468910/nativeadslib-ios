@@ -5,36 +5,44 @@
 //  Created by Adrián Moreno Peña | Pocket Media on 14/01/16.
 //
 //
-
-
+import UIKit
+/**
+NativeAd model object
+ 
+ 
+ It contains the attributes received from the API, and allows to open the click URL
+*/
 public class NativeAd : NSObject{
-    
+
+    /// Name of the ad, the title to be displayed.
     public var campaignName        : String!
+    /// Long description of the ad, with a description
     public var campaignDescription : String!
-    // Initially it will be the original URL
-    // In the different modifications / redirect follows it will be the target url
-    // and the original value will be copied to originalClickUrl
+    /// URL to be opened when the user interacts with the ad
     public var clickURL            : NSURL!
+    /// URL for the campaign icon
     public var campaignImage       : NSURL!
-    
-    public var originalClickUrl    : NSURL!
+    /// Preview url (itunes one)
     public var destinationURL      : NSURL?
     
-    //public var webViewDelegate     : NativeAdsWebviewDelegate?
-    public var webviewController   : FullscreenBrowser?
+    private var originalClickUrl    : NSURL!
     
-    
-    
-    // Fallible Constructor
+  
+  
+  
+    /**
+        Fallible Constructor
+        - adDictionary: JSON containing NativeAd Data
+    */
     @objc
     public init?(adDictionary: NSDictionary){
         // Swift Requires all properties to be initialized before its possible to return nil
         super.init()
-        
+      
         if let name = adDictionary["campaign_name"] as? String {
-            self.campaignName = name
+          self.campaignName = name
         }else{
-            return nil
+          return nil
         }
         
         if let urlClick = adDictionary["click_url"] as? String, url = NSURL(string: urlClick) {
@@ -65,26 +73,34 @@ public class NativeAd : NSObject{
     
     override public var description: String {return "NativeAd.\(campaignName): \(clickURL.absoluteURL)"}
     override public var debugDescription: String {return "NativeAd.\(campaignName): \(clickURL.absoluteURL)"}
-    
+  
+  
+    /** 
+      Opens NativeAd in an closeable embedded webview.
+     - parentViewController: view controller where the webview will be attached to
+    */
     @objc
-    public func openCampaign(inTheForeground : Bool = false, parentViewController : UIViewController){
-        if (inTheForeground){
-            if UIApplication.sharedApplication().canOpenURL(clickURL) {
-                UIApplication.sharedApplication().openURL(clickURL)
-            }
-        }else{
-            self.openCampaignWithWebview(parentViewController)
-        }
+    public func openAdUrl(parentViewController: UIViewController){
+        FullscreenBrowser(parentViewController: parentViewController).load(self)
     }
-    
-    private func openCampaignWithWebview(parentViewController : UIViewController){
-        NSLog("Pushing fullscreen webview, opening: \(clickURL.absoluteString)")
-        
-        if self.webviewController == nil{
-            self.webviewController = FullscreenBrowser(parentViewController: parentViewController, adUnit: self)
-        }
-        
-        self.webviewController?.load(self)
-        
+  
+  
+   /**
+    Opens Native Ad in an View handled by the NativeAdOpener
+      - opener: NativeAdOpener instance handling the opening of the view where the NativeAd will be displayed.
+   */
+   @objc
+   public func openAdUrl(parentViewController: UIViewController, opener: NativeAdOpenerDelegate){
+      opener.load(self)
     }
+  
+    /**
+      Opens NativeAd in foreground.
+    */
+    @objc
+    public func openAdUrlInForeground(){
+      UIApplication.sharedApplication().openURL(self.clickURL)
+    }
+  
+  
 }

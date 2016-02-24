@@ -10,7 +10,7 @@ import UIKit
 import AlamofireImage
 import PocketMediaNativeAds
 
-class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
+class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
     
     var itemsTable: [Any] = []
     var nativeAds: [NativeAd] = []
@@ -72,7 +72,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
     }
     
     func didUpdateNativeAd(updatedAd : NativeAd){
-        NSLog("Updated ad: %@. New url: %@", updatedAd.originalClickUrl, updatedAd.clickURL)
+        
     }
     
     // MARK: - Table view data source
@@ -112,7 +112,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionProtocol {
         if let ad = itemsTable[indexPath.row] as? NativeAd{
             print("Opening url: \(ad.clickURL.absoluteString)")
             // This method will take of opening the ad inside of the app, until we have an iTunes url
-            ad.openCampaign(parentViewController : self)
+            ad.openAdUrl(self)
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
