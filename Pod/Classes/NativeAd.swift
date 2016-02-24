@@ -8,6 +8,8 @@
 import UIKit
 /**
 NativeAd model object
+ 
+ 
  It contains the attributes received from the API, and allows to open the click URL
 */
 public class NativeAd : NSObject{
