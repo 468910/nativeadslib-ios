@@ -24,6 +24,7 @@ public class NativeAd : NSObject{
     public var campaignImage       : NSURL!
     /// Preview url (itunes one)
     public var destinationURL      : NSURL?
+    
     private var originalClickUrl    : NSURL!
     
   
