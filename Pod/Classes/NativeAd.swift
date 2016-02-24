@@ -98,7 +98,7 @@ public class NativeAd : NSObject{
       Opens NativeAd in foreground.
     */
     @objc
-    public func openAdUrlinForeground(){
+    public func openAdUrlInForeground(){
       UIApplication.sharedApplication().openURL(self.clickURL)
     }
   
