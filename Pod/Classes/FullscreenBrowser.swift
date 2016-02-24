@@ -9,10 +9,10 @@
 import UIKit
 
 /** 
-  - Class that is used to open the NativeAd in An FullScreen Embedded WebView
-    Default implementation for the NativeAdOpenerProtocol
+ Class that is used to open the NativeAd in An FullScreen Embedded WebView.
+   Default implementation for the NativeAdOpenerProtocol
 **/
-internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsProtocol, NativeAdOpenerProtocol {
+internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsDelegate, NativeAdOpenerDelegate {
 
     private var originalViewController : UIViewController?
     
@@ -35,6 +35,10 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
         }
     }
 
+    /**
+     Starts loading the ad within the current context (controller and navigation)
+     - adUnit: adUnit whose ad we want to display
+     */
     @objc
    internal func load(adUnit : NativeAd){
         print("\nFollowing link: \(adUnit.clickURL)")

@@ -10,8 +10,7 @@ import UIKit
 import AdSupport
 
 /**
-    -Object which is used to make a NativeAdsRequest has to be used in combination with the NativeAdsConnectionDelegate
- 
+    Object which is used to make a NativeAdsRequest has to be used in combination with the NativeAdsConnectionDelegate
 */
 public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDelegate {
     
@@ -61,9 +60,8 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     }
   
     /**
-        -Method used to retrieve native ads which are later accessed by using the delegate.
-   
-        -Parameter limit: Limit on how many native ads are to be retrieved.
+        Method used to retrieve native ads which are later accessed by using the delegate.
+        - limit: Limit on how many native ads are to be retrieved.
     */
     @objc
     public func retrieveAds(limit: UInt){
@@ -112,7 +110,9 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
         return ASIdentifierManager.sharedManager().advertisingIdentifier?.UUIDString
     }
     
-    
+    /**
+    Returns the API URL to invoke to retrieve ads
+    */
     public func getNativeAdsURL(affiliateID: String?, limit: UInt) -> String {
         let token = provideIdentifierForAdvertisingIfAvailable()
         

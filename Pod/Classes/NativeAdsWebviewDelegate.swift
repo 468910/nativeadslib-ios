@@ -10,23 +10,29 @@ import UIKit
 
 
 /**
- todo
+ Protocol to be implemented by the classes that want to implement some behaviour
+ when the final url was opened in the external browser (this will usually an app store one)
 */
 @objc
-public protocol NativeAdsWebviewRedirectionsProtocol {
+public protocol NativeAdsWebviewRedirectionsDelegate {
+    /// Will be invoked when the external browser is opened with the final URL
     func didOpenBrowser(url: NSURL)
 }
 
+/**
+ Creates a webview with a native load indicator to tell the user we are loading some content
+ */
+@objc
 public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
 
     // To allow more verbose logging and behaviour
     public var debugModeEnabled : Bool = false
     public var loadingView : UIView?
 
-    private var delegate : NativeAdsWebviewRedirectionsProtocol?
+    private var delegate : NativeAdsWebviewRedirectionsDelegate?
     
     @objc
-    public init(debugMode : Bool, delegate : NativeAdsWebviewRedirectionsProtocol?) {
+    public init(debugMode : Bool, delegate : NativeAdsWebviewRedirectionsDelegate?) {
         super.init()
         self.debugModeEnabled = debugMode
         self.delegate = delegate

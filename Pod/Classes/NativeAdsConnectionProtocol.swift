@@ -6,6 +6,9 @@
 //
 //
 
+/**
+  This delegate allows the invoking classes to react to native-ads related events
+*/
 @objc
 public protocol NativeAdsConnectionDelegate {
   
@@ -16,15 +19,13 @@ public protocol NativeAdsConnectionDelegate {
   
     /**
         This method allows the delegate to receive a collection of NativeAds after making an NativeAdRequest.
-      
-        -Parameter nativeAds: Collection of NativeAds received after making a NativeAdRequest
+        - nativeAds: Collection of NativeAds received after making a NativeAdRequest
     */
     func didRecieveResults(nativeAds: [NativeAd])
   
     /**
-        -Optional method, used in conjunction with the 'followRedirectsInBackground'.
-      
-        -Parameter adUnit: flag enabled in the NativeAdsRequest.
+        Optional method, used in conjunction with the 'followRedirectsInBackground'.
+        - adUnit: flag enabled in the NativeAdsRequest.
     */
     func didUpdateNativeAd(adUnit : NativeAd)
 }

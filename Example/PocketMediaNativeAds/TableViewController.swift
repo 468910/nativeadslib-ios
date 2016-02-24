@@ -72,7 +72,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
     }
     
     func didUpdateNativeAd(updatedAd : NativeAd){
-        NSLog("Updated ad: %@. New url: %@", updatedAd.originalClickUrl, updatedAd.clickURL)
+        
     }
     
     // MARK: - Table view data source

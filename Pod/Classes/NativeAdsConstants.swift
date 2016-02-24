@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 Pocket Media. All rights reserved.
 //
 
-
+/**
+  Information about the current platform/running device
+*/
 struct Platform {
     /**
       Utility method for deciding if using a real device or simulator
@@ -25,8 +27,7 @@ struct Platform {
 
 
 /**
-  Contains Constants for the NativeAds
- 
+  Contains constants for the NativeAds
 */
 public struct NativeAdsConstants {
   public struct Device {
