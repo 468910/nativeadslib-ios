@@ -10,25 +10,31 @@ import UIKit
 import AlamofireImage
 import PocketMediaNativeAds
 
-class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
-    
-    var itemsTable: [Any] = []
-    var nativeAds: [NativeAd] = []
-    
+class TableViewController: UITableViewController, DisplayHelperDelegate {
+  
+  func onUpdateCollection() {
+    tableView.reloadData()
+  }
+  
+    var injector : NativeAdInjector?
     var imageCache = [String:UIImage]()
     
     override func viewDidLoad() {
+      injector = NativeAdInjector(displayHelper: self, datasource: self)
+      tableView.dataSource = injector
         super.viewDidLoad()
         loadLocalJSON()
         loadNativeAds()
+      
+      tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: nil), forCellReuseIdentifier: "BigNativeAdTableViewCell")
+      
+      tableView.registerNib(UINib(nibName: "NativeAdCell", bundle: nil), forCellReuseIdentifier: "NativeAdCell")
     }
     
     
     func loadNativeAds(){
-        
-        let adRequest = NativeAdsRequest(affiliateId: "1234-sample", delegate: self)
-        adRequest.debugModeEnabled = true
-        adRequest.retrieveAds(5)
+        injector!.requestAds(NativeAdsRequest(affiliateId: "1234-sample", delegate: injector), limit: 5)
+      
     }
     
     func loadLocalJSON(){
@@ -42,7 +48,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
             
             for itemJson in jsonArray {
                 if let itemDictionary = itemJson as? NSDictionary, item = ItemTableView(dictionary: itemDictionary) {
-                    itemsTable.append(item)
+                    injector!.collection.append(item)
                 }
             }
             
@@ -51,30 +57,9 @@ class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
         }
     }
     
-    func loadImageAsynchronouslyFromUrl(url: NSURL, imageView: UIImageView){
-        imageView.af_setImageWithURL(url)
-    }
-    
-    // MARK : - Native Ads Protocol
-    
-    func didRecieveError(error: NSError){
-        print(error.description)
-    }
-    
-    func didRecieveResults(nativeAds: [NativeAd]){
-        self.nativeAds = nativeAds
-        if itemsTable.count > 0 {
-            for ad in nativeAds {
-                itemsTable.insert(ad, atIndex: Int(arc4random_uniform(UInt32(itemsTable.count))))
-            }
-            tableView.reloadData()
-        }
-    }
-    
-    func didUpdateNativeAd(updatedAd : NativeAd){
-        
-    }
-    
+ 
+  
+  
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -82,34 +67,23 @@ class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemsTable.count
+        return injector!.collection.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch itemsTable[indexPath.row] {
-        case let item as ItemTableView :
+        print("TableView invoked")
+            /*
             let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath:indexPath) as! ItemCell
             cell.name.text = item.title
             cell.descriptionItem.text = item.descriptionItem
             loadImageAsynchronouslyFromUrl(item.imageURL, imageView: cell.artworkImageView)
-            return cell
-        case let ad as NativeAd :
-            let cell = tableView.dequeueReusableCellWithIdentifier("AdCell", forIndexPath:indexPath) as! AdCell
-            cell.campaignNameLabel.text = ad.campaignName
-            cell.campaignDescriptionLabel.text = ad.campaignDescription
-            
-            if(ad.campaignImage != nil){
-            loadImageAsynchronouslyFromUrl(ad.campaignImage, imageView: cell.campaignImageView)
-            }
-            
-            return cell
-        default:
-            return UITableViewCell()
-        }
+            return cell*/
+          return UITableViewCell()
+    
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let ad = itemsTable[indexPath.row] as? NativeAd{
+        if let ad = injector!.collection[indexPath.row] as? NativeAd{
             print("Opening url: \(ad.clickURL.absoluteString)")
             // This method will take of opening the ad inside of the app, until we have an iTunes url
             ad.openAdUrl(self)
@@ -118,7 +92,8 @@ class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80.0
+      print("Table view heightForRowInvoked")
+      return 80.0;
     }
     
 }
