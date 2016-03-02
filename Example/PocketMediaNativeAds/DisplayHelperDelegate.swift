@@ -9,5 +9,6 @@
 
 
 public protocol DisplayHelperDelegate {
+  
   func onUpdateCollection()
 }

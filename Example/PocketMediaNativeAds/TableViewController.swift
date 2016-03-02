@@ -16,11 +16,11 @@ class TableViewController: UITableViewController, DisplayHelperDelegate {
     tableView.reloadData()
   }
   
-    var injector : NativeAdInjector?
+    var injector : NativeAdTableViewDataSource?
     var imageCache = [String:UIImage]()
     
     override func viewDidLoad() {
-      injector = NativeAdInjector(displayHelper: self, datasource: self)
+      injector = NativeAdTableViewDataSource(datasource: self, displayHelper: self)
       tableView.dataSource = injector
         super.viewDidLoad()
         loadLocalJSON()
@@ -33,7 +33,7 @@ class TableViewController: UITableViewController, DisplayHelperDelegate {
     
     
     func loadNativeAds(){
-        injector!.requestAds(NativeAdsRequest(affiliateId: "1234-sample", delegate: injector), limit: 5)
+        injector!.requestAds(NativeAdsRequest(affiliateId: "1234-sample", delegate: injector!.nativeAdInjector), limit: 5)
       
     }
     
@@ -48,7 +48,7 @@ class TableViewController: UITableViewController, DisplayHelperDelegate {
             
             for itemJson in jsonArray {
                 if let itemDictionary = itemJson as? NSDictionary, item = ItemTableView(dictionary: itemDictionary) {
-                    injector!.collection.append(item)
+                    injector!.collection!.collection.append(item)
                 }
             }
             
@@ -67,11 +67,10 @@ class TableViewController: UITableViewController, DisplayHelperDelegate {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return injector!.collection.count
+        return injector!.collection!.collection.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print("TableView invoked")
             /*
             let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath:indexPath) as! ItemCell
             cell.name.text = item.title
@@ -83,7 +82,7 @@ class TableViewController: UITableViewController, DisplayHelperDelegate {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let ad = injector!.collection[indexPath.row] as? NativeAd{
+        if let ad = injector!.collection!.collection[indexPath.row] as? NativeAd{
             print("Opening url: \(ad.clickURL.absoluteString)")
             // This method will take of opening the ad inside of the app, until we have an iTunes url
             ad.openAdUrl(self)
