@@ -29,9 +29,9 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
   print("Injector: cellforRowAtindexPath")
   if (collection!.collection[indexPath.row] is NativeAd){
     print("Native ad Cell")
-  let cell = NSBundle.mainBundle().loadNibNamed("NativeAdCell", owner: self, options: nil).first as! NativeAdCell
-  cell.configureFromNativeAd(collection!.collection[indexPath.row] as! NativeAd)
-  return cell;
+    let cell : NativeAdCell = AdViewLoader.loadUIViewFromNib(collection!.collection[indexPath.row] as! NativeAd)
+    cell.configureFromNativeAd(collection!.collection[indexPath.row] as! NativeAd)
+    return cell;
   }else{
     
   return datasource!.tableView(tableView, cellForRowAtIndexPath: indexPath)
