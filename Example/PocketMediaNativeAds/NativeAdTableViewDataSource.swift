@@ -30,7 +30,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
   if (collection!.collection[indexPath.row] is NativeAd){
     print("Native ad Cell")
     let cell : NativeAdCell = AdViewLoader.loadUIViewFromNib(collection!.collection[indexPath.row] as! NativeAd)
-    cell.configureFromNativeAd(collection!.collection[indexPath.row] as! NativeAd)
+    cell.configureAdView(collection!.collection[indexPath.row] as! NativeAd)
     return cell;
   }else{
     

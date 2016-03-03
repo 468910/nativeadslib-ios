@@ -10,11 +10,8 @@ import UIKit
 
 /**
 */
-public class BigNativeAdTableViewCell : UITableViewCell {
+public class BigNativeAdTableViewCell : AbstractAdUnitTableViewCell {
  
-  @IBOutlet weak var adImage: UIImageView!
-  
-  @IBOutlet weak var adTitle: UILabel!
   
   /**
   //Objective C initWithStyle
@@ -25,20 +22,6 @@ public class BigNativeAdTableViewCell : UITableViewCell {
   }*/
   
   
-  public override func awakeFromNib() {
-    super.awakeFromNib()
-    print("Awakening from NIB")
-    
-    
-    
-   // adImage.image = UIImage(named: "Highlight-St.-Barts-Image.jpg")
-    adImage.clipsToBounds = true
-    //adImage.addSubview(adTitle)
-    
-    adTitle.text = "Super";
-    adTitle.lineBreakMode = .ByWordWrapping
-    print("Awakend from NIB")
-  }
   
   
   

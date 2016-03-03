@@ -6,10 +6,10 @@
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
-import Foundation
+import PocketMediaNativeAds
 
 protocol NativeAdViewBinderProtocol {
   
-  func configureAdView()
+  func configureAdView(nativeAd: NativeAd)
   
 }

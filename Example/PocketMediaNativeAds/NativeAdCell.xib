@@ -148,10 +148,10 @@
                 </mask>
             </variation>
             <connections>
-                <outlet property="adDescription" destination="blC-KX-XcH" id="Gvw-mY-8Ia"/>
-                <outlet property="adImage" destination="utZ-EX-lJO" id="OrC-16-fct"/>
-                <outlet property="adName" destination="Ni5-TY-b6E" id="l9Z-lN-PVu"/>
-                <outlet property="speakerPhone" destination="eU2-ay-sQ9" id="bdJ-wi-w1O"/>
+                <outlet property="adDescription" destination="blC-KX-XcH" id="aZr-nk-4IP"/>
+                <outlet property="adImage" destination="utZ-EX-lJO" id="PXP-WU-vHd"/>
+                <outlet property="adTitle" destination="Ni5-TY-b6E" id="zhF-Y3-tlc"/>
+                <outlet property="speakerPhone" destination="eU2-ay-sQ9" id="rN5-7y-Okw"/>
             </connections>
             <point key="canvasLocation" x="-91" y="-207.5"/>
         </tableViewCell>
