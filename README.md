@@ -34,7 +34,7 @@ The main usage of the project takes place in the ```TableViewController.swift```
 
 ```swift
     func loadNativeAds(){
-        let adRequest = NativeAdsRequest(affiliateId: "1234-sample", delegate: self, parentView: self.view, followRedirectsInBackground: true)
+        let adRequest = NativeAdsRequest(affiliateId: "100019", delegate: self, parentView: self.view, followRedirectsInBackground: true)
         adRequest.debugModeEnabled = true
         adRequest.retrieveAds(5)
     }
