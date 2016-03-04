@@ -28,6 +28,14 @@ public class AbstractAdUnitTableViewCell : UITableViewCell, NativeAdViewBinderPr
   
   public override func awakeFromNib() {
       super.awakeFromNib()
+      adDescription.numberOfLines = 0
+      adDescription.lineBreakMode = .ByTruncatingTail
+      adDescription.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width * 0.80
+    
+      adTitle.numberOfLines = 0
+      adTitle.lineBreakMode = .ByTruncatingTail
+      adDescription.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width * 0.70
+    
   }
   
 }
