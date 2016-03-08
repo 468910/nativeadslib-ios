@@ -84,12 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-PocketMediaNativeAds_Example/Alamofire.framework"
-  install_framework "Pods-PocketMediaNativeAds_Example/AlamofireImage.framework"
-  install_framework "Pods-PocketMediaNativeAds_Example/PocketMediaNativeAds.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/Alamofire/Alamofire.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/AlamofireImage/AlamofireImage.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/PocketMediaNativeAds/PocketMediaNativeAds.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-PocketMediaNativeAds_Example/Alamofire.framework"
-  install_framework "Pods-PocketMediaNativeAds_Example/AlamofireImage.framework"
-  install_framework "Pods-PocketMediaNativeAds_Example/PocketMediaNativeAds.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/Alamofire/Alamofire.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/AlamofireImage/AlamofireImage.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/PocketMediaNativeAds/PocketMediaNativeAds.framework"
 fi
