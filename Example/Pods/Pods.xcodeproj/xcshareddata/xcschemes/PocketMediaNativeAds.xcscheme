@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A4CB0D95B9070C38F8337F8F41079BA1'
+               BlueprintIdentifier = '659F3957EE1983DB466E91F28FD5A523'
                BlueprintName = 'PocketMediaNativeAds'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'PocketMediaNativeAds.framework'>
