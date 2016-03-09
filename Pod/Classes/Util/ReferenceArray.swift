@@ -12,6 +12,14 @@ import UIKit
 public class ReferenceArray<T> {
   
   public var collection : [T] = []
+  
+  public var count : Int {
+    return collection.count
+  }
+  public func append(object: T){
+    collection.append(object)
+  }
+  
 }
 
 public class AdViewLoader : NSObject {
@@ -21,7 +29,7 @@ public class AdViewLoader : NSObject {
     usage: Uses Type T as name for file
    - Returns: UIView class requested as Type T
   */
-  public static func loadUIViewFromNib<T>(nativead: NativeAd) -> T {
+  public static func loadUIViewFromNib<T>() -> T {
     return NSBundle.mainBundle().loadNibNamed(String(T), owner: self, options: nil).first as! T
   }
 }

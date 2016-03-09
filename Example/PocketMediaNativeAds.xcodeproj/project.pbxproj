@@ -105,6 +105,7 @@
 		47262D97947BB10EFAB58B67 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				607FACD31AFB9204008FA782 /* Supporting Files */,
 				2B2AACEBEFE9FE77EE22B0D9 /* Pods-PocketMediaNativeAds_Example.debug.xcconfig */,
 				0D93340C2C8E131E7AB1CB4F /* Pods-PocketMediaNativeAds_Example.release.xcconfig */,
 				2EF579B9BC4FF1F86A87F4B3 /* Pods-PocketMediaNativeAds_Tests.debug.xcconfig */,
@@ -146,7 +147,6 @@
 				18D6EDD61C8480AC004A5B9D /* Highlight-St.-Barts-Image.jpg */,
 				18D6EDD41C847F41004A5B9D /* close.png */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
-				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for PocketMediaNativeAds";
 			path = PocketMediaNativeAds;
@@ -158,6 +158,7 @@
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			path = PocketMediaNativeAds;
 			sourceTree = "<group>";
 		};
 		607FACE81AFB9204008FA782 /* Tests */ = {

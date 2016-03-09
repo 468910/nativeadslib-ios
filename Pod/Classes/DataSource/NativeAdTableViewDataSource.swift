@@ -8,19 +8,27 @@
 
 import UIKit
 
-public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, DisplayHelperDelegate {
+public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, DisplayHelperDelegate{
   
-  var collection : ReferenceArray<Any>?
-  var nativeAdInjector : NativeAdInjector?
-  var datasource : UITableViewDataSource?
-  var displayHelper : DisplayHelperDelegate?
+  public var collection : ReferenceArray<Any>!
+  public var nativeAdInjector : NativeAdInjector?
+  public var datasource : UITableViewDataSource?
+  public var tableView : UITableView?
   
-  required public init(datasource: UITableViewDataSource, displayHelper : DisplayHelperDelegate){
+  required public init(datasource: UITableViewDataSource, tableView : UITableView){
     super.init()
     collection = ReferenceArray<Any>()
     nativeAdInjector = NativeAdInjector(collection: self.collection!, displayHelper: self)
     self.datasource = datasource
-    self.displayHelper = displayHelper
+    self.tableView = tableView
+    self.tableView!.dataSource = self
+   
+    
+    let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+    
+    tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
+    
+    tableView.registerNib(UINib(nibName: "NativeAdCell", bundle: bundle), forCellReuseIdentifier: "NativeAdCell")
   }
   
   // Data Source
@@ -28,7 +36,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
   print("Injector: cellforRowAtindexPath")
   if (collection!.collection[indexPath.row] is NativeAd){
     print("Native ad Cell")
-    let cell : NativeAdCell = AdViewLoader.loadUIViewFromNib(collection!.collection[indexPath.row] as! NativeAd)
+    let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdCell") as! NativeAdCell
     cell.configureAdView(collection!.collection[indexPath.row] as! NativeAd)
     return cell;
   }else{
@@ -43,12 +51,30 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
   return collection!.collection.count
   }
   
+  public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    if let ad = collection!.collection[indexPath.row] as? NativeAd{
+      print("Opening url: \(ad.clickURL.absoluteString)")
+      // This method will take of opening the ad inside of the app, until we have an iTunes url
+      //ad.openAdUrl(self)
+    }
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  }
+  
   public func onUpdateCollection() {
-    displayHelper!.onUpdateCollection()
+    tableView!.onUpdateCollection()
   }
   
   @objc public func requestAds(nativeAdsRequest: NativeAdsRequest, limit: UInt){
     nativeAdsRequest.retrieveAds(limit)
   }
   
+  
+  
+  
+}
+
+extension UITableView : DisplayHelperDelegate {
+  public func onUpdateCollection() {
+    self.reloadData()
+  }
 }
