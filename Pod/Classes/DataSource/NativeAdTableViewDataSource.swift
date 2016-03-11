@@ -43,7 +43,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
             cell.configureAdView(collection!.collection[indexPath.row] as! NativeAd)
             return cell;
         }else{
-            
+            // TODO: request content with the index in the original datasource, not in the merged one.
             return datasource!.tableView(tableView, cellForRowAtIndexPath: indexPath)
         }
     }
