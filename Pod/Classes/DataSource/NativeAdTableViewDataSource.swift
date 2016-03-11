@@ -8,6 +8,7 @@
 
 import UIKit
 
+@objc
 public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, DisplayHelperDelegate{
   
   public var collection : ReferenceArray<Any>!
@@ -15,6 +16,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
   public var datasource : UITableViewDataSource?
   public var tableView : UITableView?
   
+  @objc
   required public init(datasource: UITableViewDataSource, tableView : UITableView){
     super.init()
     collection = ReferenceArray<Any>()
@@ -32,6 +34,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
   }
   
   // Data Source
+  @objc
   public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
   print("Injector: cellforRowAtindexPath")
   if (collection!.collection[indexPath.row] is NativeAd){
@@ -46,11 +49,12 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
   }
   
   
-  
+  @objc
   public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
   return collection!.collection.count
   }
-  
+
+  @objc
   public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if let ad = collection!.collection[indexPath.row] as? NativeAd{
       print("Opening url: \(ad.clickURL.absoluteString)")
@@ -59,7 +63,8 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
     }
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
-  
+    
+  @objc
   public func onUpdateCollection() {
     tableView!.onUpdateCollection()
   }
