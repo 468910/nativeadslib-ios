@@ -12,7 +12,7 @@ import PocketMediaNativeAds
 
 class TableViewController: UITableViewController {
   
-  
+    var itemsTable: [Any] = []
     var tableViewDataSource : NativeAdTableViewDataSource?
     var imageCache = [String:UIImage]()
     
@@ -38,11 +38,19 @@ class TableViewController: UITableViewController {
             var jsonArray : NSArray = NSArray()
             jsonArray = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
             
+            
             for itemJson in jsonArray {
                 if let itemDictionary = itemJson as? NSDictionary, item = ItemTableView(dictionary: itemDictionary) {
+                    itemsTable.append(item)
                     tableViewDataSource!.collection!.append(item)
                 }
             }
+            
+            //for itemJson in jsonArray {
+                //if let itemDictionary = itemJson as? NSDictionary, item = ItemTableView(dictionary: itemDictionary) {
+                //    tableViewDataSource!.collection!.append(item)
+                //}
+            //}
             
         } catch let error as NSError {
             print(error.localizedDescription)
@@ -64,14 +72,23 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            /*
+
+        switch itemsTable[indexPath.row] {
+        case let item as ItemTableView :
+
             let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath:indexPath) as! ItemCell
             cell.name.text = item.title
             cell.descriptionItem.text = item.descriptionItem
             loadImageAsynchronouslyFromUrl(item.imageURL, imageView: cell.artworkImageView)
-            return cell*/
-          return UITableViewCell()
+            return cell
+            
+        default:
+            return UITableViewCell()
+        }
+    }
     
+    func loadImageAsynchronouslyFromUrl(url: NSURL, imageView: UIImageView){
+        imageView.af_setImageWithURL(url)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
