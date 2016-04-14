@@ -11,15 +11,15 @@ import UIKit
 @objc
 public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, DisplayHelperDelegate{
     
-    public var collection : ReferenceArray<Any>!
+    public var collection : ReferenceArray!
     public var nativeAdInjector : NativeAdInjector?
     public var datasource : UITableViewDataSource?
     public var tableView : UITableView?
-    
+
     @objc
     required public init(datasource: UITableViewDataSource, tableView : UITableView){
         super.init()
-        collection = ReferenceArray<Any>()
+        collection = ReferenceArray()
         nativeAdInjector = NativeAdInjector(collection: self.collection!, displayHelper: self)
         self.datasource = datasource
         self.tableView = tableView
@@ -27,7 +27,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
         
         
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-        
+      
         tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
         
         tableView.registerNib(UINib(nibName: "NativeAdCell", bundle: bundle), forCellReuseIdentifier: "NativeAdCell")
@@ -36,16 +36,33 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
     // Data Source
     @objc
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print("Injector: cellforRowAtindexPath")
+     // print("1: indexForRow = " + String(indexPath.row))
+      print("2: Original indexForRow =" + String(indexPath.row))
+ 
         if (collection!.collection[indexPath.row] is NativeAd){
-            print("Native ad Cell")
+          
             let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdCell") as! NativeAdCell
             cell.configureAdView(collection!.collection[indexPath.row] as! NativeAd)
+           print("Inject NativeAd")
+          
+          
+          
+          
             return cell;
         }else{
             // TODO: request content with the index in the original datasource, not in the merged one.
-            return datasource!.tableView(tableView, cellForRowAtIndexPath: indexPath)
+          let truePath = NSIndexPath(forRow: indexPath.row - (indexPath.row / self.nativeAdInjector!.adMargin!), inSection : 0 )
+          
+          if((indexPath.row / self.nativeAdInjector!.adMargin!) > self.nativeAdInjector!.adInjected!) {
+            let secondPath = NSIndexPath(forRow: indexPath.row + 1 - (indexPath.row / self.nativeAdInjector!.adMargin!), inSection: 0)
+            return datasource!.tableView(tableView, cellForRowAtIndexPath : secondPath)
+          }
+          print("MOdified row index" +  String(indexPath.row - (indexPath.row / self.nativeAdInjector!.adMargin!)))
+            // Dirty fix 
+            return datasource!.tableView(tableView, cellForRowAtIndexPath: truePath)
+          
         }
+      
     }
     
     
@@ -56,6 +73,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
     
     @objc
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+      print("Is this even invoked")
         if let ad = collection!.collection[indexPath.row] as? NativeAd{
             print("Opening url: \(ad.clickURL.absoluteString)")
             // This method will take of opening the ad inside of the app, until we have an iTunes url
@@ -69,10 +87,10 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
         tableView!.onUpdateCollection()
     }
     
-    @objc public func requestAds(nativeAdsRequest: NativeAdsRequest, limit: UInt){
-        nativeAdsRequest.retrieveAds(limit)
-    }
-    
+  
+   @objc public func requestAds(affiliateId: String , limit: UInt){
+      NativeAdsRequest(affiliateId: affiliateId, delegate: self.nativeAdInjector!).retrieveAds(limit)
+   }
     
     
     

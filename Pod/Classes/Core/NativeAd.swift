@@ -42,6 +42,7 @@ public class NativeAd : NSObject{
         if let name = adDictionary["campaign_name"] as? String {
           self.campaignName = name
         }else{
+          print("Native Ad Fallible Constructor: No CampaignName found");
           return nil
         }
         
@@ -49,6 +50,7 @@ public class NativeAd : NSObject{
             self.clickURL = url
             self.originalClickUrl = self.clickURL
         }else{
+            print("Native Ad Fallible Constructor: No ClickUrl found");
             return nil
         }
         
@@ -65,6 +67,7 @@ public class NativeAd : NSObject{
             if let urlImage = adDictionary["campaign_image"] as? String, url = NSURL(string: urlImage) {
                 self.campaignImage = url
             }else{
+               print("Native Ad Fallible Constructor: No Campaignimage found");
                 return nil
             }
         }

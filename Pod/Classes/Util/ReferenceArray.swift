@@ -8,15 +8,21 @@
 // Note This is Added because Arrays are copied by value. But why!?
 
 import UIKit
+@objc
+public class ReferenceArray : NSObject  {
+  // [T] is syntatic sugar for Array<T>
+  @objc
+  public var collection : [AnyObject] = []
 
-public class ReferenceArray<T> {
+  @objc
+  func test() {
+    print("LOG")
+  }
   
-  public var collection : [T] = []
-  
-  public var count : Int {
+  public var count : AnyObject {
     return collection.count
   }
-  public func append(object: T){
+  public func append(object: AnyObject){
     collection.append(object)
   }
   

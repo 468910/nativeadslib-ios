@@ -13,9 +13,11 @@
 public class NativeAdInjector : NSObject, NativeAdsConnectionDelegate{
   
   public var delegate : DisplayHelperDelegate
-  public var collection : ReferenceArray<Any>
+  public var collection : ReferenceArray
+  public var adMargin : Int?
+  public var adInjected : Int?
   
-  public required init(collection : ReferenceArray<Any>, displayHelper: DisplayHelperDelegate){
+  public required init(collection : ReferenceArray, displayHelper: DisplayHelperDelegate){
     delegate = displayHelper
     self.collection = collection
   }
@@ -25,11 +27,28 @@ public class NativeAdInjector : NSObject, NativeAdsConnectionDelegate{
   }
   
   public func didRecieveResults(nativeAds: [NativeAd]) {
+    if(nativeAds.isEmpty || collection.collection.isEmpty) { return }
+    
+    var nativeAdCount = nativeAds.count
+    
+    let margin : Int = collection.collection.count / nativeAdCount
+    adMargin = margin
+    adInjected = nativeAdCount
+    var count : Int = 1
+    
     nativeAds.forEach {
-       collection.collection.insert($0, atIndex: Int(arc4random_uniform(UInt32(collection.collection.count))))
+      // INjection
+       collection.collection.insert($0, atIndex: margin * count)
+      print("NativeAd Injected at Index: " + String(margin * count))
+      
+      
+       count++
     }
+    dump(collection.collection)
+    print("Final Count is " + String(collection.collection.count))
     delegate.onUpdateCollection()
   }
+  
   
   public func didUpdateNativeAd(adUnit: NativeAd) {
     

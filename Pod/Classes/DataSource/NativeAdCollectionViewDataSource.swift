@@ -12,18 +12,19 @@ import Foundation
 @objc
 public class NativeAdCollectionViewDataSource : NSObject, DisplayHelperDelegate, UICollectionViewDataSource {
   
-  var collection : ReferenceArray<Any>?
+  var collection : ReferenceArray?
   var nativeAdInjector : NativeAdInjector?
   var datasource : UITableViewDataSource?
   var displayHelper : DisplayHelperDelegate?
   
   required public init(datasource: UITableViewDataSource, displayHelper : DisplayHelperDelegate){
     super.init()
-    collection = ReferenceArray<Any>()
+    collection = ReferenceArray()
     nativeAdInjector = NativeAdInjector(collection: self.collection!, displayHelper: self)
     self.datasource = datasource
     self.displayHelper = displayHelper
   }
+  
   
   
   // Todo
@@ -41,8 +42,8 @@ public class NativeAdCollectionViewDataSource : NSObject, DisplayHelperDelegate,
     displayHelper!.onUpdateCollection()
   }
   
-  @objc public func requestAds(nativeAdsRequest: NativeAdsRequest, limit: UInt){
-    nativeAdsRequest.retrieveAds(limit)
+  @objc public func requestAds(affiliateId: String , limit: UInt){
+    NativeAdsRequest(affiliateId: affiliateId, delegate: self.nativeAdInjector!).retrieveAds(limit)
   }
   
 }

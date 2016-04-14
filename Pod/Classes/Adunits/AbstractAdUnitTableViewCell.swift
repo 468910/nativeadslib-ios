@@ -15,9 +15,7 @@ public class AbstractAdUnitTableViewCell : UITableViewCell, NativeAdViewBinderPr
   @IBOutlet weak var adTitle: UILabel!
   @IBOutlet weak var adDescription : UILabel!
   
-  public required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-  }
+  
   
   public func configureAdView(nativeAd: NativeAd) {
     adTitle.text = nativeAd.campaignName
