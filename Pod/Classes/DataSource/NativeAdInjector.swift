@@ -14,8 +14,8 @@ public class NativeAdInjector : NSObject, NativeAdsConnectionDelegate{
   
   public var delegate : DisplayHelperDelegate
   public var collection : ReferenceArray
-  public var adMargin : Int?
-  public var adInjected : Int?
+  public var adMargin : Int? = -1
+  public var adInjected : Int? = -1
   
   public required init(collection : ReferenceArray, displayHelper: DisplayHelperDelegate){
     delegate = displayHelper
@@ -27,13 +27,17 @@ public class NativeAdInjector : NSObject, NativeAdsConnectionDelegate{
   }
   
   public func didRecieveResults(nativeAds: [NativeAd]) {
+    
     if(nativeAds.isEmpty || collection.collection.isEmpty) { return }
     
     var nativeAdCount = nativeAds.count
     
     let margin : Int = collection.collection.count / nativeAdCount
+    
     adMargin = margin
     adInjected = nativeAdCount
+    
+    NSLog("Setted AdMargin\(margin) and NativeAdCount \(nativeAdCount)")
     var count : Int = 1
     
     nativeAds.forEach {
