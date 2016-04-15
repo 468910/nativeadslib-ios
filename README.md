@@ -34,7 +34,7 @@ The main usage of the project takes place in the ```TableViewController.swift```
 
 ```swift
     func loadNativeAds(){
-        let adRequest = NativeAdsRequest(affiliateId: "1234-sample", delegate: self, parentView: self.view, followRedirectsInBackground: true)
+        let adRequest = NativeAdsRequest(affiliateId: "100019", delegate: self, parentView: self.view, followRedirectsInBackground: true)
         adRequest.debugModeEnabled = true
         adRequest.retrieveAds(5)
     }
@@ -64,7 +64,7 @@ In the future all the content will be downloaded through https, following Apple 
 
 
 ### Receiving the results
-After the request is started, the library will notify of the changes in it trough a delegate that implements the ```NativeAdsConnectionProtocol``` protocol.
+After the request is started, the library will notify of the changes in it trough a delegate that implements the ```NativeAdsConnectionDelegate``` protocol.
 
 This protocol has three methods:
 
@@ -121,18 +121,20 @@ Together with the method were the table cell is displayed:
 
 One of the possible moments when the ads might create a bad experience for the users is in the moment of the click. As we have to notify the different partners that provide the ads about the click, to be able to know that the users come from your app, we need to follow some tracking link redirections. 
 
-In order to avoid that bad experience, we provide you the ```openCampaign``` method in the ```NativeAd``` class. The method receives the parent view as an argument, and it will create a UIWebView inside of your app, where the links will be followed.
+In order to avoid that bad experience, we provide you the ```openAdUrl``` method in the ```NativeAd``` class. The method receives the parent view as an argument, and it will create a UIWebView inside of your app, where the links will be followed.
 
 ```swift
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let ad = itemsTable[indexPath.row] as? NativeAd{
             print("Opening url: \(ad.clickURL.absoluteString)")
             // This method will take of opening the ad inside of the app, until we have an iTunes url
-            ad.openCampaign(parentViewController : self)
+            ad.openAdUrl(self)
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 ```
+
+Alternatively you can use ```openAdUrlInForeground()``` to open the URL directly in the browser - but the user experience will be much worse.
 
 
 ## Look and feel

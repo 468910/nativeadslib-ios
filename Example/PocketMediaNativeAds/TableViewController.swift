@@ -24,8 +24,10 @@ class TableViewController: UITableViewController {
     
     
     func loadNativeAds(){
-        tableViewDataSource!.requestAds(NativeAdsRequest(affiliateId: "1234-sample", delegate: tableViewDataSource!.nativeAdInjector!), limit: 5)
-      
+        
+        let adRequest = NativeAdsRequest(affiliateId: "100019", delegate: self)
+        adRequest.debugModeEnabled = true
+        adRequest.retrieveAds(5)
     }
     
     func loadLocalJSON(){
