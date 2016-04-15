@@ -79,14 +79,14 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     /**
     Returns the API URL to invoke to retrieve ads
     */
-    public func getNativeAdsURL(affiliateID: String?, limit: UInt) -> String {
+    public func getNativeAdsURL(placementToken: String?, limit: UInt) -> String {
         let token = provideIdentifierForAdvertisingIfAvailable()
         
         let baseUrl = betaModeEnabled ? NativeAdsConstants.NativeAds.baseURLBeta : NativeAdsConstants.NativeAds.baseURL;
         //token
         var apiUrl = baseUrl + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)"
         apiUrl = apiUrl + "&token=" + token!
-        apiUrl = apiUrl + "&affiliate_id=" + affiliateID!
+        apiUrl = apiUrl + "&placement_key=" + placementToken!
         
         if (!ASIdentifierManager.sharedManager().advertisingTrackingEnabled){
             apiUrl = apiUrl + "&optout=1"
