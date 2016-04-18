@@ -99,14 +99,13 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, UITa
   // Delegate
     @objc
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      print("Is this even invoked")
+
         if let ad = collection!.collection[indexPath.row] as? NativeAd{
-            print("Opening url: \(ad.clickURL.absoluteString)")
+            NSLog("Opening url: \(ad.clickURL.absoluteString)")
             // This method will take of opening the ad inside of the app, until we have an iTunes url
             ad.openAdUrl(controller!)
         } else{
-          print("This is the index of the row thats trying to open" + String(indexPath.row))
-          delegate!.tableView!(tableView, didSelectRowAtIndexPath: indexPath)
+          self.delegate!.tableView!(tableView, didSelectRowAtIndexPath: indexPath)
       }
     }
   

@@ -104,7 +104,6 @@ public class NativeAd : NSObject{
     */
     @objc
     public func openAdUrlInForeground(){
-      print("FIREEEE")
       UIApplication.sharedApplication().openURL(self.clickURL)
     }
   
