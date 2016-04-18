@@ -39,10 +39,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, UITa
         nativeAdInjector = NativeAdInjector(collection: self.collection!, displayHelper: self)
         self.datasource = datasource
         self.tableView = tableView
-        self.tableView!.dataSource = self
-      
-      
-        
+        self.tableView?.dataSource = self
         
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!
       
