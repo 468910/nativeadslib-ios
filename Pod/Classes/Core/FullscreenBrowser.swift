@@ -45,7 +45,24 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
         
         
         if (webView == nil){
-            webView = UIWebView(frame: CGRect.init(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height))
+            
+            if (self.originalViewController != nil){
+                
+                webView = UIWebView(frame: CGRect.init(
+                    x: 0,
+                    y: 0,
+                    width: self.originalViewController!.view.bounds.width,
+                    height: self.originalViewController!.view
+                        .bounds.height))
+                
+            }else{
+            
+                webView = UIWebView(frame: CGRect.init(
+                    x: 0,
+                    y: 0,
+                    width: UIScreen.mainScreen().bounds.width,
+                    height: UIScreen.mainScreen().bounds.height))
+            }
         }
         
         if (webViewDelegate == nil){
