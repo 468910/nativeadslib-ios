@@ -9,7 +9,7 @@
 import UIKit
 
 @objc
-public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, UITableViewDelegate, DisplayHelperDelegate{
+public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, DisplayHelperDelegate{
     
     public var collection : ReferenceArray!
     public var nativeAdInjector : NativeAdInjector?
@@ -39,6 +39,10 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, UITa
         nativeAdInjector = NativeAdInjector(collection: self.collection!, displayHelper: self)
         self.datasource = datasource
         self.tableView = tableView
+      
+        delegate = NativeAdsTableViewDelegate(collection: collection, controller: controller!, delegate: delegate!)
+        self.tableView!.delegate = delegate
+      
         self.tableView!.dataSource = self
       
       
@@ -96,32 +100,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, UITa
     }
   
   
-  // Delegate
-    @objc
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      print("Is this even invoked")
-        if let ad = collection!.collection[indexPath.row] as? NativeAd{
-            print("Opening url: \(ad.clickURL.absoluteString)")
-            // This method will take of opening the ad inside of the app, until we have an iTunes url
-            ad.openAdUrl(controller!)
-        } else{
-          print("This is the index of the row thats trying to open" + String(indexPath.row))
-          delegate!.tableView!(tableView, didSelectRowAtIndexPath: indexPath)
-      }
-    }
-  
-  @objc
-  public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return delegate!.tableView!(tableView, heightForHeaderInSection: section)
-  }
-  
-  public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return delegate!.tableView!(tableView, heightForRowAtIndexPath: indexPath)
-  }
-  
-  public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    return delegate!.tableView!(tableView, viewForHeaderInSection: section)
-  }
+ 
     
     @objc
     public func onUpdateCollection() {
