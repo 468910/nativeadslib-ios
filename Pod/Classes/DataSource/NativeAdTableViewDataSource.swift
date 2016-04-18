@@ -17,6 +17,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, UITa
     public var tableView : UITableView?
     public var delegate : UITableViewDelegate?
     public var controller : UITableViewController?
+    public var cellFormat : String?
 
   
   
@@ -24,16 +25,15 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, UITa
   
   
   @objc
-  public convenience init(datasource: UITableViewDataSource, tableView : UITableView, delegate : UITableViewDelegate, controller : UITableViewController){
-    self.init(datasource: datasource, tableView: tableView)
+    public convenience init(datasource: UITableViewDataSource, tableView : UITableView, delegate : UITableViewDelegate, controller : UITableViewController, cellFormat: String){
+    self.init(datasource: datasource, tableView: tableView, cellFormat: cellFormat)
     self.delegate = delegate
     self.controller = controller
-    
-    
+    self.cellFormat = cellFormat
   }
   
     @objc
-    required public init(datasource: UITableViewDataSource, tableView : UITableView){
+    required public init(datasource: UITableViewDataSource, tableView : UITableView, cellFormat: String){
         super.init()
         collection = ReferenceArray()
         nativeAdInjector = NativeAdInjector(collection: self.collection!, displayHelper: self)
@@ -44,8 +44,11 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, UITa
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!
       
         tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
-        
         tableView.registerNib(UINib(nibName: "NativeAdCell", bundle: bundle), forCellReuseIdentifier: "NativeAdCell")
+        
+        tableView.registerNib(UINib(nibName: "NativeAdCell2", bundle: bundle), forCellReuseIdentifier: "NativeAdCell2")
+        tableView.registerNib(UINib(nibName: "NativeAdCell3", bundle: bundle), forCellReuseIdentifier: "NativeAdCell3")
+
     }
     
     // Data Source
@@ -61,7 +64,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, UITa
  
         if (collection!.collection[indexPath.row] is NativeAd){
           
-            let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdCell") as! NativeAdCell
+            let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier(cellFormat!) as! NativeAdCell
             cell.configureAdView(collection!.collection[indexPath.row] as! NativeAd)
            print("Inject NativeAd")
           
