@@ -22,7 +22,9 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     public var debugModeEnabled : Bool = false
     /// To allow testing with links without impacting impressions and clicks
     public var betaModeEnabled : Bool = false
-    
+      private var isDling : Bool = false
+  
+  
     public init(affiliateId : String?, delegate: NativeAdsConnectionDelegate?) {
         super.init()
         self.affiliateId = affiliateId;
@@ -35,15 +37,24 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     */
     @objc
     public func retrieveAds(limit: UInt){
-        
+      
+      if(isDling){
+        NSLog("Aborting call - already downloading")
+        self.delegate?.didRecieveError(NSError(domain: "somedomain", code: 123, userInfo: [:]))
+      }
+      
         let nativeAdURL = getNativeAdsURL(self.affiliateId, limit: limit);
         NSLog("Invoking: %@", nativeAdURL)
-        
+      isDling = true
+      
+      
         if let url = NSURL(string: nativeAdURL) {
             
             let request = NSURLRequest(URL: url)
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-                
+              
+                self.isDling = false
+              
                 if error != nil {
                     
                     self.delegate?.didRecieveError(error!)

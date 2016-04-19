@@ -23,28 +23,24 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
   
   
   
-  @objc
-  public convenience init(datasource: UITableViewDataSource, tableView : UITableView, delegate : UITableViewDelegate, controller : UITableViewController){
-    self.init(datasource: datasource, tableView: tableView)
-    self.delegate = delegate
-    self.controller = controller
-    
-    
-  }
+
   
     @objc
-    required public init(datasource: UITableViewDataSource, tableView : UITableView){
+  public required init(datasource: UITableViewDataSource, tableView : UITableView, delegate : UITableViewDelegate, controller : UITableViewController){
         super.init()
-        collection = ReferenceArray()
+  
+       self.controller = controller
+  
+        collection =  ReferenceArray()
         nativeAdInjector = NativeAdInjector(collection: self.collection!, displayHelper: self)
         self.datasource = datasource
         self.tableView = tableView
       
-        delegate = NativeAdsTableViewDelegate(collection: collection, controller: controller!, delegate: delegate!)
-        self.tableView!.delegate = delegate
-      
-        self.tableView!.dataSource = self
-      
+        self.delegate = NativeAdsTableViewDelegate(collection: collection, controller: controller, delegate: delegate)
+    
+    tableView.delegate = self.delegate
+    tableView.dataSource = self
+    
       
         
         
@@ -81,6 +77,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
           
         let truePath = NSIndexPath(forRow: indexPath.row - (indexPath.row / self.nativeAdInjector!.adMargin!), inSection : 0 )
           print("Element")
+          
           if((indexPath.row / self.nativeAdInjector!.adMargin!) > self.nativeAdInjector!.adInjected!) {
             let secondPath = NSIndexPath(forRow: indexPath.row + 1 - (indexPath.row / self.nativeAdInjector!.adMargin!), inSection: 0)
             return datasource!.tableView(tableView, cellForRowAtIndexPath : secondPath)

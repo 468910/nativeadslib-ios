@@ -27,6 +27,10 @@ public class NativeAdInjector : NSObject, NativeAdsConnectionDelegate{
   }
   
   public func didRecieveResults(nativeAds: [NativeAd]) {
+    // Dirty fix #3
+    if((collection.collection.filter{$0 is NativeAd }).count > 0){
+      return;
+    }
     
     if(nativeAds.isEmpty || collection.collection.isEmpty) { return }
     

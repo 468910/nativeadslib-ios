@@ -38,11 +38,19 @@ public class NativeAdsTableViewDelegate : NSObject, UITableViewDelegate {
   
   @objc
   public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return delegate.tableView!(tableView, heightForHeaderInSection: section)
+    if let heightForHeader = delegate.tableView?(tableView, heightForHeaderInSection: section){
+      return heightForHeader
+    }else {
+      return -1
+    }
   }
   
   public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return delegate.tableView!(tableView, heightForRowAtIndexPath: indexPath)
+    if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: indexPath){
+      return heightForRow
+    }else {
+      return -1
+    }
   }
   
   public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -50,24 +58,29 @@ public class NativeAdsTableViewDelegate : NSObject, UITableViewDelegate {
   }
   
   public func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
-    return delegate.tableView!(tableView, accessoryButtonTappedForRowWithIndexPath: indexPath)
+    delegate.tableView?(tableView, accessoryButtonTappedForRowWithIndexPath: indexPath)
   }
-  
+    
   @available(iOS 9.0, *)
   public func tableView(tableView: UITableView, canFocusRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return delegate.tableView!(tableView, canFocusRowAtIndexPath: indexPath)
+    if let canFocus = delegate.tableView?(tableView, canFocusRowAtIndexPath: indexPath){
+      return canFocus
+    }else {
+      return true
+    }
   }
   
   public func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-    return delegate.tableView!(tableView, didDeselectRowAtIndexPath: indexPath)
+    delegate.tableView?(tableView, didDeselectRowAtIndexPath: indexPath)
+    
   }
   
   public func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-    return delegate.tableView!(tableView, didEndDisplayingCell: cell, forRowAtIndexPath: indexPath)
+    delegate.tableView?(tableView, didEndDisplayingCell: cell, forRowAtIndexPath: indexPath)
   }
   
   public func tableView(tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
-    return delegate.tableView!(tableView, didEndDisplayingFooterView: view, forSection: section)
+     delegate.tableView?(tableView, didEndDisplayingFooterView: view, forSection: section)
   }
   
   public func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
@@ -80,106 +93,178 @@ public class NativeAdsTableViewDelegate : NSObject, UITableViewDelegate {
   
   
   public func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-    return delegate.tableView!(tableView, canPerformAction: action, forRowAtIndexPath: indexPath, withSender: sender)
+    if let canPerform = delegate.tableView?(tableView, canPerformAction: action, forRowAtIndexPath: indexPath, withSender: sender) {
+      return canPerform
+    }else {
+      return true
+    }
   }
   
   public func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
-    return delegate.tableView!(tableView, didHighlightRowAtIndexPath: indexPath)
+     delegate.tableView?(tableView, didHighlightRowAtIndexPath: indexPath)
   }
   
   public func tableView(tableView: UITableView, didUnhighlightRowAtIndexPath indexPath: NSIndexPath) {
-    return delegate.tableView!(tableView, didUnhighlightRowAtIndexPath: indexPath)
+     delegate.tableView?(tableView, didUnhighlightRowAtIndexPath: indexPath)
   }
   
   @available(iOS 9, *)
   public func tableView(tableView: UITableView, didUpdateFocusInContext context: UITableViewFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
-    return delegate.tableView!(tableView, didUpdateFocusInContext: context, withAnimationCoordinator: coordinator)
+     delegate.tableView?(tableView, didUpdateFocusInContext: context, withAnimationCoordinator: coordinator)
   }
   
   public func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-    return delegate.tableView!(tableView, editActionsForRowAtIndexPath : indexPath)
+    if let rowAction =  delegate.tableView?(tableView, editActionsForRowAtIndexPath : indexPath){
+      return rowAction
+    }else{
+      return nil
+    }
   }
   
   public func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-    return delegate.tableView!(tableView, editingStyleForRowAtIndexPath: indexPath)
+    if let editingStyle =  delegate.tableView?(tableView, editingStyleForRowAtIndexPath: indexPath) {
+      return editingStyle
+    }else {
+      return UITableViewCellEditingStyle.None
+    }
   }
   
   public func tableView(tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-    return delegate.tableView!(tableView, estimatedHeightForFooterInSection: section)
+    if let estimatedHeightForFooter = delegate.tableView?(tableView, estimatedHeightForFooterInSection: section){
+      return estimatedHeightForFooter
+    }else{
+      return -1
+    }
   }
+
+  
   
   public func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-    return delegate.tableView!(tableView, estimatedHeightForHeaderInSection: section)
+    if let estimatedHeight = delegate.tableView?(tableView, estimatedHeightForHeaderInSection: section)  {
+      return estimatedHeight
+    }else{
+      return -1
+    }
   }
+  
   
   public func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return delegate.tableView!(tableView, estimatedHeightForRowAtIndexPath: indexPath)
+    if let estimatedHeight =  delegate.tableView?(tableView, estimatedHeightForRowAtIndexPath: indexPath) {
+      return estimatedHeight
+    }else {
+      return -1
+    }
   }
   
+  
   public func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return delegate.tableView!(tableView, heightForFooterInSection: section)
+    if let heightForFooter = delegate.tableView?(tableView, heightForFooterInSection: section) {
+      return heightForFooter
+    }else {
+      return -1
+    }
   }
   
   public func tableView(tableView: UITableView, indentationLevelForRowAtIndexPath indexPath: NSIndexPath) -> Int {
-    return delegate.tableView!(tableView, indentationLevelForRowAtIndexPath: indexPath)
+    if let indenLevel =  delegate.tableView?(tableView, indentationLevelForRowAtIndexPath: indexPath) {
+      return indenLevel
+    }else {
+      return -1
+    }
   }
   
+  
   public func tableView(tableView: UITableView, performAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-    return delegate.tableView!(tableView, performAction: action, forRowAtIndexPath: indexPath, withSender: sender)
+    delegate.tableView?(tableView, performAction: action, forRowAtIndexPath: indexPath, withSender: sender)
   }
   
   public func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return delegate.tableView!(tableView, shouldHighlightRowAtIndexPath: indexPath)
+    if let shouldHighLight = delegate.tableView?(tableView, shouldHighlightRowAtIndexPath: indexPath) {
+      return shouldHighLight
+    }else {
+      return true
+    }
   }
   
   public func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return delegate.tableView!(tableView, shouldIndentWhileEditingRowAtIndexPath: indexPath)
+    if let ShouldIndent =  delegate.tableView?(tableView, shouldIndentWhileEditingRowAtIndexPath: indexPath) {
+      return ShouldIndent
+    }else{
+      return true
+    }
   }
   
   
   public func tableView(tableView: UITableView, shouldShowMenuForRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return delegate.tableView!(tableView, shouldShowMenuForRowAtIndexPath: indexPath)
+    if let shouldShowMenu = delegate.tableView?(tableView, shouldShowMenuForRowAtIndexPath: indexPath) {
+      return shouldShowMenu
+    }else {
+      return true
+    }
   }
+
+  
   
   public func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-    return delegate.tableView!(tableView, willSelectRowAtIndexPath: indexPath)
+    if let path =  delegate.tableView?(tableView, willSelectRowAtIndexPath: indexPath) {
+      return path
+    }else {
+      print("Here i am getting nillled")
+      return indexPath
+    }
   }
-  
   @available(iOS 9.0, *)
   public func tableView(tableView: UITableView, shouldUpdateFocusInContext context: UITableViewFocusUpdateContext) -> Bool {
-    return delegate.tableView!(tableView, shouldUpdateFocusInContext: context)
+    if let shouldUpdateFocusInContext = delegate.tableView?(tableView, shouldUpdateFocusInContext: context){
+      return shouldUpdateFocusInContext
+    }else{
+      return true
+    }
   }
   
   public func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
-    return delegate.tableView!(tableView, targetIndexPathForMoveFromRowAtIndexPath: sourceIndexPath, toProposedIndexPath: proposedDestinationIndexPath)
+    if let path =  delegate.tableView?(tableView, targetIndexPathForMoveFromRowAtIndexPath: sourceIndexPath, toProposedIndexPath: proposedDestinationIndexPath){
+      return path
+    }else{
+      return proposedDestinationIndexPath
+    }
   }
   
   public func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
-    return delegate.tableView!(tableView, titleForDeleteConfirmationButtonForRowAtIndexPath: indexPath)
+    if let title = delegate.tableView?(tableView, titleForDeleteConfirmationButtonForRowAtIndexPath: indexPath){
+      return title
+    }else{
+      return nil
+    }
   }
   
   public func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    return delegate.tableView!(tableView, viewForFooterInSection: section)
+    return delegate.tableView?(tableView, viewForFooterInSection: section)
   }
   
   public func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
-    return delegate.tableView!(tableView, willBeginEditingRowAtIndexPath: indexPath)
+     delegate.tableView?(tableView, willBeginEditingRowAtIndexPath: indexPath)
+    
   }
   
   public func tableView(tableView: UITableView, willDeselectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-    return delegate.tableView!(tableView, willDeselectRowAtIndexPath: indexPath)
+    if let path =  delegate.tableView?(tableView, willDeselectRowAtIndexPath: indexPath){
+      return path
+    }else{
+      return indexPath
+    }
   }
   
   public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-    return delegate.tableView!(tableView, willDisplayCell : cell, forRowAtIndexPath: indexPath)
+     delegate.tableView?(tableView, willDisplayCell : cell, forRowAtIndexPath: indexPath)
   }
   
   public func tableView(tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-    return delegate.tableView!(tableView, willDisplayFooterView: view, forSection : section)
+     delegate.tableView?(tableView, willDisplayFooterView: view, forSection : section)
   }
   
   public func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-    return delegate.tableView!(tableView, willDisplayHeaderView : view, forSection : section)
+     delegate.tableView?(tableView, willDisplayHeaderView : view, forSection : section)
   }
   
   
