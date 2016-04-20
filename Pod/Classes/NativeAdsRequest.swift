@@ -16,16 +16,14 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     
     /// Object to notify about the updates related with the ad request
     public var delegate: NativeAdsConnectionDelegate?
-    /// Needed to "sign" the ad requests to the server
-    public var affiliateId : String?
+    /// Needed to identify the ad requests to the server
+    public var adPlacementToken : String?
     /// To allow more verbose logging and behaviour
     public var debugModeEnabled : Bool = false
-    /// To allow testing with links without impacting impressions and clicks
-    public var betaModeEnabled : Bool = false
     
-    public init(affiliateId : String?, delegate: NativeAdsConnectionDelegate?) {
+    public init(adPlacementToken : String?, delegate: NativeAdsConnectionDelegate?) {
         super.init()
-        self.affiliateId = affiliateId;
+        self.adPlacementToken = adPlacementToken;
         self.delegate = delegate
     }
   
@@ -36,7 +34,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     @objc
     public func retrieveAds(limit: UInt){
         
-        let nativeAdURL = getNativeAdsURL(self.affiliateId, limit: limit);
+        let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit);
         NSLog("Invoking: %@", nativeAdURL)
         
         if let url = NSURL(string: nativeAdURL) {
@@ -79,14 +77,14 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     /**
     Returns the API URL to invoke to retrieve ads
     */
-    public func getNativeAdsURL(affiliateID: String?, limit: UInt) -> String {
+    public func getNativeAdsURL(placementKey: String?, limit: UInt) -> String {
         let token = provideIdentifierForAdvertisingIfAvailable()
         
-        let baseUrl = betaModeEnabled ? NativeAdsConstants.NativeAds.baseURLBeta : NativeAdsConstants.NativeAds.baseURL;
+        let baseUrl = NativeAdsConstants.NativeAds.baseURL;
         //token
         var apiUrl = baseUrl + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)"
         apiUrl = apiUrl + "&token=" + token!
-        apiUrl = apiUrl + "&affiliate_id=" + affiliateID!
+        apiUrl = apiUrl + "&placement_key=" + placementKey!
         
         if (!ASIdentifierManager.sharedManager().advertisingTrackingEnabled){
             apiUrl = apiUrl + "&optout=1"

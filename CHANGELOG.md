@@ -1,5 +1,6 @@
 Pocket Media Native Ads iOS library Changelog
 
+* 0.2.1: removed app token, replaced by ad placement token.
 * 0.2.0: renamed classes and re-structured internal code to make it cleaner.
   changes required in code:
   * ```NativeAdsConnectionProtocol``` renamed to ```NativeAdsConnectionDelegate```

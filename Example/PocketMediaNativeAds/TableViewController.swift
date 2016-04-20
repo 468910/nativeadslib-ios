@@ -26,7 +26,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
     
     func loadNativeAds(){
         
-        let adRequest = NativeAdsRequest(affiliateId: "100019", delegate: self)
+        let adRequest = NativeAdsRequest(adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165", delegate: self)
         adRequest.debugModeEnabled = true
         adRequest.retrieveAds(5)
     }
