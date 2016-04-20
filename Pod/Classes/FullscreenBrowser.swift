@@ -73,7 +73,7 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
             button.frame = CGRectMake(UIScreen.mainScreen().bounds.width - UIScreen.mainScreen().bounds.width * 0.10, 0, UIScreen.mainScreen().bounds.width * 0.10, UIScreen.mainScreen().bounds.height * 0.10)
             button.backgroundColor = UIColor.clearColor()
             button.setImage(UIImage(named: "close"), forState: UIControlState.Normal)
-            button.addTarget(self, action: "closeAction", forControlEvents: UIControlEvents.TouchUpInside)
+            button.addTarget(self, action: #selector(FullscreenBrowser.closeAction), forControlEvents: UIControlEvents.TouchUpInside)
             self.view.addSubview(button)
             
             originalViewController!.presentViewController(self, animated: true, completion: { () -> Void in
