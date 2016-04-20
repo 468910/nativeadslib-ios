@@ -5,7 +5,7 @@
 //  Created by apple on 02/03/16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
-
+/*
 import UIKit
 import Foundation
 
@@ -47,3 +47,4 @@ public class NativeAdCollectionViewDataSource : NSObject, DisplayHelperDelegate,
   }
   
 }
+*/

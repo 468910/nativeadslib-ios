@@ -12,12 +12,14 @@ import UIKit
 public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, DisplayHelperDelegate{
     
     public var collection : ReferenceArray!
-    public var nativeAdInjector : NativeAdInjector?
+    public var ads : ReferenceArray?
+  
+    public var nativeAdInjector : NativeAdsRetriever?
     public var datasource : UITableViewDataSource?
     public var tableView : UITableView?
     public var delegate : UITableViewDelegate?
     public var controller : UITableViewController?
-
+  
   
   
   
@@ -32,14 +34,21 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
        self.controller = controller
   
         collection =  ReferenceArray()
-        nativeAdInjector = NativeAdInjector(collection: self.collection!, displayHelper: self)
+    
+        self.ads = ReferenceArray()
+        nativeAdInjector = NativeAdsRetriever(ads: ads!, displayHelper: self)
+    
+    
         self.datasource = datasource
         self.tableView = tableView
-      
-        self.delegate = NativeAdsTableViewDelegate(collection: collection, controller: controller, delegate: delegate)
     
-    tableView.delegate = self.delegate
-    tableView.dataSource = self
+    
+    
+    
+      self.delegate = NativeAdsTableViewDelegate(datasource: self, controller: controller, delegate: delegate)
+    
+      tableView.delegate = self.delegate
+      tableView.dataSource = self
     
       
         
@@ -54,37 +63,44 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
     // Data Source
     @objc
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-     // print("1: indexForRow = " + String(indexPath.row))
-      print("2: Original indexForRow =" + String(indexPath.row))
-      print("3: " + String(self.nativeAdInjector!.adMargin!))
-      if(self.nativeAdInjector!.adMargin! == -1){
-        print("Empty")
-        return UITableViewCell()
-      }
- 
-        if (collection!.collection[indexPath.row] is NativeAd){
+      
+      
+      let fullCount = datasource!.tableView(tableView, numberOfRowsInSection: 0) + ads!.collection.count
+      
+      var adMargin = fullCount / ads!.collection.count
+      
+       print("Current row" + String(indexPath.row))
+       print("AdMargin" + String(adMargin))
+       if ((indexPath.row % adMargin) == 0 && indexPath.row > 0 ){
           
             let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdCell") as! NativeAdCell
-            cell.configureAdView(collection!.collection[indexPath.row] as! NativeAd)
-           print("Inject NativeAd")
-          
+            print(indexPath.row / adMargin)
+            cell.configureAdView(ads!.collection[indexPath.row / adMargin - 1] as! NativeAd)
+        
           
           
           
             return cell;
         }else{
             // TODO: request content with the index in the original datasource, not in the merged one.
-          
-        let truePath = NSIndexPath(forRow: indexPath.row - (indexPath.row / self.nativeAdInjector!.adMargin!), inSection : 0 )
-          print("Element")
-          
-          if((indexPath.row / self.nativeAdInjector!.adMargin!) > self.nativeAdInjector!.adInjected!) {
-            let secondPath = NSIndexPath(forRow: indexPath.row + 1 - (indexPath.row / self.nativeAdInjector!.adMargin!), inSection: 0)
+        let truePath = NSIndexPath(forRow: indexPath.row - (indexPath.row / adMargin), inSection : 0 )
+        print(ads!.collection.count)
+        
+        if(truePath.row == datasource!.tableView(tableView, numberOfRowsInSection: 0)){
+        let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdCell") as! NativeAdCell
+        cell.configureAdView(ads!.collection.last as! NativeAd)
+           dump(ads!.collection)
+            return cell
+        }
+        /**
+          if((indexPath.row / self.nativeAdInjector!.adMargin!) > ) {
+            let secondPath = NSIndexPath(forRow: indexPath.row + 1 - (indexPath.row / adMargin), inSection: 0)
             return datasource!.tableView(tableView, cellForRowAtIndexPath : secondPath)
-          }
+          }*/
           
        // print("MOdified row index" +  String(indexPath.row - (indexPath.row / self.nativeAdInjector!.adMargin!)))
             // Dirty fix 
+        
           return datasource!.tableView(tableView, cellForRowAtIndexPath: truePath)
         }
       
@@ -93,7 +109,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
     
     @objc
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return collection!.collection.count
+        return datasource!.tableView(tableView, numberOfRowsInSection: section) + ads!.collection.count
     }
   
   

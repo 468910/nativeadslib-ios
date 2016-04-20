@@ -7,301 +7,175 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0061B27BB98A3D0D800F98792F9B23DE /* UIImageView+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5476B5FCAC222E57B10369808678FC /* UIImageView+AlamofireImage.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		07BECE24E34C6B8F38C3C4DBF872F09F /* UIImage+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BEE7460BDCDB9D08B36B345F8E297F /* UIImage+AlamofireImage.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		09897467CD4137B2B78725AD157D679A /* PocketMediaNativeAds-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD653D399AE2D0C3600CCAC6EB4A7412 /* PocketMediaNativeAds-dummy.m */; };
-		0D043E3061871D0EA706636772DCE10D /* NativeAdsWebviewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5B574B0DF83C9306654ECEA290EA5B /* NativeAdsWebviewDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		0E3177B146D6791BA9DC738CCB96B726 /* BigNativeAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E281806081B611FDBB5B966147F8EF8 /* BigNativeAdTableViewCell.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		0F3C642CE31DEFEADFC5786C562C9814 /* NativeAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D765C2962F4DFDBAF1280BBD9BDAEB /* NativeAdCell.xib */; };
-		102D39587606E32EC383ACA7AFB7640D /* NativeAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97852DDAAC5AD95377FB6C6AEEF429A /* NativeAdTableViewCell.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		13202614FB4A2465FD5D212AC6393DE6 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2A923BC7631394FD3CEEBDE8D0B13 /* Request.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		1AB9F71671619EA5C80E08D5BEEB1D08 /* NativeAdsConnectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB862E2270713D22A26A429904431577 /* NativeAdsConnectionProtocol.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		2107CB43540CF2DF3F365A5F2D1B8D8D /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4E80B005EBDC339E5B09F7C7C1B9AC /* DataSourceProtocol.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		250B90954338EEFB0EBC6DAA23894DDA /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D61970B6BFA1B5006B0A5CEBB4EED0F /* Stream.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		254BE967D8494345E28A76AE2B15DB93 /* ReferenceArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557BF11A3F235E8B310691DD8C20A2B6 /* ReferenceArray.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		288B407C1861C325D63558155BE51969 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353D5E2DF197EE796415B70DD58DF845 /* Notifications.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		2D36F827AFBCFF04B3D7A51CBF36D6D2 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0364FE690EBE64B8F544F945ED7F212 /* ImageDownloader.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		2DBAF3DED202D8805C6D6FFAB332849C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45D2243B5D899FE9BACC8638F2FD802 /* Foundation.framework */; };
-		2EF7E17FED3C875DD51ED49F21DFAC01 /* test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72CF68BC7869A3D112F6B0B70B5D89F7 /* test.xib */; };
-		35734E97E340F64FCAA4F74EB6523787 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45D2243B5D899FE9BACC8638F2FD802 /* Foundation.framework */; };
-		383F4AF6C46AA6AC9F9217AF905FB7D8 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBBE1DBE80C8043D1AACFF35388DE8C /* Timeline.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		40B6973E8E5464C0C97726DC08D36735 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353EF8CECF13CB746532E7CCF3D354C /* Manager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		4B1842C48335CAC61C729280B5DCD5A8 /* Pods-PocketMediaNativeAds_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F89FC89E7DE7FFC01A52C1A1370EB /* Pods-PocketMediaNativeAds_Example-dummy.m */; };
-		4C05DF3BBA9A8F81ED7A8378B283648E /* NativeAdInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC526EA41ADE4AFAE7EBFE78173F9DD /* NativeAdInjector.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		514A09BBB819F361E14EA3435507C489 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15336EBB4828410FB080381877C1CBB9 /* ServerTrustPolicy.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		548A5A58107DC25220450B18DA7B4E8A /* AbstractAdUnitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBE697E0C7D5487725F8ABDFB7CC6BF /* AbstractAdUnitTableViewCell.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		57E554EC16CB19B91C7FEC8C227AF754 /* FullscreenBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA982FC766D32E886C9563E991034BD /* FullscreenBrowser.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		5F73026B7979E856FDC75E66456EB0FA /* Loud_Speaker_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 392699C3D2C1DCFC18F5998EFDB4CFC0 /* Loud_Speaker_64.png */; };
-		6052DABE98477BB419158E0DE076D149 /* Adrian.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ABE5D23E9B8C1CC40F03EFCD4DC72BBE /* Adrian.bundle */; };
-		62DFB24F1F42A7B0384F8B40AD399B0E /* NativeAdTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D0F0366D7017EE244804BA4832C222 /* NativeAdTableViewDataSource.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		734D4E9CBF9F977A8B62365C32ED517B /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B4F32C4D92F1ACC0215E05EBEC2B6 /* MultipartFormData.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		7BA049A8A530320D26A5FED8582518B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45D2243B5D899FE9BACC8638F2FD802 /* Foundation.framework */; };
-		7DF22EC669D150487216ED6930945298 /* NativeAdsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE6E448E37282BA4409A62215C91E9 /* NativeAdsRequest.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		80F8CE1FF787FC6E9C4A557216ED8616 /* UIButton+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F94C03FAD5C92CEFEAE876C6829F0D /* UIButton+AlamofireImage.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		82D1A45C067C46EA182F5271C7CF8398 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = D402C965854A55E24EDC621B87371CA4 /* Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		85F51C391362AF0746CD0C931F6FB75E /* PocketMediaNativeAds-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 609EBD668A28ADE796C0F3232203759D /* PocketMediaNativeAds-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		863E32885CF961E10C349860B945D58C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4725213121FEC12F519BF19475C52042 /* Error.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		91F023CB33CC22BA4CC841AE468163A9 /* AlamofireImage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DD1266FABDB60FB77700D23188219C0 /* AlamofireImage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		921E9A881AB8D97B0FE6D8E9CEE6E3F8 /* NativeAdsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840EE09AF9D1B2E2622F3A7B20BD43F9 /* NativeAdsConstants.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		9447CB05E9DB0E350C99109EC366D0F9 /* NativeAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F1636C4557338A8B53ACEA1EEF8E72 /* NativeAdCell.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		9469DF81ECB494E84675969B5E13374C /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A9159A8F978A7E38B31D2FB9C38A59AE /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		98A49A1D6A20F4AFA5DD788162F61536 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD13F9498961CBAA32075869F79A1CEF /* ImageCache.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		9A9931D98C16BEB775F90AC82F3A4A21 /* NativeAdCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CABC9BDE1AC7725E2565B6C2F3E7B8 /* NativeAdCollectionViewDataSource.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		9B78F1415A9CB42D487533B43435A913 /* ImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417B248840CF4160944B057C5A58E185 /* ImageFilter.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A0B1654A91840C132C8C29EBA0A31D4A /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C0F900406F5AC4C380BEF1D9EB41D8 /* close@2x.png */; };
-		A13F241863C06A82E01A3486274BAA3B /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = E552F0515070FE3ADD1C30FAF7AE5CB1 /* Download.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A4CADCE4CCFCE52775A06D6F68FB4DE8 /* BigNativeAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6559EB71D7491D72C1858DE741186DE5 /* BigNativeAdTableViewCell.xib */; };
-		AC0BD0F23C2A8C8F350899F45DB4F91F /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000FE400CCE7F9E913DA8C8C46677610 /* Validation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		B33541791196BF6BB17E8009B21B1348 /* Request+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB21497F843DA83273C5AAA8ADAA81A /* Request+AlamofireImage.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		B4D1E65D7590B90E37961CB0F5A55200 /* NativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55F45A7DB9FB677FD40659C7ACAD9C1D /* NativeAdView.xib */; };
-		BAE69CD22A7C90828180D3664DED8E1A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA12CFBEFA8665E06FDC738B3A99B7C /* Result.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		C3293ADDEFD8B20FBAB5C81CBA808F99 /* Pods-PocketMediaNativeAds_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C72AF565E2287F3D30CF16AAB2525FC3 /* Pods-PocketMediaNativeAds_Tests-dummy.m */; };
-		C86923E3A6648C9DE493F465644EE071 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDE69441C3DCB515C7CD4545124C6F /* Upload.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		C894ECD1B937E7794838019BCA3C427B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45D2243B5D899FE9BACC8638F2FD802 /* Foundation.framework */; };
-		CDFBA241542626C18AE01F0F39A98A52 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D15CEC7F087978DC57A01D9092B8235 /* close.png */; };
-		CF2426F2F6AD5134DDE307172B1BDA76 /* NativeAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9255478E0FDFC7B2387FF662912B053 /* NativeAd.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		CFE6E0DA62CC3C0AA51C460558431C28 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACAD1D8B293EDE9515FA531593649A /* Response.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		D1355F55EFF7D4FB32FA55ACF0FC552C /* AlamofireImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB22AE5939252512ED61EC60C35A96F9 /* AlamofireImage-dummy.m */; };
-		D2122146812C29247FCEA51F5957F0E9 /* Pods-PocketMediaNativeAds_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C6DBFD17EF0F6929120A2E06B1A49B9D /* Pods-PocketMediaNativeAds_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E33C1A5FCFD45EA55E9F1AA156EB0B7B /* AbstractAdUnitUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367BF1E7569DE8D83D2251A74251680 /* AbstractAdUnitUIView.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		E42A03C03AF789E657C8A1D228A725C2 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89DBE304DB2033CDF99CF9A23354D04 /* ParameterEncoding.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		E807FF251EB99D92F7B2799F903DB93E /* Pods-PocketMediaNativeAds_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 42236FA83F3F99079BB2EB17538B138A /* Pods-PocketMediaNativeAds_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EB7D1260D31A6F49E3E273CE870AA3DD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 706C7AFFE37BA158C3553250F4B5FAED /* Alamofire.framework */; };
-		EBBDE446877CC11FCE7DB5A25E091674 /* DisplayHelperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37402710C3D7F602184452D889EB436A /* DisplayHelperDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		EDBD0FB0C34E68F787748DED462CAE6D /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207B6A1EED33AB5585A574103334B8CD /* ResponseSerialization.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		EDE755D1A67A2B5F47A00C1611FBAE3A /* NativeAdDisplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35853B9036BD0DFFCDC6E4637CAE7826 /* NativeAdDisplayProtocol.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		F51FDBE0B58714B7CCFC263E262B0842 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A575D9E4EE4D989CA93A184B09FF1 /* Alamofire-dummy.m */; };
-		F5712BA6B6A654C33950977F8191A1B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45D2243B5D899FE9BACC8638F2FD802 /* Foundation.framework */; };
-		F931C555FFF638ECA041B41A3EC1D73E /* NativeAdViewBinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663501502411D59CF993BE5CA9FA8DC /* NativeAdViewBinderProtocol.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		FB921E2C31223EFB30816D7DB741889B /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12F90872EA732E2762D108D5F0D0CA9 /* NetworkReachabilityManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		FF9EF7C4E1B3A92B920E47485C352609 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEF004F964BB7DABD23CD37E5CA978D /* Image.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		FFD16C001B785119ED4AD25287FE36DB /* AdUnitFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34177CAE6CC1AB146FF2B82092CC933E /* AdUnitFactory.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		0B983B34DB4CDE1E2B4E889EC9C51D6F /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C0F900406F5AC4C380BEF1D9EB41D8 /* close@2x.png */; };
+		167E81C7FB5C0CEDB12A5429F8307CC6 /* NativeAdsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E236906E775D7A142110A029AE643 /* NativeAdsConstants.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		169B5466FBF9A4878E838C59AA39692C /* NativeAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71470B464B0DEF5DB9C1647A16BD14B2 /* NativeAdTableViewCell.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		1A36AC79F7611606BF3BD005876B5E8C /* NativeAdViewBinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9487899FE1260124AE722009BC2D9881 /* NativeAdViewBinderProtocol.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		1D9535118CDBF8FA78BD1D7DC71EB71B /* NativeAdsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C42CAC72B6C33A72BC0B29A09B7A81A /* NativeAdsRequest.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		23E1EEA2772640C2AE7BA0DB7D30D52D /* BigNativeAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6559EB71D7491D72C1858DE741186DE5 /* BigNativeAdTableViewCell.xib */; };
+		26BE7B590CBAED3BF0D22193A14B98BE /* NativeAdsConnectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22435080FE8733B92D6FEB28AE9DCD7 /* NativeAdsConnectionProtocol.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		356F00624875A0C6E80726FA1E149849 /* DisplayHelperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0417D5191A50C47DC4646766276810 /* DisplayHelperDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		40B4C46F7F29CB1BEB81068DACD0BE7A /* NativeAdsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6104676E5D8CD193825A582F17D57D /* NativeAdsTableViewDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		410309D06808513AC9F484A81309314E /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D15CEC7F087978DC57A01D9092B8235 /* close.png */; };
+		44FDBD375013F0AA2A2BEF8755B93785 /* AbstractAdUnitUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8871845793E771AD54173704BED3AA63 /* AbstractAdUnitUIView.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		5D31C96DF53ADB2C74D89EDDA2627B40 /* AdUnitFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F24340FD8E1DA0F2DBDCCF4F0432A7 /* AdUnitFactory.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		5DF6F8E90E8557743ED0C918C634FDBB /* FullscreenBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF42EBD808F7C8286EED56E9090B84B /* FullscreenBrowser.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		6F79BE7439062B7D7BC6290481F7941C /* Pods-PocketMediaNativeAds_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C6DBFD17EF0F6929120A2E06B1A49B9D /* Pods-PocketMediaNativeAds_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		771E759D570075FBC51D3A5C7EDAB82D /* Pods-PocketMediaNativeAds_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 42236FA83F3F99079BB2EB17538B138A /* Pods-PocketMediaNativeAds_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7817554526E2393AF280F365EAEF036B /* test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72CF68BC7869A3D112F6B0B70B5D89F7 /* test.xib */; };
+		78292B3FA1EF1D3FE68261DD5A98EFAA /* NativeAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D41AD309664D548EE4D722C24CA69F /* NativeAdCell.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		8009A057DE32E72FD854DACAAE19FB12 /* NativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55F45A7DB9FB677FD40659C7ACAD9C1D /* NativeAdView.xib */; };
+		859F46D046C356D6437C85CD666DF951 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
+		89FE8ADB25134AF7FF1A74CAA837AEB5 /* NativeAdTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7952F972D29225C5F13296F2F9955FAA /* NativeAdTableViewDataSource.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		8B28572049384F4EB9BA760F80502D84 /* NativeAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01FF897076EE86317CF0AAD88E60D42 /* NativeAd.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		947FA552AFE21245ABACBB05255DA936 /* Pods-PocketMediaNativeAds_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C72AF565E2287F3D30CF16AAB2525FC3 /* Pods-PocketMediaNativeAds_Tests-dummy.m */; };
+		95017A3F8FDC793D85C7E656046597E4 /* Pods-PocketMediaNativeAds_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F89FC89E7DE7FFC01A52C1A1370EB /* Pods-PocketMediaNativeAds_Example-dummy.m */; };
+		954F11A6A8E167165B40155E72FF14D3 /* ReferenceArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = F882BEDDA80EE384573704833292B115 /* ReferenceArray.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		98F385ECA8FCC1781A3DE3761135FED6 /* NativeAdsWebviewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5FE2B5D5FA39A8505900DF2CABD1EA /* NativeAdsWebviewDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A21EFA09647C45E736045770FD97F986 /* Adrian.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27FE32CB7688A22DCA4639E50DE0CA1C /* Adrian.bundle */; };
+		A77AED504234C515823354536F9972C3 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B57E8BD20BBB1B91C9E28DD73568A4 /* DataSourceProtocol.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		B1BB0D3C5881DDA9EE5C1568DEAF2567 /* PocketMediaNativeAds-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD653D399AE2D0C3600CCAC6EB4A7412 /* PocketMediaNativeAds-dummy.m */; };
+		C007B76269FF4CC91A2C0361016EF505 /* NativeAdCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3360C90F3728120BADC15EA591DB7 /* NativeAdCollectionViewDataSource.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C1B363FE0ED09569E7C79DE8BFF64656 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
+		CC86F6D5F2648A0DAB89D10421CDEF3E /* NativeAdDisplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D766D128B7354FB372F2B9834B89969B /* NativeAdDisplayProtocol.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		CD1CDD555239BF6347FBD1405D778C8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
+		DB5D0DE35D1A0CEF8B1CD9E84D8C3901 /* NativeAdInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359C6C2D96306B7BD5E6867AA68998AD /* NativeAdInjector.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EF19670FA6602CA05249DE3F49E14BD3 /* AbstractAdUnitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597D214B94C9661A7A1D362ED905BBD1 /* AbstractAdUnitTableViewCell.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		F9AAF3880E34F14018396C398EA6FA9C /* NativeAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D765C2962F4DFDBAF1280BBD9BDAEB /* NativeAdCell.xib */; };
+		FB11B4048E81A8FEEFDDC2CAB20010B4 /* BigNativeAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE318C194548A7D3FAF7B8686ED13BA2 /* BigNativeAdTableViewCell.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		FD6103C2F9F98784A71841E849A65F6D /* PocketMediaNativeAds-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 609EBD668A28ADE796C0F3232203759D /* PocketMediaNativeAds-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FDC3E2B133AFCDB3A6E7D5DC63F7E8DC /* Loud_Speaker_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 392699C3D2C1DCFC18F5998EFDB4CFC0 /* Loud_Speaker_64.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0B2F171AD78CDA7295B4FE021171BF80 /* PBXContainerItemProxy */ = {
+		0CB449959A4AE64F810D6274AAB2F98E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 05094CC4A047119F7ADC14EE74C4881C;
-			remoteInfo = AlamofireImage;
-		};
-		289364EFA6FBEE8B4E055C63A80F1B63 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 79C040AFDDCE1BCBF6D8B5EB0B85887F;
-			remoteInfo = Alamofire;
-		};
-		77CE15AEAC67EA0422BF84CF672B30FB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 659F3957EE1983DB466E91F28FD5A523;
-			remoteInfo = PocketMediaNativeAds;
-		};
-		8B24F3E3388B97B9F328796FB4EF0A38 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 79C040AFDDCE1BCBF6D8B5EB0B85887F;
-			remoteInfo = Alamofire;
-		};
-		D49CBB6B8CB54A17A3CD0077AA6C83F1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 659F3957EE1983DB466E91F28FD5A523;
-			remoteInfo = PocketMediaNativeAds;
-		};
-		E7BDA8A1FCD6A5B2D0E477A039B01328 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0323AF55E10221EEEB46E751849DA4F3;
+			remoteGlobalIDString = 1F4009C75EBFB3465D574882BC01F064;
 			remoteInfo = "PocketMediaNativeAds-Adrian";
 		};
-		EEECBD54D5187569B0A4A6FC1D0B84B5 /* PBXContainerItemProxy */ = {
+		98131C676E13DAB32C5BDC1C5880238B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 05094CC4A047119F7ADC14EE74C4881C;
-			remoteInfo = AlamofireImage;
+			remoteGlobalIDString = 87118BD098F3C50BBE101D22A5D44CC9;
+			remoteInfo = PocketMediaNativeAds;
 		};
-		F8973CBFDFA0ED27A98F5B3CD98C2A19 /* PBXContainerItemProxy */ = {
+		D8CA9283A7B3C977E917C5C1FD554AD9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 79C040AFDDCE1BCBF6D8B5EB0B85887F;
-			remoteInfo = Alamofire;
+			remoteGlobalIDString = 87118BD098F3C50BBE101D22A5D44CC9;
+			remoteInfo = PocketMediaNativeAds;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		000FE400CCE7F9E913DA8C8C46677610 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		09B7BE92F3947573A027322893C92855 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0B8CF713B239BA79A7788172EEB8298C /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0E281806081B611FDBB5B966147F8EF8 /* BigNativeAdTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BigNativeAdTableViewCell.swift; sourceTree = "<group>"; };
-		0F460CE42D4BBAFC37C88FE37A8FEB43 /* Pods_PocketMediaNativeAds_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAds_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		15336EBB4828410FB080381877C1CBB9 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		16F5BC36BD86D2E6C1BFD17C67E48FDC /* AlamofireImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AlamofireImage-prefix.pch"; sourceTree = "<group>"; };
-		1F1A575D9E4EE4D989CA93A184B09FF1 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
-		207B6A1EED33AB5585A574103334B8CD /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		1C42CAC72B6C33A72BC0B29A09B7A81A /* NativeAdsRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsRequest.swift; sourceTree = "<group>"; };
+		211AC92F32F4F854848199B598B32CAB /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PocketMediaNativeAds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		269E236906E775D7A142110A029AE643 /* NativeAdsConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsConstants.swift; sourceTree = "<group>"; };
 		2729E0CCBC98CDDBE76DA16F0DB71E01 /* Pods-PocketMediaNativeAds_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PocketMediaNativeAds_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		2E2B4F32C4D92F1ACC0215E05EBEC2B6 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
-		2E5476B5FCAC222E57B10369808678FC /* UIImageView+AlamofireImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+AlamofireImage.swift"; path = "Source/UIImageView+AlamofireImage.swift"; sourceTree = "<group>"; };
-		2EFDE69441C3DCB515C7CD4545124C6F /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
-		2FBE697E0C7D5487725F8ABDFB7CC6BF /* AbstractAdUnitTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AbstractAdUnitTableViewCell.swift; sourceTree = "<group>"; };
-		34177CAE6CC1AB146FF2B82092CC933E /* AdUnitFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AdUnitFactory.swift; sourceTree = "<group>"; };
-		3463BDE2A8DE33A9E77235A7C51370C6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		353D5E2DF197EE796415B70DD58DF845 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
-		35853B9036BD0DFFCDC6E4637CAE7826 /* NativeAdDisplayProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdDisplayProtocol.swift; sourceTree = "<group>"; };
-		36BEE7460BDCDB9D08B36B345F8E297F /* UIImage+AlamofireImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+AlamofireImage.swift"; path = "Source/UIImage+AlamofireImage.swift"; sourceTree = "<group>"; };
-		37402710C3D7F602184452D889EB436A /* DisplayHelperDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DisplayHelperDelegate.swift; sourceTree = "<group>"; };
+		27FE32CB7688A22DCA4639E50DE0CA1C /* Adrian.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Adrian.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		28B57E8BD20BBB1B91C9E28DD73568A4 /* DataSourceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DataSourceProtocol.swift; sourceTree = "<group>"; };
+		2B059423754DB1D57F3C375A3A13C863 /* Pods_PocketMediaNativeAds_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAds_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		359C6C2D96306B7BD5E6867AA68998AD /* NativeAdInjector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdInjector.swift; sourceTree = "<group>"; };
 		37706C0CD67753B426520132F64192E3 /* Pods-PocketMediaNativeAds_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PocketMediaNativeAds_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		392699C3D2C1DCFC18F5998EFDB4CFC0 /* Loud_Speaker_64.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = Loud_Speaker_64.png; sourceTree = "<group>"; };
-		3DD1266FABDB60FB77700D23188219C0 /* AlamofireImage-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AlamofireImage-umbrella.h"; sourceTree = "<group>"; };
+		3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3F6104676E5D8CD193825A582F17D57D /* NativeAdsTableViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsTableViewDelegate.swift; sourceTree = "<group>"; };
 		3FF2FC726BB30BB788A4F1B9FCD41431 /* ResourceBundle-Adrian-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Adrian-Info.plist"; sourceTree = "<group>"; };
-		417B248840CF4160944B057C5A58E185 /* ImageFilter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageFilter.swift; path = Source/ImageFilter.swift; sourceTree = "<group>"; };
 		42236FA83F3F99079BB2EB17538B138A /* Pods-PocketMediaNativeAds_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PocketMediaNativeAds_Example-umbrella.h"; sourceTree = "<group>"; };
 		4605929A0FF4C8F49E3CA816CC778117 /* Pods-PocketMediaNativeAds_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PocketMediaNativeAds_Example.modulemap"; sourceTree = "<group>"; };
-		4725213121FEC12F519BF19475C52042 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
 		48878F1023FA3FB769521ED0C3B8B9CB /* Pods-PocketMediaNativeAds_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PocketMediaNativeAds_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		4A101A87F250EE2344C32659C6939A10 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5002F0B0DBE833615C656B5EECAC7714 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		52CABC9BDE1AC7725E2565B6C2F3E7B8 /* NativeAdCollectionViewDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		4F0417D5191A50C47DC4646766276810 /* DisplayHelperDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DisplayHelperDelegate.swift; sourceTree = "<group>"; };
 		54F8E038A51044463A655EF261165774 /* Pods-PocketMediaNativeAds_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PocketMediaNativeAds_Tests.modulemap"; sourceTree = "<group>"; };
-		557BF11A3F235E8B310691DD8C20A2B6 /* ReferenceArray.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReferenceArray.swift; sourceTree = "<group>"; };
+		55D41AD309664D548EE4D722C24CA69F /* NativeAdCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdCell.swift; sourceTree = "<group>"; };
 		55F45A7DB9FB677FD40659C7ACAD9C1D /* NativeAdView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = NativeAdView.xib; sourceTree = "<group>"; };
+		597D214B94C9661A7A1D362ED905BBD1 /* AbstractAdUnitTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AbstractAdUnitTableViewCell.swift; sourceTree = "<group>"; };
 		5A827A5B15232385F75CCB97C192F9D7 /* Pods-PocketMediaNativeAds_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PocketMediaNativeAds_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		5EA982FC766D32E886C9563E991034BD /* FullscreenBrowser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FullscreenBrowser.swift; sourceTree = "<group>"; };
+		5CF42EBD808F7C8286EED56E9090B84B /* FullscreenBrowser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FullscreenBrowser.swift; sourceTree = "<group>"; };
 		609EBD668A28ADE796C0F3232203759D /* PocketMediaNativeAds-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PocketMediaNativeAds-umbrella.h"; sourceTree = "<group>"; };
 		65493E672DAB3CDED0DA3F1E615B1747 /* PocketMediaNativeAds.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PocketMediaNativeAds.modulemap; sourceTree = "<group>"; };
 		6559EB71D7491D72C1858DE741186DE5 /* BigNativeAdTableViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = BigNativeAdTableViewCell.xib; sourceTree = "<group>"; };
-		6D61970B6BFA1B5006B0A5CEBB4EED0F /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
-		706C7AFFE37BA158C3553250F4B5FAED /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71470B464B0DEF5DB9C1647A16BD14B2 /* NativeAdTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdTableViewCell.swift; sourceTree = "<group>"; };
 		72CF68BC7869A3D112F6B0B70B5D89F7 /* test.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = test.xib; sourceTree = "<group>"; };
-		72F94C03FAD5C92CEFEAE876C6829F0D /* UIButton+AlamofireImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+AlamofireImage.swift"; path = "Source/UIButton+AlamofireImage.swift"; sourceTree = "<group>"; };
-		7367BF1E7569DE8D83D2251A74251680 /* AbstractAdUnitUIView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AbstractAdUnitUIView.swift; sourceTree = "<group>"; };
+		7952F972D29225C5F13296F2F9955FAA /* NativeAdTableViewDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdTableViewDataSource.swift; sourceTree = "<group>"; };
 		7A3F89FC89E7DE7FFC01A52C1A1370EB /* Pods-PocketMediaNativeAds_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PocketMediaNativeAds_Example-dummy.m"; sourceTree = "<group>"; };
 		7B4FA2FD740CBD83AB6EAC030F50A1C6 /* Pods-PocketMediaNativeAds_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PocketMediaNativeAds_Tests-resources.sh"; sourceTree = "<group>"; };
-		7DA7D6400293A8B514B1C300179CA05C /* AlamofireImage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AlamofireImage.xcconfig; sourceTree = "<group>"; };
-		7E4E80B005EBDC339E5B09F7C7C1B9AC /* DataSourceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DataSourceProtocol.swift; sourceTree = "<group>"; };
-		8140C73B013A38DC4CFC00E027881E4C /* AlamofireImage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = AlamofireImage.modulemap; sourceTree = "<group>"; };
-		840EE09AF9D1B2E2622F3A7B20BD43F9 /* NativeAdsConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsConstants.swift; sourceTree = "<group>"; };
 		85C0F900406F5AC4C380BEF1D9EB41D8 /* close@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
-		88D0F0366D7017EE244804BA4832C222 /* NativeAdTableViewDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdTableViewDataSource.swift; sourceTree = "<group>"; };
-		899440AA9BF862998C03276188A53676 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		8871845793E771AD54173704BED3AA63 /* AbstractAdUnitUIView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AbstractAdUnitUIView.swift; sourceTree = "<group>"; };
 		8D15CEC7F087978DC57A01D9092B8235 /* close.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
-		8FA12CFBEFA8665E06FDC738B3A99B7C /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		904D4F79E48CBC772B8C218E767D5F01 /* PocketMediaNativeAds-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PocketMediaNativeAds-prefix.pch"; sourceTree = "<group>"; };
-		9982B361DC4D42D5C417AAF0EEC56A43 /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PocketMediaNativeAds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9BEF004F964BB7DABD23CD37E5CA978D /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Source/Image.swift; sourceTree = "<group>"; };
-		9DFE6E448E37282BA4409A62215C91E9 /* NativeAdsRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsRequest.swift; sourceTree = "<group>"; };
-		A461F322348E831BD5ECAD2C80E9A95D /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		9487899FE1260124AE722009BC2D9881 /* NativeAdViewBinderProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdViewBinderProtocol.swift; sourceTree = "<group>"; };
+		95F24340FD8E1DA0F2DBDCCF4F0432A7 /* AdUnitFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AdUnitFactory.swift; sourceTree = "<group>"; };
+		9F5FE2B5D5FA39A8505900DF2CABD1EA /* NativeAdsWebviewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsWebviewDelegate.swift; sourceTree = "<group>"; };
+		A22435080FE8733B92D6FEB28AE9DCD7 /* NativeAdsConnectionProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsConnectionProtocol.swift; sourceTree = "<group>"; };
 		A56B86766DE7CAE3E793B502CE10EDAA /* Pods-PocketMediaNativeAds_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PocketMediaNativeAds_Example.release.xcconfig"; sourceTree = "<group>"; };
-		A9159A8F978A7E38B31D2FB9C38A59AE /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		AA4F1774EDB3EA299E35709DF111A71C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ABE5D23E9B8C1CC40F03EFCD4DC72BBE /* Adrian.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Adrian.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE5B574B0DF83C9306654ECEA290EA5B /* NativeAdsWebviewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsWebviewDelegate.swift; sourceTree = "<group>"; };
-		AEBBE1DBE80C8043D1AACFF35388DE8C /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
 		B31CA81B2B79C8350498FF31C0075F6E /* Pods-PocketMediaNativeAds_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PocketMediaNativeAds_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		B3465D90274447D5620EBCAC3305733C /* Pods_PocketMediaNativeAds_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAds_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D765C2962F4DFDBAF1280BBD9BDAEB /* NativeAdCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = NativeAdCell.xib; sourceTree = "<group>"; };
-		B9255478E0FDFC7B2387FF662912B053 /* NativeAd.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAd.swift; sourceTree = "<group>"; };
+		B9B3360C90F3728120BADC15EA591DB7 /* NativeAdCollectionViewDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BAD592F13338906B41811D7BD9E357C8 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
-		BB22AE5939252512ED61EC60C35A96F9 /* AlamofireImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AlamofireImage-dummy.m"; sourceTree = "<group>"; };
-		BBC526EA41ADE4AFAE7EBFE78173F9DD /* NativeAdInjector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdInjector.swift; sourceTree = "<group>"; };
-		BD13F9498961CBAA32075869F79A1CEF /* ImageCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageCache.swift; path = Source/ImageCache.swift; sourceTree = "<group>"; };
-		BDA2A923BC7631394FD3CEEBDE8D0B13 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		BC98540C47AC573F2317A3E44FA5EC29 /* Pods_PocketMediaNativeAds_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAds_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0EB815AEAF01C2B60EA1796DACD03B1 /* PocketMediaNativeAds.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PocketMediaNativeAds.xcconfig; sourceTree = "<group>"; };
-		C353EF8CECF13CB746532E7CCF3D354C /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
-		C45D2243B5D899FE9BACC8638F2FD802 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		C6DBFD17EF0F6929120A2E06B1A49B9D /* Pods-PocketMediaNativeAds_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PocketMediaNativeAds_Tests-umbrella.h"; sourceTree = "<group>"; };
 		C72AF565E2287F3D30CF16AAB2525FC3 /* Pods-PocketMediaNativeAds_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PocketMediaNativeAds_Tests-dummy.m"; sourceTree = "<group>"; };
-		CBE541EC5ABD7084E6CB7E8F1F0884E2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDC1D7CF43F1B34838C977606E1E9D74 /* Pods-PocketMediaNativeAds_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PocketMediaNativeAds_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		D402C965854A55E24EDC621B87371CA4 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		D01FF897076EE86317CF0AAD88E60D42 /* NativeAd.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAd.swift; sourceTree = "<group>"; };
+		D766D128B7354FB372F2B9834B89969B /* NativeAdDisplayProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdDisplayProtocol.swift; sourceTree = "<group>"; };
 		D7AA993E3316D8F22809DBD4F5942F62 /* Pods-PocketMediaNativeAds_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PocketMediaNativeAds_Example-resources.sh"; sourceTree = "<group>"; };
-		D89DBE304DB2033CDF99CF9A23354D04 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
-		D97852DDAAC5AD95377FB6C6AEEF429A /* NativeAdTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdTableViewCell.swift; sourceTree = "<group>"; };
-		DAB21497F843DA83273C5AAA8ADAA81A /* Request+AlamofireImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Request+AlamofireImage.swift"; path = "Source/Request+AlamofireImage.swift"; sourceTree = "<group>"; };
 		DD653D399AE2D0C3600CCAC6EB4A7412 /* PocketMediaNativeAds-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PocketMediaNativeAds-dummy.m"; sourceTree = "<group>"; };
-		DDACAD1D8B293EDE9515FA531593649A /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		DFAF757006F816E4857329654017B963 /* Pods-PocketMediaNativeAds_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PocketMediaNativeAds_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		E0364FE690EBE64B8F544F945ED7F212 /* ImageDownloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Source/ImageDownloader.swift; sourceTree = "<group>"; };
 		E1EEE0769B857F648CFDEFDA4676B0AA /* Pods-PocketMediaNativeAds_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PocketMediaNativeAds_Example-frameworks.sh"; sourceTree = "<group>"; };
-		E552F0515070FE3ADD1C30FAF7AE5CB1 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
-		E663501502411D59CF993BE5CA9FA8DC /* NativeAdViewBinderProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdViewBinderProtocol.swift; sourceTree = "<group>"; };
-		E7F1636C4557338A8B53ACEA1EEF8E72 /* NativeAdCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdCell.swift; sourceTree = "<group>"; };
-		F12F90872EA732E2762D108D5F0D0CA9 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
-		FB862E2270713D22A26A429904431577 /* NativeAdsConnectionProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsConnectionProtocol.swift; sourceTree = "<group>"; };
+		F882BEDDA80EE384573704833292B115 /* ReferenceArray.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReferenceArray.swift; sourceTree = "<group>"; };
 		FDFA63161936E3F1C54C60F4C8EABB09 /* Pods-PocketMediaNativeAds_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PocketMediaNativeAds_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		FE318C194548A7D3FAF7B8686ED13BA2 /* BigNativeAdTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BigNativeAdTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0B003211E0A76BC9C2A73902C5FBB2E7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2DBAF3DED202D8805C6D6FFAB332849C /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0D861868089ABA9EFF137D6EC0F99645 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EB7D1260D31A6F49E3E273CE870AA3DD /* Alamofire.framework in Frameworks */,
-				F5712BA6B6A654C33950977F8191A1B2 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4F4BF66F605CE17249206C0469E4B523 /* Frameworks */ = {
+		28CAA4AEF2A244917ABF5AF6952C4DCB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1729F851F648EC60EE93CDB3C8BAEAD /* Frameworks */ = {
+		41D378A8F6FDAAA88E534FE41BF97C9C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BA049A8A530320D26A5FED8582518B9 /* Foundation.framework in Frameworks */,
+				C1B363FE0ED09569E7C79DE8BFF64656 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EF86846C71A65A006A83AA23C36ACCE2 /* Frameworks */ = {
+		D87ED8A1328D8683EE0EB9539D8128E1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35734E97E340F64FCAA4F74EB6523787 /* Foundation.framework in Frameworks */,
+				859F46D046C356D6437C85CD666DF951 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F931EA2DD0976F7A8270527137A407DB /* Frameworks */ = {
+		EF456A6B62FA1331FCA15DCBE56F26B6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C894ECD1B937E7794838019BCA3C427B /* Foundation.framework in Frameworks */,
+				CD1CDD555239BF6347FBD1405D778C8D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08FDAC6D1B27190FC7C49C85D7923EF8 /* Adunits */ = {
+		112C7921E3A497328D11F4930CBBC9CA /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				2FBE697E0C7D5487725F8ABDFB7CC6BF /* AbstractAdUnitTableViewCell.swift */,
-				7367BF1E7569DE8D83D2251A74251680 /* AbstractAdUnitUIView.swift */,
-				34177CAE6CC1AB146FF2B82092CC933E /* AdUnitFactory.swift */,
-				0E281806081B611FDBB5B966147F8EF8 /* BigNativeAdTableViewCell.swift */,
-				E7F1636C4557338A8B53ACEA1EEF8E72 /* NativeAdCell.swift */,
+				3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */,
 			);
-			path = Adunits;
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		27C0BF7C213085814812AB13CDC26457 /* Pod */ = {
@@ -327,15 +201,6 @@
 			path = "Example/Pods/Target Support Files/PocketMediaNativeAds";
 			sourceTree = "<group>";
 		};
-		314DDD57F2FDBCE4CD49480065E730B8 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				720256CCBB01E6A1E055089076E63E91 /* Alamofire */,
-				47F69552B308C020D05CA6E4AA563C08 /* AlamofireImage */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		3905F44E649E397D99AE8A121A37BAC5 /* Pods-PocketMediaNativeAds_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,22 +219,6 @@
 			path = "Target Support Files/Pods-PocketMediaNativeAds_Example";
 			sourceTree = "<group>";
 		};
-		47F69552B308C020D05CA6E4AA563C08 /* AlamofireImage */ = {
-			isa = PBXGroup;
-			children = (
-				9BEF004F964BB7DABD23CD37E5CA978D /* Image.swift */,
-				BD13F9498961CBAA32075869F79A1CEF /* ImageCache.swift */,
-				E0364FE690EBE64B8F544F945ED7F212 /* ImageDownloader.swift */,
-				417B248840CF4160944B057C5A58E185 /* ImageFilter.swift */,
-				DAB21497F843DA83273C5AAA8ADAA81A /* Request+AlamofireImage.swift */,
-				72F94C03FAD5C92CEFEAE876C6829F0D /* UIButton+AlamofireImage.swift */,
-				36BEE7460BDCDB9D08B36B345F8E297F /* UIImage+AlamofireImage.swift */,
-				2E5476B5FCAC222E57B10369808678FC /* UIImageView+AlamofireImage.swift */,
-				F323B6B371D9B994D2FCD5E4DEDED8FF /* Support Files */,
-			);
-			path = AlamofireImage;
-			sourceTree = "<group>";
-		};
 		54EB613B3A54B5D49EACA1D4B29D0E7F /* Pods-PocketMediaNativeAds_Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,51 +235,6 @@
 			);
 			name = "Pods-PocketMediaNativeAds_Tests";
 			path = "Target Support Files/Pods-PocketMediaNativeAds_Tests";
-			sourceTree = "<group>";
-		};
-		59B91F212518421F271EBA85D5530651 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				706C7AFFE37BA158C3553250F4B5FAED /* Alamofire.framework */,
-				AF15F95F7B747BF9DC8EA068BFF8100A /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		60CC721D0C46833EE4F9EED448D88B1D /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				08FDAC6D1B27190FC7C49C85D7923EF8 /* Adunits */,
-				9F914068CED758F55692CE05BBADFFA9 /* Core */,
-				A90BFB6BAEAFF0B06834544C480625A6 /* DataSource */,
-				B99371E193990C5E1E7F2D46D0A11988 /* Util */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		720256CCBB01E6A1E055089076E63E91 /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-				D402C965854A55E24EDC621B87371CA4 /* Alamofire.swift */,
-				E552F0515070FE3ADD1C30FAF7AE5CB1 /* Download.swift */,
-				4725213121FEC12F519BF19475C52042 /* Error.swift */,
-				C353EF8CECF13CB746532E7CCF3D354C /* Manager.swift */,
-				2E2B4F32C4D92F1ACC0215E05EBEC2B6 /* MultipartFormData.swift */,
-				F12F90872EA732E2762D108D5F0D0CA9 /* NetworkReachabilityManager.swift */,
-				353D5E2DF197EE796415B70DD58DF845 /* Notifications.swift */,
-				D89DBE304DB2033CDF99CF9A23354D04 /* ParameterEncoding.swift */,
-				BDA2A923BC7631394FD3CEEBDE8D0B13 /* Request.swift */,
-				DDACAD1D8B293EDE9515FA531593649A /* Response.swift */,
-				207B6A1EED33AB5585A574103334B8CD /* ResponseSerialization.swift */,
-				8FA12CFBEFA8665E06FDC738B3A99B7C /* Result.swift */,
-				15336EBB4828410FB080381877C1CBB9 /* ServerTrustPolicy.swift */,
-				6D61970B6BFA1B5006B0A5CEBB4EED0F /* Stream.swift */,
-				AEBBE1DBE80C8043D1AACFF35388DE8C /* Timeline.swift */,
-				2EFDE69441C3DCB515C7CD4545124C6F /* Upload.swift */,
-				000FE400CCE7F9E913DA8C8C46677610 /* Validation.swift */,
-				B583718061F7CA5BE353555747BEFB72 /* Support Files */,
-			);
-			path = Alamofire;
 			sourceTree = "<group>";
 		};
 		7287140D06117E3044786A1738091628 /* PocketMediaNativeAds */ = {
@@ -463,11 +267,21 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				9B14F54F90B58A72BFDB1C7B5C05C7ED /* Development Pods */,
-				59B91F212518421F271EBA85D5530651 /* Frameworks */,
-				314DDD57F2FDBCE4CD49480065E730B8 /* Pods */,
-				EFBED8C2CE30E670731213F90FB2C890 /* Products */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				81C9169B0A6CC8C90933AF42D3FA2C31 /* Products */,
 				D3977D1BC80D3C856860B178C3B7952D /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		81C9169B0A6CC8C90933AF42D3FA2C31 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27FE32CB7688A22DCA4639E50DE0CA1C /* Adrian.bundle */,
+				211AC92F32F4F854848199B598B32CAB /* PocketMediaNativeAds.framework */,
+				BC98540C47AC573F2317A3E44FA5EC29 /* Pods_PocketMediaNativeAds_Example.framework */,
+				2B059423754DB1D57F3C375A3A13C863 /* Pods_PocketMediaNativeAds_Tests.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		9B14F54F90B58A72BFDB1C7B5C05C7ED /* Development Pods */ = {
@@ -478,68 +292,78 @@
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		9F914068CED758F55692CE05BBADFFA9 /* Core */ = {
+		9BF04455D28C109AD4E46534ACBB30D3 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				5EA982FC766D32E886C9563E991034BD /* FullscreenBrowser.swift */,
-				B9255478E0FDFC7B2387FF662912B053 /* NativeAd.swift */,
-				35853B9036BD0DFFCDC6E4637CAE7826 /* NativeAdDisplayProtocol.swift */,
-				FB862E2270713D22A26A429904431577 /* NativeAdsConnectionProtocol.swift */,
-				840EE09AF9D1B2E2622F3A7B20BD43F9 /* NativeAdsConstants.swift */,
-				9DFE6E448E37282BA4409A62215C91E9 /* NativeAdsRequest.swift */,
-				AE5B574B0DF83C9306654ECEA290EA5B /* NativeAdsWebviewDelegate.swift */,
-				D97852DDAAC5AD95377FB6C6AEEF429A /* NativeAdTableViewCell.swift */,
+				5CF42EBD808F7C8286EED56E9090B84B /* FullscreenBrowser.swift */,
+				D01FF897076EE86317CF0AAD88E60D42 /* NativeAd.swift */,
+				D766D128B7354FB372F2B9834B89969B /* NativeAdDisplayProtocol.swift */,
+				A22435080FE8733B92D6FEB28AE9DCD7 /* NativeAdsConnectionProtocol.swift */,
+				269E236906E775D7A142110A029AE643 /* NativeAdsConstants.swift */,
+				1C42CAC72B6C33A72BC0B29A09B7A81A /* NativeAdsRequest.swift */,
+				9F5FE2B5D5FA39A8505900DF2CABD1EA /* NativeAdsWebviewDelegate.swift */,
+				71470B464B0DEF5DB9C1647A16BD14B2 /* NativeAdTableViewCell.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		A90BFB6BAEAFF0B06834544C480625A6 /* DataSource */ = {
+		AC7B90CCF139280ECD14E549530F6D65 /* Adunits */ = {
 			isa = PBXGroup;
 			children = (
-				7E4E80B005EBDC339E5B09F7C7C1B9AC /* DataSourceProtocol.swift */,
-				37402710C3D7F602184452D889EB436A /* DisplayHelperDelegate.swift */,
-				52CABC9BDE1AC7725E2565B6C2F3E7B8 /* NativeAdCollectionViewDataSource.swift */,
-				BBC526EA41ADE4AFAE7EBFE78173F9DD /* NativeAdInjector.swift */,
-				88D0F0366D7017EE244804BA4832C222 /* NativeAdTableViewDataSource.swift */,
-				E663501502411D59CF993BE5CA9FA8DC /* NativeAdViewBinderProtocol.swift */,
+				597D214B94C9661A7A1D362ED905BBD1 /* AbstractAdUnitTableViewCell.swift */,
+				8871845793E771AD54173704BED3AA63 /* AbstractAdUnitUIView.swift */,
+				95F24340FD8E1DA0F2DBDCCF4F0432A7 /* AdUnitFactory.swift */,
+				FE318C194548A7D3FAF7B8686ED13BA2 /* BigNativeAdTableViewCell.swift */,
+				55D41AD309664D548EE4D722C24CA69F /* NativeAdCell.swift */,
 			);
-			path = DataSource;
+			path = Adunits;
 			sourceTree = "<group>";
 		};
-		AF15F95F7B747BF9DC8EA068BFF8100A /* iOS */ = {
+		ACC0116A90765B3650D338120495DACA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C45D2243B5D899FE9BACC8638F2FD802 /* Foundation.framework */,
+				AC7B90CCF139280ECD14E549530F6D65 /* Adunits */,
+				9BF04455D28C109AD4E46534ACBB30D3 /* Core */,
+				C25F5F51077CEDB0623AC1CB12CB76A2 /* DataSource */,
+				B31D27D155310BFD23B6B35275A8A878 /* Util */,
 			);
-			name = iOS;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		B583718061F7CA5BE353555747BEFB72 /* Support Files */ = {
+		B31D27D155310BFD23B6B35275A8A878 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				899440AA9BF862998C03276188A53676 /* Alamofire.modulemap */,
-				BAD592F13338906B41811D7BD9E357C8 /* Alamofire.xcconfig */,
-				1F1A575D9E4EE4D989CA93A184B09FF1 /* Alamofire-dummy.m */,
-				A461F322348E831BD5ECAD2C80E9A95D /* Alamofire-prefix.pch */,
-				A9159A8F978A7E38B31D2FB9C38A59AE /* Alamofire-umbrella.h */,
-				3463BDE2A8DE33A9E77235A7C51370C6 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Alamofire";
-			sourceTree = "<group>";
-		};
-		B99371E193990C5E1E7F2D46D0A11988 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				557BF11A3F235E8B310691DD8C20A2B6 /* ReferenceArray.swift */,
+				F882BEDDA80EE384573704833292B115 /* ReferenceArray.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				112C7921E3A497328D11F4930CBBC9CA /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C25F5F51077CEDB0623AC1CB12CB76A2 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				28B57E8BD20BBB1B91C9E28DD73568A4 /* DataSourceProtocol.swift */,
+				4F0417D5191A50C47DC4646766276810 /* DisplayHelperDelegate.swift */,
+				B9B3360C90F3728120BADC15EA591DB7 /* NativeAdCollectionViewDataSource.swift */,
+				359C6C2D96306B7BD5E6867AA68998AD /* NativeAdInjector.swift */,
+				3F6104676E5D8CD193825A582F17D57D /* NativeAdsTableViewDelegate.swift */,
+				7952F972D29225C5F13296F2F9955FAA /* NativeAdTableViewDataSource.swift */,
+				9487899FE1260124AE722009BC2D9881 /* NativeAdViewBinderProtocol.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		C5A5A29F31FE40B647BDDCA7F3D1705C /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				60CC721D0C46833EE4F9EED448D88B1D /* Classes */,
+				ACC0116A90765B3650D338120495DACA /* Classes */,
 			);
 			path = Pod;
 			sourceTree = "<group>";
@@ -561,86 +385,43 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		EFBED8C2CE30E670731213F90FB2C890 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				ABE5D23E9B8C1CC40F03EFCD4DC72BBE /* Adrian.bundle */,
-				5002F0B0DBE833615C656B5EECAC7714 /* Alamofire.framework */,
-				0B8CF713B239BA79A7788172EEB8298C /* AlamofireImage.framework */,
-				9982B361DC4D42D5C417AAF0EEC56A43 /* PocketMediaNativeAds.framework */,
-				0F460CE42D4BBAFC37C88FE37A8FEB43 /* Pods_PocketMediaNativeAds_Example.framework */,
-				B3465D90274447D5620EBCAC3305733C /* Pods_PocketMediaNativeAds_Tests.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		F323B6B371D9B994D2FCD5E4DEDED8FF /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				8140C73B013A38DC4CFC00E027881E4C /* AlamofireImage.modulemap */,
-				7DA7D6400293A8B514B1C300179CA05C /* AlamofireImage.xcconfig */,
-				BB22AE5939252512ED61EC60C35A96F9 /* AlamofireImage-dummy.m */,
-				16F5BC36BD86D2E6C1BFD17C67E48FDC /* AlamofireImage-prefix.pch */,
-				3DD1266FABDB60FB77700D23188219C0 /* AlamofireImage-umbrella.h */,
-				CBE541EC5ABD7084E6CB7E8F1F0884E2 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/AlamofireImage";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		17C639DC072E4C38963C9882EA3A9E2B /* Headers */ = {
+		144A30E4AF23CCF63AB69DF1051D8DE7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2122146812C29247FCEA51F5957F0E9 /* Pods-PocketMediaNativeAds_Tests-umbrella.h in Headers */,
+				771E759D570075FBC51D3A5C7EDAB82D /* Pods-PocketMediaNativeAds_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2F5C71028A183F0A03138364A6820F48 /* Headers */ = {
+		45FE9EE1B15AAD98D8EEBC896D6B865A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85F51C391362AF0746CD0C931F6FB75E /* PocketMediaNativeAds-umbrella.h in Headers */,
+				FD6103C2F9F98784A71841E849A65F6D /* PocketMediaNativeAds-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A884B68346573C444B359F429EC548AC /* Headers */ = {
+		932CF17403CDD705927F2D3703A53254 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91F023CB33CC22BA4CC841AE468163A9 /* AlamofireImage-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CA5D0AB9F706AAB502F7085E05E941BC /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E807FF251EB99D92F7B2799F903DB93E /* Pods-PocketMediaNativeAds_Example-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EFDF3B631BBB965A372347705CA14854 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9469DF81ECB494E84675969B5E13374C /* Alamofire-umbrella.h in Headers */,
+				6F79BE7439062B7D7BC6290481F7941C /* Pods-PocketMediaNativeAds_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0323AF55E10221EEEB46E751849DA4F3 /* PocketMediaNativeAds-Adrian */ = {
+		1F4009C75EBFB3465D574882BC01F064 /* PocketMediaNativeAds-Adrian */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7EC7F62B913C4E57F6B29209FB800761 /* Build configuration list for PBXNativeTarget "PocketMediaNativeAds-Adrian" */;
+			buildConfigurationList = 464ECB664CDE9D65CCF6C160B539E150 /* Build configuration list for PBXNativeTarget "PocketMediaNativeAds-Adrian" */;
 			buildPhases = (
-				7F862FAE1C73921986179888BFFDC6E3 /* Sources */,
-				4F4BF66F605CE17249206C0469E4B523 /* Frameworks */,
-				82750EF009E9090E8618396AA8F83E90 /* Resources */,
+				DBA5A8305D4EC16E2781A18D9F89C678 /* Sources */,
+				28CAA4AEF2A244917ABF5AF6952C4DCB /* Frameworks */,
+				0C0B7754F5B5CBAB65788A40541857C5 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -648,101 +429,62 @@
 			);
 			name = "PocketMediaNativeAds-Adrian";
 			productName = "PocketMediaNativeAds-Adrian";
-			productReference = ABE5D23E9B8C1CC40F03EFCD4DC72BBE /* Adrian.bundle */;
+			productReference = 27FE32CB7688A22DCA4639E50DE0CA1C /* Adrian.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		05094CC4A047119F7ADC14EE74C4881C /* AlamofireImage */ = {
+		87118BD098F3C50BBE101D22A5D44CC9 /* PocketMediaNativeAds */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C8D14B87B6F6B35ACF7D03FBA2D9F5A2 /* Build configuration list for PBXNativeTarget "AlamofireImage" */;
+			buildConfigurationList = 28FE0BC3B8A8515F433E7B6B46B4BDFA /* Build configuration list for PBXNativeTarget "PocketMediaNativeAds" */;
 			buildPhases = (
-				78515218F351B1450E29E44D798D5FD6 /* Sources */,
-				0D861868089ABA9EFF137D6EC0F99645 /* Frameworks */,
-				A884B68346573C444B359F429EC548AC /* Headers */,
+				A7407336A4D55232318618058A3B1E5E /* Sources */,
+				41D378A8F6FDAAA88E534FE41BF97C9C /* Frameworks */,
+				4B5157C2D30D0CDE079E6ACC11476E75 /* Resources */,
+				45FE9EE1B15AAD98D8EEBC896D6B865A /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B42A735E6DB7ECE2C1061ED7B65DFED4 /* PBXTargetDependency */,
-			);
-			name = AlamofireImage;
-			productName = AlamofireImage;
-			productReference = 0B8CF713B239BA79A7788172EEB8298C /* AlamofireImage.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		0C7437FC5801A4660092DDCF21A7A8AB /* Pods-PocketMediaNativeAds_Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C1900D5B490FD61791AA67F2D1DEE3CB /* Build configuration list for PBXNativeTarget "Pods-PocketMediaNativeAds_Example" */;
-			buildPhases = (
-				96C6B87E6ADE1AF7640AB13966BD2DDF /* Sources */,
-				0B003211E0A76BC9C2A73902C5FBB2E7 /* Frameworks */,
-				CA5D0AB9F706AAB502F7085E05E941BC /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				45E1AD5F03A8A3CB878DD6CC76B812B9 /* PBXTargetDependency */,
-				DFB1C5976470C45738E667775B00ED9A /* PBXTargetDependency */,
-				88F68DE537419872F8AD2B54BDD5285C /* PBXTargetDependency */,
-			);
-			name = "Pods-PocketMediaNativeAds_Example";
-			productName = "Pods-PocketMediaNativeAds_Example";
-			productReference = 0F460CE42D4BBAFC37C88FE37A8FEB43 /* Pods_PocketMediaNativeAds_Example.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		10170CB6656A887B6E987D5A9017DDA8 /* Pods-PocketMediaNativeAds_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5DE49ECB25AB01D3A3BA371F87AEC699 /* Build configuration list for PBXNativeTarget "Pods-PocketMediaNativeAds_Tests" */;
-			buildPhases = (
-				4F0C61EC0E8049AFC517D323E9E0C915 /* Sources */,
-				F931EA2DD0976F7A8270527137A407DB /* Frameworks */,
-				17C639DC072E4C38963C9882EA3A9E2B /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C801688AF13001BA446F45FD93971EA5 /* PBXTargetDependency */,
-				B19E8AFD0618E49ED7C340766C25AC26 /* PBXTargetDependency */,
-				66AB2F52967E361E088C48E6EE3161AB /* PBXTargetDependency */,
-			);
-			name = "Pods-PocketMediaNativeAds_Tests";
-			productName = "Pods-PocketMediaNativeAds_Tests";
-			productReference = B3465D90274447D5620EBCAC3305733C /* Pods_PocketMediaNativeAds_Tests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		659F3957EE1983DB466E91F28FD5A523 /* PocketMediaNativeAds */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6616C605F70A33491576FEB5A11608CC /* Build configuration list for PBXNativeTarget "PocketMediaNativeAds" */;
-			buildPhases = (
-				96411137EA5233D72AF3B749ADF130C7 /* Sources */,
-				EF86846C71A65A006A83AA23C36ACCE2 /* Frameworks */,
-				9FBF4C5791484BCEC8078803928FAAEA /* Resources */,
-				2F5C71028A183F0A03138364A6820F48 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7691C957B5CE4A2CF40A753528583007 /* PBXTargetDependency */,
+				A35138812389E2087A9D304CCFDF48EC /* PBXTargetDependency */,
 			);
 			name = PocketMediaNativeAds;
 			productName = PocketMediaNativeAds;
-			productReference = 9982B361DC4D42D5C417AAF0EEC56A43 /* PocketMediaNativeAds.framework */;
+			productReference = 211AC92F32F4F854848199B598B32CAB /* PocketMediaNativeAds.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */ = {
+		A0C4827DF8EB7C2281D62EAF1D5A4F97 /* Pods-PocketMediaNativeAds_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3CFB42910790CF0BDBCCEBAACD6B9367 /* Build configuration list for PBXNativeTarget "Alamofire" */;
+			buildConfigurationList = 9BB054CE9D6885F94D68E2046576CBDB /* Build configuration list for PBXNativeTarget "Pods-PocketMediaNativeAds_Tests" */;
 			buildPhases = (
-				5FEED44A5909604CBB444B6BE51B815D /* Sources */,
-				B1729F851F648EC60EE93CDB3C8BAEAD /* Frameworks */,
-				EFDF3B631BBB965A372347705CA14854 /* Headers */,
+				E46616B361B424B2ADCBF604DC16BE82 /* Sources */,
+				EF456A6B62FA1331FCA15DCBE56F26B6 /* Frameworks */,
+				932CF17403CDD705927F2D3703A53254 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6DE2638556E45D494504CA2A7E322725 /* PBXTargetDependency */,
 			);
-			name = Alamofire;
-			productName = Alamofire;
-			productReference = 5002F0B0DBE833615C656B5EECAC7714 /* Alamofire.framework */;
+			name = "Pods-PocketMediaNativeAds_Tests";
+			productName = "Pods-PocketMediaNativeAds_Tests";
+			productReference = 2B059423754DB1D57F3C375A3A13C863 /* Pods_PocketMediaNativeAds_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B76BB1B0C8288A69ADC82BFFF0031718 /* Pods-PocketMediaNativeAds_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36522F1A95D24471BE8D95665687FDA6 /* Build configuration list for PBXNativeTarget "Pods-PocketMediaNativeAds_Example" */;
+			buildPhases = (
+				A5EE0120EA97257AE18D15EA1460EE09 /* Sources */,
+				D87ED8A1328D8683EE0EB9539D8128E1 /* Frameworks */,
+				144A30E4AF23CCF63AB69DF1051D8DE7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1B4D9A24E5B18FB76173256A13793D71 /* PBXTargetDependency */,
+			);
+			name = "Pods-PocketMediaNativeAds_Example";
+			productName = "Pods-PocketMediaNativeAds_Example";
+			productReference = BC98540C47AC573F2317A3E44FA5EC29 /* Pods_PocketMediaNativeAds_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -762,195 +504,123 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = EFBED8C2CE30E670731213F90FB2C890 /* Products */;
+			productRefGroup = 81C9169B0A6CC8C90933AF42D3FA2C31 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */,
-				05094CC4A047119F7ADC14EE74C4881C /* AlamofireImage */,
-				659F3957EE1983DB466E91F28FD5A523 /* PocketMediaNativeAds */,
-				0323AF55E10221EEEB46E751849DA4F3 /* PocketMediaNativeAds-Adrian */,
-				0C7437FC5801A4660092DDCF21A7A8AB /* Pods-PocketMediaNativeAds_Example */,
-				10170CB6656A887B6E987D5A9017DDA8 /* Pods-PocketMediaNativeAds_Tests */,
+				87118BD098F3C50BBE101D22A5D44CC9 /* PocketMediaNativeAds */,
+				1F4009C75EBFB3465D574882BC01F064 /* PocketMediaNativeAds-Adrian */,
+				B76BB1B0C8288A69ADC82BFFF0031718 /* Pods-PocketMediaNativeAds_Example */,
+				A0C4827DF8EB7C2281D62EAF1D5A4F97 /* Pods-PocketMediaNativeAds_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		82750EF009E9090E8618396AA8F83E90 /* Resources */ = {
+		0C0B7754F5B5CBAB65788A40541857C5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4CADCE4CCFCE52775A06D6F68FB4DE8 /* BigNativeAdTableViewCell.xib in Resources */,
-				CDFBA241542626C18AE01F0F39A98A52 /* close.png in Resources */,
-				A0B1654A91840C132C8C29EBA0A31D4A /* close@2x.png in Resources */,
-				5F73026B7979E856FDC75E66456EB0FA /* Loud_Speaker_64.png in Resources */,
-				0F3C642CE31DEFEADFC5786C562C9814 /* NativeAdCell.xib in Resources */,
-				B4D1E65D7590B90E37961CB0F5A55200 /* NativeAdView.xib in Resources */,
-				2EF7E17FED3C875DD51ED49F21DFAC01 /* test.xib in Resources */,
+				23E1EEA2772640C2AE7BA0DB7D30D52D /* BigNativeAdTableViewCell.xib in Resources */,
+				410309D06808513AC9F484A81309314E /* close.png in Resources */,
+				0B983B34DB4CDE1E2B4E889EC9C51D6F /* close@2x.png in Resources */,
+				FDC3E2B133AFCDB3A6E7D5DC63F7E8DC /* Loud_Speaker_64.png in Resources */,
+				F9AAF3880E34F14018396C398EA6FA9C /* NativeAdCell.xib in Resources */,
+				8009A057DE32E72FD854DACAAE19FB12 /* NativeAdView.xib in Resources */,
+				7817554526E2393AF280F365EAEF036B /* test.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9FBF4C5791484BCEC8078803928FAAEA /* Resources */ = {
+		4B5157C2D30D0CDE079E6ACC11476E75 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6052DABE98477BB419158E0DE076D149 /* Adrian.bundle in Resources */,
+				A21EFA09647C45E736045770FD97F986 /* Adrian.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4F0C61EC0E8049AFC517D323E9E0C915 /* Sources */ = {
+		A5EE0120EA97257AE18D15EA1460EE09 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3293ADDEFD8B20FBAB5C81CBA808F99 /* Pods-PocketMediaNativeAds_Tests-dummy.m in Sources */,
+				95017A3F8FDC793D85C7E656046597E4 /* Pods-PocketMediaNativeAds_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5FEED44A5909604CBB444B6BE51B815D /* Sources */ = {
+		A7407336A4D55232318618058A3B1E5E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F51FDBE0B58714B7CCFC263E262B0842 /* Alamofire-dummy.m in Sources */,
-				82D1A45C067C46EA182F5271C7CF8398 /* Alamofire.swift in Sources */,
-				A13F241863C06A82E01A3486274BAA3B /* Download.swift in Sources */,
-				863E32885CF961E10C349860B945D58C /* Error.swift in Sources */,
-				40B6973E8E5464C0C97726DC08D36735 /* Manager.swift in Sources */,
-				734D4E9CBF9F977A8B62365C32ED517B /* MultipartFormData.swift in Sources */,
-				FB921E2C31223EFB30816D7DB741889B /* NetworkReachabilityManager.swift in Sources */,
-				288B407C1861C325D63558155BE51969 /* Notifications.swift in Sources */,
-				E42A03C03AF789E657C8A1D228A725C2 /* ParameterEncoding.swift in Sources */,
-				13202614FB4A2465FD5D212AC6393DE6 /* Request.swift in Sources */,
-				CFE6E0DA62CC3C0AA51C460558431C28 /* Response.swift in Sources */,
-				EDBD0FB0C34E68F787748DED462CAE6D /* ResponseSerialization.swift in Sources */,
-				BAE69CD22A7C90828180D3664DED8E1A /* Result.swift in Sources */,
-				514A09BBB819F361E14EA3435507C489 /* ServerTrustPolicy.swift in Sources */,
-				250B90954338EEFB0EBC6DAA23894DDA /* Stream.swift in Sources */,
-				383F4AF6C46AA6AC9F9217AF905FB7D8 /* Timeline.swift in Sources */,
-				C86923E3A6648C9DE493F465644EE071 /* Upload.swift in Sources */,
-				AC0BD0F23C2A8C8F350899F45DB4F91F /* Validation.swift in Sources */,
+				EF19670FA6602CA05249DE3F49E14BD3 /* AbstractAdUnitTableViewCell.swift in Sources */,
+				44FDBD375013F0AA2A2BEF8755B93785 /* AbstractAdUnitUIView.swift in Sources */,
+				5D31C96DF53ADB2C74D89EDDA2627B40 /* AdUnitFactory.swift in Sources */,
+				FB11B4048E81A8FEEFDDC2CAB20010B4 /* BigNativeAdTableViewCell.swift in Sources */,
+				A77AED504234C515823354536F9972C3 /* DataSourceProtocol.swift in Sources */,
+				356F00624875A0C6E80726FA1E149849 /* DisplayHelperDelegate.swift in Sources */,
+				5DF6F8E90E8557743ED0C918C634FDBB /* FullscreenBrowser.swift in Sources */,
+				8B28572049384F4EB9BA760F80502D84 /* NativeAd.swift in Sources */,
+				78292B3FA1EF1D3FE68261DD5A98EFAA /* NativeAdCell.swift in Sources */,
+				C007B76269FF4CC91A2C0361016EF505 /* NativeAdCollectionViewDataSource.swift in Sources */,
+				CC86F6D5F2648A0DAB89D10421CDEF3E /* NativeAdDisplayProtocol.swift in Sources */,
+				DB5D0DE35D1A0CEF8B1CD9E84D8C3901 /* NativeAdInjector.swift in Sources */,
+				26BE7B590CBAED3BF0D22193A14B98BE /* NativeAdsConnectionProtocol.swift in Sources */,
+				167E81C7FB5C0CEDB12A5429F8307CC6 /* NativeAdsConstants.swift in Sources */,
+				1D9535118CDBF8FA78BD1D7DC71EB71B /* NativeAdsRequest.swift in Sources */,
+				40B4C46F7F29CB1BEB81068DACD0BE7A /* NativeAdsTableViewDelegate.swift in Sources */,
+				98F385ECA8FCC1781A3DE3761135FED6 /* NativeAdsWebviewDelegate.swift in Sources */,
+				169B5466FBF9A4878E838C59AA39692C /* NativeAdTableViewCell.swift in Sources */,
+				89FE8ADB25134AF7FF1A74CAA837AEB5 /* NativeAdTableViewDataSource.swift in Sources */,
+				1A36AC79F7611606BF3BD005876B5E8C /* NativeAdViewBinderProtocol.swift in Sources */,
+				B1BB0D3C5881DDA9EE5C1568DEAF2567 /* PocketMediaNativeAds-dummy.m in Sources */,
+				954F11A6A8E167165B40155E72FF14D3 /* ReferenceArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		78515218F351B1450E29E44D798D5FD6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1355F55EFF7D4FB32FA55ACF0FC552C /* AlamofireImage-dummy.m in Sources */,
-				FF9EF7C4E1B3A92B920E47485C352609 /* Image.swift in Sources */,
-				98A49A1D6A20F4AFA5DD788162F61536 /* ImageCache.swift in Sources */,
-				2D36F827AFBCFF04B3D7A51CBF36D6D2 /* ImageDownloader.swift in Sources */,
-				9B78F1415A9CB42D487533B43435A913 /* ImageFilter.swift in Sources */,
-				B33541791196BF6BB17E8009B21B1348 /* Request+AlamofireImage.swift in Sources */,
-				80F8CE1FF787FC6E9C4A557216ED8616 /* UIButton+AlamofireImage.swift in Sources */,
-				07BECE24E34C6B8F38C3C4DBF872F09F /* UIImage+AlamofireImage.swift in Sources */,
-				0061B27BB98A3D0D800F98792F9B23DE /* UIImageView+AlamofireImage.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7F862FAE1C73921986179888BFFDC6E3 /* Sources */ = {
+		DBA5A8305D4EC16E2781A18D9F89C678 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		96411137EA5233D72AF3B749ADF130C7 /* Sources */ = {
+		E46616B361B424B2ADCBF604DC16BE82 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				548A5A58107DC25220450B18DA7B4E8A /* AbstractAdUnitTableViewCell.swift in Sources */,
-				E33C1A5FCFD45EA55E9F1AA156EB0B7B /* AbstractAdUnitUIView.swift in Sources */,
-				FFD16C001B785119ED4AD25287FE36DB /* AdUnitFactory.swift in Sources */,
-				0E3177B146D6791BA9DC738CCB96B726 /* BigNativeAdTableViewCell.swift in Sources */,
-				2107CB43540CF2DF3F365A5F2D1B8D8D /* DataSourceProtocol.swift in Sources */,
-				EBBDE446877CC11FCE7DB5A25E091674 /* DisplayHelperDelegate.swift in Sources */,
-				57E554EC16CB19B91C7FEC8C227AF754 /* FullscreenBrowser.swift in Sources */,
-				CF2426F2F6AD5134DDE307172B1BDA76 /* NativeAd.swift in Sources */,
-				9447CB05E9DB0E350C99109EC366D0F9 /* NativeAdCell.swift in Sources */,
-				9A9931D98C16BEB775F90AC82F3A4A21 /* NativeAdCollectionViewDataSource.swift in Sources */,
-				EDE755D1A67A2B5F47A00C1611FBAE3A /* NativeAdDisplayProtocol.swift in Sources */,
-				4C05DF3BBA9A8F81ED7A8378B283648E /* NativeAdInjector.swift in Sources */,
-				1AB9F71671619EA5C80E08D5BEEB1D08 /* NativeAdsConnectionProtocol.swift in Sources */,
-				921E9A881AB8D97B0FE6D8E9CEE6E3F8 /* NativeAdsConstants.swift in Sources */,
-				7DF22EC669D150487216ED6930945298 /* NativeAdsRequest.swift in Sources */,
-				0D043E3061871D0EA706636772DCE10D /* NativeAdsWebviewDelegate.swift in Sources */,
-				102D39587606E32EC383ACA7AFB7640D /* NativeAdTableViewCell.swift in Sources */,
-				62DFB24F1F42A7B0384F8B40AD399B0E /* NativeAdTableViewDataSource.swift in Sources */,
-				F931C555FFF638ECA041B41A3EC1D73E /* NativeAdViewBinderProtocol.swift in Sources */,
-				09897467CD4137B2B78725AD157D679A /* PocketMediaNativeAds-dummy.m in Sources */,
-				254BE967D8494345E28A76AE2B15DB93 /* ReferenceArray.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		96C6B87E6ADE1AF7640AB13966BD2DDF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4B1842C48335CAC61C729280B5DCD5A8 /* Pods-PocketMediaNativeAds_Example-dummy.m in Sources */,
+				947FA552AFE21245ABACBB05255DA936 /* Pods-PocketMediaNativeAds_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		45E1AD5F03A8A3CB878DD6CC76B812B9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			target = 79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */;
-			targetProxy = 8B24F3E3388B97B9F328796FB4EF0A38 /* PBXContainerItemProxy */;
-		};
-		66AB2F52967E361E088C48E6EE3161AB /* PBXTargetDependency */ = {
+		1B4D9A24E5B18FB76173256A13793D71 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PocketMediaNativeAds;
-			target = 659F3957EE1983DB466E91F28FD5A523 /* PocketMediaNativeAds */;
-			targetProxy = D49CBB6B8CB54A17A3CD0077AA6C83F1 /* PBXContainerItemProxy */;
+			target = 87118BD098F3C50BBE101D22A5D44CC9 /* PocketMediaNativeAds */;
+			targetProxy = 98131C676E13DAB32C5BDC1C5880238B /* PBXContainerItemProxy */;
 		};
-		7691C957B5CE4A2CF40A753528583007 /* PBXTargetDependency */ = {
+		6DE2638556E45D494504CA2A7E322725 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PocketMediaNativeAds;
+			target = 87118BD098F3C50BBE101D22A5D44CC9 /* PocketMediaNativeAds */;
+			targetProxy = D8CA9283A7B3C977E917C5C1FD554AD9 /* PBXContainerItemProxy */;
+		};
+		A35138812389E2087A9D304CCFDF48EC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "PocketMediaNativeAds-Adrian";
-			target = 0323AF55E10221EEEB46E751849DA4F3 /* PocketMediaNativeAds-Adrian */;
-			targetProxy = E7BDA8A1FCD6A5B2D0E477A039B01328 /* PBXContainerItemProxy */;
-		};
-		88F68DE537419872F8AD2B54BDD5285C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PocketMediaNativeAds;
-			target = 659F3957EE1983DB466E91F28FD5A523 /* PocketMediaNativeAds */;
-			targetProxy = 77CE15AEAC67EA0422BF84CF672B30FB /* PBXContainerItemProxy */;
-		};
-		B19E8AFD0618E49ED7C340766C25AC26 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AlamofireImage;
-			target = 05094CC4A047119F7ADC14EE74C4881C /* AlamofireImage */;
-			targetProxy = 0B2F171AD78CDA7295B4FE021171BF80 /* PBXContainerItemProxy */;
-		};
-		B42A735E6DB7ECE2C1061ED7B65DFED4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			target = 79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */;
-			targetProxy = 289364EFA6FBEE8B4E055C63A80F1B63 /* PBXContainerItemProxy */;
-		};
-		C801688AF13001BA446F45FD93971EA5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			target = 79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */;
-			targetProxy = F8973CBFDFA0ED27A98F5B3CD98C2A19 /* PBXContainerItemProxy */;
-		};
-		DFB1C5976470C45738E667775B00ED9A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AlamofireImage;
-			target = 05094CC4A047119F7ADC14EE74C4881C /* AlamofireImage */;
-			targetProxy = EEECBD54D5187569B0A4A6FC1D0B84B5 /* PBXContainerItemProxy */;
+			target = 1F4009C75EBFB3465D574882BC01F064 /* PocketMediaNativeAds-Adrian */;
+			targetProxy = 0CB449959A4AE64F810D6274AAB2F98E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		32AD5F8918CA8B349E4671410FA624C9 /* Release */ = {
+		0B95803CE1A038D886459346C0A81B59 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BAD592F13338906B41811D7BD9E357C8 /* Alamofire.xcconfig */;
+			baseConfigurationReference = FDFA63161936E3F1C54C60F4C8EABB09 /* Pods-PocketMediaNativeAds_Tests.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -961,14 +631,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-PocketMediaNativeAds_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PocketMediaNativeAds_Tests/Pods-PocketMediaNativeAds_Tests.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Alamofire;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_PocketMediaNativeAds_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -977,9 +651,9 @@
 			};
 			name = Release;
 		};
-		39A5470152790B507815FEAB9CA0D365 /* Release */ = {
+		0CB6A4B9ED318398974CAA70324E2F81 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7DA7D6400293A8B514B1C300179CA05C /* AlamofireImage.xcconfig */;
+			baseConfigurationReference = C0EB815AEAF01C2B60EA1796DACD03B1 /* PocketMediaNativeAds.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -990,14 +664,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AlamofireImage/AlamofireImage-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AlamofireImage/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/PocketMediaNativeAds/PocketMediaNativeAds-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PocketMediaNativeAds/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AlamofireImage/AlamofireImage.modulemap";
+				MODULEMAP_FILE = "Target Support Files/PocketMediaNativeAds/PocketMediaNativeAds.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = AlamofireImage;
+				PRODUCT_NAME = PocketMediaNativeAds;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1006,9 +680,41 @@
 			};
 			name = Release;
 		};
-		75218111E718FACE36F771E8ABECDB62 /* Debug */ = {
+		306BADFEEB454FA386DF0FAC26D70BBE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BAD592F13338906B41811D7BD9E357C8 /* Alamofire.xcconfig */;
+			baseConfigurationReference = C0EB815AEAF01C2B60EA1796DACD03B1 /* PocketMediaNativeAds.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/PocketMediaNativeAds/ResourceBundle-Adrian-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = Adrian;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		3576F9F03471C1F26DF370042AD44F32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0EB815AEAF01C2B60EA1796DACD03B1 /* PocketMediaNativeAds.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/PocketMediaNativeAds/ResourceBundle-Adrian-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = Adrian;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		3C11EED61D2E8E7ADCD2AFE8969E8DE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0EB815AEAF01C2B60EA1796DACD03B1 /* PocketMediaNativeAds.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1019,14 +725,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/PocketMediaNativeAds/PocketMediaNativeAds-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PocketMediaNativeAds/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				MODULEMAP_FILE = "Target Support Files/PocketMediaNativeAds/PocketMediaNativeAds.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Alamofire;
+				PRODUCT_NAME = PocketMediaNativeAds;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1114,228 +820,7 @@
 			};
 			name = Debug;
 		};
-		B6481CD044EE2B321C60F93E9D912762 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDFA63161936E3F1C54C60F4C8EABB09 /* Pods-PocketMediaNativeAds_Tests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-PocketMediaNativeAds_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-PocketMediaNativeAds_Tests/Pods-PocketMediaNativeAds_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_PocketMediaNativeAds_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C55EAB37CCB5948820A2B17FB3A97A7A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0EB815AEAF01C2B60EA1796DACD03B1 /* PocketMediaNativeAds.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/PocketMediaNativeAds/PocketMediaNativeAds-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PocketMediaNativeAds/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PocketMediaNativeAds/PocketMediaNativeAds.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = PocketMediaNativeAds;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C5D719879DA3C0F84606D7756CBABAE7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0EB815AEAF01C2B60EA1796DACD03B1 /* PocketMediaNativeAds.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/PocketMediaNativeAds/ResourceBundle-Adrian-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = Adrian;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		C9C7D72206418DDE46DA34EE6D24425F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A56B86766DE7CAE3E793B502CE10EDAA /* Pods-PocketMediaNativeAds_Example.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-PocketMediaNativeAds_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-PocketMediaNativeAds_Example/Pods-PocketMediaNativeAds_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_PocketMediaNativeAds_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D4EB6874981D05C21A00D8042B144F77 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7DA7D6400293A8B514B1C300179CA05C /* AlamofireImage.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AlamofireImage/AlamofireImage-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AlamofireImage/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AlamofireImage/AlamofireImage.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = AlamofireImage;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D778C1D64E62A8943E311E4FF8FFB7C0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0EB815AEAF01C2B60EA1796DACD03B1 /* PocketMediaNativeAds.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/PocketMediaNativeAds/ResourceBundle-Adrian-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = Adrian;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		DCD065275ECB2C2239B8DDC154B70195 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0EB815AEAF01C2B60EA1796DACD03B1 /* PocketMediaNativeAds.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/PocketMediaNativeAds/PocketMediaNativeAds-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PocketMediaNativeAds/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PocketMediaNativeAds/PocketMediaNativeAds.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = PocketMediaNativeAds;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E8F909BBD9937F22165A62DD90969D2A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DFAF757006F816E4857329654017B963 /* Pods-PocketMediaNativeAds_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-PocketMediaNativeAds_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-PocketMediaNativeAds_Tests/Pods-PocketMediaNativeAds_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_PocketMediaNativeAds_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		F2E98AF7E4BBC806B0217A0BB3A403F1 /* Debug */ = {
+		8B7610148B448F60A26976611849EA13 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 48878F1023FA3FB769521ED0C3B8B9CB /* Pods-PocketMediaNativeAds_Example.debug.xcconfig */;
 			buildSettings = {
@@ -1369,9 +854,85 @@
 			};
 			name = Debug;
 		};
+		C2873D4502093DD9AEC7B7E7E3A22959 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFAF757006F816E4857329654017B963 /* Pods-PocketMediaNativeAds_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-PocketMediaNativeAds_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PocketMediaNativeAds_Tests/Pods-PocketMediaNativeAds_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_PocketMediaNativeAds_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D46E21C8A3CE9C6FE1F59B4291FA8271 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A56B86766DE7CAE3E793B502CE10EDAA /* Pods-PocketMediaNativeAds_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-PocketMediaNativeAds_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PocketMediaNativeAds_Example/Pods-PocketMediaNativeAds_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_PocketMediaNativeAds_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		28FE0BC3B8A8515F433E7B6B46B4BDFA /* Build configuration list for PBXNativeTarget "PocketMediaNativeAds" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C11EED61D2E8E7ADCD2AFE8969E8DE2 /* Debug */,
+				0CB6A4B9ED318398974CAA70324E2F81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1381,56 +942,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3CFB42910790CF0BDBCCEBAACD6B9367 /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
+		36522F1A95D24471BE8D95665687FDA6 /* Build configuration list for PBXNativeTarget "Pods-PocketMediaNativeAds_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				75218111E718FACE36F771E8ABECDB62 /* Debug */,
-				32AD5F8918CA8B349E4671410FA624C9 /* Release */,
+				8B7610148B448F60A26976611849EA13 /* Debug */,
+				D46E21C8A3CE9C6FE1F59B4291FA8271 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5DE49ECB25AB01D3A3BA371F87AEC699 /* Build configuration list for PBXNativeTarget "Pods-PocketMediaNativeAds_Tests" */ = {
+		464ECB664CDE9D65CCF6C160B539E150 /* Build configuration list for PBXNativeTarget "PocketMediaNativeAds-Adrian" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E8F909BBD9937F22165A62DD90969D2A /* Debug */,
-				B6481CD044EE2B321C60F93E9D912762 /* Release */,
+				3576F9F03471C1F26DF370042AD44F32 /* Debug */,
+				306BADFEEB454FA386DF0FAC26D70BBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6616C605F70A33491576FEB5A11608CC /* Build configuration list for PBXNativeTarget "PocketMediaNativeAds" */ = {
+		9BB054CE9D6885F94D68E2046576CBDB /* Build configuration list for PBXNativeTarget "Pods-PocketMediaNativeAds_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DCD065275ECB2C2239B8DDC154B70195 /* Debug */,
-				C55EAB37CCB5948820A2B17FB3A97A7A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7EC7F62B913C4E57F6B29209FB800761 /* Build configuration list for PBXNativeTarget "PocketMediaNativeAds-Adrian" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C5D719879DA3C0F84606D7756CBABAE7 /* Debug */,
-				D778C1D64E62A8943E311E4FF8FFB7C0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C1900D5B490FD61791AA67F2D1DEE3CB /* Build configuration list for PBXNativeTarget "Pods-PocketMediaNativeAds_Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F2E98AF7E4BBC806B0217A0BB3A403F1 /* Debug */,
-				C9C7D72206418DDE46DA34EE6D24425F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C8D14B87B6F6B35ACF7D03FBA2D9F5A2 /* Build configuration list for PBXNativeTarget "AlamofireImage" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D4EB6874981D05C21A00D8042B144F77 /* Debug */,
-				39A5470152790B507815FEAB9CA0D365 /* Release */,
+				C2873D4502093DD9AEC7B7E7E3A22959 /* Debug */,
+				0B95803CE1A038D886459346C0A81B59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

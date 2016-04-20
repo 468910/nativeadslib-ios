@@ -8,7 +8,7 @@
 
 import UIKit
 
-public struct ItemTableView {
+public class ItemTableModel {
   
   public var title           : String!
   public var descriptionItem : String!
