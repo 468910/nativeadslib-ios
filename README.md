@@ -34,24 +34,20 @@ The main usage of the project takes place in the ```TableViewController.swift```
 
 ```swift
     func loadNativeAds(){
-        let adRequest = NativeAdsRequest(affiliateId: "100019", delegate: self, parentView: self.view, followRedirectsInBackground: true)
+        let adRequest = NativeAdsRequest(adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165", delegate: self) /* replace with your own token!! */
         adRequest.debugModeEnabled = true
         adRequest.retrieveAds(5)
     }
- 
 ```
 
 The parameters used are:
 
-- affiliate ID, to be provided by Pocket Media
-- the parent view, in order to insert a UIWebView as a subview when the users clicks on an ad
-- the possibility of disabling or enabling the opening of the link on the embedded webview
+- placement token, to be generated in the [user dashboard](http://third-party.pmgbrain.com/)
+- delegate, to receive the even callbacks as the ads are ready
 
 After that, two more interactions are done:
-- debugModeEnabled: allows to have more precise logging in the console. 
-- retrieveAds: starts the process of downloading the ads
+- debugModeEnabled: allows to have more precise logging in the console. - retrieveAds: starts the process of downloading the ads
 
-You also have the "betaModeEnabled" mode available. Enabling it avoid the clicks count towards the statistics. Take into account that it will also make the clicks NOT tracked for valid conversions, so this must be disabled in production - but can be useful in the development phase. 
 
 
 #### App Transport Security
