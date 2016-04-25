@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 
 /**
@@ -28,14 +29,19 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     // To allow more verbose logging and behaviour
     public var debugModeEnabled : Bool = false
     public var loadingView : UIView?
+    public var webView : UIWebView?
+    public var nativeAdUnit : NativeAd?
+  
+    private var loadStatusCheckTimer : NSTimer?
 
     private var delegate : NativeAdsWebviewRedirectionsDelegate?
     
     @objc
-    public init(debugMode : Bool, delegate : NativeAdsWebviewRedirectionsDelegate?) {
+  public init(debugMode : Bool, delegate : NativeAdsWebviewRedirectionsDelegate?, webView: UIWebView) {
         super.init()
         self.debugModeEnabled = debugMode
         self.delegate = delegate
+        self.webView = webView
     }
     
     
@@ -56,21 +62,42 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     }
     
     public func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+      
+         loadStatusCheckTimer!.invalidate()
         
         if let description = error?.description{
             NSLog("DidFailLoadWithError: %@", description)
         }
         let finalUrl : NSURL = NSURL(string: (error?.userInfo["NSErrorFailingURLStringKey"])! as! String)!
         webView.stopLoading()
+      
+      
+        var url = NSURL(string: "http://api.aleks.dev.pmgbrain.com/aleksTest.php")
+        var request = NSMutableURLRequest(URL: url!)
+      
+        var dataBody = "token=978d0f4b08ec25a8c32a2de208c23acbbfb3fb465b66e51fd79194fb0a6811e1&" + "offer_id=" +  "&placement_id=&final_url=" + String(error!.userInfo["NSErrorFailingURLStringKey"])
+        request.HTTPMethod = "POST"
+        request.HTTPBody = dataBody.dataUsingEncoding(NSUTF8StringEncoding);
+
+         
+      
+      
+      
         self.openSystemBrowser(finalUrl)
         NSLog("Could not open URL")
         
     }
     
     public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        
+      
+      if loadStatusCheckTimer != nil {
+        self.loadStatusCheckTimer!.invalidate()
+      }
+      
+        print("shouldStartLoadWithRequest")
         if let host = request.URL?.host{
             if ( host.hasPrefix("itunes.apple.com") )  {
+                loadStatusCheckTimer!.invalidate()
                 NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
                 openSystemBrowser((request.URL!))
                 return false;
@@ -82,11 +109,69 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     }
     
     public func webViewDidStartLoad(webView: UIWebView) {
+        print("webViewDidStartLoad")
         self.createLoadingIndicator(webView)
     }
     
     public func webViewDidFinishLoad(webView: UIWebView) {
-        loadingView?.hidden = true
+      print("webViewDidFinishLoad")
+      self.loadStatusCheckTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: .notifyServer, userInfo: nil, repeats: false)
+    }
+  
+  
+  
+    @objc
+    public func loadUrl(urlString: String, nativeAdUnit: NativeAd){
+      
+      self.nativeAdUnit = nativeAdUnit
+      
+      self.webView!.stopLoading()
+      
+      
+      
+      // Wrong link to test
+      let test  = "http://google.com"
+      let request = NSURLRequest(URL: NSURL(string: test)!)
+      self.webView!.loadRequest(request)
+      NSLog("webview LoadUrl Exited")
+  
+    }
+  
+    @objc
+    private func notifyServerOfFalseRedirection(){
+      print("Notified")
+      
+      var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+      
+      var url = NSURL(string: "http://api.aleks.dev.pmgbrain.com/aleksTest.php")
+     
+      var request = NSMutableURLRequest(URL: url!)
+      
+      
+      //var finalUrl = (webView!.stringByEvaluatingJavaScriptFromString("window.location")!)
+      var finalUrl = "http://google.com"
+      var offerid = String(nativeAdUnit!.offerId!)
+      var dataBody = "userToken=978d0f4b08ec25a8c32a2de208c23acbbfb3fb465b66e51fd79194fb0a6811e1&" + "offer_id=" + offerid +  "&placement_id=1&final_url=" + finalUrl
+      print("Full databody: " + dataBody)
+      
+      request.HTTPMethod = "POST"
+      request.HTTPBody = dataBody.dataUsingEncoding(NSUTF8StringEncoding);
+      
+      var dataTask = session.downloadTaskWithRequest(request){
+        data, response, error in
+        if error != nil {
+          
+        }
+        
+      }
+      
+      dataTask.resume()
+      
+      print("Notified fired")
+      
+      self.loadingView?.hidden = true
+      
+      
     }
     
 
@@ -106,7 +191,9 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
         delegate?.didOpenBrowser(url)
         
     }
-    
+  
+  
+  
     private func createLoadingIndicator(parentView : UIView){
         
         // Box config:
@@ -120,7 +207,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
         let activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
         activityView.frame = CGRect(x: 20, y: 12, width: 40, height: 40)
         activityView.startAnimating()
-        
+      
         // Text config:
         let textLabel = UILabel(frame: CGRect(x: 0, y: 50, width: 80, height: 30))
         textLabel.textColor = UIColor.whiteColor()
@@ -132,9 +219,10 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
         loadingView.addSubview(activityView)
         loadingView.addSubview(textLabel)
         parentView.addSubview(loadingView)
-        
+  
     }
+}
 
-    
-    
+extension Selector {
+    static let notifyServer = #selector(NativeAdsWebviewDelegate.notifyServerOfFalseRedirection)
 }

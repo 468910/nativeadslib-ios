@@ -26,7 +26,11 @@ public class NativeAd : NSObject{
     public var destinationURL      : NSURL?
     
     private var originalClickUrl    : NSURL!
-    
+  
+    public var offerId              : UInt?
+  
+    //Todo add placement && add tests for offerid
+  
   
   
   
@@ -42,7 +46,7 @@ public class NativeAd : NSObject{
         if let name = adDictionary["campaign_name"] as? String {
           self.campaignName = name
         }else{
-          print("Native Ad Fallible Constructor: No CampaignName found");
+          print("Native Ad Fallible Constructor: No CampaignName found")
           return nil
         }
         
@@ -50,7 +54,7 @@ public class NativeAd : NSObject{
             self.clickURL = url
             self.originalClickUrl = self.clickURL
         }else{
-            print("Native Ad Fallible Constructor: No ClickUrl found");
+            print("Native Ad Fallible Constructor: No ClickUrl found")
             return nil
         }
         
@@ -59,6 +63,14 @@ public class NativeAd : NSObject{
         }else{
             self.campaignDescription = ""
         }
+      
+      if let offerId = adDictionary["id"] as? String {
+         self.offerId = UInt(offerId)
+        print("Offerid assigned:" + offerId)
+       }else {
+        print("Native Ad FallibleConstructor: No OfferId found")
+        return nil
+       }
         
         if let urlImage = adDictionary["default_icon"] as? String, url = NSURL(string: urlImage) {
             self.campaignImage = url

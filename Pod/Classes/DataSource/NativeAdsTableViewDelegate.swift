@@ -42,7 +42,7 @@ public class NativeAdsTableViewDelegate : NSObject, UITableViewDelegate {
       let truePath = NSIndexPath(forRow: indexPath.row - (indexPath.row / adMargin), inSection : 0 )
       print(datasource.ads!.collection.count)
       
-      if(truePath.row == datasource.tableView(tableView, numberOfRowsInSection: 0)){
+      if(truePath.row == datasource.datasource!.tableView(tableView, numberOfRowsInSection: 0)){
         let ad = datasource.ads!.collection.last as! NativeAd
         print("Opening url: \(ad.clickURL.absoluteString)")
         // This method will take of opening the ad inside of the app, until we have an iTunes url

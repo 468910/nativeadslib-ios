@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		183C80B31CC6754D00FC55B3 /* ExampleTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C80B21CC6754D00FC55B3 /* ExampleTableViewDataSource.swift */; };
+		18D62C731CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D62C721CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.swift */; };
 		18D6EDD51C847F41004A5B9D /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D6EDD41C847F41004A5B9D /* close.png */; };
 		18D6EDD71C8480AC004A5B9D /* Highlight-St.-Barts-Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18D6EDD61C8480AC004A5B9D /* Highlight-St.-Barts-Image.jpg */; };
 		3A75F26A1C3FF6CC00F81318 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F2691C3FF6CC00F81318 /* TableViewController.swift */; };
@@ -20,12 +21,18 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		91243A2DA8E818D52AAA3CF5 /* Pods_PocketMediaNativeAds_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B8BFD25788EB87C9FA13B9 /* Pods_PocketMediaNativeAds_ExampleTests.framework */; };
 		D7D7C1EBE486B1F0D2FD4550 /* Pods_PocketMediaNativeAds_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD61347C51ABA5F85596A22C /* Pods_PocketMediaNativeAds_Example.framework */; };
-		EA49B05069604E6479998E6B /* Pods_PocketMediaNativeAds_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACED9689FFF212CC96163F5B /* Pods_PocketMediaNativeAds_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		18D62C751CCD6C3A0086175C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
+			remoteInfo = PocketMediaNativeAds_Example;
+		};
 		607FACE61AFB9204008FA782 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
@@ -39,11 +46,12 @@
 		058EEE27CA345A751A7FE3B5 /* PocketMediaNativeAds.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PocketMediaNativeAds.podspec; path = ../PocketMediaNativeAds.podspec; sourceTree = "<group>"; };
 		0D93340C2C8E131E7AB1CB4F /* Pods-PocketMediaNativeAds_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds_Example/Pods-PocketMediaNativeAds_Example.release.xcconfig"; sourceTree = "<group>"; };
 		183C80B21CC6754D00FC55B3 /* ExampleTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleTableViewDataSource.swift; sourceTree = "<group>"; };
+		18D62C701CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocketMediaNativeAds_ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18D62C721CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketMediaNativeAds_ExampleTests.swift; sourceTree = "<group>"; };
+		18D62C741CCD6C3A0086175C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D6EDD41C847F41004A5B9D /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		18D6EDD61C8480AC004A5B9D /* Highlight-St.-Barts-Image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Highlight-St.-Barts-Image.jpg"; sourceTree = "<group>"; };
-		22D91080BAEFEF8E4B2B7412 /* Pods-PocketMediaNativeAds_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds_Tests/Pods-PocketMediaNativeAds_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		2B2AACEBEFE9FE77EE22B0D9 /* Pods-PocketMediaNativeAds_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds_Example/Pods-PocketMediaNativeAds_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		2EF579B9BC4FF1F86A87F4B3 /* Pods-PocketMediaNativeAds_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds_Tests/Pods-PocketMediaNativeAds_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A75F2691C3FF6CC00F81318 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		3A75F26D1C3FF8A300F81318 /* DummyData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DummyData.json; sourceTree = "<group>"; };
 		3A75F2701C3FFA7B00F81318 /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
@@ -58,14 +66,23 @@
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* PocketMediaNativeAds_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocketMediaNativeAds_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		6918C1C734ED7A43A3DFB863 /* Pods-PocketMediaNativeAds_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds_ExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds_ExampleTests/Pods-PocketMediaNativeAds_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		ACED9689FFF212CC96163F5B /* Pods_PocketMediaNativeAds_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAds_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD61347C51ABA5F85596A22C /* Pods_PocketMediaNativeAds_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAds_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2B8BFD25788EB87C9FA13B9 /* Pods_PocketMediaNativeAds_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAds_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3090BA6512EBAF4F04304E4 /* Pods-PocketMediaNativeAds_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds_ExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds_ExampleTests/Pods-PocketMediaNativeAds_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E068E3C236A822499D514E06 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		18D62C6D1CCD6C3A0086175C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91243A2DA8E818D52AAA3CF5 /* Pods_PocketMediaNativeAds_ExampleTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607FACCD1AFB9204008FA782 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,18 +95,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA49B05069604E6479998E6B /* Pods_PocketMediaNativeAds_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18D62C711CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				18D62C721CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.swift */,
+				18D62C741CCD6C3A0086175C /* Info.plist */,
+			);
+			path = PocketMediaNativeAds_ExampleTests;
+			sourceTree = "<group>";
+		};
 		23FF5FD8FB9E3525E7CACD61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				AD61347C51ABA5F85596A22C /* Pods_PocketMediaNativeAds_Example.framework */,
 				ACED9689FFF212CC96163F5B /* Pods_PocketMediaNativeAds_Tests.framework */,
+				C2B8BFD25788EB87C9FA13B9 /* Pods_PocketMediaNativeAds_ExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -110,8 +136,8 @@
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 				2B2AACEBEFE9FE77EE22B0D9 /* Pods-PocketMediaNativeAds_Example.debug.xcconfig */,
 				0D93340C2C8E131E7AB1CB4F /* Pods-PocketMediaNativeAds_Example.release.xcconfig */,
-				2EF579B9BC4FF1F86A87F4B3 /* Pods-PocketMediaNativeAds_Tests.debug.xcconfig */,
-				22D91080BAEFEF8E4B2B7412 /* Pods-PocketMediaNativeAds_Tests.release.xcconfig */,
+				C3090BA6512EBAF4F04304E4 /* Pods-PocketMediaNativeAds_ExampleTests.debug.xcconfig */,
+				6918C1C734ED7A43A3DFB863 /* Pods-PocketMediaNativeAds_ExampleTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -121,7 +147,7 @@
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for PocketMediaNativeAds */,
-				607FACE81AFB9204008FA782 /* Tests */,
+				18D62C711CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				47262D97947BB10EFAB58B67 /* Pods */,
 				23FF5FD8FB9E3525E7CACD61 /* Frameworks */,
@@ -133,6 +159,7 @@
 			children = (
 				607FACD01AFB9204008FA782 /* PocketMediaNativeAds_Example.app */,
 				607FACE51AFB9204008FA782 /* PocketMediaNativeAds_Tests.xctest */,
+				18D62C701CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,23 +191,6 @@
 			path = PocketMediaNativeAds;
 			sourceTree = "<group>";
 		};
-		607FACE81AFB9204008FA782 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
-				607FACE91AFB9204008FA782 /* Supporting Files */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		607FACE91AFB9204008FA782 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEA1AFB9204008FA782 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +205,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		18D62C6F1CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18D62C791CCD6C3A0086175C /* Build configuration list for PBXNativeTarget "PocketMediaNativeAds_ExampleTests" */;
+			buildPhases = (
+				3D3B818BF4C759C0269109A6 /* Check Pods Manifest.lock */,
+				18D62C6C1CCD6C3A0086175C /* Sources */,
+				18D62C6D1CCD6C3A0086175C /* Frameworks */,
+				18D62C6E1CCD6C3A0086175C /* Resources */,
+				EC3B97AD88C02404B869C71C /* Embed Pods Frameworks */,
+				5FA7C1F6FF9FB8AC15030D2C /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18D62C761CCD6C3A0086175C /* PBXTargetDependency */,
+			);
+			name = PocketMediaNativeAds_ExampleTests;
+			productName = PocketMediaNativeAds_ExampleTests;
+			productReference = 18D62C701CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		607FACCF1AFB9204008FA782 /* PocketMediaNativeAds_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PocketMediaNativeAds_Example" */;
@@ -219,12 +250,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PocketMediaNativeAds_Tests" */;
 			buildPhases = (
-				2B561B3A3A197D6F2F5E1554 /* Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				D58B92FE2145CB289291A431 /* Embed Pods Frameworks */,
-				79A2B1D58E4EA6FA2EDF94EE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,10 +270,14 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
+					18D62C6F1CCD6C3A0086175C = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 607FACCF1AFB9204008FA782;
+					};
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = L7E3AY2W7R;
@@ -271,11 +303,19 @@
 			targets = (
 				607FACCF1AFB9204008FA782 /* PocketMediaNativeAds_Example */,
 				607FACE41AFB9204008FA782 /* PocketMediaNativeAds_Tests */,
+				18D62C6F1CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		18D62C6E1CCD6C3A0086175C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607FACCE1AFB9204008FA782 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -314,7 +354,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		2B561B3A3A197D6F2F5E1554 /* Check Pods Manifest.lock */ = {
+		3D3B818BF4C759C0269109A6 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -327,6 +367,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5FA7C1F6FF9FB8AC15030D2C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketMediaNativeAds_ExampleTests/Pods-PocketMediaNativeAds_ExampleTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6ADF5E1DCBF1341CB3479782 /* Embed Pods Frameworks */ = {
@@ -344,21 +399,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketMediaNativeAds_Example/Pods-PocketMediaNativeAds_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		79A2B1D58E4EA6FA2EDF94EE /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketMediaNativeAds_Tests/Pods-PocketMediaNativeAds_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CEB91EF6B596F08EE0A865BB /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,7 +414,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketMediaNativeAds_Example/Pods-PocketMediaNativeAds_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D58B92FE2145CB289291A431 /* Embed Pods Frameworks */ = {
+		EC3B97AD88C02404B869C71C /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -386,12 +426,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketMediaNativeAds_Tests/Pods-PocketMediaNativeAds_Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketMediaNativeAds_ExampleTests/Pods-PocketMediaNativeAds_ExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		18D62C6C1CCD6C3A0086175C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18D62C731CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607FACCC1AFB9204008FA782 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -410,13 +458,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		18D62C761CCD6C3A0086175C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 607FACCF1AFB9204008FA782 /* PocketMediaNativeAds_Example */;
+			targetProxy = 18D62C751CCD6C3A0086175C /* PBXContainerItemProxy */;
+		};
 		607FACE71AFB9204008FA782 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 607FACCF1AFB9204008FA782 /* PocketMediaNativeAds_Example */;
@@ -444,6 +496,37 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		18D62C771CCD6C3A0086175C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3090BA6512EBAF4F04304E4 /* Pods-PocketMediaNativeAds_ExampleTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = PocketMediaNativeAds_ExampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "pm.kb.PocketMediaNativeAds-ExampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PocketMediaNativeAds_Example.app/PocketMediaNativeAds_Example";
+			};
+			name = Debug;
+		};
+		18D62C781CCD6C3A0086175C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6918C1C734ED7A43A3DFB863 /* Pods-PocketMediaNativeAds_ExampleTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = PocketMediaNativeAds_ExampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "pm.kb.PocketMediaNativeAds-ExampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PocketMediaNativeAds_Example.app/PocketMediaNativeAds_Example";
+			};
+			name = Release;
+		};
 		607FACED1AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -560,7 +643,6 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2EF579B9BC4FF1F86A87F4B3 /* Pods-PocketMediaNativeAds_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -581,7 +663,6 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22D91080BAEFEF8E4B2B7412 /* Pods-PocketMediaNativeAds_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -599,6 +680,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		18D62C791CCD6C3A0086175C /* Build configuration list for PBXNativeTarget "PocketMediaNativeAds_ExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18D62C771CCD6C3A0086175C /* Debug */,
+				18D62C781CCD6C3A0086175C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "PocketMediaNativeAds" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

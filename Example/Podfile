@@ -9,12 +9,13 @@ source 'https://bitbucket.org/pocketbrain/pocketmedia-podspecs.git'
 
 use_frameworks!
 
+
 target 'PocketMediaNativeAds_Example' do
   pod "PocketMediaNativeAds", :path => "../"
   #pod 'AlamofireImage', '~> 2.0'
 end
 
-target 'PocketMediaNativeAds_Tests' do
+target 'PocketMediaNativeAds_ExampleTests' do
   pod "PocketMediaNativeAds", :path => "../"
   #pod 'AlamofireImage', '~> 2.0'
 end

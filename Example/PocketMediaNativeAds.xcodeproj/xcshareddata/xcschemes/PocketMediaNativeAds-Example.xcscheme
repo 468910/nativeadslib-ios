@@ -21,11 +21,11 @@
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
+            buildForTesting = "NO"
+            buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
@@ -46,9 +46,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "PocketMediaNativeAds_Tests.xctest"
-               BlueprintName = "PocketMediaNativeAds_Tests"
+               BlueprintIdentifier = "18D62C6F1CCD6C3A0086175C"
+               BuildableName = "PocketMediaNativeAds_ExampleTests.xctest"
+               BlueprintName = "PocketMediaNativeAds_ExampleTests"
                ReferencedContainer = "container:PocketMediaNativeAds.xcodeproj">
             </BuildableReference>
          </TestableReference>
