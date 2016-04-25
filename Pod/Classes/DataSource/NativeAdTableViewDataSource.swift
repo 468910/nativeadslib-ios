@@ -122,7 +122,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
     
   
    @objc public func requestAds(affiliateId: String , limit: UInt){
-      NativeAdsRequest(affiliateId: affiliateId, delegate: self.nativeAdInjector!).retrieveAds(limit)
+      NativeAdsRequest(adPlacementToken: affiliateId, delegate: self.nativeAdInjector!).retrieveAds(limit)
    }
     
     
