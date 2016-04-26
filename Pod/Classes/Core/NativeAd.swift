@@ -29,6 +29,8 @@ public class NativeAd : NSObject{
   
     public var offerId              : UInt?
   
+    public var adPlacementToken     : String!
+  
     //Todo add placement && add tests for offerid
   
   
@@ -39,9 +41,11 @@ public class NativeAd : NSObject{
         - adDictionary: JSON containing NativeAd Data
     */
     @objc
-    public init?(adDictionary: NSDictionary){
+  public init?(adDictionary: NSDictionary, adPlacementToken: String){
         // Swift Requires all properties to be initialized before its possible to return nil
         super.init()
+      
+        self.adPlacementToken = adPlacementToken
       
         if let name = adDictionary["campaign_name"] as? String {
           self.campaignName = name
@@ -71,6 +75,8 @@ public class NativeAd : NSObject{
         print("Native Ad FallibleConstructor: No OfferId found")
         return nil
        }
+      
+      
         
         if let urlImage = adDictionary["default_icon"] as? String, url = NSURL(string: urlImage) {
             self.campaignImage = url

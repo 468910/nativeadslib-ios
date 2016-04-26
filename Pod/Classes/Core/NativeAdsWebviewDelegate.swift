@@ -63,8 +63,6 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     
     public func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
       
-         loadStatusCheckTimer!.invalidate()
-        
         if let description = error?.description{
             NSLog("DidFailLoadWithError: %@", description)
         }
@@ -90,14 +88,11 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     
     public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
       
-      if loadStatusCheckTimer != nil {
-        self.loadStatusCheckTimer!.invalidate()
-      }
+      
       
         print("shouldStartLoadWithRequest")
         if let host = request.URL?.host{
             if ( host.hasPrefix("itunes.apple.com") )  {
-                loadStatusCheckTimer!.invalidate()
                 NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
                 openSystemBrowser((request.URL!))
                 return false;
@@ -132,6 +127,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
       // Wrong link to test
       let test  = "http://google.com"
       let request = NSURLRequest(URL: NSURL(string: test)!)
+      //let request = NSURLRequest(URL: nativeAdUnit.clickURL)
       self.webView!.loadRequest(request)
       NSLog("webview LoadUrl Exited")
   
@@ -139,37 +135,43 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
   
     @objc
     private func notifyServerOfFalseRedirection(){
+      
       print("Notified")
       
-      var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-      
-      var url = NSURL(string: "http://api.aleks.dev.pmgbrain.com/aleksTest.php")
+      var url = NSURL(string: "http://beta.nativeadsapi.pocketmedia.mobi/api.php")
      
-      var request = NSMutableURLRequest(URL: url!)
+      var req = NSMutableURLRequest(URL: url!)
       
       
       //var finalUrl = (webView!.stringByEvaluatingJavaScriptFromString("window.location")!)
-      var finalUrl = "http://google.com"
+      var finalUrl : String = webView!.request!.URL!.absoluteString
       var offerid = String(nativeAdUnit!.offerId!)
-      var dataBody = "userToken=978d0f4b08ec25a8c32a2de208c23acbbfb3fb465b66e51fd79194fb0a6811e1&" + "offer_id=" + offerid +  "&placement_id=1&final_url=" + finalUrl
+      var adPlacementToken = String(nativeAdUnit!.adPlacementToken!)
+      var userToken =  "userToken=978d0f4b08ec25a8c32a2de208c23acbbfb3fb465b66e51fd79194fb0a6811e1&"
+      var dataBody = userToken + "offer_id=\(offerid)"  +  "&placement_id=\(adPlacementToken)" +  "&final_url=\(finalUrl)"
       print("Full databody: " + dataBody)
       
-      request.HTTPMethod = "POST"
-      request.HTTPBody = dataBody.dataUsingEncoding(NSUTF8StringEncoding);
+      req.HTTPMethod = "POST"
+      req.HTTPBody = dataBody.dataUsingEncoding(NSUTF8StringEncoding);
       
-      var dataTask = session.downloadTaskWithRequest(request){
+      var dataTask = NSURLSession.sharedSession().downloadTaskWithRequest(req){
         data, response, error in
+        if let httpResponse = response as? NSHTTPURLResponse {
+          if httpResponse.statusCode != 200 {
+            print("response was not 200: \(response)")
+            return
+          }
+        }
+        
         if error != nil {
-          
+          print(error!)
         }
         
       }
-      
       dataTask.resume()
       
       print("Notified fired")
       
-      self.loadingView?.hidden = true
       
       
     }

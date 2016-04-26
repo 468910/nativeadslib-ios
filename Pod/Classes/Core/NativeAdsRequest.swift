@@ -51,7 +51,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
                     if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
                         
                         json.filter({ ($0 as? NSDictionary) != nil}).forEach({ (element) -> () in
-                            if let ad = NativeAd( adDictionary: element as! NSDictionary){
+                            if let ad = NativeAd( adDictionary: element as! NSDictionary, adPlacementToken: self.adPlacementToken!){
                                 nativeAds.append(ad)
                             }
                             
