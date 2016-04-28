@@ -62,45 +62,48 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     }
     
     public func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-      
-        if let description = error?.description{
-            NSLog("DidFailLoadWithError: %@", description)
-        }
-        let finalUrl : NSURL = NSURL(string: (error?.userInfo["NSErrorFailingURLStringKey"])! as! String)!
+      if let description = error?.description{
+        NSLog("DidFailLoadWithError: %@", description)
+      }
         webView.stopLoading()
       
-      
-        var url = NSURL(string: "http://api.aleks.dev.pmgbrain.com/aleksTest.php")
-        var request = NSMutableURLRequest(URL: url!)
-      
-        var dataBody = "token=978d0f4b08ec25a8c32a2de208c23acbbfb3fb465b66e51fd79194fb0a6811e1&" + "offer_id=" +  "&placement_id=&final_url=" + String(error!.userInfo["NSErrorFailingURLStringKey"])
-        request.HTTPMethod = "POST"
-        request.HTTPBody = dataBody.dataUsingEncoding(NSUTF8StringEncoding);
+      if(checkIfAppStoreUrl(webView)){
+         self.openSystemBrowser(webView.request!.URL!)
+            NSLog("Could not open URL")
 
-         
+      }else {
+        notifyServerOfFalseRedirection()
+      }
       
-      
-      
-        self.openSystemBrowser(finalUrl)
-        NSLog("Could not open URL")
-        
     }
+  
+  
+  public func checkIfAppStoreUrl(webView: UIWebView) -> Bool{
+    let finalUrl = webView.request!.URL!.absoluteString
+    let host = webView.request!.URL!.host
     
+    
+    if(host!.hasPrefix("itunes.apple.com") || host!.hasPrefix("appstore.com") || finalUrl.lowercaseString.hasPrefix("itms")){
+      return true
+    }else{
+      return false
+    }
+  }
+  
+  
+  
+  
     public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
       
-      
-      
         print("shouldStartLoadWithRequest")
-        if let host = request.URL?.host{
-            if ( host.hasPrefix("itunes.apple.com") )  {
+        if(checkIfAppStoreUrl(webView)){
                 NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
                 openSystemBrowser((request.URL!))
                 return false;
-            }
-            
-        }
-        
-        return true;
+      }else{
+        return true
+      }
+      
     }
     
     public func webViewDidStartLoad(webView: UIWebView) {
@@ -110,6 +113,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     
     public func webViewDidFinishLoad(webView: UIWebView) {
       print("webViewDidFinishLoad")
+      loadingView?.hidden = true
       self.loadStatusCheckTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: .notifyServer, userInfo: nil, repeats: false)
     }
   
@@ -122,11 +126,8 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
       
       self.webView!.stopLoading()
       
-      
-      
-      // Wrong link to test
-      let test  = "http://google.com"
-      let request = NSURLRequest(URL: NSURL(string: test)!)
+      let url  = nativeAdUnit.clickURL
+      let request = NSURLRequest(URL: url!)
       //let request = NSURLRequest(URL: nativeAdUnit.clickURL)
       self.webView!.loadRequest(request)
       NSLog("webview LoadUrl Exited")
@@ -138,7 +139,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
       
       print("Notified")
       
-      var url = NSURL(string: "http://beta.nativeadsapi.pocketmedia.mobi/api.php")
+      var url = NSURL(string: NativeAdsConstants.NativeAds.notifyBadAdsUrl)
      
       var req = NSMutableURLRequest(URL: url!)
       
@@ -147,7 +148,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
       var finalUrl : String = webView!.request!.URL!.absoluteString
       var offerid = String(nativeAdUnit!.offerId!)
       var adPlacementToken = String(nativeAdUnit!.adPlacementToken!)
-      var userToken =  "userToken=978d0f4b08ec25a8c32a2de208c23acbbfb3fb465b66e51fd79194fb0a6811e1&"
+      var userToken =  "userToken=" + NativeAdsConstants.NativeAds.userToken + "&"
       var dataBody = userToken + "offer_id=\(offerid)"  +  "&placement_id=\(adPlacementToken)" +  "&final_url=\(finalUrl)"
       print("Full databody: " + dataBody)
       
