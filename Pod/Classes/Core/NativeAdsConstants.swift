@@ -35,11 +35,12 @@ public struct NativeAdsConstants {
     static let model = UIDevice.currentDevice().model.characters.split{$0 == " "}.map { String($0) }[0]
   }
   public struct NativeAds {
-    public static let tokenAdKey = "nativeAdToken" 
+    public static let tokenAdKey = "nativeAdToken"
     public static let notifyBadAdsUrl = "http://beta.nativeadsapi.pocketmedia.mobi/api.php"
     public static let userToken = "978d0f4b08ec25a8c32a2de208c23acbbfb3fb465b66e51fd79194fb0a6811e1"
     //public static let baseURL = "http://offerwall.12trackway.com/ow.php?output=json"
-    //public static let baseURL = "http://offerwall.beta.pmgbrain.com/ow.php?output=json"
-    public static let baseURL = "http://offerwall.kinson.sandbox.pmgbrain.com/ow.php"
+    public static let baseURL = "http://offerwall.beta.pmgbrain.com/ow.php?output=json"
+    public static let redirectionOfferEngineUrl = "http://www.trckperformance.com/campaign.php?csrc=trpro&ad=24506&aff_id=2854&aff_sub={affiliate_sub}&aff_sub2={affiliate_sub2}&aff_sub3={affiliate_sub3}&aff_sub4={affiliate_sub4}"
+    //public static let baseURL = "http://offerwall.kinson.sandbox.pmgbrain.com/ow.php?output=json"
   }
 }

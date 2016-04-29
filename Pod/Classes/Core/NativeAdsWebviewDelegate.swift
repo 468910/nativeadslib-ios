@@ -31,6 +31,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     public var loadingView : UIView?
     public var webView : UIWebView?
     public var nativeAdUnit : NativeAd?
+    public var adopen : Bool?
   
     private var loadStatusCheckTimer : NSTimer?
 
@@ -42,6 +43,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
         self.debugModeEnabled = debugMode
         self.delegate = delegate
         self.webView = webView
+        self.adopen = false
     }
     
     
@@ -66,39 +68,49 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
         NSLog("DidFailLoadWithError: %@", description)
       }
         webView.stopLoading()
+        loadingView?.hidden = true
       
-      if(checkIfAppStoreUrl(webView)){
+      if(checkIfAppStoreUrl(webView.request!)){
          self.openSystemBrowser(webView.request!.URL!)
             NSLog("Could not open URL")
 
-      }else {
+      }else if(adopen == false){
         notifyServerOfFalseRedirection()
       }
       
     }
   
   
-  public func checkIfAppStoreUrl(webView: UIWebView) -> Bool{
-    let finalUrl = webView.request!.URL!.absoluteString
-    let host = webView.request!.URL!.host
+  public func checkIfAppStoreUrl(request: NSURLRequest) -> Bool{
+    print("this is fucked")
+    print(request.URL!.absoluteString)
     
     
-    if(host!.hasPrefix("itunes.apple.com") || host!.hasPrefix("appstore.com") || finalUrl.lowercaseString.hasPrefix("itms")){
+    
+    if let host = request.URL?.host{
+    if(host.hasPrefix("itunes.apple.com") || host.hasPrefix("appstore.com")){
+      print("Has prefix itunes.apple.com or appstore.com")
       return true
-    }else{
-      return false
+      }
     }
+    else if let finalUrl = request.URL?.absoluteString {
+      if(finalUrl.lowercaseString.hasPrefix("itms")){
+        print("has prefix itms")
+      return true
+      }
+    }
+    print(request.URL!.absoluteString + " Returned false")
+    return false
+    
+    
   }
   
-  
-  
-  
     public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-      
         print("shouldStartLoadWithRequest")
-        if(checkIfAppStoreUrl(webView)){
+        if(checkIfAppStoreUrl(request)){
                 NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
                 openSystemBrowser((request.URL!))
+                adopen = true
                 return false;
       }else{
         return true
@@ -112,9 +124,13 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     }
     
     public func webViewDidFinishLoad(webView: UIWebView) {
+      
       print("webViewDidFinishLoad")
-      loadingView?.hidden = true
-      self.loadStatusCheckTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: .notifyServer, userInfo: nil, repeats: false)
+      
+       loadingView?.hidden = true
+      
+      
+      self.loadStatusCheckTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: .notifyServer, userInfo: nil, repeats: false)
     }
   
   
@@ -124,7 +140,6 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
       
       self.nativeAdUnit = nativeAdUnit
       
-      self.webView!.stopLoading()
       
       let url  = nativeAdUnit.clickURL
       let request = NSURLRequest(URL: url!)
@@ -227,5 +242,5 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
 }
 
 extension Selector {
-    static let notifyServer = #selector(NativeAdsWebviewDelegate.notifyServerOfFalseRedirection)
+  static let notifyServer = #selector(NativeAdsWebviewDelegate.notifyServerOfFalseRedirection)
 }
