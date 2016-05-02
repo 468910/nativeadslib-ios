@@ -21,13 +21,6 @@ public protocol NativeAdsWebviewRedirectionsDelegate {
 }
 
 
-enum NativeAdsWebViewState {
-  case LoadingAd
-  case OpeningAd
-  case RedirectingToOfferEngine
-  
-}
-
 /**
  Creates a webview with a native load indicator to tell the user we are loading some content
  */
@@ -39,7 +32,6 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     public var loadingView : UIView?
     public var webView : UIWebView?
     public var nativeAdUnit : NativeAd?
-    private var currentState : NativeAdsWebViewState
   
     private var loadStatusCheckTimer : NSTimer?
 
@@ -47,8 +39,6 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     
     @objc
   public init(delegate : NativeAdsWebviewRedirectionsDelegate?, webView: UIWebView) {
-        self.currentState = .LoadingAd
-      
         super.init()
         self.delegate = delegate
         self.webView = webView
@@ -76,59 +66,45 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     }
     
     public func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-      switch currentState {
-      case .LoadingAd:
+      
+      // Ignore NSURLErrorDomain error -999.
+      if (error!.code == NSURLErrorCancelled){
+        return
+      }
+      
+      // Ignore "Frame Load Interrupted" errors. Seen after app store links.
+      if (error!.code == 102) {
+        print("FrameLoad Error supressed")
+        return
+      }
+      
+
         if(checkIfAppStoreUrl(webView.request!)){
           self.openSystemBrowser(webView.request!.URL!)
           NSLog("Could not open URL")
-        }else {
+        } else if loadStatusCheckTimer == nil {
          notifyServerOfFalseRedirection()
         }
         
-      case .OpeningAd: break
        
-      case .RedirectingToOfferEngine:
-        if(checkIfAppStoreUrl(webView.request!)){
-          self.openSystemBrowser(webView.request!.URL!)
-          NSLog("Could not open URL")
-        }
-      default: break
-      }
       
       if let description = error?.description{
         NSLog("DidFailLoadWithError: %@", description)
       }
       
-      /*
- 
- 
-  }*/
     }
  
   public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-    switch currentState {
-    case .LoadingAd:
+    
+    
       if(checkIfAppStoreUrl(request)){
+        webView.stopLoading()
         NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
         openSystemBrowser((request.URL!))
-        
-        currentState = NativeAdsWebViewState.OpeningAd
         return false;
       }else{
         return true
       }
-    case .RedirectingToOfferEngine:
-      if(checkIfAppStoreUrl(request)){
-        NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
-        openSystemBrowser((request.URL!))
-        return false
-      }else{
-        return true
-      }
-    default:
-      return true
-    }
-    
     
     print("shouldStartLoadWithRequest")
    
@@ -170,18 +146,9 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     }
     
     public func webViewDidFinishLoad(webView: UIWebView) {
-      switch currentState {
-      case .LoadingAd:
         if(loadStatusCheckTimer == nil){
         self.loadStatusCheckTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: .notifyServer, userInfo: nil, repeats: false)
         }
-      case .RedirectingToOfferEngine: break
-      default: break
-        
-      }
-      print("webViewDidFinishLoad")
-      
-      
     }
   
   
@@ -251,7 +218,6 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
         let url = NSURL(string: validString)
         let request = NSURLRequest(URL: url!)
         self.webView!.stopLoading()
-        currentState = NativeAdsWebViewState.RedirectingToOfferEngine
         self.webView!.loadRequest(request)
         print("Done")
     }
