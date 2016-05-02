@@ -45,7 +45,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
     
     
     
-      self.delegate = NativeAdsTableViewDelegate(datasource: self, controller: controller, delegate: delegate)
+      self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: delegate)
     
       tableView.delegate = self.delegate
       tableView.dataSource = self

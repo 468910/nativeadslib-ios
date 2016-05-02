@@ -9,7 +9,7 @@
 import UIKit
 
 @objc
-public class NativeAdsTableViewDelegate : NSObject, UITableViewDelegate {
+public class NativeAdTableViewDelegate : NSObject, UITableViewDelegate {
   
   public var controller : UITableViewController
   public var delegate : UITableViewDelegate

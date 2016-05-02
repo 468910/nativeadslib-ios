@@ -20,6 +20,14 @@ public protocol NativeAdsWebviewRedirectionsDelegate {
     func didOpenBrowser(url: NSURL)
 }
 
+
+enum NativeAdsWebViewState {
+  case LoadingAd
+  case OpeningAd
+  case RedirectingToOfferEngine
+  
+}
+
 /**
  Creates a webview with a native load indicator to tell the user we are loading some content
  */
@@ -31,21 +39,25 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     public var loadingView : UIView?
     public var webView : UIWebView?
     public var nativeAdUnit : NativeAd?
-    public var adopen : Bool?
+    private var currentState : NativeAdsWebViewState
   
     private var loadStatusCheckTimer : NSTimer?
 
     private var delegate : NativeAdsWebviewRedirectionsDelegate?
     
     @objc
-  public init(debugMode : Bool, delegate : NativeAdsWebviewRedirectionsDelegate?, webView: UIWebView) {
+  public init(delegate : NativeAdsWebviewRedirectionsDelegate?, webView: UIWebView) {
+        self.currentState = .LoadingAd
+      
         super.init()
-        self.debugModeEnabled = debugMode
         self.delegate = delegate
         self.webView = webView
-        self.adopen = false
+      
     }
-    
+  
+   public func toggleDebugMode(){
+      debugModeEnabled = !debugModeEnabled
+   }
     
     private func checkSimulatorURL(url : NSURL) -> NSURL{
         if (debugModeEnabled){
@@ -64,25 +76,68 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     }
     
     public func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+      switch currentState {
+      case .LoadingAd:
+        if(checkIfAppStoreUrl(webView.request!)){
+          self.openSystemBrowser(webView.request!.URL!)
+          NSLog("Could not open URL")
+        }else {
+         notifyServerOfFalseRedirection()
+        }
+        
+      case .OpeningAd: break
+       
+      case .RedirectingToOfferEngine:
+        if(checkIfAppStoreUrl(webView.request!)){
+          self.openSystemBrowser(webView.request!.URL!)
+          NSLog("Could not open URL")
+        }
+      default: break
+      }
+      
       if let description = error?.description{
         NSLog("DidFailLoadWithError: %@", description)
       }
-        webView.stopLoading()
-        loadingView?.hidden = true
       
-      if(checkIfAppStoreUrl(webView.request!)){
-         self.openSystemBrowser(webView.request!.URL!)
-            NSLog("Could not open URL")
-
-      }else if(adopen == false){
-        notifyServerOfFalseRedirection()
-      }
-      
+      /*
+ 
+ 
+  }*/
     }
+ 
+  public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    switch currentState {
+    case .LoadingAd:
+      if(checkIfAppStoreUrl(request)){
+        NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
+        openSystemBrowser((request.URL!))
+        
+        currentState = NativeAdsWebViewState.OpeningAd
+        return false;
+      }else{
+        return true
+      }
+    case .RedirectingToOfferEngine:
+      if(checkIfAppStoreUrl(request)){
+        NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
+        openSystemBrowser((request.URL!))
+        return false
+      }else{
+        return true
+      }
+    default:
+      return true
+    }
+    
+    
+    print("shouldStartLoadWithRequest")
+   
+    
+  }
+  
   
   
   public func checkIfAppStoreUrl(request: NSURLRequest) -> Bool{
-    print("this is fucked")
     print(request.URL!.absoluteString)
     
     
@@ -105,32 +160,28 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     
   }
   
-    public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        print("shouldStartLoadWithRequest")
-        if(checkIfAppStoreUrl(request)){
-                NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
-                openSystemBrowser((request.URL!))
-                adopen = true
-                return false;
-      }else{
-        return true
-      }
-      
-    }
+  
     
     public func webViewDidStartLoad(webView: UIWebView) {
         print("webViewDidStartLoad")
+      if(loadingView == nil){
         self.createLoadingIndicator(webView)
+      }
     }
     
     public func webViewDidFinishLoad(webView: UIWebView) {
-      
+      switch currentState {
+      case .LoadingAd:
+        if(loadStatusCheckTimer == nil){
+        self.loadStatusCheckTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: .notifyServer, userInfo: nil, repeats: false)
+        }
+      case .RedirectingToOfferEngine: break
+      default: break
+        
+      }
       print("webViewDidFinishLoad")
       
-       loadingView?.hidden = true
       
-      
-      self.loadStatusCheckTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: .notifyServer, userInfo: nil, repeats: false)
     }
   
   
@@ -139,11 +190,8 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     public func loadUrl(urlString: String, nativeAdUnit: NativeAd){
       
       self.nativeAdUnit = nativeAdUnit
-      
-      
       let url  = nativeAdUnit.clickURL
       let request = NSURLRequest(URL: url!)
-      //let request = NSURLRequest(URL: nativeAdUnit.clickURL)
       self.webView!.loadRequest(request)
       NSLog("webview LoadUrl Exited")
   
@@ -159,12 +207,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
       var req = NSMutableURLRequest(URL: url!)
       
       
-      //var finalUrl = (webView!.stringByEvaluatingJavaScriptFromString("window.location")!)
-      var finalUrl : String = webView!.request!.URL!.absoluteString
-      var offerid = String(nativeAdUnit!.offerId!)
-      var adPlacementToken = String(nativeAdUnit!.adPlacementToken!)
-      var userToken =  "userToken=" + NativeAdsConstants.NativeAds.userToken + "&"
-      var dataBody = userToken + "offer_id=\(offerid)"  +  "&placement_id=\(adPlacementToken)" +  "&final_url=\(finalUrl)"
+      var dataBody = constructDataBodyForNotifyingServerOfFalseRedirection()
       print("Full databody: " + dataBody)
       
       req.HTTPMethod = "POST"
@@ -188,8 +231,29 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
       
       print("Notified fired")
       
-      
-      
+      redirectToOfferEngine()
+     
+    }
+  
+    private func constructDataBodyForNotifyingServerOfFalseRedirection() -> String{
+      var finalUrl : String = webView!.request!.URL!.absoluteString
+      var offerid = String(nativeAdUnit!.offerId!)
+      var adPlacementToken = String(nativeAdUnit!.adPlacementToken!)
+      var userToken =  "userToken=" + NativeAdsConstants.NativeAds.userToken + "&"
+      var dataBody = userToken + "offer_id=\(offerid)"  +  "&placement_id=\(adPlacementToken)" +  "&final_url=\(finalUrl)"
+      return dataBody
+    }
+  
+    private func redirectToOfferEngine(){
+        print("Open System Browser with Redirection Url")
+        let string = NativeAdsConstants.NativeAds.redirectionOfferEngineUrl
+        let validString = (string.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
+        let url = NSURL(string: validString)
+        let request = NSURLRequest(URL: url!)
+        self.webView!.stopLoading()
+        currentState = NativeAdsWebViewState.RedirectingToOfferEngine
+        self.webView!.loadRequest(request)
+        print("Done")
     }
     
 
@@ -206,7 +270,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
             UIApplication.sharedApplication().openURL(url)
         }
         
-        delegate?.didOpenBrowser(url)
+        delegate!.didOpenBrowser(url)
         
     }
   
@@ -215,11 +279,11 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     private func createLoadingIndicator(parentView : UIView){
         
         // Box config:
-        let loadingView = UIView(frame: CGRect(x: 115, y: 110, width: 80, height: 80))
-        loadingView.center = parentView.center
-        loadingView.backgroundColor = UIColor.blackColor()
-        loadingView.alpha = 0.9
-        loadingView.layer.cornerRadius = 10
+        loadingView = UIView(frame: CGRect(x: 115, y: 110, width: 80, height: 80))
+        loadingView!.center = parentView.center
+        loadingView!.backgroundColor = UIColor.blackColor()
+        loadingView!.alpha = 0.9
+        loadingView!.layer.cornerRadius = 10
         
         // Spin config:
         let activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
@@ -234,9 +298,9 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
         textLabel.text = "Loading..."
         
         // Activate:
-        loadingView.addSubview(activityView)
-        loadingView.addSubview(textLabel)
-        parentView.addSubview(loadingView)
+        loadingView!.addSubview(activityView)
+        loadingView!.addSubview(textLabel)
+        parentView.addSubview(loadingView!)
   
     }
 }

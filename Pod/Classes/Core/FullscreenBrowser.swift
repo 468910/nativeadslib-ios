@@ -68,7 +68,7 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
        }
           
           if (webViewDelegate == nil){
-            self.webViewDelegate = NativeAdsWebviewDelegate(debugMode: true, delegate: self, webView: webView!)
+            self.webViewDelegate = NativeAdsWebviewDelegate(delegate: self, webView: webView!)
           }
         
         
