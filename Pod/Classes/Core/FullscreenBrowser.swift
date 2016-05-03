@@ -111,10 +111,14 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
         
     }
     
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        if parent == nil {
+            self.webView?.stopLoading()
+        }
+    }
+    
     internal func closeAction(){
-      if webViewDelegate != nil {
-        self.webViewDelegate!.closeRequest()
-      }
+        self.webView?.stopLoading()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
