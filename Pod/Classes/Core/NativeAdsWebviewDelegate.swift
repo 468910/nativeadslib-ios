@@ -114,23 +114,17 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
   
   
   public func checkIfAppStoreUrl(request: NSURLRequest) -> Bool{
-    NSLog(request.URL!.absoluteString)
-    
-    
     
     if let host = request.URL?.host{
     if(host.hasPrefix("itunes.apple.com") || host.hasPrefix("appstore.com")){
-      NSLog("Has prefix itunes.apple.com or appstore.com")
       return true
       }
     }
     else if let finalUrl = request.URL?.absoluteString {
       if(finalUrl.lowercaseString.hasPrefix("itms")){
-        NSLog("has prefix itms")
       return true
       }
     }
-    NSLog(request.URL!.absoluteString + " Returned false")
     return false
     
     
