@@ -26,9 +26,9 @@ public class NativeAd : NSObject{
     public var destinationURL      : NSURL?
     
     private var originalClickUrl    : NSURL!
-  
+    /// PocketMedia's Offer ID the ad is linked to
     public var offerId              : UInt?
-  
+    /// Ad Placement token the ad is linked to (via the ads request)
     public var adPlacementToken     : String!
   
   
@@ -46,7 +46,7 @@ public class NativeAd : NSObject{
         if let name = adDictionary["campaign_name"] as? String {
           self.campaignName = name
         }else{
-          print("Native Ad Fallible Constructor: No CampaignName found")
+          NSLog("Native Ad Fallible Constructor: No CampaignName found")
           return nil
         }
         
@@ -54,7 +54,7 @@ public class NativeAd : NSObject{
             self.clickURL = url
             self.originalClickUrl = self.clickURL
         }else{
-            print("Native Ad Fallible Constructor: No ClickUrl found")
+            NSLog("Native Ad Fallible Constructor: No ClickUrl found")
             return nil
         }
         
@@ -66,9 +66,9 @@ public class NativeAd : NSObject{
       
       if let offerId = adDictionary["id"] as? String {
          self.offerId = UInt(offerId)
-        print("Offerid assigned:" + offerId)
+        NSLog("Offerid assigned:" + offerId)
        }else {
-        print("Native Ad FallibleConstructor: No OfferId found")
+        NSLog("Native Ad FallibleConstructor: No OfferId found")
         return nil
        }
       
@@ -81,7 +81,7 @@ public class NativeAd : NSObject{
             if let urlImage = adDictionary["campaign_image"] as? String, url = NSURL(string: urlImage) {
                 self.campaignImage = url
             }else{
-               print("Native Ad Fallible Constructor: No Campaignimage found");
+               NSLog("Native Ad Fallible Constructor: No Campaignimage found");
                 return nil
             }
         }
