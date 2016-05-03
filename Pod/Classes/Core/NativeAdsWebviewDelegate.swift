@@ -114,23 +114,23 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
   
   
   public func checkIfAppStoreUrl(request: NSURLRequest) -> Bool{
-    print(request.URL!.absoluteString)
+    NSLog(request.URL!.absoluteString)
     
     
     
     if let host = request.URL?.host{
     if(host.hasPrefix("itunes.apple.com") || host.hasPrefix("appstore.com")){
-      print("Has prefix itunes.apple.com or appstore.com")
+      NSLog("Has prefix itunes.apple.com or appstore.com")
       return true
       }
     }
     else if let finalUrl = request.URL?.absoluteString {
       if(finalUrl.lowercaseString.hasPrefix("itms")){
-        print("has prefix itms")
+        NSLog("has prefix itms")
       return true
       }
     }
-    print(request.URL!.absoluteString + " Returned false")
+    NSLog(request.URL!.absoluteString + " Returned false")
     return false
     
     
@@ -171,7 +171,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
       var req = NSMutableURLRequest(URL: url!)
       
       var dataBody = constructDataBodyForNotifyingServerOfFalseRedirection()
-      print("Full databody: " + dataBody)
+      NSLog("Full databody: " + dataBody)
       
       req.HTTPMethod = "POST"
       req.HTTPBody = dataBody.dataUsingEncoding(NSUTF8StringEncoding);
