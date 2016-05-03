@@ -26,8 +26,10 @@ public class NativeAd : NSObject{
     public var destinationURL      : NSURL?
     
     private var originalClickUrl    : NSURL!
-    
   
+    public var offerId              : UInt?
+  
+    public var adPlacementToken     : String!
   
   
     /**
@@ -35,13 +37,16 @@ public class NativeAd : NSObject{
         - adDictionary: JSON containing NativeAd Data
     */
     @objc
-    public init?(adDictionary: NSDictionary){
+  public init?(adDictionary: NSDictionary, adPlacementToken: String){
         // Swift Requires all properties to be initialized before its possible to return nil
         super.init()
+      
+        self.adPlacementToken = adPlacementToken
       
         if let name = adDictionary["campaign_name"] as? String {
           self.campaignName = name
         }else{
+          print("Native Ad Fallible Constructor: No CampaignName found")
           return nil
         }
         
@@ -49,6 +54,7 @@ public class NativeAd : NSObject{
             self.clickURL = url
             self.originalClickUrl = self.clickURL
         }else{
+            print("Native Ad Fallible Constructor: No ClickUrl found")
             return nil
         }
         
@@ -57,6 +63,16 @@ public class NativeAd : NSObject{
         }else{
             self.campaignDescription = ""
         }
+      
+      if let offerId = adDictionary["id"] as? String {
+         self.offerId = UInt(offerId)
+        print("Offerid assigned:" + offerId)
+       }else {
+        print("Native Ad FallibleConstructor: No OfferId found")
+        return nil
+       }
+      
+      
         
         if let urlImage = adDictionary["default_icon"] as? String, url = NSURL(string: urlImage) {
             self.campaignImage = url
@@ -65,6 +81,7 @@ public class NativeAd : NSObject{
             if let urlImage = adDictionary["campaign_image"] as? String, url = NSURL(string: urlImage) {
                 self.campaignImage = url
             }else{
+               print("Native Ad Fallible Constructor: No Campaignimage found");
                 return nil
             }
         }
@@ -93,6 +110,8 @@ public class NativeAd : NSObject{
    public func openAdUrl(parentViewController: UIViewController, opener: NativeAdOpenerDelegate){
       opener.load(self)
     }
+  
+  
   
     /**
       Opens NativeAd in foreground.

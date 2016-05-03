@@ -17,7 +17,7 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
     private var originalViewController : UIViewController?
     
     private var webView : UIWebView?
-    private var webViewDelegate : UIWebViewDelegate?
+    private var webViewDelegate : NativeAdsWebviewDelegate?
     
     @objc
     internal init(parentViewController : UIViewController){
@@ -30,9 +30,9 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
     }
     
     override internal func viewDidLoad() {
-        if (self.webView != nil){
+        /*if (self.webView != nil){
             self.view.addSubview(self.webView!)
-        }
+        }*/
     }
 
     /**
@@ -45,14 +45,39 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
         
         
         if (webView == nil){
-            webView = UIWebView(frame: CGRect.init(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height))
-        }
+          if(self.originalViewController != nil){
+            webView = UIWebView(frame: CGRect.init(
+              x: 0,
+              y: 0,
+              width: self.originalViewController!.view.bounds.width,
+              height: self.originalViewController!.view.bounds.height
+            ))
+            
+            
+            
+              
+            }else{
+              webView = UIWebView(frame: CGRect.init(
+                x: 0,
+                y:0,
+                width: UIScreen.mainScreen().bounds.width,
+                height: UIScreen.mainScreen().bounds.height
+                ))
+            }
+          
+       }
+          
+          if (webViewDelegate == nil){
+            self.webViewDelegate = NativeAdsWebviewDelegate(delegate: self, webView: webView!)
+          }
         
-        if (webViewDelegate == nil){
-            self.webViewDelegate = NativeAdsWebviewDelegate(debugMode: true, delegate: self)
-        }
         
-        webView?.delegate = self.webViewDelegate
+      
+        webView!.delegate = self.webViewDelegate
+        self.view = webView
+        var blackView = UIView(frame: CGRect.init(x: 0, y: 0, width:  webView!.bounds.width, height: webView!.bounds.height))
+        blackView.backgroundColor = UIColor.whiteColor()
+        webView!.addSubview(blackView)
         
         // In case the original controller is attached to a UINavigationController, we use it
         // to push our new fullscreen browser
@@ -62,10 +87,11 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
                 self.originalViewController!.navigationController!.pushViewController(self, animated: true)
             }
             
-            let request : NSURLRequest = NSURLRequest(URL: (adUnit.clickURL)!)
-            webView?.loadRequest(request)
+            self.webViewDelegate!.loadUrl(adUnit.clickURL.absoluteString, nativeAdUnit: adUnit)
             
         }else{
+          
+          
         // If the originall view controller doesn't have an UINavigationController
         // we will display a new view
             
@@ -73,12 +99,11 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
             button.frame = CGRectMake(UIScreen.mainScreen().bounds.width - UIScreen.mainScreen().bounds.width * 0.10, 0, UIScreen.mainScreen().bounds.width * 0.10, UIScreen.mainScreen().bounds.height * 0.10)
             button.backgroundColor = UIColor.clearColor()
             button.setImage(UIImage(named: "close"), forState: UIControlState.Normal)
-            button.addTarget(self, action: #selector(FullscreenBrowser.closeAction), forControlEvents: UIControlEvents.TouchUpInside)
+            button.addTarget(self, action: .closeAction, forControlEvents: UIControlEvents.TouchUpInside)
             self.view.addSubview(button)
             
             originalViewController!.presentViewController(self, animated: true, completion: { () -> Void in
-                let request : NSURLRequest = NSURLRequest(URL: (adUnit.clickURL)!)
-                self.webView?.loadRequest(request)
+                self.webViewDelegate!.loadUrl(adUnit.clickURL.absoluteString, nativeAdUnit: adUnit)
             })
 
         }
@@ -89,6 +114,7 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
         
         if let _ = self.originalViewController?.navigationController{
             self.originalViewController?.navigationController?.popViewControllerAnimated(true)
+          
         }else{
             self.closeAction()
         }
@@ -102,4 +128,9 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
     }
 
     
+}
+
+
+extension Selector {
+  static let closeAction = #selector(FullscreenBrowser.closeAction)
 }
