@@ -5,6 +5,8 @@
 //  Created by Adrián Moreno Peña | Pocket Media on 14/01/16.
 //
 //
+import Foundation
+
 
 /**
   This delegate allows the invoking classes to react to native-ads related events

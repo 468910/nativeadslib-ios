@@ -5,6 +5,7 @@
 //  Created by apple on 18/02/16.
 //
 //
+import Foundation
 
 /**
   Protocol for the opening of the Native ads.
