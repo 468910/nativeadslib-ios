@@ -209,6 +209,12 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
         self.webView!.loadRequest(request)
         NSLog("Done")
     }
+  
+   public func closeRequest(){
+     if webView != nil {
+      webView!.stopLoading()
+    }
+   }
     
 
     /**

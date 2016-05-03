@@ -101,7 +101,11 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
     
     @objc
     internal func didOpenBrowser(url : NSURL){
-        
+      
+        if webViewDelegate != nil {
+          self.webViewDelegate!.closeRequest()
+        }
+      
         if let _ = self.originalViewController?.navigationController{
             self.originalViewController?.navigationController?.popViewControllerAnimated(true)
             
