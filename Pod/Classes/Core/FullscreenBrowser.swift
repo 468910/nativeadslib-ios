@@ -8,12 +8,12 @@
 
 import UIKit
 
-/** 
+/**
  Class that is used to open the NativeAd in An FullScreen Embedded WebView.
-   Default implementation for the NativeAdOpenerProtocol
-**/
+ Default implementation for the NativeAdOpenerProtocol
+ **/
 internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsDelegate, NativeAdOpenerDelegate {
-
+    
     private var originalViewController : UIViewController?
     
     private var webView : UIWebView?
@@ -24,55 +24,45 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
         super.init(nibName: nil, bundle: NSBundle.mainBundle())
         self.originalViewController = parentViewController
     }
-
+    
     required internal init?(coder aDecoder: NSCoder)  {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override internal func viewDidLoad() {
-        /*if (self.webView != nil){
-            self.view.addSubview(self.webView!)
-        }*/
-    }
-
     /**
      Starts loading the ad within the current context (controller and navigation)
      - adUnit: adUnit whose ad we want to display
      */
     @objc
-   internal func load(adUnit : NativeAd){
-        print("\nFollowing link: \(adUnit.clickURL)")
-        
+    internal func load(adUnit : NativeAd){
         
         if (webView == nil){
-          if(self.originalViewController != nil){
-            webView = UIWebView(frame: CGRect.init(
-              x: 0,
-              y: 0,
-              width: self.originalViewController!.view.bounds.width,
-              height: self.originalViewController!.view.bounds.height
-            ))
-            
-            
-            
-              
+            if(self.originalViewController != nil){
+                webView = UIWebView(frame: CGRect.init(
+                    x: 0,
+                    y: 0,
+                    width: self.originalViewController!.view.bounds.width,
+                    height: self.originalViewController!.view.bounds.height
+                    )
+                )
             }else{
-              webView = UIWebView(frame: CGRect.init(
-                x: 0,
-                y:0,
-                width: UIScreen.mainScreen().bounds.width,
-                height: UIScreen.mainScreen().bounds.height
-                ))
+                webView = UIWebView(frame: CGRect.init(
+                    x: 0,
+                    y:0,
+                    width: UIScreen.mainScreen().bounds.width,
+                    height: UIScreen.mainScreen().bounds.height
+                    )
+                )
             }
-          
-       }
-          
-          if (webViewDelegate == nil){
+            
+        }
+        
+        if (webViewDelegate == nil){
             self.webViewDelegate = NativeAdsWebviewDelegate(delegate: self, webView: webView!)
-          }
+        }
         
         
-      
+        
         webView!.delegate = self.webViewDelegate
         self.view = webView
         var blackView = UIView(frame: CGRect.init(x: 0, y: 0, width:  webView!.bounds.width, height: webView!.bounds.height))
@@ -90,10 +80,10 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
             self.webViewDelegate!.loadUrl(adUnit.clickURL.absoluteString, nativeAdUnit: adUnit)
             
         }else{
-          
-          
-        // If the originall view controller doesn't have an UINavigationController
-        // we will display a new view
+            
+            
+            // If the originall view controller doesn't have an UINavigationController
+            // we will display a new view
             
             let button = UIButton(type: UIButtonType.System)
             button.frame = CGRectMake(UIScreen.mainScreen().bounds.width - UIScreen.mainScreen().bounds.width * 0.10, 0, UIScreen.mainScreen().bounds.width * 0.10, UIScreen.mainScreen().bounds.height * 0.10)
@@ -105,7 +95,7 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
             originalViewController!.presentViewController(self, animated: true, completion: { () -> Void in
                 self.webViewDelegate!.loadUrl(adUnit.clickURL.absoluteString, nativeAdUnit: adUnit)
             })
-
+            
         }
     }
     
@@ -114,23 +104,21 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
         
         if let _ = self.originalViewController?.navigationController{
             self.originalViewController?.navigationController?.popViewControllerAnimated(true)
-          
+            
         }else{
             self.closeAction()
         }
-
-        NSLog("Dismissed View Controller for FullScreenBrowser")
-
+        
     }
     
     internal func closeAction(){
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     
 }
 
 
 extension Selector {
-  static let closeAction = #selector(FullscreenBrowser.closeAction)
+    static let closeAction = #selector(FullscreenBrowser.closeAction)
 }
