@@ -27,7 +27,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
   
 
   
-    @objc
+  @objc
   public required init(datasource: UITableViewDataSource, tableView : UITableView, delegate : UITableViewDelegate, controller : UITableViewController){
         super.init()
   
@@ -66,13 +66,14 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
       
       
       let fullCount = datasource!.tableView(tableView, numberOfRowsInSection: 0) + ads!.collection.count
+      let helper = NativeAdDataSourceHelper(collectionSize: fullCount)
       
       var adMargin = fullCount / ads!.collection.count
       
        print("Current row" + String(indexPath.row))
        print("AdMargin" + String(adMargin))
-       if ((indexPath.row % adMargin) == 0 && indexPath.row > 0 ){
-          
+        if (helper.isIndexNativeAd(indexPath.row, adMargin: adMargin)){
+      
             let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdCell") as! NativeAdCell
             print(indexPath.row / adMargin)
             cell.configureAdView(ads!.collection[indexPath.row / adMargin - 1] as! NativeAd)
@@ -83,7 +84,9 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
             return cell;
         }else{
             // TODO: request content with the index in the original datasource, not in the merged one.
-        let truePath = NSIndexPath(forRow: indexPath.row - (indexPath.row / adMargin), inSection : 0 )
+        let normalizedRowIndex = helper.normalize(indexPath.row, adMargin: adMargin)
+        
+        let truePath = NSIndexPath(forRow: normalizedRowIndex, inSection : 0 )
         print(ads!.collection.count)
         
         if(truePath.row == datasource!.tableView(tableView, numberOfRowsInSection: 0)){

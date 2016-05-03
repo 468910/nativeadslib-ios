@@ -11,6 +11,7 @@
 		09FA51EBF6C492F4B604D84FB5A2E4BA /* Pods-PocketMediaNativeAds_ExampleTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4B773ECAB40C723533D11FE6AD5EAE /* Pods-PocketMediaNativeAds_ExampleTests-dummy.m */; };
 		0B983B34DB4CDE1E2B4E889EC9C51D6F /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C0F900406F5AC4C380BEF1D9EB41D8 /* close@2x.png */; };
 		0DDCB2A86570BD892AD07E4493BE1FB0 /* AdUnitFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F24340FD8E1DA0F2DBDCCF4F0432A7 /* AdUnitFactory.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		18BD9A521CD7A80F00667CE8 /* NativeAdDataSourceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD9A511CD7A80F00667CE8 /* NativeAdDataSourceHelper.swift */; };
 		1BC82FD8519913D540C83F5852A32D78 /* NativeAdsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E236906E775D7A142110A029AE643 /* NativeAdsConstants.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1ED1541570252507747645487AB23E55 /* ReferenceArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = F882BEDDA80EE384573704833292B115 /* ReferenceArray.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		23E1EEA2772640C2AE7BA0DB7D30D52D /* BigNativeAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6559EB71D7491D72C1858DE741186DE5 /* BigNativeAdTableViewCell.xib */; };
@@ -80,6 +81,7 @@
 		0F8A43BE6328B7A69688CFAC1462BEE9 /* Pods-PocketMediaNativeAds_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PocketMediaNativeAds_Example-umbrella.h"; sourceTree = "<group>"; };
 		112872DE90E3D9CD8D4D6FE4E8D313F0 /* Pods-PocketMediaNativeAds_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PocketMediaNativeAds_Example.modulemap"; sourceTree = "<group>"; };
 		13D7597400C01D6A01D92164EACC1F93 /* Pods_PocketMediaNativeAds_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAds_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18BD9A511CD7A80F00667CE8 /* NativeAdDataSourceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdDataSourceHelper.swift; sourceTree = "<group>"; };
 		1C42CAC72B6C33A72BC0B29A09B7A81A /* NativeAdsRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsRequest.swift; sourceTree = "<group>"; };
 		269E236906E775D7A142110A029AE643 /* NativeAdsConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsConstants.swift; sourceTree = "<group>"; };
 		2AEC1F9C83ED6328E1D68E5DA19457B8 /* Pods-PocketMediaNativeAds_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PocketMediaNativeAds_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				4DDC7CDFCDBE20C0A24F911D5968B721 /* NativeAdTableViewDelegate.swift */,
 				033BB5168007CC1B6454D8BA7331DA7A /* NativeAdTableViewDataSource.swift */,
 				F4A83C134D0BFF8C4E5350D343BD7F8C /* NativeAdViewBinderProtocol.swift */,
+				18BD9A511CD7A80F00667CE8 /* NativeAdDataSourceHelper.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				2E7A9CB0CBC49B55484A32F7DE8582C4 /* AbstractAdUnitUIView.swift in Sources */,
 				0DDCB2A86570BD892AD07E4493BE1FB0 /* AdUnitFactory.swift in Sources */,
 				964ECE329BC67A72A22B8C3D6950A714 /* BigNativeAdTableViewCell.swift in Sources */,
+				18BD9A521CD7A80F00667CE8 /* NativeAdDataSourceHelper.swift in Sources */,
 				E6559DCDB9222D21DC42AF52ABF77896 /* DataSourceProtocol.swift in Sources */,
 				802EDE6C6C15D2660E67338F66CE834D /* DisplayHelperDelegate.swift in Sources */,
 				D5614FDA374B52A8B23AAF6F3C8202EB /* FullscreenBrowser.swift in Sources */,

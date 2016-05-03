@@ -11,10 +11,10 @@ import XCTest
 @testable import PocketMediaNativeAds
 
 class PocketMediaNativeAds_ExampleTests: XCTestCase {
-     
   
     override func setUp() {
         super.setUp()
+      
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
@@ -23,9 +23,21 @@ class PocketMediaNativeAds_ExampleTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testInsertion() {
+        let helper = NativeAdDataSourceHelper(collectionSize: 50)
+        XCTAssertEqual(helper.isIndexNativeAd(5, adMargin: 5), true)
+        XCTAssertEqual(helper.isIndexNativeAd(0, adMargin: 5), false)
+        XCTAssertEqual(helper.isIndexNativeAd(5, adMargin: 0), false)
+      
+      for i in (0..<20){
+          var index = helper.normalize(i, adMargin: 5)
+          print(index)
+       }
+      
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+      
+      
     }
     
     func testPerformanceExample() {
