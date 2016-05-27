@@ -10,15 +10,14 @@ import UIKit
 
 @objc
 public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, DisplayHelperDelegate{
-    
-    public var collection : ReferenceArray!
-    public var ads : ReferenceArray?
   
-    public var nativeAdInjector : NativeAdsRetriever?
     public var datasource : UITableViewDataSource?
     public var tableView : UITableView?
     public var delegate : UITableViewDelegate?
     public var controller : UITableViewController?
+    public var adStream : NativeAdStream?
+  
+  
   
   
   
@@ -26,17 +25,13 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
   
   
 
-  
   @objc
   public required init(datasource: UITableViewDataSource, tableView : UITableView, delegate : UITableViewDelegate, controller : UITableViewController){
         super.init()
   
        self.controller = controller
   
-        collection =  ReferenceArray()
-    
-        self.ads = ReferenceArray()
-        nativeAdInjector = NativeAdsRetriever(ads: ads!, displayHelper: self)
+      adStream = NativeAdStream(adFrequency: 4, datasource: self, delegate: self)
     
     
         self.datasource = datasource
@@ -58,53 +53,21 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
         tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
         
         tableView.registerNib(UINib(nibName: "NativeAdCell", bundle: bundle), forCellReuseIdentifier: "NativeAdCell")
+ 
     }
-    
+  
     // Data Source
     @objc
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      
-      
-      let fullCount = datasource!.tableView(tableView, numberOfRowsInSection: 0) + ads!.collection.count
-      let helper = NativeAdDataSourceHelper(collectionSize: fullCount)
-      
-      var adMargin = fullCount / ads!.collection.count
-      
-       print("Current row" + String(indexPath.row))
-       print("AdMargin" + String(adMargin))
-        if (helper.isIndexNativeAd(indexPath.row, adMargin: adMargin)){
-      
-            let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdCell") as! NativeAdCell
-            print(indexPath.row / adMargin)
-            cell.configureAdView(ads!.collection[indexPath.row / adMargin - 1] as! NativeAd)
-        
-          
-          
-          
-            return cell;
-        }else{
-            // TODO: request content with the index in the original datasource, not in the merged one.
-        let normalizedRowIndex = helper.normalize(indexPath.row, adMargin: adMargin)
-        
-        let truePath = NSIndexPath(forRow: normalizedRowIndex, inSection : 0 )
-        print(ads!.collection.count)
-        
-        if(truePath.row == datasource!.tableView(tableView, numberOfRowsInSection: 0)){
+     NSLog("True index: %d", indexPath.row)
+      if let val = adStream!.isAdAtposition(indexPath.row){
+        NSLog("Native ad")
         let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdCell") as! NativeAdCell
-        cell.configureAdView(ads!.collection.last as! NativeAd)
-           dump(ads!.collection)
-            return cell
-        }
-        /**
-          if((indexPath.row / self.nativeAdInjector!.adMargin!) > ) {
-            let secondPath = NSIndexPath(forRow: indexPath.row + 1 - (indexPath.row / adMargin), inSection: 0)
-            return datasource!.tableView(tableView, cellForRowAtIndexPath : secondPath)
-          }*/
-          
-       // print("MOdified row index" +  String(indexPath.row - (indexPath.row / self.nativeAdInjector!.adMargin!)))
-            // Dirty fix 
-        
-          return datasource!.tableView(tableView, cellForRowAtIndexPath: truePath)
+        cell.configureAdView(val)
+        return cell;
+      }else{
+        NSLog("Normalized :  %d", adStream!.normalize(indexPath.row))
+        return datasource!.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream!.normalize(indexPath.row), inSection: 0))
         }
       
     }
@@ -112,12 +75,15 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
     
     @objc
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datasource!.tableView(tableView, numberOfRowsInSection: section) + ads!.collection.count
+        return datasource!.tableView(tableView, numberOfRowsInSection: section) + adStream!.getAdCount()
     }
   
+  public func getOriginalCollectionCount() -> Int{
+      return datasource!.tableView(tableView!, numberOfRowsInSection: 0)
+  }
+
   
- 
-    
+  
     @objc
     public func onUpdateCollection() {
         tableView!.onUpdateCollection()
@@ -125,10 +91,10 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
     
   
    @objc public func requestAds(affiliateId: String , limit: UInt){
-      NativeAdsRequest(adPlacementToken: affiliateId, delegate: self.nativeAdInjector!).retrieveAds(limit)
+      NativeAdsRequest(adPlacementToken: affiliateId, delegate: adStream!).retrieveAds(limit)
    }
-    
-    
+  
+
     
 }
 

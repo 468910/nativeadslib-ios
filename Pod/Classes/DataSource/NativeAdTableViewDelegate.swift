@@ -25,6 +25,9 @@ public class NativeAdTableViewDelegate : NSObject, UITableViewDelegate {
   // Delegate
   @objc
   public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    /*
+    
+    if(!datasource.ads!.collection.isEmpty){
     let fullCount = datasource.tableView(tableView, numberOfRowsInSection: 0)
     
     var adMargin = fullCount / datasource.ads!.collection.count
@@ -51,7 +54,10 @@ public class NativeAdTableViewDelegate : NSObject, UITableViewDelegate {
       
       delegate.tableView!(tableView, didSelectRowAtIndexPath: truePath)
     
-    }
+      }
+    }else{
+      return delegate.tableView!(tableView, didSelectRowAtIndexPath: indexPath);
+    }*/
     
     
   }

@@ -12,20 +12,19 @@ import PocketMediaNativeAds
 class TableViewController: UITableViewController {
   
     var tableViewDataSource : ExampleTableViewDataSource?
-    var imageCache = [String:UIImage]()
-    
+    var nativeAd : NativeAdTableViewDataSource?
+  
     override func viewDidLoad() {
-        //tableViewDataSource = NativeAdTableViewDataSource(datasource: self, tableView: self.tableView, delegate: self, controller: self)
+      
         super.viewDidLoad()
       tableViewDataSource = ExampleTableViewDataSource()
-        self.tableView.dataSource = tableViewDataSource
+      tableViewDataSource!.loadLocalJSON()
       
-    tableViewDataSource!.loadLocalJSON()
-      self.tableView.reloadData()
-        
       
-        //loadLocalJSON()
-        //tableViewDataSource?.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 5)
+      nativeAd = NativeAdTableViewDataSource(datasource: tableViewDataSource!, tableView: self.tableView, delegate: self, controller: self)
+      self.tableView.dataSource = nativeAd
+      
+      nativeAd!.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 5)
     }
     
   
