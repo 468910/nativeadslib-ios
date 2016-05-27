@@ -25,41 +25,11 @@ public class NativeAdTableViewDelegate : NSObject, UITableViewDelegate {
   // Delegate
   @objc
   public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    /*
-    
-    if(!datasource.ads!.collection.isEmpty){
-    let fullCount = datasource.tableView(tableView, numberOfRowsInSection: 0)
-    
-    var adMargin = fullCount / datasource.ads!.collection.count
-    
-    if ((indexPath.row % adMargin) == 0 && indexPath.row > 0 ){
-       let ad = datasource.ads!.collection[indexPath.row / adMargin - 1 ] as! NativeAd
-      print("Opening url: \(ad.clickURL.absoluteString)")
-      // This method will take of opening the ad inside of the app, until we have an iTunes url
-      ad.openAdUrl(controller)
-      
-      
-    
-    }else{
-      // TODO: request content with the index in the original datasource, not in the merged one.
-      let truePath = NSIndexPath(forRow: indexPath.row - (indexPath.row / adMargin), inSection : 0 )
-      print(datasource.ads!.collection.count)
-      
-      if(truePath.row == datasource.datasource!.tableView(tableView, numberOfRowsInSection: 0)){
-        let ad = datasource.ads!.collection.last as! NativeAd
-        print("Opening url: \(ad.clickURL.absoluteString)")
-        // This method will take of opening the ad inside of the app, until we have an iTunes url
-        ad.openAdUrl(controller)
-      }
-      
-      delegate.tableView!(tableView, didSelectRowAtIndexPath: truePath)
-    
-      }
+    if let val = datasource.adStream!.isAdAtposition(indexPath.row){
+        val.openAdUrl(controller)
     }else{
       return delegate.tableView!(tableView, didSelectRowAtIndexPath: indexPath);
-    }*/
-    
-    
+    }
   }
   
   @objc
