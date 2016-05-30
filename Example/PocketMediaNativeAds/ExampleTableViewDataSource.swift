@@ -73,11 +73,6 @@ public class ExampleTableViewDataSource : NSObject,  UITableViewDataSource {
   }
   
   
-  
-   public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    //
-  }
-  
  
   
 }

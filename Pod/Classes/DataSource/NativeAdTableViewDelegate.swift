@@ -205,7 +205,6 @@ public class NativeAdTableViewDelegate : NSObject, UITableViewDelegate {
     if let path =  delegate.tableView?(tableView, willSelectRowAtIndexPath: indexPath) {
       return path
     }else {
-      print("Here i am getting nillled")
       return indexPath
     }
   }
