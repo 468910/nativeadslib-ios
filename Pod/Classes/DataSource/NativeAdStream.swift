@@ -28,7 +28,6 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   }
   
   public func didRecieveResults(nativeAds: [NativeAd]) {
-    NSLog("Monkeys")
     
     if(nativeAds.isEmpty) {
       NSLog("No Ads Retrieved")
@@ -36,12 +35,15 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     var orginalCount = datasource.getOriginalCollectionCount()
     var adsInserted = 0
     for ad in nativeAds {
+      
        var index = adFrequency + (adFrequency * adsInserted) + adsInserted
-      if(index > orginalCount){ break}
+      NSLog("The current index is %d", index)
+      NSLog("Print dex is %d" ,  orginalCount + adsInserted)
+      if(index > (orginalCount + adsInserted)){ break}
       ads[adFrequency + (adFrequency * adsInserted) + adsInserted] = ad
      
       
-      NSLog("This is inserting %d", index)
+      //NSLog("This is inserting %d", index)
       adsInserted += 1
     }
     

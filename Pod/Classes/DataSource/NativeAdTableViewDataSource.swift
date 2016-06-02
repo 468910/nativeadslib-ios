@@ -31,7 +31,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
   
        self.controller = controller
   
-      adStream = NativeAdStream(adFrequency: 4, datasource: self, delegate: self)
+      adStream = NativeAdStream(adFrequency: 1, datasource: self, delegate: self)
     
     
         self.datasource = datasource
@@ -52,21 +52,18 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
       
         tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
         
-        tableView.registerNib(UINib(nibName: "NativeAdCell", bundle: bundle), forCellReuseIdentifier: "NativeAdCell")
+        tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdView")
  
     }
   
     // Data Source
     @objc
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-     NSLog("True index: %d", indexPath.row)
       if let val = adStream!.isAdAtposition(indexPath.row){
-        NSLog("Native ad")
-        let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdCell") as! NativeAdCell
+        let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdView") as! NativeAdCell
         cell.configureAdView(val)
         return cell;
       }else{
-        NSLog("Normalized :  %d", adStream!.normalize(indexPath.row))
         return datasource!.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream!.normalize(indexPath.row), inSection: 0))
         }
       
