@@ -26,33 +26,33 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
   
 
   @objc
-  public required init(datasource: UITableViewDataSource, tableView : UITableView, delegate : UITableViewDelegate, controller : UITableViewController){
-        super.init()
-  
-       self.controller = controller
-  
-      adStream = NativeAdStream(adFrequency: 1, datasource: self, delegate: self)
+  public required init(controller : UITableViewController){
+    super.init()
+    
+    self.controller = controller
+    
+    adStream = NativeAdStream(adFrequency: 1, datasource: self)
     
     
-        self.datasource = datasource
-        self.tableView = tableView
+    self.datasource = controller.tableView!.dataSource
+    self.tableView = controller.tableView!
     
     
     
     
-      self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: delegate)
+    self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: controller.tableView!.delegate!)
     
-      tableView.delegate = self.delegate
-      tableView.dataSource = self
+    controller.tableView.delegate = self.delegate
+    controller.tableView.dataSource = self
     
-      
-        
-        
-        let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-      
-        tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
-        
-        tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdView")
+    
+    
+    
+    let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+    
+    controller.tableView!.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
+    
+    controller.tableView!.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdView")
  
     }
   

@@ -19,9 +19,10 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
       tableViewDataSource = ExampleTableViewDataSource()
       tableViewDataSource!.loadLocalJSON()
+      tableView.dataSource = tableViewDataSource
       
       
-      nativeAd = NativeAdTableViewDataSource(datasource: tableViewDataSource!, tableView: self.tableView, delegate: self, controller: self)
+      nativeAd = NativeAdTableViewDataSource(controller: self)
       self.tableView.dataSource = nativeAd
       
       nativeAd!.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)

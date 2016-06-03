@@ -10,15 +10,14 @@ import Foundation
 
 public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
 	private var adFrequency: Int
-    private var delegate : DisplayHelperDelegate
+
     private var ads: [Int: NativeAd]
     public var datasource : NativeAdTableViewDataSource
   
-  public required init(adFrequency : Int, datasource: NativeAdTableViewDataSource, delegate: DisplayHelperDelegate){
+  public required init(adFrequency : Int, datasource: NativeAdTableViewDataSource){
         self.adFrequency = adFrequency
         self.datasource = datasource
         self.ads = [Int:NativeAd]()
-        self.delegate = delegate
 	}
   
  
@@ -48,7 +47,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     }
     
     
-    delegate.onUpdateCollection()
+    datasource.onUpdateCollection()
   }
   
   
