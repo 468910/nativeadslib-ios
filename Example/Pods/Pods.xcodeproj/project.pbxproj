@@ -314,8 +314,7 @@
 				1C42CAC72B6C33A72BC0B29A09B7A81A /* NativeAdsRequest.swift */,
 				9F5FE2B5D5FA39A8505900DF2CABD1EA /* NativeAdsWebviewDelegate.swift */,
 			);
-			name = Core;
-			path = Pod/Classes/Core;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		AC7B90CCF139280ECD14E549530F6D65 /* Adunits */ = {
@@ -335,6 +334,7 @@
 		ACC0116A90765B3650D338120495DACA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9BF04455D28C109AD4E46534ACBB30D3 /* Core */,
 				AC7B90CCF139280ECD14E549530F6D65 /* Adunits */,
 				7ECE40F7C8090D7CE2AC0B1ACB80BE82 /* DataSource */,
 				B31D27D155310BFD23B6B35275A8A878 /* Util */,
@@ -380,7 +380,6 @@
 		CF371105BB27164558674C17C461A9D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9BF04455D28C109AD4E46534ACBB30D3 /* Core */,
 				27C0BF7C213085814812AB13CDC26457 /* Pod */,
 			);
 			name = Resources;

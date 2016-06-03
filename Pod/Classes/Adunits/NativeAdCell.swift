@@ -17,7 +17,7 @@ public class NativeAdCell : AbstractAdUnitTableViewCell {
     
     adImage.layer.cornerRadius = CGRectGetWidth(adImage.frame) / 10
     adImage.layer.masksToBounds = true
-    adImage.backgroundColor = UIColor.redColor()
+   
     
     
     
