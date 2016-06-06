@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol DataSourceProtocol {
-   func viewForElement()
-   func numberOfElements()
+   func onUpdateDataSource()
+   func numberOfElements() -> Int
   
 }

@@ -12,7 +12,6 @@ import PocketMediaNativeAds
 class TableViewController: UITableViewController {
   
     var tableViewDataSource : ExampleTableViewDataSource?
-    var nativeAd : NativeAdTableViewDataSource?
   
     override func viewDidLoad() {
       
@@ -22,10 +21,8 @@ class TableViewController: UITableViewController {
       tableView.dataSource = tableViewDataSource
       
       
-      nativeAd = NativeAdTableViewDataSource(controller: self)
-      self.tableView.dataSource = nativeAd
-      
-      nativeAd!.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
+      var stream = NativeAdStream(controller: self, adFrequency: 2)
+      stream.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
     }
     
   

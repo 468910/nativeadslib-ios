@@ -9,35 +9,44 @@
 import UIKit
 
 @objc
-public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, DisplayHelperDelegate{
+public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, DataSourceProtocol{
   
     public var datasource : UITableViewDataSource?
     public var tableView : UITableView?
     public var delegate : UITableViewDelegate?
     public var controller : UITableViewController?
-    public var adStream : NativeAdStream?
+  public var adStream : NativeAdStream
   
   
   
   
   
+  public func onUpdateDataSource() {
+    onUpdateCollection()
+  }
+  
+  public func numberOfElements() -> Int {
+    return datasource!.tableView(tableView!, numberOfRowsInSection: 0)
+  }
   
   
   
 
   @objc
-  public required init(controller : UITableViewController){
-    super.init()
+  public required init(controller : UITableViewController, adStream : NativeAdStream){
     
     self.controller = controller
+    self.adStream = adStream
     
-    adStream = NativeAdStream(adFrequency: 1, datasource: self)
     
     
     self.datasource = controller.tableView!.dataSource
     self.tableView = controller.tableView!
     
     
+    super.init()
+    
+   
     
     
     self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: controller.tableView!.delegate!)
@@ -59,12 +68,12 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
     // Data Source
     @objc
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      if let val = adStream!.isAdAtposition(indexPath.row){
+      if let val = adStream.isAdAtposition(indexPath.row){
         let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdView") as! NativeAdCell
         cell.configureAdView(val)
         return cell;
       }else{
-        return datasource!.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream!.normalize(indexPath.row), inSection: 0))
+        return datasource!.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream.normalize(indexPath.row), inSection: 0))
         }
       
     }
@@ -72,12 +81,11 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
     
     @objc
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datasource!.tableView(tableView, numberOfRowsInSection: section) + adStream!.getAdCount()
+        return datasource!.tableView(tableView, numberOfRowsInSection: section) + adStream.getAdCount()
     }
   
-  public func getOriginalCollectionCount() -> Int{
-      return datasource!.tableView(tableView!, numberOfRowsInSection: 0)
-  }
+  
+ 
 
   
   
@@ -87,9 +95,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Disp
     }
     
   
-   @objc public func requestAds(affiliateId: String , limit: UInt){
-      NativeAdsRequest(adPlacementToken: affiliateId, delegate: adStream!).retrieveAds(limit)
-   }
+   
   
 
     

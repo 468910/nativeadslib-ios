@@ -12,12 +12,15 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
 	private var adFrequency: Int
 
     private var ads: [Int: NativeAd]
-    public var datasource : NativeAdTableViewDataSource
+    public var datasource : DataSourceProtocol?
   
-  public required init(adFrequency : Int, datasource: NativeAdTableViewDataSource){
+  public required init(controller : UITableViewController, adFrequency : Int){
         self.adFrequency = adFrequency
-        self.datasource = datasource
-        self.ads = [Int:NativeAd]()
+      self.ads = [Int:NativeAd]()
+    super.init()
+    
+        datasource = NativeAdTableViewDataSource(controller: controller, adStream: self)
+    
 	}
   
  
@@ -31,7 +34,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     if(nativeAds.isEmpty) {
       NSLog("No Ads Retrieved")
     }
-    var orginalCount = datasource.getOriginalCollectionCount()
+    var orginalCount = datasource!.numberOfElements()
     var adsInserted = 0
     for ad in nativeAds {
       
@@ -47,7 +50,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     }
     
     
-    datasource.onUpdateCollection()
+    datasource!.onUpdateDataSource()
   }
   
   
@@ -90,6 +93,10 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     return ads.count
   }
 
+  
+  @objc public func requestAds(affiliateId: String , limit: UInt){
+    NativeAdsRequest(adPlacementToken: affiliateId, delegate: self).retrieveAds(limit)
+  }
 
 
 }
