@@ -2,7 +2,7 @@
 //  TableViewController.swift
 //  NativeAdsSwift
 //
-//  Created by Carolina Barreiro Cancela on 01/06/15.
+//  Created by Kees Bank on 01/06/15.
 //  Copyright (c) 2015 Pocket Media. All rights reserved.
 //
 
@@ -21,8 +21,8 @@ class TableViewController: UITableViewController {
       tableView.dataSource = tableViewDataSource
       
       
-      var stream = NativeAdStream(controller: self, adFrequency: 2)
-      stream.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
+    var stream = NativeAdStream(controller: self, adFrequency: 1)
+     stream.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
     }
     
   

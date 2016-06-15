@@ -69,10 +69,12 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
     @objc
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       if let val = adStream.isAdAtposition(indexPath.row){
+          NSLog("Insert AD at index %d", indexPath.row)
         let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdView") as! NativeAdCell
         cell.configureAdView(val)
         return cell;
       }else{
+          NSLog("This is a normal Item before normalization %d", indexPath.row)
         return datasource!.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream.normalize(indexPath.row), inSection: 0))
         }
       

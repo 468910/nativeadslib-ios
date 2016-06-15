@@ -1,4 +1,4 @@
-//
+
 //  NativeAdStream.swift
 //  Pods
 //
@@ -13,10 +13,12 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
 
     private var ads: [Int: NativeAd]
     public var datasource : DataSourceProtocol?
+    public var tempAds : [NativeAd]
   
   public required init(controller : UITableViewController, adFrequency : Int){
         self.adFrequency = adFrequency
       self.ads = [Int:NativeAd]()
+      self.tempAds = [NativeAd]()
     super.init()
     
         datasource = NativeAdTableViewDataSource(controller: controller, adStream: self)
@@ -34,25 +36,30 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     if(nativeAds.isEmpty) {
       NSLog("No Ads Retrieved")
     }
+
+    self.tempAds = nativeAds
+
+     updateAdPositions()   
+    
+  }
+ 
+  public func updateAdPositions(){
     var orginalCount = datasource!.numberOfElements()
+
     var adsInserted = 0
-    for ad in nativeAds {
+    for ad in tempAds {
       
        var index = adFrequency + (adFrequency * adsInserted) + adsInserted
       NSLog("The current index is %d", index)
       NSLog("Print dex is %d" ,  orginalCount + adsInserted)
       if(index > (orginalCount + adsInserted)){ break}
       ads[adFrequency + (adFrequency * adsInserted) + adsInserted] = ad
+    }
+     dump(ads) 
+    datasource!.onUpdateDataSource()
      
       
-      //NSLog("This is inserting %d", index)
-      adsInserted += 1
-    }
-    
-    
-    datasource!.onUpdateDataSource()
-  }
-  
+  } 
   
   public func didUpdateNativeAd(adUnit: NativeAd) {
     
@@ -78,14 +85,13 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
       return position
     }
     
-  
-    if((position / adFrequency) > 1){
-      if(position < ((adFrequency * (position / adFrequency)) + position / adFrequency)){
-        return position - ((position / adFrequency) - 1)
-      }
+    
+    var adsInserted = position / adFrequency
+    if(adsInserted > ads.count) {
+      adsInserted = ads.count
     }
     
-    return position - (position / adFrequency)
+    return position - adsInserted
   }
   
   
