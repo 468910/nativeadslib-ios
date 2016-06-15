@@ -21,7 +21,7 @@ class TableViewController: UITableViewController {
       tableView.dataSource = tableViewDataSource
       
       
-    var stream = NativeAdStream(controller: self, adFrequency: 1)
+    var stream = NativeAdStream(controller: self, tableView: self.tableView, adFrequency: 1)
      stream.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
     }
     

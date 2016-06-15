@@ -14,7 +14,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
     public var datasource : UITableViewDataSource?
     public var tableView : UITableView?
     public var delegate : UITableViewDelegate?
-    public var controller : UITableViewController?
+    public var controller : UIViewController?
   public var adStream : NativeAdStream
   
   
@@ -33,15 +33,15 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
   
 
   @objc
-  public required init(controller : UITableViewController, adStream : NativeAdStream){
+  public required init(controller : UIViewController, tableView: UITableView, adStream : NativeAdStream){
     
     self.controller = controller
     self.adStream = adStream
     
     
     
-    self.datasource = controller.tableView!.dataSource
-    self.tableView = controller.tableView!
+    self.datasource = tableView.dataSource
+    self.tableView = tableView
     
     
     super.init()
@@ -49,19 +49,19 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
    
     
     
-    self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: controller.tableView!.delegate!)
+    self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: tableView.delegate!)
     
-    controller.tableView.delegate = self.delegate
-    controller.tableView.dataSource = self
+    tableView.delegate = self.delegate
+    tableView.dataSource = self
     
     
     
     
     let bundle = PocketMediaNativeAdsBundle.loadBundle()!
     
-    controller.tableView!.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
+    tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
     
-    controller.tableView!.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdView")
+    tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdView")
  
     }
   

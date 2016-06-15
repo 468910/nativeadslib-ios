@@ -11,11 +11,11 @@ import UIKit
 @objc
 public class NativeAdTableViewDelegate : NSObject, UITableViewDelegate {
   
-  public var controller : UITableViewController
+  public var controller : UIViewController
   public var delegate : UITableViewDelegate
   public var datasource : NativeAdTableViewDataSource
   
-  required public init(datasource : NativeAdTableViewDataSource, controller: UITableViewController, delegate : UITableViewDelegate){
+  required public init(datasource : NativeAdTableViewDataSource, controller: UIViewController, delegate : UITableViewDelegate){
     self.datasource = datasource
     self.controller = controller
     self.delegate = delegate
