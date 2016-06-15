@@ -15,7 +15,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     public var datasource : DataSourceProtocol?
     public var tempAds : [NativeAd]
   
-  public required init(controller : UITableViewController, tableView: UITableView, adFrequency : Int){
+  public required init(controller : UIViewController, tableView: UITableView, adFrequency : Int){
         self.adFrequency = adFrequency
       self.ads = [Int:NativeAd]()
       self.tempAds = [NativeAd]()
