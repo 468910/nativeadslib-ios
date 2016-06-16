@@ -31,8 +31,6 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   
   
   
-  
-  
   public  convenience init(controller: UIViewController, tableView: UITableView, adFrequency: Int){
     self.init(controller: controller, tableView: tableView, adFrequency: adFrequency, firstAdPosition: adFrequency)
   }
@@ -40,6 +38,11 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   public convenience init(controller: UIViewController, tableView: UITableView, adFrequency: Int, customXib: UINib){
     tableView.registerNib(customXib, forCellReuseIdentifier: "NativeAdViewCell")
     self.init(controller: controller, tableView: tableView, adFrequency: adFrequency)
+  }
+  
+  public convenience init(controller: UIViewController, tableView: UITableView, adFrequency: Int, firstAdPosition: Int, customXib: UINib){
+    tableView.registerNib(customXib, forCellReuseIdentifier: "NativeAdViewCell")
+    self.init(controller: controller, tableView: tableView, adFrequency: adFrequency, firstAdPosition: firstAdPosition)
   }
   
   
@@ -52,7 +55,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     super.init()
     
     datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adStream: self)
-	}
+  }
   
  
   

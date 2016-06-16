@@ -57,11 +57,13 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
     
     
     
-    let bundle = PocketMediaNativeAdsBundle.loadBundle()!
     
-    tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
     
-    tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdView")
+    if((tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell")) == nil){
+        let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+        tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
+    }
+    
  
     }
   
@@ -70,7 +72,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       if let val = adStream.isAdAtposition(indexPath.row){
           NSLog("Insert AD at index %d", indexPath.row)
-        let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdView") as! NativeAdCell
+        let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
         cell.configureAdView(val)
         return cell;
       }else{
