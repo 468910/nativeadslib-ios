@@ -15,7 +15,7 @@ class TableViewController: UITableViewController {
   
     override func viewDidLoad() {
       
-        super.viewDidLoad()
+      super.viewDidLoad()
       tableViewDataSource = ExampleTableViewDataSource()
       tableViewDataSource!.loadLocalJSON()
       tableView.dataSource = tableViewDataSource

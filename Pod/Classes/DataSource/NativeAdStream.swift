@@ -10,25 +10,54 @@ import Foundation
 
 public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
 	private var adFrequency: Int
+  
+  
+  // they are not called when variables are written to from an initializer or with a default value.
+  public var firstAdPosition : Int {
+    willSet {
+      NSLog("First Ad Position Changed Preparing for Updating Ad Positions")
+    }
+    
+    didSet {
+      if firstAdPosition != oldValue{
+        updateAdPositions()
+      }
+    }
+  }
 
     private var ads: [Int: NativeAd]
     public var datasource : DataSourceProtocol?
     public var tempAds : [NativeAd]
   
-  public required init(controller : UIViewController, tableView: UITableView, adFrequency : Int){
-        self.adFrequency = adFrequency
-      self.ads = [Int:NativeAd]()
-      self.tempAds = [NativeAd]()
+  
+  
+  
+  
+  public  convenience init(controller: UIViewController, tableView: UITableView, adFrequency: Int){
+    self.init(controller: controller, tableView: tableView, adFrequency: adFrequency, firstAdPosition: adFrequency)
+  }
+  
+  public convenience init(controller: UIViewController, tableView: UITableView, adFrequency: Int, customXib: UINib){
+    tableView.registerNib(customXib, forCellReuseIdentifier: "NativeAdViewCell")
+    self.init(controller: controller, tableView: tableView, adFrequency: adFrequency)
+  }
+  
+  
+  public required init(controller : UIViewController, tableView: UITableView, adFrequency : Int, firstAdPosition: Int){
+    
+    self.adFrequency = adFrequency
+    self.firstAdPosition = firstAdPosition
+    self.ads = [Int:NativeAd]()
+    self.tempAds = [NativeAd]()
     super.init()
     
-        datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adStream: self)
-    
+    datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adStream: self)
 	}
   
  
   
   public func didRecieveError(error: NSError) {
-    
+
   }
   
   public func didRecieveResults(nativeAds: [NativeAd]) {
@@ -49,7 +78,8 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     var adsInserted = 0
     for ad in tempAds {
       
-       var index = adFrequency + (adFrequency * adsInserted) + adsInserted
+      var index = firstAdPosition + (adFrequency * adsInserted) + adsInserted
+      
       NSLog("The current index is %d", index)
       NSLog("Print dex is %d" ,  orginalCount + adsInserted)
       if(index > (orginalCount + adsInserted)){ break}
