@@ -21,10 +21,15 @@ class TableViewController: UITableViewController {
       tableView.dataSource = tableViewDataSource
       
       
-    var stream = NativeAdStream(controller: self, tableView: self.tableView, adFrequency: 1)
+    var xib = UINib(nibName: "TestSupplied", bundle: nil)
+      
+      
+      var adPos = [5, 2, 4, 5]
+    var stream = NativeAdStream(controller: self, tableView: self.tableView, adsPositions: adPos)
+      //var stream = NativeAdStream(controller: self, tableView: self.tableView, adFrequency: 1)
      stream.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
     }
-    
+  
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
       tableView.deselectRowAtIndexPath(indexPath, animated: true)

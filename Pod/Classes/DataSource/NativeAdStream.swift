@@ -9,11 +9,11 @@
 import Foundation
 
 public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
-	private var adFrequency: Int
+	private var adFrequency: Int?
   
   
   // they are not called when variables are written to from an initializer or with a default value.
-  public var firstAdPosition : Int {
+  public var firstAdPosition : Int? {
     willSet {
       NSLog("First Ad Position Changed Preparing for Updating Ad Positions")
     }
@@ -24,7 +24,9 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
       }
     }
   }
-
+  
+  
+    private var adsPositionGivenByUser : [Int]?
     private var ads: [Int: NativeAd]
     public var datasource : DataSourceProtocol?
     public var tempAds : [NativeAd]
@@ -36,20 +38,33 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   }
   
   public convenience init(controller: UIViewController, tableView: UITableView, adFrequency: Int, customXib: UINib){
-    tableView.registerNib(customXib, forCellReuseIdentifier: "NativeAdViewCell")
+    tableView.registerNib(customXib, forCellReuseIdentifier: "NativeAdTableViewCell")
     self.init(controller: controller, tableView: tableView, adFrequency: adFrequency)
   }
   
   public convenience init(controller: UIViewController, tableView: UITableView, adFrequency: Int, firstAdPosition: Int, customXib: UINib){
-    tableView.registerNib(customXib, forCellReuseIdentifier: "NativeAdViewCell")
+    tableView.registerNib(customXib, forCellReuseIdentifier: "NativeAdTableViewCell")
     self.init(controller: controller, tableView: tableView, adFrequency: adFrequency, firstAdPosition: firstAdPosition)
   }
   
+  public convenience init(controller: UIViewController, tableView: UITableView, adsPositions: [Int], customXib: UINib){
+    tableView.registerNib(customXib, forCellReuseIdentifier: "NativeAdTableViewCell")
+    self.init(controller: controller, tableView: tableView, adsPositions: adsPositions)
+  }
   
-  public required init(controller : UIViewController, tableView: UITableView, adFrequency : Int, firstAdPosition: Int){
-    
+  public convenience init(controller: UIViewController, tableView: UITableView, adsPositions: [Int]){
+    self.init(controller: controller, tableView: tableView)
+    self.adsPositionGivenByUser = Array(Set(adsPositions)).sort{$0 < $1}
+  }
+  
+   public convenience init(controller : UIViewController, tableView: UITableView, adFrequency : Int, firstAdPosition: Int){
+       self.init(controller: controller, tableView: tableView)
     self.adFrequency = adFrequency
     self.firstAdPosition = firstAdPosition
+  }
+  
+  public required init(controller : UIViewController, tableView: UITableView){
+    
     self.ads = [Int:NativeAd]()
     self.tempAds = [NativeAd]()
     super.init()
@@ -76,23 +91,44 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   }
  
   public func updateAdPositions(){
+   
+    if(adsPositionGivenByUser == nil){
+      updateAdPositionsWithAdFrequency()
+    }else {
+      updateAdPositionsWithPositionsGivenByUser()
+    }
+    
+    datasource!.onUpdateDataSource()
+    
+  }
+  
+  private func updateAdPositionsWithPositionsGivenByUser() {
+    var adsInserted = 0
+    for ad in tempAds {
+      if(adsInserted >= adsPositionGivenByUser!.count){
+        break
+      }
+      ads[adsPositionGivenByUser![adsInserted]] = ad
+      adsInserted += 1
+    }
+    
+    
+  }
+  private func updateAdPositionsWithAdFrequency() {
     var orginalCount = datasource!.numberOfElements()
-
+    
     var adsInserted = 0
     for ad in tempAds {
       
-      var index = firstAdPosition + (adFrequency * adsInserted) + adsInserted
+      var index = firstAdPosition! + (adFrequency! * adsInserted) + adsInserted
       
       NSLog("The current index is %d", index)
       NSLog("Print dex is %d" ,  orginalCount + adsInserted)
       if(index > (orginalCount + adsInserted)){ break}
-      ads[adFrequency + (adFrequency * adsInserted) + adsInserted] = ad
+      ads[adFrequency! + (adFrequency! * adsInserted) + adsInserted] = ad
+      adsInserted += 1
     }
-     dump(ads) 
-    datasource!.onUpdateDataSource()
-     
-      
-  } 
+  }
   
   public func didUpdateNativeAd(adUnit: NativeAd) {
     
@@ -110,6 +146,18 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   
   
   func normalize(position : Int)->Int {
+    if(adsPositionGivenByUser != nil){
+      var adsInserted = 0
+      for pos in adsPositionGivenByUser! {
+        if(pos < position){
+          adsInserted += 1
+         
+        }
+      }
+       return position - adsInserted
+    }
+    
+    
     if(ads.isEmpty) {
       return position
     }
@@ -119,7 +167,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     }
     
     
-    var adsInserted = position / adFrequency
+    var adsInserted = position / adFrequency!
     if(adsInserted > ads.count) {
       adsInserted = ads.count
     }

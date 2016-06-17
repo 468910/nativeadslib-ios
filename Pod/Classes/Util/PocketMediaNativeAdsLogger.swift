@@ -16,7 +16,10 @@ enum PocketMediaNativeAdsLogLevel {
 }
 
 
+
+
 public class PocketMediaNativeAdsLogger : NSObject{
     
-  // TODO
+  
+  
 }
