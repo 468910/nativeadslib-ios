@@ -103,9 +103,16 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   }
   
   private func updateAdPositionsWithPositionsGivenByUser() {
-    var adsInserted = 0
+    
+       var orginalCount = datasource!.numberOfElements()
+    
+       var adsInserted = 0
     for ad in tempAds {
       if(adsInserted >= adsPositionGivenByUser!.count){
+        break
+      }
+      
+      if(adsPositionGivenByUser![adsInserted] >= orginalCount){
         break
       }
       ads[adsPositionGivenByUser![adsInserted]] = ad
