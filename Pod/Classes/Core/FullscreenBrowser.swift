@@ -17,8 +17,8 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
     private var originalViewController : UIViewController?
     
     private var webView : UIWebView?
-    private var webViewDelegate : NativeAdsWebviewDelegate?
-    
+  private var webViewDelegate : NativeAdsWebviewDelegate?
+
     @objc
     internal init(parentViewController : UIViewController){
         super.init(nibName: nil, bundle: NSBundle.mainBundle())

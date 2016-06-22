@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		183C80B31CC6754D00FC55B3 /* ExampleTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C80B21CC6754D00FC55B3 /* ExampleTableViewDataSource.swift */; };
+		185B1EAD1D17F853004BA7A4 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B1EAC1D17F853004BA7A4 /* CollectionViewController.swift */; };
+		185B1EAF1D180372004BA7A4 /* CollectionAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B1EAE1D180372004BA7A4 /* CollectionAdCell.swift */; };
 		187665411D12DFDC00554ED4 /* TestSupplied.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187665401D12DFDC00554ED4 /* TestSupplied.xib */; };
 		18D62C731CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D62C721CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.swift */; };
 		18D6EDD51C847F41004A5B9D /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D6EDD41C847F41004A5B9D /* close.png */; };
@@ -48,6 +50,8 @@
 		058EEE27CA345A751A7FE3B5 /* PocketMediaNativeAds.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PocketMediaNativeAds.podspec; path = ../PocketMediaNativeAds.podspec; sourceTree = "<group>"; };
 		0D93340C2C8E131E7AB1CB4F /* Pods-PocketMediaNativeAds_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds_Example/Pods-PocketMediaNativeAds_Example.release.xcconfig"; sourceTree = "<group>"; };
 		183C80B21CC6754D00FC55B3 /* ExampleTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleTableViewDataSource.swift; sourceTree = "<group>"; };
+		185B1EAC1D17F853004BA7A4 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		185B1EAE1D180372004BA7A4 /* CollectionAdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionAdCell.swift; sourceTree = "<group>"; };
 		187665401D12DFDC00554ED4 /* TestSupplied.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSupplied.xib; sourceTree = "<group>"; };
 		18D62C701CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocketMediaNativeAds_ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D62C721CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketMediaNativeAds_ExampleTests.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				3A75F2701C3FFA7B00F81318 /* AdCell.swift */,
 				3A75F2711C3FFA7B00F81318 /* ItemCell.swift */,
 				3A75F2721C3FFA7B00F81318 /* ItemTableView.swift */,
+				185B1EAE1D180372004BA7A4 /* CollectionAdCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 				3A75F26D1C3FF8A300F81318 /* DummyData.json */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				3A75F2691C3FF6CC00F81318 /* TableViewController.swift */,
+				185B1EAC1D17F853004BA7A4 /* CollectionViewController.swift */,
 				183C80B21CC6754D00FC55B3 /* ExampleTableViewDataSource.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -452,10 +458,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185B1EAF1D180372004BA7A4 /* CollectionAdCell.swift in Sources */,
 				3A75F2741C3FFA7B00F81318 /* ItemCell.swift in Sources */,
 				3AF66C1B1C6802A300913C04 /* CHANGELOG.md in Sources */,
 				183C80B31CC6754D00FC55B3 /* ExampleTableViewDataSource.swift in Sources */,
 				3A75F2751C3FFA7B00F81318 /* ItemTableView.swift in Sources */,
+				185B1EAD1D17F853004BA7A4 /* CollectionViewController.swift in Sources */,
 				3A75F2731C3FFA7B00F81318 /* AdCell.swift in Sources */,
 				3A75F26A1C3FF6CC00F81318 /* TableViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,

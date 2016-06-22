@@ -64,7 +64,7 @@ public class ExampleTableViewDataSource : NSObject,  UITableViewDataSource {
       let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath:indexPath) as! ItemCell
       cell.name.text = item.title
       cell.descriptionItem.text = item.descriptionItem
-      //loadImageAsynchronouslyFromUrl(item.imageURL, imageView: cell.artworkImageView)
+      cell.artworkImageView.imageFromServerURL(item.imageURL.absoluteString)
       return cell
       
     default:
