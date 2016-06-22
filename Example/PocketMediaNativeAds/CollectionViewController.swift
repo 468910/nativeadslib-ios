@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PocketMediaNativeAds
 
 class CollectionViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
   @IBOutlet weak var collectionView: UICollectionView!
@@ -17,6 +18,10 @@ class CollectionViewController : UIViewController, UICollectionViewDelegate, UIC
     loadLocalJSON()
     collectionView?.delegate = self
     collectionView?.dataSource = self
+   
+    var adPos = [5, 2, 4, 99]
+    var stream = NativeAdStream(controller: self, mainView: self.collectionView, adsPositions: adPos)
+    stream.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
 
   }
   

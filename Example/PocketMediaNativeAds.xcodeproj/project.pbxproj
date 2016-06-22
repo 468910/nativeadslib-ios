@@ -11,6 +11,7 @@
 		185B1EAD1D17F853004BA7A4 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B1EAC1D17F853004BA7A4 /* CollectionViewController.swift */; };
 		185B1EAF1D180372004BA7A4 /* CollectionAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B1EAE1D180372004BA7A4 /* CollectionAdCell.swift */; };
 		187665411D12DFDC00554ED4 /* TestSupplied.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187665401D12DFDC00554ED4 /* TestSupplied.xib */; };
+		18A80D641D1AC22200041331 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80D631D1AC22200041331 /* MenuViewController.swift */; };
 		18D62C731CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D62C721CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.swift */; };
 		18D6EDD51C847F41004A5B9D /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D6EDD41C847F41004A5B9D /* close.png */; };
 		18D6EDD71C8480AC004A5B9D /* Highlight-St.-Barts-Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18D6EDD61C8480AC004A5B9D /* Highlight-St.-Barts-Image.jpg */; };
@@ -53,6 +54,7 @@
 		185B1EAC1D17F853004BA7A4 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		185B1EAE1D180372004BA7A4 /* CollectionAdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionAdCell.swift; sourceTree = "<group>"; };
 		187665401D12DFDC00554ED4 /* TestSupplied.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSupplied.xib; sourceTree = "<group>"; };
+		18A80D631D1AC22200041331 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		18D62C701CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocketMediaNativeAds_ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D62C721CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketMediaNativeAds_ExampleTests.swift; sourceTree = "<group>"; };
 		18D62C741CCD6C3A0086175C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +111,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18A80D651D1ACB8100041331 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				3A75F2691C3FF6CC00F81318 /* TableViewController.swift */,
+				183C80B21CC6754D00FC55B3 /* ExampleTableViewDataSource.swift */,
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
+		18A80D661D1ACB8C00041331 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				185B1EAC1D17F853004BA7A4 /* CollectionViewController.swift */,
+				185B1EAE1D180372004BA7A4 /* CollectionAdCell.swift */,
+			);
+			name = CollectionView;
+			sourceTree = "<group>";
+		};
+		18A80D671D1ACB9800041331 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				3A75F26F1C3FFA7200F81318 /* Views */,
+				18A80D631D1AC22200041331 /* MenuViewController.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		18D62C711CCD6C3A0086175C /* PocketMediaNativeAds_ExampleTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,10 +161,9 @@
 		3A75F26F1C3FFA7200F81318 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A75F2721C3FFA7B00F81318 /* ItemTableView.swift */,
 				3A75F2701C3FFA7B00F81318 /* AdCell.swift */,
 				3A75F2711C3FFA7B00F81318 /* ItemCell.swift */,
-				3A75F2721C3FFA7B00F81318 /* ItemTableView.swift */,
-				185B1EAE1D180372004BA7A4 /* CollectionAdCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -177,12 +205,11 @@
 		607FACD21AFB9204008FA782 /* Example for PocketMediaNativeAds */ = {
 			isa = PBXGroup;
 			children = (
-				3A75F26F1C3FFA7200F81318 /* Views */,
+				18A80D671D1ACB9800041331 /* Menu */,
+				18A80D661D1ACB8C00041331 /* CollectionView */,
+				18A80D651D1ACB8100041331 /* TableView */,
 				3A75F26D1C3FF8A300F81318 /* DummyData.json */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				3A75F2691C3FF6CC00F81318 /* TableViewController.swift */,
-				185B1EAC1D17F853004BA7A4 /* CollectionViewController.swift */,
-				183C80B21CC6754D00FC55B3 /* ExampleTableViewDataSource.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				18D6EDD61C8480AC004A5B9D /* Highlight-St.-Barts-Image.jpg */,
@@ -459,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				185B1EAF1D180372004BA7A4 /* CollectionAdCell.swift in Sources */,
+				18A80D641D1AC22200041331 /* MenuViewController.swift in Sources */,
 				3A75F2741C3FFA7B00F81318 /* ItemCell.swift in Sources */,
 				3AF66C1B1C6802A300913C04 /* CHANGELOG.md in Sources */,
 				183C80B31CC6754D00FC55B3 /* ExampleTableViewDataSource.swift in Sources */,

@@ -33,43 +33,68 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   
   
   
-  public  convenience init(controller: UIViewController, tableView: UITableView, adFrequency: Int){
-    self.init(controller: controller, tableView: tableView, adFrequency: adFrequency, firstAdPosition: adFrequency)
+  public  convenience init(controller: UIViewController, mainView: UIView, adFrequency: Int){
+    self.init(controller: controller, mainView: mainView, adFrequency: adFrequency, firstAdPosition: adFrequency)
   }
   
-  public convenience init(controller: UIViewController, tableView: UITableView, adFrequency: Int, customXib: UINib){
-    tableView.registerNib(customXib, forCellReuseIdentifier: "NativeAdTableViewCell")
-    self.init(controller: controller, tableView: tableView, adFrequency: adFrequency)
+  
+  public convenience init(controller: UIViewController, mainView: UIView, adFrequency: Int, firstAdPosition: Int, customXib: UINib){
+    
+    self.init(controller: controller, mainView: mainView, customXib: customXib)
+    self.firstAdPosition = firstAdPosition
+    self.adFrequency = adFrequency
   }
   
-  public convenience init(controller: UIViewController, tableView: UITableView, adFrequency: Int, firstAdPosition: Int, customXib: UINib){
-    tableView.registerNib(customXib, forCellReuseIdentifier: "NativeAdTableViewCell")
-    self.init(controller: controller, tableView: tableView, adFrequency: adFrequency, firstAdPosition: firstAdPosition)
-  }
-  
-  public convenience init(controller: UIViewController, tableView: UITableView, adsPositions: [Int], customXib: UINib){
-    tableView.registerNib(customXib, forCellReuseIdentifier: "NativeAdTableViewCell")
-    self.init(controller: controller, tableView: tableView, adsPositions: adsPositions)
-  }
-  
-  public convenience init(controller: UIViewController, tableView: UITableView, adsPositions: [Int]){
-    self.init(controller: controller, tableView: tableView)
+  public convenience init(controller: UIViewController, mainView: UIView, adsPositions: [Int], customXib: UINib){
+    
+    self.init(controller: controller, mainView: mainView, customXib: customXib)
     self.adsPositionGivenByUser = Array(Set(adsPositions)).sort{$0 < $1}
   }
   
-   public convenience init(controller : UIViewController, tableView: UITableView, adFrequency : Int, firstAdPosition: Int){
-       self.init(controller: controller, tableView: tableView)
+  public convenience init(controller: UIViewController, mainView: UIView, customXib: UINib){
+    switch mainView {
+    case let tableView as UITableView:
+      tableView.registerNib(customXib, forCellReuseIdentifier: "NativeAdTableViewCell")
+       self.init(controller: controller, mainView: tableView)
+      break
+    case let collectionView as UICollectionView:
+    self.init(controller: controller, mainView: collectionView)
+      break
+    default:
+      self.init(controller: controller, mainView: mainView)
+      break
+    }
+    
+  
+  }
+  
+  public convenience init(controller: UIViewController, mainView: UIView, adsPositions: [Int]){
+    self.init(controller: controller, mainView: mainView)
+    self.adsPositionGivenByUser = Array(Set(adsPositions)).sort{$0 < $1}
+  }
+  
+   public convenience init(controller : UIViewController, mainView: UIView, adFrequency : Int, firstAdPosition: Int){
+    self.init(controller: controller, mainView: mainView)
     self.adFrequency = adFrequency
     self.firstAdPosition = firstAdPosition
   }
   
-  public required init(controller : UIViewController, tableView: UITableView){
+  public required init(controller : UIViewController, mainView: UIView){
     
     self.ads = [Int:NativeAd]()
     self.tempAds = [NativeAd]()
     super.init()
     
-    datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adStream: self)
+    switch mainView {
+    case let tableView as UITableView:
+         datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adStream: self)
+      break
+    case let collectionView as UICollectionView:
+         datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adStream: self)
+    default:
+      break
+    }
+   
   }
   
  

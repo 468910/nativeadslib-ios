@@ -15,14 +15,14 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
     public var tableView : UITableView?
     public var delegate : UITableViewDelegate?
     public var controller : UIViewController?
-  public var adStream : NativeAdStream
+    public var adStream : NativeAdStream
   
   
   
   
   
   public func onUpdateDataSource() {
-    onUpdateCollection()
+    tableView?.reloadData()
   }
   
   public func numberOfElements() -> Int {
@@ -92,21 +92,11 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
  
 
   
-  
-    @objc
-    public func onUpdateCollection() {
-        tableView!.onUpdateCollection()
-    }
-    
-  
+
    
   
 
     
 }
 
-extension UITableView : DisplayHelperDelegate {
-    public func onUpdateCollection() {
-        self.reloadData()
-    }
-}
+

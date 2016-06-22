@@ -5,46 +5,69 @@
 //  Created by apple on 02/03/16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
-/*
+
 import UIKit
 import Foundation
 
 @objc
-public class NativeAdCollectionViewDataSource : NSObject, DisplayHelperDelegate, UICollectionViewDataSource {
+public class NativeAdCollectionViewDataSource : NSObject, UICollectionViewDataSource, DataSourceProtocol {
   
-  var collection : ReferenceArray?
-  var nativeAdInjector : NativeAdInjector?
-  var datasource : UITableViewDataSource?
-  var displayHelper : DisplayHelperDelegate?
   
-  required public init(datasource: UITableViewDataSource, displayHelper : DisplayHelperDelegate){
-    super.init()
-    collection = ReferenceArray()
-    nativeAdInjector = NativeAdInjector(collection: self.collection!, displayHelper: self)
-    self.datasource = datasource
-    self.displayHelper = displayHelper
+  public var datasource : UICollectionViewDataSource?
+  public var collectionView : UICollectionView?
+  public var delegate : UICollectionViewDelegate?
+  public var controller : UIViewController?
+  public var adStream : NativeAdStream
+  
+  
+  public func onUpdateDataSource() {
+    collectionView!.reloadData()
   }
   
+  public func numberOfElements() -> Int {
+    return datasource!.collectionView(collectionView!, numberOfItemsInSection: 0)
+  }
   
-  
-  // Todo
-  public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return -1
+  required public init(controller: UIViewController, collectionView: UICollectionView, adStream : NativeAdStream){
+    self.datasource = collectionView.dataSource
+    self.controller = controller
+    self.collectionView = collectionView
+    self.adStream = adStream
+    super.init()
+    
+    
+    self.delegate = NativeAdCollectionViewDelegate(datasource: self, controller: controller, delegate: collectionView.delegate!)
+    
+    collectionView.delegate = self.delegate
+    collectionView.dataSource = self
+    
+    let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+    collectionView.registerNib(UINib(nibName:"NativeAdCollectionCell" , bundle: bundle), forCellWithReuseIdentifier: "NativeAdCollectionCell")
+    
   }
   
   public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    return UICollectionViewCell()
+    if let val = adStream.isAdAtposition(indexPath.row){
+      NSLog("Insert AD at index %d", indexPath.row)
+      let cell  = collectionView.dequeueReusableCellWithReuseIdentifier("NativeAdCollectionCell", forIndexPath: indexPath)
+      //cell.configureAdView(val)
+     
+      cell.backgroundColor = UIColor.blueColor()
+      return cell
+    }else{
+      NSLog("This is a normal Item before normalization %d", indexPath.row)
+      return datasource!.collectionView(collectionView, cellForItemAtIndexPath:  NSIndexPath(forRow: adStream.normalize(indexPath.row), inSection: 0))
+    }
+  }
+  
+  // Todo
+  public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return datasource!.collectionView(collectionView, numberOfItemsInSection: section) + adStream.getAdCount()
   }
   
   
   
-  public func onUpdateCollection() {
-    displayHelper!.onUpdateCollection()
-  }
   
-  @objc public func requestAds(affiliateId: String , limit: UInt){
-    NativeAdsRequest(affiliateId: affiliateId, delegate: self.nativeAdInjector!).retrieveAds(limit)
-  }
+  
   
 }
-*/
