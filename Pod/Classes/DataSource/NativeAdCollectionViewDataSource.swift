@@ -49,10 +49,8 @@ public class NativeAdCollectionViewDataSource : NSObject, UICollectionViewDataSo
   public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     if let val = adStream.isAdAtposition(indexPath.row){
       NSLog("Insert AD at index %d", indexPath.row)
-      let cell  = collectionView.dequeueReusableCellWithReuseIdentifier("NativeAdCollectionCell", forIndexPath: indexPath)
-      //cell.configureAdView(val)
-     
-      cell.backgroundColor = UIColor.blueColor()
+      let cell  = collectionView.dequeueReusableCellWithReuseIdentifier("NativeAdCollectionCell", forIndexPath: indexPath) as! NativeAdCollectionCell
+      cell.configureAdView(val)
       return cell
     }else{
       NSLog("This is a normal Item before normalization %d", indexPath.row)

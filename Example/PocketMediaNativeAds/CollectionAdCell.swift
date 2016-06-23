@@ -10,6 +10,5 @@ import UIKit
 
 public class CollectionAdCell : UICollectionViewCell {
   
-  @IBOutlet weak var appTitle: UILabel!
   @IBOutlet weak var appIcon: UIImageView!
 }

@@ -240,7 +240,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7lD-Rq-G3y" userLabel="AppIcon">
                                                     <rect key="frame" x="0.0" y="0.0" width="123" height="108"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4R-7m-7jf" userLabel="AppTitle">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4R-7m-7jf" userLabel="AppTitle">
                                                     <rect key="frame" x="40" y="65" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -264,6 +264,7 @@
                                         <variation key="default">
                                             <mask key="subviews">
                                                 <exclude reference="nwE-vc-PAc"/>
+                                                <exclude reference="Z4R-7m-7jf"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="5eu-sE-Xko"/>
@@ -274,7 +275,6 @@
                                         </variation>
                                         <connections>
                                             <outlet property="appIcon" destination="7lD-Rq-G3y" id="nIb-lf-cvX"/>
-                                            <outlet property="appTitle" destination="Z4R-7m-7jf" id="nW2-5B-Fbp"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

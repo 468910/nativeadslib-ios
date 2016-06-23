@@ -45,7 +45,6 @@ class CollectionViewController : UIViewController, UICollectionViewDelegate, UIC
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     var cell = collectionView.dequeueReusableCellWithReuseIdentifier("TestCell", forIndexPath: indexPath) as! CollectionAdCell
     var item = collection[indexPath.row] as! ItemTableModel
-    cell.appTitle.text = item.title
     cell.appIcon.imageFromServerURL(item.imageURL.absoluteString)
     cell.backgroundColor = UIColor.redColor()
     return cell

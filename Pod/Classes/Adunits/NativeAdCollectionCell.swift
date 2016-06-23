@@ -9,14 +9,19 @@
 import Foundation
 import UIKit
 
-public class NativeAdCollectionCell : UICollectionViewCell {
-  @IBOutlet weak var speakerPhone : UIImageView!
+public class NativeAdCollectionCell : UICollectionViewCell, NativeAdViewBinderProtocol  {
   @IBOutlet weak var adImage : UIImageView!
-  @IBOutlet weak var adTitle: UILabel!
-  @IBOutlet weak var adDescription : UILabel!
   
    public override func awakeFromNib() {
     super.awakeFromNib()
    }
+  
+  public func configureAdView(nativeAd: NativeAd) {
+      self.adImage.downloadedFrom(link: nativeAd.campaignImage.absoluteString, contentMode: .ScaleAspectFit)
+  }
+  
+  func configureAdView(nativeAd: NativeAd, viewController: UIViewController) {
+    abort()
+  }
   
 }

@@ -140,7 +140,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
       if(adsPositionGivenByUser![adsInserted] >= orginalCount){
         break
       }
-      ads[adsPositionGivenByUser![adsInserted]] = ad
+      ads[adsPositionGivenByUser![adsInserted] - 1] = ad
       adsInserted += 1
     }
     
