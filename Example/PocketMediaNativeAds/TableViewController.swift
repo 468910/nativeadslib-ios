@@ -19,8 +19,21 @@ class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.refreshControl?.addTarget(self, action: #selector(TableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+
+        
+        downloadData()
+    }
+    
+    func downloadData(){
         loadLocalJSON()
         loadNativeAds()
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        downloadData()
+        refreshControl.endRefreshing()
     }
     
     
@@ -36,8 +49,11 @@ class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
         
         do{
             let path = NSBundle.mainBundle().pathForResource("DummyData", ofType: "json")
+            
             let jsonData : NSData =  NSData(contentsOfFile: path!)!
             var jsonArray : NSArray = NSArray()
+            itemsTable.removeAll()
+            
             jsonArray = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
             
             for itemJson in jsonArray {
@@ -45,6 +61,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
                     itemsTable.append(item)
                 }
             }
+            tableView.reloadData()
             
         } catch let error as NSError {
             print(error.localizedDescription)
@@ -52,6 +69,7 @@ class TableViewController: UITableViewController, NativeAdsConnectionDelegate {
     }
     
     func loadImageAsynchronouslyFromUrl(url: NSURL, imageView: UIImageView){
+        NSLog("Loading image \(url.absoluteString)")
         imageView.af_setImageWithURL(url)
     }
     
