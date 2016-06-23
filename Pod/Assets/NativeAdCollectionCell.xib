@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <point key="canvasLocation" x="692" y="440"/>
+            <point key="canvasLocation" x="286" y="388"/>
         </collectionViewCell>
     </objects>
 </document>

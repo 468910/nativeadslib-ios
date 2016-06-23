@@ -18,10 +18,13 @@ class CollectionViewController : UIViewController, UICollectionViewDelegate, UIC
     loadLocalJSON()
     collectionView?.delegate = self
     collectionView?.dataSource = self
+    
+    self.collectionView.backgroundColor = UIColor.whiteColor()
+    collectionView.collectionViewLayout = NativeAdCollectionViewLayout()
    
     var adPos = [5, 2, 4, 99]
     var stream = NativeAdStream(controller: self, mainView: self.collectionView, adsPositions: adPos)
-    stream.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
+    stream.requestAds("d5737f99307e376c635bcbd13b308decda8e46b8", limit: 10)
 
   }
   

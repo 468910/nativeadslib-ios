@@ -222,18 +222,13 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yns-rW-JkO">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ovt-Qj-YsB">
-                                    <size key="itemSize" width="123" height="108"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
+                                <collectionViewLayout key="collectionViewLayout" id="YFP-rW-Czk" customClass="NativeAdCollectionViewLayout"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TestCell" id="dgH-v0-99c" customClass="CollectionAdCell" customModule="PocketMediaNativeAds_Example" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="64" width="123" height="108"/>
+                                        <rect key="frame" x="0.0" y="64" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="123" height="108"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwE-vc-PAc">
@@ -242,7 +237,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7lD-Rq-G3y" userLabel="AppIcon">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7lD-Rq-G3y" userLabel="AppIcon">
                                                     <rect key="frame" x="0.0" y="0.0" width="123" height="108"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4R-7m-7jf" userLabel="AppTitle">
@@ -256,15 +251,25 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="7lD-Rq-G3y" firstAttribute="centerY" secondItem="dgH-v0-99c" secondAttribute="centerY" id="5eu-sE-Xko"/>
+                                            <constraint firstItem="7lD-Rq-G3y" firstAttribute="centerX" secondItem="dgH-v0-99c" secondAttribute="centerX" id="CTf-5H-DQ0"/>
                                             <constraint firstItem="7lD-Rq-G3y" firstAttribute="centerX" secondItem="dgH-v0-99c" secondAttribute="centerX" id="DPq-UQ-syE"/>
+                                            <constraint firstItem="7lD-Rq-G3y" firstAttribute="width" secondItem="dgH-v0-99c" secondAttribute="width" id="LX5-4u-7OV"/>
+                                            <constraint firstItem="7lD-Rq-G3y" firstAttribute="height" secondItem="dgH-v0-99c" secondAttribute="height" id="M5b-Ho-FUT"/>
                                             <constraint firstItem="7lD-Rq-G3y" firstAttribute="height" secondItem="dgH-v0-99c" secondAttribute="height" id="Q8W-yh-KHK"/>
                                             <constraint firstItem="Z4R-7m-7jf" firstAttribute="centerY" secondItem="7lD-Rq-G3y" secondAttribute="centerY" id="bo4-Ur-tte"/>
+                                            <constraint firstItem="7lD-Rq-G3y" firstAttribute="centerY" secondItem="dgH-v0-99c" secondAttribute="centerY" id="phe-4k-VmT"/>
                                             <constraint firstItem="7lD-Rq-G3y" firstAttribute="width" secondItem="dgH-v0-99c" secondAttribute="width" id="ttH-WK-WWu"/>
                                             <constraint firstItem="Z4R-7m-7jf" firstAttribute="centerX" secondItem="7lD-Rq-G3y" secondAttribute="centerX" id="yKA-le-nY7"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="subviews">
                                                 <exclude reference="nwE-vc-PAc"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <exclude reference="5eu-sE-Xko"/>
+                                                <exclude reference="DPq-UQ-syE"/>
+                                                <exclude reference="Q8W-yh-KHK"/>
+                                                <exclude reference="ttH-WK-WWu"/>
                                             </mask>
                                         </variation>
                                         <connections>

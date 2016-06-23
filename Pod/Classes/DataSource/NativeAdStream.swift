@@ -152,14 +152,16 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     var adsInserted = 0
     for ad in tempAds {
       
-      var index = firstAdPosition! + (adFrequency! * adsInserted) + adsInserted
+      var index = (firstAdPosition! - 1) + (adFrequency! * adsInserted)
       
       NSLog("The current index is %d", index)
       NSLog("Print dex is %d" ,  orginalCount + adsInserted)
       if(index > (orginalCount + adsInserted)){ break}
-      ads[adFrequency! + (adFrequency! * adsInserted) + adsInserted] = ad
+      ads[index] = ad
       adsInserted += 1
     }
+    var tempads = ads
+    print("yay")
   }
   
   public func didUpdateNativeAd(adUnit: NativeAd) {
@@ -178,21 +180,24 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   
   
   func normalize(position : Int)->Int {
+    
+   
+    
+    if(ads.isEmpty) {
+      return position
+    }
+    
     if(adsPositionGivenByUser != nil){
       var adsInserted = 0
       for pos in adsPositionGivenByUser! {
         if(pos < position){
           adsInserted += 1
-         
+          
         }
       }
-       return position - adsInserted
+      return position - adsInserted
     }
     
-    
-    if(ads.isEmpty) {
-      return position
-    }
     
     if(position < adFrequency) {
       return position
@@ -203,7 +208,9 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     if(adsInserted > ads.count) {
       adsInserted = ads.count
     }
-    
+   
+    var tempads = ads
+    var temp = position - adsInserted
     return position - adsInserted
   }
   
