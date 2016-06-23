@@ -8,6 +8,6 @@
 
 import Foundation
 
-public class NativeAdTableViewCell : UITableViewCell {
-  
+public class NativeAdTableViewCell: UITableViewCell {
+    
 }
