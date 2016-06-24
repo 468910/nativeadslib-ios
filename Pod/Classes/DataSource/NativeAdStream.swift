@@ -112,7 +112,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
 
     self.tempAds = nativeAds
     
-    if(self.adMargin > 1) {
+    if(self.adMargin < 1 && self.adMargin != nil) {
       return
     }
      updateAdPositions()

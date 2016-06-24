@@ -8,6 +8,7 @@
 
 import UIKit
 import PocketMediaNativeAds
+import AlamofireImage
 
 class CollectionViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
   @IBOutlet weak var collectionView: UICollectionView!
@@ -45,8 +46,7 @@ class CollectionViewController : UIViewController, UICollectionViewDelegate, UIC
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     var cell = collectionView.dequeueReusableCellWithReuseIdentifier("TestCell", forIndexPath: indexPath) as! CollectionAdCell
     var item = collection[indexPath.row] as! ItemTableModel
-    cell.appIcon.imageFromServerURL(item.imageURL.absoluteString)
-    cell.backgroundColor = UIColor.redColor()
+    cell.appIcon.af_setImageWithURL(item.imageURL)
     return cell
   }
   

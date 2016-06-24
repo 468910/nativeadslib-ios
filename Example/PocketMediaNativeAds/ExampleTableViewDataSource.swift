@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 public class ExampleTableViewDataSource : NSObject,  UITableViewDataSource {
   
@@ -64,7 +66,7 @@ public class ExampleTableViewDataSource : NSObject,  UITableViewDataSource {
       let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath:indexPath) as! ItemCell
       cell.name.text = item.title
       cell.descriptionItem.text = item.descriptionItem
-      cell.artworkImageView.imageFromServerURL(item.imageURL.absoluteString)
+      cell.artworkImageView.af_setImageWithURL(item.imageURL)
       return cell
       
     default:
