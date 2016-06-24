@@ -15,6 +15,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   // they are not called when variables are written to from an initializer or with a default value.
   public var firstAdPosition : Int? {
     willSet {
+      firstAdPosition = newValue! + 1
       NSLog("First Ad Position Changed Preparing for Updating Ad Positions")
     }
     
@@ -42,7 +43,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     
     self.init(controller: controller, mainView: mainView, customXib: customXib)
     self.firstAdPosition = firstAdPosition
-    self.adFrequency = adFrequency
+    self.adFrequency = adFrequency + 1
   }
   
   public convenience init(controller: UIViewController, mainView: UIView, adsPositions: [Int], customXib: UINib){
@@ -75,7 +76,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   
    public convenience init(controller : UIViewController, mainView: UIView, adFrequency : Int, firstAdPosition: Int){
     self.init(controller: controller, mainView: mainView)
-    self.adFrequency = adFrequency
+    self.adFrequency = adFrequency + 1
     self.firstAdPosition = firstAdPosition
   }
   
@@ -103,15 +104,18 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
 
   }
   
-  public func didRecieveResults(nativeAds: [NativeAd]) {
+  public func didReceiveResults(nativeAds: [NativeAd]) {
     
     if(nativeAds.isEmpty) {
       NSLog("No Ads Retrieved")
     }
 
     self.tempAds = nativeAds
-
-     updateAdPositions()   
+    
+    if(self.adFrequency > 1) {
+      return
+    }
+     updateAdPositions()
     
   }
  
@@ -181,8 +185,6 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   
   func normalize(position : Int)->Int {
     
-   
-    
     if(ads.isEmpty) {
       return position
     }
@@ -199,7 +201,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     }
     
     
-    if(position < adFrequency) {
+    if(position < adFrequency || position < firstAdPosition) {
       return position
     }
     
@@ -207,6 +209,10 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     var adsInserted = position / adFrequency!
     if(adsInserted > ads.count) {
       adsInserted = ads.count
+    }
+    
+    if(firstAdPosition < adFrequency){
+      adsInserted += 1
     }
    
     var tempads = ads
