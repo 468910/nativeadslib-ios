@@ -9,7 +9,7 @@
 import Foundation
 
 public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
-	private var adFrequency: Int?
+	private var adMargin: Int?
   
   
   // they are not called when variables are written to from an initializer or with a default value.
@@ -34,16 +34,16 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   
   
   
-  public  convenience init(controller: UIViewController, mainView: UIView, adFrequency: Int){
-    self.init(controller: controller, mainView: mainView, adFrequency: adFrequency, firstAdPosition: adFrequency)
+  public  convenience init(controller: UIViewController, mainView: UIView, adMargin: Int){
+    self.init(controller: controller, mainView: mainView, adMargin: adMargin, firstAdPosition: adMargin)
   }
   
   
-  public convenience init(controller: UIViewController, mainView: UIView, adFrequency: Int, firstAdPosition: Int, customXib: UINib){
+  public convenience init(controller: UIViewController, mainView: UIView, adMargin: Int, firstAdPosition: Int, customXib: UINib){
     
     self.init(controller: controller, mainView: mainView, customXib: customXib)
     self.firstAdPosition = firstAdPosition
-    self.adFrequency = adFrequency + 1
+    self.adMargin = adMargin + 1
   }
   
   public convenience init(controller: UIViewController, mainView: UIView, adsPositions: [Int], customXib: UINib){
@@ -74,9 +74,9 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     self.adsPositionGivenByUser = Array(Set(adsPositions)).sort{$0 < $1}
   }
   
-   public convenience init(controller : UIViewController, mainView: UIView, adFrequency : Int, firstAdPosition: Int){
+   public convenience init(controller : UIViewController, mainView: UIView, adMargin : Int, firstAdPosition: Int){
     self.init(controller: controller, mainView: mainView)
-    self.adFrequency = adFrequency + 1
+    self.adMargin = adMargin + 1
     self.firstAdPosition = firstAdPosition
   }
   
@@ -112,7 +112,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
 
     self.tempAds = nativeAds
     
-    if(self.adFrequency > 1) {
+    if(self.adMargin > 1) {
       return
     }
      updateAdPositions()
@@ -156,7 +156,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     var adsInserted = 0
     for ad in tempAds {
       
-      var index = (firstAdPosition! - 1) + (adFrequency! * adsInserted)
+      var index = (firstAdPosition! - 1) + (adMargin! * adsInserted)
       
       NSLog("The current index is %d", index)
       NSLog("Print dex is %d" ,  orginalCount + adsInserted)
@@ -201,17 +201,17 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     }
     
     
-    if(position < adFrequency || position < firstAdPosition) {
+    if(position < adMargin || position < firstAdPosition) {
       return position
     }
     
     
-    var adsInserted = position / adFrequency!
+    var adsInserted = position / adMargin!
     if(adsInserted > ads.count) {
       adsInserted = ads.count
     }
     
-    if(firstAdPosition < adFrequency){
+    if(firstAdPosition < adMargin){
       adsInserted += 1
     }
    

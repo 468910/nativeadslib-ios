@@ -26,7 +26,7 @@ class TableViewController: UITableViewController {
       
       var adPos = [5, 2, 4, 99]
     //var stream = NativeAdStream(controller: self, mainView: self.tableView, adsPositions: adPos)
-      var stream = NativeAdStream(controller: self, mainView: self.tableView, adFrequency: 1, firstAdPosition: 1)
+      var stream = NativeAdStream(controller: self, mainView: self.tableView, adMargin: 1, firstAdPosition: 1)
      stream.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
     }
   
