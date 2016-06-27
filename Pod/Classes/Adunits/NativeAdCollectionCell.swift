@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Haneke
 
 public class NativeAdCollectionCell : UICollectionViewCell, NativeAdViewBinderProtocol  {
   @IBOutlet weak var adImage : UIImageView!
@@ -17,7 +18,7 @@ public class NativeAdCollectionCell : UICollectionViewCell, NativeAdViewBinderPr
    }
   
   public func configureAdView(nativeAd: NativeAd) {
-      self.adImage.downloadedFrom(link: nativeAd.campaignImage.absoluteString, contentMode: .ScaleAspectFit)
+      self.adImage.hnk_setImageFromURL(nativeAd.campaignImage)
   }
   
   func configureAdView(nativeAd: NativeAd, viewController: UIViewController) {

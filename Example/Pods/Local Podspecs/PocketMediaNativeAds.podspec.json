@@ -18,6 +18,14 @@
     "ios": "8.0"
   },
   "requires_arc": true,
+  "dependencies": {
+    "AlamofireImage": [
+
+    ],
+    "HanekeSwift": [
+
+    ]
+  },
   "source_files": "Pod/Classes/*/*.swift",
   "resource_bundles": {
     "Adrian": [

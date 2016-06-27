@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AlamofireImage
+import Haneke
 
 public class AbstractAdUnitTableViewCell : UITableViewCell, NativeAdViewBinderProtocol {
   
@@ -20,9 +22,8 @@ public class AbstractAdUnitTableViewCell : UITableViewCell, NativeAdViewBinderPr
   public func configureAdView(nativeAd: NativeAd) {
     adTitle.text = nativeAd.campaignName
     adDescription.text = nativeAd.campaignDescription
-    self.adImage.downloadedFrom(link: nativeAd.campaignImage.absoluteString, contentMode: .ScaleAspectFit)
-    
-    
+    print(nativeAd.campaignImage)
+    adImage.hnk_setImageFromURL(nativeAd.campaignImage)
   }
   func configureAdView(nativeAd: NativeAd, viewController: UIViewController) {
     abort()

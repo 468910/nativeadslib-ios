@@ -25,6 +25,11 @@ s.homepage         = "http://pocketmedia.mobi"
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
+  s.dependency  'AlamofireImage' 
+  s.dependency  'HanekeSwift'
+
+
+
   s.source_files = 'Pod/Classes/*/*.swift'
   s.resource_bundles = {
 

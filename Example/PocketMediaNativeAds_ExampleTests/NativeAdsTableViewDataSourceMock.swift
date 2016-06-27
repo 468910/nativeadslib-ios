@@ -18,6 +18,10 @@ class NativeAdTableViewDataSourceMock : NativeAdTableViewDataSource {
     fatalError("init(datasource:tableView:delegate:controller:) has not been implemented")
   }
   
+  @objc required init(controller: UIViewController, tableView: UITableView, adStream: NativeAdStream) {
+    fatalError("init(controller:tableView:adStream:) has not been implemented")
+  }
+  
 
   
   @objc override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -50,6 +50,7 @@ public class NativeAdCollectionViewDataSource : NSObject, UICollectionViewDataSo
     if let val = adStream.isAdAtposition(indexPath.row){
       NSLog("Insert AD at index %d", indexPath.row)
       let cell  = collectionView.dequeueReusableCellWithReuseIdentifier("NativeAdCollectionCell", forIndexPath: indexPath) as! NativeAdCollectionCell
+
       cell.configureAdView(val)
       return cell
     }else{

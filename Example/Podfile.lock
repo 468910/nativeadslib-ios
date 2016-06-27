@@ -2,10 +2,13 @@ PODS:
   - Alamofire (3.4.0)
   - AlamofireImage (2.4.0):
     - Alamofire (~> 3.3)
-  - PocketMediaNativeAds (0.2.1)
+  - HanekeSwift (0.10.1)
+  - PocketMediaNativeAds (0.2.1):
+    - AlamofireImage
+    - HanekeSwift
 
 DEPENDENCIES:
-  - AlamofireImage (~> 2.0)
+  - HanekeSwift
   - PocketMediaNativeAds (from `../`)
 
 EXTERNAL SOURCES:
@@ -15,8 +18,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
-  PocketMediaNativeAds: 2511414a077af9bed9770fabfbc74d76a37c44c8
+  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
+  PocketMediaNativeAds: 2d81322e7dd15289d2564c0f2f876a39ad0a3176
 
-PODFILE CHECKSUM: 34119ace23db63614215b53bb9feb47102be1aaf
+PODFILE CHECKSUM: 49e485ebceb38e5e2142cbce94faa157684d7f90
 
 COCOAPODS: 1.0.1
