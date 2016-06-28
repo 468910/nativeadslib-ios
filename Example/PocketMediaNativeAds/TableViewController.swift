@@ -23,9 +23,8 @@ class TableViewController: UITableViewController {
       
     var xib = UINib(nibName: "TestSupplied", bundle: nil)
       
-      
+      self.refreshControl?.addTarget(self, action: #selector(TableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
       var adPos = [5, 2, 4, 99]
-    //var stream = NativeAdStream(controller: self, mainView: self.tableView, adsPositions: adPos)
       var stream = NativeAdStream(controller: self, mainView: self.tableView, adMargin: 1, firstAdPosition: 1)
       stream.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
     }
@@ -42,21 +41,11 @@ class TableViewController: UITableViewController {
   
   
     
-}
-
-extension UIImageView {
-  public func imageFromServerURL(urlString: String) {
+    func handleRefresh(refreshControl: UIRefreshControl) {
+      
+        refreshControl.endRefreshing()
+    }
     
-    NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: urlString)!, completionHandler: { (data, response, error) -> Void in
-      
-      if error != nil {
-        print(error)
-        return
-      }
-      dispatch_async(dispatch_get_main_queue(), { () -> Void in
-        let image = UIImage(data: data!)
-        self.image = image
-      })
-      
-    }).resume()
-  }}
+  
+    
+}

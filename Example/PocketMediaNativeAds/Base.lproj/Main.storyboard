@@ -73,6 +73,72 @@
                                     <outlet property="name" destination="f5h-pN-8dy" id="ui1-na-rw0"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdCell" rowHeight="80" id="gn9-IO-c81" customClass="AdCell" customModule="PocketMediaNativeAds_Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="166" width="600" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gn9-IO-c81" id="7iN-qb-MPW">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="shv-y9-g18">
+                                            <rect key="frame" x="80" y="21" width="512" height="39"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laY-8z-7XZ">
+                                                    <rect key="frame" x="0.0" y="26" width="512" height="14"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kh-cw-r33">
+                                                    <rect key="frame" x="0.0" y="0.0" width="485" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="adIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="7BT-Hx-c4o">
+                                                    <rect key="frame" x="491" y="0.0" width="16" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="Z83-PJ-T84"/>
+                                                        <constraint firstAttribute="width" constant="16" id="n51-9c-g6P"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="laY-8z-7XZ" firstAttribute="leading" secondItem="shv-y9-g18" secondAttribute="leading" id="5xD-Rb-Yhb"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7BT-Hx-c4o" secondAttribute="trailing" id="9Lt-un-1SN"/>
+                                                <constraint firstItem="3kh-cw-r33" firstAttribute="top" secondItem="shv-y9-g18" secondAttribute="top" id="IGl-7X-cXd"/>
+                                                <constraint firstItem="7BT-Hx-c4o" firstAttribute="top" secondItem="shv-y9-g18" secondAttribute="top" constant="2" id="NfA-BP-jcw"/>
+                                                <constraint firstItem="3kh-cw-r33" firstAttribute="leading" secondItem="shv-y9-g18" secondAttribute="leading" id="Ntw-oP-Alp"/>
+                                                <constraint firstAttribute="bottom" secondItem="laY-8z-7XZ" secondAttribute="bottom" id="Umg-I0-Pi9"/>
+                                                <constraint firstItem="laY-8z-7XZ" firstAttribute="top" secondItem="3kh-cw-r33" secondAttribute="bottom" constant="5" id="md5-CA-1R3"/>
+                                                <constraint firstItem="7BT-Hx-c4o" firstAttribute="leading" secondItem="3kh-cw-r33" secondAttribute="trailing" constant="5" id="myH-6y-9K6"/>
+                                                <constraint firstAttribute="trailing" secondItem="laY-8z-7XZ" secondAttribute="trailing" id="vRY-Dg-nDH"/>
+                                            </constraints>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VJT-TG-8DU">
+                                            <rect key="frame" x="8" y="8" width="64" height="64"/>
+                                            <color key="backgroundColor" red="0.90755208330000003" green="0.90755208330000003" blue="0.90755208330000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="64" id="8an-xl-qAu"/>
+                                                <constraint firstAttribute="width" constant="64" id="F1M-rN-BWa"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="shv-y9-g18" secondAttribute="centerY" id="4JM-ge-YcS"/>
+                                        <constraint firstAttribute="centerY" secondItem="VJT-TG-8DU" secondAttribute="centerY" id="7Ot-Ah-kkn"/>
+                                        <constraint firstItem="shv-y9-g18" firstAttribute="leading" secondItem="VJT-TG-8DU" secondAttribute="trailing" constant="8" id="L3j-1K-ZWl"/>
+                                        <constraint firstItem="shv-y9-g18" firstAttribute="trailing" secondItem="7iN-qb-MPW" secondAttribute="trailingMargin" id="uwY-3v-klh"/>
+                                        <constraint firstItem="VJT-TG-8DU" firstAttribute="leading" secondItem="7iN-qb-MPW" secondAttribute="leadingMargin" id="yiS-48-uIY"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="campaignDescriptionLabel" destination="laY-8z-7XZ" id="X01-jP-Nsj"/>
+                                    <outlet property="campaignImageView" destination="VJT-TG-8DU" id="h9A-0h-S4Q"/>
+                                    <outlet property="campaignNameLabel" destination="3kh-cw-r33" id="EC2-Kh-RB5"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="4XU-81-jBI" id="DA5-xO-4ZH"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class MenuViewController : UIViewController {
   
@@ -28,6 +29,6 @@ class MenuViewController : UIViewController {
     tableViewAdsButton.titleEdgeInsets.right = 10
     
     pocketMediaLogo.contentMode = .ScaleAspectFit
-    pocketMediaLogo.imageFromServerURL("http://www.pocketmedia.mobi/assets/logo-034cf96908f238260a65b46ecefadeed.png")
+    pocketMediaLogo.hnk_setImageFromURL(NSURL(string: "http://www.pocketmedia.mobi/assets/logo-034cf96908f238260a65b46ecefadeed.png")!)
   }
 }
