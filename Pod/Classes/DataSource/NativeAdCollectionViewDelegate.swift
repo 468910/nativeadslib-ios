@@ -8,7 +8,6 @@
 
 import Foundation
 
-// TODO
 public class NativeAdCollectionViewDelegate : NSObject, UICollectionViewDelegate {
   
   public var controller : UIViewController
@@ -22,7 +21,11 @@ public class NativeAdCollectionViewDelegate : NSObject, UICollectionViewDelegate
   }
   
   public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    
+    if let val = datasource.adStream.isAdAtposition(indexPath.row){
+      val.openAdUrl(controller)
+    }else{
+      return delegate.collectionView!(collectionView, didSelectItemAtIndexPath: indexPath)
+    }
   }
   
   

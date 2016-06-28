@@ -31,7 +31,7 @@ public class NativeAd : NSObject{
     /// Ad Placement token the ad is linked to (via the ads request)
     public var adPlacementToken     : String!
   
-    public var offerId              : UInt?
+
   
     /**
         Fallible Constructor
