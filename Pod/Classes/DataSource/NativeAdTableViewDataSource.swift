@@ -31,6 +31,12 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
   }
   
   
+  func handleRefresh(refreshControl: UIRefreshControl) {
+    
+    refreshControl.endRefreshing()
+  }
+  
+  
   
 
   @objc
@@ -54,11 +60,6 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
     
     tableView.delegate = self.delegate
     tableView.dataSource = self
-    
-    
-    
-    
-    
     
     if((tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell")) == nil){
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!

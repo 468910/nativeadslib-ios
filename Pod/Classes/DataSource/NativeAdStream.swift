@@ -224,6 +224,14 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   func getAdCount() -> Int {
     return ads.count
   }
+  
+  
+  @objc public func clearAdStream(affiliateId : String, limit: UInt) {
+    ads = [:]
+    self.requestAds(affiliateId, limit: limit)
+    datasource?.onUpdateDataSource()
+    
+  }
 
   
   @objc public func requestAds(affiliateId: String , limit: UInt){
