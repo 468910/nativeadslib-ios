@@ -73,9 +73,6 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       if let val = adStream.isAdAtposition(indexPath.row){
         let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
-        var substring = val.campaignImage.absoluteString.substringFromIndex(val.campaignImage.absoluteString.endIndex.advancedBy(-8))
-        
-        NSLog("Configuring Ad And Downloading Image for \(indexPath.row) with url \(substring)")
         cell.configureAdView(val)
         return cell;
       }else{

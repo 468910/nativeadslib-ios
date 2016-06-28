@@ -167,6 +167,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     @objc
     private func notifyServerOfFalseRedirection(){
       
+      
       print("Notified")
       
       var url = NSURL(string: NativeAdsConstants.NativeAds.notifyBadAdsUrl)

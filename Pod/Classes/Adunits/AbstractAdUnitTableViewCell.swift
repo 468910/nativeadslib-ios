@@ -23,7 +23,7 @@ public class AbstractAdUnitTableViewCell : UITableViewCell, NativeAdViewBinderPr
     adTitle.text = nativeAd.campaignName
     adDescription.text = nativeAd.campaignDescription
     print(nativeAd.campaignImage)
-    adImage.hnk_setImageFromURL(nativeAd.campaignImage)
+    adImage.hnk_setImageFromURL(nativeAd.campaignImage, placeholder: UIImage(), format: nil, failure: nil, success: nil)
   }
   func configureAdView(nativeAd: NativeAd, viewController: UIViewController) {
     abort()
