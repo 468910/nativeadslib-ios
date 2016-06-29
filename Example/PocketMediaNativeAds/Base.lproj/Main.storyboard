@@ -300,13 +300,6 @@
                                 </mask>
                             </variation>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" image="questionMarkBtn.png" id="JCJ-nX-ojt">
-                            <connections>
-                                <segue destination="hYM-0d-Pa6" kind="popoverPresentation" identifier="popoverSegue" popoverAnchorBarButtonItem="JCJ-nX-ojt" id="Gtz-HD-n8E">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionViewAdsButton" destination="vJa-Dl-1J1" id="4ZY-ii-5JN"/>
