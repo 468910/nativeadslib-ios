@@ -107,6 +107,14 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   
   public func didReceiveResults(nativeAds: [NativeAd]) {
     
+    if(self.adMargin < 1 && self.adMargin != nil) {
+      return
+    }
+    
+    if(self.firstAdPosition == 0) {
+      return 
+    }
+    
     if(nativeAds.isEmpty) {
       NSLog("No Ads Retrieved")
     }
