@@ -71,6 +71,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   
   public convenience init(controller: UIViewController, mainView: UIView, adsPositions: [Int]){
     self.init(controller: controller, mainView: mainView)
+    self.firstAdPosition = adsPositions.minElement()
     self.adsPositionGivenByUser = Array(Set(adsPositions)).sort{$0 < $1}
   }
   
@@ -185,37 +186,33 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   
   
   func normalize(position : Int)->Int {
-  
+    
+    if(adsPositionGivenByUser != nil){
+      var adsInserted = 0
+      for pos in adsPositionGivenByUser! {
+        
+        
+        if((pos - 1) < position){
+          adsInserted += 1
+          
+        }
+      }
+      return position - adsInserted
+    }
 
-    if(ads.isEmpty || position == 0 || firstAdPosition > position) {
+    if(ads.isEmpty || position == 0 || firstAdPosition! > position) {
       return position
     }else {
+      var adsInserted = 1
       
-      if(adsPositionGivenByUser != nil){
-        var adsInserted = 0
-        for pos in adsPositionGivenByUser! {
-          if(pos < position){
-            adsInserted += 1
-            
-          }
-        }
-        return position - adsInserted
+      if((position - firstAdPosition!) >= adMargin!){
+          adsInserted += (position - firstAdPosition!) / adMargin!
       }
-      
-      
    
-      
-      var adsInserted = position / adMargin!
-      
-      if(firstAdPosition <= position) {
-        adsInserted += 1
-      }
-      
       if(adsInserted > ads.count){
         adsInserted = ads.count
       }
-      
-      
+    
       return position - adsInserted
       
       

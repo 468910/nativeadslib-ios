@@ -24,7 +24,7 @@ class CollectionViewController : UIViewController, UICollectionViewDelegate, UIC
     self.collectionView.backgroundColor = UIColor.whiteColor()
     collectionView.collectionViewLayout = NativeAdCollectionViewLayout()
    
-    var adPos = [5, 2, 4, 99]
+    var adPos = [5, 2, 4]
     var stream = NativeAdStream(controller: self, mainView: self.collectionView, adsPositions: adPos)
     stream.requestAds("d5737f99307e376c635bcbd13b308decda8e46b8", limit: 10)
 
