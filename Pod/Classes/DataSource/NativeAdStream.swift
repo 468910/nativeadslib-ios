@@ -187,7 +187,9 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   func normalize(position : Int)->Int {
   
    
-    if(ads.isEmpty || min(adMargin!, firstAdPosition!) > position || position == 0) {
+    
+    
+    if(ads.isEmpty || adMargin > position || firstAdPosition > position || position == 0) {
       return position
     }else {
       
