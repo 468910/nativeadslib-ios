@@ -45,7 +45,6 @@
 		4FA119589CCBDF7F2ED9D5B8A0CE7812 /* FullscreenBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E1C0C5720D40FA7E9B33C421FE019 /* FullscreenBrowser.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		514A09BBB819F361E14EA3435507C489 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3682D51DBBE3FC7F8F4AE9015DE0CB4 /* ServerTrustPolicy.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		59971AC755F3BBDF7E3BE85CA917E9F8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1EA4F8846D06DBCFAB4097E4014C7 /* Alamofire.framework */; };
-		5F8EF10B35A317CE4D615464A70C70C3 /* AdUnitFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DC7F7D3606CB06B5C147CAAE52FEA6 /* AdUnitFactory.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6366DDFE4C903F2EC6801CAC120F6CFE /* DiskFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CB2108510EC536BF783A72DD8A4512 /* DiskFetcher.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		67A90F147866065F3ED1FFE8B0DD28C7 /* NativeAdsConnectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE2C43491E2962CC509BA8497F7A468 /* NativeAdsConnectionProtocol.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		680048811774388FDD258595C44FB693 /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD6AD562AD2AEA4FC2E37CE2EB7983 /* Fetch.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -60,7 +59,6 @@
 		744A4DCA1FE4B5639325537160670E40 /* NativeAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D1927D2DAED9D09F8500EAD8BEDBF3 /* NativeAd.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7CEACB916CD24FE3D304DC98AD195257 /* UIView+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791B7A3419E61748F14DAE66B033B679 /* UIView+Haneke.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7D2B89F1CF21D1AE5F0142B7DBA62281 /* Pods-PocketMediaNativeAds_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C894A1D9B155854E492340A558B4DF0 /* Pods-PocketMediaNativeAds_Example-dummy.m */; };
-		7EAD3930E016282A559A58D80154DCFB /* BigNativeAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1214562FDE2DE2C16DF0BA96FC1635 /* BigNativeAdTableViewCell.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		80664686BC3A4CF558D9FFBDEAFB8088 /* NativeAdCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C238AC5E321A5347F557580AD3F5996A /* NativeAdCollectionCell.xib */; };
 		80F8CE1FF787FC6E9C4A557216ED8616 /* UIButton+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959BE9970D360F2F71284D474B24D420 /* UIButton+AlamofireImage.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		81473C29E95ADAA01A668973A2CA23FF /* NativeAdDisplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6915BE79E049AF655FBBFAD9ABFC1E4 /* NativeAdDisplayProtocol.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -101,7 +99,6 @@
 		EB7D1260D31A6F49E3E273CE870AA3DD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA1EA4F8846D06DBCFAB4097E4014C7 /* Alamofire.framework */; };
 		EC5BBE71E8A3572711A7CB82876EF14F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D319742B9225E6F92A8EF49450C92A5B /* Foundation.framework */; };
 		EDBD0FB0C34E68F787748DED462CAE6D /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C9D5292CA8A1669CD9D3A2601ED566 /* ResponseSerialization.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		F03A91C8BDDC1A4965406C676C09A61C /* PocketMediaNativeAdsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B5FB1BE3B06F450211C21FFB7C7B9D /* PocketMediaNativeAdsLogger.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F51FDBE0B58714B7CCFC263E262B0842 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39001270F9DD842C99AC754DFA150B04 /* Alamofire-dummy.m */; };
 		FAA1017FCE0F8B1C6E6BACCCD05B4A6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D319742B9225E6F92A8EF49450C92A5B /* Foundation.framework */; };
 		FB921E2C31223EFB30816D7DB741889B /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867849FF99DB2AC076B53496FA2763AC /* NetworkReachabilityManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -289,14 +286,12 @@
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		959BE9970D360F2F71284D474B24D420 /* UIButton+AlamofireImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+AlamofireImage.swift"; path = "Source/UIButton+AlamofireImage.swift"; sourceTree = "<group>"; };
 		99EB684582CE37473BAB7BBD2D02A0B3 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B1214562FDE2DE2C16DF0BA96FC1635 /* BigNativeAdTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BigNativeAdTableViewCell.swift; sourceTree = "<group>"; };
 		9E937B4D7E1EF7C4DB5F0C7CB5191C43 /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
 		9F537251A322C37F8B2B0E8ADCD0604A /* Pods-PocketMediaNativeAds_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PocketMediaNativeAds_Example-frameworks.sh"; sourceTree = "<group>"; };
 		A21F2C298133C61C8410713077D27F3C /* AlamofireImage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AlamofireImage.xcconfig; sourceTree = "<group>"; };
 		A52D8C4A9B699F6554126F2F66E8B190 /* NativeAdView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = NativeAdView.xib; sourceTree = "<group>"; };
 		A5885210F32EBA78B15C8249C0EFF70F /* NativeAdsRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsRequest.swift; sourceTree = "<group>"; };
 		A5EAC85076CB30E911B2D39C109A1BF2 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6B5FB1BE3B06F450211C21FFB7C7B9D /* PocketMediaNativeAdsLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PocketMediaNativeAdsLogger.swift; sourceTree = "<group>"; };
 		AA3349B5FF7F6B6BE478DE415D36D759 /* Pods-PocketMediaNativeAds_ExampleTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PocketMediaNativeAds_ExampleTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		AAE6EFE8E752878DE8A9ACDB67099AD8 /* NSURLResponse+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSURLResponse+Haneke.swift"; path = "Haneke/NSURLResponse+Haneke.swift"; sourceTree = "<group>"; };
 		ABBD84A1C042450B89DBBE70CDF8E837 /* UIImageView+AlamofireImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+AlamofireImage.swift"; path = "Source/UIImageView+AlamofireImage.swift"; sourceTree = "<group>"; };
@@ -328,7 +323,6 @@
 		E419E661F33D332B7BA3E94C8F76D49E /* Pods-PocketMediaNativeAds_ExampleTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PocketMediaNativeAds_ExampleTests.modulemap"; sourceTree = "<group>"; };
 		E6915BE79E049AF655FBBFAD9ABFC1E4 /* NativeAdDisplayProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdDisplayProtocol.swift; sourceTree = "<group>"; };
 		E7B7AF0D8908CA3EC3A847E52E362430 /* Request+AlamofireImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Request+AlamofireImage.swift"; path = "Source/Request+AlamofireImage.swift"; sourceTree = "<group>"; };
-		E7DC7F7D3606CB06B5C147CAAE52FEA6 /* AdUnitFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AdUnitFactory.swift; sourceTree = "<group>"; };
 		EB57E5C7CA55E3CD4CD8A36BE3754992 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
 		EDF5521EFEF8150BF50AB7B85998C003 /* Pods-PocketMediaNativeAds_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PocketMediaNativeAds_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EED6F84094CFA06655ACE83150620E39 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -543,7 +537,6 @@
 		635C2A639E9746ED204ABFCC38FCCF8B /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				A6B5FB1BE3B06F450211C21FFB7C7B9D /* PocketMediaNativeAdsLogger.swift */,
 				3B2672EC9AB1AE0AE0133114E9F0759D /* ReferenceArray.swift */,
 			);
 			path = Util;
@@ -727,8 +720,6 @@
 			children = (
 				408ACF6F93817FF646755587DE6E66C8 /* AbstractAdUnitTableViewCell.swift */,
 				415901D1FC050999D0F011EE1C1284E0 /* AbstractAdUnitUIView.swift */,
-				E7DC7F7D3606CB06B5C147CAAE52FEA6 /* AdUnitFactory.swift */,
-				9B1214562FDE2DE2C16DF0BA96FC1635 /* BigNativeAdTableViewCell.swift */,
 				C44E158DD3C8D0DDC041C2023250184B /* NativeAdCell.swift */,
 				C4FBEFC7FB993CC6C7CEABEE2731415E /* NativeAdCollectionCell.swift */,
 				C7F40B9D91E65618A05C721976B4AF38 /* NativeAdCollectionViewLayout.swift */,
@@ -1090,8 +1081,6 @@
 			files = (
 				B602089F70D28FEE124D71E9A253158B /* AbstractAdUnitTableViewCell.swift in Sources */,
 				4454217A0C291D0B87AA65AFAB588501 /* AbstractAdUnitUIView.swift in Sources */,
-				5F8EF10B35A317CE4D615464A70C70C3 /* AdUnitFactory.swift in Sources */,
-				7EAD3930E016282A559A58D80154DCFB /* BigNativeAdTableViewCell.swift in Sources */,
 				D351A69767EA5BDDD516EF265A8EBA88 /* DataSourceProtocol.swift in Sources */,
 				4FA119589CCBDF7F2ED9D5B8A0CE7812 /* FullscreenBrowser.swift in Sources */,
 				744A4DCA1FE4B5639325537160670E40 /* NativeAd.swift in Sources */,
@@ -1111,7 +1100,6 @@
 				22C983F8D4DFD6C146ED4A0EC4D3483E /* NativeAdTableViewDelegate.swift in Sources */,
 				252D34A0041355909EEEB381EE21F4E1 /* NativeAdViewBinderProtocol.swift in Sources */,
 				D0732589E8B050D3983DF0BC8D00B169 /* PocketMediaNativeAds-dummy.m in Sources */,
-				F03A91C8BDDC1A4965406C676C09A61C /* PocketMediaNativeAdsLogger.swift in Sources */,
 				2E95909F89B26DD052893763A56FF488 /* ReferenceArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

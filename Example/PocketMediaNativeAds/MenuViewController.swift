@@ -38,8 +38,6 @@ class MenuViewController : UIViewController, UIPopoverPresentationControllerDele
     tableViewAdsButton.titleLabel?.textColor = UIColor.whiteColor()
     
     pocketMediaLogo.contentMode = .ScaleAspectFit
-    //pocketMediaLogo.image = UIImage.init(contentsOfFile: "Logo_Pocketmedia_horizontal_white-3.png")
-    //pocketMediaLogo.hnk_setImageFromURL(NSURL(string: "http://www.pocketmedia.mobi/assets/logo-034cf96908f238260a65b46ecefadeed.png")!)
     
   }
   

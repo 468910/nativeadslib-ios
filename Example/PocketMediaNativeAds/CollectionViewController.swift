@@ -67,11 +67,7 @@ class CollectionViewController : UIViewController, UICollectionViewDelegate, UIC
         }
       }
       
-      //for itemJson in jsonArray {
-      //if let itemDictionary = itemJson as? NSDictionary, item = ItemTableModel(dictionary: itemDictionary) {
-      //    tableViewDataSource!.collection!.append(item)
-      //}
-      //}
+    
       
     } catch let error as NSError {
       print(error.localizedDescription)
