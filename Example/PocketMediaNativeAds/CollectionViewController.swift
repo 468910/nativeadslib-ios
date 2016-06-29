@@ -16,6 +16,7 @@ class CollectionViewController : UIViewController, UICollectionViewDelegate, UIC
   
   override func viewDidLoad() {
     
+    self.title = "CollectionView"
     loadLocalJSON()
     collectionView?.delegate = self
     collectionView?.dataSource = self

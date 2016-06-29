@@ -56,7 +56,9 @@ public class ExampleTableViewDataSource : NSObject,  UITableViewDataSource {
   
   public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-   // NSLog("The Normalized index is: %d", indexPath.row)
+  NSLog("The Normalized index is: %d🐬", indexPath.row)
+   
+    
     
    switch collection[indexPath.row] {
     

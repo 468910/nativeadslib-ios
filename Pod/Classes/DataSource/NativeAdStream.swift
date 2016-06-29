@@ -154,6 +154,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     var orginalCount = datasource!.numberOfElements()
     
     var adsInserted = 0
+
     for ad in tempAds {
       
       var index = (firstAdPosition! - 1) + (adMargin! * adsInserted)
@@ -184,40 +185,42 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
   
   
   func normalize(position : Int)->Int {
-    
-    if(ads.isEmpty) {
-      return position
-    }
-    
-    if(adsPositionGivenByUser != nil){
-      var adsInserted = 0
-      for pos in adsPositionGivenByUser! {
-        if(pos < position){
-          adsInserted += 1
-          
-        }
-      }
-      return position - adsInserted
-    }
-    
-    
-    if(position < adMargin || position < firstAdPosition) {
-      return position
-    }
-    
-    
-    var adsInserted = position / adMargin!
-    if(adsInserted > ads.count) {
-      adsInserted = ads.count
-    }
-    
-    if(firstAdPosition < adMargin){
-      adsInserted += 1
-    }
+  
    
-    var tempads = ads
-    var temp = position - adsInserted
-    return position - adsInserted
+    if(ads.isEmpty || min(adMargin!, firstAdPosition!) > position || position == 0) {
+      return position
+    }else {
+      
+      if(adsPositionGivenByUser != nil){
+        var adsInserted = 0
+        for pos in adsPositionGivenByUser! {
+          if(pos < position){
+            adsInserted += 1
+            
+          }
+        }
+        return position - adsInserted
+      }
+      
+      
+   
+      
+      var adsInserted = position / adMargin!
+      
+      if(firstAdPosition <= position) {
+        adsInserted += 1
+      }
+      
+      if(adsInserted > ads.count){
+        adsInserted = ads.count
+      }
+      
+      
+      return position - adsInserted
+      
+      
+      }
+     
   }
   
   
