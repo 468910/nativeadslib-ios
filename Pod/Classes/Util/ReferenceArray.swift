@@ -13,11 +13,6 @@ public class ReferenceArray : NSObject  {
   // [T] is syntatic sugar for Array<T>
   @objc
   public var collection : [AnyObject] = []
-
-  @objc
-  func test() {
-    print("LOG")
-  }
   
   public var count : AnyObject {
     return collection.count
