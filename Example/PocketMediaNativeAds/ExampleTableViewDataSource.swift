@@ -2,7 +2,7 @@
 //  ExampleTableViewDelegate.swift
 //  PocketMediaNativeAds
 //
-//  Created by apple on 19/04/16.
+//  Created by Pocket Media on 19/04/16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 

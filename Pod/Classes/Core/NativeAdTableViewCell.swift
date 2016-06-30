@@ -2,7 +2,7 @@
 //  NativeAdTableViewCell.swift
 //  Pods
 //
-//  Created by apple on 24/02/16.
+//  Created by Pocket Media on 24/02/16.
 //
 //
 

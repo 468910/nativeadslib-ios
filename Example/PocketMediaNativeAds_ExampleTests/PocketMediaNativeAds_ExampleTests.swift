@@ -2,7 +2,7 @@
 //  PocketMediaNativeAds_ExampleTests.swift
 //  PocketMediaNativeAds_ExampleTests
 //
-//  Created by apple on 24/04/16.
+//  Created by Pocket Media on 24/04/16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 

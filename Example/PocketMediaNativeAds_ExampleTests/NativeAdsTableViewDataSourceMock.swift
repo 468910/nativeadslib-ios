@@ -2,7 +2,7 @@
 //  NativeAdsTableViewDataSourceMock.swift
 //  PocketMediaNativeAds
 //
-//  Created by apple on 02/05/16.
+//  Created by Pocket Media on 02/05/16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 

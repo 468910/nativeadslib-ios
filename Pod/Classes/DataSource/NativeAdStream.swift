@@ -2,7 +2,7 @@
 //  NativeAdStream.swift
 //  Pods
 //
-//  Created by apple on 25/05/16.
+//  Created by Pocket Media on 25/05/16.
 //
 //
 

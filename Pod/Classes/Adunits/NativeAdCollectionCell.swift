@@ -2,7 +2,7 @@
 //  NativeAdCollectionCell.swift
 //  Pods
 //
-//  Created by apple on 23/06/16.
+//  Created by Pocket Media on 23/06/16.
 //
 //
 

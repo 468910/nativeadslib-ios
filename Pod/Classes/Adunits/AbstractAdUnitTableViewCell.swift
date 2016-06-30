@@ -2,7 +2,7 @@
 //  AbstractAdUnit.swift
 //  PocketMediaNativeAds
 //
-//  Created by apple on 03/03/16.
+//  Created by Pocket Media on 03/03/16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
