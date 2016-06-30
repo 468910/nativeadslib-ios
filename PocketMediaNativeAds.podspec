@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "PocketMediaNativeAds"
-  s.version          = "0.2.2"
+  s.version          = "0.3.0"
   s.summary          = "PocketMediaNativeAds allows you to integrate customizable Native Ads in your app, easily and quickly."
   s.description      = <<-DESC
 With Pocket Media Native Ads you can quickstart the process of adding native ads to your iOS project.
@@ -33,7 +33,7 @@ s.homepage         = "http://pocketmedia.mobi"
   s.source_files = 'Pod/Classes/*/*.swift'
   s.resource_bundles = {
 
-    'Adrian' => ['Pod/Assets/*.{png,xib}']
+    'Tests' => ['Pod/Assets/*.{png,xib}']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

@@ -1,5 +1,6 @@
 Pocket Media Native Ads iOS library Changelog
 
+* 0.3.0: TO DEFINE.
 * 0.2.2: implemented Quality Service - to improve the user experience while opening the ads.
 * 0.2.1: removed app token, replaced by ad placement token.
 * 0.2.0: renamed classes and re-structured internal code to make it cleaner.
