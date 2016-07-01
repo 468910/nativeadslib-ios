@@ -28,27 +28,49 @@ pod "PocketMediaNativeAds"
 ```
 
 ## Usage
+There are several ways to implement the nativeads in your application. Firstly there is the AdStream which will take care of the integration for you. For Maximum customizability however there is always the option to manually integrate the NativeAds.
 
-### Starting the request
-The main usage of the project takes place in the ```TableViewController.swift``` class, that shows how ads can be retrieved and displayed:
-
-```swift
-    func loadNativeAds(){
-        let adRequest = NativeAdsRequest(adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165", delegate: self) /* replace with your own token!! */
-        adRequest.debugModeEnabled = true
-        adRequest.retrieveAds(5)
-    }
-```
-
-The parameters used are:
+For both methods the parameters used are:
 
 - placement token, to be generated in the [user dashboard](http://third-party.pmgbrain.com/)
 - delegate, to receive the even callbacks as the ads are ready
 
-After that, two more interactions are done:
-- debugModeEnabled: allows to have more precise logging in the console. - retrieveAds: starts the process of downloading the ads
 
 
+### AdStream
+The Adstream easily places native ads in your UITableView or UICollectionView.
+You can specifiy the positions in various ways by giving an Array with fixed positions or by frequency.
+Simply add the following code in your UIViewController and your ads will be automatically loaded into your view. 
+
+
+
+#### AdStream - AdFrequency
+```swift
+	 var stream = NativeAdStream(controller: self, mainView: self.tableView, adMargin: 1, firstAdPosition: 1)
+     stream!.requestAds("PLACEMENT_TOKEN", limit: 10) /* replace with your own token!! */
+```
+
+#### AdStream - Fixed positions
+```swift
+	 var adPos = [5, 2, 4]
+    var stream = NativeAdStream(controller: self, mainView: self.collectionView, adsPositions: adPos)
+    stream.requestAds("PLACEMENT_TOKEN", limit: 10) /* replace with your own token!! */
+```
+
+There is also the option to pass a custom XIB this has to be or a subclass of the corrosponding AbstractAdUnit for example ```AbstractAdUnitTableViewCell```. 
+Dont forget to link up the outlets to your xib!
+
+
+### Manual Integration
+For Manual Integration the Core classes in the Pod Contain everything you need. 
+To make a simple request let your designated class implement the ```NativeAdsConnectionDelegate``` like you're used to with any other IOS delegate. Then start the request, with code fragment below shows an example how to. 
+
+```swift
+        let adRequest = NativeAdsRequest(adPlacementToken: "PLACEMENT_TOKEN", delegate: self) /* replace with your own token!! */
+        adRequest.debugModeEnabled = true
+        adRequest.retrieveAds(5)
+    
+```
 
 #### App Transport Security
 
