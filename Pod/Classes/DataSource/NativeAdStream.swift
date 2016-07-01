@@ -8,6 +8,11 @@
 
 import Foundation
 
+
+/**
+ Used for loading Ads into an UIView.
+ **/
+
 @objc
 public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     private var adMargin: Int?
