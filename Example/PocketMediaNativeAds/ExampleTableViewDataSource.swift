@@ -13,9 +13,6 @@ public class ExampleTableViewDataSource : NSObject,  UITableViewDataSource {
   
   var collection : [AnyObject] = []
   
-  
-  // MARK: - Table view data source
-  
   public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }

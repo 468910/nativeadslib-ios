@@ -255,9 +255,13 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
         
     }
     
-    
-    @objc public func requestAds(affiliateId: String , limit: UInt){
-        NativeAdsRequest(adPlacementToken: affiliateId, delegate: self).retrieveAds(limit)
+  /**
+   Method used to load native ads.
+   - adPlacementToken: to be generated in the user dashboard used to determine placement of the ads: 
+   - limit: Limit on how many native ads are to be retrieved.
+   */
+    @objc public func requestAds(adPlacementToken: String , limit: UInt){
+        NativeAdsRequest(adPlacementToken: adPlacementToken, delegate: self).retrieveAds(limit)
     }
     
     

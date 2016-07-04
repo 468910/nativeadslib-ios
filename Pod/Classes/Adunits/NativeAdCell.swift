@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ Standard AdUnit for TableView
+ **/
 public class NativeAdCell : AbstractAdUnitTableViewCell {
   
   @IBOutlet weak var installButton: UIButton!

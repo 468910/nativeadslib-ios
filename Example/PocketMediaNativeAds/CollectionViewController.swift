@@ -10,6 +10,10 @@ import UIKit
 import PocketMediaNativeAds
 import Haneke
 
+
+/**
+ Example of the AdStream with an CollectionView
+ **/
 class CollectionViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
   @IBOutlet weak var collectionView: UICollectionView!
   

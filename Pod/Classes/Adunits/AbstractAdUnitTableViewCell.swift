@@ -11,8 +11,7 @@ import Haneke
 
 
 /**
- Class that is used to open the NativeAd in An FullScreen Embedded WebView.
- Default implementation for the NativeAdOpenerProtocol
+ Class to be subclassed for use with the AdStream.
  **/
 public class AbstractAdUnitTableViewCell : UITableViewCell, NativeAdViewBinderProtocol {
   

@@ -9,6 +9,9 @@
 import UIKit
 import PocketMediaNativeAds
 
+/**
+ Example of the AdStream used with an TableView 
+ **/
 class TableViewController: UITableViewController {
   
     var tableViewDataSource : ExampleTableViewDataSource?
