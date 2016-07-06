@@ -4,6 +4,14 @@
 [![License](https://img.shields.io/cocoapods/l/PocketMediaNativeAds.svg?style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 [![Platform](https://img.shields.io/cocoapods/p/PocketMediaNativeAds.svg?style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 
+## What are Native Ads?
+
+Native Ads are a new way of integrating the ads within the content. While traditional advertising creates a pause to display the ads (Interstitial ads, banners, etc.), which are more or less intrusive for the user experience - native ads want to get integrated with the user flow and the way he is consuming the content. 
+
+We offer you the ads in a structured format so you can display them as you prefer, integrated in form and functionality with your app.
+
+We offer some standard ad units, but they will work much better if you customize them to be integrated with your app style. Your users will appreciate it, and your application will keep the style that you wanted it to have.
+
 ## Requirements
 
 In order to use the library and have monetization tracking you need to get an advertiser token from Pocket Media. You can get it online, at [our sign up page](http://nativeads.pocketmedia.mobi/signup.html):
@@ -28,7 +36,7 @@ pod "PocketMediaNativeAds"
 ```
 
 ## Usage
-There are several ways to implement the nativeads in your application. Firstly there is the AdStream which will take care of the integration for you. For Maximum customizability however there is always the option to manually integrate the NativeAds.
+There are several ways to implement the native ads in your application. Firstly there is the AdStream which will take care of the integration for you. For Maximum customizability however there is always the option to manually integrate the NativeAds.
 
 For both methods the parameters used are:
 
@@ -72,7 +80,7 @@ To make a simple request let your designated class implement the ```NativeAdsCon
     
 ```
 
-#### App Transport Security
+## App Transport Security
 
 **Important:** the server to download the ads is ```http://offerwall.12trackway.com```. This is not *yet* under https, so you will need to add certain values to your plist, to indicate App Transport Security. 
 
