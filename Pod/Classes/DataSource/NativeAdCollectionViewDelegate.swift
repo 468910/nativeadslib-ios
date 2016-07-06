@@ -2,7 +2,7 @@
 //  NativeAdCollectionViewDelegate.swift
 //  Pods
 //
-//  Created by apple on 22/06/16.
+//  Created by Pocket Media on 22/06/16.
 //
 //
 

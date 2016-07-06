@@ -2,11 +2,13 @@
 //  AbstractAdUnitUIView.swift
 //  PocketMediaNativeAds
 //
-//  Created by apple on 03/03/16.
+//  Created by Pocket Media on 03/03/16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
 import UIKit
+import Haneke
+
 // Removed designated Initializer because the way Objective C works, when defining an designated Objective C wont automatically inherit all the super class initializers!
 @objc
 public class AbstractAdUnitUIView : UIView,  NativeAdViewBinderProtocol{
@@ -47,7 +49,7 @@ public class AbstractAdUnitUIView : UIView,  NativeAdViewBinderProtocol{
     
     adTitle.text = nativeAd.campaignName
     adDescription.text = nativeAd.campaignDescription
-    self.adImage.downloadedFrom(link: nativeAd.campaignImage.absoluteString, contentMode: .ScaleAspectFit)
+    self.adImage.hnk_setImageFromURL(nativeAd.campaignImage, placeholder: UIImage(), format: nil, failure: nil, success: nil)
   }
   
   

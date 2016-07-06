@@ -13,11 +13,6 @@ public class ReferenceArray : NSObject  {
   // [T] is syntatic sugar for Array<T>
   @objc
   public var collection : [AnyObject] = []
-
-  @objc
-  func test() {
-    print("LOG")
-  }
   
   public var count : AnyObject {
     return collection.count
@@ -48,7 +43,7 @@ public class PocketMediaNativeAdsBundle : NSObject {
   
   public static func loadBundle() -> NSBundle?{
    let podBundle = NSBundle(forClass: NativeAd.self)
-    if let bundleURL = podBundle.URLForResource("Adrian", withExtension: "bundle"){
+    if let bundleURL = podBundle.URLForResource("Tests", withExtension: "bundle"){
        print("Bundle found")
       if let bundle = NSBundle(URL: bundleURL){
         print("Bundle returned")

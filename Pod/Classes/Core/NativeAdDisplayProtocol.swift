@@ -2,7 +2,7 @@
 //  NativeAdDisplayProtocol.swift
 //  Pods
 //
-//  Created by apple on 18/02/16.
+//  Created by Pocket Media on 18/02/16.
 //
 //
 import Foundation

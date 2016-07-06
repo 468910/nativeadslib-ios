@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "564096A7DAB32BFD40D06A9D53DF7710"
+               BlueprintIdentifier = "C6ED9B779C4F220C82699B6A4F62F08B"
                BuildableName = "PocketMediaNativeAds.framework"
                BlueprintName = "PocketMediaNativeAds"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "564096A7DAB32BFD40D06A9D53DF7710"
+            BlueprintIdentifier = "C6ED9B779C4F220C82699B6A4F62F08B"
             BuildableName = "PocketMediaNativeAds.framework"
             BlueprintName = "PocketMediaNativeAds"
             ReferencedContainer = "container:Pods.xcodeproj">

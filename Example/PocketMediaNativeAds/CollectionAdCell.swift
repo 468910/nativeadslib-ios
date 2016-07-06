@@ -2,7 +2,7 @@
 //  CollectionAdCell.swift
 //  PocketMediaNativeAds
 //
-//  Created by apple on 20/06/16.
+//  Created by Pocket Media on 20/06/16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 

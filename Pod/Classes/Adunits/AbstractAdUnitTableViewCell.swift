@@ -2,14 +2,17 @@
 //  AbstractAdUnit.swift
 //  PocketMediaNativeAds
 //
-//  Created by apple on 03/03/16.
+//  Created by Pocket Media on 03/03/16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
 import UIKit
-import AlamofireImage
 import Haneke
 
+
+/**
+ Class to be subclassed for use with the AdStream.
+ **/
 public class AbstractAdUnitTableViewCell : UITableViewCell, NativeAdViewBinderProtocol {
   
   @IBOutlet weak var speakerPhone : UIImageView!
@@ -47,22 +50,3 @@ public class AbstractAdUnitTableViewCell : UITableViewCell, NativeAdViewBinderPr
 
 
 
-extension UIImageView {
-  func downloadedFrom(link link:String, contentMode mode: UIViewContentMode) {
-    guard
-      let url = NSURL(string: link)
-      else {return}
-    contentMode = mode
-    NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
-      guard
-        let httpURLResponse = response as? NSHTTPURLResponse where httpURLResponse.statusCode == 200,
-        let mimeType = response?.MIMEType where mimeType.hasPrefix("image"),
-        let data = data where error == nil,
-        let image = UIImage(data: data)
-        else { return }
-      dispatch_async(dispatch_get_main_queue()) { () -> Void in
-        self.image = image
-      }
-    }).resume()
-  }
-}

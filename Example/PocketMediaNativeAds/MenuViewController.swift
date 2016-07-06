@@ -2,7 +2,7 @@
 //  MenuViewController.swift
 //  PocketMediaNativeAds
 //
-//  Created by apple on 22/06/16.
+//  Created by Pocket Media on 22/06/16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
@@ -38,8 +38,6 @@ class MenuViewController : UIViewController, UIPopoverPresentationControllerDele
     tableViewAdsButton.titleLabel?.textColor = UIColor.whiteColor()
     
     pocketMediaLogo.contentMode = .ScaleAspectFit
-    //pocketMediaLogo.image = UIImage.init(contentsOfFile: "Logo_Pocketmedia_horizontal_white-3.png")
-    //pocketMediaLogo.hnk_setImageFromURL(NSURL(string: "http://www.pocketmedia.mobi/assets/logo-034cf96908f238260a65b46ecefadeed.png")!)
     
   }
   
@@ -47,7 +45,7 @@ class MenuViewController : UIViewController, UIPopoverPresentationControllerDele
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "popoverSegue" {
-      let popoverViewController = segue.destinationViewController as! UIViewController
+      let popoverViewController = segue.destinationViewController 
       popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
       popoverViewController.popoverPresentationController!.delegate = self
     }

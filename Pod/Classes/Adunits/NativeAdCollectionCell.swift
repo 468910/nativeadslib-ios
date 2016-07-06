@@ -2,13 +2,17 @@
 //  NativeAdCollectionCell.swift
 //  Pods
 //
-//  Created by apple on 23/06/16.
+//  Created by Pocket Media on 23/06/16.
 //
 //
 
 import Foundation
 import UIKit
 import Haneke
+
+/**
+ Standard AdUnit for CollectionView
+ **/
 
 public class NativeAdCollectionCell : UICollectionViewCell, NativeAdViewBinderProtocol  {
   @IBOutlet weak var adImage : UIImageView!

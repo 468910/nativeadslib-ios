@@ -2,12 +2,15 @@
 //  NativeAdCell.swift
 //  PocketMediaNativeAds
 //
-//  Created by apple on 29/02/16.
+//  Created by Pocket Media on 29/02/16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
 import UIKit
 
+/**
+ Standard AdUnit for TableView
+ **/
 public class NativeAdCell : AbstractAdUnitTableViewCell {
   
   @IBOutlet weak var installButton: UIButton!

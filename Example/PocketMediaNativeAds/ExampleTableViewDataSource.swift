@@ -2,7 +2,7 @@
 //  ExampleTableViewDelegate.swift
 //  PocketMediaNativeAds
 //
-//  Created by apple on 19/04/16.
+//  Created by Pocket Media on 19/04/16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
@@ -12,9 +12,6 @@ import Haneke
 public class ExampleTableViewDataSource : NSObject,  UITableViewDataSource {
   
   var collection : [AnyObject] = []
-  
-  
-  // MARK: - Table view data source
   
   public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -42,11 +39,6 @@ public class ExampleTableViewDataSource : NSObject,  UITableViewDataSource {
         }
       }
       
-      //for itemJson in jsonArray {
-      //if let itemDictionary = itemJson as? NSDictionary, item = ItemTableModel(dictionary: itemDictionary) {
-      //    tableViewDataSource!.collection!.append(item)
-      //}
-      //}
       
     } catch let error as NSError {
       print(error.localizedDescription)
