@@ -22,7 +22,7 @@ class TableViewController: UITableViewController {
       
       super.viewDidLoad()
       tableViewDataSource = ExampleTableViewDataSource()
-      tableViewDataSource!.loadLocalJSON()
+      tableViewDataSource?.loadLocalJSON()
       tableView.dataSource = tableViewDataSource
       
       
