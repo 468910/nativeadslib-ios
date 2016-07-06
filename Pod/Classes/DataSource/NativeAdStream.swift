@@ -19,19 +19,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     
     
     // they are not called when variables are written to from an initializer or with a default value.
-    public var firstAdPosition : Int? {
-        willSet {
-            firstAdPosition = newValue! + 1
-            NSLog("First Ad Position Changed Preparing for Updating Ad Positions")
-        }
-        
-        didSet {
-            if firstAdPosition != oldValue{
-                updateAdPositions()
-            }
-        }
-    }
-    
+    public var firstAdPosition : Int?
     
     private var adsPositionGivenByUser : [Int]?
     private var ads: [Int: NativeAd]
