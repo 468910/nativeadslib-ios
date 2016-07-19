@@ -15,6 +15,7 @@ class MenuViewController : UIViewController, UIPopoverPresentationControllerDele
   @IBOutlet weak var tableViewAdsButton: UIButton!
   @IBOutlet weak var scrollViewButton: UIButton!
   @IBOutlet weak var pocketMediaLogo: UIImageView!
+  @IBOutlet weak var tableviewBigAdsButton: UIButton!
   
   
   override func viewDidLoad() {
@@ -48,6 +49,14 @@ class MenuViewController : UIViewController, UIPopoverPresentationControllerDele
     scrollViewButton.titleLabel?.textColor = UIColor.whiteColor()
     
     pocketMediaLogo.contentMode = .ScaleAspectFit
+    
+    //tableViewBigAdsButton
+    tableviewBigAdsButton.setTitle("TableViewBigAdsButton", forState: UIControlState.Normal)
+    tableviewBigAdsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+    tableviewBigAdsButton.titleEdgeInsets.left = 10
+    tableviewBigAdsButton.titleEdgeInsets.right = 10
+    tableviewBigAdsButton.layer.cornerRadius = 10
+    tableviewBigAdsButton.backgroundColor = UIColor(red: 11 / 255, green: 148 / 255, blue: 68 / 255, alpha: 1)
     
   }
   

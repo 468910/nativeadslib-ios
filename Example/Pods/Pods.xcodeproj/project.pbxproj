@@ -15,6 +15,8 @@
 		101B6E0987538F753A24A927E88515C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D319742B9225E6F92A8EF49450C92A5B /* Foundation.framework */; };
 		13161DFEB54CC8C663EBD7AA5AFE0819 /* NativeAdCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043A176F1546E420FBFC2EECE18A43E /* NativeAdCollectionViewDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		13202614FB4A2465FD5D212AC6393DE6 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65459A262FE2BCC6C9B1111C4C78C46 /* Request.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		1829E0461D3D10BC001395BC /* AbstractBigAdUnitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1829E0431D3D104F001395BC /* AbstractBigAdUnitTableViewCell.swift */; };
+		1829E0481D3D231E001395BC /* BigNativeAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1829E0471D3D116E001395BC /* BigNativeAdTableViewCell.xib */; };
 		2265FDDADE3AAD35599EB029EF731228 /* Pods-PocketMediaNativeAds_ExampleTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DF580D8B7BD82CD323C25B0AC848C45 /* Pods-PocketMediaNativeAds_ExampleTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		250B90954338EEFB0EBC6DAA23894DDA /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A507B9C06CA3A3CAFC682C670F31AF9 /* Stream.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		288B407C1861C325D63558155BE51969 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7E67A0175B97035ED42A887B2290CA /* Notifications.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -53,7 +55,6 @@
 		722C7097A4AC7A0A01C33419EE4C884C /* String+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E82B50FCC49CA1A14E70C9E95BB2D8E /* String+Haneke.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		734D4E9CBF9F977A8B62365C32ED517B /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78FB85CFEDFBFCAFA6113E7B592E30 /* MultipartFormData.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		73EBFEA308663D6BFAA2C2012C50EFE2 /* UIButton+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A58C515C663FA896735E97AEA76E4 /* UIButton+Haneke.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		79BFADCAA789A5C1FBF6E9D0D3DE7D54 /* BigNativeAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29C7DDC737751BCBD4963AF48906DE7A /* BigNativeAdTableViewCell.xib */; };
 		7CEACB916CD24FE3D304DC98AD195257 /* UIView+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791B7A3419E61748F14DAE66B033B679 /* UIView+Haneke.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7D2B89F1CF21D1AE5F0142B7DBA62281 /* Pods-PocketMediaNativeAds_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C894A1D9B155854E492340A558B4DF0 /* Pods-PocketMediaNativeAds_Example-dummy.m */; };
 		80F8CE1FF787FC6E9C4A557216ED8616 /* UIButton+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959BE9970D360F2F71284D474B24D420 /* UIButton+AlamofireImage.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -211,6 +212,8 @@
 		100A3632D9272FCA4EFBB7F70129C96D /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
 		1043A176F1546E420FBFC2EECE18A43E /* NativeAdCollectionViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		112872DE90E3D9CD8D4D6FE4E8D313F0 /* Pods-PocketMediaNativeAds_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PocketMediaNativeAds_Example.modulemap"; sourceTree = "<group>"; };
+		1829E0431D3D104F001395BC /* AbstractBigAdUnitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractBigAdUnitTableViewCell.swift; sourceTree = "<group>"; };
+		1829E0471D3D116E001395BC /* BigNativeAdTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BigNativeAdTableViewCell.xib; sourceTree = "<group>"; };
 		19CB2108510EC536BF783A72DD8A4512 /* DiskFetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiskFetcher.swift; path = Haneke/DiskFetcher.swift; sourceTree = "<group>"; };
 		1A507B9C06CA3A3CAFC682C670F31AF9 /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
 		1C42CAC72B6C33A72BC0B29A09B7A81A /* NativeAdsRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsRequest.swift; sourceTree = "<group>"; };
@@ -219,7 +222,6 @@
 		269E236906E775D7A142110A029AE643 /* NativeAdsConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeAdsConstants.swift; sourceTree = "<group>"; };
 		290931F035D1C03E33E8A02EDB631C34 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
 		29183F887C0F9EE82E391F0CFF3083E4 /* AlamofireImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AlamofireImage-prefix.pch"; sourceTree = "<group>"; };
-		29C7DDC737751BCBD4963AF48906DE7A /* BigNativeAdTableViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = BigNativeAdTableViewCell.xib; sourceTree = "<group>"; };
 		2AEC1F9C83ED6328E1D68E5DA19457B8 /* Pods-PocketMediaNativeAds_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PocketMediaNativeAds_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B9345B4761EA3768B703C95DD5B8D0B /* Log.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Log.swift; path = Haneke/Log.swift; sourceTree = "<group>"; };
 		2C7F51100AC194BF089513B13551AC45 /* DiskCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiskCache.swift; path = Haneke/DiskCache.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 				BD90B5C35A9B0C80190282D738900901 /* NativeAdCell.swift */,
 				8AE60DD5C15EA8180E4D4370A93C2C13 /* NativeAdCollectionCell.swift */,
 				6768F4D999A88155F154AAC03F6EF2FF /* NativeAdCollectionViewLayout.swift */,
+				1829E0431D3D104F001395BC /* AbstractBigAdUnitTableViewCell.swift */,
 			);
 			path = Adunits;
 			sourceTree = "<group>";
@@ -711,12 +714,12 @@
 		EBCD55A0639A31175F5C73CBF6F78794 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				29C7DDC737751BCBD4963AF48906DE7A /* BigNativeAdTableViewCell.xib */,
 				68BCECBE7A2B9FC49357ADF29BE547B9 /* close.png */,
 				744864DDE248DC84E55A10C9E5EE906A /* close@2x.png */,
 				683F16618F557FAD8E0FFB8750BE705A /* Loud_Speaker_64.png */,
 				C238AC5E321A5347F557580AD3F5996A /* NativeAdCollectionCell.xib */,
 				A52D8C4A9B699F6554126F2F66E8B190 /* NativeAdView.xib */,
+				1829E0471D3D116E001395BC /* BigNativeAdTableViewCell.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -967,7 +970,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79BFADCAA789A5C1FBF6E9D0D3DE7D54 /* BigNativeAdTableViewCell.xib in Resources */,
+				1829E0481D3D231E001395BC /* BigNativeAdTableViewCell.xib in Resources */,
 				45A2BEFC99053A68D7593AC3B3F65818 /* close.png in Resources */,
 				94D858EEB0412D664B93C5E4619A0B8B /* close@2x.png in Resources */,
 				A79474DB0B413BC06E8BB293F9F63AC7 /* Loud_Speaker_64.png in Resources */,
@@ -1089,6 +1092,7 @@
 				B01FD53604500FB66B1E67D40D016F30 /* NativeAdsConnectionProtocol.swift in Sources */,
 				6B3CEE5C2EC090E7605566B8164FB756 /* NativeAdsConstants.swift in Sources */,
 				65D984C67496C77909EF46F91714C045 /* NativeAdsRequest.swift in Sources */,
+				1829E0461D3D10BC001395BC /* AbstractBigAdUnitTableViewCell.swift in Sources */,
 				0F1479D5450F014FAEECCB7371ECC900 /* NativeAdStream.swift in Sources */,
 				685F8121629ED1F3B62187DDF03AD880 /* NativeAdsWebviewDelegate.swift in Sources */,
 				57A54F49497D9E2D5734758CBAA4CEF7 /* NativeAdTableViewCell.swift in Sources */,

@@ -12,6 +12,7 @@
 		183C80B31CC6754D00FC55B3 /* ExampleTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C80B21CC6754D00FC55B3 /* ExampleTableViewDataSource.swift */; };
 		185B1EAD1D17F853004BA7A4 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B1EAC1D17F853004BA7A4 /* CollectionViewController.swift */; };
 		185B1EAF1D180372004BA7A4 /* CollectionAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B1EAE1D180372004BA7A4 /* CollectionAdCell.swift */; };
+		18730D111D38EA9A00095DA7 /* BIgTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18730D101D38EA9A00095DA7 /* BIgTableViewController.swift */; };
 		187665411D12DFDC00554ED4 /* TestSupplied.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187665401D12DFDC00554ED4 /* TestSupplied.xib */; };
 		18A80D641D1AC22200041331 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80D631D1AC22200041331 /* MenuViewController.swift */; };
 		18B78A641D2A5E7A0006EEF4 /* HorizontalScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B78A631D2A5E7A0006EEF4 /* HorizontalScrollView.xib */; };
@@ -58,6 +59,7 @@
 		183C80B21CC6754D00FC55B3 /* ExampleTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ExampleTableViewDataSource.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		185B1EAC1D17F853004BA7A4 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CollectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		185B1EAE1D180372004BA7A4 /* CollectionAdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CollectionAdCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		18730D101D38EA9A00095DA7 /* BIgTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIgTableViewController.swift; sourceTree = "<group>"; };
 		187665401D12DFDC00554ED4 /* TestSupplied.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSupplied.xib; sourceTree = "<group>"; };
 		18A80D631D1AC22200041331 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MenuViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		18B78A631D2A5E7A0006EEF4 /* HorizontalScrollView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HorizontalScrollView.xib; path = ../HorizontalScrollView.xib; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			children = (
 				3A75F2691C3FF6CC00F81318 /* TableViewController.swift */,
 				183C80B21CC6754D00FC55B3 /* ExampleTableViewDataSource.swift */,
+				18730D101D38EA9A00095DA7 /* BIgTableViewController.swift */,
 			);
 			name = TableView;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18730D111D38EA9A00095DA7 /* BIgTableViewController.swift in Sources */,
 				185B1EAF1D180372004BA7A4 /* CollectionAdCell.swift in Sources */,
 				18A80D641D1AC22200041331 /* MenuViewController.swift in Sources */,
 				3A75F2741C3FFA7B00F81318 /* ItemCell.swift in Sources */,

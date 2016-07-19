@@ -12,11 +12,11 @@ import Foundation
 @objc
 public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, DataSourceProtocol{
   
-    public var datasource : UITableViewDataSource?
-    public var tableView : UITableView?
-    public var delegate : UITableViewDelegate?
-    public var controller : UIViewController?
-    public var adStream : NativeAdStream
+  public var datasource : UITableViewDataSource?
+  public var tableView : UITableView?
+  public var delegate : UITableViewDelegate?
+  public var controller : UIViewController?
+  public var adStream : NativeAdStream
   
   
   
@@ -38,7 +38,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
   
   
   
-
+  
   @objc
   public required init(controller : UIViewController, tableView: UITableView, adStream : NativeAdStream){
     
@@ -53,7 +53,7 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
     
     super.init()
     
-   
+    
     
     
     self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: tableView.delegate!)
@@ -61,45 +61,57 @@ public class NativeAdTableViewDataSource : NSObject, UITableViewDataSource, Data
     tableView.delegate = self.delegate
     tableView.dataSource = self
     
-    if((tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell")) == nil){
-        let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-        tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
+    if((tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell")) == nil && adStream.adUnitType == .Standard){
+      let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+      tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
     }
     
- 
+    if((tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell")) == nil && adStream.adUnitType == .Big){
+      let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+      tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
     }
+    
+    
+    
+  }
   
-    // Data Source
-    @objc
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      if let val = adStream.isAdAtposition(indexPath.row){
+  // Data Source
+  @objc
+  public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    if let val = adStream.isAdAtposition(indexPath.row){
+      if(adStream.adUnitType == .Standard){
         let cell : NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
         cell.configureAdView(val)
         return cell;
       }else{
-        return datasource!.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream.normalize(indexPath.row), inSection: 0))
-        }
-      
+        let cell : AbstractBigAdUnitTableViewCell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
+        cell.configureAdView(val)
+        return cell;
+      }
+    }else{
+      return datasource!.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream.normalize(indexPath.row), inSection: 0))
     }
-  
     
-    
-    @objc
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datasource!.tableView(tableView, numberOfRowsInSection: section) + adStream.getAdCount()
-    }
+  }
+  
+  
+  
+  @objc
+  public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return datasource!.tableView(tableView, numberOfRowsInSection: section) + adStream.getAdCount()
+  }
   
   
   
   
- 
-
   
-
-   
   
-
-    
+  
+  
+  
+  
+  
+  
 }
 
 

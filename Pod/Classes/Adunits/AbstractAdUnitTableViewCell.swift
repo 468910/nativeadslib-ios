@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AlamofireImage
 import Haneke
 import Darwin
 
@@ -17,7 +16,10 @@ public class AbstractAdUnitTableViewCell : UITableViewCell, NativeAdViewBinderPr
   @IBOutlet weak var adImage : UIImageView!
   @IBOutlet weak var adTitle: UILabel!
   @IBOutlet weak var adDescription : UILabel!
+  @IBOutlet weak var adInfoView: UIView!
   
+  @IBOutlet weak var adDescriptionHeightConstraint: NSLayoutConstraint!
+  @IBOutlet weak var middleLineCenterYConstraint: NSLayoutConstraint!
   
   
   public func configureAdView(nativeAd: NativeAd) {
@@ -26,6 +28,7 @@ public class AbstractAdUnitTableViewCell : UITableViewCell, NativeAdViewBinderPr
     print(nativeAd.campaignImage)
     adImage.hnk_setImageFromURL(nativeAd.campaignImage, placeholder: UIImage(), format: nil, failure: nil, success: nil)
   }
+  
   func configureAdView(nativeAd: NativeAd, viewController: UIViewController) {
     abort()
   }
@@ -58,29 +61,25 @@ public class AbstractAdUnitTableViewCell : UITableViewCell, NativeAdViewBinderPr
   public override func layoutSubviews() {
   
     print("I'M invoked")
-    
-    
-    
-    /*if(self.adDescription.frame.maxY > self.adImage.frame.maxY){
-      var point = CGPoint(x: adDescription.frame.origin.x, y: adImage.frame.maxY - adDescription.frame.origin.y)
-      self.adDescription.frame = CGRectMake(point.x, point.y, adDescription.frame.width,
-                                            abs(adImage.frame.maxY - adDescription.frame.origin.y))
-        centerAlignY.active = false
-    }*/
-  
   }
   
   
   
   public override func updateConstraints() {
     super.updateConstraints()
-    print("Current addescription height")
-    /**
-    if(self.adDescription.frame.height > 16){
-      centerAlignY = MyConstraint.changeMultiplier(centerAlignY, multiplier: 0.5)
-    }else {
-      centerAlignY = MyConstraint.changeMultiplier(centerAlignY, multiplier: 1)
-    }*/
+    
+    var lineCount = 0;
+    let textSize = CGSizeMake(adDescription.frame.size.width, CGFloat(Float.infinity));
+    let rHeight = lroundf(Float(adDescription.sizeThatFits(textSize).height))
+    let charSize = lroundf(Float(adDescription.font.lineHeight));
+    lineCount = rHeight/charSize
+    print("No of lines \(lineCount)")
+    
+    if(lineCount > 1){
+      
+    }
+    
+    
     
    
       

@@ -16,7 +16,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRJ-ce-gbH" userLabel="Install">
                     <rect key="frame" x="526" y="0.0" width="93" height="89"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loud_Speaker_64.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z0j-F3-XlP" userLabel="SpeakerPhone">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Loud_Speaker_64.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z0j-F3-XlP" userLabel="SpeakerPhone">
                             <rect key="frame" x="21" y="8" width="64" height="64"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Z0j-F3-XlP" secondAttribute="height" multiplier="1:1" id="4Ah-RT-1Ee"/>
@@ -32,7 +32,7 @@
                                 </mask>
                             </variation>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ad" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fMi-IE-VLB" userLabel="LabelThatDisplaysAd">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ad" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fMi-IE-VLB" userLabel="LabelThatDisplaysAd">
                             <rect key="frame" x="-48" y="8" width="64" height="64"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -82,6 +82,9 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="5YW-2O-bnT"/>
+                            <exclude reference="Rve-G6-bQK"/>
+                            <exclude reference="efe-dy-XTy"/>
                             <exclude reference="07I-NT-mJl"/>
                             <exclude reference="3KS-J8-5fz"/>
                             <exclude reference="62N-2a-n2a"/>
@@ -92,9 +95,6 @@
                             <exclude reference="i2T-DG-CoE"/>
                             <exclude reference="pMY-xd-Hxo"/>
                             <exclude reference="qqT-sn-Shr"/>
-                            <exclude reference="5YW-2O-bnT"/>
-                            <exclude reference="Rve-G6-bQK"/>
-                            <exclude reference="efe-dy-XTy"/>
                         </mask>
                     </variation>
                 </view>
@@ -132,14 +132,8 @@
                                 <constraint firstAttribute="height" id="HZy-Kv-ClN"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Spt-Fz-sOx" userLabel="AdDescription">
-                            <rect key="frame" x="0.0" y="45" width="29" height="43"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cU1-hR-AOS" userLabel="AdName">
-                            <rect key="frame" x="0.0" y="23" width="619" height="22"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cU1-hR-AOS" userLabel="AdName">
+                            <rect key="frame" x="0.0" y="23" width="42" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" id="mdk-Vi-aL0"/>
                                 <constraint firstAttribute="height" constant="24" id="oXH-f9-adh"/>
@@ -154,13 +148,19 @@
                                 </mask>
                             </variation>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Spt-Fz-sOx" userLabel="AdDescription">
+                            <rect key="frame" x="0.0" y="45" width="29" height="14"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Spt-Fz-sOx" firstAttribute="height" relation="lessThanOrEqual" secondItem="MD6-t4-976" secondAttribute="height" id="086-Dk-W3C"/>
                         <constraint firstAttribute="bottom" secondItem="Spt-Fz-sOx" secondAttribute="bottom" id="8Un-Fp-XaG"/>
                         <constraint firstItem="Spt-Fz-sOx" firstAttribute="top" secondItem="cU1-hR-AOS" secondAttribute="bottom" id="9yQ-NF-y0I"/>
-                        <constraint firstItem="Spt-Fz-sOx" firstAttribute="width" secondItem="MD6-t4-976" secondAttribute="width" id="ChY-5U-MBA"/>
+                        <constraint firstItem="Spt-Fz-sOx" firstAttribute="width" relation="lessThanOrEqual" secondItem="MD6-t4-976" secondAttribute="width" id="ChY-5U-MBA"/>
                         <constraint firstItem="Spt-Fz-sOx" firstAttribute="centerY" secondItem="cU1-hR-AOS" secondAttribute="centerY" id="Gy7-ZF-jMa"/>
                         <constraint firstItem="3l3-zX-akS" firstAttribute="centerY" secondItem="MD6-t4-976" secondAttribute="centerY" id="KrT-rv-Ogx"/>
                         <constraint firstItem="Spt-Fz-sOx" firstAttribute="centerY" secondItem="cU1-hR-AOS" secondAttribute="centerY" id="OnS-JM-mUU"/>
@@ -177,7 +177,7 @@
                         <constraint firstItem="Spt-Fz-sOx" firstAttribute="centerY" secondItem="cU1-hR-AOS" secondAttribute="centerY" id="lhr-tI-STs"/>
                         <constraint firstAttribute="bottom" secondItem="Spt-Fz-sOx" secondAttribute="bottom" constant="1" id="lxZ-v2-Rsx"/>
                         <constraint firstItem="3l3-zX-akS" firstAttribute="width" secondItem="MD6-t4-976" secondAttribute="width" id="ncz-gk-rT8"/>
-                        <constraint firstItem="cU1-hR-AOS" firstAttribute="width" secondItem="MD6-t4-976" secondAttribute="width" id="v3M-nC-ss1"/>
+                        <constraint firstItem="cU1-hR-AOS" firstAttribute="width" relation="lessThanOrEqual" secondItem="MD6-t4-976" secondAttribute="width" id="v3M-nC-ss1"/>
                         <constraint firstItem="Spt-Fz-sOx" firstAttribute="width" secondItem="MD6-t4-976" secondAttribute="width" multiplier="0.9" id="w4t-dA-qqj"/>
                         <constraint firstItem="Spt-Fz-sOx" firstAttribute="leading" secondItem="MD6-t4-976" secondAttribute="leading" constant="8" id="wXs-dc-GT2"/>
                         <constraint firstItem="cU1-hR-AOS" firstAttribute="width" secondItem="Spt-Fz-sOx" secondAttribute="width" id="wgD-AA-UAq"/>
@@ -216,7 +216,7 @@
                 <constraint firstItem="cU1-hR-AOS" firstAttribute="width" secondItem="med-7r-ffj" secondAttribute="width" id="1OE-cW-jJ8"/>
                 <constraint firstItem="dsE-td-uYg" firstAttribute="height" secondItem="med-7r-ffj" secondAttribute="height" id="1Si-Eu-cR0"/>
                 <constraint firstAttribute="trailing" secondItem="wRJ-ce-gbH" secondAttribute="trailing" id="25F-48-ORs"/>
-                <constraint firstItem="Spt-Fz-sOx" firstAttribute="height" relation="lessThanOrEqual" secondItem="dsE-td-uYg" secondAttribute="height" multiplier="0.45" id="2Ci-gX-Psh"/>
+                <constraint firstItem="Spt-Fz-sOx" firstAttribute="height" relation="lessThanOrEqual" secondItem="dsE-td-uYg" secondAttribute="height" multiplier="0.45" identifier="AdDescriptionHeight" id="2Ci-gX-Psh"/>
                 <constraint firstItem="wRJ-ce-gbH" firstAttribute="leading" secondItem="MD6-t4-976" secondAttribute="trailing" constant="5" id="3UF-KY-sDc"/>
                 <constraint firstItem="MD6-t4-976" firstAttribute="leading" secondItem="xct-uV-WqM" secondAttribute="leading" id="3WO-XC-Oxp"/>
                 <constraint firstItem="wRJ-ce-gbH" firstAttribute="leading" secondItem="xct-uV-WqM" secondAttribute="leading" id="3XX-nS-gGs"/>
@@ -284,14 +284,14 @@
                     <exclude reference="xct-uV-WqM"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="F9u-GZ-r2V"/>
-                    <exclude reference="LSw-Iv-dxK"/>
-                    <exclude reference="bow-1E-noV"/>
                     <exclude reference="1Si-Eu-cR0"/>
                     <exclude reference="NYc-SP-atc"/>
                     <exclude reference="bnb-Mo-Wsb"/>
                     <exclude reference="f5a-db-oLC"/>
                     <exclude reference="pNr-ns-NSr"/>
+                    <exclude reference="F9u-GZ-r2V"/>
+                    <exclude reference="LSw-Iv-dxK"/>
+                    <exclude reference="bow-1E-noV"/>
                     <exclude reference="3WO-XC-Oxp"/>
                     <exclude reference="7Eb-94-u1t"/>
                     <exclude reference="Aac-8d-O4d"/>
@@ -332,9 +332,12 @@
             </variation>
             <connections>
                 <outlet property="adDescription" destination="Spt-Fz-sOx" id="wCk-lR-yQm"/>
+                <outlet property="adDescriptionHeightConstraint" destination="086-Dk-W3C" id="knJ-HV-WjV"/>
                 <outlet property="adImage" destination="dsE-td-uYg" id="xZN-12-dfm"/>
+                <outlet property="adInfoView" destination="MD6-t4-976" id="oN4-qH-QZV"/>
                 <outlet property="adTitle" destination="cU1-hR-AOS" id="CsC-J2-TKQ"/>
                 <outlet property="installButton" destination="DG0-n3-u0P" id="ich-Yj-Zs1"/>
+                <outlet property="middleLineCenterYConstraint" destination="KrT-rv-Ogx" id="d2o-x8-wz4"/>
                 <outlet property="speakerPhone" destination="Z0j-F3-XlP" id="aW9-JO-FcA"/>
             </connections>
             <point key="canvasLocation" x="-165.5" y="349.5"/>

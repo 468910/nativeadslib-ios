@@ -16,17 +16,52 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     
     /// Object to notify about the updates related with the ad request
     public var delegate: NativeAdsConnectionDelegate?
-    /// Needed to identify the ad requests to the server
-    public var adPlacementToken : String?
     /// To allow more verbose logging and behaviour
     public var debugModeEnabled : Bool = false
-    
+    /// Parameters private setter
+    private(set) var parameters : [String : String] = [
+    "token" : (ASIdentifierManager.sharedManager().advertisingIdentifier?.UUIDString)!,
+    "os" : "ios",
+    "version" : "\(NativeAdsConstants.Device.iosVersion)",
+    "model" : NativeAdsConstants.Device.model,
+   ]
+  
+   public enum imageType : String {
+    case all_images = ""
+    case icon = "icon"
+    case hq_icon = "hq_icon"
+    case banner = "banner"
+    case bigImages = "banner,hq_icon"
+    case bannerAndIcons = "banner,icon"
+   }
+  
+  public var imageFilter : imageType = .all_images {
+    willSet(newImageType){
+      NSLog("NativeAdsRequest", "Changing imagefilter")
+    }
+    didSet {
+      if imageFilter == imageType.all_images {
+        parameters.removeValueForKey("image_filter")
+      }else{
+      parameters["image_type"] = imageFilter.rawValue
+      }
+    }
+  }
+  
+  
     public init(adPlacementToken : String?, delegate: NativeAdsConnectionDelegate?) {
         super.init()
-        self.adPlacementToken = adPlacementToken;
+      
+        parameters["placement_key"]  = adPlacementToken!
+      
+        if (!ASIdentifierManager.sharedManager().advertisingTrackingEnabled){
+          parameters["optout"] = "1"
+        }
+      
+      
         self.delegate = delegate
-    }
-    
+   }
+  
     /**
      Method used to retrieve native ads which are later accessed by using the delegate.
      - limit: Limit on how many native ads are to be retrieved.
@@ -34,12 +69,9 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
     @objc
     public func retrieveAds(limit: UInt){
         
-        let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit);
-        NSLog("Invoking: %@", nativeAdURL)
-        
-        if let url = NSURL(string: nativeAdURL) {
-            
-            let request = NSURLRequest(URL: url)
+      
+      if let url = NSURL.initWithParameters(self.parameters, path: NativeAdsConstants.NativeAds.baseUrl.rawValue){
+            var request = NSMutableURLRequest.init(URL: url)
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
                 
                 if error != nil {
@@ -51,7 +83,7 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
                     if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
                         
                         json.filter({ ($0 as? NSDictionary) != nil}).forEach({ (element) -> () in
-                            if let ad = NativeAd( adDictionary: element as! NSDictionary, adPlacementToken: self.adPlacementToken!){
+                            if let ad = NativeAd( adDictionary: element as! NSDictionary, adPlacementToken: self.parameters["placement_key"]!){
                                 nativeAds.append(ad)
                             }
                             
@@ -70,29 +102,39 @@ public class NativeAdsRequest : NSObject, NSURLConnectionDelegate, UIWebViewDele
         }
     }
     
-    func provideIdentifierForAdvertisingIfAvailable() -> String? {
-        return ASIdentifierManager.sharedManager().advertisingIdentifier?.UUIDString
+}
+
+
+
+
+extension NSURL {
+  
+  static func initWithParameters(parameters: Dictionary<String, String> , path: String) -> NSURL? {
+    let parameterArray = parameters.map { (key, value) -> String in
+      return "\(key)=\(value.stringByAddingPercentEscapesForQueryValue()!)"
     }
-    
-    /**
-     Returns the API URL to invoke to retrieve ads
-     */
-    public func getNativeAdsURL(placementKey: String?, limit: UInt) -> String {
-        let token = provideIdentifierForAdvertisingIfAvailable()
-        
-        let baseUrl = NativeAdsConstants.NativeAds.baseURL;
-        //token
-        var apiUrl = baseUrl + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)"
-        apiUrl = apiUrl + "&token=" + token!
-        apiUrl = apiUrl + "&placement_key=" + placementKey!
-        
-        if (!ASIdentifierManager.sharedManager().advertisingTrackingEnabled){
-            apiUrl = apiUrl + "&optout=1"
-        }
-        
-        return apiUrl
-    }
-    
-    
-    
+    var string = "\(path)&\(parameterArray.joinWithSeparator("&"))"
+    print(string)
+    return NSURL(string: string)
+  }
+  
+  
+}
+
+
+extension String {
+  
+  /// Percent escape value to be added to a URL query value as specified in RFC 3986
+  ///
+  /// This percent-escapes all characters except the alphanumeric character set and "-", ".", "_", and "~".
+  ///
+  /// http://www.ietf.org/rfc/rfc3986.txt
+  ///
+  /// - returns:   Return precent escaped string.
+  
+  func stringByAddingPercentEscapesForQueryValue() -> String? {
+    let characterSet = NSMutableCharacterSet.alphanumericCharacterSet()
+    characterSet.addCharactersInString("-._~")
+    return stringByAddingPercentEncodingWithAllowedCharacters(characterSet)
+  }
 }
