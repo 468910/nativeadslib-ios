@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import Haneke
 
+/**
+ Standard AdUnit for CollectionView
+ **/
+
 public class NativeAdCollectionCell : UICollectionViewCell, NativeAdViewBinderProtocol  {
   @IBOutlet weak var adImage : UIImageView!
   

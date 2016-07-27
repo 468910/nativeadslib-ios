@@ -8,6 +8,11 @@
 
 import Foundation
 
+
+/**
+ Used for loading Ads into an UIView.
+ **/
+
 @objc
 public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
     private var adMargin: Int?
@@ -136,10 +141,7 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
         }
         
         self.tempAds = nativeAds
-        
-        if(self.adMargin < 1 && self.adMargin != nil) {
-            return
-        }
+      
         updateAdPositions()
         
     }
@@ -258,7 +260,11 @@ public class NativeAdStream : NSObject, NativeAdsConnectionDelegate {
         
     }
     
-    
+    /**
+     Method used to load native ads.
+     - adPlacementToken: to be generated in the user dashboard used to determine placement of the ads:
+     - limit: Limit on how many native ads are to be retrieved.
+     */
     @objc public func requestAds(affiliateId: String , limit: UInt){
         var request = NativeAdsRequest(adPlacementToken: affiliateId, delegate: self)
       switch(self.adUnitType){

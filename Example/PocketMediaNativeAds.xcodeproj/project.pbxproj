@@ -26,6 +26,8 @@
 		3A75F2741C3FFA7B00F81318 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F2711C3FFA7B00F81318 /* ItemCell.swift */; };
 		3A75F2751C3FFA7B00F81318 /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F2721C3FFA7B00F81318 /* ItemTableView.swift */; };
 		3AF66C1B1C6802A300913C04 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = 3AF66C1A1C6802A300913C04 /* CHANGELOG.md */; };
+		3AFA58C91D2D135800A0F7E6 /* Logo_Pocketmedia_horizontal_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA58C81D2D135800A0F7E6 /* Logo_Pocketmedia_horizontal_white.png */; };
+		3AFA58CA1D2D135800A0F7E6 /* Logo_Pocketmedia_horizontal_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA58C81D2D135800A0F7E6 /* Logo_Pocketmedia_horizontal_white.png */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
@@ -76,6 +78,7 @@
 		3A75F2711C3FFA7B00F81318 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		3A75F2721C3FFA7B00F81318 /* ItemTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableView.swift; sourceTree = "<group>"; };
 		3AF66C1A1C6802A300913C04 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
+		3AFA58C81D2D135800A0F7E6 /* Logo_Pocketmedia_horizontal_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Pocketmedia_horizontal_white.png; sourceTree = "<group>"; };
 		44BE49B0E6D8F96E6500AB62 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* PocketMediaNativeAds_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketMediaNativeAds_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -226,6 +229,7 @@
 				18D6EDD61C8480AC004A5B9D /* Highlight-St.-Barts-Image.jpg */,
 				18D6EDD41C847F41004A5B9D /* close.png */,
 				18B78A631D2A5E7A0006EEF4 /* HorizontalScrollView.xib */,
+				3AFA58C81D2D135800A0F7E6 /* Logo_Pocketmedia_horizontal_white.png */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				187665401D12DFDC00554ED4 /* TestSupplied.xib */,
 			);
@@ -381,6 +385,7 @@
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				180D1FB61D23D85300A6738D /* questionMarkBtn@3x.png in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				3AFA58C91D2D135800A0F7E6 /* Logo_Pocketmedia_horizontal_white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AFA58CA1D2D135800A0F7E6 /* Logo_Pocketmedia_horizontal_white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
