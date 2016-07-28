@@ -56,7 +56,6 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 	// Used to change subviews
 	public override func layoutSubviews() {
 
-		print("I'M invoked")
 	}
 
 	public override func updateConstraints() {
