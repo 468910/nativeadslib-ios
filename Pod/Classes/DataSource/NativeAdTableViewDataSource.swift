@@ -81,6 +81,11 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 	}
 
 	@objc
+	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return datasource!.numberOfSectionsInTableView!(tableView)
+	}
+
+	@objc
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return datasource!.tableView(tableView, numberOfRowsInSection: section) + adStream.getAdCount()
 	}
