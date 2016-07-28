@@ -22,15 +22,26 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 		adDescription.text = nativeAd.campaignDescription
 		print(nativeAd.campaignImage)
 
-		if let imageUrl = nativeAd.images!["banner"] {
-			adImage.hnk_setImageFromURL(NSURL(string: imageUrl["url"] as! String)!, placeholder: UIImage(), format: nil, failure: nil, success: nil)
+		if (adImage.frame.height != 0 && adImage.frame.width != 0) {
+
+			if let imageUrl = nativeAd.images!["banner"] {
+				try adImage.hnk_setImageFromURL(NSURL(string: imageUrl["url"] as! String)!, placeholder: UIImage(), format: nil, failure: nil, success: nil)
+			} else {
+				let imageUrl = try nativeAd.images!["hq_icon"]
+				try adImage.hnk_setImageFromURL(NSURL(string: imageUrl!["url"] as! String)!, placeholder: UIImage(), format: nil, failure: nil, success: nil)
+			}
 		} else {
-			let imageUrl = nativeAd.images!["hq_icon"]
-			adImage.hnk_setImageFromURL(NSURL(string: imageUrl!["url"] as! String)!, placeholder: UIImage(), format: nil, failure: nil, success: nil)
+			NSLog("No image frame for adImage, not setting it.")
 		}
+
 		// adImage.hnk_setImageFromURL(nativeAd.campaignImage, placeholder: UIImage(), format: nil, failure: nil, success: nil)
-		adIconImage.hnk_setImageFromURL(nativeAd.campaignImage, placeholder: UIImage(),
-			format: nil, failure: nil, success: nil)
+		if (adIconImage.frame.height != 0 && adIconImage.frame.width != 0) {
+
+			adIconImage.hnk_setImageFromURL(nativeAd.campaignImage, placeholder: UIImage(),
+				format: nil, failure: nil, success: nil)
+		} else {
+			NSLog("No image frame for adIconImage, not setting it.")
+		}
 	}
 
 	func configureAdView(nativeAd: NativeAd, viewController: UIViewController) {
@@ -58,7 +69,6 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 	// Used to change subviews
 	public override func layoutSubviews() {
 
-		print("I'M invoked")
 	}
 
 }
