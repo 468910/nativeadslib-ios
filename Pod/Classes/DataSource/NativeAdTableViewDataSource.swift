@@ -47,6 +47,8 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 		tableView.delegate = self.delegate
 		tableView.dataSource = self
 
+		// Check the kind of cell to use
+
 		if ((tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell")) == nil && adStream.adUnitType == .Standard) {
 			let bundle = PocketMediaNativeAdsBundle.loadBundle()!
 			tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
