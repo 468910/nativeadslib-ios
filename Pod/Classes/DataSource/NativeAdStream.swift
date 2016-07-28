@@ -14,7 +14,8 @@ import Foundation
 
 @objc
 public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
-	private var adMargin: Int?
+
+	public var adMargin: Int?
 
 	// they are not called when variables are written to from an initializer or with a default value.
 	public var firstAdPosition: Int? {
@@ -254,12 +255,12 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	@objc public func requestAds(affiliateId: String, limit: UInt) {
 		var request = NativeAdsRequest(adPlacementToken: affiliateId, delegate: self)
 		switch (self.adUnitType) {
-			case .Big:
+		case .Big:
 			request.imageFilter = NativeAdsRequest.imageType.banner
 			break
-			case .Standard:
+		case .Standard:
 			break
-			default:
+		default:
 			break
 		}
 		request.retrieveAds(limit)
