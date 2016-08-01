@@ -66,7 +66,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 
 				NSLog("Returning BigNative height: \(cell.requiredHeight())")
 
-				return cell.frame.height;
+				return cell.requiredHeight()
 			}
 
 		} else {

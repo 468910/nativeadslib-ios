@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ply-Hg-MpP" userLabel="First row">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" verticalHuggingPriority="300" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="CSU-gw-1SC">
                                 <rect key="frame" x="8" y="8" width="60" height="60"/>
@@ -35,14 +35,14 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5a-6w-TQ5">
-                                <rect key="frame" x="71" y="8" width="527" height="22"/>
+                                <rect key="frame" x="71" y="8" width="527" height="33"/>
                                 <string key="text">Titulum ipsum dolor sit amet, consectetur adipiscing elit. Titulum ipsum dolor sit amet, consectetur adipiscing elit. Titulum ipsum dolor sit amet, consectetur adipiscing elit</string>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="240" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Sfv-Du-vfq">
-                                <rect key="frame" x="71" y="34" width="527" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="240" verticalCompressionResistancePriority="749" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Sfv-Du-vfq">
+                                <rect key="frame" x="71" y="34" width="527" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="900" constant="200" id="127-qa-F5S"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="89r-pa-HyX"/>
@@ -62,8 +62,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Sfv-Du-vfq" firstAttribute="leading" secondItem="D5a-6w-TQ5" secondAttribute="leading" id="6OK-cr-oOA"/>
-                            <constraint firstAttribute="height" secondItem="CSU-gw-1SC" secondAttribute="height" id="Aif-vB-vM4"/>
-                            <constraint firstAttribute="bottom" secondItem="Sfv-Du-vfq" secondAttribute="bottom" id="BBs-An-kHY"/>
+                            <constraint firstAttribute="height" secondItem="CSU-gw-1SC" secondAttribute="height" constant="15" id="Aif-vB-vM4"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Sfv-Du-vfq" secondAttribute="bottom" constant="4" id="BBs-An-kHY"/>
                             <constraint firstItem="Sfv-Du-vfq" firstAttribute="trailing" secondItem="D5a-6w-TQ5" secondAttribute="trailing" id="PwR-1m-jcN"/>
                             <constraint firstItem="CSU-gw-1SC" firstAttribute="leading" secondItem="Ply-Hg-MpP" secondAttribute="leading" constant="8" id="SQm-48-oXu"/>
                             <constraint firstItem="D5a-6w-TQ5" firstAttribute="height" secondItem="CSU-gw-1SC" secondAttribute="height" priority="100" id="ToL-rR-xQS"/>
@@ -82,13 +82,16 @@
                         </variation>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="48" verticalCompressionResistancePriority="950" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="500" translatesAutoresizingMaskIntoConstraints="NO" id="blF-Am-bMu">
-                        <rect key="frame" x="0.0" y="64" width="600" height="500"/>
+                        <rect key="frame" x="0.0" y="75" width="600" height="500"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="500" id="Ucg-df-5Q6"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Ply-Hg-MpP" firstAttribute="leading" secondItem="83Z-cx-gkl" secondAttribute="leadingMargin" constant="-8" id="RU5-Om-EYD"/>
                     <constraint firstItem="Ply-Hg-MpP" firstAttribute="width" secondItem="83Z-cx-gkl" secondAttribute="width" id="Sci-KF-m1a"/>
-                    <constraint firstItem="blF-Am-bMu" firstAttribute="top" secondItem="Ply-Hg-MpP" secondAttribute="bottom" constant="4" id="SfE-Wq-Rzi"/>
+                    <constraint firstItem="blF-Am-bMu" firstAttribute="top" secondItem="Ply-Hg-MpP" secondAttribute="bottom" id="SfE-Wq-Rzi"/>
                     <constraint firstItem="Ply-Hg-MpP" firstAttribute="top" secondItem="83Z-cx-gkl" secondAttribute="topMargin" constant="-8" id="ao4-gP-Gob"/>
                     <constraint firstItem="Ply-Hg-MpP" firstAttribute="centerX" secondItem="blF-Am-bMu" secondAttribute="centerX" id="c9G-hT-GvL"/>
                     <constraint firstItem="blF-Am-bMu" firstAttribute="width" secondItem="Ply-Hg-MpP" secondAttribute="width" id="gJe-Nm-NEe"/>
@@ -98,6 +101,7 @@
                 <outlet property="adDescription" destination="Sfv-Du-vfq" id="Onl-LU-yfC"/>
                 <outlet property="adIconImage" destination="CSU-gw-1SC" id="k4J-iU-OK6"/>
                 <outlet property="adImage" destination="blF-Am-bMu" id="Qa9-mk-r81"/>
+                <outlet property="adImageHeightConstraint" destination="Ucg-df-5Q6" id="uqK-W8-Cts"/>
                 <outlet property="adTitle" destination="D5a-6w-TQ5" id="Rci-ge-FS7"/>
                 <outlet property="backgroundView" destination="83Z-cx-gkl" id="b0x-Ox-Ksi"/>
                 <outlet property="firstRowView" destination="Ply-Hg-MpP" id="S3m-Lr-V2X"/>
