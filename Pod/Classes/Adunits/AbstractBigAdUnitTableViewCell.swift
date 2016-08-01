@@ -42,8 +42,8 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 
 		var aspect = image.size.width / image.size.height
 
-		NSLog("0. Image width: \(image.size.width), height: \(image.size.height), ratio: \(aspect)")
-		NSLog("1. ImageView width: \(adImage?.frame.size.width), height: \(adImage?.frame.size.height), position x: \(adImage?.bounds.origin.x), position y: \(adImage?.bounds.origin.y)")
+		// NSLog("0. Image width: \(image.size.width), height: \(image.size.height), ratio: \(aspect)")
+		// NSLog("1. ImageView width: \(adImage?.frame.size.width), height: \(adImage?.frame.size.height), position x: \(adImage?.bounds.origin.x), position y: \(adImage?.bounds.origin.y)")
 
 //		aspectConstraint = NSLayoutConstraint(item: adImage!, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: adImage!, attribute: NSLayoutAttribute.Height, multiplier: aspect, constant: 0.0)
 //		aspectConstraint?.priority = 1000
@@ -52,7 +52,7 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 
 		adImageHeightConstraint.constant = (adImage?.frame.width)! / aspect
 
-		NSLog("2. ImageView width: \(adImage?.frame.size.width), height: \(adImage?.frame.size.height), position x: \(adImage?.bounds.origin.x), position y: \(adImage?.bounds.origin.y)")
+		// NSLog("2. ImageView width: \(adImage?.frame.size.width), height: \(adImage?.frame.size.height), position x: \(adImage?.bounds.origin.x), position y: \(adImage?.bounds.origin.y)")
 
 		invalidateIntrinsicContentSize()
 		setNeedsLayout()
@@ -96,8 +96,6 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 				)
 			}
 
-			adImage?.backgroundColor = UIColor.redColor()
-
 		} else {
 			NSLog("No image frame for adImage, not setting it.")
 		}
@@ -131,12 +129,6 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 
 		// Setting AdDescription And Adtitle
 
-	}
-
-	// Used to change subviews
-	public override func layoutSubviews() {
-		NSLog("AbstractBigAdUnitTableViewCell. LayoutSubviews")
-		super.layoutSubviews()
 	}
 
 }

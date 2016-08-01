@@ -54,7 +54,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 				let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
 				cell.configureAdView(isAd)
 
-				NSLog("Returning NativeAd height: \(cell.frame.height)")
+				// NSLog("Returning NativeAd height: \(cell.frame.height)")
 
 				return cell.frame.height;
 			} else {
@@ -62,9 +62,9 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 				let cell: AbstractBigAdUnitTableViewCell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
 				cell.configureAdView(isAd)
 
-				NSLog("Image intrisic size: \(cell.adImage?.intrinsicContentSize().width) x \(cell.adImage?.intrinsicContentSize().height)")
+				// NSLog("Image intrisic size: \(cell.adImage?.intrinsicContentSize().width) x \(cell.adImage?.intrinsicContentSize().height)")
 
-				NSLog("Returning BigNative height: \(cell.requiredHeight())")
+				// NSLog("Returning BigNative height: \(cell.requiredHeight())")
 
 				return cell.requiredHeight()
 			}

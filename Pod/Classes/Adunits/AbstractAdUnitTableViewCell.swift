@@ -48,9 +48,6 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 
 		// Setting AdDescription And Adtitle
 
-		self.adDescription.backgroundColor = UIColor.redColor()
-		self.adTitle.backgroundColor = UIColor.yellowColor()
-
 	}
 
 	// Used to change subviews

@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ply-Hg-MpP" userLabel="First row">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="82"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" verticalHuggingPriority="300" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="CSU-gw-1SC">
                                 <rect key="frame" x="8" y="8" width="60" height="60"/>
@@ -35,21 +35,21 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5a-6w-TQ5">
-                                <rect key="frame" x="71" y="8" width="527" height="33"/>
+                                <rect key="frame" x="76" y="8" width="522" height="36"/>
                                 <string key="text">Titulum ipsum dolor sit amet, consectetur adipiscing elit. Titulum ipsum dolor sit amet, consectetur adipiscing elit. Titulum ipsum dolor sit amet, consectetur adipiscing elit</string>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="240" verticalCompressionResistancePriority="749" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Sfv-Du-vfq">
-                                <rect key="frame" x="71" y="34" width="527" height="33"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="240" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Sfv-Du-vfq">
+                                <rect key="frame" x="76" y="48" width="522" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="900" constant="200" id="127-qa-F5S"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="89r-pa-HyX"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="u4v-xt-FXV"/>
                                 </constraints>
                                 <string key="text">Description ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -62,27 +62,29 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Sfv-Du-vfq" firstAttribute="leading" secondItem="D5a-6w-TQ5" secondAttribute="leading" id="6OK-cr-oOA"/>
+                            <constraint firstItem="D5a-6w-TQ5" firstAttribute="leading" secondItem="CSU-gw-1SC" secondAttribute="trailing" constant="8" id="6dW-J1-IwR"/>
                             <constraint firstAttribute="height" secondItem="CSU-gw-1SC" secondAttribute="height" constant="15" id="Aif-vB-vM4"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Sfv-Du-vfq" secondAttribute="bottom" constant="4" id="BBs-An-kHY"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Sfv-Du-vfq" secondAttribute="bottom" priority="950" constant="4" id="BBs-An-kHY"/>
+                            <constraint firstAttribute="bottom" secondItem="Sfv-Du-vfq" secondAttribute="bottom" id="K4a-WI-GWE"/>
                             <constraint firstItem="Sfv-Du-vfq" firstAttribute="trailing" secondItem="D5a-6w-TQ5" secondAttribute="trailing" id="PwR-1m-jcN"/>
                             <constraint firstItem="CSU-gw-1SC" firstAttribute="leading" secondItem="Ply-Hg-MpP" secondAttribute="leading" constant="8" id="SQm-48-oXu"/>
                             <constraint firstItem="D5a-6w-TQ5" firstAttribute="height" secondItem="CSU-gw-1SC" secondAttribute="height" priority="100" id="ToL-rR-xQS"/>
                             <constraint firstAttribute="trailing" secondItem="Sfv-Du-vfq" secondAttribute="trailing" constant="2" id="cAJ-vc-CK3"/>
                             <constraint firstItem="CSU-gw-1SC" firstAttribute="top" secondItem="Ply-Hg-MpP" secondAttribute="top" constant="8" id="e9x-t5-EFB"/>
                             <constraint firstItem="Sfv-Du-vfq" firstAttribute="top" secondItem="D5a-6w-TQ5" secondAttribute="bottom" constant="3" id="kwk-fj-FNA"/>
-                            <constraint firstItem="Sfv-Du-vfq" firstAttribute="leading" secondItem="CSU-gw-1SC" secondAttribute="trailing" constant="3" id="nq9-lJ-K5i"/>
                             <constraint firstItem="D5a-6w-TQ5" firstAttribute="top" secondItem="CSU-gw-1SC" secondAttribute="top" id="txo-SC-4VN"/>
                             <constraint firstItem="Sfv-Du-vfq" firstAttribute="top" secondItem="D5a-6w-TQ5" secondAttribute="bottom" constant="4" id="xZR-MM-QQv"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Aif-vB-vM4"/>
                                 <exclude reference="ToL-rR-xQS"/>
                                 <exclude reference="kwk-fj-FNA"/>
                             </mask>
                         </variation>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="48" verticalCompressionResistancePriority="950" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="500" translatesAutoresizingMaskIntoConstraints="NO" id="blF-Am-bMu">
-                        <rect key="frame" x="0.0" y="75" width="600" height="500"/>
+                        <rect key="frame" x="0.0" y="90" width="600" height="500"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="500" id="Ucg-df-5Q6"/>
                         </constraints>
@@ -91,7 +93,7 @@
                 <constraints>
                     <constraint firstItem="Ply-Hg-MpP" firstAttribute="leading" secondItem="83Z-cx-gkl" secondAttribute="leadingMargin" constant="-8" id="RU5-Om-EYD"/>
                     <constraint firstItem="Ply-Hg-MpP" firstAttribute="width" secondItem="83Z-cx-gkl" secondAttribute="width" id="Sci-KF-m1a"/>
-                    <constraint firstItem="blF-Am-bMu" firstAttribute="top" secondItem="Ply-Hg-MpP" secondAttribute="bottom" id="SfE-Wq-Rzi"/>
+                    <constraint firstItem="blF-Am-bMu" firstAttribute="top" secondItem="Ply-Hg-MpP" secondAttribute="bottom" constant="8" id="SfE-Wq-Rzi"/>
                     <constraint firstItem="Ply-Hg-MpP" firstAttribute="top" secondItem="83Z-cx-gkl" secondAttribute="topMargin" constant="-8" id="ao4-gP-Gob"/>
                     <constraint firstItem="Ply-Hg-MpP" firstAttribute="centerX" secondItem="blF-Am-bMu" secondAttribute="centerX" id="c9G-hT-GvL"/>
                     <constraint firstItem="blF-Am-bMu" firstAttribute="width" secondItem="Ply-Hg-MpP" secondAttribute="width" id="gJe-Nm-NEe"/>
