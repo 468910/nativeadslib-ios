@@ -71,7 +71,7 @@ public class NativeAd: NSObject {
 
 		if let offerId = adDictionary["id"] as? String {
 			self.offerId = UInt(offerId)
-			NSLog("Offerid assigned:" + offerId)
+			NSLog("Offerid assigned: " + offerId)
 		} else {
 			NSLog("Native Ad FallibleConstructor: No OfferId found")
 			return nil

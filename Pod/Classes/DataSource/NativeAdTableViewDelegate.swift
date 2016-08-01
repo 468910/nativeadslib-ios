@@ -19,6 +19,9 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 		self.datasource = datasource
 		self.controller = controller
 		self.delegate = delegate
+
+		NSLog("Screen width: \(UIScreen.mainScreen().bounds.size.width) ")
+
 	}
 
 	// Delegate
@@ -41,11 +44,42 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: indexPath) {
-			return heightForRow
+
+		if let isAd = datasource.adStream.isAdAtposition(indexPath.row) {
+
+			// return 10000;
+			// it is an ad, let's handle it
+
+			if (datasource.adStream.adUnitType == .Standard) {
+				let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
+				cell.configureAdView(isAd)
+
+				NSLog("Returning NativeAd height: \(cell.frame.height)")
+
+				return cell.frame.height;
+			} else {
+
+				let cell: AbstractBigAdUnitTableViewCell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
+				cell.configureAdView(isAd)
+
+				NSLog("Image intrisic size: \(cell.adImage?.intrinsicContentSize().width) x \(cell.adImage?.intrinsicContentSize().height)")
+
+				NSLog("Returning BigNative height: \(cell.requiredHeight())")
+
+				return cell.frame.height;
+			}
+
 		} else {
-			return -1
+
+			// not an ad - let the original datasource handle it
+
+			if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: indexPath) {
+				return heightForRow
+			} else {
+				return UITableViewAutomaticDimension
+			}
 		}
+
 	}
 
 	public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -140,11 +174,12 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		if let estimatedHeight = delegate.tableView?(tableView, estimatedHeightForRowAtIndexPath: indexPath) {
-			return estimatedHeight
-		} else {
-			return -1
-		}
+		return UITableViewAutomaticDimension
+		/*if let estimatedHeight = delegate.tableView?(tableView, estimatedHeightForRowAtIndexPath: indexPath) {
+		 return estimatedHeight
+		 } else {
+		 return -1
+		 }*/
 	}
 
 	public func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

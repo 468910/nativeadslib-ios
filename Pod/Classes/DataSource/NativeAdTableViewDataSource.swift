@@ -39,6 +39,8 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 
 		self.datasource = tableView.dataSource
 		self.tableView = tableView
+		self.tableView?.rowHeight = UITableViewAutomaticDimension
+		self.tableView?.estimatedRowHeight = 600.0
 
 		super.init()
 
@@ -91,4 +93,3 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 	}
 
 }
-

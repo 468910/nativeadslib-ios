@@ -151,6 +151,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 
 		datasource!.onUpdateDataSource()
 
+		NSLog("udateAdPositions. Count: \(datasource?.numberOfElements())")
 	}
 
 	private func updateAdPositionsWithPositionsGivenByUser() {
@@ -180,14 +181,11 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 
 			var index = (firstAdPosition! - 1) + (adMargin! * adsInserted)
 
-			NSLog("The current index is %d", index)
-			NSLog("Print dex is %d", orginalCount + adsInserted)
 			if (index > (orginalCount + adsInserted)) { break }
 			ads[index] = ad
 			adsInserted += 1
 		}
 		var tempads = ads
-		print("yay")
 	}
 
 	@objc
