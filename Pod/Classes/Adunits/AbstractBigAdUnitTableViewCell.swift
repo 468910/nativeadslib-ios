@@ -47,14 +47,14 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 
 		var aspect = image.size.width / image.size.height
 
-		//NSLog("0. Image width: \(image.size.width), height: \(image.size.height), ratio: \(aspect)")
+		// NSLog("0. Image width: \(image.size.width), height: \(image.size.height), ratio: \(aspect)")
 
 		let screenWidth = UIScreen.mainScreen().bounds.size.width
 		let viewWidth = (self.adImage?.bounds.size.width)!
 		let imgWidth = viewWidth > screenWidth ? screenWidth : viewWidth
 
 		let newHeight = imgWidth / aspect
-		//NSLog("4. UIImageView New height: \(newHeight), width: \(imgWidth) , ratio: \(aspect)")
+		// NSLog("4. UIImageView New height: \(newHeight), width: \(imgWidth) , ratio: \(aspect)")
 		self.adImageHeightConstraint.constant = newHeight
 
 		self.adImage?.image = image
@@ -126,6 +126,9 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 	// After has been loaded from Nib
 	public override func awakeFromNib() {
 		super.awakeFromNib()
+
+		self.selectionStyle = UITableViewCellSelectionStyle.None
+
 		// adDescription.numberOfLines = 0
 		adDescription?.lineBreakMode = .ByTruncatingTail
 		// adDescription.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width * 0.80
