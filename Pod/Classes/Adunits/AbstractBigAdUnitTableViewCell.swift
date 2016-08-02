@@ -40,23 +40,29 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 
 	func setAdImageAndScale(image: UIImage) {
 
-		var aspect = image.size.width / image.size.height
-
-		// NSLog("0. Image width: \(image.size.width), height: \(image.size.height), ratio: \(aspect)")
 		// NSLog("1. ImageView width: \(adImage?.frame.size.width), height: \(adImage?.frame.size.height), position x: \(adImage?.bounds.origin.x), position y: \(adImage?.bounds.origin.y)")
 
 //		aspectConstraint = NSLayoutConstraint(item: adImage!, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: adImage!, attribute: NSLayoutAttribute.Height, multiplier: aspect, constant: 0.0)
 //		aspectConstraint?.priority = 1000
 
-		adImage?.image = image
+		var aspect = image.size.width / image.size.height
 
-		adImageHeightConstraint.constant = (adImage?.frame.width)! / aspect
+		NSLog("0. Image width: \(image.size.width), height: \(image.size.height), ratio: \(aspect)")
 
-		// NSLog("2. ImageView width: \(adImage?.frame.size.width), height: \(adImage?.frame.size.height), position x: \(adImage?.bounds.origin.x), position y: \(adImage?.bounds.origin.y)")
+		let screenWidth = UIScreen.mainScreen().bounds.size.width
+		let viewWidth = (self.adImage?.bounds.size.width)!
+		let imgWidth = viewWidth > screenWidth ? screenWidth : viewWidth
 
-		invalidateIntrinsicContentSize()
-		setNeedsLayout()
-		layoutIfNeeded()
+		let newHeight = imgWidth / aspect
+		NSLog("4. UIImageView New height: \(newHeight), width: \(imgWidth) , ratio: \(aspect)")
+		self.adImageHeightConstraint.constant = newHeight
+
+		self.adImage?.image = image
+
+		self.invalidateIntrinsicContentSize()
+		self.setNeedsLayout()
+		self.layoutIfNeeded()
+
 	}
 
 	public override func intrinsicContentSize() -> CGSize {
@@ -78,6 +84,7 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 			if let imageUrl = nativeAd.images!["banner"] {
 				try adImage?.hnk_setImageFromURL(NSURL(string: imageUrl["url"] as! String)!, format: Format(name: "original"), placeholder: nil, success: { (image) -> Void in
 
+					NSLog("Processing \(nativeAd.campaignName), url: \(imageUrl["url"])")
 					self.setAdImageAndScale(image)
 
 					}, failure: { (error) -> Void in
