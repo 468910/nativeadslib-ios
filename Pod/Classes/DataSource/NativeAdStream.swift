@@ -16,12 +16,15 @@ import Foundation
 public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 
 	public var adMargin: Int?
+	public var debugModeEnabled: Bool = false
 
 	// they are not called when variables are written to from an initializer or with a default value.
 	public var firstAdPosition: Int? {
 		willSet {
 			firstAdPosition = newValue! + 1
-			NSLog("First Ad Position Changed Preparing for Updating Ad Positions")
+			if (debugModeEnabled) {
+				NSLog("First Ad Position Changed Preparing for Updating Ad Positions")
+			}
 		}
 
 		didSet {
@@ -131,7 +134,9 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 		}
 
 		if (nativeAds.isEmpty) {
-			NSLog("No Ads Retrieved")
+			if (debugModeEnabled) {
+				NSLog("No Ads Retrieved")
+			}
 		}
 
 		self.tempAds = nativeAds
@@ -150,8 +155,9 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 		}
 
 		datasource!.onUpdateDataSource()
-
-		NSLog("udateAdPositions. Count: \(datasource?.numberOfElements())")
+		if (debugModeEnabled) {
+			NSLog("udateAdPositions. Count: \(datasource?.numberOfElements())")
+		}
 	}
 
 	private func updateAdPositionsWithPositionsGivenByUser() {
@@ -203,22 +209,27 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 
 	func normalize(position: Int) -> Int {
 
+		var adsInserted = 0
+
 		if (adsPositionGivenByUser != nil) {
-			var adsInserted = 0
+
 			for pos in adsPositionGivenByUser! {
 
 				if ((pos - 1) < position) {
 					adsInserted += 1
-
 				}
 			}
-			return position - adsInserted
+
 		}
 
 		if (ads.isEmpty || position == 0 || firstAdPosition! > position) {
+
+			NSLog("Normalized position = position \(position) (original was \(position))")
 			return position
+
 		} else {
-			var adsInserted = 1
+
+			adsInserted = 1
 
 			if ((position - firstAdPosition!) >= adMargin!) {
 				adsInserted += (position - firstAdPosition!) / adMargin!
@@ -228,21 +239,32 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 				adsInserted = ads.count
 			}
 
-			return position - adsInserted
-
 		}
+
+		if (debugModeEnabled) {
+			NSLog("Normalized position = position - adsInserted \(position - adsInserted) (original was \(position)")
+		}
+
+		return position - adsInserted
 
 	}
 
 	func getAdCount() -> Int {
+		if (debugModeEnabled) {
+			NSLog("Ad count = \(ads.count)")
+		}
 		return ads.count
 	}
 
 	@objc public func clearAdStream(affiliateId: String, limit: UInt) {
+
+		if (debugModeEnabled) {
+			NSLog("Clearing Ad stream.")
+		}
+
 		ads = [:]
 		self.requestAds(affiliateId, limit: limit)
 		datasource?.onUpdateDataSource()
-
 	}
 
 	/**
@@ -251,7 +273,14 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	 - limit: Limit on how many native ads are to be retrieved.
 	 */
 	@objc public func requestAds(affiliateId: String, limit: UInt) {
+
+		if (debugModeEnabled) {
+			NSLog("Requesting ads (\(limit)) for affiliate id \(affiliateId)")
+		}
+
 		var request = NativeAdsRequest(adPlacementToken: affiliateId, delegate: self)
+		request.debugModeEnabled = self.debugModeEnabled
+
 		switch (self.adUnitType) {
 		case .Big:
 			request.imageFilter = NativeAdsRequest.imageType.banner
@@ -261,6 +290,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 		default:
 			break
 		}
+
 		request.retrieveAds(limit)
 	}
 

@@ -73,9 +73,11 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 
 				if error != nil {
 
+					NSLog("Error while retrieving ads. Invoking didReceiveError delegate.")
 					self.delegate?.didRecieveError(error!)
 
 				} else {
+
 					var nativeAds: [NativeAd] = []
 					if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
 
@@ -87,12 +89,16 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 						})
 
 						if nativeAds.count > 0 {
+							NSLog("Ads available, invoking didReceiveResults delegate.")
 							self.delegate?.didReceiveResults(nativeAds)
 						} else {
+							NSLog("NO Ads available, invoking didReceiveError delegate.")
 							let userInfo = ["No ads available from server": NSLocalizedDescriptionKey]
 							let error = NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: userInfo)
 							self.delegate?.didRecieveError(error)
 						}
+					} else {
+						NSLog("Error processing JSON.")
 					}
 				}
 			}
@@ -108,7 +114,7 @@ extension NSURL {
 			return "\(key)=\(value.stringByAddingPercentEscapesForQueryValue()!)"
 		}
 		var string = "\(path)&\(parameterArray.joinWithSeparator("&"))"
-		print(string)
+		NSLog("Downloading URL: \(string)")
 		return NSURL(string: string)
 	}
 
