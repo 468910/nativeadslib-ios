@@ -46,6 +46,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	private var ads: [Int: NativeAd]
 	public var datasource: DataSourceProtocol?
 	public var tempAds: [NativeAd]
+    public var mainView : UIView?
 
 	@objc
 	public convenience init(controller: UIViewController, mainView: UIView, adMargin: Int) {
@@ -62,7 +63,6 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 
 	@objc
 	public convenience init(controller: UIViewController, mainView: UIView, adsPositions: [Int], customXib: UINib) {
-
 		self.init(controller: controller, mainView: mainView, customXib: customXib)
 		self.adsPositionGivenByUser = Array(Set(adsPositions)).sort { $0 < $1 }
 	}
@@ -104,7 +104,8 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 		self.ads = [Int: NativeAd]()
 		self.tempAds = [NativeAd]()
 		super.init()
-
+      
+        self.mainView = mainView
 		switch mainView {
 		case let tableView as UITableView:
 			datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adStream: self)
@@ -114,8 +115,12 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 		default:
 			break
 		}
+      
+      
 
 	}
+  
+  
 
 	@objc
 	public func didRecieveError(error: NSError) {
@@ -262,7 +267,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 			NSLog("Clearing Ad stream.")
 		}
 
-		ads = [:]
+		self.ads = [Int: NativeAd]()
 		self.requestAds(affiliateId, limit: limit)
 		datasource?.onUpdateDataSource()
 	}
@@ -273,7 +278,13 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	 - limit: Limit on how many native ads are to be retrieved.
 	 */
 	@objc public func requestAds(affiliateId: String, limit: UInt) {
-
+      
+      if(limit == 0){
+        datasource?.onUpdateDataSource()
+        return
+      }
+       self.ads = [Int: NativeAd]()
+      
 		if (debugModeEnabled) {
 			NSLog("Requesting ads (\(limit)) for affiliate id \(affiliateId)")
 		}
