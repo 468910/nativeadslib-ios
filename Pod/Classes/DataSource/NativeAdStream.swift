@@ -196,7 +196,6 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 			ads[index] = ad
 			adsInserted += 1
 		}
-		var tempads = ads
 	}
 
 	@objc
@@ -278,14 +277,18 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	 - limit: Limit on how many native ads are to be retrieved.
 	 */
 	@objc public func requestAds(affiliateId: String, limit: UInt) {
-      
+      var source = datasource as! NativeAdTableViewDataSource
+     
+      source.completion = { () in
       if(limit == 0){
-        datasource?.onUpdateDataSource()
+        self.datasource?.onUpdateDataSource()
         return
       }
        self.ads = [Int: NativeAd]()
+       self.tempAds = [NativeAd]()
+        self.datasource?.onUpdateDataSource()
       
-		if (debugModeEnabled) {
+		if (self.debugModeEnabled) {
 			NSLog("Requesting ads (\(limit)) for affiliate id \(affiliateId)")
 		}
 
@@ -303,6 +306,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 		}
 
 		request.retrieveAds(limit)
+      }
 	}
 
 }

@@ -17,6 +17,8 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 	public var delegate: UITableViewDelegate?
 	public var controller: UIViewController?
 	public var adStream: NativeAdStream
+    public typealias completionBlock = () ->  ()
+    public var completion : completionBlock?
 
 	public func onUpdateDataSource() {
 		tableView?.reloadData()
@@ -66,6 +68,12 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 	// Data Source
 	@objc
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+       NSLog("CellForRow has been called")
+      if((completion) != nil){
+        completion!()
+        completion = nil
+      }
+      
 		if let val = adStream.isAdAtposition(indexPath.row) {
 			if (adStream.adUnitType == .Standard) {
 				let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
