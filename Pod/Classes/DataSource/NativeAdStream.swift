@@ -129,6 +129,8 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 
 	@objc
 	public func didReceiveResults(nativeAds: [NativeAd]) {
+      
+        dump(nativeAds)
 
 		if (self.adMargin < 1 && self.adMargin != nil) {
 			return

@@ -66,7 +66,9 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 	 */
 	@objc
 	public func retrieveAds(limit: UInt) {
-
+      
+        parameters["limit"] = String(limit)
+      
 		if let url = NSURL.initWithParameters(self.parameters, path: NativeAdsConstants.NativeAds.baseUrl.rawValue) {
 			var request = NSMutableURLRequest.init(URL: url)
 			NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) in
