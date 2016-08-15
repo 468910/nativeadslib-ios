@@ -105,7 +105,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 				return cell;
 			}
 		} else {
-			return datasource!.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream!.normalize(indexPath.row), inSection: 0))
+			return datasource!.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream!.normalize(indexPath.row), inSection: indexPath.section))
 		}
 
 	}

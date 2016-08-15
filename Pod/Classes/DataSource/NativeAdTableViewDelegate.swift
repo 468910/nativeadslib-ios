@@ -30,7 +30,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
         if let val = datasource!.adStream!.isAdAtposition(indexPath.row) {
 			val.openAdUrl(controller)
 		} else {
-			return delegate.tableView!(tableView, didSelectRowAtIndexPath: indexPath);
+          return delegate.tableView!(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: datasource!.adStream!.normalize(indexPath.row), inSection: indexPath.section))
 		}
 	}
 

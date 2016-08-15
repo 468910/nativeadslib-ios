@@ -14,16 +14,18 @@ public class NativeAdTableView : UITableView {
   
   override public var indexPathForSelectedRow : NSIndexPath? {
     get{
+      
       if let indexPath = super.indexPathForSelectedRow {
-      if let val = adStream!.isAdAtposition(indexPath.row){
-        return super.indexPathForSelectedRow
-      }else {
-       return NSIndexPath(forRow: adStream!.normalize(indexPath.row), inSection: 0)
-      }
+       var prerow = indexPath.row
+       var normalized = adStream!.normalize(prerow)
+       return NSIndexPath(forRow: normalized, inSection: indexPath.section)
+      
       }else {
         return nil
       }
+     
     }
+ 
   }
   
   required public init(tableView : UITableView, adStream : NativeAdStream) {
