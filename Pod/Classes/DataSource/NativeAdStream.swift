@@ -12,9 +12,11 @@ import Foundation
  Used for loading Ads into an UIView.
  **/
 
+
 @objc
 public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
-
+  
+    static internal var viewRegister = Array<String>()
 	public var adMargin: Int?
 	public var debugModeEnabled: Bool = false
 
@@ -43,7 +45,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 
 	public var adUnitType: AdUnitType = .Big
 	private var adsPositionGivenByUser: [Int]?
-	private var ads: [Int: NativeAd]
+	public var ads: [Int: NativeAd]
 	public var datasource: DataSourceProtocol?
 	public var tempAds: [NativeAd]
     public var mainView : UIView?
@@ -101,27 +103,49 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	@objc
 	public required init(controller: UIViewController, mainView: UIView) {
 
+      
 		self.ads = [Int: NativeAd]()
 		self.tempAds = [NativeAd]()
 		super.init()
       
+      if(NativeAdStream.viewRegister.contains(String(ObjectIdentifier(mainView).uintValue))){
+        let view = mainView as! UITableView
+        self.mainView = mainView as! NativeAdTableView
+        datasource = view.dataSource as! NativeAdTableViewDataSource
+        datasource?.attachAdStream(self)
+        
+        
+      }else{
+        NativeAdStream.viewRegister.append(String(ObjectIdentifier(mainView).uintValue))
         self.mainView = mainView
-		switch mainView {
-		case let tableView as UITableView:
-			datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adStream: self)
-			break
-		case let collectionView as UICollectionView:
-			datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adStream: self)
-		default:
-			break
-		}
+        switch mainView {
+        case let tableView as UITableView:
+          
+          var natableView = NativeAdTableView(tableView: tableView, adStream: self)
+          self.mainView = natableView
+          controller.view = natableView
+          datasource = NativeAdTableViewDataSource(controller: controller, tableView: natableView, adStream: self)
+          break
+        case let collectionView as UICollectionView:
+          datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adStream: self)
+        default:
+          break
+        }
+        
+      }
+      
+     
+      
       
       
 
 	}
   
-  
+    deinit {
+      print("Adstream being Cleared")
+    }
 
+  
 	@objc
 	public func didRecieveError(error: NSError) {
 
@@ -280,6 +304,12 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	 */
 	@objc public func requestAds(affiliateId: String, limit: UInt) {
       var source = datasource as! NativeAdTableViewDataSource
+      
+      if(!ads.isEmpty){
+        ads.removeAll()
+        tempAds.removeAll()
+        datasource!.onUpdateDataSource()
+      }
      
       source.completion = { () in
       if(limit == 0){
@@ -309,6 +339,18 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 
 		request.retrieveAds(limit)
       }
+      
+      
+      
 	}
 
+}
+
+func delay(delay:Double, closure:()->()) {
+  dispatch_after(
+    dispatch_time(
+      DISPATCH_TIME_NOW,
+      Int64(delay * Double(NSEC_PER_SEC))
+    ),
+    dispatch_get_main_queue(), closure)
 }

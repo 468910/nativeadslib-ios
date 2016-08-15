@@ -13,7 +13,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 
 	public var controller: UIViewController
 	public var delegate: UITableViewDelegate
-	public var datasource: NativeAdTableViewDataSource
+	weak public var datasource: NativeAdTableViewDataSource?
 
 	required public init(datasource: NativeAdTableViewDataSource, controller: UIViewController, delegate: UITableViewDelegate) {
 		self.datasource = datasource
@@ -27,11 +27,13 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	// Delegate
 	@objc
 	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+              NSLog("Current Index for ROw", indexPath.row)
+        /*
         if let val = datasource.adStream.isAdAtposition(indexPath.row) {
 			val.openAdUrl(controller)
 		} else {
 			return delegate.tableView!(tableView, didSelectRowAtIndexPath: indexPath);
-		}
+		}*/
 	}
 
 	@objc
@@ -45,12 +47,12 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 
-		if let isAd = datasource.adStream.isAdAtposition(indexPath.row) {
+		if let isAd = datasource!.adStream!.isAdAtposition(indexPath.row) {
 
 			// return 10000;
 			// it is an ad, let's handle it
 
-			if (datasource.adStream.adUnitType == .Standard) {
+			if (datasource!.adStream!.adUnitType == .Standard) {
 				let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
 				cell.configureAdView(isAd)
 

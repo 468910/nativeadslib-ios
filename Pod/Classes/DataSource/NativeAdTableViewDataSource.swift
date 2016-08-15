@@ -16,12 +16,13 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 	public var tableView: UITableView?
 	public var delegate: UITableViewDelegate?
 	public var controller: UIViewController?
-	public var adStream: NativeAdStream
+    weak public var adStream: NativeAdStream?
     public typealias completionBlock = () ->  ()
     public var completion : completionBlock?
+    public var oldDelegate : UITableViewDelegate?
 
 	public func onUpdateDataSource() {
-		tableView?.reloadData()
+		tableView!.reloadData()
 	}
 
 	public func numberOfElements() -> Int {
@@ -32,10 +33,25 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 
 		refreshControl.endRefreshing()
 	}
+  
+  public func attachAdStream(adStream : NativeAdStream){
+    self.adStream = adStream
+    tableView!.reloadData()
+  }
+  
+
+   deinit{
+     NativeAdStream.viewRegister = NativeAdStream.viewRegister.filter{$0 != String(ObjectIdentifier(tableView!))}
+     self.tableView!.dataSource = datasource
+     self.tableView!.delegate = oldDelegate
+    
+   }
 
 	@objc
 	public required init(controller: UIViewController, tableView: UITableView, adStream: NativeAdStream) {
-
+      
+     
+      
 		self.controller = controller
 		self.adStream = adStream
 
@@ -47,7 +63,8 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 		super.init()
 
 		self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: tableView.delegate!)
-
+      
+        self.oldDelegate = tableView.delegate!
 		tableView.delegate = self.delegate
 		tableView.dataSource = self
 
@@ -64,18 +81,20 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 		}
 
 	}
+  
+  
 
 	// Data Source
 	@objc
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       NSLog("CellForRow has been called")
       if((completion) != nil){
         completion!()
+        print("Completion has been invoked")
         completion = nil
       }
       
-		if let val = adStream.isAdAtposition(indexPath.row) {
-			if (adStream.adUnitType == .Standard) {
+		if let val = adStream!.isAdAtposition(indexPath.row) {
+			if (adStream!.adUnitType == .Standard) {
 				let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
 				cell.configureAdView(val)
 				return cell;
@@ -85,7 +104,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 				return cell;
 			}
 		} else {
-			return datasource!.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream.normalize(indexPath.row), inSection: 0))
+			return datasource!.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream!.normalize(indexPath.row), inSection: 0))
 		}
 
 	}
@@ -97,7 +116,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 
 	@objc
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return datasource!.tableView(tableView, numberOfRowsInSection: section) + adStream.getAdCount()
+		return datasource!.tableView(tableView, numberOfRowsInSection: section) + adStream!.getAdCount()
 	}
 
 }

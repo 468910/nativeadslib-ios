@@ -25,6 +25,13 @@ public class NativeAdCollectionViewDataSource: NSObject, UICollectionViewDataSou
 	public func numberOfElements() -> Int {
 		return datasource!.collectionView(collectionView!, numberOfItemsInSection: 0)
 	}
+  
+  public func detachFromView() {
+    
+  }
+  
+  public func attachAdStream(adStream: NativeAdStream) {
+  }
 
 	required public init(controller: UIViewController, collectionView: UICollectionView, adStream: NativeAdStream) {
 		self.datasource = collectionView.dataSource
