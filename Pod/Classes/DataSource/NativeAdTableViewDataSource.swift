@@ -93,6 +93,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
         completion = nil
       }
       
+      
 		if let val = adStream!.isAdAtposition(indexPath.row) {
 			if (adStream!.adUnitType == .Standard) {
 				let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell

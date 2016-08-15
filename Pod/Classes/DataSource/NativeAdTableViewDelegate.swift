@@ -46,7 +46,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-
+        
 		if let isAd = datasource!.adStream!.isAdAtposition(indexPath.row) {
 
 			// return 10000;

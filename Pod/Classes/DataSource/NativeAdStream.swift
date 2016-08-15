@@ -109,14 +109,15 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 		super.init()
       
       if(NativeAdStream.viewRegister.contains(String(ObjectIdentifier(mainView).uintValue))){
-        let view = mainView as! UITableView
-        self.mainView = mainView as! NativeAdTableView
+        let view = mainView as! NativeAdTableView
+        self.mainView = view
         datasource = view.dataSource as! NativeAdTableViewDataSource
-        datasource?.attachAdStream(self)
+        datasource!.attachAdStream(self)
+        view.attachAdStream(self)
         
         
       }else{
-        NativeAdStream.viewRegister.append(String(ObjectIdentifier(mainView).uintValue))
+        
         self.mainView = mainView
         switch mainView {
         case let tableView as UITableView:
@@ -125,6 +126,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
           self.mainView = natableView
           controller.view = natableView
           datasource = NativeAdTableViewDataSource(controller: controller, tableView: natableView, adStream: self)
+          NativeAdStream.viewRegister.append(String(ObjectIdentifier(natableView).uintValue))
           break
         case let collectionView as UICollectionView:
           datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adStream: self)
@@ -133,11 +135,6 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
         }
         
       }
-      
-     
-      
-      
-      
 
 	}
   
