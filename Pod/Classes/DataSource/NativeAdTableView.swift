@@ -11,11 +11,12 @@ import UIKit
 public class NativeAdTableView : UITableView {
   
   private weak var adStream : NativeAdStream?
+  private weak var tableView : UITableView?
   
   override public var indexPathForSelectedRow : NSIndexPath? {
     get{
       
-      if let indexPath = super.indexPathForSelectedRow {
+      if let indexPath = tableView!.indexPathForSelectedRow {
        var prerow = indexPath.row
        var normalized = adStream!.normalize(prerow)
        return NSIndexPath(forRow: normalized, inSection: indexPath.section)
@@ -28,11 +29,14 @@ public class NativeAdTableView : UITableView {
  
   }
   
+  
   required public init(tableView : UITableView, adStream : NativeAdStream) {
     super.init(frame: tableView.frame, style: tableView.style)
     self.delegate = tableView.delegate
     self.dataSource = tableView.dataSource
     self.adStream = adStream
+    
+    self.tableView = tableView
     
     if let nibMap = tableView.valueForKey("_nibMap") {
       self.setValue(nibMap, forKey: "_nibMap")

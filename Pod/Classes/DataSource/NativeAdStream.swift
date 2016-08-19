@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Swizzlean
 
 /**
  Used for loading Ads into an UIView.
@@ -121,12 +122,24 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
         self.mainView = mainView
         switch mainView {
         case let tableView as UITableView:
+          var mc: UInt32 = 0
+          let mcPointer = withUnsafeMutablePointer(&mc, { $0 })
+          let mlist = class_copyMethodList(object_getClass(tableView), mcPointer)
           
-          var natableView = NativeAdTableView(tableView: tableView, adStream: self)
+          print("\(mc) methods")
+          
+          for i in 0...Int(mc) {
+            print(String(format: "Method #%d: %s", arguments: [i, sel_getName(method_getName(mlist[i]))]))
+          }
+          
+         /* var natableView = NativeAdTableView(tableView: tableView, adStream: self)
           self.mainView = natableView
-          controller.view = natableView
-          datasource = NativeAdTableViewDataSource(controller: controller, tableView: natableView, adStream: self)
-          NativeAdStream.viewRegister.append(String(ObjectIdentifier(natableView).uintValue))
+          controller.view = natableView*/
+          tableView.addIndexForRowBlock()
+          self.mainView = tableView
+          datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adStream: self)
+         
+          NativeAdStream.viewRegister.append(String(ObjectIdentifier(tableView).uintValue))
           break
         case let collectionView as UICollectionView:
           datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adStream: self)
@@ -351,3 +364,33 @@ func delay(delay:Double, closure:()->()) {
     ),
     dispatch_get_main_queue(), closure)
 }
+
+
+public extension UITableView {
+  
+ 
+  
+  public func addIndexForRowBlock(naTableView : NativeAdTableView){
+    var swizz = Swizzlean(classToSwizzle: UITableView.self)
+    swizz.resetWhenDeallocated = false
+    var test  = UINavigationBar()
+    
+    let block : () -> NSIndexPath = {
+      swizz.
+      return naTableView.indexPathForSelectedRow!
+    }
+    
+    let originalMethod = class_getInstanceMethod(UITableView.self, Selector("indexPathForSelectedRow"))
+    
+    let castedBlock: AnyObject = unsafeBitCast(block as @convention(block) () -> NSIndexPath, AnyObject.self)
+   swizz.currentClassMethodSwizzled
+   swizz.swizzleInstanceMethod(Selector("indexPathForSelectedRow"), withReplacementImplementation: castedBlock)
+    print("Yay")
+    
+  
+    
+    
+  }
+}
+
+
