@@ -30,7 +30,7 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
       }
       
       if let description = adDescription {
-        description.text = nativeAd.description
+        description.text = nativeAd.campaignDescription
       }
       
       if let image = adImage {
