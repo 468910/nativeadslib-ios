@@ -45,40 +45,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-		if let isAd = datasource!.adStream!.isAdAtposition(indexPath.row) {
-
-			// return 10000;
-			// it is an ad, let's handle it
-
-			if (datasource!.adStream!.adUnitType == .Standard) {
-				let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
-				cell.configureAdView(isAd)
-
-				// NSLog("Returning NativeAd height: \(cell.frame.height)")
-
-				return cell.frame.height;
-			} else {
-
-				let cell: AbstractBigAdUnitTableViewCell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
-				cell.configureAdView(isAd)
-
-				// NSLog("Image intrisic size: \(cell.adImage?.intrinsicContentSize().width) x \(cell.adImage?.intrinsicContentSize().height)")
-
-				// NSLog("Returning BigNative height: \(cell.requiredHeight())")
-
-				return cell.requiredHeight()
-			}
-
-		} else {
-
-			// not an ad - let the original datasource handle it
-
-			if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: indexPath) {
-				return heightForRow
-			} else {
-				return UITableViewAutomaticDimension
-			}
-		}
+       return -1
 
 	}
 

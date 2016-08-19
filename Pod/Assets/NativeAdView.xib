@@ -16,7 +16,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRJ-ce-gbH" userLabel="Install">
                     <rect key="frame" x="526" y="0.0" width="93" height="89"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Loud_Speaker_64.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z0j-F3-XlP" userLabel="SpeakerPhone">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loud_Speaker_64.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z0j-F3-XlP" userLabel="SpeakerPhone">
                             <rect key="frame" x="21" y="8" width="64" height="64"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Z0j-F3-XlP" secondAttribute="height" multiplier="1:1" id="4Ah-RT-1Ee"/>
@@ -32,7 +32,7 @@
                                 </mask>
                             </variation>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ad" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fMi-IE-VLB" userLabel="LabelThatDisplaysAd">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ad" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fMi-IE-VLB" userLabel="LabelThatDisplaysAd">
                             <rect key="frame" x="-48" y="8" width="64" height="64"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
