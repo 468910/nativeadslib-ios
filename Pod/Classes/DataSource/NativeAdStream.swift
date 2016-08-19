@@ -13,11 +13,10 @@ import Swizzlean
  Used for loading Ads into an UIView.
  **/
 
-
 @objc
 public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
-  
-    static internal var viewRegister = Array<String>()
+
+	static internal var viewRegister = Array<String>()
 	public var adMargin: Int?
 	public var debugModeEnabled: Bool = false
 
@@ -40,7 +39,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	public enum AdUnitType {
 		case Standard
 		case Big
-        case Custom
+		case Custom
 	}
 
 	public var adUnitType: AdUnitType = .Standard
@@ -48,7 +47,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	public var ads: [Int: NativeAd]
 	public var datasource: DataSourceProtocol?
 	public var tempAds: [NativeAd]
-    public var mainView : UIView?
+	public var mainView: UIView?
 
 	@objc
 	public convenience init(controller: UIViewController, mainView: UIView, adMargin: Int) {
@@ -61,14 +60,14 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 		self.init(controller: controller, mainView: mainView, customXib: customXib)
 		self.firstAdPosition = firstAdPosition
 		self.adMargin = adMargin + 1
-        self.adUnitType = .Custom
+		self.adUnitType = .Custom
 	}
 
 	@objc
 	public convenience init(controller: UIViewController, mainView: UIView, adsPositions: [Int], customXib: UINib) {
 		self.init(controller: controller, mainView: mainView, customXib: customXib)
 		self.adsPositionGivenByUser = Array(Set(adsPositions)).sort { $0 < $1 }
-        self.adUnitType = .Custom
+		self.adUnitType = .Custom
 	}
 
 	@objc
@@ -105,58 +104,55 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	@objc
 	public required init(controller: UIViewController, mainView: UIView) {
 
-      
 		self.ads = [Int: NativeAd]()
 		self.tempAds = [NativeAd]()
 		super.init()
-      
-      if(NativeAdStream.viewRegister.contains(String(ObjectIdentifier(mainView).uintValue))){
-        let view = mainView as! NativeAdTableView
-        self.mainView = view
-        datasource = view.dataSource as! NativeAdTableViewDataSource
-        datasource!.attachAdStream(self)
-        view.attachAdStream(self)
-        
-        
-      }else{
-        
-        self.mainView = mainView
-        switch mainView {
-        case let tableView as UITableView:
-          var mc: UInt32 = 0
-          let mcPointer = withUnsafeMutablePointer(&mc, { $0 })
-          let mlist = class_copyMethodList(object_getClass(tableView), mcPointer)
-          
-          print("\(mc) methods")
-          
-          for i in 0...Int(mc) {
-            print(String(format: "Method #%d: %s", arguments: [i, sel_getName(method_getName(mlist[i]))]))
-          }
-          
-          var natableView = NativeAdTableView(tableView: tableView, adStream: self)
-          self.mainView = natableView
-          tableView.removeFromSuperview()
-          controller.view = natableView
-          //tableView.addIndexForRowBlock()
-          datasource = NativeAdTableViewDataSource(controller: controller, tableView: natableView, adStream: self)
-         
-          NativeAdStream.viewRegister.append(String(ObjectIdentifier(natableView).uintValue))
-          break
-        case let collectionView as UICollectionView:
-          datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adStream: self)
-        default:
-          break
-        }
-        
-      }
+
+		if (NativeAdStream.viewRegister.contains(String(ObjectIdentifier(mainView).uintValue))) {
+			let view = mainView as! NativeAdTableView
+			self.mainView = view
+			datasource = view.dataSource as! NativeAdTableViewDataSource
+			datasource!.attachAdStream(self)
+			view.attachAdStream(self)
+
+		} else {
+
+			self.mainView = mainView
+			switch mainView {
+			case let tableView as UITableView:
+				var mc: UInt32 = 0
+				let mcPointer = withUnsafeMutablePointer(&mc, { $0 })
+				let mlist = class_copyMethodList(object_getClass(tableView), mcPointer)
+
+				print("\(mc) methods")
+
+				for i in 0...Int(mc) {
+					print(String(format: "Method #%d: %s", arguments: [i, sel_getName(method_getName(mlist[i]))]))
+				}
+
+				var natableView = NativeAdTableView(tableView: tableView, adStream: self)
+				self.mainView = natableView
+				tableView.removeFromSuperview()
+				controller.view = natableView
+				// tableView.addIndexForRowBlock()
+				datasource = NativeAdTableViewDataSource(controller: controller, tableView: natableView, adStream: self)
+
+				NativeAdStream.viewRegister.append(String(ObjectIdentifier(natableView).uintValue))
+				break
+			case let collectionView as UICollectionView:
+				datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adStream: self)
+			default:
+				break
+			}
+
+		}
 
 	}
-  
-    deinit {
-      print("Adstream being Cleared")
-    }
 
-  
+	deinit {
+		print("Adstream being Cleared")
+	}
+
 	@objc
 	public func didRecieveError(error: NSError) {
 
@@ -312,86 +308,81 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	 - limit: Limit on how many native ads are to be retrieved.
 	 */
 	@objc public func requestAds(affiliateId: String, limit: UInt) {
-      var source = datasource as! NativeAdTableViewDataSource
-      
-      if(!ads.isEmpty){
-        ads.removeAll()
-        tempAds.removeAll()
-        datasource!.onUpdateDataSource()
-      }
-     
-      source.completion = { () in
-      if(limit == 0){
-        self.datasource?.onUpdateDataSource()
-        return
-      }
-       self.ads = [Int: NativeAd]()
-       self.tempAds = [NativeAd]()
-        self.datasource?.onUpdateDataSource()
-      
-		if (self.debugModeEnabled) {
-			NSLog("Requesting ads (\(limit)) for affiliate id \(affiliateId)")
+		var source = datasource as! NativeAdTableViewDataSource
+
+		if (!ads.isEmpty) {
+			ads.removeAll()
+			tempAds.removeAll()
+			datasource!.onUpdateDataSource()
 		}
 
-		var request = NativeAdsRequest(adPlacementToken: affiliateId, delegate: self)
-		request.debugModeEnabled = self.debugModeEnabled
+		source.completion = { () in
+			if (limit == 0) {
+				self.datasource?.onUpdateDataSource()
+				return
+			}
+			self.ads = [Int: NativeAd]()
+			self.tempAds = [NativeAd]()
+			self.datasource?.onUpdateDataSource()
 
-		switch (self.adUnitType) {
-		case .Big:
-			request.imageFilter = NativeAdsRequest.imageType.banner
-			break
-		case .Standard:
-			break
-		default:
-			break
+			if (self.debugModeEnabled) {
+				NSLog("Requesting ads (\(limit)) for affiliate id \(affiliateId)")
+			}
+
+			var request = NativeAdsRequest(adPlacementToken: affiliateId, delegate: self)
+			request.debugModeEnabled = self.debugModeEnabled
+
+			switch (self.adUnitType) {
+			case .Big:
+				request.imageFilter = NativeAdsRequest.imageType.banner
+				break
+			case .Standard:
+				break
+			default:
+				break
+			}
+
+			request.retrieveAds(limit)
 		}
 
-		request.retrieveAds(limit)
-      }
-      
-      
-      
 	}
 
 }
 
-func delay(delay:Double, closure:()->()) {
-  dispatch_after(
-    dispatch_time(
-      DISPATCH_TIME_NOW,
-      Int64(delay * Double(NSEC_PER_SEC))
-    ),
-    dispatch_get_main_queue(), closure)
+func delay(delay: Double, closure: () -> ()) {
+	dispatch_after(
+		dispatch_time(
+			DISPATCH_TIME_NOW,
+			Int64(delay * Double(NSEC_PER_SEC))
+		),
+		dispatch_get_main_queue(), closure)
 }
 
-
-
 /*
-public extension UITableView {
-  
- 
-  
-  public func addIndexForRowBlock(naTableView : NativeAdTableView){
-    var swizz = Swizzlean(classToSwizzle: UITableView.self)
-    swizz.resetWhenDeallocated = false
-    var test  = UINavigationBar()
-    
-    let block : () -> NSIndexPath = {
-      swizz.
-      return naTableView.indexPathForSelectedRow!
-    }
-    
-    let originalMethod = class_getInstanceMethod(UITableView.self, Selector("indexPathForSelectedRow"))
-    
-    let castedBlock: AnyObject = unsafeBitCast(block as @convention(block) () -> NSIndexPath, AnyObject.self)
-   swizz.currentClassMethodSwizzled
-   swizz.swizzleInstanceMethod(Selector("indexPathForSelectedRow"), withReplacementImplementation: castedBlock)
-    print("Yay")
-    
-  
-    
-    
-  }
-}*/
+ public extension UITableView {
 
+
+
+ public func addIndexForRowBlock(naTableView : NativeAdTableView){
+ var swizz = Swizzlean(classToSwizzle: UITableView.self)
+ swizz.resetWhenDeallocated = false
+ var test  = UINavigationBar()
+
+ let block : () -> NSIndexPath = {
+ swizz.
+ return naTableView.indexPathForSelectedRow!
+ }
+
+ let originalMethod = class_getInstanceMethod(UITableView.self, Selector("indexPathForSelectedRow"))
+
+ let castedBlock: AnyObject = unsafeBitCast(block as @convention(block) () -> NSIndexPath, AnyObject.self)
+ swizz.currentClassMethodSwizzled
+ swizz.swizzleInstanceMethod(Selector("indexPathForSelectedRow"), withReplacementImplementation: castedBlock)
+ print("Yay")
+
+
+
+
+ }
+ }*/
 
