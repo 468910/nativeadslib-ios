@@ -69,19 +69,53 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
 		tableView.dataSource = self
 
 		// Check the kind of cell to use
-
-		if ((tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell")) == nil && adStream.adUnitType == .Standard) {
-			let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-			tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
-		}
-
-		if ((tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell")) == nil && adStream.adUnitType == .Big) {
-			let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-			tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
-		}
+      
+      switch(adStream.adUnitType){
+      case .Custom :
+        if (tableView.dequeueReusableCellWithIdentifier("CustomAdCell") == nil) {
+          let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+          tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
+          adStream.adUnitType = .Standard
+        }
+        break
+      case .Big:
+        if (tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") == nil) {
+          let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+          tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
+        }
+        break
+      default:
+        if (tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") == nil){
+          let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+          tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
+        }
+        break
+        
+      }
+    
 
 	}
   
+  public func getAdCellForTableView(nativeAd : NativeAd) -> UITableViewCell {
+    
+    switch(adStream!.adUnitType){
+    case .Custom:
+      let cell: NativeAdCell = tableView!.dequeueReusableCellWithIdentifier("CustomAdCell") as! NativeAdCell
+      cell.configureAdView(nativeAd)
+      return cell;
+      break
+    case .Big:
+      let cell: AbstractBigAdUnitTableViewCell = tableView!.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
+      cell.configureAdView(nativeAd)
+      return cell;
+      break
+    default:
+      let cell: NativeAdCell = tableView!.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
+      cell.configureAdView(nativeAd)
+      return cell;
+      break
+    }
+  }
   
 
 	// Data Source
@@ -93,17 +127,8 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, DataS
         completion = nil
       }
       
-      
 		if let val = adStream!.isAdAtposition(indexPath.row) {
-			if (adStream!.adUnitType == .Standard) {
-				let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
-				cell.configureAdView(val)
-				return cell;
-			} else {
-				let cell: AbstractBigAdUnitTableViewCell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
-				cell.configureAdView(val)
-				return cell;
-			}
+			return getAdCellForTableView(val)
 		} else {
 			return datasource!.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream!.normalize(indexPath.row), inSection: indexPath.section))
 		}

@@ -43,7 +43,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
         case Custom
 	}
 
-	public var adUnitType: AdUnitType = .Big
+	public var adUnitType: AdUnitType = .Standard
 	private var adsPositionGivenByUser: [Int]?
 	public var ads: [Int: NativeAd]
 	public var datasource: DataSourceProtocol?
@@ -75,7 +75,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	public convenience init(controller: UIViewController, mainView: UIView, customXib: UINib) {
 		switch mainView {
 		case let tableView as UITableView:
-			tableView.registerNib(customXib, forCellReuseIdentifier: "NativeAdTableViewCell")
+			tableView.registerNib(customXib, forCellReuseIdentifier: "CustomAdCell")
 			self.init(controller: controller, mainView: tableView)
 			break
 		case let collectionView as UICollectionView:
