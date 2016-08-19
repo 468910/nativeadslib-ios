@@ -40,8 +40,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	public enum AdUnitType {
 		case Standard
 		case Big
-		case CustomStandard
-		case CustomBig
+        case Custom
 	}
 
 	public var adUnitType: AdUnitType = .Big
@@ -62,12 +61,14 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 		self.init(controller: controller, mainView: mainView, customXib: customXib)
 		self.firstAdPosition = firstAdPosition
 		self.adMargin = adMargin + 1
+        self.adUnitType = .Custom
 	}
 
 	@objc
 	public convenience init(controller: UIViewController, mainView: UIView, adsPositions: [Int], customXib: UINib) {
 		self.init(controller: controller, mainView: mainView, customXib: customXib)
 		self.adsPositionGivenByUser = Array(Set(adsPositions)).sort { $0 < $1 }
+        self.adUnitType = .Custom
 	}
 
 	@objc
@@ -132,10 +133,10 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
             print(String(format: "Method #%d: %s", arguments: [i, sel_getName(method_getName(mlist[i]))]))
           }
           
-         /* var natableView = NativeAdTableView(tableView: tableView, adStream: self)
+          var natableView = NativeAdTableView(tableView: tableView, adStream: self)
           self.mainView = natableView
-          controller.view = natableView*/
-          tableView.addIndexForRowBlock()
+          controller.view = natableView
+          //tableView.addIndexForRowBlock()
           self.mainView = tableView
           datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adStream: self)
          
@@ -366,6 +367,8 @@ func delay(delay:Double, closure:()->()) {
 }
 
 
+
+/*
 public extension UITableView {
   
  
@@ -391,6 +394,6 @@ public extension UITableView {
     
     
   }
-}
+}*/
 
 
