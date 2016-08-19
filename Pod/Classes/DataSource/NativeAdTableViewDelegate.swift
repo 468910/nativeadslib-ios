@@ -27,10 +27,10 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	// Delegate
 	@objc
 	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let val = datasource!.adStream!.isAdAtposition(indexPath.row) {
+		if let val = datasource!.adStream!.isAdAtposition(indexPath.row) {
 			val.openAdUrl(controller)
 		} else {
-          return delegate.tableView!(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: datasource!.adStream!.normalize(indexPath.row), inSection: indexPath.section))
+			return delegate.tableView!(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: datasource!.adStream!.normalize(indexPath.row), inSection: indexPath.section))
 		}
 	}
 
@@ -44,8 +44,22 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-       return -1
+
+		if let isAd = datasource!.adStream!.isAdAtposition(indexPath.row) {
+
+			datasource?.getAdCellForTableView(isAd)
+			return UITableViewAutomaticDimension
+
+		} else {
+			// not an ad - let the original datasource handle it
+
+			if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: indexPath) {
+				return heightForRow
+			} else {
+				return UITableViewAutomaticDimension
+			}
+
+		}
 
 	}
 
@@ -141,12 +155,30 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		return UITableViewAutomaticDimension
+		// return UITableViewAutomaticDimension
+
 		/*if let estimatedHeight = delegate.tableView?(tableView, estimatedHeightForRowAtIndexPath: indexPath) {
 		 return estimatedHeight
 		 } else {
 		 return -1
 		 }*/
+
+		if let isAd = datasource!.adStream!.isAdAtposition(indexPath.row) {
+
+			datasource?.getAdCellForTableView(isAd)
+			return 1000
+
+		} else {
+			// not an ad - let the original datasource handle it
+
+			if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: indexPath) {
+				return heightForRow
+			} else {
+				return UITableViewAutomaticDimension
+			}
+
+		}
+
 	}
 
 	public func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
