@@ -135,12 +135,12 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
           
           var natableView = NativeAdTableView(tableView: tableView, adStream: self)
           self.mainView = natableView
+          tableView.removeFromSuperview()
           controller.view = natableView
           //tableView.addIndexForRowBlock()
-          self.mainView = tableView
-          datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adStream: self)
+          datasource = NativeAdTableViewDataSource(controller: controller, tableView: natableView, adStream: self)
          
-          NativeAdStream.viewRegister.append(String(ObjectIdentifier(tableView).uintValue))
+          NativeAdStream.viewRegister.append(String(ObjectIdentifier(natableView).uintValue))
           break
         case let collectionView as UICollectionView:
           datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adStream: self)
