@@ -98,7 +98,12 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
-		return delegate.tableView!(tableView, didEndDisplayingHeaderView: view, forSection: section)
+		if (delegate.respondsToSelector("tableView:didEndDisplayingHeaderView:forSection")) {
+			return delegate.tableView!(tableView, didEndDisplayingHeaderView: view, forSection: section)
+		}
+		else {
+			return
+		}
 	}
 
 	public func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
@@ -147,10 +152,11 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+
 		if let estimatedHeight = delegate.tableView?(tableView, estimatedHeightForHeaderInSection: section) {
 			return estimatedHeight
 		} else {
-			return -1
+			return 80.0
 		}
 	}
 
