@@ -8,7 +8,6 @@
 
 import UIKit
 import PocketMediaNativeAds
-import Haneke
 
 
 /**
@@ -51,7 +50,7 @@ class CollectionViewController : UIViewController, UICollectionViewDelegate, UIC
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TestCell", forIndexPath: indexPath) as! CollectionAdCell
     let item = collection[indexPath.row] as! ItemTableModel
-    cell.appIcon.hnk_setImageFromURL(item.imageURL)
+    //cell.appIcon.hnk_setImageFromURL(item.imageURL)
     return cell
   }
   

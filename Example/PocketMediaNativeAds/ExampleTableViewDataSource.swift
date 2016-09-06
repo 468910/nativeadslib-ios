@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Haneke
+
 
 public class ExampleTableViewDataSource : NSObject,  UITableViewDataSource {
   
@@ -59,7 +59,7 @@ public class ExampleTableViewDataSource : NSObject,  UITableViewDataSource {
       let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath:indexPath) as! ItemCell
       cell.name.text = item.title
       cell.descriptionItem.text = item.descriptionItem
-      cell.artworkImageView.hnk_setImageFromURL(item.imageURL)
+      //cell.artworkImageView.hnk_setImageFromURL(item.imageURL)
       return cell
       
     default:
