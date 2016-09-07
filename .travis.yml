@@ -4,15 +4,15 @@ language: objective-c
 # only:
 # - master
 
-xcode_project: PocketMediaNativeAds.xcodeproj
+xcode_workspace: PocketMediaNativeAds.xcodeproj
 xcode_scheme: PocketMediaNativeAdsTests
-osx_image: xcode9.3
-xcode_sdk: iphonesimulator8.3
+osx_image: xcode7.3
+xcode_sdk: iphonesimulator9.3
 rvm: 1.9.3
 
 before_install:
-  - gem install cocoapods -v '0.32.1'
+  - gem install cocoapods
   - pod install
 
-script:
-- xcodebuild clean build test -project PocketMediaNativeAds.xcodeproj -scheme PocketMediaNativeAdsTests
+#script:
+#- xcodebuild clean build test -project PocketMediaNativeAds.xcworkspace -scheme PocketMediaNativeAdsTests
