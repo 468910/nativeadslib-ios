@@ -12,9 +12,9 @@ import Foundation
  */
 @objc
 public protocol NativeAdOpenerDelegate {
-    /**
+	/**
      Method to be implemented which must contain  NativeAd opening logic.
      - adUnit: the ad unit whose url is to be opened
      */
-    func load(adUnit : NativeAd)
+	func load(adUnit: NativeAd)
 }

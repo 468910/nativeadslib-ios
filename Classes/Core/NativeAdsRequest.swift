@@ -20,22 +20,22 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 	public var adPlacementToken: String?
 	/// To allow more verbose logging and behaviour
 	public var debugModeEnabled: Bool = false
-    ///Check whether advertising tracking is limited
-    public var advertisingTrackingEnabled: Bool? = false
-    ///URL session used to do network requests.
-    public var session: URLSessionProtocol? = nil
-    
-    public init(adPlacementToken: String?,
-                delegate: NativeAdsConnectionDelegate?,
-                advertisingTrackingEnabled: Bool = ASIdentifierManager.sharedManager().advertisingTrackingEnabled,
-                session: URLSessionProtocol = NSURLSession.sharedSession()
-        ) {
-        super.init()
-        self.adPlacementToken = adPlacementToken;
-        self.delegate = delegate
-        self.advertisingTrackingEnabled = advertisingTrackingEnabled
-        self.session = session
-    }
+	/// Check whether advertising tracking is limited
+	public var advertisingTrackingEnabled: Bool? = false
+	/// URL session used to do network requests.
+	public var session: URLSessionProtocol? = nil
+
+	public init(adPlacementToken: String?,
+		delegate: NativeAdsConnectionDelegate?,
+		advertisingTrackingEnabled: Bool = ASIdentifierManager.sharedManager().advertisingTrackingEnabled,
+		session: URLSessionProtocol = NSURLSession.sharedSession()
+	) {
+		super.init()
+		self.adPlacementToken = adPlacementToken;
+		self.delegate = delegate
+		self.advertisingTrackingEnabled = advertisingTrackingEnabled
+		self.session = session
+	}
 
 	/**
      Method used to retrieve native ads which are later accessed by using the delegate.
@@ -43,12 +43,12 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
      */
 	@objc
 	public func retrieveAds(limit: UInt) {
-        let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit)
-        NSLog("Invoking: %@", nativeAdURL)
-        if let url = NSURL(string: nativeAdURL) {
-            self.session!.dataTaskWithURL(url, completionHandler: receivedAds)
-        }
-    }
+		let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit)
+		NSLog("Invoking: %@", nativeAdURL)
+		if let url = NSURL(string: nativeAdURL) {
+			self.session!.dataTaskWithURL(url, completionHandler: receivedAds)
+		}
+	}
 
 	internal func receivedAds(data: NSData?, response: NSURLResponse?, error: NSError?) {
 		if error != nil {

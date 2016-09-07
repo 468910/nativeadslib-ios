@@ -135,7 +135,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 
 	private func updateAdPositionsWithPositionsGivenByUser() {
 
-		var orginalCount = datasource!.numberOfElements()
+		let orginalCount = datasource!.numberOfElements()
 
 		var adsInserted = 0
 		for ad in tempAds {
@@ -152,27 +152,21 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 
 	}
 	private func updateAdPositionsWithAdFrequency() {
-		var orginalCount = datasource!.numberOfElements()
-
+		let orginalCount = datasource!.numberOfElements()
 		var adsInserted = 0
-
 		for ad in tempAds {
-
-			var index = (firstAdPosition! - 1) + (adMargin! * adsInserted)
-
+			let index = (firstAdPosition! - 1) + (adMargin! * adsInserted)
 			NSLog("The current index is %d", index)
 			NSLog("Print dex is %d", orginalCount + adsInserted)
 			if (index > (orginalCount + adsInserted)) { break }
 			ads[index] = ad
 			adsInserted += 1
 		}
-		var tempads = ads
-		print("yay")
 	}
 
 	@objc
 	public func didUpdateNativeAd(adUnit: NativeAd) {
-
+		NSLog("didUpdateNativeAd is not implemented")
 	}
 
 	func isAdAtposition(position: Int) -> NativeAd? {

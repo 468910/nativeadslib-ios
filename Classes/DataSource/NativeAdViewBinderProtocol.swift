@@ -8,9 +8,9 @@
 import UIKit
 
 protocol NativeAdViewBinderProtocol {
-  
-  func configureAdView(nativeAd: NativeAd)
-  
-  func configureAdView(nativeAd:NativeAd, viewController: UIViewController)
-  
+
+	func configureAdView(nativeAd: NativeAd)
+
+	func configureAdView(nativeAd: NativeAd, viewController: UIViewController)
+
 }

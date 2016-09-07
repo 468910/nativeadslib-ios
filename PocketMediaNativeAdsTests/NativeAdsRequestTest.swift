@@ -308,8 +308,8 @@ class NativeAdsRequestTest: XCTestCase {
 }
 
 func getQueryStringParameter(url: String?, param: String) -> String? {
-    if let url = url, urlComponents = NSURLComponents(string: url), queryItems = (urlComponents.queryItems! as? [NSURLQueryItem]) {
-        return queryItems.filter({ (item) in item.name == param }).first?.value!
-    }
-    return nil
+    let url = url,
+    urlComponents = NSURLComponents(string: url!),
+    queryItems = urlComponents!.queryItems!
+    return queryItems.filter({ (item) in item.name == param }).first?.value!
 }
