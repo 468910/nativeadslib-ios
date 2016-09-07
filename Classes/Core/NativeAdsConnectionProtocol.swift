@@ -17,7 +17,7 @@ public protocol NativeAdsConnectionDelegate {
     /**
         This method is invoked whenever while retrieving NativeAds an error has occured
     */
-    func didRecieveError(error: NSError)
+    func didReceiveError(error: NSError)
   
   
     @available(*, unavailable, renamed="didReceiveResults")

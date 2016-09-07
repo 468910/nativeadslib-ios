@@ -33,40 +33,46 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
      */
 	@objc
 	public func retrieveAds(limit: UInt) {
-
 		let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit);
 		NSLog("Invoking: %@", nativeAdURL)
-
 		if let url = NSURL(string: nativeAdURL) {
+			let request = NSMutableURLRequest(URL: url)
+			let session = NSURLSession.sharedSession()
+			let task = session.dataTaskWithRequest(request, completionHandler: receivedAds)
+			task.resume()
+		}
+	}
 
-			let request = NSURLRequest(URL: url)
-			NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) in
+	public func receivedAds(data: NSData?, response: NSURLResponse?, error: NSError?) {
+		if error != nil {
+			self.delegate?.didReceiveError(error!)
+		} else {
 
-				if error != nil {
+			var nativeAds: [NativeAd] = []
+			if data != nil {
+				if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
 
-					self.delegate?.didRecieveError(error!)
+					json.filter({ ($0 as? NSDictionary) != nil }).forEach({ (element) -> () in
+						if let ad = NativeAd(adDictionary: element as! NSDictionary, adPlacementToken: self.adPlacementToken!) {
+							nativeAds.append(ad)
+						}
+					})
+
+					if nativeAds.count > 0 {
+						self.delegate?.didReceiveResults(nativeAds)
+					} else {
+						let userInfo = ["No ads available from server": NSLocalizedDescriptionKey]
+						let error = NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: userInfo)
+						self.delegate?.didReceiveError(error)
+					}
 
 				} else {
-					var nativeAds: [NativeAd] = []
-					if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
-
-						json.filter({ ($0 as? NSDictionary) != nil }).forEach({ (element) -> () in
-							if let ad = NativeAd(adDictionary: element as! NSDictionary, adPlacementToken: self.adPlacementToken!) {
-								nativeAds.append(ad)
-							}
-
-						})
-
-						if nativeAds.count > 0 {
-							self.delegate?.didReceiveResults(nativeAds)
-						} else {
-							let userInfo = ["No ads available from server": NSLocalizedDescriptionKey]
-							let error = NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: userInfo)
-							self.delegate?.didRecieveError(error)
-						}
-					}
+					self.delegate?.didReceiveError(NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: ["Invalid server response received: Not json.": NSLocalizedDescriptionKey]))
 				}
+			} else {
+				self.delegate?.didReceiveError(NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: ["Invalid server response received: data is a nil value.": NSLocalizedDescriptionKey]))
 			}
+
 		}
 	}
 

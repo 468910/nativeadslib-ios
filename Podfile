@@ -10,6 +10,12 @@ source 'https://bitbucket.org/pocketbrain/pocketmedia-podspecs.git'
 use_frameworks!
 
 
-target 'PocketMediaNative' do
-  pod 'HanekeSwift'
+target 'PocketMediaNativeAds' do
+  pod 'HanekeSwift', '~> 0.10.1'
+
+	target 'PocketMediaNativeAdsTests' do
+	  pod 'HanekeSwift', '~> 0.10.1'
+	  inherit! :search_paths
+	end
+
 end

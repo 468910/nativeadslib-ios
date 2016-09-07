@@ -1,0 +1,6 @@
+framework module Pods_PocketMediaNativeAdsTests {
+  umbrella header "Pods-PocketMediaNativeAdsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
