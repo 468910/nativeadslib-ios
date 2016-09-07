@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import AdSupport
 
 @testable import PocketMediaNativeAds
 
@@ -55,6 +56,17 @@ class SpyDelegate: NativeAdsConnectionDelegate {
     
 }
 
+class MockURLSession: URLSessionProtocol {
+    private (set) var lastURL: NSURL?
+    
+    func dataTaskWithURL(url: NSURL, completionHandler: DataTaskResult)
+        -> NSURLSessionDataTask
+    {
+        lastURL = url
+        return NSURLSessionDataTask()
+    }
+}
+
 class NativeAdsRequestTest: XCTestCase {
     
     var testData: NSData!
@@ -71,6 +83,20 @@ class NativeAdsRequestTest: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+    }
+    
+    func testRetrieveAds() {
+        let delegate = SpyDelegate()
+        let session = MockURLSession()
+        let nativeAdsrequest = NativeAdsRequest(adPlacementToken: "test", delegate: delegate, session: session)
+        nativeAdsrequest.retrieveAds(10)
+        let expected = nativeAdsrequest.getNativeAdsURL("test", limit: 10)
+        
+        if let expectedUrl = NSURL(string: expected) {
+            XCTAssert( session.lastURL!.isEqual(expectedUrl) )
+        } else {
+            XCTFail("Couldn't get the expected url")
+        }
     }
     
     func testReceivedAdsError() {
@@ -169,6 +195,7 @@ class NativeAdsRequestTest: XCTestCase {
         delegate.didReceiveResultsExpectation = expectation
         delegate.didReceiveResultsResult = false
         
+        
         let nativeAdsrequest = NativeAdsRequest(adPlacementToken: "test", delegate: delegate)
         
         nativeAdsrequest.receivedAds(testData, response: nil, error: nil)
@@ -187,4 +214,102 @@ class NativeAdsRequestTest: XCTestCase {
         }
     }
     
+    func testGetNativeAdsURL() {
+        var nativeAdsrequest = NativeAdsRequest(adPlacementToken: "test", delegate: nil)
+        let placement_key = "test123"
+        var url = nativeAdsrequest.getNativeAdsURL(placement_key, limit: 123)
+        
+        if let value = getQueryStringParameter(url, param: "output") {
+            
+            if value != "json" {
+                XCTFail("output should be json")
+            }
+            
+        } else {
+            XCTFail("output parameter is not defined")
+        }
+        
+        if let value = getQueryStringParameter(url, param: "os") {
+            
+            if value != "ios" {
+                XCTFail("os should be ios")
+            }
+            
+        } else {
+            XCTFail("os parameter is not defined")
+        }
+        
+        if let value = getQueryStringParameter(url, param: "limit") {
+            
+            if Int(value) != 123 {
+                XCTFail("limit should be 123")
+            }
+            
+        } else {
+            XCTFail("limit parameter is not defined")
+        }
+        
+        if let value = getQueryStringParameter(url, param: "version") {
+            
+            if Float(value) == nil {
+                XCTFail("version should be a number")
+            }
+            
+        } else {
+            XCTFail("version parameter is not defined")
+        }
+        
+        if let value = getQueryStringParameter(url, param: "model") {
+            
+            if value != "iPhone" {
+                XCTFail("model should be a iPhone")
+            }
+            
+        } else {
+            XCTFail("model parameter is not defined")
+        }
+        
+        if let value = getQueryStringParameter(url, param: "token") {
+            
+            let expected = ASIdentifierManager.sharedManager().advertisingIdentifier?.UUIDString
+            
+            if value != expected {
+                XCTFail("token should be the advertisingIdentifier of the phone")
+            }
+            
+        } else {
+            XCTFail("token parameter is not defined")
+        }
+        
+        if let value = getQueryStringParameter(url, param: "placement_key") {
+            
+            if value != placement_key {
+                XCTFail("placement_key should the test value sent along as a parameter.")
+            }
+            
+        } else {
+            XCTFail("placement_key parameter is not defined")
+        }
+        
+        nativeAdsrequest = NativeAdsRequest(adPlacementToken: "test", delegate: nil, advertisingTrackingEnabled: false)
+        url = nativeAdsrequest.getNativeAdsURL(placement_key, limit: 123)
+        
+        if let value = getQueryStringParameter(url, param: "optout") {
+            
+            if Int(value) != 1 {
+                XCTFail("optout should be set to 1 if advertisingTrackingEnabled is set to false.")
+            }
+            
+        } else {
+            XCTFail("optout parameter is not defined")
+        }
+    }
+    
+}
+
+func getQueryStringParameter(url: String?, param: String) -> String? {
+    if let url = url, urlComponents = NSURLComponents(string: url), queryItems = (urlComponents.queryItems! as? [NSURLQueryItem]) {
+        return queryItems.filter({ (item) in item.name == param }).first?.value!
+    }
+    return nil
 }

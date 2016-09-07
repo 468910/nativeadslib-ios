@@ -20,12 +20,22 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 	public var adPlacementToken: String?
 	/// To allow more verbose logging and behaviour
 	public var debugModeEnabled: Bool = false
-
-	public init(adPlacementToken: String?, delegate: NativeAdsConnectionDelegate?) {
-		super.init()
-		self.adPlacementToken = adPlacementToken;
-		self.delegate = delegate
-	}
+    ///Check whether advertising tracking is limited
+    public var advertisingTrackingEnabled: Bool? = false
+    ///URL session used to do network requests.
+    public var session: URLSessionProtocol? = nil
+    
+    public init(adPlacementToken: String?,
+                delegate: NativeAdsConnectionDelegate?,
+                advertisingTrackingEnabled: Bool = ASIdentifierManager.sharedManager().advertisingTrackingEnabled,
+                session: URLSessionProtocol = NSURLSession.sharedSession()
+        ) {
+        super.init()
+        self.adPlacementToken = adPlacementToken;
+        self.delegate = delegate
+        self.advertisingTrackingEnabled = advertisingTrackingEnabled
+        self.session = session
+    }
 
 	/**
      Method used to retrieve native ads which are later accessed by using the delegate.
@@ -33,17 +43,14 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
      */
 	@objc
 	public func retrieveAds(limit: UInt) {
-		let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit);
-		NSLog("Invoking: %@", nativeAdURL)
-		if let url = NSURL(string: nativeAdURL) {
-			let request = NSMutableURLRequest(URL: url)
-			let session = NSURLSession.sharedSession()
-			let task = session.dataTaskWithRequest(request, completionHandler: receivedAds)
-			task.resume()
-		}
-	}
+        let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit)
+        NSLog("Invoking: %@", nativeAdURL)
+        if let url = NSURL(string: nativeAdURL) {
+            self.session!.dataTaskWithURL(url, completionHandler: receivedAds)
+        }
+    }
 
-	public func receivedAds(data: NSData?, response: NSURLResponse?, error: NSError?) {
+	internal func receivedAds(data: NSData?, response: NSURLResponse?, error: NSError?) {
 		if error != nil {
 			self.delegate?.didReceiveError(error!)
 		} else {
@@ -92,7 +99,7 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 		apiUrl = apiUrl + "&token=" + token!
 		apiUrl = apiUrl + "&placement_key=" + placementKey!
 
-		if (!ASIdentifierManager.sharedManager().advertisingTrackingEnabled) {
+		if (advertisingTrackingEnabled == nil || advertisingTrackingEnabled == false) {
 			apiUrl = apiUrl + "&optout=1"
 		}
 

@@ -32,6 +32,7 @@
 		277F1C4D1D7EF58A00E14A68 /* NativeAdTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C461D7EF58A00E14A68 /* NativeAdTableViewDelegate.swift */; };
 		277F1C4E1D7EF58A00E14A68 /* NativeAdViewBinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C471D7EF58A00E14A68 /* NativeAdViewBinderProtocol.swift */; };
 		277F1C501D7EF59200E14A68 /* ReferenceArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C4F1D7EF59200E14A68 /* ReferenceArray.swift */; };
+		27DA97C21D80512F0081CE2E /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA97C11D80512F0081CE2E /* URLSessionProtocol.swift */; };
 		E042DF46AAED75A827419C28 /* Pods_PocketMediaNativeAdsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9D20E7E918E03CE0E2E8A7 /* Pods_PocketMediaNativeAdsTests.framework */; };
 		F00149CA0CC6FEE35516B7A7 /* Pods_PocketMediaNativeAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676A1D9F1F252F103E7FDAA5 /* Pods_PocketMediaNativeAds.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		277F1C461D7EF58A00E14A68 /* NativeAdTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdTableViewDelegate.swift; path = Classes/DataSource/NativeAdTableViewDelegate.swift; sourceTree = "<group>"; };
 		277F1C471D7EF58A00E14A68 /* NativeAdViewBinderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdViewBinderProtocol.swift; path = Classes/DataSource/NativeAdViewBinderProtocol.swift; sourceTree = "<group>"; };
 		277F1C4F1D7EF59200E14A68 /* ReferenceArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReferenceArray.swift; path = Classes/Util/ReferenceArray.swift; sourceTree = "<group>"; };
+		27DA97C11D80512F0081CE2E /* URLSessionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionProtocol.swift; path = Classes/Core/URLSessionProtocol.swift; sourceTree = "<group>"; };
 		561CDC8D4F990D6251670CDA /* Pods-PocketMediaNativeAdsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAdsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAdsTests/Pods-PocketMediaNativeAdsTests.release.xcconfig"; sourceTree = "<group>"; };
 		676A1D9F1F252F103E7FDAA5 /* Pods_PocketMediaNativeAds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A256E8C2FD59B1F0317375 /* Pods-PocketMediaNativeAds.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds/Pods-PocketMediaNativeAds.release.xcconfig"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				277F1C361D7EF57900E14A68 /* NativeAdsRequest.swift */,
 				277F1C371D7EF57900E14A68 /* NativeAdsWebviewDelegate.swift */,
 				277F1C381D7EF57900E14A68 /* NativeAdTableViewCell.swift */,
+				27DA97C11D80512F0081CE2E /* URLSessionProtocol.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				277F1C2B1D7EF55F00E14A68 /* NativeAdCell.swift in Sources */,
 				277F1C4E1D7EF58A00E14A68 /* NativeAdViewBinderProtocol.swift in Sources */,
 				277F1C3A1D7EF57900E14A68 /* NativeAd.swift in Sources */,
+				27DA97C21D80512F0081CE2E /* URLSessionProtocol.swift in Sources */,
 				277F1C4D1D7EF58A00E14A68 /* NativeAdTableViewDelegate.swift in Sources */,
 				277F1C3B1D7EF57900E14A68 /* NativeAdDisplayProtocol.swift in Sources */,
 				277F1C2A1D7EF55F00E14A68 /* AbstractAdUnitUIView.swift in Sources */,

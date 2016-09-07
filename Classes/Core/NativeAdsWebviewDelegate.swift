@@ -161,8 +161,8 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate{
     @objc
     private func notifyServerOfFalseRedirection(){
         
-        var url = NSURL(string: NativeAdsConstants.NativeAds.notifyBadAdsUrl)
-        var req = NSMutableURLRequest(URL: url!)
+        let url = NSURL(string: NativeAdsConstants.NativeAds.notifyBadAdsUrl)
+        let req = NSMutableURLRequest(URL: url!)
         
         var dataBody = constructDataBodyForNotifyingServerOfFalseRedirection()
         NSLog("Full databody: " + dataBody)
