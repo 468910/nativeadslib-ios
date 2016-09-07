@@ -1,13 +1,18 @@
 language: objective-c
 
-branches:
- only:
- - master
+#branches:
+# only:
+# - master
 
-xcode_project: Swifternalization.xcodeproj
-xcode_scheme: SwifternalizationTests
-osx_image: beta-xcode6.3
+xcode_project: PocketMediaNativeAds.xcodeproj
+xcode_scheme: PocketMediaNativeAdsTests
+osx_image: xcode9.3
 xcode_sdk: iphonesimulator8.3
+rvm: 1.9.3
+
+before_install:
+  - gem install cocoapods -v '0.32.1'
+  - pod install
 
 script:
-- xcodebuild clean build test -project Swifternalization.xcodeproj -scheme SwifternalizationTests
+- xcodebuild clean build test -project PocketMediaNativeAds.xcodeproj -scheme PocketMediaNativeAdsTests
