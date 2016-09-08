@@ -15,4 +15,4 @@ public protocol URLSessionProtocol {
 		-> NSURLSessionDataTask
 }
 
-extension NSURLSession: URLSessionProtocol { }Z
+extension NSURLSession: URLSessionProtocol { }
