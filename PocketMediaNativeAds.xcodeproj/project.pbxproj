@@ -42,6 +42,7 @@
 		273A4C321D81ACB900513F81 /* PocketMediaNativeAdsTests-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 2723A50D1D7FFDB500CB07E2 /* PocketMediaNativeAdsTests-Bridging-Header.h */; };
 		273A4C331D81ACBA00513F81 /* PocketMediaNativeAdsTests-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 2723A50D1D7FFDB500CB07E2 /* PocketMediaNativeAdsTests-Bridging-Header.h */; };
 		273A4C351D81AF2500513F81 /* FullscreenBrowserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273A4C341D81AF2500513F81 /* FullscreenBrowserTest.swift */; };
+		273A4C361D81C15500513F81 /* NativeAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277F1BEC1D7EEC2B00E14A68 /* NativeAdCell.xib */; };
 		2769AC541D800D7000B447C6 /* Tests.json in Resources */ = {isa = PBXBuildFile; fileRef = 2723A4E81D7FF62700CB07E2 /* Tests.json */; };
 		277F1C0F1D7EF51C00E14A68 /* PocketMediaNativeAds.h in Headers */ = {isa = PBXBuildFile; fileRef = 277F1C0E1D7EF51C00E14A68 /* PocketMediaNativeAds.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		277F1C291D7EF55F00E14A68 /* AbstractAdUnitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C241D7EF55F00E14A68 /* AbstractAdUnitTableViewCell.swift */; };
@@ -441,6 +442,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273A4C361D81C15500513F81 /* NativeAdCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

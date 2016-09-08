@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class AdCell : UITableViewCell {
-  
-  @IBOutlet public weak var campaignNameLabel: UILabel!
-  @IBOutlet public weak var campaignImageView: UIImageView!
-  @IBOutlet public var campaignDescriptionLabel: UILabel!
-  
-  override public func awakeFromNib() {
-    super.awakeFromNib()
-  }
-  
+public class AdCell: UITableViewCell {
+
+	@IBOutlet public weak var campaignNameLabel: UILabel!
+	@IBOutlet public weak var campaignImageView: UIImageView!
+	@IBOutlet public var campaignDescriptionLabel: UILabel!
+
+	override public func awakeFromNib() {
+		super.awakeFromNib()
+	}
+
 }
