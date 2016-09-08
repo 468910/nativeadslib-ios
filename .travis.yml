@@ -14,5 +14,4 @@ before_install:
   - gem install cocoapods
   - pod install
 
-#script:
-#- xcodebuild clean build test -project PocketMediaNativeAds.xcworkspace -scheme PocketMediaNativeAdsTests
+script: 'sh scripts/ci.sh'
