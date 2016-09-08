@@ -16,6 +16,8 @@ notifications:
     rooms:
       - pocketmedia:8WLnvDK1qVpv3IOnGJk7YEie#general
       - pocketmedia:8WLnvDK1qVpv3IOnGJk7YEie#random
+    on_success: never
+    on_failure: change
   email:
     on_success: never
     on_failure: change
