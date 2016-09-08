@@ -24,6 +24,6 @@ notifications:
   email:
     on_success: never
     on_failure: change
-  slack: pocketmedia:8WLnvDK1qVpv3IOnGJk7YEie
+  slack: 'pocketmedia:8WLnvDK1qVpv3IOnGJk7YEie'
     on_success: never
     on_failure: change

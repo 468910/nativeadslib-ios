@@ -1,12 +1,11 @@
 # PocketMediaNativeAds
-TODO: Change the badges to master.
 [![Build Status](https://travis-ci.org/Pocketbrain/nativeadslib-ios.svg?branch=feature%2Fnew-structure-tests)](https://travis-ci.org/Pocketbrain/nativeadslib-ios)
 [![codecov](https://codecov.io/gh/Pocketbrain/nativeadslib-ios/branch/feature%2Fnew-structure-tests/graph/badge.svg)](https://codecov.io/gh/Pocketbrain/nativeadslib-ios)
 [![Gitter](https://badges.gitter.im/join_chat.svg)](https://gitter.im/Pocketbrain)
-[![CocoaPods](https://img.shields.io/cocoapods/at/PocketMediaNativeAds.svg?maxAge=2592000)](http://cocoapods.org/pods/PocketMediaNativeAds)
-[![Version](https://img.shields.io/cocoapods/v/PocketMediaNativeAds.svg?style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
-[![License](https://img.shields.io/cocoapods/l/PocketMediaNativeAds.svg?style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
-[![Platform](https://img.shields.io/cocoapods/p/PocketMediaNativeAds.svg?style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
+[![CocoaPods](https://img.shields.io/cocoapods/at/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
+[![Version](https://img.shields.io/cocoapods/v/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
+[![License](https://img.shields.io/cocoapods/l/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
+[![Platform](https://img.shields.io/cocoapods/p/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 
 ## What are Native Ads?
 
