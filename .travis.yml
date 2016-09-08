@@ -14,8 +14,7 @@ after_success:
 notifications:
   slack:
     rooms:
-      - pocketmedia:8WLnvDK1qVpv3IOnGJk7YEie#general
-      - pocketmedia:8WLnvDK1qVpv3IOnGJk7YEie#random
+      - pocketmedia:8WLnvDK1qVpv3IOnGJk7YEie#mobileapps
     on_success: never
     on_failure: change
   email:
