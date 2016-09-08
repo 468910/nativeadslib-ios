@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PocketMediaNativeAds  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="PocketMediaNativeAds  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">PocketMediaNativeAds Docs</a> (21% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">PocketMediaNativeAds Reference</a>
+        <img id="carat" src="img/carat.png" />
+        PocketMediaNativeAds  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/AbstractAdUnitTableViewCell.html">AbstractAdUnitTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/AbstractAdUnitUIView.html">AbstractAdUnitUIView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/AdViewLoader.html">AdViewLoader</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NativeAd.html">NativeAd</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NativeAdCell.html">NativeAdCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NativeAdCollectionCell.html">NativeAdCollectionCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NativeAdCollectionViewDataSource.html">NativeAdCollectionViewDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NativeAdCollectionViewDelegate.html">NativeAdCollectionViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NativeAdCollectionViewLayout.html">NativeAdCollectionViewLayout</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NativeAdStream.html">NativeAdStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes.html#/s:C20PocketMediaNativeAds21NativeAdTableViewCell">NativeAdTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NativeAdTableViewDataSource.html">NativeAdTableViewDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NativeAdTableViewDelegate.html">NativeAdTableViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NativeAdsRequest.html">NativeAdsRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NativeAdsWebviewDelegate.html">NativeAdsWebviewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/PocketMediaNativeAdsBundle.html">PocketMediaNativeAdsBundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ReferenceArray.html">ReferenceArray</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/DataSourceProtocol.html">DataSourceProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/NativeAdsWebviewRedirectionsDelegate.html">NativeAdsWebviewRedirectionsDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/URLSessionProtocol.html">URLSessionProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/NativeAdsConstants.html">NativeAdsConstants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/NativeAdsConstants.html#/s:VV20PocketMediaNativeAds18NativeAdsConstants6Device">– Device</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/NativeAdsConstants/NativeAds.html">– NativeAds</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <a href='#pocketmedia-ios-nativeads-library' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='pocketmedia-ios-nativeads-library'>PocketMedia: iOS NativeAds library</h1>
+
+<p><a href="https://codeclimate.com/github/Pocketbrain/nativeadslib-ios"><img src="https://codeclimate.com/github/Pocketbrain/nativeadslib-ios/badges/gpa.svg" alt="Code Climate"></a>
+<a href="https://travis-ci.org/Pocketbrain/nativeadslib-ios"><img src="https://travis-ci.org/Pocketbrain/nativeadslib-ios.svg?branch=feature%2Fnew-structure-tests" alt="Build Status"></a>
+<a href="https://codecov.io/gh/Pocketbrain/nativeadslib-ios"><img src="https://codecov.io/gh/Pocketbrain/nativeadslib-ios/branch/feature%2Fnew-structure-tests/graph/badge.svg" alt="codecov"></a>
+<a href="https://gitter.im/Pocketbrain"><img src="https://badges.gitter.im/join_chat.svg" alt="Gitter"></a>
+<a href="http://cocoapods.org/pods/PocketMediaNativeAds"><img src="https://img.shields.io/cocoapods/at/PocketMediaNativeAds.svg?maxAge=2592000&amp;style=flat" alt="CocoaPods"></a>
+<a href="http://cocoapods.org/pods/PocketMediaNativeAds"><img src="https://img.shields.io/cocoapods/v/PocketMediaNativeAds.svg?maxAge=2592000&amp;style=flat" alt="Version"></a>
+<a href="http://cocoapods.org/pods/PocketMediaNativeAds"><img src="https://img.shields.io/cocoapods/l/PocketMediaNativeAds.svg?maxAge=2592000&amp;style=flat" alt="License"></a>
+<a href="http://cocoapods.org/pods/PocketMediaNativeAds"><img src="https://img.shields.io/cocoapods/p/PocketMediaNativeAds.svg?maxAge=2592000&amp;style=flat" alt="Platform"></a></p>
+<a href='#what-are-native-ads' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='what-are-native-ads'>What are Native Ads?</h2>
+
+<p>Native Ads are a new way of integrating the ads within the content. While traditional advertising creates a pause to display the ads (Interstitial ads, banners, etc.), which are more or less intrusive for the user experience - native ads want to get integrated with the user flow and the way he is consuming the content. </p>
+
+<p>We offer you the ads in a structured format so you can display them as you prefer, integrated in form and functionality with your app.</p>
+
+<p>We offer some standard ad units, but they will work much better if you customize them to be integrated with your app style. Your users will appreciate it, and your application will keep the style that you wanted it to have.</p>
+<a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
+
+<p>In order to use the library and have monetization tracking you need to get an advertiser token from Pocket Media. You can get it online, at <a href="http://nativeads.pocketmedia.mobi/signup.html">our sign up page</a>:</p>
+
+<p><a href="http://nativeads.pocketmedia.mobi/signup.html"><img src="https://bitbucket.org/repo/46g5gL/images/3248517185-LandingPage%202016-02-15%2010-19-32.png" alt="LandingPage 2016-02-15 10-19-32.png"></a></p>
+<a href='#building-the-demo' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='building-the-demo'>Building the demo</h2>
+
+<p>To run the example project, clone the repo, and run <code>pod install</code> from the Example directory first.</p>
+
+<p>The project is developed in Swift but contains bridging headers to also work with Objective-C.</p>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
+
+<p>PocketMediaNativeAds is available through <a href="http://cocoapods.org">CocoaPods</a>. To install
+it, simply add the following line to your Podfile:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s2">"PocketMediaNativeAds"</span>
+</code></pre>
+<a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='usage'>Usage</h2>
+
+<p>There are several ways to implement the native ads in your application. Firstly there is the AdStream which will take care of the integration for you. For Maximum customizability however there is always the option to manually integrate the NativeAds.</p>
+
+<p>For both methods the parameters used are:</p>
+
+<ul>
+<li>placement token, to be generated in the <a href="http://third-party.pmgbrain.com/">user dashboard</a></li>
+<li>delegate, to receive the even callbacks as the ads are ready</li>
+</ul>
+<a href='#adstream' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='adstream'>AdStream</h3>
+
+<p>The Adstream easily places native ads in your UITableView or UICollectionView.
+You can specifiy the positions in various ways by giving an Array with fixed positions or by frequency.
+Simply add the following code in your UIViewController and your ads will be automatically loaded into your view. </p>
+<a href='#adstream-adfrequency' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='adstream-adfrequency'>AdStream - AdFrequency</h4>
+<pre class="highlight swift"><code>     <span class="k">var</span> <span class="nv">stream</span> <span class="o">=</span> <span class="kt">NativeAdStream</span><span class="p">(</span><span class="nv">controller</span><span class="p">:</span> <span class="k">self</span><span class="p">,</span> <span class="nv">mainView</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">tableView</span><span class="p">,</span> <span class="nv">adMargin</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">firstAdPosition</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+     <span class="n">stream</span><span class="o">!.</span><span class="nf">requestAds</span><span class="p">(</span><span class="s">"PLACEMENT_TOKEN"</span><span class="p">,</span> <span class="nv">limit</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span> <span class="cm">/* replace with your own token!! */</span>
+</code></pre>
+<a href='#adstream-fixed-positions' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='adstream-fixed-positions'>AdStream - Fixed positions</h4>
+<pre class="highlight swift"><code>     <span class="k">var</span> <span class="nv">adPos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+    <span class="k">var</span> <span class="nv">stream</span> <span class="o">=</span> <span class="kt">NativeAdStream</span><span class="p">(</span><span class="nv">controller</span><span class="p">:</span> <span class="k">self</span><span class="p">,</span> <span class="nv">mainView</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">collectionView</span><span class="p">,</span> <span class="nv">adsPositions</span><span class="p">:</span> <span class="n">adPos</span><span class="p">)</span>
+    <span class="n">stream</span><span class="o">.</span><span class="nf">requestAds</span><span class="p">(</span><span class="s">"PLACEMENT_TOKEN"</span><span class="p">,</span> <span class="nv">limit</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span> <span class="cm">/* replace with your own token!! */</span>
+</code></pre>
+
+<p>There is also the option to pass a custom XIB this has to be or a subclass of the corrosponding AbstractAdUnit for example <code>AbstractAdUnitTableViewCell</code>. 
+Dont forget to link up the outlets to your xib!</p>
+<a href='#manual-integration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='manual-integration'>Manual Integration</h3>
+
+<p>For Manual Integration the Core classes in the Pod Contain everything you need. 
+To make a simple request let your designated class implement the <code>NativeAdsConnectionDelegate</code> like you&rsquo;re used to with any other IOS delegate. Then start the request, with code fragment below shows an example how to. </p>
+<pre class="highlight swift"><code>        <span class="k">let</span> <span class="nv">adRequest</span> <span class="o">=</span> <span class="kt">NativeAdsRequest</span><span class="p">(</span><span class="nv">adPlacementToken</span><span class="p">:</span> <span class="s">"PLACEMENT_TOKEN"</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span> <span class="cm">/* replace with your own token!! */</span>
+        <span class="n">adRequest</span><span class="o">.</span><span class="n">debugModeEnabled</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="n">adRequest</span><span class="o">.</span><span class="nf">retrieveAds</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+</code></pre>
+<a href='#app-transport-security' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='app-transport-security'>App Transport Security</h2>
+
+<p><strong>Important:</strong> the server to download the ads is <code>http://offerwall.12trackway.com</code>. This is not <em>yet</em> under https, so you will need to add certain values to your plist, to indicate App Transport Security. </p>
+
+<p><img src="https://bitbucket.org/repo/46g5gL/images/2846838342-Info.plist%20%E2%80%94%20Edited%202016-02-21%2018-14-09.png" alt="Info.plist â€” Edited 2016-02-21 18-14-09.png"></p>
+
+<p>In the future all the content will be downloaded through https, following Apple recommendations.</p>
+<a href='#receiving-the-results' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='receiving-the-results'>Receiving the results</h3>
+
+<p>After the request is started, the library will notify of the changes in it trough a delegate that implements the <code>NativeAdsConnectionDelegate</code> protocol.</p>
+
+<p>This protocol has three methods:</p>
+
+<ul>
+<li><code>didRecieveError</code>: compulsory method, to be invoked in case there is an error retrieving the ads. This can happen due to network conditions, some systems error, parsing error&hellip;</li>
+<li><code>didRecieveResults</code>: when the library gets the JSON, parses it and delivers to your app, you will be notified with an Array of the NativeAd objects retrieved.</li>
+<li><code>didUpdateNativeAd</code>: not required method. In case some of the ads is modified after it has been delivered, your class will be notified trough this method.</li>
+</ul>
+<a href='#displaying-the-ads' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='displaying-the-ads'>Displaying the ads</h3>
+
+<p>This is the procotol method invoked when the ads are available. In our example, we add the ads to our datasource and display it:</p>
+<pre class="highlight swift"><code>
+    <span class="kd">func</span> <span class="nf">didRecieveResults</span><span class="p">(</span><span class="nv">nativeAds</span><span class="p">:</span> <span class="p">[</span><span class="kt">NativeAd</span><span class="p">]){</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">nativeAds</span> <span class="o">=</span> <span class="n">nativeAds</span>
+        <span class="k">if</span> <span class="n">itemsTable</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="n">ad</span> <span class="k">in</span> <span class="n">nativeAds</span> <span class="p">{</span>
+                <span class="n">itemsTable</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="n">ad</span><span class="p">,</span> <span class="nv">atIndex</span><span class="p">:</span> <span class="kt">Int</span><span class="p">(</span><span class="nf">arc4random_uniform</span><span class="p">(</span><span class="kt">UInt32</span><span class="p">(</span><span class="n">itemsTable</span><span class="o">.</span><span class="n">count</span><span class="p">))))</span>
+            <span class="p">}</span>
+            <span class="n">tableView</span><span class="o">.</span><span class="nf">reloadData</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+
+<p>Together with the method were the table cell is displayed:</p>
+<pre class="highlight swift"><code>
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">cellForRowAtIndexPath</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">NSIndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UITableViewCell</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="n">itemsTable</span><span class="p">[</span><span class="n">indexPath</span><span class="o">.</span><span class="n">row</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="k">let</span> <span class="nv">item</span> <span class="k">as</span> <span class="kt">ItemTableView</span> <span class="p">:</span>
+            <span class="k">let</span> <span class="nv">cell</span> <span class="o">=</span> <span class="n">tableView</span><span class="o">.</span><span class="nf">dequeueReusableCellWithIdentifier</span><span class="p">(</span><span class="s">"ItemCell"</span><span class="p">,</span> <span class="nv">forIndexPath</span><span class="p">:</span><span class="n">indexPath</span><span class="p">)</span> <span class="k">as!</span> <span class="kt">ItemCell</span>
+            <span class="n">cell</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">title</span>
+            <span class="n">cell</span><span class="o">.</span><span class="n">descriptionItem</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">descriptionItem</span>
+            <span class="nf">loadImageAsynchronouslyFromUrl</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">imageURL</span><span class="p">,</span> <span class="nv">imageView</span><span class="p">:</span> <span class="n">cell</span><span class="o">.</span><span class="n">artworkImageView</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">cell</span>
+        <span class="k">case</span> <span class="k">let</span> <span class="nv">ad</span> <span class="k">as</span> <span class="kt">NativeAd</span> <span class="p">:</span>
+            <span class="k">let</span> <span class="nv">cell</span> <span class="o">=</span> <span class="n">tableView</span><span class="o">.</span><span class="nf">dequeueReusableCellWithIdentifier</span><span class="p">(</span><span class="s">"AdCell"</span><span class="p">,</span> <span class="nv">forIndexPath</span><span class="p">:</span><span class="n">indexPath</span><span class="p">)</span> <span class="k">as!</span> <span class="kt">AdCell</span>
+            <span class="n">cell</span><span class="o">.</span><span class="n">campaignNameLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">campaignName</span>
+            <span class="n">cell</span><span class="o">.</span><span class="n">campaignDescriptionLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">campaignDescription</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="n">ad</span><span class="o">.</span><span class="n">campaignImage</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">){</span>
+            <span class="nf">loadImageAsynchronouslyFromUrl</span><span class="p">(</span><span class="n">ad</span><span class="o">.</span><span class="n">campaignImage</span><span class="p">,</span> <span class="nv">imageView</span><span class="p">:</span> <span class="n">cell</span><span class="o">.</span><span class="n">campaignImageView</span><span class="p">)</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="n">cell</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kt">UITableViewCell</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+<a href='#opening-the-url' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='opening-the-url'>Opening the URL</h3>
+
+<p>One of the possible moments when the ads might create a bad experience for the users is in the moment of the click. As we have to notify the different partners that provide the ads about the click, to be able to know that the users come from your app, we need to follow some tracking link redirections. </p>
+
+<p>In order to avoid that bad experience, we provide you the <code>openAdUrl</code> method in the <code>NativeAd</code> class. The method receives the parent view as an argument, and it will create a UIWebView inside of your app, where the links will be followed.</p>
+<pre class="highlight swift"><code>    <span class="k">override</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">didSelectRowAtIndexPath</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">NSIndexPath</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">ad</span> <span class="o">=</span> <span class="n">itemsTable</span><span class="p">[</span><span class="n">indexPath</span><span class="o">.</span><span class="n">row</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">NativeAd</span><span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"Opening url: </span><span class="se">\(</span><span class="n">ad</span><span class="o">.</span><span class="n">clickURL</span><span class="o">.</span><span class="n">absoluteString</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="c1">// This method will take of opening the ad inside of the app, until we have an iTunes url</span>
+            <span class="n">ad</span><span class="o">.</span><span class="nf">openAdUrl</span><span class="p">(</span><span class="k">self</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="n">tableView</span><span class="o">.</span><span class="nf">deselectRowAtIndexPath</span><span class="p">(</span><span class="n">indexPath</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre>
+
+<p>Alternatively you can use <code>openAdUrlInForeground()</code> to open the URL directly in the browser - but the user experience will be much worse.</p>
+<a href='#look-and-feel' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='look-and-feel'>Look and feel</h2>
+
+<p>The look of the ads is totally customisable, that&rsquo;s the main objective of the project. One of the easiest ad units to adapt would be the in-feed native ads, but you can use the data we provide you in any way, as long as you don&rsquo;t trick the users and don&rsquo;t force them to click your ads.</p>
+
+<p><img src="https://bitbucket.org/repo/46g5gL/images/3807516826-Simulator%20Screen%20Shot%2022%20Jan%202016%2015.26.27.png" alt="Simulator Screen Shot 22 Jan 2016 15.26.27.png"></p>
+<a href='#author' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='author'>Author</h2>
+
+<p>Pocket Media Tech Team, <a href="mailto:support@pocketmedia.mobi">support@pocketmedia.mobi</a>. Feel free to contact us for any suggestion improvements you might have. </p>
+
+<p>We work for you, we want you to be able to implement the ads in 5 minutes and start monetizing your audience with a totally native and tailored experience! Tell us what you are missing, what else you need our library to make for you - and it will happen.</p>
+<a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>License</h2>
+
+<p>PocketMediaNativeAds is available under the MIT license. See the LICENSE file for more info.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="http://pocketmedia.mobi" target="_blank" rel="external">Pocket Media Tech Team</a>. All rights reserved. (Last updated: 2016-09-08)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2723A5041D7FFD1F00CB07E2 /* PocketMediaNativeAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277F1C0B1D7EF51C00E14A68 /* PocketMediaNativeAds.framework */; };
 		2723A50C1D7FFD6000CB07E2 /* NativeAdsRequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2723A50B1D7FFD6000CB07E2 /* NativeAdsRequestTest.swift */; };
+		273300DD1D8172420015B8C5 /* NativeAdTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273300DC1D8172420015B8C5 /* NativeAdTest.swift */; };
+		273300E31D818B4F0015B8C5 /* NativeAdsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273300E21D818B4F0015B8C5 /* NativeAdsError.swift */; };
 		2769AC541D800D7000B447C6 /* Tests.json in Resources */ = {isa = PBXBuildFile; fileRef = 2723A4E81D7FF62700CB07E2 /* Tests.json */; };
 		277F1C0F1D7EF51C00E14A68 /* PocketMediaNativeAds.h in Headers */ = {isa = PBXBuildFile; fileRef = 277F1C0E1D7EF51C00E14A68 /* PocketMediaNativeAds.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		277F1C291D7EF55F00E14A68 /* AbstractAdUnitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C241D7EF55F00E14A68 /* AbstractAdUnitTableViewCell.swift */; };
@@ -54,6 +56,8 @@
 		2723A5031D7FFD1F00CB07E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2723A50B1D7FFD6000CB07E2 /* NativeAdsRequestTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdsRequestTest.swift; sourceTree = "<group>"; };
 		2723A50D1D7FFDB500CB07E2 /* PocketMediaNativeAdsTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PocketMediaNativeAdsTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		273300DC1D8172420015B8C5 /* NativeAdTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdTest.swift; sourceTree = "<group>"; };
+		273300E21D818B4F0015B8C5 /* NativeAdsError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdsError.swift; path = Classes/Core/NativeAdsError.swift; sourceTree = "<group>"; };
 		277F1BE61D7EEC2B00E14A68 /* BigNativeAdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BigNativeAdTableViewCell.xib; path = Assets/BigNativeAdTableViewCell.xib; sourceTree = "<group>"; };
 		277F1BE71D7EEC2B00E14A68 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = close.png; path = Assets/close.png; sourceTree = "<group>"; };
 		277F1BE81D7EEC2B00E14A68 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "Assets/close@2x.png"; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 		277F1C2E1D7EF56700E14A68 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				273300E21D818B4F0015B8C5 /* NativeAdsError.swift */,
 				277F1C311D7EF57900E14A68 /* FullscreenBrowser.swift */,
 				277F1C321D7EF57900E14A68 /* NativeAd.swift */,
 				277F1C331D7EF57900E14A68 /* NativeAdDisplayProtocol.swift */,
@@ -257,6 +262,7 @@
 			children = (
 				2723A4E81D7FF62700CB07E2 /* Tests.json */,
 				2723A50B1D7FFD6000CB07E2 /* NativeAdsRequestTest.swift */,
+				273300DC1D8172420015B8C5 /* NativeAdTest.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -474,6 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2723A50C1D7FFD6000CB07E2 /* NativeAdsRequestTest.swift in Sources */,
+				273300DD1D8172420015B8C5 /* NativeAdTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +493,7 @@
 				277F1C481D7EF58A00E14A68 /* DataSourceProtocol.swift in Sources */,
 				277F1C2B1D7EF55F00E14A68 /* NativeAdCell.swift in Sources */,
 				277F1C4E1D7EF58A00E14A68 /* NativeAdViewBinderProtocol.swift in Sources */,
+				273300E31D818B4F0015B8C5 /* NativeAdsError.swift in Sources */,
 				277F1C3A1D7EF57900E14A68 /* NativeAd.swift in Sources */,
 				27DA97C21D80512F0081CE2E /* URLSessionProtocol.swift in Sources */,
 				277F1C4D1D7EF58A00E14A68 /* NativeAdTableViewDelegate.swift in Sources */,

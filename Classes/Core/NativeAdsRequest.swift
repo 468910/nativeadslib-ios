@@ -60,9 +60,12 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 				if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
 
 					json.filter({ ($0 as? NSDictionary) != nil }).forEach({ (element) -> () in
-						if let ad = NativeAd(adDictionary: element as! NSDictionary, adPlacementToken: self.adPlacementToken!) {
-							nativeAds.append(ad)
-						}
+                        do {
+                            let ad = try NativeAd(adDictionary: element as! NSDictionary, adPlacementToken: self.adPlacementToken!)
+                            nativeAds.append(ad)
+                        } catch let error as NSError  {
+                            NSLog("Native Ad Constructor failed to return ad because: %@", error.localizedDescription)
+                        }
 					})
 
 					if nativeAds.count > 0 {

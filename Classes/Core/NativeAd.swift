@@ -15,17 +15,16 @@ import UIKit
 public class NativeAd: NSObject {
 
 	/// Name of the ad, the title to be displayed.
-	public var campaignName: String!
+    private(set) public var campaignName: String!
 	/// Long description of the ad, with a description
-	public var campaignDescription: String!
+	private(set) public var campaignDescription: String!
 	/// URL to be opened when the user interacts with the ad
-	public var clickURL: NSURL!
+	private(set) public var clickURL: NSURL!
 	/// URL for the campaign icon
-	public var campaignImage: NSURL!
+	private(set) public var campaignImage: NSURL!
 	/// Preview url (itunes one)
-	public var destinationURL: NSURL?
+	private(set) public var destinationURL: NSURL?
 
-	private var originalClickUrl: NSURL!
 	/// PocketMedia's Offer ID the ad is linked to
 	public var offerId: UInt?
 	/// Ad Placement token the ad is linked to (via the ads request)
@@ -36,7 +35,7 @@ public class NativeAd: NSObject {
      - adDictionary: JSON containing NativeAd Data
      */
 	@objc
-	public init?(adDictionary: NSDictionary, adPlacementToken: String) {
+	public init(adDictionary: NSDictionary, adPlacementToken: String) throws {
 		// Swift Requires all properties to be initialized before its possible to return nil
 		super.init()
 
@@ -45,16 +44,13 @@ public class NativeAd: NSObject {
 		if let name = adDictionary["campaign_name"] as? String {
 			self.campaignName = name
 		} else {
-			NSLog("Native Ad Fallible Constructor: No CampaignName found")
-			return nil
+			throw NativeAdsError.InvalidAdNoCampaign
 		}
 
 		if let urlClick = adDictionary["click_url"] as? String, url = NSURL(string: urlClick) {
 			self.clickURL = url
-			self.originalClickUrl = self.clickURL
 		} else {
-			NSLog("Native Ad Fallible Constructor: No ClickUrl found")
-			return nil
+			throw NativeAdsError.InvalidAdNoClickUrl
 		}
 
 		if let description = adDictionary["campaign_description"] as? String {
@@ -63,23 +59,19 @@ public class NativeAd: NSObject {
 			self.campaignDescription = ""
 		}
 
-		if let offerId = adDictionary["id"] as? String {
-			self.offerId = UInt(offerId)
-			NSLog("Offerid assigned:" + offerId)
-		} else {
-			NSLog("Native Ad FallibleConstructor: No OfferId found")
-			return nil
-		}
+        if let offerIdString = adDictionary["id"] as? String, offerId = UInt(offerIdString) {
+            self.offerId = offerId
+        } else {
+            throw NativeAdsError.InvalidAdNoId
+        }
 
 		if let urlImage = adDictionary["default_icon"] as? String, url = NSURL(string: urlImage) {
 			self.campaignImage = url
-
 		} else {
 			if let urlImage = adDictionary["campaign_image"] as? String, url = NSURL(string: urlImage) {
 				self.campaignImage = url
 			} else {
-				NSLog("Native Ad Fallible Constructor: No Campaignimage found");
-				return nil
+				throw NativeAdsError.InvalidAdNoImage
 			}
 		}
 
