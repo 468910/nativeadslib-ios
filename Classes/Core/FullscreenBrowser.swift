@@ -12,7 +12,7 @@ import UIKit
  Class that is used to open the NativeAd in An FullScreen Embedded WebView.
  Default implementation for the NativeAdOpenerProtocol
  **/
-internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirectionsDelegate, NativeAdOpenerDelegate {
+public class FullscreenBrowser: UIViewController, NativeAdOpenerProtocol {
     
     private var originalViewController : UIViewController?
     
@@ -25,7 +25,7 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
         self.originalViewController = parentViewController
     }
     
-    required internal init?(coder aDecoder: NSCoder)  {
+    required public init?(coder aDecoder: NSCoder)  {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -34,7 +34,7 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
      - adUnit: adUnit whose ad we want to display
      */
     @objc
-    internal func load(adUnit : NativeAd){
+    public func load(adUnit : NativeAd){
         
         if (webView == nil){
             if(self.originalViewController != nil){
@@ -65,7 +65,7 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
         
         webView!.delegate = self.webViewDelegate
         self.view = webView
-        var blackView = UIView(frame: CGRect.init(x: 0, y: 0, width:  webView!.bounds.width, height: webView!.bounds.height))
+        let blackView = UIView(frame: CGRect.init(x: 0, y: 0, width:  webView!.bounds.width, height: webView!.bounds.height))
         blackView.backgroundColor = UIColor.whiteColor()
         webView!.addSubview(blackView)
         
@@ -100,7 +100,7 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
     }
     
     @objc
-    internal func didOpenBrowser(url : NSURL){
+    public func didOpenBrowser(url : NSURL) {
         
         if let _ = self.originalViewController?.navigationController{
             self.originalViewController?.navigationController?.popViewControllerAnimated(true)
@@ -111,13 +111,13 @@ internal class FullscreenBrowser : UIViewController, NativeAdsWebviewRedirection
         
     }
     
-    override func willMoveToParentViewController(parent: UIViewController?) {
+    override public func willMoveToParentViewController(parent: UIViewController?) {
         if parent == nil {
             self.webView?.stopLoading()
         }
     }
     
-    internal func closeAction(){
+    internal func closeAction() {
         self.webView?.stopLoading()
         self.dismissViewControllerAnimated(true, completion: nil)
     }

@@ -25,7 +25,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	@objc
 	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		if let val = datasource.adStream.isAdAtposition(indexPath.row) {
-			val.openAdUrl(controller)
+			val.openAdUrl(FullscreenBrowser(parentViewController: controller))
 		} else {
 			return delegate.tableView!(tableView, didSelectRowAtIndexPath: indexPath);
 		}

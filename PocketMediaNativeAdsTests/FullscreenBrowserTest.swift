@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+public class MockNativeAd: NativeAd {
+    private (set) var openAdUrlInForegroundCalled: Bool = false
+    
+    public override func openAdUrlInForeground() {
+        openAdUrlInForegroundCalled = true
+    }
+    
+}

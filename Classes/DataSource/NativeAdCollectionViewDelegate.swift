@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class NativeAdCollectionViewDelegate: NSObject, UICollectionViewDelegate {
 
@@ -22,7 +23,8 @@ public class NativeAdCollectionViewDelegate: NSObject, UICollectionViewDelegate 
 
 	public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		if let val = datasource.adStream.isAdAtposition(indexPath.row) {
-			val.openAdUrl(controller)
+            let opener = FullscreenBrowser(parentViewController: controller)
+			val.openAdUrl(opener)
 		} else {
 			return delegate.collectionView!(collectionView, didSelectItemAtIndexPath: indexPath)
 		}

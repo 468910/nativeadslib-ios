@@ -25,6 +25,7 @@ public class NativeAd: NSObject {
 	/// Preview url (itunes one)
 	private(set) public var destinationURL: NSURL?
 
+	private var originalClickUrl: NSURL!
 	/// PocketMedia's Offer ID the ad is linked to
 	public var offerId: UInt?
 	/// Ad Placement token the ad is linked to (via the ads request)
@@ -49,6 +50,7 @@ public class NativeAd: NSObject {
 
 		if let urlClick = adDictionary["click_url"] as? String, url = NSURL(string: urlClick) {
 			self.clickURL = url
+			self.originalClickUrl = self.clickURL
 		} else {
 			throw NativeAdsError.InvalidAdNoClickUrl
 		}
@@ -81,20 +83,11 @@ public class NativeAd: NSObject {
 	override public var debugDescription: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }
 
 	/**
-     Opens NativeAd in an closeable embedded webview.
-     - parentViewController: view controller where the webview will be attached to
-     */
-	@objc
-	public func openAdUrl(parentViewController: UIViewController) {
-		FullscreenBrowser(parentViewController: parentViewController).load(self)
-	}
-
-	/**
      Opens Native Ad in an View handled by the NativeAdOpener
      - opener: NativeAdOpener instance handling the opening of the view where the NativeAd will be displayed.
      */
 	@objc
-	public func openAdUrl(parentViewController: UIViewController, opener: NativeAdOpenerDelegate) {
+	public func openAdUrl(opener: NativeAdOpenerProtocol) {
 		opener.load(self)
 	}
 

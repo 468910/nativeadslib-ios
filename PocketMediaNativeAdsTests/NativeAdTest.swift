@@ -9,8 +9,31 @@
 import XCTest
 @testable import PocketMediaNativeAds
 
-class NativeAdTest: XCTestCase {
 
+public class MockOpener: NativeAdOpenerProtocol {
+    private (set) var loadCalled: Bool = false
+    
+    @objc
+    public func load(adUnit : NativeAd) {
+        loadCalled = true
+        adUnit.openAdUrlInForeground()
+    }
+    
+    @objc
+    public func didOpenBrowser(url: NSURL) {
+        
+    }
+}
+
+class NativeAdTest: XCTestCase {
+    let validData = [
+        "campaign_name": "tests",
+        "click_url": "http://PocketMedia.mobi/lovely/tests",
+        "campaign_description": "",
+        "id": "123",
+        "default_icon": ""
+    ]
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -135,20 +158,25 @@ class NativeAdTest: XCTestCase {
     }
 
     func testDescriptions() {
-        let data = [
-            "campaign_name": "tests",
-            "click_url": "http://PocketMedia.mobi/lovely/tests",
-            "campaign_description": "",
-            "id": "123",
-            "default_icon": ""
-        ]
         do {
-            let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
+            let ad = try NativeAd(adDictionary: validData, adPlacementToken: "none")
             XCTAssertTrue(ad.description == "NativeAd.tests: http://PocketMedia.mobi/lovely/tests")
             XCTAssertTrue(ad.debugDescription == "NativeAd.tests: http://PocketMedia.mobi/lovely/tests")
         }catch {
-            XCTFail("Exception thrown")
+            XCTFail("Unexpected exception thrown")
         }
+    }
+    
+    func testOpenAdUrl() {
+        do {
+            let ad = try NativeAd(adDictionary: validData, adPlacementToken: "none")
+            let opener = MockOpener()
+            ad.openAdUrl(opener)
+            XCTAssertTrue(opener.loadCalled)
+        }catch {
+            XCTFail("Unexpected exception thrown")
+        }
+        
     }
     
 }

@@ -163,7 +163,25 @@ class NativeAdsRequestTest: XCTestCase {
             
             XCTAssertTrue(result)
         }
+        //Incorrect
+        expectation = expectationWithDescription("NativeAdsRequest calls the delegate didReceiveError method due to the fact that the data sent is incomplete or incorrect json.")
+        delegate.didReceiveErrorExpectation = expectation
+        delegate.didReceiveErrorResult = false
         
+        nativeAdsrequest.receivedAds("[{}]".dataUsingEncoding(NSUTF8StringEncoding), response: nil, error: nil)
+        
+        waitForExpectationsWithTimeout(1) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+            
+            guard let result = delegate.didReceiveErrorResult else {
+                XCTFail("Expected delegate to be called")
+                return
+            }
+            
+            XCTAssertTrue(result)
+        }
         
         //Zero ads
         expectation = expectationWithDescription("NativeAdsRequest calls the delegate didReceiveError method due to the fact that the receivedAds has 0 offers to send back.")

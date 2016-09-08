@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  Used for loading Ads into an UIView.

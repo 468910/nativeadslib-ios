@@ -29,7 +29,7 @@ public class NativeAdCell: AbstractAdUnitTableViewCell {
 		installButton.titleLabel?.textAlignment = .Center
 		installButton.titleLabel?.minimumScaleFactor = 0.1
 
-		var color = UIColor(red: 17.0 / 255.0, green: 147.0 / 255.0, blue: 67.0 / 255.0, alpha: 1)
+		let color = UIColor(red: 17.0 / 255.0, green: 147.0 / 255.0, blue: 67.0 / 255.0, alpha: 1)
 		installButton.setTitleColor(color, forState: .Normal)
 		installButton.layer.borderColor = color.CGColor
 
