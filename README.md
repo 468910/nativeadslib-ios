@@ -47,7 +47,7 @@ For both methods the parameters used are:
 - placement token, to be generated in the [user dashboard](http://third-party.pmgbrain.com/)
 - delegate, to receive the even callbacks as the ads are ready
 
-
+[Docs](https://htmlpreview.github.io/?https://github.com/Pocketbrain/nativeadslib-ios/feature/new-structure-tests/docs/index.html)
 
 ### AdStream
 The Adstream easily places native ads in your UITableView or UICollectionView.

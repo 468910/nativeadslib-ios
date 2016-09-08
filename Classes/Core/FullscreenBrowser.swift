@@ -61,8 +61,6 @@ public class FullscreenBrowser: UIViewController, NativeAdOpenerProtocol {
             self.webViewDelegate = NativeAdsWebviewDelegate(delegate: self, webView: webView!)
         }
         
-        
-        
         webView!.delegate = self.webViewDelegate
         self.view = webView
         let blackView = UIView(frame: CGRect.init(x: 0, y: 0, width:  webView!.bounds.width, height: webView!.bounds.height))
@@ -80,7 +78,6 @@ public class FullscreenBrowser: UIViewController, NativeAdOpenerProtocol {
             self.webViewDelegate!.loadUrl(adUnit.clickURL.absoluteString, nativeAdUnit: adUnit)
             
         }else{
-            
             
             // If the originall view controller doesn't have an UINavigationController
             // we will display a new view
