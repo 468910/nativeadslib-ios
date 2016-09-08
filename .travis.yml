@@ -20,3 +20,8 @@ notifications:
   email:
     on_success: never
     on_failure: change
+addons:
+  code_climate:
+    repo_token: 80aa8c2a6b87fb244b168ca72e224474ab4f4bb33c4d6df63e4dd38596908839
+after_script:
+  - codeclimate-test-reporter
