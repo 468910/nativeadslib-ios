@@ -278,6 +278,7 @@ class NativeAdsRequestTest: XCTestCase {
         }
         
         if let value = getQueryStringParameter(url, param: "model") {
+            
             let expected = UIDevice.currentDevice().model.characters.split { $0 == " " }.map { String($0) }[0]
             if value != expected {
                 XCTFail("model should be a iPhone")

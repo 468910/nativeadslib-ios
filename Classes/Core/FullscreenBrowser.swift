@@ -86,7 +86,7 @@ public class FullscreenBrowser: UIViewController, NativeAdOpenerProtocol {
         
         // In case the original controller is attached to a UINavigationController, we use it
         // to push our new fullscreen browser
-        if(((self.originalViewController!.navigationController)) != nil){
+        if self.originalViewController!.navigationController != nil{
             
             if ((webView) != nil){
                 self.originalViewController!.navigationController!.pushViewController(self, animated: true)
