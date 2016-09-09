@@ -13,6 +13,7 @@
 import UIKit
 import Foundation
 
+
 struct Platform {
 	/**
       Utility method for deciding if using a real device or simulator

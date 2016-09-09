@@ -30,6 +30,8 @@ public class NativeAd: NSObject {
 	public var offerId: UInt?
 	/// Ad Placement token the ad is linked to (via the ads request)
 	public var adPlacementToken: String!
+    /// Images including hq_icon , banners and icon
+    public var images: [String: NSDictionary]?
 
 	/**
      Fallible Constructor
@@ -76,6 +78,10 @@ public class NativeAd: NSObject {
 				throw NativeAdsError.InvalidAdNoImage
 			}
 		}
+        
+        if let images = adDictionary["images"] as? [String: NSDictionary] {
+            self.images = images
+        }
 
 	}
 

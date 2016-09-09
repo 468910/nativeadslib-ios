@@ -19,7 +19,6 @@ public protocol NativeAdsConnectionDelegate {
     */
     func didReceiveError(error: NSError)
   
-  
     @available(*, unavailable, renamed="didReceiveResults")
     func didRecieveResults(nativeAds: [NativeAd])
   

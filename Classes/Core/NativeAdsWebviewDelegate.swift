@@ -72,13 +72,13 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 
 		// Ignore "Frame Load Interrupted" errors. Seen after app store links.
 		if (error!.code == 102) {
-			NSLog("FrameLoad Error supressed")
+			print("FrameLoad Error supressed")
 			return
 		}
 
 		if (checkIfAppStoreUrl(webView.request!)) {
+			NSLog("Could not open URL. Opening in system browser: \(webView.request?.URL?.absoluteString)")
 			self.openSystemBrowser(webView.request!.URL!)
-			NSLog("Could not open URL")
 		} else if loadStatusCheckTimer == nil {
 			notifyServerOfFalseRedirection()
 		}
@@ -91,6 +91,8 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 
 	public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
 
+		loadStatusCheckTimer?.invalidate()
+		loadStatusCheckTimer = nil
 		if (checkIfAppStoreUrl(request)) {
 			webView.stopLoading()
 			NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
@@ -100,26 +102,32 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 			return true
 		}
 
+		print("shouldStartLoadWithRequest")
+
 	}
 
 	public func checkIfAppStoreUrl(request: NSURLRequest) -> Bool {
+		print(request.URL!.absoluteString)
 
 		if let host = request.URL?.host {
 			if (host.hasPrefix("itunes.apple.com") || host.hasPrefix("appstore.com")) {
+				print("Has prefix itunes.apple.com or appstore.com")
 				return true
 			}
 		}
 		else if let finalUrl = request.URL?.absoluteString {
 			if (finalUrl.lowercaseString.hasPrefix("itms")) {
+				print("has prefix itms")
 				return true
 			}
 		}
+		print(request.URL!.absoluteString + " Returned false")
 		return false
 
 	}
 
 	public func webViewDidStartLoad(webView: UIWebView) {
-		NSLog("webViewDidStartLoad")
+		print("webViewDidStartLoad")
 		if (loadingView == nil) {
 			self.createLoadingIndicator(webView)
 		}
@@ -145,11 +153,13 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 	@objc
 	private func notifyServerOfFalseRedirection() {
 
+		NSLog("Notifying wrong redirect.")
+
 		let url = NSURL(string: NativeAdsConstants.NativeAds.notifyBadAdsUrl)
+
 		let req = NSMutableURLRequest(URL: url!)
 
 		let dataBody = constructDataBodyForNotifyingServerOfFalseRedirection()
-		NSLog("Full databody: " + dataBody)
 
 		req.HTTPMethod = "POST"
 		req.HTTPBody = dataBody.dataUsingEncoding(NSUTF8StringEncoding);
@@ -158,19 +168,20 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 			data, response, error in
 			if let httpResponse = response as? NSHTTPURLResponse {
 				if httpResponse.statusCode != 200 {
-					NSLog("Error notifying the server: \(response)")
+					print("response was not 200: \(response)")
 					return
 				}
 			}
 
 			if error != nil {
-				NSLog("\(error.debugDescription)")
+				print(error!)
 			}
 
 		}
 		dataTask.resume()
 
-		redirectToOfferEngine()
+		// redirectToOfferEngine()
+		openSystemBrowser((self.webView?.request?.URL)!)
 
 	}
 
@@ -184,14 +195,14 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 	}
 
 	private func redirectToOfferEngine() {
-		NSLog("Open System Browser with Redirection Url")
+		print("Open System Browser with Redirection Url")
 		let string = NativeAdsConstants.NativeAds.redirectionOfferEngineUrl
 		let validString = (string.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
 		let url = NSURL(string: validString)
 		let request = NSURLRequest(URL: url!)
 		self.webView!.stopLoading()
 		self.webView!.loadRequest(request)
-		NSLog("Done")
+		print("Done")
 	}
 
 	/**

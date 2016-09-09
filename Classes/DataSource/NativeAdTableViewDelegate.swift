@@ -21,16 +21,14 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 		self.datasource = datasource
 		self.controller = controller
 		self.delegate = delegate
-
 		NSLog("Screen width: \(UIScreen.mainScreen().bounds.size.width) ")
-
 	}
 
 	// Delegate
 	@objc
 	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		if let val = datasource!.adStream!.isAdAtposition(indexPath) {
-			val.openAdUrl(controller)
+			val.openAdUrl(FullscreenBrowser(parentViewController: controller))
 		} else {
 			return delegate.tableView!(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: datasource!.adStream!.normalize(indexPath.row), inSection: indexPath.section))
 		}
