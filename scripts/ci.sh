@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 set -e
-set -o pipefail && xcodebuild -verbose -workspace PocketMediaNativeAds.xcworkspace -scheme "PocketMediaNativeAdsTests" -destination "platform=iOS Simulator,name=iPhone 6" clean test
+set -o pipefail && xcodebuild -verbose -workspace PocketMediaNativeAds.xcworkspace -scheme "PocketMediaNativeAdsTests" -sdk iphonesimulator9.3 test

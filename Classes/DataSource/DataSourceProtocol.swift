@@ -11,5 +11,4 @@ import Foundation
 public protocol DataSourceProtocol {
 	func onUpdateDataSource()
 	func numberOfElements() -> Int
-
 }
