@@ -17,7 +17,7 @@ public class NativeAdTableView : UITableView {
       
       if let indexPath = super.indexPathForSelectedRow {
        
-        var normalized = NativeAdStream.adStreamRegister[self.objectName]!.normalize(indexPath.row)
+        var normalized = NativeAdStream.adStreamRegister[self.objectName]!.normalize(indexPath)
        return NSIndexPath(forRow: normalized, inSection: indexPath.section)
       
       }else {

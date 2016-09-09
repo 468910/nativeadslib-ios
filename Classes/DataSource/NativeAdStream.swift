@@ -150,6 +150,11 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	}
 
 	@objc
+	public func didReceiveError(error: NSError) {
+
+	}
+
+	@objc
 	public func didReceiveResults(nativeAds: [NativeAd]) {
 
 		if (self.adMargin < 1 && self.adMargin != nil) {
@@ -240,27 +245,9 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 		}
 	}
 
-	func normalize(indexRow: Int) -> Int {
-		var adsInserted = 0
-		var adsCount = ads.count
-
-		if (adsCount == 0 || indexRow == 0 || firstAdPosition > indexRow) {
-
-			NSLog("Normalized position = position \(indexRow) (original was \(indexRow))")
-
-			return indexRow
-
-		} else {
-
-			var temp = min(((indexRow - firstAdPosition!) / self.adMargin!) + 1, adsCount)
-			adsInserted = min(((indexRow - firstAdPosition!) / self.adMargin!) + 1, adsCount)
-		}
-		/*
-		 if (debugModeEnabled) {
-		 NSLog("Normalized position = position - adsInserted \(position - adsInserted) (original was \(position)")
-		 }*/
-
-		return indexRow - adsInserted
+	func normalize(indexRow: NSIndexPath) -> Int {
+		var pos = IndexRowNormalizer.getTruePosistionForIndexPath(indexRow, datasource: datasource as! NativeAdTableViewDataSourceProtocol)
+		return IndexRowNormalizer.normalize(pos, firstAdPosition: firstAdPosition!, adMargin: adMargin!, adsCount: ads.count)
 
 	}
 
@@ -272,32 +259,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	}
 
 	func getCountForSection(numOfRowsInSection: Int, totalRowsInSection: Int) -> Int {
-		if (debugModeEnabled) {
-			print("numOfRowsInSection \(numOfRowsInSection) totalRowsInSection \(totalRowsInSection)")
-		}
-
-		guard numOfRowsInSection > 0 &&
-		totalRowsInSection > firstAdPosition!
-		&& ads.count > 0 else {
-			return numOfRowsInSection
-		}
-
-		var numOfAds = getAdsForRange(numOfRowsInSection - totalRowsInSection...totalRowsInSection)
-		var adsInPreviousSections = getAdsForRange(0...totalRowsInSection - numOfRowsInSection)
-
-		return min(numOfAds, ads.count - adsInPreviousSections) + numOfRowsInSection
-
-	}
-    
-    @objc
-    public func didReceiveError(error: NSError) {
-        NSLog("Error receiving ads.")
-    }
-
-	private func getAdsForRange(range: Range<Int>) -> Int {
-		return range.filter {
-			($0 % adMargin! == 0) && (!(0...firstAdPosition! ~= $0))
-		}.count + (range.contains(firstAdPosition!) ? 1 : 0)
+		return IndexRowNormalizer.getCountForSection(numOfRowsInSection, totalRowsInSection: totalRowsInSection, firstAdPosition: firstAdPosition!, adMargin: adMargin!, adsCount: ads.count)
 
 	}
 
@@ -344,7 +306,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 			var request = NativeAdsRequest(adPlacementToken: affiliateId, delegate: self)
 			request.debugModeEnabled = self.debugModeEnabled
 
-			request.retrieveAds(limit, imageType: EImageType.allImages)
+			request.retrieveAds(limit, imageType: (self.adUnitType == AdUnitType.Big ? EImageType.banner : EImageType.allImages))
 		}
 
 	}

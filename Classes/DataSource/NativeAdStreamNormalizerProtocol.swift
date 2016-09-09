@@ -10,5 +10,5 @@ import Foundation
 
 protocol NativeAdStreamNormalizerProtocol {
   
-  func normalize(indexRow: Int) -> Int
+  func normalize(indexRow: NSIndexPath) -> Int
 }

@@ -12,7 +12,10 @@ import Foundation
 public protocol DataSourceProtocol : DatasourceNormalizerProtocol {
 	func onUpdateDataSource()
 	func numberOfElements() -> Int
-    func getTruePosistionInDataSource(indexPath : NSIndexPath) -> Int
     func attachAdStream(adStream : NativeAdStream)
 
+}
+
+public protocol NativeAdTableViewDataSourceProtocol : DataSourceProtocol {
+    func getNumberOfRowsInSection(numberOfRowsInSection section: Int) -> Int
 }

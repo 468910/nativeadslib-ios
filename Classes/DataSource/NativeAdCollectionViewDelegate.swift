@@ -6,8 +6,8 @@
 //
 //
 
-import UIKit
 import Foundation
+import UIKit
 
 public class NativeAdCollectionViewDelegate: NSObject, UICollectionViewDelegate {
 

@@ -63,7 +63,7 @@ public class NativeAdCollectionViewDataSource: NSObject, UICollectionViewDataSou
 			return cell
 		} else {
 			NSLog("This is a normal Item before normalization %d", indexPath.row)
-			return datasource!.collectionView(collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: adStream.normalize(indexPath.row), inSection: 0))
+			return datasource!.collectionView(collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: adStream.normalize(indexPath), inSection: 0))
 		}
 	}
 
