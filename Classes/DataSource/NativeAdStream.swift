@@ -245,8 +245,9 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 		}
 	}
 
+	// TODO: Maybe this can be improved after futher testing
 	func normalize(indexRow: NSIndexPath) -> Int {
-		var pos = IndexRowNormalizer.getTruePosistionForIndexPath(indexRow, datasource: datasource as! NativeAdTableViewDataSourceProtocol)
+		let pos = IndexRowNormalizer.getTruePosistionForIndexPath(indexRow, datasource: datasource as! NativeAdTableViewDataSourceProtocol)
 		return IndexRowNormalizer.normalize(pos, firstAdPosition: firstAdPosition!, adMargin: adMargin!, adsCount: ads.count)
 
 	}
@@ -280,7 +281,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	 - limit: Limit on how many native ads are to be retrieved.
 	 */
 	@objc public func requestAds(affiliateId: String, limit: UInt) {
-		var source = datasource as! NativeAdTableViewDataSource
+		let source = datasource as! NativeAdTableViewDataSource
 
 		if (!ads.isEmpty) {
 			ads.removeAll()
@@ -294,7 +295,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 				self.datasource?.onUpdateDataSource()
 				return
 			}
-			var numOfElements = self.datasource!.numberOfElements()
+			let numOfElements = self.datasource!.numberOfElements()
 			self.ads = [Int: NativeAd]()
 			self.tempAds = [NativeAd]()
 			self.datasource?.onUpdateDataSource()
@@ -303,7 +304,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 				NSLog("Requesting ads (\(limit)) for affiliate id \(affiliateId)")
 			}
 
-			var request = NativeAdsRequest(adPlacementToken: affiliateId, delegate: self)
+			let request = NativeAdsRequest(adPlacementToken: affiliateId, delegate: self)
 			request.debugModeEnabled = self.debugModeEnabled
 
 			request.retrieveAds(limit, imageType: (self.adUnitType == AdUnitType.Big ? EImageType.banner : EImageType.allImages))

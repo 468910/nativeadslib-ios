@@ -16,52 +16,49 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	public var tableView: UITableView
 	public var delegate: NativeAdTableViewDelegate?
 	public var controller: UIViewController
-    weak public var adStream: NativeAdStream?
-    public typealias completionBlock = () ->  ()
-    public var completion : completionBlock?
-    public var oldDelegate : UITableViewDelegate?
+	weak public var adStream: NativeAdStream?
+	public typealias completionBlock = () -> ()
+	public var completion: completionBlock?
+	public var oldDelegate: UITableViewDelegate?
 
 	public func onUpdateDataSource() {
 		tableView.reloadData()
 	}
 
 	public func numberOfElements() -> Int {
-      var numOfRows = 0
-      for i in 0...max(0, datasource.numberOfSectionsInTableView!(tableView) - 1){
-        numOfRows += datasource.tableView(tableView, numberOfRowsInSection: i)
-      }
-      
-      return numOfRows
+		var numOfRows = 0
+		for i in 0...max(0, datasource.numberOfSectionsInTableView!(tableView) - 1) {
+			numOfRows += datasource.tableView(tableView, numberOfRowsInSection: i)
+		}
+
+		return numOfRows
 	}
-  
-  public func getTruePosistionInDataSource(indexPath : NSIndexPath) -> Int {
-      return  IndexRowNormalizer.getTruePosistionForIndexPath(indexPath, datasource: self)
-   }
-  
+
+	// TODO: Maybe this can be improved after futher testing
+	public func getTruePosistionInDataSource(indexPath: NSIndexPath) -> Int {
+		return IndexRowNormalizer.getTruePosistionForIndexPath(indexPath, datasource: self)
+	}
 
 	func handleRefresh(refreshControl: UIRefreshControl) {
 
-  		refreshControl.endRefreshing()
+		refreshControl.endRefreshing()
 	}
-  
-  public func attachAdStream(adStream : NativeAdStream){
-    self.adStream = adStream
-    tableView.reloadData()
-  }
-  
 
-   deinit{
-     NativeAdStream.viewRegister = NativeAdStream.viewRegister.filter{$0 != String(ObjectIdentifier(tableView))}
-     self.tableView.dataSource = datasource
-     self.tableView.delegate = oldDelegate
-    
-   }
+	public func attachAdStream(adStream: NativeAdStream) {
+		self.adStream = adStream
+		tableView.reloadData()
+	}
+
+	deinit {
+		NativeAdStream.viewRegister = NativeAdStream.viewRegister.filter { $0 != String(ObjectIdentifier(tableView)) }
+		self.tableView.dataSource = datasource
+		self.tableView.delegate = oldDelegate
+
+	}
 
 	@objc
 	public required init(controller: UIViewController, tableView: UITableView, adStream: NativeAdStream) {
-      
-     
-      
+
 		self.controller = controller
 		self.adStream = adStream
 
@@ -69,171 +66,158 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 		self.tableView = tableView
 		self.tableView.rowHeight = UITableViewAutomaticDimension
 		self.tableView.estimatedRowHeight = 180.0
-      
-      
 
 		super.init()
-      
-        self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: tableView.delegate!)
-		
-      
-        self.oldDelegate = tableView.delegate!
+
+		self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: tableView.delegate!)
+
+		self.oldDelegate = tableView.delegate!
 		tableView.delegate = self.delegate
 		tableView.dataSource = self
 
 		// Check the kind of cell to use
-      
-      switch(adStream.adUnitType){
-      case .Custom :
-        if (tableView.dequeueReusableCellWithIdentifier("CustomAdCell") == nil) {
-          let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-          tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
-          adStream.adUnitType = .Standard
-        }
-        break
-      case .Big:
-        if (tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") == nil) {
-          let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-          tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
-        }
-        break
-      default:
-        if (tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") == nil){
-          let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-          tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
-        }
-        break
-        
-      }
-      
-      
+
+		switch (adStream.adUnitType) {
+		case .Custom:
+			if (tableView.dequeueReusableCellWithIdentifier("CustomAdCell") == nil) {
+				let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+				tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
+				adStream.adUnitType = .Standard
+			}
+			break
+		case .Big:
+			if (tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") == nil) {
+				let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+				tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
+			}
+			break
+		default:
+			if (tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") == nil) {
+				let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+				tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
+			}
+			break
+
+		}
 
 	}
-  
-  
-  public func getAdCellForTableView(nativeAd : NativeAd) -> UITableViewCell {
-    
-    switch(adStream!.adUnitType){
-    case .Custom:
-      let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as! NativeAdCell
-      cell.configureAdView(nativeAd)
-      return cell;
-      break
-    case .Big:
-      let cell: AbstractBigAdUnitTableViewCell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
-      cell.configureAdView(nativeAd)
-      return cell;
-      break
-    default:
-      let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
-      cell.configureAdView(nativeAd)
-      return cell;
-      break
-    }
-  }
-  
+
+	public func getAdCellForTableView(nativeAd: NativeAd) -> UITableViewCell {
+
+		switch (adStream!.adUnitType) {
+		case .Custom:
+			let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as! NativeAdCell
+			cell.configureAdView(nativeAd)
+			return cell;
+			break
+		case .Big:
+			let cell: AbstractBigAdUnitTableViewCell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
+			cell.configureAdView(nativeAd)
+			return cell;
+			break
+		default:
+			let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
+			cell.configureAdView(nativeAd)
+			return cell;
+			break
+		}
+	}
 
 	// Data Source
 	@objc
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      if((completion) != nil){
-        completion!()
-        print("Completion has been invoked")
-        completion = nil
-      }
-      
+		if ((completion) != nil) {
+			completion!()
+			print("Completion has been invoked")
+			completion = nil
+		}
+
 		if let val = adStream!.isAdAtposition(indexPath) {
 			return getAdCellForTableView(val)
 		} else {
-            var temp = adStream!.normalize(indexPath)
+			var temp = adStream!.normalize(indexPath)
 			return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream!.normalize(indexPath), inSection: indexPath.section))
 		}
 
 	}
-  
-  public func getNumberOfRowsInSection(numberOfRowsInSection section: Int) -> Int {
-    return tableView(tableView, numberOfRowsInSection: section)
-  }
 
-  
+	public func getNumberOfRowsInSection(numberOfRowsInSection section: Int) -> Int {
+		return tableView(tableView, numberOfRowsInSection: section)
+	}
 
 	@objc
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      var totalRows = 0
-      
-      for i in (0...section){
-        var rowsInSection = datasource.tableView(tableView, numberOfRowsInSection: i)
-        totalRows += rowsInSection
-      }
-      
-        var temp = adStream!.getCountForSection(datasource.tableView(tableView, numberOfRowsInSection: section), totalRowsInSection: totalRows )
-        return temp
-  	}
-  
-  
-  public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    if let string = datasource.tableView?(tableView, titleForHeaderInSection: section) {
-      return string
-    } else  {
-      return nil
-    }
-  }
-  
-  public func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-    if let string =  datasource.tableView?(tableView, titleForFooterInSection: section){
-      return string
-    } else  {
-      return nil
-    }
-  }
-  
-  public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    if(respondsToSelector("tableView:canEditRowAtIndexPath")){
-      return datasource.tableView!(tableView, canEditRowAtIndexPath: indexPath)
-    } else  {
-      return true
-    }
-  }
+		var totalRows = 0
 
-  public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    if(respondsToSelector("tableView:canMoveRowAtIndexPath")){
-      return datasource.tableView!(tableView, canEditRowAtIndexPath: indexPath)
-    } else  {
-      return true
-    }
-  }
-  
-  public func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-    if(respondsToSelector("tableView:sectionForSectionIndexTitle")){
-      return datasource.tableView!(tableView, sectionForSectionIndexTitle: title, atIndex: index)
-    } else  {
-      return 0
-    }
-  }
-  
-  public func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-    if(respondsToSelector("tableView:moveRowAtIndexPath")){
-      datasource.tableView?(tableView, moveRowAtIndexPath: sourceIndexPath, toIndexPath: destinationIndexPath)
-    } else  {
-      return
-    }
-  }
-  
-  public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-      datasource.tableView?(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
-  }
- 
-  
-   @objc
-   public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    if let numOfSectionsFunc = datasource.numberOfSectionsInTableView {
-      var temp = numOfSectionsFunc(tableView)
-      return numOfSectionsFunc(tableView)
-    }else {
-      return 0
-    }
-   }
-  
+		for i in (0...section) {
+			var rowsInSection = datasource.tableView(tableView, numberOfRowsInSection: i)
+			totalRows += rowsInSection
+		}
 
+		var temp = adStream!.getCountForSection(datasource.tableView(tableView, numberOfRowsInSection: section), totalRowsInSection: totalRows)
+		return temp
+	}
+
+	public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		if let string = datasource.tableView?(tableView, titleForHeaderInSection: section) {
+			return string
+		} else {
+			return nil
+		}
+	}
+
+	public func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+		if let string = datasource.tableView?(tableView, titleForFooterInSection: section) {
+			return string
+		} else {
+			return nil
+		}
+	}
+
+	public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+		if (respondsToSelector("tableView:canEditRowAtIndexPath")) {
+			return datasource.tableView!(tableView, canEditRowAtIndexPath: indexPath)
+		} else {
+			return true
+		}
+	}
+
+	public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+		if (respondsToSelector("tableView:canMoveRowAtIndexPath")) {
+			return datasource.tableView!(tableView, canEditRowAtIndexPath: indexPath)
+		} else {
+			return true
+		}
+	}
+
+	public func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+		if (respondsToSelector("tableView:sectionForSectionIndexTitle")) {
+			return datasource.tableView!(tableView, sectionForSectionIndexTitle: title, atIndex: index)
+		} else {
+			return 0
+		}
+	}
+
+	public func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+		if (respondsToSelector("tableView:moveRowAtIndexPath")) {
+			datasource.tableView?(tableView, moveRowAtIndexPath: sourceIndexPath, toIndexPath: destinationIndexPath)
+		} else {
+			return
+		}
+	}
+
+	public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+		datasource.tableView?(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
+	}
+
+	@objc
+	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		if let numOfSectionsFunc = datasource.numberOfSectionsInTableView {
+			var temp = numOfSectionsFunc(tableView)
+			return numOfSectionsFunc(tableView)
+		} else {
+			return 0
+		}
+	}
 
 }
