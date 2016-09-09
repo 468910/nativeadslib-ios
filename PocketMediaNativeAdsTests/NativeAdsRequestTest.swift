@@ -236,7 +236,7 @@ class NativeAdsRequestTest: XCTestCase {
         var nativeAdsrequest = NativeAdsRequest(adPlacementToken: "test", delegate: nil)
         let placement_key = "test123"
         var url = nativeAdsrequest.getNativeAdsURL(placement_key, limit: 123)
-        
+        NSLog(url)
         if let value = getQueryStringParameter(url, param: "output") {
             
             if value != "json" {
