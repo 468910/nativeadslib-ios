@@ -59,7 +59,6 @@
 		277F1C501D7EF59200E14A68 /* ReferenceArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F1C4F1D7EF59200E14A68 /* ReferenceArray.swift */; };
 		27811D931D82FAA40002CB70 /* DatasourceNormalizerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E0E611D82DE9A00207306 /* DatasourceNormalizerProtocol.swift */; };
 		27811D941D82FAA40002CB70 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E0E621D82DE9A00207306 /* DataSourceProtocol.swift */; };
-		27811D951D82FAA40002CB70 /* NativeAdCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E0E631D82DE9A00207306 /* NativeAdCollectionViewDataSource.swift */; };
 		27811D961D82FAA40002CB70 /* NativeAdCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E0E641D82DE9A00207306 /* NativeAdCollectionViewDelegate.swift */; };
 		27811D971D82FAA40002CB70 /* NativeAdStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E0E651D82DE9A00207306 /* NativeAdStream.swift */; };
 		27811D981D82FAA40002CB70 /* NativeAdStreamNormalizerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E0E661D82DE9A00207306 /* NativeAdStreamNormalizerProtocol.swift */; };
@@ -73,6 +72,7 @@
 		27811DA01D82FAAE0002CB70 /* NativeAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E0E581D82DE7B00207306 /* NativeAdCell.swift */; };
 		27811DA11D82FAAE0002CB70 /* NativeAdCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E0E591D82DE7B00207306 /* NativeAdCollectionCell.swift */; };
 		27811DA21D82FAAE0002CB70 /* NativeAdCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E0E5A1D82DE7B00207306 /* NativeAdCollectionViewLayout.swift */; };
+		27811DA31D82FBF10002CB70 /* NativeAdCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E0E631D82DE9A00207306 /* NativeAdCollectionViewDataSource.swift */; };
 		27DA97C21D80512F0081CE2E /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA97C11D80512F0081CE2E /* URLSessionProtocol.swift */; };
 		E042DF46AAED75A827419C28 /* Pods_PocketMediaNativeAdsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9D20E7E918E03CE0E2E8A7 /* Pods_PocketMediaNativeAdsTests.framework */; };
 		F00149CA0CC6FEE35516B7A7 /* Pods_PocketMediaNativeAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676A1D9F1F252F103E7FDAA5 /* Pods_PocketMediaNativeAds.framework */; };
@@ -551,7 +551,6 @@
 				27811DA11D82FAAE0002CB70 /* NativeAdCollectionCell.swift in Sources */,
 				27811D941D82FAA40002CB70 /* DataSourceProtocol.swift in Sources */,
 				27811DA01D82FAAE0002CB70 /* NativeAdCell.swift in Sources */,
-				27811D951D82FAA40002CB70 /* NativeAdCollectionViewDataSource.swift in Sources */,
 				27811D931D82FAA40002CB70 /* DatasourceNormalizerProtocol.swift in Sources */,
 				27811D9E1D82FAAE0002CB70 /* AbstractAdUnitUIView.swift in Sources */,
 				2723A50C1D7FFD6000CB07E2 /* NativeAdsRequestTest.swift in Sources */,
@@ -571,6 +570,7 @@
 				27811D9F1D82FAAE0002CB70 /* AbstractBigAdUnitTableViewCell.swift in Sources */,
 				27811D9C1D82FAA40002CB70 /* NativeAdViewBinderProtocol.swift in Sources */,
 				273A4C351D81AF2500513F81 /* FullscreenBrowserTest.swift in Sources */,
+				27811DA31D82FBF10002CB70 /* NativeAdCollectionViewDataSource.swift in Sources */,
 				27811D9A1D82FAA40002CB70 /* NativeAdTableViewDataSource.swift in Sources */,
 				273A4C211D81AB9F00513F81 /* NativeAdsError.swift in Sources */,
 				273A4C271D81AB9F00513F81 /* NativeAdsWebviewDelegate.swift in Sources */,
