@@ -236,7 +236,7 @@ class NativeAdsRequestTest: XCTestCase {
         var nativeAdsrequest = NativeAdsRequest(adPlacementToken: "test", delegate: nil)
         let placement_key = "test123"
         var url = nativeAdsrequest.getNativeAdsURL(placement_key, limit: 123)
-        NSLog(url)
+        
         if let value = getQueryStringParameter(url, param: "output") {
             
             if value != "json" {
@@ -278,8 +278,8 @@ class NativeAdsRequestTest: XCTestCase {
         }
         
         if let value = getQueryStringParameter(url, param: "model") {
-            
-            if value != "iPhone" {
+            let expected = UIDevice.currentDevice().model.characters.split { $0 == " " }.map { String($0) }[0]
+            if value != expected {
                 XCTFail("model should be a iPhone")
             }
             
