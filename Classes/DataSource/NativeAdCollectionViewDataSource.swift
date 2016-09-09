@@ -25,6 +25,17 @@ public class NativeAdCollectionViewDataSource: NSObject, UICollectionViewDataSou
 	public func numberOfElements() -> Int {
 		return datasource!.collectionView(collectionView!, numberOfItemsInSection: 0)
 	}
+  
+  public func getTruePosistionInDataSource(indexPath: NSIndexPath) -> Int {
+    return 1
+  }
+  
+  public func detachFromView() {
+    
+  }
+  
+  public func attachAdStream(adStream: NativeAdStream) {
+  }
 
 	required public init(controller: UIViewController, collectionView: UICollectionView, adStream: NativeAdStream) {
 		self.datasource = collectionView.dataSource
@@ -44,7 +55,7 @@ public class NativeAdCollectionViewDataSource: NSObject, UICollectionViewDataSou
 	}
 
 	public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		if let val = adStream.isAdAtposition(indexPath.row) {
+		if let val = adStream.isAdAtposition(indexPath) {
 			NSLog("Insert AD at index %d", indexPath.row)
 			let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NativeAdCollectionCell", forIndexPath: indexPath) as! NativeAdCollectionCell
 

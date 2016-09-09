@@ -14,19 +14,19 @@ import Haneke
  Standard AdUnit for CollectionView
  **/
 
-public class NativeAdCollectionCell : UICollectionViewCell, NativeAdViewBinderProtocol  {
-  @IBOutlet weak var adImage : UIImageView!
-  
-   public override func awakeFromNib() {
-    super.awakeFromNib()
-   }
-  
-  public func configureAdView(nativeAd: NativeAd) {
-      self.adImage.hnk_setImageFromURL(nativeAd.campaignImage)
-  }
-  
-  func configureAdView(nativeAd: NativeAd, viewController: UIViewController) {
-    abort()
-  }
-  
+public class NativeAdCollectionCell: UICollectionViewCell, NativeAdViewBinderProtocol {
+	@IBOutlet weak var adImage: UIImageView!
+
+	public override func awakeFromNib() {
+		super.awakeFromNib()
+	}
+
+	public func configureAdView(nativeAd: NativeAd) {
+		self.adImage.hnk_setImageFromURL(nativeAd.campaignImage)
+	}
+
+	func configureAdView(nativeAd: NativeAd, viewController: UIViewController) {
+		abort()
+	}
+
 }

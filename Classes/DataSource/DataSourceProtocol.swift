@@ -8,7 +8,11 @@
 
 import Foundation
 
-public protocol DataSourceProtocol {
+@objc
+public protocol DataSourceProtocol : DatasourceNormalizerProtocol {
 	func onUpdateDataSource()
 	func numberOfElements() -> Int
+    func getTruePosistionInDataSource(indexPath : NSIndexPath) -> Int
+    func attachAdStream(adStream : NativeAdStream)
+
 }
