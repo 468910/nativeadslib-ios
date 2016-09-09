@@ -2,3 +2,4 @@ coverage:
   ignore:          # files and folders that will be removed during processing
     - "Pods/*"
     - "Example/Pods/*"
+    - "PocketMediaNativeAdsTests/*"

@@ -20,10 +20,10 @@ notifications:
   slack:
     rooms:
       - pocketmedia:8WLnvDK1qVpv3IOnGJk7YEie#mobileapps
-    on_success: change
+    on_success: never
     on_failure: change
   email:
-    on_success: change
+    on_success: never
     on_failure: change
 #after_script:
 #  - CODECLIMATE_REPO_TOKEN=80aa8c2a6b87fb244b168ca72e224474ab4f4bb33c4d6df63e4dd38596908839 codeclimate-test-reporter
