@@ -257,8 +257,7 @@ class FullscreenBrowserTest: XCTestCase {
         }
         
     }
-    
-    
+
     func testWillMoveToParentViewController() {
         class MockedUIWebView : UIWebView {
             internal var stopLoadingCalled: Bool = false
