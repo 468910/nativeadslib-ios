@@ -53,7 +53,6 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 
 				if (url.scheme != "http" &&
 					url.scheme != "https") {
-
 						let modifiedUrl: NSURL = NSURL(string: url.absoluteString.stringByReplacingOccurrencesOfString("itms-apps", withString: "http"))!
 						return modifiedUrl
 				}
@@ -101,9 +100,6 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 		} else {
 			return true
 		}
-
-		print("shouldStartLoadWithRequest")
-
 	}
 
 	public func checkIfAppStoreUrl(request: NSURLRequest) -> Bool {
@@ -140,15 +136,23 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 	}
 
 	@objc
+    @available(*, deprecated, message="use loadUrl:NativeAd instead (no urlString argument required)")
 	public func loadUrl(urlString: String, nativeAdUnit: NativeAd) {
-
 		self.nativeAdUnit = nativeAdUnit
 		let url = nativeAdUnit.clickURL
 		let request = NSURLRequest(URL: url!)
 		self.webView!.loadRequest(request)
 		NSLog("webview LoadUrl Exited")
-
 	}
+    
+    @objc
+    public func loadUrl(nativeAdUnit: NativeAd) {
+        self.nativeAdUnit = nativeAdUnit
+        let url = nativeAdUnit.clickURL
+        let request = NSURLRequest(URL: url!)
+        self.webView!.loadRequest(request)
+        NSLog("webview LoadUrl Exited")
+    }
 
 	@objc
 	private func notifyServerOfFalseRedirection() {

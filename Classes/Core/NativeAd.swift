@@ -15,7 +15,7 @@ import UIKit
 public class NativeAd: NSObject {
 
 	/// Name of the ad, the title to be displayed.
-    private(set) public var campaignName: String!
+	private(set) public var campaignName: String!
 	/// Long description of the ad, with a description
 	private(set) public var campaignDescription: String!
 	/// URL to be opened when the user interacts with the ad
@@ -30,8 +30,8 @@ public class NativeAd: NSObject {
 	public var offerId: UInt?
 	/// Ad Placement token the ad is linked to (via the ads request)
 	public var adPlacementToken: String!
-    /// Images including hq_icon , banners and icon
-    public var images: [String: NSDictionary]?
+	/// Images including hq_icon , banners and icon
+	public var images: [String: NSDictionary]?
 
 	/**
      Fallible Constructor
@@ -63,11 +63,11 @@ public class NativeAd: NSObject {
 			self.campaignDescription = ""
 		}
 
-        if let offerIdString = adDictionary["id"] as? String, offerId = UInt(offerIdString) {
-            self.offerId = offerId
-        } else {
-            throw NativeAdsError.InvalidAdNoId
-        }
+		if let offerIdString = adDictionary["id"] as? String, offerId = UInt(offerIdString) {
+			self.offerId = offerId
+		} else {
+			throw NativeAdsError.InvalidAdNoId
+		}
 
 		if let urlImage = adDictionary["default_icon"] as? String, url = NSURL(string: urlImage) {
 			self.campaignImage = url
@@ -78,10 +78,12 @@ public class NativeAd: NSObject {
 				throw NativeAdsError.InvalidAdNoImage
 			}
 		}
-        
-        if let images = adDictionary["images"] as? [String: NSDictionary] {
-            self.images = images
-        }
+
+//		if let images = adDictionary["images"] as? [String: NSDictionary] {
+//			self.images = images
+//		} else {
+//			throw NativeAdsError.InvalidAdNoImages
+//		}
 
 	}
 

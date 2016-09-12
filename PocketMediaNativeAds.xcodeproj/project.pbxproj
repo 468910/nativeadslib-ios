@@ -77,6 +77,7 @@
 		27A2A8DD1D830D7C00BE8DFD /* NativeAdTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2A8DA1D830D7C00BE8DFD /* NativeAdTest.swift */; };
 		27A2A8DF1D830D8600BE8DFD /* IndexRowNormalizerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2A8DE1D830D8600BE8DFD /* IndexRowNormalizerTest.swift */; };
 		27DA97C21D80512F0081CE2E /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA97C11D80512F0081CE2E /* URLSessionProtocol.swift */; };
+		27F57AC91D86B55C000438CE /* fatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F57AC81D86B55C000438CE /* fatalError.swift */; };
 		E042DF46AAED75A827419C28 /* Pods_PocketMediaNativeAdsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9D20E7E918E03CE0E2E8A7 /* Pods_PocketMediaNativeAdsTests.framework */; };
 		F00149CA0CC6FEE35516B7A7 /* Pods_PocketMediaNativeAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676A1D9F1F252F103E7FDAA5 /* Pods_PocketMediaNativeAds.framework */; };
 /* End PBXBuildFile section */
@@ -144,6 +145,7 @@
 		27A2A8DA1D830D7C00BE8DFD /* NativeAdTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdTest.swift; path = Core/NativeAdTest.swift; sourceTree = "<group>"; };
 		27A2A8DE1D830D8600BE8DFD /* IndexRowNormalizerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IndexRowNormalizerTest.swift; path = DataSource/IndexRowNormalizerTest.swift; sourceTree = "<group>"; };
 		27DA97C11D80512F0081CE2E /* URLSessionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionProtocol.swift; path = Classes/Core/URLSessionProtocol.swift; sourceTree = "<group>"; };
+		27F57AC81D86B55C000438CE /* fatalError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = fatalError.swift; path = Helpers/fatalError.swift; sourceTree = "<group>"; };
 		561CDC8D4F990D6251670CDA /* Pods-PocketMediaNativeAdsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAdsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAdsTests/Pods-PocketMediaNativeAdsTests.release.xcconfig"; sourceTree = "<group>"; };
 		676A1D9F1F252F103E7FDAA5 /* Pods_PocketMediaNativeAds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A256E8C2FD59B1F0317375 /* Pods-PocketMediaNativeAds.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds/Pods-PocketMediaNativeAds.release.xcconfig"; sourceTree = "<group>"; };
@@ -173,9 +175,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		270738B11D86B5210096203A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				27F57AC81D86B55C000438CE /* fatalError.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		2723A5001D7FFD1F00CB07E2 /* PocketMediaNativeAdsTests */ = {
 			isa = PBXGroup;
 			children = (
+				270738B11D86B5210096203A /* Helpers */,
 				27A2A8D51D830CEF00BE8DFD /* DataSource */,
 				2791A0771D7F04CF00A337E7 /* Core */,
 				2723A5031D7FFD1F00CB07E2 /* Info.plist */,
@@ -558,6 +569,7 @@
 				271FF3A71D8303B2005BA891 /* DatasourceNormalizerProtocol.swift in Sources */,
 				27811DA21D82FAAE0002CB70 /* NativeAdCollectionViewLayout.swift in Sources */,
 				271FF3AD1D8303B2005BA891 /* NativeAdStreamNormalizerProtocol.swift in Sources */,
+				27F57AC91D86B55C000438CE /* fatalError.swift in Sources */,
 				27811DA11D82FAAE0002CB70 /* NativeAdCollectionCell.swift in Sources */,
 				27811DA01D82FAAE0002CB70 /* NativeAdCell.swift in Sources */,
 				27811D9E1D82FAAE0002CB70 /* AbstractAdUnitUIView.swift in Sources */,

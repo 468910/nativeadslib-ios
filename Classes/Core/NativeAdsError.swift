@@ -16,11 +16,13 @@ import Foundation
  - InvalidAdNoCampaignDescription: Thrown when the ad doesn't have a description: campaign_description.
  - InvalidAdNoId: Thrown when the ad doesn't have a id: id
  - InvalidAdNoImage: Thrown when the ad doesn't have a image: either default_icon or campaign_image
+ - InvalidAdNoImages: Thrown when the ad doesn't have images.
  */
 enum NativeAdsError: ErrorType {
-    case InvalidAdNoCampaign
-    case InvalidAdNoClickUrl
-    case InvalidAdNoCampaignDescription
-    case InvalidAdNoId
-    case InvalidAdNoImage
+	case InvalidAdNoCampaign
+	case InvalidAdNoClickUrl
+	case InvalidAdNoCampaignDescription
+	case InvalidAdNoId
+	case InvalidAdNoImage
+	case InvalidAdNoImages
 }

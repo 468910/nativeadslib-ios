@@ -84,7 +84,7 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 			if let imageUrl = nativeAd.images!["banner"] {
 				try adImage?.hnk_setImageFromURL(NSURL(string: imageUrl["url"] as! String)!, format: Format(name: "original"), placeholder: nil, success: { (image) -> Void in
 
-					//NSLog("Processing \(nativeAd.campaignName), url: \(imageUrl["url"])")
+					// NSLog("Processing \(nativeAd.campaignName), url: \(imageUrl["url"])")
 					self.setAdImageAndScale(image)
 
 					}, failure: { (error) -> Void in
