@@ -40,21 +40,21 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 
 	func setAdImageAndScale(image: UIImage) {
 
-		// NSLog("1. ImageView width: \(adImage?.frame.size.width), height: \(adImage?.frame.size.height), position x: \(adImage?.bounds.origin.x), position y: \(adImage?.bounds.origin.y)")
+		// Logger.debug("1. ImageView width: \(adImage?.frame.size.width), height: \(adImage?.frame.size.height), position x: \(adImage?.bounds.origin.x), position y: \(adImage?.bounds.origin.y)")
 
 //		aspectConstraint = NSLayoutConstraint(item: adImage!, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: adImage!, attribute: NSLayoutAttribute.Height, multiplier: aspect, constant: 0.0)
 //		aspectConstraint?.priority = 1000
 
 		var aspect = image.size.width / image.size.height
 
-		// NSLog("0. Image width: \(image.size.width), height: \(image.size.height), ratio: \(aspect)")
+		// Logger.debug("0. Image width: \(image.size.width), height: \(image.size.height), ratio: \(aspect)")
 
 		let screenWidth = UIScreen.mainScreen().bounds.size.width
 		let viewWidth = (self.adImage?.bounds.size.width)!
 		let imgWidth = viewWidth > screenWidth ? screenWidth : viewWidth
 
 		let newHeight = imgWidth / aspect
-		// NSLog("4. UIImageView New height: \(newHeight), width: \(imgWidth) , ratio: \(aspect)")
+		// Logger.debug("4. UIImageView New height: \(newHeight), width: \(imgWidth) , ratio: \(aspect)")
 		self.adImageHeightConstraint.constant = newHeight
 
 		self.adImage?.image = image
@@ -84,11 +84,11 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 			if let imageUrl = nativeAd.images!["banner"] {
 				try adImage?.hnk_setImageFromURL(NSURL(string: imageUrl["url"] as! String)!, format: Format(name: "original"), placeholder: nil, success: { (image) -> Void in
 
-					// NSLog("Processing \(nativeAd.campaignName), url: \(imageUrl["url"])")
+					// Logger.debug("Processing \(nativeAd.campaignName), url: \(imageUrl["url"])")
 					self.setAdImageAndScale(image)
 
 					}, failure: { (error) -> Void in
-					NSLog("Error downloading the image")
+					Logger.debug("Error downloading the image")
 					}
 				)
 			} else {
@@ -98,13 +98,13 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 					self.setAdImageAndScale(image)
 
 					}, failure: { (error) -> Void in
-					NSLog("Error downloading the image")
+					Logger.debug("Error downloading the image")
 					}
 				)
 			}
 
 		} else {
-			NSLog("No image frame for adImage, not setting it.")
+			Logger.debug("No image frame for adImage, not setting it.")
 		}
 
 		// adImage.hnk_setImageFromURL(nativeAd.campaignImage, placeholder: UIImage(), format: nil, failure: nil, success: nil)
@@ -113,7 +113,7 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 			adIconImage?.hnk_setImageFromURL(nativeAd.campaignImage, placeholder: UIImage(),
 				format: nil, failure: nil, success: nil)
 		} else {
-			NSLog("No image frame for adIconImage, not setting it.")
+			Logger.debug("No image frame for adIconImage, not setting it.")
 		}
 	}
 

@@ -56,13 +56,13 @@ public class NativeAdCollectionViewDataSource: NSObject, UICollectionViewDataSou
 
 	public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		if let val = adStream.isAdAtposition(indexPath) {
-			NSLog("Insert AD at index %d", indexPath.row)
+			Logger.debugf("Insert AD at index %d", indexPath.row)
 			let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NativeAdCollectionCell", forIndexPath: indexPath) as! NativeAdCollectionCell
 
 			cell.configureAdView(val)
 			return cell
 		} else {
-			NSLog("This is a normal Item before normalization %d", indexPath.row)
+			Logger.debugf("This is a normal Item before normalization %d", indexPath.row)
 			return datasource!.collectionView(collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: adStream.normalize(indexPath), inSection: 0))
 		}
 	}

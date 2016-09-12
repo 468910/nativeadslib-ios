@@ -39,7 +39,7 @@ public struct NativeAdsConstants {
 		static let model = UIDevice.currentDevice().model.characters.split { $0 == " " }.map { String($0) }[0]
 	}
 	public struct NativeAds {
-		public static let tokenAdKey = "nativeAdToken"
+        public static let tokenAdKey = "nativeAdToken"
 		public static let notifyBadAdsUrl = "http://beta.nativeadsapi.pocketmedia.mobi/api.php"
 		public static let userToken = "978d0f4b08ec25a8c32a2de208c23acbbfb3fb465b66e51fd79194fb0a6811e1"
 		public static let baseURL = "http://offerwall.12trackway.com/ow.php?output=json"

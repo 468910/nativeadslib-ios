@@ -27,8 +27,6 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 	public var delegate: NativeAdsConnectionDelegate?
 	/// Needed to identify the ad requests to the server
 	public var adPlacementToken: String?
-	/// To allow more verbose logging and behaviour
-	public var debugModeEnabled: Bool = false
 	/// Check whether advertising tracking is limited
 	public var advertisingTrackingEnabled: Bool? = false
 	/// URL session used to do network requests.
@@ -53,7 +51,7 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
      */
 	public func retrieveAds(limit: UInt, imageType: EImageType = EImageType.allImages) {
 		let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit, imageType: imageType)
-		NSLog("Invoking: %@", nativeAdURL)
+		Logger.debugf("Invoking: %@", nativeAdURL)
 		if let url = NSURL(string: nativeAdURL) {
 			self.session!.dataTaskWithURL(url, completionHandler: receivedAds)
 		}

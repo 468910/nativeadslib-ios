@@ -18,7 +18,6 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 
 	static internal var viewRegister = Array<String>()
 	public var adMargin: Int?
-	public var debugModeEnabled: Bool = false
 	public static var adStreamRegister: [String: NativeAdStream] = [:]
 	public var minimumElementsRequiredForInsertionIntoTableView: Int = 0
 
@@ -26,9 +25,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	public var firstAdPosition: Int? {
 		willSet {
 			firstAdPosition = newValue! + 1
-			if (debugModeEnabled) {
-				NSLog("First Ad Position Changed Preparing for Updating Ad Positions")
-			}
+            Logger.debug("First Ad Position Changed Preparing for Updating Ad Positions")
 		}
 
 		didSet {
@@ -166,14 +163,10 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 		}
 
 		if (nativeAds.isEmpty) {
-			if (debugModeEnabled) {
-				NSLog("No Ads Retrieved")
-			}
+            Logger.debug("No Ads Retrieved")
 		}
 
-		if (debugModeEnabled) {
-			NSLog("Number of Ads retrieved 🐶 \(nativeAds.count)");
-		}
+		Logger.debug("Number of Ads retrieved 🐶 \(nativeAds.count)");
 
 		self.tempAds = nativeAds
 
@@ -191,9 +184,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 		}
 
 		datasource!.onUpdateDataSource()
-		if (debugModeEnabled) {
-			NSLog("udateAdPositions. Count: \(datasource?.numberOfElements())")
-		}
+        Logger.debug("udateAdPositions. Count: \(datasource?.numberOfElements())")
 	}
 
 	private func updateAdPositionsWithPositionsGivenByUser() {
@@ -253,9 +244,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	}
 
 	func getAdCount() -> Int {
-		if (debugModeEnabled) {
-			NSLog("Ad count = \(ads.count)")
-		}
+        Logger.debug("Ad count = \(ads.count)")
 		return ads.count
 	}
 
@@ -265,11 +254,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	}
 
 	@objc public func clearAdStream(affiliateId: String, limit: UInt) {
-
-		if (debugModeEnabled) {
-			NSLog("Clearing Ad stream.")
-		}
-
+        Logger.debug("Clearing Ad stream.")
 		self.ads = [Int: NativeAd]()
 		self.requestAds(affiliateId, limit: limit)
 		datasource?.onUpdateDataSource()
@@ -300,13 +285,10 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 			self.tempAds = [NativeAd]()
 			self.datasource?.onUpdateDataSource()
 
-			if (self.debugModeEnabled) {
-				NSLog("Requesting ads (\(limit)) for affiliate id \(affiliateId)")
-			}
+            Logger.debug("Requesting ads (\(limit)) for affiliate id \(affiliateId)")
 
 			let request = NativeAdsRequest(adPlacementToken: affiliateId, delegate: self)
-			request.debugModeEnabled = self.debugModeEnabled
-
+			
 			request.retrieveAds(limit, imageType: (self.adUnitType == AdUnitType.Big ? EImageType.banner : EImageType.allImages))
 		}
 

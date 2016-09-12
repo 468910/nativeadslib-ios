@@ -10,9 +10,7 @@ import Foundation
 
 public class IndexRowNormalizer {
 
-	public static var debugModeEnabled: Bool = false
-
-	// Calculates the true position for a given index path in the datasource meaning that it checks the position relative to all the sections.
+     // Calculates the true position for a given index path in the datasource meaning that it checks the position relative to all the sections.
 	static func getTruePosistionForIndexPath(indexPath: NSIndexPath, datasource: NativeAdTableViewDataSourceProtocol) -> Int {
 		if (indexPath.section == 0) {
 			return indexPath.row
@@ -36,7 +34,7 @@ public class IndexRowNormalizer {
 
 		if (adsCount == 0 || indexRow == 0 || firstAdPosition > indexRow) {
 
-			NSLog("Normalized position = position \(indexRow) (original was \(indexRow))")
+			Logger.debug("Normalized position = position \(indexRow) (original was \(indexRow))")
 
 			return indexRow
 
@@ -45,19 +43,15 @@ public class IndexRowNormalizer {
 			adsInserted = min(((indexRow - firstAdPosition) / adMargin) + 1, adsCount)
 		}
 
-		if (debugModeEnabled) {
-			NSLog("Normalized position = position - adsInserted \(indexRow - adsInserted) (original was \(indexRow)")
-		}
+		Logger.debug("Normalized position = position - adsInserted \(indexRow - adsInserted) (original was \(indexRow)")
 
 		return indexRow - adsInserted
 	}
 
 	// Gets number of Ads In A given Section
 	static func getCountForSection(numOfRowsInSection: Int, totalRowsInSection: Int, firstAdPosition: Int, adMargin: Int, adsCount: Int) -> Int {
-		if (debugModeEnabled) {
-			print("numOfRowsInSection \(numOfRowsInSection) totalRowsInSection \(totalRowsInSection)")
-		}
-
+        Logger.debug("numOfRowsInSection \(numOfRowsInSection) totalRowsInSection \(totalRowsInSection)")
+        
 		guard numOfRowsInSection > 0 &&
 		totalRowsInSection > firstAdPosition
 		&& adsCount > 0 else {

@@ -21,7 +21,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 		self.controller = controller
 		self.delegate = delegate
 
-		NSLog("Screen width: \(UIScreen.mainScreen().bounds.size.width) ")
+		Logger.debug("Screen width: \(UIScreen.mainScreen().bounds.size.width) ")
 
 	}
 

@@ -24,9 +24,6 @@ public protocol NativeAdsWebviewRedirectionsDelegate {
  */
 @objc
 public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
-
-	// To allow more verbose logging and behaviour
-	public var debugModeEnabled: Bool = false
 	public var loadingView: UIView?
 	public var webView: UIWebView?
 	public var nativeAdUnit: NativeAd?
@@ -43,22 +40,16 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 
 	}
 
-	public func toggleDebugMode() {
-		debugModeEnabled = !debugModeEnabled
-	}
-
 	private func checkSimulatorURL(url: NSURL) -> NSURL {
-		if (debugModeEnabled) {
-			if (Platform.isSimulator) {
-
-				if (url.scheme != "http" &&
-					url.scheme != "https") {
-						let modifiedUrl: NSURL = NSURL(string: url.absoluteString.stringByReplacingOccurrencesOfString("itms-apps", withString: "http"))!
-						return modifiedUrl
-				}
-			}
-		}
-
+        #if DEBUG
+        if (Platform.isSimulator) {
+            if (url.scheme != "http" &&
+                url.scheme != "https") {
+                    let modifiedUrl: NSURL = NSURL(string: url.absoluteString.stringByReplacingOccurrencesOfString("itms-apps", withString: "http"))!
+                    return modifiedUrl
+            }
+        }
+        #endif
 		return url
 	}
 
@@ -76,14 +67,14 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 		}
 
 		if (checkIfAppStoreUrl(webView.request!)) {
-			NSLog("Could not open URL. Opening in system browser: \(webView.request?.URL?.absoluteString)")
+			Logger.debug("Could not open URL. Opening in system browser: \(webView.request?.URL?.absoluteString)")
 			self.openSystemBrowser(webView.request!.URL!)
 		} else if loadStatusCheckTimer == nil {
 			notifyServerOfFalseRedirection()
 		}
 
 		if let description = error?.description {
-			NSLog("DidFailLoadWithError: %@", description)
+			Logger.debugf("DidFailLoadWithError: %@", description)
 		}
 
 	}
@@ -94,7 +85,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 		loadStatusCheckTimer = nil
 		if (checkIfAppStoreUrl(request)) {
 			webView.stopLoading()
-			NSLog("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
+			Logger.debugf("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
 			openSystemBrowser((request.URL!))
 			return false;
 		} else {
@@ -142,7 +133,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 		let url = nativeAdUnit.clickURL
 		let request = NSURLRequest(URL: url!)
 		self.webView!.loadRequest(request)
-		NSLog("webview LoadUrl Exited")
+		Logger.debug("webview LoadUrl Exited")
 	}
     
     @objc
@@ -151,13 +142,13 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         let url = nativeAdUnit.clickURL
         let request = NSURLRequest(URL: url!)
         self.webView!.loadRequest(request)
-        NSLog("webview LoadUrl Exited")
+        Logger.debug("webview LoadUrl Exited")
     }
 
 	@objc
 	private func notifyServerOfFalseRedirection() {
 
-		NSLog("Notifying wrong redirect.")
+		Logger.debug("Notifying wrong redirect.")
 
 		let url = NSURL(string: NativeAdsConstants.NativeAds.notifyBadAdsUrl)
 
@@ -215,9 +206,8 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 	public func openSystemBrowser(url: NSURL) {
 
 		let urlToOpen: NSURL = checkSimulatorURL(url)
-		if (debugModeEnabled) {
-			NSLog("\n\nRequesting to Safari: %@\n\n", urlToOpen.absoluteString)
-		}
+		Logger.debugf("\n\nRequesting to Safari: %@\n\n", urlToOpen.absoluteString)
+		
 		if UIApplication.sharedApplication().canOpenURL(url) {
 			UIApplication.sharedApplication().openURL(url)
 		}
