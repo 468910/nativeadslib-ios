@@ -42,8 +42,11 @@ class FakeNativeAdTableViewDataSource: NativeAdTableViewDataSourceProtocol {
 
 class IndexRowNormalizerTest: XCTestCase {
 
+    var dataSource: FakeNativeAdTableViewDataSource?
+    
 	override func setUp() {
 		super.setUp()
+        dataSource = FakeNativeAdTableViewDataSource()
 		// Put setup code here. This method is called before the invocation of each test method in the class.
 	}
 
@@ -53,16 +56,20 @@ class IndexRowNormalizerTest: XCTestCase {
 	}
 
 	func testIndexRowNormalizer() {
-        let dataSource = FakeNativeAdTableViewDataSource()
         var expected = 1337 + 10 - 1
         var index = NSIndexPath(forItem: 10, inSection: 1)
-        var result = IndexRowNormalizer.getTruePosistionForIndexPath(index, datasource: dataSource)
+        var result = IndexRowNormalizer.getTruePosistionForIndexPath(index, datasource: dataSource!)
         XCTAssert(expected == result, "getTruePosistionForIndexPath should add 9. Because the index starts from 10 - 1")
         
         expected = 10
         index = NSIndexPath(forItem: 10, inSection: 0)
-        result = IndexRowNormalizer.getTruePosistionForIndexPath(index, datasource: dataSource)
+        result = IndexRowNormalizer.getTruePosistionForIndexPath(index, datasource: dataSource!)
         XCTAssert(expected == result, "getTruePosistionForIndexPath should return 10 because its in section 0")
 	}
+    
+//    func testNormalize() {
+//        let pos = IndexRowNormalizer.getTruePosistionForIndexPath(indexRow, datasource: datasource as! NativeAdTableViewDataSourceProtocol)
+//        return IndexRowNormalizer.normalize(pos, firstAdPosition: firstAdPosition!, adMargin: adMargin!, adsCount: ads.count)
+//    }
     
 }

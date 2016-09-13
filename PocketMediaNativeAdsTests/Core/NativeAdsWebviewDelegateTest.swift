@@ -19,8 +19,8 @@ class MockNativeAdsWebviewRedirectionsDelegate: NativeAdsWebviewRedirectionsDele
 }
 
 class MockUIWebView: UIWebView {
-    public var loadRequestCalled: Bool = false
-    override public func loadRequest(request: NSURLRequest) {
+    var loadRequestCalled: Bool = false
+    override func loadRequest(request: NSURLRequest) {
         loadRequestCalled = true
     }
 }
@@ -258,6 +258,9 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
             var downloadTask:MockNSURLSessionDownloadTask = MockNSURLSessionDownloadTask()
             override func downloadTaskWithRequest(request: NSURLRequest, completionHandler: (NSURL?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDownloadTask {
                 downloadTaskWithRequestCalled = true
+                
+                let url = NSURL(string: "http://google.co.uk/")!
+                completionHandler(url, NSURLResponse(URL: url, MIMEType: "", expectedContentLength: 0, textEncodingName: ""), nil)
                 return downloadTask
             }
             

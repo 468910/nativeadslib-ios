@@ -113,17 +113,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 	}
 
 	@objc
-	@available( *, deprecated, message = "use loadUrl:NativeAd instead (no urlString argument required)")
-	public func loadUrl(urlString: String, nativeAdUnit: NativeAd) {
-		self.nativeAdUnit = nativeAdUnit
-		let url = nativeAdUnit.clickURL
-		let request = NSURLRequest(URL: url!)
-		self.webView!.loadRequest(request)
-		Logger.debug("webview LoadUrl Exited")
-	}
-
-	@objc
-	public func loadUrl(nativeAdUnit: NativeAd) {
+	internal func loadUrl(nativeAdUnit: NativeAd) {
 		self.nativeAdUnit = nativeAdUnit
 		let url = nativeAdUnit.clickURL
 		let request = NSURLRequest(URL: url!)

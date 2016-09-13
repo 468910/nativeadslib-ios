@@ -22,7 +22,7 @@ public class AbstractAdUnitUIView: UIView, NativeAdViewBinderProtocol {
 	var nativeAd: NativeAd?
 
 	public func configureAdView(nativeAd: NativeAd) {
-		tapGesture = UITapGestureRecognizer(target: nativeAd, action: Selector("openAdUrlInForeground"));
+        tapGesture = UITapGestureRecognizer(target: nativeAd, action: Selector("openAdUrlInForeground"));
 		setupAdView(nativeAd)
 	}
 

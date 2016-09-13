@@ -189,7 +189,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 
 	private func updateAdPositionsWithPositionsGivenByUser() {
 
-		var orginalCount = datasource!.numberOfElements()
+		let orginalCount = datasource!.numberOfElements()
 
 		var adsInserted = 0
 		for ad in tempAds {
@@ -206,13 +206,13 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 
 	}
 	private func updateAdPositionsWithAdFrequency() {
-		var orginalCount = datasource!.numberOfElements()
+		let orginalCount = datasource!.numberOfElements()
 
 		var adsInserted = 0
 
 		for ad in tempAds {
 
-			var index = (firstAdPosition! - 1) + (adMargin! * adsInserted)
+			let index = (firstAdPosition! - 1) + (adMargin! * adsInserted)
 
 			if (index > (orginalCount + adsInserted)) { break }
 			ads[index] = ad
@@ -280,7 +280,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 				self.datasource?.onUpdateDataSource()
 				return
 			}
-			let numOfElements = self.datasource!.numberOfElements()
+			//let numOfElements = self.datasource!.numberOfElements()
 			self.ads = [Int: NativeAd]()
 			self.tempAds = [NativeAd]()
 			self.datasource?.onUpdateDataSource()

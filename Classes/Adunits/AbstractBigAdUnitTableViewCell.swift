@@ -45,7 +45,7 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 //		aspectConstraint = NSLayoutConstraint(item: adImage!, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: adImage!, attribute: NSLayoutAttribute.Height, multiplier: aspect, constant: 0.0)
 //		aspectConstraint?.priority = 1000
 
-		var aspect = image.size.width / image.size.height
+		let aspect = image.size.width / image.size.height
 
 		// Logger.debug("0. Image width: \(image.size.width), height: \(image.size.height), ratio: \(aspect)")
 
@@ -82,7 +82,7 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 		if (adImage?.frame.height != 0 && adImage?.frame.width != 0) {
 
 			if let imageUrl = nativeAd.images!["banner"] {
-				try adImage?.hnk_setImageFromURL(NSURL(string: imageUrl["url"] as! String)!, format: Format(name: "original"), placeholder: nil, success: { (image) -> Void in
+				adImage?.hnk_setImageFromURL(NSURL(string: imageUrl["url"] as! String)!, format: Format(name: "original"), placeholder: nil, success: { (image) -> Void in
 
 					// Logger.debug("Processing \(nativeAd.campaignName), url: \(imageUrl["url"])")
 					self.setAdImageAndScale(image)
@@ -93,7 +93,7 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 				)
 			} else {
 				let imageUrl = nativeAd.images!["hq_icon"]
-				try adImage?.hnk_setImageFromURL(NSURL(string: imageUrl!["url"] as! String)!, format: Format(name: "original"), placeholder: nil, success: { (image) -> Void in
+				adImage?.hnk_setImageFromURL(NSURL(string: imageUrl!["url"] as! String)!, format: Format(name: "original"), placeholder: nil, success: { (image) -> Void in
 
 					self.setAdImageAndScale(image)
 
@@ -119,7 +119,7 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 
 	func requiredHeight() -> CGFloat {
 		var height: CGFloat = 10.0;
-		try height = height + (self.firstRowView?.bounds.height)! + (self.adImage?.frame.height)!
+		height = height + (self.firstRowView?.bounds.height)! + (self.adImage?.frame.height)!
 		return height
 	}
 
