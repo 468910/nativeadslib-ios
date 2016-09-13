@@ -67,9 +67,13 @@ class IndexRowNormalizerTest: XCTestCase {
         XCTAssert(expected == result, "getTruePosistionForIndexPath should return 10 because its in section 0")
 	}
     
-//    func testNormalize() {
-//        let pos = IndexRowNormalizer.getTruePosistionForIndexPath(indexRow, datasource: datasource as! NativeAdTableViewDataSourceProtocol)
-//        return IndexRowNormalizer.normalize(pos, firstAdPosition: firstAdPosition!, adMargin: adMargin!, adsCount: ads.count)
-//    }
+    func testNormalize() {
+        let expected = 1344
+        let index = NSIndexPath(forItem: 10, inSection: 1)
+        
+        let pos = IndexRowNormalizer.getTruePosistionForIndexPath(index, datasource: dataSource!)
+        let result = IndexRowNormalizer.normalize(pos, firstAdPosition: 0, adMargin: 1, adsCount: 2)
+        XCTAssert(expected == result, "normalize should return 1344 because ...")
+    }
     
 }
