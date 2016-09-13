@@ -30,7 +30,6 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 		for i in 0...max(0, datasource.numberOfSectionsInTableView!(tableView) - 1) {
 			numOfRows += datasource.tableView(tableView, numberOfRowsInSection: i)
 		}
-
 		return numOfRows
 	}
 
@@ -40,7 +39,6 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	}
 
 	func handleRefresh(refreshControl: UIRefreshControl) {
-
 		refreshControl.endRefreshing()
 	}
 
@@ -53,30 +51,23 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 		NativeAdStream.viewRegister = NativeAdStream.viewRegister.filter { $0 != String(ObjectIdentifier(tableView)) }
 		self.tableView.dataSource = datasource
 		self.tableView.delegate = oldDelegate
-
 	}
 
 	@objc
 	public required init(controller: UIViewController, tableView: UITableView, adStream: NativeAdStream) {
-
 		self.controller = controller
 		self.adStream = adStream
-
 		self.datasource = tableView.dataSource!
 		self.tableView = tableView
 		self.tableView.rowHeight = UITableViewAutomaticDimension
 		self.tableView.estimatedRowHeight = 180.0
-
 		super.init()
-
 		self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: tableView.delegate!)
-
 		self.oldDelegate = tableView.delegate!
 		tableView.delegate = self.delegate
 		tableView.dataSource = self
 
 		// Check the kind of cell to use
-
 		switch (adStream.adUnitType) {
 		case .Custom:
 			if (tableView.dequeueReusableCellWithIdentifier("CustomAdCell") == nil) {
@@ -97,7 +88,6 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 				tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
 			}
 			break
-
 		}
 
 	}
@@ -109,17 +99,14 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 			let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as! NativeAdCell
 			cell.configureAdView(nativeAd)
 			return cell;
-			break
 		case .Big:
 			let cell: AbstractBigAdUnitTableViewCell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
 			cell.configureAdView(nativeAd)
 			return cell;
-			break
 		default:
 			let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
 			cell.configureAdView(nativeAd)
 			return cell;
-			break
 		}
 	}
 
@@ -135,7 +122,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 		if let val = adStream!.isAdAtposition(indexPath) {
 			return getAdCellForTableView(val)
 		} else {
-			var temp = adStream!.normalize(indexPath)
+//			var temp = adStream!.normalize(indexPath)
 			return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream!.normalize(indexPath), inSection: indexPath.section))
 		}
 
@@ -150,12 +137,11 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 		var totalRows = 0
 
 		for i in (0...section) {
-			var rowsInSection = datasource.tableView(tableView, numberOfRowsInSection: i)
+			let rowsInSection = datasource.tableView(tableView, numberOfRowsInSection: i)
 			totalRows += rowsInSection
 		}
 
-		var temp = adStream!.getCountForSection(datasource.tableView(tableView, numberOfRowsInSection: section), totalRowsInSection: totalRows)
-		return temp
+		return adStream!.getCountForSection(datasource.tableView(tableView, numberOfRowsInSection: section), totalRowsInSection: totalRows)
 	}
 
 	public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -175,7 +161,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	}
 
 	public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-		if (respondsToSelector("tableView:canEditRowAtIndexPath")) {
+		if (respondsToSelector(Selector("tableView:canEditRowAtIndexPath"))) {
 			return datasource.tableView!(tableView, canEditRowAtIndexPath: indexPath)
 		} else {
 			return true
@@ -183,7 +169,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	}
 
 	public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-		if (respondsToSelector("tableView:canMoveRowAtIndexPath")) {
+		if (respondsToSelector(Selector("tableView:canMoveRowAtIndexPath"))) {
 			return datasource.tableView!(tableView, canEditRowAtIndexPath: indexPath)
 		} else {
 			return true
@@ -191,7 +177,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	}
 
 	public func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-		if (respondsToSelector("tableView:sectionForSectionIndexTitle")) {
+		if (respondsToSelector(Selector("tableView:sectionForSectionIndexTitle"))) {
 			return datasource.tableView!(tableView, sectionForSectionIndexTitle: title, atIndex: index)
 		} else {
 			return 0
@@ -199,7 +185,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	}
 
 	public func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-		if (respondsToSelector("tableView:moveRowAtIndexPath")) {
+		if (respondsToSelector(Selector("tableView:moveRowAtIndexPath"))) {
 			datasource.tableView?(tableView, moveRowAtIndexPath: sourceIndexPath, toIndexPath: destinationIndexPath)
 		} else {
 			return
@@ -213,7 +199,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	@objc
 	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		if let numOfSectionsFunc = datasource.numberOfSectionsInTableView {
-			var temp = numOfSectionsFunc(tableView)
+//			var temp = numOfSectionsFunc(tableView)
 			return numOfSectionsFunc(tableView)
 		} else {
 			return 0

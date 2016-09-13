@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // overrides Swift global `fatalError`
-@noreturn func fatalError(@autoclosure message: () -> String = "", file: StaticString = #file, line: UInt = __LINE__) {
+@noreturn func fatalError(@autoclosure message: () -> String = "", file: StaticString = #file, line: UInt = #line) {
     FatalErrorUtil.fatalErrorClosure(message(), file, line)
     unreachable()
 }
