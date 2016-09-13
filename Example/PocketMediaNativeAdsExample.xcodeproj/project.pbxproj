@@ -57,6 +57,7 @@
 		18D6EDD41C847F41004A5B9D /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		18D6EDD61C8480AC004A5B9D /* Highlight-St.-Barts-Image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Highlight-St.-Barts-Image.jpg"; sourceTree = "<group>"; };
 		2717FC161D83061800F6085A /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "../build/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
+		27984B091D885CCA00B0062F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27A2A8CA1D83073500BE8DFD /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "/Users/iain17/Library/Developer/Xcode/DerivedData/PocketMediaNativeAds-gnigauuiuuimgbatvmuinnysmyto/Build/Products/Debug-iphonesimulator/PocketMediaNativeAds.framework"; sourceTree = "<absolute>"; };
 		27A2A8CE1D83080400BE8DFD /* Haneke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Haneke.framework; path = "/Users/iain17/Library/Developer/Xcode/DerivedData/PocketMediaNativeAds-gnigauuiuuimgbatvmuinnysmyto/Build/Products/Debug-iphonesimulator/HanekeSwift/Haneke.framework"; sourceTree = "<absolute>"; };
 		3A75F2691C3FF6CC00F81318 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +122,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		27984B081D885CCA00B0062F /* PocketMediaNativeAdsBundle */ = {
+			isa = PBXGroup;
+			children = (
+				27984B091D885CCA00B0062F /* Info.plist */,
+			);
+			path = PocketMediaNativeAdsBundle;
+			sourceTree = "<group>";
+		};
 		3A75F26F1C3FFA7200F81318 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD21AFB9204008FA782 /* source */,
+				27984B081D885CCA00B0062F /* PocketMediaNativeAdsBundle */,
 				607FACD11AFB9204008FA782 /* Products */,
 				23FF5FD8FB9E3525E7CACD61 /* Frameworks */,
 			);

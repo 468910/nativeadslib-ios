@@ -17,17 +17,17 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
 	override func viewDidLoad() {
 
-		self.title = "CollectionView"
-		loadLocalJSON()
-		collectionView?.delegate = self
-		collectionView?.dataSource = self
-
-		self.collectionView.backgroundColor = UIColor.whiteColor()
-		collectionView.collectionViewLayout = NativeAdCollectionViewLayout()
-
-		let adPos = [5, 2, 4]
-		let stream = NativeAdStream(controller: self, mainView: self.collectionView, adsPositions: adPos)
-		stream.requestAds("d5737f99307e376c635bcbd13b308decda8e46b8", limit: 10)
+//		self.title = "CollectionView"
+//		loadLocalJSON()
+//		collectionView?.delegate = self
+//		collectionView?.dataSource = self
+//
+//		self.collectionView.backgroundColor = UIColor.whiteColor()
+//		collectionView.collectionViewLayout = NativeAdCollectionViewLayout()
+//
+//		let adPos = [5, 2, 4]
+//		let stream = NativeAdStream(controller: self, mainView: self.collectionView, adsPositions: adPos)
+//		stream.requestAds("d5737f99307e376c635bcbd13b308decda8e46b8", limit: 10)
 
 	}
 

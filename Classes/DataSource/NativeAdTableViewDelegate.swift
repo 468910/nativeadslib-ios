@@ -29,7 +29,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 		if let val = datasource!.adStream!.isAdAtposition(indexPath) {
 			val.openAdUrl(FullscreenBrowser(parentViewController: controller))
 		} else {
-			return delegate.tableView!(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: datasource!.adStream!.normalize(indexPath), inSection: indexPath.section))
+			delegate.tableView!(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: datasource!.adStream!.normalize(indexPath), inSection: indexPath.section))
 		}
 	}
 
@@ -43,20 +43,16 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-
 		if datasource!.adStream!.isAdAtposition(indexPath) != nil {
 			return UITableViewAutomaticDimension
 		} else {
 			// not an ad - let the original datasource handle it
-
 			if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: NSIndexPath(forRow: self.datasource!.adStream!.normalize(indexPath), inSection: indexPath.section)) {
 				return heightForRow
 			} else {
 				return UITableViewAutomaticDimension
 			}
-
 		}
-
 	}
 
 	public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -65,7 +61,6 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 
 	public func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
 		if datasource!.adStream!.isAdAtposition(indexPath) != nil {
-
 		} else {
 			delegate.tableView?(tableView, accessoryButtonTappedForRowWithIndexPath: NSIndexPath(forRow: self.datasource!.adStream!.normalize(indexPath), inSection: indexPath.section))
 		}
@@ -105,7 +100,6 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
-
 		if datasource!.adStream!.isAdAtposition(indexPath) != nil {
 		} else {
 			delegate.tableView?(tableView, didEndEditingRowAtIndexPath: NSIndexPath(forRow: self.datasource!.adStream!.normalize(indexPath), inSection: indexPath.section))
@@ -180,7 +174,6 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-
 		if let estimatedHeight = delegate.tableView?(tableView, estimatedHeightForHeaderInSection: section) {
 			return estimatedHeight
 		} else {
@@ -189,10 +182,8 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-
 		if datasource!.adStream!.isAdAtposition(indexPath) != nil {
 			return UITableViewAutomaticDimension
-
 		} else {
 			// not an ad - let the original datasource handle it
 			if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: NSIndexPath(forItem: self.datasource!.adStream!.normalize(indexPath), inSection: indexPath.section)) {
@@ -200,9 +191,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 			} else {
 				return UITableViewAutomaticDimension
 			}
-
 		}
-
 	}
 
 	public func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -214,7 +203,6 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, indentationLevelForRowAtIndexPath indexPath: NSIndexPath) -> Int {
-
 		if datasource!.adStream!.isAdAtposition(indexPath) != nil {
 			return -1
 		} else {
@@ -239,7 +227,6 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-
 		if datasource!.adStream!.isAdAtposition(indexPath) != nil {
 			return true
 		} else {
@@ -330,5 +317,4 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	public func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
 		delegate.tableView?(tableView, willDisplayHeaderView: view, forSection: section)
 	}
-
 }

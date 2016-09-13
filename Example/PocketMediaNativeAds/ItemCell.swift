@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class ItemCell : UITableViewCell {
+public class ItemCell: UITableViewCell {
   
   @IBOutlet public weak var name: UILabel!
   @IBOutlet public weak var artworkImageView: UIImageView!

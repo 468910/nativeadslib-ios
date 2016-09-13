@@ -9,7 +9,6 @@
 import UIKit
 
 public class NativeAdTableView: UITableView {
-
 	override public var indexPathForSelectedRow: NSIndexPath? {
 		get {
 			if let indexPath = super.indexPathForSelectedRow {
@@ -20,11 +19,9 @@ public class NativeAdTableView: UITableView {
 			}
 		}
 	}
-
 }
 
 public extension UIView {
-
 	var objectName: String {
 		return String(ObjectIdentifier(self).uintValue)
 	}

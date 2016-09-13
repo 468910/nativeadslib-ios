@@ -29,14 +29,7 @@ class NativeAdTest: XCTestCase {
 
 	override func setUp() {
 		super.setUp()
-		data = [
-			"campaign_name": "tests",
-			"click_url": "http://PocketMedia.mobi/lovely/tests",
-			"campaign_description": "",
-			"id": "123",
-			"default_icon": "http://google.co.uk",
-			"images": NSDictionary()
-		]
+		data = testHelpers.getNativeAdData()
 		// Put setup code here. This method is called before the invocation of each test method in the class.
 	}
 

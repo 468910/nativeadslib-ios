@@ -41,6 +41,6 @@ public class AdViewLoader: NSObject {
 **/
 public class PocketMediaNativeAdsBundle: NSObject {
 	public static func loadBundle() -> NSBundle? {
-        return NSBundle.mainBundle()
+        return NSBundle(forClass: NativeAd.self)
 	}
 }

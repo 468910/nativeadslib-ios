@@ -89,11 +89,9 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 			}
 			break
 		}
-
 	}
 
 	public func getAdCellForTableView(nativeAd: NativeAd) -> UITableViewCell {
-
 		switch (adStream!.adUnitType) {
 		case .Custom:
 			let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as! NativeAdCell

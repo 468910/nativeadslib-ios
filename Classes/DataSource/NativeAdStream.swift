@@ -102,9 +102,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 			self.mainView = view
 			datasource = view.dataSource as! NativeAdTableViewDataSource
 			datasource!.attachAdStream(self)
-
 		} else {
-
 			self.mainView = mainView
 			switch mainView {
 			case let tableView as UITableView:

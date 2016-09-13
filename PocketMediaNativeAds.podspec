@@ -28,10 +28,10 @@ s.homepage         = "http://pocketmedia.mobi"
   s.dependency  'AlamofireImage' 
   s.dependency  'HanekeSwift'
 
-  s.source_files = 'Classes/*/*.swift'
-  s.resource_bundles = {
-    'Resources' => ['Assets/*.{png,xib}']
-  }
+#  s.source_files = 'Classes/*/*.swift'
+#  s.resource_bundles = {
+#    'Resources' => ['Assets/*.{png,xib}']
+#  }
 
   # s.public_header_files = 'Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
