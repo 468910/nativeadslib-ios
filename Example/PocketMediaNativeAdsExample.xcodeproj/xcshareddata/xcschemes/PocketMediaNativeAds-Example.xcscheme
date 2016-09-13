@@ -21,17 +21,45 @@
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "PocketMediaNativeAdsExample_Example.xctest"
-               BlueprintName = "PocketMediaNativeAdsExample_Tests"
-               ReferencedContainer = "container:PocketMediaNativeAdsExample.xcodeproj">
+               BlueprintIdentifier = "277F1C0A1D7EF51C00E14A68"
+               BuildableName = "PocketMediaNativeAds.framework"
+               BlueprintName = "PocketMediaNativeAds"
+               ReferencedContainer = "container:../PocketMediaNativeAds.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2C2B1953A91633859BF7AD238FF567A0"
+               BuildableName = "Haneke.framework"
+               BlueprintName = "HanekeSwift"
+               ReferencedContainer = "container:../Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "18AFD7A91D883F7A00A34545"
+               BuildableName = "PocketMediaNativeAdsBundle.bundle"
+               BlueprintName = "PocketMediaNativeAdsBundle"
+               ReferencedContainer = "container:../PocketMediaNativeAds.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,16 +70,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "18D62C6F1CCD6C3A0086175C"
-               BuildableName = "PocketMediaNativeAdsExample_Example.xctest"
-               BlueprintName = "PocketMediaNativeAdsExample_ExampleTests"
-               ReferencedContainer = "container:PocketMediaNativeAdsExample.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
@@ -85,6 +103,19 @@
             ReferencedContainer = "container:PocketMediaNativeAdsExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "DEBUG"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "DEBUG"
+            value = ""
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

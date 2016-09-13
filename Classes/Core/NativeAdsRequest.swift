@@ -53,7 +53,7 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 		let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit, imageType: imageType)
 		Logger.debugf("Invoking: %@", nativeAdURL)
 		if let url = NSURL(string: nativeAdURL) {
-			self.session!.dataTaskWithURL(url, completionHandler: receivedAds)
+            self.session!.dataTaskWithURL(url, completionHandler: receivedAds).resume()
 		}
 	}
 
@@ -64,6 +64,7 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
      - error: The error object tells us if there was an error during the external request.
      */
 	internal func receivedAds(data: NSData?, response: NSURLResponse?, error: NSError?) {
+        Logger.debug("WTF")
 		if error != nil {
 			self.delegate?.didReceiveError(error!)
 			return
@@ -122,7 +123,7 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 
 		let baseUrl = NativeAdsConstants.NativeAds.baseURL;
 		// token
-		var apiUrl = baseUrl + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&placement_key=\(placementKey!)&image_type=\(imageType)"
+		var apiUrl = baseUrl + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&placement_key=\(placementKey!)"
 
 		if (advertisingTrackingEnabled == nil || advertisingTrackingEnabled == false) {
 			apiUrl = apiUrl + "&optout=1"
