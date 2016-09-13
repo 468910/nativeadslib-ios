@@ -9,10 +9,13 @@
 import XCTest
 
 class FakeNativeAdTableViewDataSource: NativeAdTableViewDataSourceProtocol {
-	func getNumberOfRowsInSection(numberOfRowsInSection section: Int) -> Int {
+	
+    //Returns the amount of rows in a given section.
+    func getNumberOfRowsInSection(numberOfRowsInSection section: Int) -> Int {
         switch(section){
-        case 0 : return 1337
-        case 1 : return 1337
+        case 0 : return 10
+        case 1 : return 20
+        case 2 : return 30
         default : return 0
         }
         
@@ -56,24 +59,54 @@ class IndexRowNormalizerTest: XCTestCase {
 	}
 
 	func testIndexRowNormalizer() {
-        var expected = 1337 + 10 - 1
-        var index = NSIndexPath(forItem: 10, inSection: 1)
-        var result = IndexRowNormalizer.getTruePosistionForIndexPath(index, datasource: dataSource!)
-        XCTAssert(expected == result, "getTruePosistionForIndexPath should add 9. Because the index starts from 10 - 1")
+        var index = 10,
+        previousSection = 0,
+        currentSection = previousSection + 1,
+        numOfRowsInPreviousSection = dataSource!.getNumberOfRowsInSection(numberOfRowsInSection: previousSection),
+        expectedIndexForRow = index + numOfRowsInPreviousSection - 1
         
-        expected = 10
-        index = NSIndexPath(forItem: 10, inSection: 0)
-        result = IndexRowNormalizer.getTruePosistionForIndexPath(index, datasource: dataSource!)
-        XCTAssert(expected == result, "getTruePosistionForIndexPath should return 10 because its in section 0")
+        var result = IndexRowNormalizer.getTruePosistionForIndexPath( NSIndexPath(forItem: index, inSection: currentSection), datasource: dataSource!)
+        XCTAssert(expectedIndexForRow == result, "getTruePosistionForIndexPath should add 9. Because the index starts from 10 - 1")
+        
+        index = 10
+        previousSection = 1
+        currentSection = previousSection + 1
+        numOfRowsInPreviousSection = dataSource!.getNumberOfRowsInSection(numberOfRowsInSection: previousSection)
+        numOfRowsInPreviousSection += dataSource!.getNumberOfRowsInSection(numberOfRowsInSection: (previousSection - 1) )
+        expectedIndexForRow = index + numOfRowsInPreviousSection - 1
+        
+        result = IndexRowNormalizer.getTruePosistionForIndexPath( NSIndexPath(forItem: index, inSection: currentSection), datasource: dataSource!)
+        XCTAssert(expectedIndexForRow == result, "getTruePosistionForIndexPath should return 10 because its in section 0")
+        Logger.debug("jaja")
 	}
     
-    func testNormalize() {
-        let expected = 1344
-        let index = NSIndexPath(forItem: 10, inSection: 1)
-        
-        let pos = IndexRowNormalizer.getTruePosistionForIndexPath(index, datasource: dataSource!)
-        let result = IndexRowNormalizer.normalize(pos, firstAdPosition: 0, adMargin: 1, adsCount: 2)
-        XCTAssert(expected == result, "normalize should return 1344 because ...")
-    }
+//    func testNormalize() {
+//        var index = 10,
+//        amountOfAds = 4,
+//        previousSection = 0,
+//        currentSection = previousSection + 1,
+//        numOfRowsInPreviousSection = dataSource!.getNumberOfRowsInSection(numberOfRowsInSection: previousSection),
+//        IndexForRow = index + numOfRowsInPreviousSection - 1,
+//        adMargin = 2,
+//        firstAdPosition = 2,
+//        expected = 1 + IndexForRow - (IndexForRow - firstAdPosition) / adMargin
+//        
+//        var result = IndexRowNormalizer.normalize(IndexForRow, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: amountOfAds)
+//        XCTAssert(expected == result, "normalize should return 1344 because ...")
+//        
+//        index = 10
+//        amountOfAds = 1000
+//        previousSection = 0
+//        currentSection = previousSection + 1
+//        numOfRowsInPreviousSection = dataSource!.getNumberOfRowsInSection(numberOfRowsInSection: previousSection)
+//        IndexForRow = index + numOfRowsInPreviousSection - 1
+//        adMargin = 2
+//        firstAdPosition = 2
+//        expected = 1 + IndexForRow - (IndexForRow - firstAdPosition) / adMargin
+//        
+//        result = IndexRowNormalizer.normalize(IndexForRow, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: amountOfAds)
+//        XCTAssert(expected == result, "normalize should return 1344 because ...")
+//
+//    }
     
 }
