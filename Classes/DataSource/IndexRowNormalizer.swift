@@ -45,7 +45,7 @@ public class IndexRowNormalizer {
 	// Gets number of Ads In A given Section
 	static internal func getCountForSection(numOfRowsInSection: Int, totalRowsInSection: Int, firstAdPosition: Int, adMargin: Int, adsCount: Int) -> Int {
         Logger.debug("numOfRowsInSection \(numOfRowsInSection) totalRowsInSection \(totalRowsInSection)")
-        
+
 		guard numOfRowsInSection > 0 &&
 		totalRowsInSection > firstAdPosition
 		&& adsCount > 0 else {

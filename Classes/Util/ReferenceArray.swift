@@ -40,17 +40,7 @@ public class AdViewLoader: NSObject {
   - Acessing the internal PocketMediaNativeAds Framework Bundle 
 **/
 public class PocketMediaNativeAdsBundle: NSObject {
-
 	public static func loadBundle() -> NSBundle? {
         return NSBundle.mainBundle()
-//		let podBundle = NSBundle(forClass: NativeAd.self)
-//		if let bundleURL = podBundle.URLForResource("Tests", withExtension: "bundle") {
-//			print("Bundle found")
-//			if let bundle = NSBundle(URL: bundleURL) {
-//				print("Bundle returned")
-//				return bundle
-//			}
-//		}
-//		return nil
 	}
 }
