@@ -21,7 +21,7 @@ class ReferenceArrayTest: XCTestCase {
     }
 
     func testLoadBundle() {
-        XCTAssert(PocketMediaNativeAdsBundle.loadBundle() == NSBundle.mainBundle())
+        XCTAssert(PocketMediaNativeAdsBundle.loadBundle() ==  NSBundle(forClass: NativeAd.self))
     }
 
 }

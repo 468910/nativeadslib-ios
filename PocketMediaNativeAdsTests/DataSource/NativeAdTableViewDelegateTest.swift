@@ -101,11 +101,11 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         super.tearDown()
     }
 
-    func testdidSelectRowAtIndexPath() {
-        subject?.tableView(tableView, didSelectRowAtIndexPath: NSIndexPath(index: 0))
-        XCTAssert(true)
-        //Check if called
-        
-    }
+//    func testdidSelectRowAtIndexPath() {
+//        subject?.tableView(tableView, didSelectRowAtIndexPath: NSIndexPath(index: 0))
+//        XCTAssert(true)
+//        //Check if called
+//        
+//    }
 
 }

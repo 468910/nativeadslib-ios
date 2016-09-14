@@ -326,7 +326,7 @@ class NativeAdsRequestTest: XCTestCase {
 			}
 
 		} else {
-			XCTFail("placement_key parameter is not defined")
+			XCTFail("image_type parameter is not defined")
 		}
 
 		nativeAdsrequest = NativeAdsRequest(adPlacementToken: "test", delegate: nil, advertisingTrackingEnabled: false)
