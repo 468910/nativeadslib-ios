@@ -16,7 +16,8 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	public var tableView: UITableView
 	public var delegate: NativeAdTableViewDelegate?
 	public var controller: UIViewController
-	weak public var adStream: NativeAdStream?
+    //TODO: Check if this still creates a memory leak.
+	public var adStream: NativeAdStream //This used to be optional + weak to stop memory leaks.
 	public typealias completionBlock = () -> ()
 	public var completion: completionBlock?
 	public var oldDelegate: UITableViewDelegate?
@@ -92,7 +93,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	}
 
 	public func getAdCellForTableView(nativeAd: NativeAd) -> UITableViewCell {
-		switch (adStream!.adUnitType) {
+		switch (adStream.adUnitType) {
 		case .Custom:
 			let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as! NativeAdCell
 			cell.configureAdView(nativeAd)
@@ -117,11 +118,11 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 			completion = nil
 		}
 
-		if let val = adStream!.isAdAtposition(indexPath) {
+		if let val = adStream.isAdAtposition(indexPath) {
 			return getAdCellForTableView(val)
 		} else {
 //			var temp = adStream!.normalize(indexPath)
-			return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream!.normalize(indexPath), inSection: indexPath.section))
+			return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream.normalize(indexPath), inSection: indexPath.section))
 		}
 
 	}
@@ -139,7 +140,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 			totalRows += rowsInSection
 		}
 
-		return adStream!.getCountForSection(datasource.tableView(tableView, numberOfRowsInSection: section), totalRowsInSection: totalRows)
+		return adStream.getCountForSection(datasource.tableView(tableView, numberOfRowsInSection: section), totalRowsInSection: totalRows)
 	}
 
 	public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

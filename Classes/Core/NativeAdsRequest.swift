@@ -65,7 +65,6 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
      - error: The error object tells us if there was an error during the external request.
      */
 	internal func receivedAds(data: NSData?, response: NSURLResponse?, error: NSError?) {
-        Logger.debug("WTF")
 		if error != nil {
 			self.delegate?.didReceiveError(error!)
 			return

@@ -16,14 +16,14 @@ import UIKit
 public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStreamNormalizerProtocol {
 
 	static internal var viewRegister = Array<String>()
-	public var adMargin: Int?
+	public var adMargin: Int
 	public static var adStreamRegister: [String: NativeAdStream] = [:]
 	public var minimumElementsRequiredForInsertionIntoTableView: Int = 0
 
 	// they are not called when variables are written to from an initializer or with a default value.
-	public var firstAdPosition: Int? {
+	public var firstAdPosition: Int {
 		willSet {
-			firstAdPosition = newValue! + 1
+			firstAdPosition = newValue + 1
 			Logger.debug("First Ad Position Changed Preparing for Updating Ad Positions")
         }
 		didSet {
@@ -80,7 +80,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	@objc
 	public convenience init(controller: UIViewController, mainView: UIView, adsPositions: [Int]) {
 		self.init(controller: controller, mainView: mainView)
-		self.firstAdPosition = adsPositions.minElement()
+		self.firstAdPosition = adsPositions.minElement()!
 		self.adsPositionGivenByUser = Array(Set(adsPositions)).sort { $0 < $1 }
 	}
 
@@ -95,6 +95,8 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	public required init(controller: UIViewController, mainView: UIView) {
 		self.ads = [Int: NativeAd]()
 		self.tempAds = [NativeAd]()
+        self.firstAdPosition = 1
+        self.adMargin = 1
 		super.init()
 
 		if (NativeAdStream.viewRegister.contains(mainView.objectName)) {
@@ -135,7 +137,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 
 	@objc
 	public func didReceiveResults(nativeAds: [NativeAd]) {
-		if (self.adMargin < 1 && self.adMargin != nil) {
+		if (self.adMargin < 1) {
 			return
 		}
 		if (self.firstAdPosition == 0) {
@@ -183,7 +185,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 
 		for ad in tempAds {
 
-			let index = (firstAdPosition! - 1) + (adMargin! * adsInserted)
+			let index = (firstAdPosition - 1) + (adMargin * adsInserted)
 
 			if (index > (orginalCount + adsInserted)) { break }
 			ads[index] = ad
@@ -210,7 +212,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	// TODO: Maybe this can be improved after futher testing
 	func normalize(indexRow: NSIndexPath) -> Int {
 		let pos = IndexRowNormalizer.getTruePosistionForIndexPath(indexRow, datasource: datasource as! NativeAdTableViewDataSourceProtocol)
-		return IndexRowNormalizer.normalize(pos, firstAdPosition: firstAdPosition!, adMargin: adMargin!, adsCount: ads.count)
+		return IndexRowNormalizer.normalize(pos, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: ads.count)
 	}
 
 	func getAdCount() -> Int {
@@ -219,7 +221,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	}
 
 	func getCountForSection(numOfRowsInSection: Int, totalRowsInSection: Int) -> Int {
-		return IndexRowNormalizer.getCountForSection(numOfRowsInSection, totalRowsInSection: totalRowsInSection, firstAdPosition: firstAdPosition!, adMargin: adMargin!, adsCount: ads.count)
+		return IndexRowNormalizer.getCountForSection(numOfRowsInSection, totalRowsInSection: totalRowsInSection, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: ads.count)
 	}
 
 	@objc public func clearAdStream(affiliateId: String, limit: UInt) {
