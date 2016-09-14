@@ -53,8 +53,12 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 		let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit, imageType: imageType)
 		Logger.debugf("Invoking: %@", nativeAdURL)
 		if let url = NSURL(string: nativeAdURL) {
+<<<<<<< HEAD
 			let task = self.session!.dataTaskWithURL(url, completionHandler: receivedAds)
             task.resume()
+=======
+            self.session!.dataTaskWithURL(url, completionHandler: receivedAds).resume()
+>>>>>>> 7c18bc65196f4ac0e631d65d83ec7599b56bcf7d
 		}
 	}
 
@@ -65,6 +69,7 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
      - error: The error object tells us if there was an error during the external request.
      */
 	internal func receivedAds(data: NSData?, response: NSURLResponse?, error: NSError?) {
+        Logger.debug("WTF")
 		if error != nil {
 			self.delegate?.didReceiveError(error!)
 			return

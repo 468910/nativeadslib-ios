@@ -29,8 +29,8 @@ class TableViewController: UITableViewController {
 
 		self.refreshControl?.addTarget(self, action: #selector(TableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 		_ = [5, 2, 4, 99]
-		stream = NativeAdStream(controller: self, mainView: self.tableView, adMargin: 1, firstAdPosition: 1)
-		stream?.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
+		stream = NativeAdStream(controller: self, mainView: self.tableView, adMargin: 1, firstAdPosition: 5)
+		stream!.requestAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
 	}
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

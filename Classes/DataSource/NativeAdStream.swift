@@ -130,7 +130,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 
 	@objc
 	public func didReceiveError(error: NSError) {
-
+        Logger.debug("There was an Error Retrieving ads", error)
 	}
 
 	@objc
