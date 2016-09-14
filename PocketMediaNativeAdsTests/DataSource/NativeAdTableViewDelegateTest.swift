@@ -191,5 +191,21 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         XCTAssert(adStream.isAdAtpositionCalled, "The function checked if it was an ad.")
         
     }
+    
+    func testViewForHeaderInSection() {
+        class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
+            var expected = UIView()
+            @objc
+            func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+                Logger.debug("hi there")
+                return expected
+            }
+        }
+        setup2(mockedUITableViewDelegate())
+        let mockedDelegate = self.delegate as! mockedUITableViewDelegate
+        
+        let result = subject.tableView(tableView, viewForHeaderInSection: 0)
+        XCTAssert(result == mockedDelegate.expected, "Implementation didn't pass the function through.")
+    }
 
 }

@@ -28,31 +28,28 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		if let val = datasource.adStream.isAdAtposition(indexPath) {
 			val.openAdUrl(FullscreenBrowser(parentViewController: controller))
-		} else {
-			delegate.tableView?(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: datasource.adStream.normalize(indexPath), inSection: indexPath.section))
+            return
 		}
+        delegate.tableView?(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: datasource.adStream.normalize(indexPath), inSection: indexPath.section))
 	}
 
 	@objc
 	public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		if let heightForHeader = delegate.tableView?(tableView, heightForHeaderInSection: section) {
 			return heightForHeader
-		} else {
-			return UITableViewAutomaticDimension
 		}
+        return UITableViewAutomaticDimension
 	}
 
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		if datasource.adStream.isAdAtposition(indexPath) != nil {
 			return UITableViewAutomaticDimension
-		} else {
-			// not an ad - let the original datasource handle it
-			if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: NSIndexPath(forRow: self.datasource.adStream.normalize(indexPath), inSection: indexPath.section)) {
-				return heightForRow
-			} else {
-				return UITableViewAutomaticDimension
-			}
 		}
+        // not an ad - let the original datasource handle it
+        if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: NSIndexPath(forRow: self.datasource.adStream.normalize(indexPath), inSection: indexPath.section)) {
+            return heightForRow
+        }
+        return UITableViewAutomaticDimension
 	}
 
 	public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -60,8 +57,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
-		if datasource.adStream.isAdAtposition(indexPath) != nil {
-		} else {
+		if datasource.adStream.isAdAtposition(indexPath) == nil {
 			delegate.tableView?(tableView, accessoryButtonTappedForRowWithIndexPath: NSIndexPath(forRow: self.datasource.adStream.normalize(indexPath), inSection: indexPath.section))
 		}
 	}
@@ -71,13 +67,11 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	public func tableView(tableView: UITableView, canFocusRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		if datasource.adStream.isAdAtposition(indexPath) != nil {
 			return true
-		} else {
-			if let canFocus = delegate.tableView?(tableView, canFocusRowAtIndexPath: NSIndexPath(forRow: self.datasource.adStream.normalize(indexPath), inSection: indexPath.section)) {
-				return canFocus
-			} else {
-				return true
-			}
 		}
+        if let canFocus = delegate.tableView?(tableView, canFocusRowAtIndexPath: NSIndexPath(forRow: self.datasource.adStream.normalize(indexPath), inSection: indexPath.section)) {
+            return canFocus
+        }
+        return true
 	}
 
 	public func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
