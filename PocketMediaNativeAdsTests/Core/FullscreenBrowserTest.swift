@@ -73,7 +73,7 @@ class FullscreenBrowserTest: XCTestCase {
 
 	var subject: FullscreenBrowser?
     var viewController: UIViewController?
-	var data: [String: String] = [:]
+	var data: NSDictionary!
 
 	override func setUp() {
 
@@ -87,13 +87,7 @@ class FullscreenBrowserTest: XCTestCase {
         )
 		subject = FullscreenBrowser(parentViewController: viewController!)
 
-		data = [
-			"campaign_name": "tests",
-			"click_url": "http://PocketMedia.mobi/lovely/tests",
-			"campaign_description": "",
-			"id": "123",
-			"default_icon": "http://google.co.uk"
-		]
+		data = testHelpers.getNativeAdData()
 
 		super.setUp()
 	}

@@ -11,14 +11,16 @@ import Foundation
 class testHelpers {
     
     //Return a valid dict please.
-    static func getNativeAdData() -> [String: AnyObject] {
-        return [
-            "campaign_name": "tests",
-            "click_url": "http://PocketMedia.mobi/lovely/tests",
-            "campaign_description": "",
-            "id": "123",
-            "default_icon": "http://google.co.uk",
-            "images": NSDictionary()
-        ]
+    static func getNativeAdData() -> NSMutableDictionary? {
+        if let file = NSBundle(forClass: NativeAdsRequestTest.self).pathForResource("Tests", ofType: "json") {
+            if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: file)!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
+                let ads = json.filter({
+                    ($0 as? NSDictionary) != nil
+                })
+                return ads[0] as? NSMutableDictionary
+            }
+        }
+        return nil
+        
     }
 }

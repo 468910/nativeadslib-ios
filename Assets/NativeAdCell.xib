@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -14,13 +14,13 @@
             <rect key="frame" x="0.0" y="0.0" width="253" height="89"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jyS-eb-N0c" id="g8a-BP-ePj">
-                <rect key="frame" x="0.0" y="0.0" width="253" height="88"/>
+                <rect key="frame" x="0.0" y="0.0" width="253" height="89"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dcr-c7-gHK" userLabel="RightView">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dcr-c7-gHK" userLabel="RightView">
                         <rect key="frame" x="60" y="0.0" width="185" height="89"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blC-KX-XcH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blC-KX-XcH">
                                 <rect key="frame" x="8" y="20" width="117" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="u5p-DP-2aV"/>
@@ -66,7 +66,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Install" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frq-25-3Ls">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Install" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frq-25-3Ls" userLabel="Install (hidden)">
                                 <rect key="frame" x="129" y="46" width="50" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="K3l-8w-eu2"/>
@@ -75,6 +75,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30y-0J-ZZe">
+                                <rect key="frame" x="129" y="38" width="50" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="rwM-1p-QAh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ad" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GS2-Ak-V8q">
                                 <rect key="frame" x="153" y="5" width="10" height="10"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="8"/>
@@ -91,8 +101,10 @@
                             <constraint firstItem="eU2-ay-sQ9" firstAttribute="top" secondItem="Ni5-TY-b6E" secondAttribute="top" id="ISn-xf-iMf"/>
                             <constraint firstItem="Ni5-TY-b6E" firstAttribute="height" secondItem="Dcr-c7-gHK" secondAttribute="height" multiplier="0.2" id="KUe-qY-rvF"/>
                             <constraint firstAttribute="trailing" secondItem="Frq-25-3Ls" secondAttribute="trailing" constant="6" id="OIK-qe-FZH"/>
+                            <constraint firstItem="30y-0J-ZZe" firstAttribute="leading" secondItem="blC-KX-XcH" secondAttribute="trailing" constant="4" id="QhL-mn-kKp"/>
                             <constraint firstItem="Frq-25-3Ls" firstAttribute="centerY" secondItem="blC-KX-XcH" secondAttribute="centerY" id="R5F-ma-7sm"/>
                             <constraint firstItem="Frq-25-3Ls" firstAttribute="leading" secondItem="blC-KX-XcH" secondAttribute="trailing" constant="4" id="Rdv-oi-et7"/>
+                            <constraint firstAttribute="trailing" secondItem="30y-0J-ZZe" secondAttribute="trailing" constant="6" id="U2f-XU-Q4O"/>
                             <constraint firstItem="blC-KX-XcH" firstAttribute="height" secondItem="Dcr-c7-gHK" secondAttribute="height" multiplier="0.2" id="Uf4-Py-P56"/>
                             <constraint firstItem="qFs-fg-eci" firstAttribute="centerY" secondItem="Dcr-c7-gHK" secondAttribute="centerY" id="Vk9-op-6H3"/>
                             <constraint firstItem="Ni5-TY-b6E" firstAttribute="leading" secondItem="Dcr-c7-gHK" secondAttribute="leading" multiplier="0.9" constant="8" id="aZQ-Ro-xZc"/>
@@ -101,12 +113,14 @@
                             <constraint firstItem="Ni5-TY-b6E" firstAttribute="top" secondItem="Dcr-c7-gHK" secondAttribute="top" id="j4M-qf-ncO"/>
                             <constraint firstItem="GS2-Ak-V8q" firstAttribute="centerY" secondItem="eU2-ay-sQ9" secondAttribute="centerY" id="kpg-MK-0hR"/>
                             <constraint firstAttribute="bottom" secondItem="blC-KX-XcH" secondAttribute="bottom" constant="4" id="lEC-Qw-SHf"/>
+                            <constraint firstItem="30y-0J-ZZe" firstAttribute="centerY" secondItem="blC-KX-XcH" secondAttribute="centerY" id="lFT-l9-0bV"/>
                             <constraint firstItem="blC-KX-XcH" firstAttribute="leading" secondItem="Dcr-c7-gHK" secondAttribute="leading" constant="19" id="mgy-Zg-x5y"/>
                             <constraint firstItem="blC-KX-XcH" firstAttribute="top" secondItem="Ni5-TY-b6E" secondAttribute="bottom" constant="2" id="mpB-Du-BPQ"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="blC-KX-XcH" secondAttribute="bottom" constant="2" id="n5N-ez-ch3"/>
                             <constraint firstItem="eU2-ay-sQ9" firstAttribute="leading" secondItem="GS2-Ak-V8q" secondAttribute="trailing" constant="4" id="oKo-vU-SWP"/>
                             <constraint firstAttribute="trailing" secondItem="blC-KX-XcH" secondAttribute="trailing" constant="6" id="qfE-dI-9bX"/>
                             <constraint firstItem="eU2-ay-sQ9" firstAttribute="centerY" secondItem="Ni5-TY-b6E" secondAttribute="centerY" id="rI4-Og-KpI"/>
+                            <constraint firstItem="30y-0J-ZZe" firstAttribute="width" secondItem="Dcr-c7-gHK" secondAttribute="width" id="sO9-sV-JOz"/>
                             <constraint firstItem="eU2-ay-sQ9" firstAttribute="height" secondItem="Ni5-TY-b6E" secondAttribute="height" id="sph-UV-L0v"/>
                             <constraint firstItem="blC-KX-XcH" firstAttribute="leading" secondItem="Ni5-TY-b6E" secondAttribute="leading" id="wyv-Fa-dya"/>
                             <constraint firstItem="eU2-ay-sQ9" firstAttribute="bottom" secondItem="Ni5-TY-b6E" secondAttribute="bottom" id="yv1-Iy-CbK"/>
@@ -120,6 +134,7 @@
                                 <exclude reference="mgy-Zg-x5y"/>
                                 <exclude reference="mpB-Du-BPQ"/>
                                 <exclude reference="qfE-dI-9bX"/>
+                                <exclude reference="sO9-sV-JOz"/>
                                 <exclude reference="9E9-KN-FlB"/>
                                 <exclude reference="ISn-xf-iMf"/>
                                 <exclude reference="edp-GB-Vh7"/>
@@ -232,6 +247,7 @@
                 <outlet property="adDescription" destination="blC-KX-XcH" id="aZr-nk-4IP"/>
                 <outlet property="adImage" destination="utZ-EX-lJO" id="PXP-WU-vHd"/>
                 <outlet property="adTitle" destination="Ni5-TY-b6E" id="zhF-Y3-tlc"/>
+                <outlet property="installButton" destination="30y-0J-ZZe" id="Xz2-VV-McM"/>
                 <outlet property="speakerPhone" destination="eU2-ay-sQ9" id="rN5-7y-Okw"/>
             </connections>
             <point key="canvasLocation" x="-585.5" y="-153.5"/>

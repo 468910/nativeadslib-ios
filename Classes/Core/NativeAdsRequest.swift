@@ -74,7 +74,7 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 			return
 		}
 		if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
-			mapElements(json)
+			mapAds(json)
 		} else {
 			self.delegate?.didReceiveError(NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: ["Invalid server response received: Not json.": NSLocalizedDescriptionKey]))
 		}
@@ -85,14 +85,14 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
      Called from receivedAds.
      - jsonArray: The json array.
      */
-	internal func mapElements(jsonArray: NSArray) {
-		let elements = jsonArray.filter({
+	internal func mapAds(jsonArray: NSArray) {
+		let ads = jsonArray.filter({
 			($0 as? NSDictionary) != nil
 		})
 		var nativeAds: [NativeAd] = []
-		for element in elements {
+		for ad in ads {
 			do {
-				let ad = try NativeAd(adDictionary: element as! NSDictionary, adPlacementToken: self.adPlacementToken!)
+				let ad = try NativeAd(adDictionary: ad as! NSDictionary, adPlacementToken: self.adPlacementToken!)
 				nativeAds.append(ad)
 			} catch let error as NSError {
 				self.delegate?.didReceiveError(error)

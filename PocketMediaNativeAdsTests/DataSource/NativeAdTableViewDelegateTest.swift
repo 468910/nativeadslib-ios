@@ -73,14 +73,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         
         //These 3 lines are directly from the example app
         tableViewDataSource = ExampleTableViewDataSource()
-        tableViewDataSource?.loadLocalJSON()
+        //tableViewDataSource?.loadLocalJSON() we don't need this in our unit tests
         tableView.dataSource = tableViewDataSource
         
         tableView.delegate = self.delegate
         adStream = mockedNativeAdStream(controller: controller, mainView: tableView)
         
         do {
-            adStream.ad = try mockedNativeAd(adDictionary: testHelpers.getNativeAdData(), adPlacementToken: "test")
+            adStream.ad = try mockedNativeAd(adDictionary: testHelpers.getNativeAdData()!, adPlacementToken: "test")
         } catch {
             XCTFail("Could not create an instance of NativeAd")
         }
@@ -147,7 +147,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         //Not implemented
         class mockedUITableViewDelegate2: NSObject, UITableViewDelegate {}
         setup2(mockedUITableViewDelegate2())
-        let mockedDelegate2 = self.delegate as! mockedUITableViewDelegate2
+        self.delegate as! mockedUITableViewDelegate2
         
         result = subject?.tableView(tableView, heightForHeaderInSection: 0)
         XCTAssert(result == UITableViewAutomaticDimension, "Since the delegate has implemented the heightForHeaderInSection function we should return the value its returning.")
@@ -337,7 +337,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         }
         setup2(mockedUITableViewDelegate())
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
-        let uitableviewcell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
+        UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         
         //We don't have an ad
         subject?.tableView(tableView, didEndEditingRowAtIndexPath: NSIndexPath(forItem: 0, inSection: 0))
@@ -943,7 +943,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate())
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
         
-        let result = subject?.tableView(tableView, willBeginEditingRowAtIndexPath: NSIndexPath(forItem: 123, inSection: 10))
+        subject?.tableView(tableView, willBeginEditingRowAtIndexPath: NSIndexPath(forItem: 123, inSection: 10))
         XCTAssert(mockedDelegate.willBeginEditingRowAtIndexPath, "It should've called the orginal function")
     }
     
@@ -952,7 +952,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
             var expected: NSIndexPath! = NSIndexPath(forItem: 10, inSection: 123)
             var willDeselectRowAtIndexPath: Bool! = false
             @objc
-            func tableView(tableView: UITableView, willDeselectRowAtIndexPath sourceIndexPath: NSIndexPath) -> NSIndexPath {
+            func tableView(tableView: UITableView, willDeselectRowAtIndexPath sourceIndexPath: NSIndexPath) -> NSIndexPath? {
                 willDeselectRowAtIndexPath = true
                 return expected
             }

@@ -6,15 +6,19 @@
 //
 //
 import UIKit
+
+public struct sImage {
+    var url: String
+    var width: UInt
+    var height: UInt
+}
+
 /**
  NativeAd model object
- 
- 
  It contains the attributes received from the API, and allows to open the click URL
  */
 public class NativeAd: NSObject {
-
-	/// Name of the ad, the title to be displayed.
+    /// Name of the ad, the title to be displayed.
 	private(set) public var campaignName: String!
 	/// Long description of the ad, with a description
 	private(set) public var campaignDescription: String!
@@ -27,11 +31,11 @@ public class NativeAd: NSObject {
 
 	private var originalClickUrl: NSURL!
 	/// PocketMedia's Offer ID the ad is linked to
-	public var offerId: UInt?
+	private(set) var offerId: UInt?
 	/// Ad Placement token the ad is linked to (via the ads request)
-	public var adPlacementToken: String!
+	private(set) var adPlacementToken: String!
 	/// Images including hq_icon , banners and icon
-	public var images: [String: NSDictionary]?
+	private(set) var images = [sImage]()
 
 	/**
      Fallible Constructor
@@ -79,11 +83,18 @@ public class NativeAd: NSObject {
 			}
 		}
 
-//		if let images = adDictionary["images"] as? [String: NSDictionary] {
-//			self.images = images
-//		} else {
-//			throw NativeAdsError.InvalidAdNoImages
-//		}
+        if let images = adDictionary["images"] as? [[String: String]] {
+			
+            for image in images {
+                var width = UInt(image["width"]!),
+                    height = UInt(image["height"]!)
+                
+                self.images.append(sImage(url: image["url"]!, width: width!, height: height!))
+            }
+            
+		} else {
+			throw NativeAdsError.InvalidAdNoImages
+		}
 
 	}
 

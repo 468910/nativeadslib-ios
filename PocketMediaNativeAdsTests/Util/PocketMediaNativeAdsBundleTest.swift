@@ -8,7 +8,7 @@
 
 import XCTest
 
-class ReferenceArrayTest: XCTestCase {
+class PocketMediaNativeAdsBundleTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
