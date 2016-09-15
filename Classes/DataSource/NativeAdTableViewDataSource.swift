@@ -14,7 +14,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 
 	public var datasource: UITableViewDataSource
 	public var tableView: UITableView
-	public var delegate: NativeAdTableViewDelegate?
+	internal var delegate: NativeAdTableViewDelegate?
 	public var controller: UIViewController
     //TODO: Check if this still creates a memory leak.
 	public var adStream: NativeAdStream //This used to be optional + weak to stop memory leaks.

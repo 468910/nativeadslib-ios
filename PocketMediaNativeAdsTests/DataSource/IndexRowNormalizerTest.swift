@@ -77,7 +77,6 @@ class IndexRowNormalizerTest: XCTestCase {
         
         result = IndexRowNormalizer.getTruePosistionForIndexPath( NSIndexPath(forItem: index, inSection: currentSection), datasource: dataSource!)
         XCTAssert(expectedIndexForRow == result, "getTruePosistionForIndexPath should return 10 because its in section 0")
-        Logger.debug("jaja")
 	}
     
 //    func testNormalize() {
