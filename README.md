@@ -8,13 +8,9 @@
 [![License](https://img.shields.io/cocoapods/l/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 [![Platform](https://img.shields.io/cocoapods/p/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 
-## What are Native Ads?
+This library allows developers to easily show ads provided by PocketMedia natively in their apps. While the traditional way of advertising in mobile applications usually involves a pause before displaying the ad (Interstitial ads, banners, etc.) this native solution allows the ads to be integrated with the user flow, making it less intrusive for the user experience.
 
-Native Ads are a new way of integrating the ads within the content. While traditional advertising creates a pause to display the ads (Interstitial ads, banners, etc.), which are more or less intrusive for the user experience - native ads want to get integrated with the user flow and the way he is consuming the content. 
-
-We offer you the ads in a structured format so you can display them as you prefer, integrated in form and functionality with your app.
-
-We offer some standard ad units, but they will work much better if you customize them to be integrated with your app style. Your users will appreciate it, and your application will keep the style that you wanted it to have.
+The library comes with standard ad units (Ways of displaying the ad). However it is recommended to customize these ad units, so they integrate into your app style. The other option of showing ads is building custom ad units based on the structured format of the ad.
 
 ## Requirements
 
@@ -22,13 +18,11 @@ In order to use the library and have monetization tracking you need to get an ad
 
 [![LandingPage 2016-02-15 10-19-32.png](https://bitbucket.org/repo/46g5gL/images/3248517185-LandingPage%202016-02-15%2010-19-32.png)](http://nativeads.pocketmedia.mobi/signup.html)
 
-
 ## Building the demo
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo, and run `pod install` then open the workspace and run the example scheme.
 
 The project is developed in Swift but contains bridging headers to also work with Objective-C.
-
 
 ## Installation
 
