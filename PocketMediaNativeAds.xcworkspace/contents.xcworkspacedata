@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:/Users/iain17/PocketMedia/projects/nativeadslib-ios/Example/PocketMediaNativeAdsExample.xcodeproj">
+      location = "container:PocketMediaNativeAdsExample.xcodeproj">
    </FileRef>
    <FileRef
       location = "container:PocketMediaNativeAds.xcodeproj">
