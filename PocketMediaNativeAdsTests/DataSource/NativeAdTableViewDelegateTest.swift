@@ -656,7 +656,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
     func testIndentationLevelForRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
             var indentationLevelForRowAtIndexPath: Bool! = false
-            var expected: Int = 0xDEADC0DE//This is magic ~ Harry Potter.
+            var expected: Int = 123//This is magic ~ Harry Potter.
             @objc
             func tableView(tableView: UITableView, indentationLevelForRowAtIndexPath indexPath: NSIndexPath) -> Int {
                 indentationLevelForRowAtIndexPath = true
