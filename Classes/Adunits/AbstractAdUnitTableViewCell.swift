@@ -28,30 +28,7 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 		}
 
 		if let image = adImage {
-            dispatch_async(dispatch_get_main_queue(), {
-                image.contentMode = UIViewContentMode.ScaleAspectFit
-                image.clipsToBounds = true
-                // Cache the image
-                if let campaignImage = nativeAd.campaignImage.cachedImage {
-                    // Cached: set immediately.
-                    image.image = campaignImage
-                    image.alpha = 1
-                } else {
-                    // Not cached, so load then fade it in.
-                    image.alpha = 0
-                    nativeAd.campaignImage.fetchImage { downloadedImage in
-                        // Check the cell hasn't recycled while loading.
-                        if nativeAd.campaignImage == downloadedImage {
-                            image.image = downloadedImage
-                            image.reloadInputViews()
-                            UIView.animateWithDuration(0.3) {
-                                image.alpha = 1
-                                image.setNeedsDisplay()
-                            }
-                        }
-                    }
-                }
-            })
+             image.setImageFromURL(nativeAd.campaignImage)
 		}
 	}
 

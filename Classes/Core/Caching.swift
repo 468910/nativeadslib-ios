@@ -13,7 +13,7 @@ class Caching {
 
     static let sharedCache: NSCache = {
         let cache = NSCache()
-        cache.name = "MyImageCache"
+        cache.name = "PocketMediaCache"
         cache.countLimit = 20 // Max 20 images in memory.
         cache.totalCostLimit = 10*1024*1024 // Max 10MB used.
         return cache
@@ -55,4 +55,33 @@ extension NSURL {
         task.resume()
     }
 
+}
+
+extension UIImageView {
+    func setImageFromURL(url: NSURL) {
+        self.image = UIImage()
+        dispatch_async(dispatch_get_main_queue(), {
+//            self.contentMode = UIViewContentMode.ScaleAspectFit
+//            self.clipsToBounds = true
+            if let campaignImage = url.cachedImage {
+                // Cached: set immediately.
+                self.image = campaignImage
+                self.alpha = 1
+            } else {
+                // Not cached, so load then fade it in.
+                self.alpha = 0
+                url.fetchImage { downloadedImage in
+                    // Check the cell hasn't recycled while loading.
+                    if url == downloadedImage {
+                        self.image = downloadedImage
+                        self.reloadInputViews()
+                        UIView.animateWithDuration(0.3) {
+                            self.alpha = 1
+//                            self.setNeedsDisplay()
+                        }
+                    }
+                }
+            }
+        })
+    }
 }

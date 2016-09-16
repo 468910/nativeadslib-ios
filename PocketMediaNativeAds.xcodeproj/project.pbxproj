@@ -89,6 +89,7 @@
 		27C82FC71D882FA000FE3E6D /* ItemTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C82FC41D882FA000FE3E6D /* ItemTableModel.swift */; };
 		27C82FCC1D88326900FE3E6D /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C82FCB1D88326900FE3E6D /* ItemCell.swift */; };
 		27DA97C21D80512F0081CE2E /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA97C11D80512F0081CE2E /* URLSessionProtocol.swift */; };
+		27E8AF231D8C3C87006A2449 /* CachingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E8AF221D8C3C87006A2449 /* CachingTest.swift */; };
 		27F57AC91D86B55C000438CE /* fatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F57AC81D86B55C000438CE /* fatalError.swift */; };
 		27F57ACB1D86D07E000438CE /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F57ACA1D86D07E000438CE /* Logger.swift */; };
 		27F57ACC1D86D0E9000438CE /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F57ACA1D86D07E000438CE /* Logger.swift */; };
@@ -166,6 +167,7 @@
 		27C82FC41D882FA000FE3E6D /* ItemTableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemTableModel.swift; path = DataSource/Helpers/ItemTableModel.swift; sourceTree = "<group>"; };
 		27C82FCB1D88326900FE3E6D /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCell.swift; path = DataSource/Helpers/ItemCell.swift; sourceTree = "<group>"; };
 		27DA97C11D80512F0081CE2E /* URLSessionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionProtocol.swift; path = Classes/Core/URLSessionProtocol.swift; sourceTree = "<group>"; };
+		27E8AF221D8C3C87006A2449 /* CachingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CachingTest.swift; path = Core/CachingTest.swift; sourceTree = "<group>"; };
 		27F57AC81D86B55C000438CE /* fatalError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = fatalError.swift; path = Helpers/fatalError.swift; sourceTree = "<group>"; };
 		27F57ACA1D86D07E000438CE /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Classes/Util/Logger.swift; sourceTree = "<group>"; };
 		27F57AD01D86D57E000438CE /* NativeAdsWebviewDelegateTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdsWebviewDelegateTest.swift; path = Core/NativeAdsWebviewDelegateTest.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				27A2A8D91D830D7C00BE8DFD /* NativeAdsRequestTest.swift */,
 				27A2A8DA1D830D7C00BE8DFD /* NativeAdTest.swift */,
 				27F57AD01D86D57E000438CE /* NativeAdsWebviewDelegateTest.swift */,
+				27E8AF221D8C3C87006A2449 /* CachingTest.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -669,6 +672,7 @@
 				271FF3B01D8303B2005BA891 /* NativeAdTableViewDelegate.swift in Sources */,
 				273A4C261D81AB9F00513F81 /* NativeAdsRequest.swift in Sources */,
 				27C82FCC1D88326900FE3E6D /* ItemCell.swift in Sources */,
+				27E8AF231D8C3C87006A2449 /* CachingTest.swift in Sources */,
 				273A4C291D81AB9F00513F81 /* URLSessionProtocol.swift in Sources */,
 				27402E011D8AEF69002B3747 /* AbstractAdUnitTableViewCellTest.swift in Sources */,
 				271FF3A91D8303B2005BA891 /* IndexRowNormalizer.swift in Sources */,
