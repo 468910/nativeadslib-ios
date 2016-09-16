@@ -40,9 +40,6 @@ public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 	}
 
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
-		Logger.debug("The Normalized index is: %d🐬", indexPath.row)
-
 		switch collection[indexPath.row] {
 		case let item as ItemTableModel:
 			let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
