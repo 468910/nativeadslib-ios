@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
                BuildableName = "PocketMediaNativeAdsExample_Example.app"
-               BlueprintName = "PocketMediaNativeAdsExample_Example"
+               BlueprintName = "PocketMediaNativeAdsExample"
                ReferencedContainer = "container:PocketMediaNativeAdsExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -58,7 +58,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
             BuildableName = "PocketMediaNativeAdsExample_Example.app"
-            BlueprintName = "PocketMediaNativeAdsExample_Example"
+            BlueprintName = "PocketMediaNativeAdsExample"
             ReferencedContainer = "container:PocketMediaNativeAdsExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -81,7 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
             BuildableName = "PocketMediaNativeAdsExample_Example.app"
-            BlueprintName = "PocketMediaNativeAdsExample_Example"
+            BlueprintName = "PocketMediaNativeAdsExample"
             ReferencedContainer = "container:PocketMediaNativeAdsExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -100,7 +100,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
             BuildableName = "PocketMediaNativeAdsExample_Example.app"
-            BlueprintName = "PocketMediaNativeAdsExample_Example"
+            BlueprintName = "PocketMediaNativeAdsExample"
             ReferencedContainer = "container:PocketMediaNativeAdsExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

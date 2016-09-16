@@ -1,0 +1,501 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BC095384332DB70F99D8B5A /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A54034EF63ABA6D75DFF44 /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework */; };
+		27FF00371D8C474C0006FB57 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF00341D8C474C0006FB57 /* AdCell.swift */; };
+		27FF00381D8C474C0006FB57 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF00351D8C474C0006FB57 /* ItemCell.swift */; };
+		27FF00391D8C474C0006FB57 /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF00361D8C474C0006FB57 /* ItemTableView.swift */; };
+		27FF003B1D8C47620006FB57 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF003A1D8C47620006FB57 /* MenuViewController.swift */; };
+		27FF003E1D8C47860006FB57 /* CollectionAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF003C1D8C47860006FB57 /* CollectionAdCell.swift */; };
+		27FF003F1D8C47860006FB57 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF003D1D8C47860006FB57 /* CollectionViewController.swift */; };
+		27FF00411D8C479D0006FB57 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF00401D8C479D0006FB57 /* TableViewController.swift */; };
+		27FF00431D8C47EA0006FB57 /* ExampleTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF00421D8C47EA0006FB57 /* ExampleTableViewDataSource.swift */; };
+		27FF00581D8C485A0006FB57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF00471D8C485A0006FB57 /* AppDelegate.swift */; };
+		27FF00591D8C485A0006FB57 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FF00481D8C485A0006FB57 /* LaunchScreen.xib */; };
+		27FF005A1D8C485A0006FB57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27FF004A1D8C485A0006FB57 /* Main.storyboard */; };
+		27FF005B1D8C485A0006FB57 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FF004C1D8C485A0006FB57 /* close.png */; };
+		27FF005C1D8C485A0006FB57 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF004D1D8C485A0006FB57 /* Constants.swift */; };
+		27FF005D1D8C485A0006FB57 /* DummyData.json in Resources */ = {isa = PBXBuildFile; fileRef = 27FF004E1D8C485A0006FB57 /* DummyData.json */; };
+		27FF005E1D8C485A0006FB57 /* Highlight-St.-Barts-Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27FF004F1D8C485A0006FB57 /* Highlight-St.-Barts-Image.jpg */; };
+		27FF005F1D8C485A0006FB57 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27FF00501D8C485A0006FB57 /* Images.xcassets */; };
+		27FF00601D8C485A0006FB57 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27FF00511D8C485A0006FB57 /* Info.plist */; };
+		27FF00611D8C485A0006FB57 /* Logo_Pocketmedia_horizontal_white-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FF00521D8C485A0006FB57 /* Logo_Pocketmedia_horizontal_white-3.png */; };
+		27FF00621D8C485A0006FB57 /* Logo_Pocketmedia_horizontal_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FF00531D8C485A0006FB57 /* Logo_Pocketmedia_horizontal_white.png */; };
+		27FF00631D8C485A0006FB57 /* questionMarkBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FF00541D8C485A0006FB57 /* questionMarkBtn@3x.png */; };
+		27FF00641D8C485A0006FB57 /* TableViewControllerWithSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF00551D8C485A0006FB57 /* TableViewControllerWithSections.swift */; };
+		27FF00651D8C485A0006FB57 /* TestSupplied.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FF00561D8C485A0006FB57 /* TestSupplied.xib */; };
+		27FF00661D8C485A0006FB57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF00571D8C485A0006FB57 /* ViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		27A2A8CD1D83073600BE8DFD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 11;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		14CAFDFC159B9E8E723DCEB6 /* Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample/Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.debug.xcconfig"; sourceTree = "<group>"; };
+		27984B091D885CCA00B0062F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27E1C6A71D8C4AD800182D66 /* PocketMediaNativeAdsExample_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketMediaNativeAdsExample_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27FF00341D8C474C0006FB57 /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdCell.swift; path = Example/AdCell.swift; sourceTree = SOURCE_ROOT; };
+		27FF00351D8C474C0006FB57 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCell.swift; path = Example/ItemCell.swift; sourceTree = SOURCE_ROOT; };
+		27FF00361D8C474C0006FB57 /* ItemTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemTableView.swift; path = Example/ItemTableView.swift; sourceTree = SOURCE_ROOT; };
+		27FF003A1D8C47620006FB57 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Example/MenuViewController.swift; sourceTree = SOURCE_ROOT; };
+		27FF003C1D8C47860006FB57 /* CollectionAdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionAdCell.swift; path = Example/CollectionAdCell.swift; sourceTree = SOURCE_ROOT; };
+		27FF003D1D8C47860006FB57 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = Example/CollectionViewController.swift; sourceTree = SOURCE_ROOT; };
+		27FF00401D8C479D0006FB57 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = Example/TableViewController.swift; sourceTree = SOURCE_ROOT; };
+		27FF00421D8C47EA0006FB57 /* ExampleTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleTableViewDataSource.swift; path = Example/ExampleTableViewDataSource.swift; sourceTree = SOURCE_ROOT; };
+		27FF00471D8C485A0006FB57 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Example/AppDelegate.swift; sourceTree = "<group>"; };
+		27FF00491D8C485A0006FB57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Example/Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		27FF004B1D8C485A0006FB57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Example/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		27FF004C1D8C485A0006FB57 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = close.png; path = Example/close.png; sourceTree = "<group>"; };
+		27FF004D1D8C485A0006FB57 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Example/Constants.swift; sourceTree = "<group>"; };
+		27FF004E1D8C485A0006FB57 /* DummyData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = DummyData.json; path = Example/DummyData.json; sourceTree = "<group>"; };
+		27FF004F1D8C485A0006FB57 /* Highlight-St.-Barts-Image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Highlight-St.-Barts-Image.jpg"; path = "Example/Highlight-St.-Barts-Image.jpg"; sourceTree = "<group>"; };
+		27FF00501D8C485A0006FB57 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Example/Images.xcassets; sourceTree = "<group>"; };
+		27FF00511D8C485A0006FB57 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Example/Info.plist; sourceTree = "<group>"; };
+		27FF00521D8C485A0006FB57 /* Logo_Pocketmedia_horizontal_white-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_Pocketmedia_horizontal_white-3.png"; path = "Example/Logo_Pocketmedia_horizontal_white-3.png"; sourceTree = "<group>"; };
+		27FF00531D8C485A0006FB57 /* Logo_Pocketmedia_horizontal_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo_Pocketmedia_horizontal_white.png; path = Example/Logo_Pocketmedia_horizontal_white.png; sourceTree = "<group>"; };
+		27FF00541D8C485A0006FB57 /* questionMarkBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "questionMarkBtn@3x.png"; path = "Example/questionMarkBtn@3x.png"; sourceTree = "<group>"; };
+		27FF00551D8C485A0006FB57 /* TableViewControllerWithSections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewControllerWithSections.swift; path = Example/TableViewControllerWithSections.swift; sourceTree = "<group>"; };
+		27FF00561D8C485A0006FB57 /* TestSupplied.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestSupplied.xib; path = Example/TestSupplied.xib; sourceTree = "<group>"; };
+		27FF00571D8C485A0006FB57 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Example/ViewController.swift; sourceTree = "<group>"; };
+		863CF94346CBBB07117502BE /* Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample/Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.release.xcconfig"; sourceTree = "<group>"; };
+		F7A54034EF63ABA6D75DFF44 /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		607FACCD1AFB9204008FA782 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BC095384332DB70F99D8B5A /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18A80D651D1ACB8100041331 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				27FF00421D8C47EA0006FB57 /* ExampleTableViewDataSource.swift */,
+				27FF00401D8C479D0006FB57 /* TableViewController.swift */,
+			);
+			name = TableView;
+			path = PocketMediaNativeAds;
+			sourceTree = "<group>";
+		};
+		18A80D661D1ACB8C00041331 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				27FF003C1D8C47860006FB57 /* CollectionAdCell.swift */,
+				27FF003D1D8C47860006FB57 /* CollectionViewController.swift */,
+			);
+			name = CollectionView;
+			path = PocketMediaNativeAds;
+			sourceTree = "<group>";
+		};
+		18A80D671D1ACB9800041331 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				27FF003A1D8C47620006FB57 /* MenuViewController.swift */,
+				3A75F26F1C3FFA7200F81318 /* Views */,
+			);
+			name = Menu;
+			path = PocketMediaNativeAds;
+			sourceTree = "<group>";
+		};
+		27984B081D885CCA00B0062F /* PocketMediaNativeAdsBundle */ = {
+			isa = PBXGroup;
+			children = (
+				27984B091D885CCA00B0062F /* Info.plist */,
+			);
+			path = PocketMediaNativeAdsBundle;
+			sourceTree = "<group>";
+		};
+		27FF00441D8C480E0006FB57 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				27FF00471D8C485A0006FB57 /* AppDelegate.swift */,
+				27FF00481D8C485A0006FB57 /* LaunchScreen.xib */,
+				27FF004A1D8C485A0006FB57 /* Main.storyboard */,
+				27FF004C1D8C485A0006FB57 /* close.png */,
+				27FF004D1D8C485A0006FB57 /* Constants.swift */,
+				27FF004E1D8C485A0006FB57 /* DummyData.json */,
+				27FF004F1D8C485A0006FB57 /* Highlight-St.-Barts-Image.jpg */,
+				27FF00501D8C485A0006FB57 /* Images.xcassets */,
+				27FF00511D8C485A0006FB57 /* Info.plist */,
+				27FF00521D8C485A0006FB57 /* Logo_Pocketmedia_horizontal_white-3.png */,
+				27FF00531D8C485A0006FB57 /* Logo_Pocketmedia_horizontal_white.png */,
+				27FF00541D8C485A0006FB57 /* questionMarkBtn@3x.png */,
+				27FF00551D8C485A0006FB57 /* TableViewControllerWithSections.swift */,
+				27FF00561D8C485A0006FB57 /* TestSupplied.xib */,
+				27FF00571D8C485A0006FB57 /* ViewController.swift */,
+				18A80D671D1ACB9800041331 /* Menu */,
+				18A80D661D1ACB8C00041331 /* CollectionView */,
+				18A80D651D1ACB8100041331 /* TableView */,
+				27984B081D885CCA00B0062F /* PocketMediaNativeAdsBundle */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		2CF7FD6D30DC69639E5BA5D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7A54034EF63ABA6D75DFF44 /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A75F26F1C3FFA7200F81318 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				27FF00341D8C474C0006FB57 /* AdCell.swift */,
+				27FF00351D8C474C0006FB57 /* ItemCell.swift */,
+				27FF00361D8C474C0006FB57 /* ItemTableView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		607FACC71AFB9204008FA782 = {
+			isa = PBXGroup;
+			children = (
+				27FF00441D8C480E0006FB57 /* Source */,
+				D2E7D602E2EBCB7B19AC98DF /* Pods */,
+				2CF7FD6D30DC69639E5BA5D5 /* Frameworks */,
+				27E1C6A71D8C4AD800182D66 /* PocketMediaNativeAdsExample_Example.app */,
+			);
+			sourceTree = "<group>";
+		};
+		D2E7D602E2EBCB7B19AC98DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				14CAFDFC159B9E8E723DCEB6 /* Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.debug.xcconfig */,
+				863CF94346CBBB07117502BE /* Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		607FACCF1AFB9204008FA782 /* PocketMediaNativeAdsExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PocketMediaNativeAdsExample" */;
+			buildPhases = (
+				BB105E190C3371E7F4629637 /* [CP] Check Pods Manifest.lock */,
+				607FACCC1AFB9204008FA782 /* Sources */,
+				607FACCD1AFB9204008FA782 /* Frameworks */,
+				607FACCE1AFB9204008FA782 /* Resources */,
+				27A2A8CD1D83073600BE8DFD /* Embed Frameworks */,
+				F5538170FCDA9E4D0A16BCA5 /* [CP] Embed Pods Frameworks */,
+				8C5314D5B3C7730D95AA6357 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PocketMediaNativeAdsExample;
+			productName = PocketMediaNativeAds;
+			productReference = 27E1C6A71D8C4AD800182D66 /* PocketMediaNativeAdsExample_Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		607FACC81AFB9204008FA782 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = CocoaPods;
+				TargetAttributes = {
+					607FACCF1AFB9204008FA782 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "PocketMediaNativeAdsExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 607FACC71AFB9204008FA782;
+			productRefGroup = 607FACC71AFB9204008FA782;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				607FACCF1AFB9204008FA782 /* PocketMediaNativeAdsExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		607FACCE1AFB9204008FA782 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27FF005E1D8C485A0006FB57 /* Highlight-St.-Barts-Image.jpg in Resources */,
+				27FF00611D8C485A0006FB57 /* Logo_Pocketmedia_horizontal_white-3.png in Resources */,
+				27FF005D1D8C485A0006FB57 /* DummyData.json in Resources */,
+				27FF005B1D8C485A0006FB57 /* close.png in Resources */,
+				27FF005F1D8C485A0006FB57 /* Images.xcassets in Resources */,
+				27FF00631D8C485A0006FB57 /* questionMarkBtn@3x.png in Resources */,
+				27FF00591D8C485A0006FB57 /* LaunchScreen.xib in Resources */,
+				27FF005A1D8C485A0006FB57 /* Main.storyboard in Resources */,
+				27FF00651D8C485A0006FB57 /* TestSupplied.xib in Resources */,
+				27FF00601D8C485A0006FB57 /* Info.plist in Resources */,
+				27FF00621D8C485A0006FB57 /* Logo_Pocketmedia_horizontal_white.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8C5314D5B3C7730D95AA6357 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample/Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB105E190C3371E7F4629637 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F5538170FCDA9E4D0A16BCA5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample/Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		607FACCC1AFB9204008FA782 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27FF003F1D8C47860006FB57 /* CollectionViewController.swift in Sources */,
+				27FF00641D8C485A0006FB57 /* TableViewControllerWithSections.swift in Sources */,
+				27FF00381D8C474C0006FB57 /* ItemCell.swift in Sources */,
+				27FF00371D8C474C0006FB57 /* AdCell.swift in Sources */,
+				27FF00581D8C485A0006FB57 /* AppDelegate.swift in Sources */,
+				27FF00431D8C47EA0006FB57 /* ExampleTableViewDataSource.swift in Sources */,
+				27FF00661D8C485A0006FB57 /* ViewController.swift in Sources */,
+				27FF005C1D8C485A0006FB57 /* Constants.swift in Sources */,
+				27FF00411D8C479D0006FB57 /* TableViewController.swift in Sources */,
+				27FF003E1D8C47860006FB57 /* CollectionAdCell.swift in Sources */,
+				27FF00391D8C474C0006FB57 /* ItemTableView.swift in Sources */,
+				27FF003B1D8C47620006FB57 /* MenuViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		27FF00481D8C485A0006FB57 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27FF00491D8C485A0006FB57 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		27FF004A1D8C485A0006FB57 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27FF004B1D8C485A0006FB57 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		607FACED1AFB9204008FA782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		607FACEE1AFB9204008FA782 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		607FACF01AFB9204008FA782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14CAFDFC159B9E8E723DCEB6 /* Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = PocketMediaNativeAds/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MODULE_NAME = ExampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = PocketMediaNativeAdsExample_Example;
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		607FACF11AFB9204008FA782 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 863CF94346CBBB07117502BE /* Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = PocketMediaNativeAds/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MODULE_NAME = ExampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = PocketMediaNativeAdsExample_Example;
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "PocketMediaNativeAdsExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				607FACED1AFB9204008FA782 /* Debug */,
+				607FACEE1AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PocketMediaNativeAdsExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				607FACF01AFB9204008FA782 /* Debug */,
+				607FACF11AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
+}

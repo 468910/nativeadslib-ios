@@ -7,11 +7,16 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForRunning = "YES">
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BuildableName = "PocketMediaNativeAdsExample_Example"
-               BlueprintName = "PocketMediaNativeAdsExample_Example"
+               BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+               BuildableName = "PocketMediaNativeAdsExample_Example.app"
+               BlueprintName = "PocketMediaNativeAdsExample"
                ReferencedContainer = "container:PocketMediaNativeAdsExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

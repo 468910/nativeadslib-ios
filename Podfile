@@ -9,9 +9,13 @@ source 'https://bitbucket.org/pocketbrain/pocketmedia-podspecs.git'
 
 use_frameworks!
 
-
 target 'PocketMediaNativeAds' do
+	project 'PocketMediaNativeAds.xcodeproj'
+	workspace 'PocketMediaNativeAds.xcworkspace'
 	target 'PocketMediaNativeAdsTests' do
 	  inherit! :search_paths
+	end
+	target 'PocketMediaNativeAdsExample' do
+		project ‘PocketMediaNativeAdsExample.xcodeproj’
 	end
 end
