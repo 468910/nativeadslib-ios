@@ -221,7 +221,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	}
 
 	func getCountForSection(numOfRowsInSection: Int, totalRowsInSection: Int) -> Int {
-		return IndexRowNormalizer.getCountForSection(numOfRowsInSection, totalRowsInSection: totalRowsInSection, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: ads.count)
+		return IndexRowNormalizer.getNumberOfRowsForSectionIncludingAds(numOfRowsInSection, totalRowsInSection: totalRowsInSection, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: ads.count)
 	}
 
 	@objc public func clearAdStream(affiliateId: String, limit: UInt) {
