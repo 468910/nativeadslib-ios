@@ -54,7 +54,7 @@
 		27402DFD1D8AE3BB002B3747 /* NativeAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277F1BEC1D7EEC2B00E14A68 /* NativeAdCell.xib */; };
 		27402DFE1D8AE3BB002B3747 /* NativeAdCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277F1BED1D7EEC2B00E14A68 /* NativeAdCollectionCell.xib */; };
 		27402DFF1D8AE3BB002B3747 /* NativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277F1BEE1D7EEC2B00E14A68 /* NativeAdView.xib */; };
-		27402E011D8AEF69002B3747 /* AbstractBigAdUnitTableViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27402E001D8AEF69002B3747 /* AbstractBigAdUnitTableViewCellTest.swift */; };
+		27402E011D8AEF69002B3747 /* AbstractAdUnitTableViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27402E001D8AEF69002B3747 /* AbstractAdUnitTableViewCellTest.swift */; };
 		274E0E5B1D82DE7B00207306 /* AbstractAdUnitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E0E551D82DE7B00207306 /* AbstractAdUnitTableViewCell.swift */; };
 		274E0E5C1D82DE7B00207306 /* AbstractAdUnitUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E0E561D82DE7B00207306 /* AbstractAdUnitUIView.swift */; };
 		274E0E5D1D82DE7B00207306 /* AbstractBigAdUnitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E0E571D82DE7B00207306 /* AbstractBigAdUnitTableViewCell.swift */; };
@@ -135,7 +135,7 @@
 		273A4C0C1D81A9A100513F81 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		273A4C0E1D81A9A800513F81 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		27402DED1D8ADAA4002B3747 /* NativeAdCellTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdCellTest.swift; path = Adunits/NativeAdCellTest.swift; sourceTree = "<group>"; };
-		27402E001D8AEF69002B3747 /* AbstractBigAdUnitTableViewCellTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractBigAdUnitTableViewCellTest.swift; path = AdUnits/AbstractBigAdUnitTableViewCellTest.swift; sourceTree = "<group>"; };
+		27402E001D8AEF69002B3747 /* AbstractAdUnitTableViewCellTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractAdUnitTableViewCellTest.swift; path = AdUnits/AbstractAdUnitTableViewCellTest.swift; sourceTree = "<group>"; };
 		274E0E551D82DE7B00207306 /* AbstractAdUnitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractAdUnitTableViewCell.swift; path = Classes/Adunits/AbstractAdUnitTableViewCell.swift; sourceTree = "<group>"; };
 		274E0E561D82DE7B00207306 /* AbstractAdUnitUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractAdUnitUIView.swift; path = Classes/Adunits/AbstractAdUnitUIView.swift; sourceTree = "<group>"; };
 		274E0E571D82DE7B00207306 /* AbstractBigAdUnitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractBigAdUnitTableViewCell.swift; path = Classes/Adunits/AbstractBigAdUnitTableViewCell.swift; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				27402DED1D8ADAA4002B3747 /* NativeAdCellTest.swift */,
-				27402E001D8AEF69002B3747 /* AbstractBigAdUnitTableViewCellTest.swift */,
+				27402E001D8AEF69002B3747 /* AbstractAdUnitTableViewCellTest.swift */,
 			);
 			name = AdUnits;
 			sourceTree = "<group>";
@@ -680,7 +680,7 @@
 				273A4C261D81AB9F00513F81 /* NativeAdsRequest.swift in Sources */,
 				27C82FCC1D88326900FE3E6D /* ItemCell.swift in Sources */,
 				273A4C291D81AB9F00513F81 /* URLSessionProtocol.swift in Sources */,
-				27402E011D8AEF69002B3747 /* AbstractBigAdUnitTableViewCellTest.swift in Sources */,
+				27402E011D8AEF69002B3747 /* AbstractAdUnitTableViewCellTest.swift in Sources */,
 				27811D9F1D82FAAE0002CB70 /* AbstractBigAdUnitTableViewCell.swift in Sources */,
 				271FF3A91D8303B2005BA891 /* IndexRowNormalizer.swift in Sources */,
 				273A4C211D81AB9F00513F81 /* NativeAdsError.swift in Sources */,

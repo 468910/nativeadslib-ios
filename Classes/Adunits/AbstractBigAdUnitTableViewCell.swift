@@ -29,8 +29,8 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 			}
 		}
 	}
-    
-    // After has been loaded from Nib
+
+    // Called after has loaded the NiB
     public override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = UITableViewCellSelectionStyle.None
@@ -59,13 +59,13 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 	public override func intrinsicContentSize() -> CGSize {
 		return CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: requiredHeight())
 	}
-    
+
     private func setAdImage(nativeAd: NativeAd) {
         if (adImage?.frame.height == 0 || adImage?.frame.width == 0) {
             Logger.debug("No image frame for adImage, not setting it.")
             return
         }
-        
+
         //TODO: Right now it seems that the api is not sending banners, or hq_icon
 //        let errorHandler = { (error:NSError) -> Void in
 //            Logger.debug("Error downloading the image")
@@ -75,10 +75,10 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 //        } else if let imageUrl = nativeAd.images!["hq_icon"] {
 //            adImage?.hnk_setImageFromURL(NSURL(string: imageUrl!["url"] as? String)?, format: Format(name: "original"), placeholder: nil, success: self.setAdImageAndScale, failure: errorHandler)
 //        }
-        
+
         adIconImage?.hnk_setImageFromURL(nativeAd.campaignImage, placeholder: UIImage(), format: nil, failure: nil, success: nil)
     }
-    
+
 	public func configureAdView(nativeAd: NativeAd) {
 		adTitle?.text = nativeAd.campaignName
 		adDescription?.text = nativeAd.campaignDescription
@@ -93,7 +93,7 @@ public class AbstractBigAdUnitTableViewCell: UITableViewCell, NativeAdViewBinder
 	}
 
 	func requiredHeight() -> CGFloat {
-		var height: CGFloat = 10.0;
+		var height: CGFloat = 10.0
 		height = height + (self.firstRowView?.bounds.height)! + (self.adImage?.frame.height)!
 		return height
     }

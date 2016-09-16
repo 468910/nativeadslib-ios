@@ -12,8 +12,8 @@ import UIKit
  Standard AdUnit for TableView
  **/
 public class NativeAdCell: AbstractAdUnitTableViewCell {
-    
-    @IBOutlet public weak var installButton: UIButton?
+
+    @IBOutlet weak var installButton: UIButton?
 
 	public override func awakeFromNib() {
 		super.awakeFromNib()

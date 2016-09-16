@@ -22,7 +22,7 @@ public class AbstractAdUnitUIView: UIView, NativeAdViewBinderProtocol {
 	var nativeAd: NativeAd?
 
 	public func configureAdView(nativeAd: NativeAd) {
-        tapGesture = UITapGestureRecognizer(target: nativeAd, action: Selector("openAdUrlInForeground"));
+        tapGesture = UITapGestureRecognizer(target: nativeAd, action: Selector("openAdUrlInForeground"))
 		setupAdView(nativeAd)
 	}
 
@@ -31,7 +31,7 @@ public class AbstractAdUnitUIView: UIView, NativeAdViewBinderProtocol {
 		self.viewController = viewController
 		self.nativeAd = nativeAd
 
-		tapGesture = UITapGestureRecognizer(target: self, action: #selector(AbstractAdUnitUIView.openAdUrl));
+		tapGesture = UITapGestureRecognizer(target: self, action: #selector(AbstractAdUnitUIView.openAdUrl))
 		setupAdView(nativeAd)
 
 	}
@@ -52,11 +52,9 @@ public class AbstractAdUnitUIView: UIView, NativeAdViewBinderProtocol {
 
 	public override func awakeFromNib() {
 		super.awakeFromNib()
-
 		adDescription.numberOfLines = 0
 		adDescription.lineBreakMode = .ByTruncatingTail
 		adDescription.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width * 0.60
-
 		adTitle.numberOfLines = 0
 		adTitle.lineBreakMode = .ByTruncatingTail
 		adDescription.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width * 0.60

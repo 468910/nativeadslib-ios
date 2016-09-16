@@ -84,18 +84,14 @@ public class NativeAd: NSObject {
 		}
 
         if let images = adDictionary["images"] as? [[String: String]] {
-			
             for image in images {
-                var width = UInt(image["width"]!),
+                let width = UInt(image["width"]!),
                     height = UInt(image["height"]!)
-                
                 self.images.append(sImage(url: image["url"]!, width: width!, height: height!))
             }
-            
 		} else {
 			throw NativeAdsError.InvalidAdNoImages
 		}
-
 	}
 
 	override public var description: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }

@@ -7,25 +7,25 @@
 //
 
 import XCTest
-import PocketMediaNativeAds
+@testable import PocketMediaNativeAds
 
 class NativeAdCellTest: XCTestCase {
-    
+
     var subject: PocketMediaNativeAds.NativeAdCell!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!
         let nib = bundle.loadNibNamed("NativeAdCell", owner: nil, options: nil)
         subject = nib.first as! PocketMediaNativeAds.NativeAdCell
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
     func testAwakeFromNib() {
         //subject.installButton
         let iButton = subject.installButton!
@@ -35,7 +35,7 @@ class NativeAdCellTest: XCTestCase {
         XCTAssert(iButton.titleLabel?.baselineAdjustment == .AlignCenters)
         XCTAssert(iButton.titleLabel?.textAlignment == .Center)
 //        XCTAssert(iButton.titleLabel?.minimumScaleFactor == 0.1)
-        
+
         let color = UIColor(red: 17.0 / 255.0, green: 147.0 / 255.0, blue: 67.0 / 255.0, alpha: 1)
         //iButton.setTitleColor(color, forState: .Normal)
         XCTAssert(CGColorEqualToColor(iButton.layer.borderColor, color.CGColor))
@@ -47,7 +47,7 @@ class NativeAdCellTest: XCTestCase {
 //            image.layer.cornerRadius = CGRectGetWidth(image.frame) / 10
 //            image.layer.masksToBounds = true
 //        }
-        
+
     }
-    
+
 }

@@ -36,10 +36,6 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 		}
 	}
 
-	func configureAdView(nativeAd: NativeAd, viewController: UIViewController) {
-		abort()
-	}
-
 	// After has been loaded from Nib
 	public override func awakeFromNib() {
 		super.awakeFromNib()
@@ -55,37 +51,6 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 			title.numberOfLines = 0
 			title.lineBreakMode = .ByTruncatingTail
 		}
-		// Setting AdDescription And Adtitle
-	}
-
-	// Used to change subviews
-	public override func layoutSubviews() {
-
-	}
-
-	public override func updateConstraints() {
-		super.updateConstraints()
 	}
 
 }
-
-struct MyConstraint {
-	static func changeMultiplier(constraint: NSLayoutConstraint, multiplier: CGFloat) -> NSLayoutConstraint {
-		let newConstraint = NSLayoutConstraint(
-			item: constraint.firstItem,
-			attribute: constraint.firstAttribute,
-			relatedBy: constraint.relation,
-			toItem: constraint.secondItem,
-			attribute: constraint.secondAttribute,
-			multiplier: multiplier,
-			constant: constraint.constant)
-
-		newConstraint.priority = constraint.priority
-
-		NSLayoutConstraint.deactivateConstraints([constraint])
-		NSLayoutConstraint.activateConstraints([newConstraint])
-
-		return newConstraint
-	}
-}
-
