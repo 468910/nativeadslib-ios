@@ -1,87 +1,34 @@
  [
+      {
+      "id":"12486",
+      "campaign_name":"LOVOO",
+      "campaign_description":"LOVOO is your app to discover, chat, and meet - with already more than 6 million users.",
+      "app_store_url":"https:\/\/play.google.com\/store\/apps\/details?id=net.lovoo.android",
+      "click_url":"http:\/\/offerwall.beta.pmgbrain.com\/save-click.php?campaign=12486&impression=13829453&token=1234",
+      "action_text":"Install",
+      "campaign_image":"http:\/\/offerwall.beta.pmgbrain.com\/image-world\/8b98e5f232c2bbdbf745fb553af3b3b70b24c508c49722d58c75ed226f31457e19626480172f9ff63f6bdb6e7749b8b35038798f054e3ad01cb727605f67afd19bbe9e605fd9229eed6104c478881a08260e7fb9d7d1bd84eb1ba523f9efac8ea3ad127bee08c9f6aa4d9616551b4672a616799aa9bdccaa45b8695be48845f33ef1564f528bb83855d55d725b8ef543131f51c414f3c1fb702b96c026610c3953a835f55b873db1f50d0c85661fc601378bf8c8cb7e0b877e1d7ade13553dc9c5c8478a1099156a972e858a26d9ab700293efd6211ec0ad955b46b5f26daa45.jpg",
+      "images":{
+      "hq_icon":{
+          "url":"http://google.co.uk/",
+          "width":"450",
+          "height":"450"
+      }
+      },
+      "open_in_browser":false
+      },
   {
-  "id":"277684",
-  "campaign_name":"Travel Blast!",
-  "campaign_description":"MATCH your way around the globe in Travel Blast, a THRILLING puzzle adventure!\r\n\r\n\r\n\r\n",
-  "app_store_url":"https:\/\/play.google.com\/store\/apps\/details?id=com.redtrmgames.treasure",
-  "click_url":"http:\/\/offerwall.12trackway.com\/save-click.php?campaign=277684&impression=76281078&token=1234",
-  "action_text":"Install",
-  "campaign_image":"http:\/\/offerwall.12trackway.com\/image-world\/568302e7bb6d1b6e81770fa1650c0cca343260c612ad495d8be9fdd239fa2ef5e4f9435ddd7e85b6a31d04638fcc41c9097c8951fd3661d993b106b46a2cd011cb13ab4669214807f0da5be5b4bb5b0d9241d65b318428ed4b0b1255654e6e50a44070e5cb83cbd08b373684f048431478dd923a2b4b9c9994a23fa67e7a5c4348a23a5a779385baa41cd065cf64808bee26138ecebd59d160bc50e99497d48f8b01119197ded2d53d78390dd7e1d3a64942b5ad4caf23f6f5c8febf3a49a40576ae03d2bf641704bdee694fe7459482.jpg",
-  "images":[
-            {
-            "url":"http:\/\/offerwall.12trackway.com\/image-world\/3632c32ca698501d01f8c3971092ad56c1ce507812e379c35c510cfab382f08e8f644f1f0c9bc1a6209d317317ad1610ba583c008efe1823799bf04876ae3ed666c22f2e4552fc515868ae68ee6816d6d7d3dcbaca4970f3e1aa2b1b193ff164c47d6a4e9657f4cffa7143fdd20d9cb094df9645349d0b2a00cb7834060aebfd5e560e54dfb5fea8daf5c3f3438e1bde1e8ed0458c92de429fd07ea046d911ea18b7241bc8477682cdf5e5d744afc13f74f210b058110d67b98f36c190c68e03a59e81bd4c8b6c172cde16e26a2dd88c.jpg",
-            "width":"198",
-            "height":"191"
-            }
-            ],
-  "open_in_browser":false
-  },
-  {
-  "id":"205133",
-  "campaign_name":"DU Battery Saver",
-  "campaign_description":"Get up to 50% more battery life for your Android phone! ",
-  "app_store_url":"https:\/\/play.google.com\/store\/apps\/details?id=com.dianxinos.dxbs",
-  "click_url":"http:\/\/offerwall.12trackway.com\/save-click.php?campaign=205133&impression=76281078&token=1234",
-  "action_text":"Install",
-  "campaign_image":"http:\/\/offerwall.12trackway.com\/image-world\/5d4f9cef344a70538610cf492d54c4ad46a8bcbace081e7741f5520a68aa0d8e6c71dfea703e5fcc5390d689ace4c5be59c672da5b8a6af9e3002e90268f2b71ae2e5ad6a5f41bca8a57886e91e3a154404e46d80ef84a56de6a3a57ec7ee582aab2d0a0be286cb0979da5c456f3d2d227adf13abfda9d3870a33d994b64ae54b5ad2a156b26b6849857d54ad61df5a4299e11e3d9295551927489b57bf501447e71e2a710dc511cf68e2f437ddfd46ccdd282a01508041c05863200a2f93e554364113cdfa86fd13c4f1757de1c44e7.jpg",
-  "images":[
-            {
-            "url":"http:\/\/offerwall.12trackway.com\/image-world\/2ef9185a8b23d91be441e890ea1ff6598bd6037576ce9afac7673d9f21013620556a726cba822a07d3b0cb956bb3690b4374645d1ecbd97fcd13cff70229ece2eeab96be36b3dcbb7c86c7b1a60c64d75f9055228921afe4182ffa2e1b1739fa40de6e129b047f61f138971a9f25a9b8a04e574c2106ed6f567a2e38e7186ede5ff9e921518514d8dd94380b8842af0d6b554a2ab2c88e3c11d3b5472426333c4e66f2afee7bea53cad6b2bd431e0d00a6f85bba22528e35dffa139f666cdc5c89c9f8bf3403125f857fdcd4bd65a719.jpg",
-            "width":"300",
-            "height":"300"
-            }
-            ],
-  "open_in_browser":false
-  },
-  {
-  "id":"197696",
-  "campaign_name":"360 Security - Antivirus",
-  "campaign_description":"Free Security Protection and Speed Booster for Android Phone!",
-  "app_store_url":"https:\/\/play.google.com\/store\/apps\/details?id=com.qihoo.security",
-  "click_url":"http:\/\/offerwall.12trackway.com\/save-click.php?campaign=197696&impression=76281078&token=1234",
-  "action_text":"Install",
-  "campaign_image":"http:\/\/offerwall.12trackway.com\/image-world\/9be7030cd06d5b08393cbb173237b2bc806bd2f0c96580f5bd10f4d237b68ea9e96f6a67f676f6f76b64c4153ab7d3f5c7c60215143c565911fa832e8ab44d6f877d7d0b0485481228d76c08b9f51d91e8cf54d757008a0a2b569adfbbbd6d24ea34f442c686966bcf9db9ac68d9090ff4b030ae83cc31f55b2961764b29a5fee92aea9317e7b755c949345c7c05b9f2857674c7f4ee1efeabd712e7d89722650a3fbe6b91157950731bc746cbdc552cdf00925b79fbbefe0c6efc3647673db15e7ce19bfe6b89cee44e18f66fcdaa39.jpg",
-  "images":[
-            {
-            "url":"http:\/\/offerwall.12trackway.com\/image-world\/0ce5ae1ca297e8ec89ea4add36559988abaad21a163a69bed9e49d3ffd1ec0ebc36f9400438014881353430d05079b749cd77c500677a716f6a514343a13e2cc25e882eaa3b49dedc61e2c4eef64d87925e673eecc9a9a297b3bb203004089becd0030ce2d1dabd78049c7feef4fffd1cce647a6fdae0bd29eeca1ea39deb33d637a984d96ba191c1b127b914eb69c6479a692ac1d49ebafe7ef254be9b6dd01628766d2c02f862f2366ad9892df89e1d8a922b23301ed72758f4b9ddf7b77148718bb19e58c8fd6a2a2b006c6b54797.jpg",
-            "width":"300",
-            "height":"300"
-            }
-            ],
-  "open_in_browser":false
-  },
-  {
-  "id":"275236",
-  "campaign_name":"Safe Task Manager",
-  "campaign_description":"Safe Task Manager is an easy way to kill the processes that are slowing down your phone!",
-  "app_store_url":"https:\/\/play.google.com\/store\/apps\/details?id=com.safetaskmanager",
-  "click_url":"http:\/\/offerwall.12trackway.com\/save-click.php?campaign=275236&impression=76281078&token=1234",
-  "action_text":"Install",
-  "campaign_image":"http:\/\/offerwall.12trackway.com\/image-world\/f93a28a109195aebd0ca07e20ebf7d49958dc74c60a06790bee4a0352f4cdcab28995335a22516828afe20425a3bcd2b5c3b9d745e0da9e4c55b011779c2b7672e7790ce02ae759e51e3027be19ba3258874abeeb3624f79340f9bab90d799f667d3971c4472d1cc6158a313fc0c66fe9229c4033363b07a31daeab43a3d21e20d8b72ab7229130da5a4a2eac653e4965aae674656c3255dfb0b9ba79a9cc817c4d969ceff7cf5c9120ef6e9a89ea29c214356b2e518c67d03c152a5189a3ff78a9e051d7d866d59ae3d56116bb9e0b8.jpg",
-  "images":[
-            {
-            "url":"http:\/\/offerwall.12trackway.com\/image-world\/a1ea2761a4561a424bef8def909ed46e6caf4aef229ee93bc7896674dbfb208bdfec79329d686bdc8964a3c8f3815ddd4b0aee26d98776997df0f17a273c52afaafab9b8ad4bac33432019b4a4dd530e525b7016630cdb4581f2d86bd56abd21460191f107fc644497fd79b34b0b3ee0af2fa95800a904c3776407622b0de557e0584fbeffcf86d60465b7e1d2dd5307330b44232dce10aab7fe79aa9bec55ab0a3cc46bf6debc1ffaca1a648209facc19b0d197f9e6eabf3b8de6c7b21cf7927bd9f1b22d6cd308029e9123ee5ce4c4.jpg",
-            "width":"300",
-            "height":"300"
-            }
-            ],
-  "open_in_browser":false
-  },
-  {
-  "id":"276516",
-  "campaign_name":"Antivirus Free 2016",
-  "campaign_description":"Clean your system and boost your device. ",
-  "app_store_url":"https:\/\/play.google.com\/store\/apps\/details?id=com.app.antivirusfree2016",
-  "click_url":"http:\/\/offerwall.12trackway.com\/save-click.php?campaign=276516&impression=76281078&token=1234",
-  "action_text":"Install",
-  "campaign_image":"http:\/\/offerwall.12trackway.com\/image-world\/876ebbd369b2cd5a4325cd3bab4ba7f14979ce72b6ec23b9d2208a28489f153ae1375c1a39cab9a652d02fa51f814039dc349e41f91cfcd8866d6fc8d8c98a86cbec1201f1e6b0492e4f5a8a4b34edcdc7e98f2520b98989456a71160b4484c689b2861732a7a646202d0cbbe30c58109183f43179d8ae3d5e02568b9ccd24cb556d2f8f7a0ae858951431098777555dc7d7c0abe81cf188d3bf8e21adbd2b6bdff79e0954ea1b255b09e2c09a35539148ef3845b4fff86f74c5edffd87e14848f9a0fb3d17c7359f651d595c0b787a6.jpg",
-  "images":[
-            {
-            "url":"http:\/\/offerwall.12trackway.com\/image-world\/cbca882944338fc2fbc1ce628b07d4be96e2ba6f6b704e17e156632d305722facb04fc684ed7da6ed8f1f92c6da907a01213f21c3ba1ab6f9d0a964de5a46553e33ee1cb1de5906919f2ac352bb278e6a9f466e90916a4d8906263d84eebdb968631a78c45464c75277f622ef235034b339f170dd205d23fb545fd80c1ed9afacb1e9e05ef93a1ce464737b0fcd60a660085ee3a61b8c8b74697cdcf52fa23563be5e8c7037140f73ba7abda7690c23899ca78125e6ba7de72a091e5e52b04823cf1bc13178d3074b9d1a457b718c341.jpg",
-            "width":"300",
-            "height":"300"
-            }
-            ],
-  "open_in_browser":false
-  }
+      "id":"24925",
+      "campaign_name":"Morecast Weer App",
+      "campaign_description":"Sneeuw radar met webcams. Installeer je straatniveau precies weer App nu!",
+      "app_store_url":"https:\/\/play.google.com\/store\/apps\/details?id=com.morecast.weather",
+      "click_url":"http:\/\/offerwall.beta.pmgbrain.com\/save-click.php?campaign=24925&impression=13829453&token=1234",
+      "action_text":"Install",
+      "campaign_image":"http:\/\/offerwall.beta.pmgbrain.com\/image-world\/be41de9a490c30d226bcce46e7a3d3e42d6501f4753c31e9493b8600fa2b51f8a93273c619cf0a365ed95ad978eb950c39bb670394ccc2ba2ca7431decf02741c7ac7b506dd418249c38d0cec6b981c89a6a7b2780c91849e70dd2600a0a6d3cf4fc9cf3ceba4eea5d4bf7c8b072b59c9e00781e4340081e4d6a86838aba83cc5d53bd273a5769c9732c4425a273eaa3c47ee279fe9668c31e047acfa68a68162fb6b642b89191edd3d1f003555a38a4212e7fd37859d3038a100e6e0e7dcc6d1f8fbee939fe0781704192448bfa055d.jpg",
+      "images":{
+          "hq_icon":{
+              "url":"http:\/\/offerwall.beta.pmgbrain.com\/image-world\/a38331482b3b7ff1a02440ed133c1dd8ede7204438b20ae2e20cf11c3e89ef5ca7e57627c248ac251e0c59cde6e264f196416721805e044cf32866f2fb57afa0211bf97a20c2bf4dd4315603d6ea148c1afc2312c146e50649b4691394957879c9f328c0871182787bc3fd8643f54fd884015ada5af29027cba6354d896b8b30666be4f7d9fb3e4d08f60fd19fb302926450d95121e9153437868384fd06c43246756e6aee0618da4cbb0abe3f58194535de3bf71dee9c75ee4f37b64326969a3fd5cc6320d3c3b5c9c45ce95077808d.jpg"
+              }
+          },
+      "open_in_browser":false
+      }
   ]

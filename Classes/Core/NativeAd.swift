@@ -8,9 +8,9 @@
 import UIKit
 
 public struct sImage {
-    var url: String
-    var width: UInt
-    var height: UInt
+    var url: NSURL!
+    var width: UInt!
+    var height: UInt!
 }
 
 /**
@@ -35,7 +35,7 @@ public class NativeAd: NSObject {
 	/// Ad Placement token the ad is linked to (via the ads request)
 	private(set) var adPlacementToken: String!
 	/// Images including hq_icon , banners and icon
-	private(set) var images = [sImage]()
+    private(set) var images = [EImageType: sImage]()
 
 	/**
      Fallible Constructor
@@ -83,11 +83,26 @@ public class NativeAd: NSObject {
 			}
 		}
 
-        if let images = adDictionary["images"] as? [[String: String]] {
-            for image in images {
-                let width = UInt(image["width"]!),
-                    height = UInt(image["height"]!)
-                self.images.append(sImage(url: image["url"]!, width: width!, height: height!))
+        if let imageTypes = adDictionary["images"] as? [String: [String: String]] {
+            for imageType in imageTypes {
+                let image = imageType.1
+
+                var width = UInt(0),
+                    height = UInt(0),
+                    url = NSURL()
+
+                if let sWidth = image["width"] {
+                    width = UInt(sWidth)!
+                }
+
+                if let sHeight = image["height"] {
+                    height = UInt(sHeight)!
+                }
+
+                if let sUrl = image["url"] {
+                    url = NSURL(string: sUrl)!
+                }
+                self.images[EImageType(rawValue: imageType.0)!] = sImage(url: url, width: width, height: height)
             }
 		} else {
 			throw NativeAdsError.InvalidAdNoImages

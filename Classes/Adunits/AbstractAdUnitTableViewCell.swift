@@ -19,10 +19,6 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 	@IBOutlet weak var adImage: UIImageView?
 	@IBOutlet weak var adTitle: UILabel?
 	@IBOutlet weak var adDescription: UILabel?
-	@IBOutlet weak var adInfoView: UIView?
-
-	@IBOutlet weak var adDescriptionHeightConstraint: NSLayoutConstraint!
-	@IBOutlet weak var middleLineCenterYConstraint: NSLayoutConstraint!
 
 	public func configureAdView(nativeAd: NativeAd) {
 		if let title = adTitle {

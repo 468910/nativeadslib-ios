@@ -38,7 +38,7 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 		session: URLSessionProtocol = NSURLSession.sharedSession()
 	) {
 		super.init()
-		self.adPlacementToken = adPlacementToken;
+		self.adPlacementToken = adPlacementToken
 		self.delegate = delegate
 		self.advertisingTrackingEnabled = advertisingTrackingEnabled
 		self.session = session
@@ -121,9 +121,9 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 	public func getNativeAdsURL(placementKey: String?, limit: UInt, imageType: EImageType = EImageType.allImages) -> String {
 		let token = provideIdentifierForAdvertisingIfAvailable()
 
-		let baseUrl = NativeAdsConstants.NativeAds.baseURL;
+		let baseUrl = NativeAdsConstants.NativeAds.baseURL
 		// token
-		var apiUrl = baseUrl + "&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&placement_key=\(placementKey!)&image_type=\(imageType.rawValue)"
+		var apiUrl = baseUrl + "&req_version=003&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&placement_key=\(placementKey!)&image_type=\(imageType.rawValue)"
 
 		if (advertisingTrackingEnabled == nil || advertisingTrackingEnabled == false) {
 			apiUrl = apiUrl + "&optout=1"
