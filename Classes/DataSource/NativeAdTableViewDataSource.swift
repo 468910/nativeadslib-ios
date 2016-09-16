@@ -97,15 +97,15 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 		case .Custom:
 			let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as! NativeAdCell
 			cell.configureAdView(nativeAd)
-			return cell;
-		case .Big:
-			let cell: AbstractBigAdUnitTableViewCell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
-			cell.configureAdView(nativeAd)
-			return cell;
+			return cell
+//		case .Big:
+//			let cell: AbstractBigAdUnitTableViewCell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
+//			cell.configureAdView(nativeAd)
+//			return cell;
 		default:
 			let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
 			cell.configureAdView(nativeAd)
-			return cell;
+			return cell
 		}
 	}
 

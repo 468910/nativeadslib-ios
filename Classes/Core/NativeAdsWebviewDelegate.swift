@@ -75,7 +75,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 			webView.stopLoading()
 			Logger.debugf("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
 			openSystemBrowser((request.URL!))
-			return false;
+			return false
 		} else {
 			return true
 		}
@@ -129,7 +129,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 		let dataBody = constructDataBodyForNotifyingServerOfFalseRedirection()
 
 		req.HTTPMethod = "POST"
-		req.HTTPBody = dataBody.dataUsingEncoding(NSUTF8StringEncoding);
+		req.HTTPBody = dataBody.dataUsingEncoding(NSUTF8StringEncoding)
 
 		let dataTask = session.downloadTaskWithRequest(req, completionHandler: { data, response, error in
             if error != nil {

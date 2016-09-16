@@ -8,36 +8,36 @@
 import Foundation
 
 struct Logger {
-    
+
     private static let Tag = "[PocketMediaNativeAds]"
-    
-    private enum Level : String {
+
+    private enum Level: String {
         case Debug = "[DEBUG]"
         case Error = "[ERROR]"
     }
-    
+
     private static func log(level: Level, @autoclosure _ message: () -> String, _ error: NSError? = nil) {
+        if let error = error {
+            NSLog("%@%@ %@ with error %@", Tag, level.rawValue, message(), error)
+        } else {
+            NSLog("%@%@ %@", Tag, level.rawValue, message())
+        }
+    }
+
+    static func debug(@autoclosure message: () -> String, _ error: NSError? = nil) {
         #if DEBUG
-            if let error = error {
-                NSLog("%@%@ %@ with error %@", Tag, level.rawValue, message(), error)
-            } else {
-                NSLog("%@%@ %@", Tag, level.rawValue, message())
-            }
+            log(.Debug, message, error)
         #endif
     }
-    
-    static func debug(@autoclosure message: () -> String, _ error: NSError? = nil) {
-        log(.Debug, message, error)
-    }
-    
+
     static func debugf(format: String, _ args: CVarArgType...) {
         #if DEBUG
             log(.Debug, NSString(format, args), error)
         #endif
     }
-    
+
     static func error(@autoclosure message: () -> String, _ error: NSError? = nil) {
         log(.Error, message, error)
     }
-    
+
 }
