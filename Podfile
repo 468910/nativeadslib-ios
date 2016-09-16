@@ -11,11 +11,7 @@ use_frameworks!
 
 
 target 'PocketMediaNativeAds' do
-  pod 'HanekeSwift', '~> 0.10.1'
-
 	target 'PocketMediaNativeAdsTests' do
-	  pod 'HanekeSwift', '~> 0.10.1'
 	  inherit! :search_paths
 	end
-
 end

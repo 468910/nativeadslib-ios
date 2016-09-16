@@ -114,7 +114,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		if ((completion) != nil) {
 			completion!()
-			print("Completion has been invoked")
+            Logger.debug("Completion has been invoked")
 			completion = nil
 		}
 

@@ -325,7 +325,7 @@
                     <navigationItem key="navigationItem" id="vq8-vW-Lkv">
                         <nil key="title"/>
                         <view key="titleView" userInteractionEnabled="NO" contentMode="scaleToFill" id="gka-Rt-nuj" userLabel="LogoContainer">
-                            <rect key="frame" x="88" y="6" width="425" height="33"/>
+                            <rect key="frame" x="87.5" y="5.5" width="425" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMarkBtn.png" translatesAutoresizingMaskIntoConstraints="NO" id="diO-n4-iLc">
@@ -460,41 +460,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="305-Fi-rRi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="772" y="-339"/>
-        </scene>
-        <!--PopOverViewController-->
-        <scene sceneID="yuy-CQ-fPn">
-            <objects>
-                <viewController id="hYM-0d-Pa6" userLabel="PopOverViewController" customClass="PopOverViewController" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fJR-2V-STm"/>
-                        <viewControllerLayoutGuide type="bottom" id="1Rx-5c-Bvw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5fj-4H-APG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPu-i0-OSk">
-                                <rect key="frame" x="28" y="20" width="919" height="243"/>
-                                <string key="text">Your app.
-Your ads.
-Your money.
-Pocket Media’s API-based native ad solution. Featuring, open source libraries that gives the creative control back to you.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.043137254901960784" green="0.58039215686274503" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="gPu-i0-OSk" firstAttribute="top" secondItem="fJR-2V-STm" secondAttribute="bottom" constant="20" id="ehz-ik-UHO"/>
-                            <constraint firstItem="gPu-i0-OSk" firstAttribute="leading" secondItem="5fj-4H-APG" secondAttribute="leadingMargin" constant="8" id="gQU-x3-kcr"/>
-                        </constraints>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Li8-Hi-stE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="756" y="407"/>
         </scene>
         <!--Big Table View Controller-->
         <scene sceneID="ZEQ-Sl-Kui">

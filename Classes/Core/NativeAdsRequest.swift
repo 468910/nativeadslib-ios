@@ -123,7 +123,7 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 
 		let baseUrl = NativeAdsConstants.NativeAds.baseURL
 		// token
-		var apiUrl = baseUrl + "&req_version=003&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&placement_key=\(placementKey!)&image_type=\(imageType.rawValue)"
+		var apiUrl = baseUrl + "&req_version=002&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&placement_key=\(placementKey!)&image_type=\(imageType.rawValue)"
 
 		if (advertisingTrackingEnabled == nil || advertisingTrackingEnabled == false) {
 			apiUrl = apiUrl + "&optout=1"
