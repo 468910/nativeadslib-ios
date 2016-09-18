@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		273A4C131D81AAD200513F81 /* PocketMediaNativeAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277F1C0B1D7EF51C00E14A68 /* PocketMediaNativeAds.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		273A4C141D81AAE500513F81 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273A4C0E1D81A9A800513F81 /* Foundation.framework */; };
 		273A4C331D81ACBA00513F81 /* PocketMediaNativeAdsTests-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 2723A50D1D7FFDB500CB07E2 /* PocketMediaNativeAdsTests-Bridging-Header.h */; };
 		27402DEE1D8ADAA4002B3747 /* NativeAdCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27402DED1D8ADAA4002B3747 /* NativeAdCellTest.swift */; };
@@ -102,7 +101,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2723A5051D7FFD1F00CB07E2 /* PBXContainerItemProxy */ = {
+		2748B0D31D8F0315007D7859 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2744A3261D7EE9FE00CC8F21 /* Project object */;
 			proxyType = 1;
@@ -184,7 +183,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				273A4C141D81AAE500513F81 /* Foundation.framework in Frameworks */,
-				273A4C131D81AAD200513F81 /* PocketMediaNativeAds.framework in Frameworks */,
 				E042DF46AAED75A827419C28 /* Pods_PocketMediaNativeAdsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,7 +435,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				2723A5061D7FFD1F00CB07E2 /* PBXTargetDependency */,
+				2748B0D41D8F0315007D7859 /* PBXTargetDependency */,
 			);
 			name = PocketMediaNativeAdsTests;
 			productName = PocketMediaNativeAdsTests;
@@ -697,10 +695,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2723A5061D7FFD1F00CB07E2 /* PBXTargetDependency */ = {
+		2748B0D41D8F0315007D7859 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 277F1C0A1D7EF51C00E14A68 /* PocketMediaNativeAds */;
-			targetProxy = 2723A5051D7FFD1F00CB07E2 /* PBXContainerItemProxy */;
+			targetProxy = 2748B0D31D8F0315007D7859 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
