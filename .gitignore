@@ -2,6 +2,8 @@
 .DS_Store
 .idea/*
 *.xcworkspace/*
+Podfile.lock
+
 # Xcode
 build/
 *.pbxuser
