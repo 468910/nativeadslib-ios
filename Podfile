@@ -12,9 +12,9 @@ use_frameworks!
 target 'PocketMediaNativeAds' do
 	project 'PocketMediaNativeAds.xcodeproj'
 	workspace 'PocketMediaNativeAds.xcworkspace'
-	target 'PocketMediaNativeAdsTests' do
-	  inherit! :search_paths
-	end
+#	target 'PocketMediaNativeAdsTests' do
+#	  inherit! :search_paths
+#	end
 	target 'PocketMediaNativeAdsExample' do
 		project ‘PocketMediaNativeAdsExample.xcodeproj’
 	end

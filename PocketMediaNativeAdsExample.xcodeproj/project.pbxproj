@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A18B32F0238E45B4E8D0A63 /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD4BC011A3F8AE7FE9FF31E /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework */; };
 		27AF977D1D8EEAA2003B71D0 /* PocketMediaNativeAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DD16021D8ED04500B31C6A /* PocketMediaNativeAds.framework */; };
-		27AF977E1D8EEAA2003B71D0 /* PocketMediaNativeAds.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27DD16021D8ED04500B31C6A /* PocketMediaNativeAds.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27DD16081D8ED10C00B31C6A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DD16071D8ED10C00B31C6A /* Images.xcassets */; };
 		27DD160B1D8ED56F00B31C6A /* CollectionAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16091D8ED56F00B31C6A /* CollectionAdCell.swift */; };
 		27DD160C1D8ED56F00B31C6A /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD160A1D8ED56F00B31C6A /* CollectionViewController.swift */; };
@@ -46,9 +45,8 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolderSpec = 16;
 			files = (
-				27AF977E1D8EEAA2003B71D0 /* PocketMediaNativeAds.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
