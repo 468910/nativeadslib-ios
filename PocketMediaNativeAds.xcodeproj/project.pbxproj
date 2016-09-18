@@ -98,7 +98,7 @@
 		27F57AD21D86D57E000438CE /* NativeAdsWebviewDelegateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F57AD01D86D57E000438CE /* NativeAdsWebviewDelegateTest.swift */; };
 		27F9020B1D884CFF006569A7 /* testHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F9020A1D884CFF006569A7 /* testHelpers.swift */; };
 		E042DF46AAED75A827419C28 /* Pods_PocketMediaNativeAdsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9D20E7E918E03CE0E2E8A7 /* Pods_PocketMediaNativeAdsTests.framework */; };
-		F00149CA0CC6FEE35516B7A7 /* Pods_PocketMediaNativeAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676A1D9F1F252F103E7FDAA5 /* Pods_PocketMediaNativeAds.framework */; };
+		E77590E893E02BAB7ABB56D1 /* Pods_PocketMediaNativeAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676A1D9F1F252F103E7FDAA5 /* Pods_PocketMediaNativeAds.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,7 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F00149CA0CC6FEE35516B7A7 /* Pods_PocketMediaNativeAds.framework in Frameworks */,
+				E77590E893E02BAB7ABB56D1 /* Pods_PocketMediaNativeAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

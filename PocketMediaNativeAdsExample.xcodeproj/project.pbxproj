@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19021F917BF74B1D7EE2B8B2 /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD4BC011A3F8AE7FE9FF31E /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework */; };
+		0A18B32F0238E45B4E8D0A63 /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD4BC011A3F8AE7FE9FF31E /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework */; };
+		27AF977D1D8EEAA2003B71D0 /* PocketMediaNativeAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DD16021D8ED04500B31C6A /* PocketMediaNativeAds.framework */; };
+		27AF977E1D8EEAA2003B71D0 /* PocketMediaNativeAds.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27DD16021D8ED04500B31C6A /* PocketMediaNativeAds.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27DD16081D8ED10C00B31C6A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DD16071D8ED10C00B31C6A /* Images.xcassets */; };
 		27DD160B1D8ED56F00B31C6A /* CollectionAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16091D8ED56F00B31C6A /* CollectionAdCell.swift */; };
 		27DD160C1D8ED56F00B31C6A /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD160A1D8ED56F00B31C6A /* CollectionViewController.swift */; };
@@ -27,8 +29,6 @@
 		27DD16291D8ED5A100B31C6A /* questionMarkBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DD16201D8ED5A100B31C6A /* questionMarkBtn@3x.png */; };
 		27DD162C1D8ED5B100B31C6A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27DD162B1D8ED5B100B31C6A /* Info.plist */; };
 		27DD162E1D8ED5B500B31C6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD162D1D8ED5B500B31C6A /* AppDelegate.swift */; };
-		27F09FD21D8EDFD3006CFC19 /* PocketMediaNativeAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DD16021D8ED04500B31C6A /* PocketMediaNativeAds.framework */; };
-		27F09FD31D8EDFD3006CFC19 /* PocketMediaNativeAds.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27DD16021D8ED04500B31C6A /* PocketMediaNativeAds.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,13 +42,13 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		27F09FD41D8EDFD3006CFC19 /* Embed Frameworks */ = {
+		27AF977F1D8EEAA2003B71D0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				27F09FD31D8EDFD3006CFC19 /* PocketMediaNativeAds.framework in Embed Frameworks */,
+				27AF977E1D8EEAA2003B71D0 /* PocketMediaNativeAds.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		274D44F01D8EE24700654825 /* PocketMediaNativeAdsExample_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketMediaNativeAdsExample_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27AF97781D8EEA91003B71D0 /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "build/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		27DD16021D8ED04500B31C6A /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "../../../Library/Developer/Xcode/DerivedData/PocketMediaNativeAds-gnigauuiuuimgbatvmuinnysmyto/Build/Products/Debug-iphonesimulator/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		27DD16071D8ED10C00B31C6A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PocketMediaNativeAdsExample/Images.xcassets; sourceTree = "<group>"; };
 		27DD16091D8ED56F00B31C6A /* CollectionAdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionAdCell.swift; path = PocketMediaNativeAdsExample/CollectionView/CollectionAdCell.swift; sourceTree = "<group>"; };
@@ -87,8 +88,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27F09FD21D8EDFD3006CFC19 /* PocketMediaNativeAds.framework in Frameworks */,
-				19021F917BF74B1D7EE2B8B2 /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework in Frameworks */,
+				0A18B32F0238E45B4E8D0A63 /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework in Frameworks */,
+				27AF977D1D8EEAA2003B71D0 /* PocketMediaNativeAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +183,7 @@
 		706B59302CE871EBDDBEE4B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27AF97781D8EEA91003B71D0 /* PocketMediaNativeAds.framework */,
 				27DD16021D8ED04500B31C6A /* PocketMediaNativeAds.framework */,
 				ADD4BC011A3F8AE7FE9FF31E /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework */,
 			);
@@ -211,7 +213,7 @@
 				27A2A8CD1D83073600BE8DFD /* Embed Frameworks */,
 				F5538170FCDA9E4D0A16BCA5 /* [CP] Embed Pods Frameworks */,
 				8C5314D5B3C7730D95AA6357 /* [CP] Copy Pods Resources */,
-				27F09FD41D8EDFD3006CFC19 /* Embed Frameworks */,
+				27AF977F1D8EEAA2003B71D0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -435,6 +437,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = PocketMediaNativeAds/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -455,6 +461,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = PocketMediaNativeAds/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
