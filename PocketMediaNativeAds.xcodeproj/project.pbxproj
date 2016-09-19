@@ -287,17 +287,12 @@
 		277F1C2E1D7EF56700E14A68 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				27F56D2C1D8FDA2A0096067C /* Networking */,
+				27F56D2B1D8FDA140096067C /* Openers */,
 				278CE85D1D8EDD3D00F6CF8A /* Caching.swift */,
-				278CE85F1D8EDD3D00F6CF8A /* FullscreenBrowser.swift */,
 				278CE8601D8EDD3D00F6CF8A /* NativeAd.swift */,
-				278CE8611D8EDD3D00F6CF8A /* NativeAdOpenerProtocol.swift */,
-				278CE8621D8EDD3D00F6CF8A /* NativeAdsConnectionProtocol.swift */,
 				278CE8631D8EDD3D00F6CF8A /* NativeAdsConstants.swift */,
 				278CE8641D8EDD3D00F6CF8A /* NativeAdsError.swift */,
-				278CE8651D8EDD3D00F6CF8A /* NativeAdsRequest.swift */,
-				278CE8661D8EDD3D00F6CF8A /* NativeAdsWebviewDelegate.swift */,
-				278CE8671D8EDD3D00F6CF8A /* NativeAdsWebviewRedirectionsDelegate.swift */,
-				278CE8681D8EDD3D00F6CF8A /* URLSessionProtocol.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -305,15 +300,13 @@
 		277F1C2F1D7EF56A00E14A68 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				27B459101D900B8B00C6F611 /* TableView */,
 				278CE8751D8EDD4700F6CF8A /* AdUnitType.swift */,
 				278CE8761D8EDD4700F6CF8A /* DatasourceNormalizerProtocol.swift */,
 				278CE8771D8EDD4700F6CF8A /* DataSourceProtocol.swift */,
 				278CE8781D8EDD4700F6CF8A /* IndexRowNormalizer.swift */,
 				278CE8791D8EDD4700F6CF8A /* NativeAdStream.swift */,
 				278CE87A1D8EDD4700F6CF8A /* NativeAdStreamNormalizerProtocol.swift */,
-				278CE87B1D8EDD4700F6CF8A /* NativeAdTableView.swift */,
-				278CE87C1D8EDD4700F6CF8A /* NativeAdTableViewDataSource.swift */,
-				278CE87D1D8EDD4700F6CF8A /* NativeAdTableViewDelegate.swift */,
 				278CE87E1D8EDD4700F6CF8A /* NativeAdViewBinderProtocol.swift */,
 			);
 			name = DataSource;
@@ -352,6 +345,16 @@
 			name = DataSource;
 			sourceTree = "<group>";
 		};
+		27B459101D900B8B00C6F611 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				278CE87B1D8EDD4700F6CF8A /* NativeAdTableView.swift */,
+				278CE87C1D8EDD4700F6CF8A /* NativeAdTableViewDataSource.swift */,
+				278CE87D1D8EDD4700F6CF8A /* NativeAdTableViewDelegate.swift */,
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
 		27C82FAE1D8816B100FE3E6D /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +371,35 @@
 				27C82FCB1D88326900FE3E6D /* ItemCell.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		27F56D2B1D8FDA140096067C /* Openers */ = {
+			isa = PBXGroup;
+			children = (
+				27F56D2D1D8FDA960096067C /* WebView */,
+				278CE8611D8EDD3D00F6CF8A /* NativeAdOpenerProtocol.swift */,
+			);
+			name = Openers;
+			sourceTree = "<group>";
+		};
+		27F56D2C1D8FDA2A0096067C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				278CE8681D8EDD3D00F6CF8A /* URLSessionProtocol.swift */,
+				278CE8621D8EDD3D00F6CF8A /* NativeAdsConnectionProtocol.swift */,
+				278CE8651D8EDD3D00F6CF8A /* NativeAdsRequest.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		27F56D2D1D8FDA960096067C /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				278CE8671D8EDD3D00F6CF8A /* NativeAdsWebviewRedirectionsDelegate.swift */,
+				278CE8661D8EDD3D00F6CF8A /* NativeAdsWebviewDelegate.swift */,
+				278CE85F1D8EDD3D00F6CF8A /* FullscreenBrowser.swift */,
+			);
+			name = WebView;
 			sourceTree = "<group>";
 		};
 		60607A21E1B11C5EDC1ED785 /* Frameworks */ = {

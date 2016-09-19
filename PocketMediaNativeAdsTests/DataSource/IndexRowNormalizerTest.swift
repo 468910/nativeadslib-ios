@@ -36,11 +36,6 @@ class FakeNativeAdTableViewDataSource: NativeAdTableViewDataSourceProtocol {
 		return 1
 	}
 
-	@objc
-	func attachAdStream(adStream: NativeAdStream) {
-
-	}
-
 }
 
 class IndexRowNormalizerTest: XCTestCase {
@@ -95,8 +90,8 @@ class IndexRowNormalizerTest: XCTestCase {
 		var result = IndexRowNormalizer.normalize(66, firstAdPosition: 2, adMargin: 4, adsCount: 1)
 		XCTAssert(result == 66 - 1, "The normalized index should be 66")
 	}
-  
-  func testGetCountForSection(){
+
+  func testGetCountForSection() {
      let numOfExpectedAds = 10
      var result = IndexRowNormalizer.getNumberOfRowsForSectionIncludingAds(20, totalRowsInSection: 100, firstAdPosition: 4, adMargin: 10, adsCount: 40)
      XCTAssert(result == 20 + numOfExpectedAds)
@@ -116,7 +111,5 @@ class IndexRowNormalizerTest: XCTestCase {
 		var result = IndexRowNormalizer.getAdsForRange(0...2, firstAdPosition: 2, adMargin: 4)
 		XCTAssert(result == 1, "Ads for range should return 1")
 	}
-
-
 
 }

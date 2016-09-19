@@ -111,14 +111,14 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 	/**
      This method returns the UUID of the device.
      */
-	func provideIdentifierForAdvertisingIfAvailable() -> String? {
+	private func provideIdentifierForAdvertisingIfAvailable() -> String? {
 		return ASIdentifierManager.sharedManager().advertisingIdentifier?.UUIDString
 	}
 
 	/**
      Returns the API URL to invoke to retrieve ads
      */
-	public func getNativeAdsURL(placementKey: String?, limit: UInt, imageType: EImageType = EImageType.allImages) -> String {
+	internal func getNativeAdsURL(placementKey: String?, limit: UInt, imageType: EImageType = EImageType.allImages) -> String {
 		let token = provideIdentifierForAdvertisingIfAvailable()
 
 		let baseUrl = NativeAdsConstants.NativeAds.baseURL

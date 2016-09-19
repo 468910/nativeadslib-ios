@@ -12,7 +12,6 @@ import Foundation
 public protocol DataSourceProtocol : DatasourceNormalizerProtocol {
 	func onUpdateDataSource()
 	func numberOfElements() -> Int
-    func attachAdStream(adStream : NativeAdStream)
 }
 
 public protocol NativeAdTableViewDataSourceProtocol : DataSourceProtocol {

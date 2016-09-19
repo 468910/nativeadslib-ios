@@ -26,10 +26,6 @@ public class NativeAd: NSObject {
 	private(set) public var clickURL: NSURL!
 	/// URL for the campaign icon
 	private(set) public var campaignImage: NSURL!
-	/// Preview url (itunes one)
-	private(set) public var destinationURL: NSURL?
-
-	private var originalClickUrl: NSURL!
 	/// PocketMedia's Offer ID the ad is linked to
 	private(set) var offerId: UInt?
 	/// Ad Placement token the ad is linked to (via the ads request)
@@ -56,7 +52,6 @@ public class NativeAd: NSObject {
 
 		if let urlClick = adDictionary["click_url"] as? String, url = NSURL(string: urlClick) {
 			self.clickURL = url
-			self.originalClickUrl = self.clickURL
 		} else {
 			throw NativeAdsError.InvalidAdNoClickUrl
 		}

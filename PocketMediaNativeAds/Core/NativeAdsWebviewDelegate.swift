@@ -152,7 +152,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 	private func constructDataBodyForNotifyingServerOfFalseRedirection() -> String {
         let finalUrl: String = (webView != nil && webView!.request != nil) ? webView!.request!.URL!.absoluteString : ""
 		let offerid = String(nativeAdUnit?.offerId!)
-		let adPlacementToken = String(nativeAdUnit?.adPlacementToken!)
+		let adPlacementToken = nativeAdUnit?.adPlacementToken
 		let userToken = "userToken=" + NativeAdsConstants.NativeAds.userToken + "&"
 		let dataBody = userToken + "offer_id=\(offerid)" + "&placement_id=\(adPlacementToken)" + "&final_url=\(finalUrl)"
 		return dataBody

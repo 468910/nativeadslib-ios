@@ -14,13 +14,10 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 
 	public var datasource: UITableViewDataSource
 	public var tableView: UITableView
-	internal var delegate: NativeAdTableViewDelegate?
+	public var delegate: NativeAdTableViewDelegate?
 	public var controller: UIViewController
     //TODO: Check if this still creates a memory leak.
 	public var adStream: NativeAdStream //This used to be optional + weak to stop memory leaks.
-	public typealias completionBlock = () -> ()
-	public var completion: completionBlock?
-	public var oldDelegate: UITableViewDelegate?
 
 	public func onUpdateDataSource() {
 		tableView.reloadData()
@@ -41,17 +38,10 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 
 	func handleRefresh(refreshControl: UIRefreshControl) {
 		refreshControl.endRefreshing()
-	}
-
-	public func attachAdStream(adStream: NativeAdStream) {
-		self.adStream = adStream
-		tableView.reloadData()
-	}
+    }
 
 	deinit {
-		NativeAdStream.viewRegister = NativeAdStream.viewRegister.filter { $0 != String(ObjectIdentifier(tableView)) }
 		self.tableView.dataSource = datasource
-		self.tableView.delegate = oldDelegate
 	}
 
 	@objc
@@ -64,7 +54,6 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 		self.tableView.estimatedRowHeight = 180.0
 		super.init()
 		self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: tableView.delegate!)
-		self.oldDelegate = tableView.delegate!
 		tableView.delegate = self.delegate
 		tableView.dataSource = self
 
@@ -77,12 +66,12 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 				adStream.adUnitType = .Standard
 			}
 			break
-		case .Big:
-			if (tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") == nil) {
-				let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-				tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
-			}
-			break
+//		case .Big:
+//			if (tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") == nil) {
+//				let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+//				tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
+//			}
+//			break
 		default:
 			if (tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") == nil) {
 				let bundle = PocketMediaNativeAdsBundle.loadBundle()!
@@ -112,19 +101,11 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	// Data Source
 	@objc
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		if ((completion) != nil) {
-			completion!()
-            Logger.debug("Completion has been invoked")
-			completion = nil
-		}
-
-		if let val = adStream.isAdAtposition(indexPath) {
+    	if let val = adStream.isAdAtposition(indexPath) {
 			return getAdCellForTableView(val)
 		} else {
-//			var temp = adStream!.normalize(indexPath)
 			return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream.normalize(indexPath), inSection: indexPath.section))
 		}
-
 	}
 
 	public func getNumberOfRowsInSection(numberOfRowsInSection section: Int) -> Int {

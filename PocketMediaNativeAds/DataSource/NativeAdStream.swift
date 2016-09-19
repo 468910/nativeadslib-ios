@@ -1,4 +1,3 @@
-
 //  NativeAdStream.swift
 //  Pods
 //
@@ -15,119 +14,54 @@ import UIKit
 @objc
 public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStreamNormalizerProtocol {
 
-	static internal var viewRegister = Array<String>()
-	public var adMargin: Int
-	public static var adStreamRegister: [String: NativeAdStream] = [:]
-	public var minimumElementsRequiredForInsertionIntoTableView: Int = 0
-
+    public var adMargin: Int = 1 {
+        willSet {
+            if newValue >= 1 {
+                adMargin = newValue
+            } else {
+                adMargin = 1
+            }
+        }
+    }
 	// they are not called when variables are written to from an initializer or with a default value.
-	public var firstAdPosition: Int {
+	public var firstAdPosition: Int = 0 {
 		willSet {
 			firstAdPosition = newValue + 1
 			Logger.debug("First Ad Position Changed Preparing for Updating Ad Positions")
         }
-		didSet {
-			if firstAdPosition != oldValue {
-				updateAdPositions()
-			}
-		}
 	}
-
+    public var minimumElementsRequiredForInsertionIntoTableView: Int = 0
 	public var adUnitType: AdUnitType = .Standard
 	private var adsPositionGivenByUser: [Int]?
-	public var ads: [Int: NativeAd]
+	public var ads: [Int: NativeAd] = [Int: NativeAd]()
 	public var datasource: DataSourceProtocol?
-	public var tempAds: [NativeAd]
-	public var mainView: UIView?
+	public var view: UIView?
 
 	@objc
-	public convenience init(controller: UIViewController, mainView: UIView, adMargin: Int) {
-		self.init(controller: controller, mainView: mainView, adMargin: adMargin, firstAdPosition: adMargin)
-	}
+    public required init(controller: UIViewController, view: UIView, adMargin: Int = 2, firstAdPosition: Int = 0, customXib: UINib? = nil, adsPositions: [Int]? = nil) {
+        if customXib != nil {
+            self.adUnitType = AdUnitType.Custom
+        }
+        if adsPositions != nil {
+            self.adsPositionGivenByUser = Array(Set(adsPositions!)).sort { $0 < $1 }
+        }
+        self.adMargin = adMargin + 1//+ 1 because [...]
+        self.firstAdPosition = firstAdPosition
 
-	@objc
-	public convenience init(controller: UIViewController, mainView: UIView, adMargin: Int, firstAdPosition: Int, customXib: UINib) {
-		self.init(controller: controller, mainView: mainView, customXib: customXib)
-		self.firstAdPosition = firstAdPosition
-		self.adMargin = adMargin + 1
-		self.adUnitType = .Custom
-	}
-
-	@objc
-	public convenience init(controller: UIViewController, mainView: UIView, adsPositions: [Int], customXib: UINib) {
-		self.init(controller: controller, mainView: mainView, customXib: customXib)
-		self.adsPositionGivenByUser = Array(Set(adsPositions)).sort { $0 < $1 }
-		self.adUnitType = .Custom
-	}
-
-	@objc
-	public convenience init(controller: UIViewController, mainView: UIView, customXib: UINib) {
-		switch mainView {
-		case let tableView as UITableView:
-			tableView.registerNib(customXib, forCellReuseIdentifier: "CustomAdCell")
-			self.init(controller: controller, mainView: tableView)
-			break
-		case let collectionView as UICollectionView:
-			self.init(controller: controller, mainView: collectionView)
-			break
-		default:
-			self.init(controller: controller, mainView: mainView)
-			break
+        super.init()
+        switch view {
+            case let tableView as UITableView:
+                if customXib != nil {
+                    tableView.registerNib(customXib, forCellReuseIdentifier: "CustomAdCell")
+                }
+                self.view = tableView
+                datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adStream: self)
+                break
+//            case let collectionView as UICollectionView:
+//                break
+            default:
+                break
 		}
-
-	}
-
-	@objc
-	public convenience init(controller: UIViewController, mainView: UIView, adsPositions: [Int]) {
-		self.init(controller: controller, mainView: mainView)
-		self.firstAdPosition = adsPositions.minElement()!
-		self.adsPositionGivenByUser = Array(Set(adsPositions)).sort { $0 < $1 }
-	}
-
-	@objc
-	public convenience init(controller: UIViewController, mainView: UIView, adMargin: Int, firstAdPosition: Int) {
-		self.init(controller: controller, mainView: mainView)
-		self.adMargin = adMargin + 1
-		self.firstAdPosition = firstAdPosition
-	}
-
-	@objc
-	public required init(controller: UIViewController, mainView: UIView) {
-		self.ads = [Int: NativeAd]()
-		self.tempAds = [NativeAd]()
-        self.firstAdPosition = 1
-        self.adMargin = 1
-		super.init()
-
-		if (NativeAdStream.viewRegister.contains(mainView.objectName)) {
-			let view = mainView as! UITableView
-			self.mainView = view
-			datasource = view.dataSource as! NativeAdTableViewDataSource
-			datasource!.attachAdStream(self)
-		} else {
-			self.mainView = mainView
-			switch mainView {
-			case let tableView as UITableView:
-				object_setClass(tableView, NativeAdTableView.self)
-				self.mainView = tableView
-				datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adStream: self)
-				Logger.debugf("%@", tableView)
-				NativeAdStream.adStreamRegister[tableView.objectName] = self
-				NativeAdStream.viewRegister.append(tableView.objectName)
-				break
-//			case let collectionView as UICollectionView:
-//				datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adStream: self)
-			default:
-				break
-			}
-		}
-	}
-
-	deinit {
-		if ((NativeAdStream.adStreamRegister[self.mainView!.objectName] == self)) {
-			object_setClass(mainView, NativeAdTableView.self)
-		}
-		Logger.debug("Adstream being Cleared")
 	}
 
 	@objc
@@ -137,35 +71,32 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 
 	@objc
 	public func didReceiveResults(nativeAds: [NativeAd]) {
-		if (self.adMargin < 1) {
-			return
-		}
 		if (self.firstAdPosition == 0) {
 			return
 		}
 		if (nativeAds.isEmpty) {
 			Logger.debug("No Ads Retrieved")
+            return
 		}
-		Logger.debug("Number of Ads retrieved 🐶 \(nativeAds.count)")
-		self.tempAds = nativeAds
-		updateAdPositions()
+		Logger.debug("Received \(nativeAds.count) ads.")
+		updateAdPositions(nativeAds)
 	}
 
 	@objc
-	public func updateAdPositions() {
+    public func updateAdPositions(newAds: [NativeAd]) {
 		if (adsPositionGivenByUser == nil) {
-			updateAdPositionsWithAdFrequency()
+			updateAdPositionsWithAdFrequency(newAds)
 		} else {
-			updateAdPositionsWithPositionsGivenByUser()
+			updateAdPositionsWithPositionsGivenByUser(newAds)
 		}
 		datasource!.onUpdateDataSource()
-		Logger.debug("udateAdPositions. Count: \(datasource?.numberOfElements())")
+		Logger.debug("updateAdPositions. Count: \(datasource?.numberOfElements())")
 	}
 
-	private func updateAdPositionsWithPositionsGivenByUser() {
+	private func updateAdPositionsWithPositionsGivenByUser(newAds: [NativeAd]) {
 		let orginalCount = datasource!.numberOfElements()
 		var adsInserted = 0
-		for ad in tempAds {
+		for ad in newAds {
 			if (adsInserted >= adsPositionGivenByUser!.count) {
 				break
 			}
@@ -178,12 +109,10 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 		}
 
 	}
-	private func updateAdPositionsWithAdFrequency() {
+	private func updateAdPositionsWithAdFrequency(newAds: [NativeAd]) {
 		let orginalCount = datasource!.numberOfElements()
-
 		var adsInserted = 0
-
-		for ad in tempAds {
+		for ad in newAds {
 
 			let index = (firstAdPosition - 1) + (adMargin * adsInserted)
 
@@ -218,15 +147,19 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 		return ads.count
 	}
 
-	func getCountForSection(numOfRowsInSection: Int, totalRowsInSection: Int) -> Int {
-		return IndexRowNormalizer.getNumberOfRowsForSectionIncludingAds(numOfRowsInSection, totalRowsInSection: totalRowsInSection, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: ads.count)
-	}
+    func getCountForSection(numOfRowsInSection: Int, totalRowsInSection: Int) -> Int {
+        return IndexRowNormalizer.getNumberOfRowsForSectionIncludingAds(numOfRowsInSection, totalRowsInSection: totalRowsInSection, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: ads.count)
+    }
 
-	@objc public func clearAdStream(affiliateId: String, limit: UInt) {
-		Logger.debug("Clearing Ad stream.")
-		self.ads = [Int: NativeAd]()
-		self.requestAds(affiliateId, limit: limit)
-		datasource?.onUpdateDataSource()
+
+    internal func clear() {
+        ads.removeAll()
+        datasource!.onUpdateDataSource()
+    }
+
+	@objc public func reloadAds(adPlacementToken: String, limit: UInt) {
+		clear()
+		self.requestAds(adPlacementToken, limit: limit)
 	}
 
 	/**
@@ -234,28 +167,12 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	 - adPlacementToken: to be generated in the user dashboard used to determine placement of the ads:
 	 - limit: Limit on how many native ads are to be retrieved.
 	 */
-	@objc public func requestAds(affiliateId: String, limit: UInt) {
+	@objc public func requestAds(adPlacementToken: String, limit: UInt) {
 		let source = datasource as! NativeAdTableViewDataSource
-		if (!ads.isEmpty) {
-			ads.removeAll()
-			tempAds.removeAll()
-			datasource!.onUpdateDataSource()
-		}
-		source.completion = { () in
-			guard limit > 0 &&
-			self.datasource!.numberOfElements() > self.minimumElementsRequiredForInsertionIntoTableView else {
-				self.datasource?.onUpdateDataSource()
-				return
-			}
-			// let numOfElements = self.datasource!.numberOfElements()
-			self.ads = [Int: NativeAd]()
-			self.tempAds = [NativeAd]()
-			self.datasource?.onUpdateDataSource()
-			Logger.debug("Requesting ads (\(limit)) for affiliate id \(affiliateId)")
-			let request = NativeAdsRequest(adPlacementToken: affiliateId, delegate: self)
-			request.retrieveAds(limit, imageType: (self.adUnitType == AdUnitType.Big ? EImageType.banner : EImageType.allImages))
-		}
-
+        clear()
+        Logger.debug("Requesting ads (\(limit)) for affiliate id \(adPlacementToken)")
+        let request = NativeAdsRequest(adPlacementToken: adPlacementToken, delegate: self)
+        request.retrieveAds(limit, imageType: (self.adUnitType == AdUnitType.Big ? EImageType.banner : EImageType.allImages))
 	}
 
 }
