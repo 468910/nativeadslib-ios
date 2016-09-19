@@ -146,7 +146,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 		if (nativeAds.isEmpty) {
 			Logger.debug("No Ads Retrieved")
 		}
-		Logger.debug("Number of Ads retrieved 🐶 \(nativeAds.count)");
+		Logger.debug("Number of Ads retrieved 🐶 \(nativeAds.count)")
 		self.tempAds = nativeAds
 		updateAdPositions()
 	}
@@ -199,9 +199,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	}
 
 	func isAdAtposition(indexPath: NSIndexPath) -> NativeAd? {
-
 		let position = self.datasource!.getTruePosistionInDataSource(indexPath)
-
 		if let val = ads[position] {
 			return val
 		} else {

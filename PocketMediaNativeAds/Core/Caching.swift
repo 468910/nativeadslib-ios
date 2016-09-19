@@ -60,28 +60,29 @@ extension NSURL {
 extension UIImageView {
     func setImageFromURL(url: NSURL) {
         self.image = UIImage()
-        dispatch_async(dispatch_get_main_queue(), {
-//            self.contentMode = UIViewContentMode.ScaleAspectFit
-//            self.clipsToBounds = true
-            if let campaignImage = url.cachedImage {
-                // Cached: set immediately.
+        if let campaignImage = url.cachedImage {
+            //Cached
+            dispatch_async(dispatch_get_main_queue(), {
                 self.image = campaignImage
                 self.alpha = 1
-            } else {
+            })
+        } else {
+            dispatch_async(dispatch_get_main_queue(), {
                 // Not cached, so load then fade it in.
                 self.alpha = 0
-                url.fetchImage { downloadedImage in
-                    // Check the cell hasn't recycled while loading.
-                    if url == downloadedImage {
+            })
+            url.fetchImage { downloadedImage in
+                // Check the cell hasn't recycled while loading.
+                if url == downloadedImage {
+                    dispatch_async(dispatch_get_main_queue(), {
                         self.image = downloadedImage
                         self.reloadInputViews()
-                        UIView.animateWithDuration(0.3) {
-                            self.alpha = 1
-//                            self.setNeedsDisplay()
-                        }
+                    })
+                    UIView.animateWithDuration(0.3) {
+                        self.alpha = 1
                     }
                 }
             }
-        })
+        }
     }
 }

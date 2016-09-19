@@ -28,7 +28,8 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 		}
 
 		if let image = adImage {
-             image.setImageFromURL(nativeAd.campaignImage)
+            image.image = UIImage()
+            image.setImageFromURL(nativeAd.campaignImage)
 		}
 	}
 
@@ -42,6 +43,10 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 			ad_description.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width * 0.80
 			ad_description.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width * 0.70
 		}
+
+        if let image = adImage {
+            image.image = UIImage()
+        }
 
 		if let title = adTitle {
 			title.numberOfLines = 0
