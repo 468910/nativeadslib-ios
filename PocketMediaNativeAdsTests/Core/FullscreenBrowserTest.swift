@@ -12,11 +12,6 @@ import UIKit
 @testable import PocketMediaNativeAds
 
 public class MockNativeAd: NativeAd {
-	private (set) var openAdUrlInForegroundCalled: Bool = false
-
-	public override func openAdUrlInForeground() {
-		openAdUrlInForegroundCalled = true
-	}
 
 }
 

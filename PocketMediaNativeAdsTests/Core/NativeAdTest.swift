@@ -15,7 +15,6 @@ public class MockOpener: NativeAdOpenerProtocol {
 	@objc
 	public func load(adUnit: NativeAd) {
 		loadCalled = true
-		adUnit.openAdUrlInForeground()
 	}
 
 	@objc

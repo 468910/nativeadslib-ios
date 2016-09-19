@@ -17,7 +17,6 @@ public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 	}
 
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
 		return self.collection.count
 	}
 
@@ -38,20 +37,17 @@ public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 	}
 
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
 		switch collection[indexPath.row] {
-
-		case let item as ItemTableModel:
-			let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
-			cell.name.text = item.title
-			cell.descriptionItem.text = item.descriptionItem
-			//cell.artworkImageView.hnk_setImageFromURL(item.imageURL)
-			return cell
-
-		default:
-			return UITableViewCell()
+            case let item as ItemTableModel:
+                let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
+                cell.name.text = item.title
+                cell.descriptionItem.text = item.descriptionItem
+                //cell.artworkImageView.hnk_setImageFromURL(item.imageURL)
+                return cell
+            default:
+                return UITableViewCell()
 		}
 
 	}
-    
+
 }

@@ -14,7 +14,7 @@ import UIKit
 @objc
 public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStreamNormalizerProtocol {
 
-    public var adMargin: Int = 1 {
+    public var adMargin: Int = 3 {
         willSet {
             if newValue >= 1 {
                 adMargin = newValue
@@ -30,25 +30,32 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 			Logger.debug("First Ad Position Changed Preparing for Updating Ad Positions")
         }
 	}
-    public var minimumElementsRequiredForInsertionIntoTableView: Int = 0
+
 	public var adUnitType: AdUnitType = .Standard
-	private var adsPositionGivenByUser: [Int]?
-	public var ads: [Int: NativeAd] = [Int: NativeAd]()
-	public var datasource: DataSourceProtocol?
+    //Positions of the ads given by the user
+	private var adsPositions: [Int]?
+	public var ads: [Int: NativeAd]!
 	public var view: UIView?
 
-	@objc
-    public required init(controller: UIViewController, view: UIView, adMargin: Int = 2, firstAdPosition: Int = 0, customXib: UINib? = nil, adsPositions: [Int]? = nil) {
-        if customXib != nil {
-            self.adUnitType = AdUnitType.Custom
-        }
-        if adsPositions != nil {
-            self.adsPositionGivenByUser = Array(Set(adsPositions!)).sort { $0 < $1 }
-        }
-        self.adMargin = adMargin + 1//+ 1 because [...]
-        self.firstAdPosition = firstAdPosition
+    public var datasource: DataSourceProtocol?
+    private var requester: NativeAdsRequest!
+    private var limit: UInt = 2
 
+	@objc
+    public required init(controller: UIViewController, view: UIView, adPlacementToken: String, customXib: UINib? = nil, requester: NativeAdsRequest? = nil) {
         super.init()
+        if customXib != nil {
+            setAdUnitType(AdUnitType.Custom)
+        }
+
+        if requester == nil {
+            self.requester = NativeAdsRequest(adPlacementToken: adPlacementToken, delegate: self)
+        } else {
+            self.requester = requester
+        }
+        
+        ads = [Int: NativeAd]()
+
         switch view {
             case let tableView as UITableView:
                 if customXib != nil {
@@ -63,6 +70,24 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
                 break
 		}
 	}
+
+    @nonobjc
+    public func setAdMargin(adMargin: Int = 2) {
+        self.adMargin = adMargin + 1 // + 1 because [...]
+    }
+
+    @nonobjc
+    public func setFirstAdPosition(firstAdPosition: Int = 0) {
+        self.firstAdPosition = firstAdPosition
+    }
+
+    public func setAdUnitType(type: AdUnitType) {
+        self.adUnitType = type
+    }
+
+    public func setAdsPositions(adsPositions: [Int]) {
+        self.adsPositions = Array(Set(adsPositions)).sort { $0 < $1 }
+    }
 
 	@objc
 	public func didReceiveError(error: NSError) {
@@ -84,7 +109,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 
 	@objc
     public func updateAdPositions(newAds: [NativeAd]) {
-		if (adsPositionGivenByUser == nil) {
+		if (adsPositions == nil) {
 			updateAdPositionsWithAdFrequency(newAds)
 		} else {
 			updateAdPositionsWithPositionsGivenByUser(newAds)
@@ -97,14 +122,14 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 		let orginalCount = datasource!.numberOfElements()
 		var adsInserted = 0
 		for ad in newAds {
-			if (adsInserted >= adsPositionGivenByUser!.count) {
+			if (adsInserted >= adsPositions!.count) {
 				break
 			}
 
-			if (adsPositionGivenByUser![adsInserted] >= orginalCount) {
+			if (adsPositions![adsInserted] >= orginalCount) {
 				break
 			}
-			ads[adsPositionGivenByUser![adsInserted] - 1] = ad
+			ads[adsPositions![adsInserted] - 1] = ad
 			adsInserted += 1
 		}
 
@@ -151,15 +176,14 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
         return IndexRowNormalizer.getNumberOfRowsForSectionIncludingAds(numOfRowsInSection, totalRowsInSection: totalRowsInSection, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: ads.count)
     }
 
-
     internal func clear() {
         ads.removeAll()
         datasource!.onUpdateDataSource()
     }
 
-	@objc public func reloadAds(adPlacementToken: String, limit: UInt) {
+	@objc public func reloadAds() {
 		clear()
-		self.requestAds(adPlacementToken, limit: limit)
+		self.requestAds(self.limit)
 	}
 
 	/**
@@ -167,12 +191,10 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate, NativeAdStre
 	 - adPlacementToken: to be generated in the user dashboard used to determine placement of the ads:
 	 - limit: Limit on how many native ads are to be retrieved.
 	 */
-	@objc public func requestAds(adPlacementToken: String, limit: UInt) {
-		let source = datasource as! NativeAdTableViewDataSource
+	@objc public func requestAds(limit: UInt) {
+        self.limit = limit
         clear()
-        Logger.debug("Requesting ads (\(limit)) for affiliate id \(adPlacementToken)")
-        let request = NativeAdsRequest(adPlacementToken: adPlacementToken, delegate: self)
-        request.retrieveAds(limit, imageType: (self.adUnitType == AdUnitType.Big ? EImageType.banner : EImageType.allImages))
+        Logger.debug("Requesting ads (\(limit)) for affiliate id \(requester.adPlacementToken)")
+        requester.retrieveAds(limit, imageType: (self.adUnitType == AdUnitType.Big ? EImageType.banner : EImageType.allImages))
 	}
-
 }

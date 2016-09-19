@@ -28,14 +28,13 @@ class TableViewController: UITableViewController {
 
         self.refreshControl?.addTarget(self, action: #selector(TableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         _ = [5, 2, 4, 99]
-        stream = NativeAdStream(controller: self, view: self.tableView, adMargin: 1, firstAdPosition: 5)
-
+        stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165")
+        stream?.requestAds(5)
 		super.viewDidLoad()
     }
 
     override func viewWillAppear(animated: Bool) {
-
-        stream!.reloadAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
+        stream?.reloadAds()
     }
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -48,7 +47,7 @@ class TableViewController: UITableViewController {
 	}
 
 	func handleRefresh(refreshControl: UIRefreshControl) {
-		stream?.reloadAds("894d2357e086434a383a1c29868a0432958a3165", limit: 10)
+		stream?.reloadAds()
 		refreshControl.endRefreshing()
 	}
 }
