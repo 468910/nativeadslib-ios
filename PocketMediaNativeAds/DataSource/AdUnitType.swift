@@ -5,9 +5,11 @@
 //  Created by Iain Munro on 13/09/16.
 //
 //
+import Foundation
 
-public enum AdUnitType {
-    case Standard
-    case Big
-    case Custom
+@objc
+public enum AdUnitType: Int {
+	case Standard
+	case Big
+	case Custom
 }

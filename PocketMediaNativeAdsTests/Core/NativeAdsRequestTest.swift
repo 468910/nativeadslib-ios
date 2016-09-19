@@ -47,14 +47,6 @@ class SpyDelegate: NativeAdsConnectionDelegate {
 		expectation.fulfill()
 	}
 
-	/**
-     Optional method, used in conjunction with the 'followRedirectsInBackground'.
-     - adUnit: flag enabled in the NativeAdsRequest.
-     */
-	@objc func didUpdateNativeAd(adUnit: NativeAd) {
-
-	}
-
 }
 
 class MockedNSURLSessionDataTask: NSURLSessionDataTask {

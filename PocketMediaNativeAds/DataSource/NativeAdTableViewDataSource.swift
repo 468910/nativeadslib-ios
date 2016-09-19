@@ -9,32 +9,11 @@
 import UIKit
 import Foundation
 
-@objc
-public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, NativeAdTableViewDataSourceProtocol {
-
-	public var datasource: UITableViewDataSource
-	public var tableView: UITableView
-	public var delegate: NativeAdTableViewDelegate?
-	public var controller: UIViewController
-    //TODO: Check if this still creates a memory leak.
-	public var adStream: NativeAdStream //This used to be optional + weak to stop memory leaks.
-
-	public func onUpdateDataSource() {
-		tableView.reloadData()
-	}
-
-	public func numberOfElements() -> Int {
-		var numOfRows = 0
-		for i in 0...max(0, datasource.numberOfSectionsInTableView!(tableView) - 1) {
-			numOfRows += datasource.tableView(tableView, numberOfRowsInSection: i)
-		}
-		return numOfRows
-	}
-
-	// TODO: Maybe this can be improved after futher testing
-	public func getTruePosistionInDataSource(indexPath: NSIndexPath) -> Int {
-		return IndexRowNormalizer.getTruePosistionForIndexPath(indexPath, datasource: self)
-	}
+public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, NativeAdTableViewDataSourceProtocol {
+    public var datasource: UITableViewDataSource
+    public var tableView: UITableView
+    public var delegate: NativeAdTableViewDelegate?
+    public var controller: UIViewController!
 
 	func handleRefresh(refreshControl: UIRefreshControl) {
 		refreshControl.endRefreshing()
@@ -45,9 +24,8 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	}
 
 	@objc
-	public required init(controller: UIViewController, tableView: UITableView, adStream: NativeAdStream) {
-		self.controller = controller
-		self.adStream = adStream
+    public required init(controller: UIViewController, tableView: UITableView) {
+        self.controller = controller
 		self.datasource = tableView.dataSource!
 		self.tableView = tableView
 		self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -58,12 +36,11 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 		tableView.dataSource = self
 
 		// Check the kind of cell to use
-		switch (adStream.adUnitType) {
+		switch (adUnitType) {
 		case .Custom:
 			if (tableView.dequeueReusableCellWithIdentifier("CustomAdCell") == nil) {
 				let bundle = PocketMediaNativeAdsBundle.loadBundle()!
 				tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
-				adStream.adUnitType = .Standard
 			}
 			break
 //		case .Big:
@@ -82,7 +59,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	}
 
 	public func getAdCellForTableView(nativeAd: NativeAd) -> UITableViewCell {
-		switch (adStream.adUnitType) {
+		switch (adUnitType) {
 		case .Custom:
 			let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as! NativeAdCell
 			cell.configureAdView(nativeAd)
@@ -101,10 +78,10 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 	// Data Source
 	@objc
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    	if let val = adStream.isAdAtposition(indexPath) {
+    	if let val = isAdAtposition(indexPath) {
 			return getAdCellForTableView(val)
 		} else {
-			return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: adStream.normalize(indexPath), inSection: indexPath.section))
+			return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: normalize(indexPath), inSection: indexPath.section))
 		}
 	}
 
@@ -121,7 +98,7 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 			totalRows += rowsInSection
 		}
 
-		return adStream.getCountForSection(datasource.tableView(tableView, numberOfRowsInSection: section), totalRowsInSection: totalRows)
+		return getCountForSection(datasource.tableView(tableView, numberOfRowsInSection: section), totalRowsInSection: totalRows)
 	}
 
 	public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -176,14 +153,34 @@ public class NativeAdTableViewDataSource: NSObject, UITableViewDataSource, Nativ
 		datasource.tableView?(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
 	}
 
+    public override func onUpdateDataSource() {
+        tableView.reloadData()
+    }
+
+    //The actual important to a UITableView functions are down below here.
 	@objc
 	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		if let numOfSectionsFunc = datasource.numberOfSectionsInTableView {
-//			var temp = numOfSectionsFunc(tableView)
 			return numOfSectionsFunc(tableView)
 		} else {
 			return 0
 		}
 	}
 
+    public override func numberOfElements() -> Int {
+        var numOfRows = 0
+        for i in 0...max(0, datasource.numberOfSectionsInTableView!(tableView) - 1) {
+            numOfRows += datasource.tableView(tableView, numberOfRowsInSection: i)
+        }
+        return numOfRows
+    }
+
+    public override func getTruePosistionInDataSource(indexPath: NSIndexPath) -> Int {
+        return IndexRowNormalizer.getTruePosistionForIndexPath(indexPath, datasource: self)
+    }
+    
+    func normalize(indexRow: NSIndexPath) -> Int {
+        let pos = IndexRowNormalizer.getTruePosistionForIndexPath(indexRow, datasource: self as! NativeAdTableViewDataSourceProtocol)
+        return IndexRowNormalizer.normalize(pos, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: ads.count)
+    }
 }

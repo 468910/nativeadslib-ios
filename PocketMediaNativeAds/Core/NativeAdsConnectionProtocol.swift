@@ -32,5 +32,6 @@ public protocol NativeAdsConnectionDelegate {
         Optional method, used in conjunction with the 'followRedirectsInBackground'.
         - adUnit: flag enabled in the NativeAdsRequest.
     */
+    @available(*, deprecated=1.0, obsoleted=2.0, message="This function is no longer used.")
     func didUpdateNativeAd(adUnit: NativeAd)
 }

@@ -10,5 +10,5 @@ import Foundation
 
 @objc
 public protocol DatasourceNormalizerProtocol {
-  func getTruePosistionInDataSource(indexPath: NSIndexPath) -> Int
+	func getTruePosistionInDataSource(indexPath: NSIndexPath) -> Int
 }
