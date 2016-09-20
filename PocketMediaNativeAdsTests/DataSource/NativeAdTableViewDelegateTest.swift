@@ -77,7 +77,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         adStream = mockedNativeAdStream(controller: controller, view: tableView, adPlacementToken: "test")
 
         datasource = mockedNativeAdTableViewDataSource(controller: controller, tableView: tableView)
-        
+
         do {
             datasource.ad = try mockedNativeAd(adDictionary: testHelpers.getNativeAdData()!, adPlacementToken: "test")
         } catch {
@@ -173,7 +173,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         //Is an ad
         datasource.returnIsAdAtposition = true
         result = subject?.tableView(tableView, heightForRowAtIndexPath: NSIndexPath(forItem: 1, inSection: 0))
-        XCTAssert(result == UITableViewAutomaticDimension, "Since the delegate has implemented the heightForHeaderInSection function we should return the value its returning.")
+        XCTAssert(result == NativeAdTableViewDelegate.heightForStandardAdUnit, "Since the delegate has implemented the heightForHeaderInSection function we should return the value its returning.")
         XCTAssert(datasource.isAdAtpositionCalled, "The function checked if it was an ad.")
         datasource.returnIsAdAtposition = false
         datasource.isAdAtpositionCalled = false
