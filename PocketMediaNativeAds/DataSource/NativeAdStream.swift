@@ -14,14 +14,25 @@ import UIKit
 @objc
 public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 
-	//Positions of the ads given by the user
-	private var adsPositions: [Int]?
 	public var view: UIView?
     public var datasource: DataSource!
     private var requester: NativeAdsRequest!
     private var limit: UInt = 2
 
-	@objc
+    private var _adsPositions: [Int]? = nil
+    //Positions of the ads given by the user
+    public var adsPositions: [Int]? {
+        set {
+            if newValue != nil {
+                _adsPositions = Array(Set(newValue!)).sort { $0 < $1 }
+            }
+        }
+        get {
+            return _adsPositions
+        }
+    }
+
+    @objc
     public required init(controller: UIViewController, view: UIView, adPlacementToken: String, customXib: UINib? = nil, requester: NativeAdsRequest? = nil) {
         super.init()
 
@@ -42,6 +53,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 //            case let collectionView as UICollectionView:
 //                break
             default:
+                datasource = DataSource()
                 break
 		}
 
@@ -50,8 +62,12 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
         }
 	}
 
-    public func setAdsPositions(adsPositions: [Int]) {
-        self.adsPositions = Array(Set(adsPositions)).sort { $0 < $1 }
+    public func setAdMargin(value: Int = 3) {
+        self.datasource.adMargin = value
+    }
+
+    public func setFirstAdPosition(value: Int = 0) {
+        self.datasource.firstAdPosition = value
     }
 
 	@objc
@@ -60,59 +76,37 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	}
 
 	@objc
-	public func didReceiveResults(nativeAds: [NativeAd]) {
-		if (self.datasource.firstAdPosition == 0) {
-            Logger.debug("didReceiveResults: Could not display ads, because the firstAdPosition is 0")
-			return
-		}
-		if (nativeAds.isEmpty) {
-			Logger.debug("No Ads Retrieved")
-            return
-		}
-		Logger.debug("Received \(nativeAds.count) ads.")
-		updateAdPositions(nativeAds)
-	}
-
-	@objc
-    private func updateAdPositions(newAds: [NativeAd]) {
-		if (adsPositions == nil) {
-			updateAdPositionsWithAdFrequency(newAds)
-		} else {
-			updateAdPositionsWithPositionsGivenByUser(newAds)
-		}
-		datasource!.onUpdateDataSource()
-		Logger.debug("updateAdPositions. Count: \(datasource?.numberOfElements())")
-	}
-
-	private func updateAdPositionsWithPositionsGivenByUser(newAds: [NativeAd]) {
-		let orginalCount = datasource!.numberOfElements()
-		var adsInserted = 0
-		for ad in newAds {
-			if (adsInserted >= adsPositions!.count) {
-				break
-			}
-
-			if (adsPositions![adsInserted] >= orginalCount) {
-				break
-			}
-			datasource.ads[adsPositions![adsInserted] - 1] = ad
-			adsInserted += 1
-		}
-
-	}
-
-	private func updateAdPositionsWithAdFrequency(newAds: [NativeAd]) {
-		let orginalCount = datasource!.numberOfElements()
-		var adsInserted = 0
-		for ad in newAds {
-
-			let index = (datasource.firstAdPosition - 1) + (datasource.adMargin * adsInserted)
-
-			if (index > (orginalCount + adsInserted)) { break }
-			datasource.ads[index] = ad
-			adsInserted += 1
-		}
-	}
+	public func didReceiveResults(newAds: [NativeAd]) {
+		Logger.debug("Received \(newAds.count) new ads.")
+		
+        //Clear any existing ads
+        clear()
+        let orginalCount = datasource!.numberOfElements()
+        var adsInserted = 0
+        for ad in newAds {
+            if (adsPositions == nil) {
+                let index = (datasource.firstAdPosition - 1) + (datasource.adMargin * adsInserted)
+                if (index > (orginalCount + adsInserted)) {
+                    break
+                }
+                datasource.ads[index] = ad
+            } else {
+                if (adsInserted >= adsPositions!.count) {
+                    break
+                }
+                if (adsPositions![adsInserted] >= orginalCount) {
+                    break
+                }
+                datasource.ads[adsPositions![adsInserted] - 1] = ad
+            }
+            adsInserted += 1
+        }
+        
+        if adsInserted > 0 {
+            datasource!.onUpdateDataSource()
+        }
+        Logger.debug("updateAdPositions. Count: \(datasource?.numberOfElements())")
+    }
 
     internal func clear() {
         datasource!.ads.removeAll()
@@ -120,7 +114,6 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     }
 
 	@objc public func reloadAds() {
-		clear()
 		self.requestAds(self.limit)
 	}
 
@@ -131,7 +124,6 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	 */
 	@objc public func requestAds(limit: UInt) {
         self.limit = limit
-        clear()
         Logger.debug("Requesting ads (\(limit)) for affiliate id \(requester.adPlacementToken)")
         requester.retrieveAds(limit, imageType: (self.datasource.adUnitType == AdUnitType.Big ? EImageType.banner : EImageType.allImages))
 	}

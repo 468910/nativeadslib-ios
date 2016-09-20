@@ -11,22 +11,25 @@ import Foundation
 //TODO: When we have more than just tableviews. Simply this type and get rid of NativeAdTableViewDataSourceProtocol
 @objc
 public class DataSource: NSObject, DataSourceProtocol {
-
-    public var adMargin: Int = 3 {
-        willSet {
-            if newValue >= 1 {
-                adMargin = newValue +  1
-            } else {
-                adMargin = 1
-            }
+    
+    private var _adMargin:Int = 3
+    public var adMargin: Int {
+        set {
+            _adMargin = newValue
+        }
+        get {
+            return _adMargin
         }
     }
-
+    
     // They are not called when variables are written to from an initializer or with a default value.
-    public var firstAdPosition: Int = 1 {
-        willSet {
-            firstAdPosition = newValue + 1
-            Logger.debug("First Ad Position Changed Preparing for Updating Ad Positions")
+    private var _firstAdPosition:Int = 1
+    public var firstAdPosition: Int {
+        set {
+            _firstAdPosition = newValue + 1
+        }
+        get {
+            return _firstAdPosition
         }
     }
 

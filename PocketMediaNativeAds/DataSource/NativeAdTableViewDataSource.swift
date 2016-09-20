@@ -15,10 +15,6 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
     public var delegate: NativeAdTableViewDelegate?
     public var controller: UIViewController!
 
-	func handleRefresh(refreshControl: UIRefreshControl) {
-		refreshControl.endRefreshing()
-    }
-
 	deinit {
 		self.tableView.dataSource = datasource
 	}
@@ -26,13 +22,21 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
 	@objc
     public required init(controller: UIViewController, tableView: UITableView) {
         self.controller = controller
-		self.datasource = tableView.dataSource!
+        if tableView.dataSource != nil {
+            self.datasource = tableView.dataSource!
+        } else {
+            preconditionFailure("Your tableview must have a dataSource set before use.")
+        }
 		self.tableView = tableView
 		self.tableView.rowHeight = UITableViewAutomaticDimension
 		self.tableView.estimatedRowHeight = 180.0
 		super.init()
-		self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: tableView.delegate!)
-		tableView.delegate = self.delegate
+        
+        //Hijack the delegate and datasource and make it use our wrapper.
+        if tableView.delegate != nil {
+            self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: tableView.delegate!)
+            tableView.delegate = self.delegate
+        }
 		tableView.dataSource = self
 
 		// Check the kind of cell to use
@@ -178,7 +182,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
     public override func getTruePosistionInDataSource(indexPath: NSIndexPath) -> Int {
         return IndexRowNormalizer.getTruePosistionForIndexPath(indexPath, datasource: self)
     }
-    
+
     func normalize(indexRow: NSIndexPath) -> Int {
         let pos = IndexRowNormalizer.getTruePosistionForIndexPath(indexRow, datasource: self as! NativeAdTableViewDataSourceProtocol)
         return IndexRowNormalizer.normalize(pos, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: ads.count)
