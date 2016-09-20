@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class Caching {
-
     static let sharedCache: NSCache = {
         let cache = NSCache()
         cache.name = "PocketMediaCache"
@@ -18,7 +17,6 @@ class Caching {
         cache.totalCostLimit = 10*1024*1024 // Max 10MB used.
         return cache
     }()
-
 }
 
 extension NSURL {

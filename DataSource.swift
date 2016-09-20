@@ -15,15 +15,15 @@ public class DataSource: NSObject, DataSourceProtocol {
     public var adMargin: Int = 3 {
         willSet {
             if newValue >= 1 {
-                adMargin = newValue
+                adMargin = newValue +  1
             } else {
                 adMargin = 1
             }
         }
     }
 
-    // they are not called when variables are written to from an initializer or with a default value.
-    public var firstAdPosition: Int = 0 {
+    // They are not called when variables are written to from an initializer or with a default value.
+    public var firstAdPosition: Int = 1 {
         willSet {
             firstAdPosition = newValue + 1
             Logger.debug("First Ad Position Changed Preparing for Updating Ad Positions")
@@ -36,21 +36,6 @@ public class DataSource: NSObject, DataSourceProtocol {
     public override init() {
         super.init()
         self.ads = [Int: NativeAd]()
-    }
-
-    @nonobjc
-    public func setAdMargin(adMargin: Int = 2) {
-        self.adMargin = adMargin + 1 // + 1 because [...]
-    }
-
-    @nonobjc
-    public func setFirstAdPosition(firstAdPosition: Int = 0) {
-        self.firstAdPosition = firstAdPosition
-    }
-
-    @nonobjc
-    public func setAdUnitType(type: AdUnitType) {
-        self.adUnitType = type
     }
 
     func getCountForSection(numOfRowsInSection: Int, totalRowsInSection: Int) -> Int {

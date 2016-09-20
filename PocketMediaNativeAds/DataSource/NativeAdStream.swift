@@ -46,7 +46,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 		}
 
         if customXib != nil {
-            datasource?.setAdUnitType(AdUnitType.Custom)
+            datasource?.adUnitType = AdUnitType.Custom
         }
 	}
 
@@ -62,6 +62,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	@objc
 	public func didReceiveResults(nativeAds: [NativeAd]) {
 		if (self.datasource.firstAdPosition == 0) {
+            Logger.debug("didReceiveResults: Could not display ads, because the firstAdPosition is 0")
 			return
 		}
 		if (nativeAds.isEmpty) {
