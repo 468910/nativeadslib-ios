@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18A792D41D917ACF00273E9B /* NativeAdTableViewDatasourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A792D31D917ACF00273E9B /* NativeAdTableViewDatasourceTest.swift */; };
 		273A4C141D81AAE500513F81 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273A4C0E1D81A9A800513F81 /* Foundation.framework */; };
 		273A4C331D81ACBA00513F81 /* PocketMediaNativeAdsTests-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 2723A50D1D7FFDB500CB07E2 /* PocketMediaNativeAdsTests-Bridging-Header.h */; };
 		27402DEE1D8ADAA4002B3747 /* NativeAdCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27402DED1D8ADAA4002B3747 /* NativeAdCellTest.swift */; };
@@ -111,6 +112,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18A792D31D917ACF00273E9B /* NativeAdTableViewDatasourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdTableViewDatasourceTest.swift; path = DataSource/NativeAdTableViewDatasourceTest.swift; sourceTree = "<group>"; };
 		271E99B01D883CFB00FA001E /* NativeAdStreamTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdStreamTest.swift; path = DataSource/NativeAdStreamTest.swift; sourceTree = "<group>"; };
 		2723A4E81D7FF62700CB07E2 /* Tests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Tests.json; sourceTree = "<group>"; };
 		2723A4FF1D7FFD1F00CB07E2 /* PocketMediaNativeAdsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocketMediaNativeAdsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -342,6 +344,7 @@
 				27A2A8DE1D830D8600BE8DFD /* IndexRowNormalizerTest.swift */,
 				27C82FB21D882B2300FE3E6D /* NativeAdTableViewDelegateTest.swift */,
 				271E99B01D883CFB00FA001E /* NativeAdStreamTest.swift */,
+				18A792D31D917ACF00273E9B /* NativeAdTableViewDatasourceTest.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				274C71B31D8EE62F007F0B27 /* NativeAdsConnectionProtocol.swift in Sources */,
 				27C82FB31D882B2300FE3E6D /* NativeAdTableViewDelegateTest.swift in Sources */,
 				27C82FC61D882FA000FE3E6D /* ExampleTableViewDataSource.swift in Sources */,
+				18A792D41D917ACF00273E9B /* NativeAdTableViewDatasourceTest.swift in Sources */,
 				274C71A91D8EE62B007F0B27 /* NativeAdStream.swift in Sources */,
 				274C71B01D8EE62F007F0B27 /* FullscreenBrowser.swift in Sources */,
 				274C71BB1D8EE632007F0B27 /* NativeAdCell.swift in Sources */,
