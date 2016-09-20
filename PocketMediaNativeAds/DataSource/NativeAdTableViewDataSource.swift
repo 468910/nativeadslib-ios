@@ -28,8 +28,6 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
             preconditionFailure("Your tableview must have a dataSource set before use.")
         }
 		self.tableView = tableView
-		self.tableView.rowHeight = UITableViewAutomaticDimension
-		self.tableView.estimatedRowHeight = 180.0
 		super.init()
         
         //Hijack the delegate and datasource and make it use our wrapper.
@@ -84,9 +82,8 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     	if let val = isAdAtposition(indexPath) {
 			return getAdCellForTableView(val)
-		} else {
-			return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: normalize(indexPath), inSection: indexPath.section))
 		}
+			return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: normalize(indexPath), inSection: indexPath.section))
 	}
 
 	public func getNumberOfRowsInSection(numberOfRowsInSection section: Int) -> Int {
