@@ -82,7 +82,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 	}
 
 	public func checkIfAppStoreUrl(request: NSURLRequest) -> Bool {
-		Logger.debug(request.URL!.absoluteString)
+		Logger.debug(request.URL!.absoluteString!)
 		if let finalUrl = request.URL?.absoluteString {
 			if (finalUrl.lowercaseString.hasPrefix("itms")) {
 				Logger.debug("has prefix itms")
@@ -95,7 +95,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 				}
 			}
 		}
-		Logger.debug(request.URL!.absoluteString + " Returned false")
+		Logger.debug(request.URL!.absoluteString! + " Returned false")
 		return false
 	}
 
@@ -150,7 +150,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 	}
 
 	private func constructDataBodyForNotifyingServerOfFalseRedirection() -> String {
-        let finalUrl: String = (webView != nil && webView!.request != nil) ? webView!.request!.URL!.absoluteString : ""
+        let finalUrl: String = (webView != nil && webView!.request != nil) ? webView!.request!.URL!.absoluteString! : ""
 		let offerid = String(nativeAdUnit?.offerId!)
 		let adPlacementToken = nativeAdUnit?.adPlacementToken
 		let userToken = "userToken=" + NativeAdsConstants.NativeAds.userToken + "&"
@@ -163,7 +163,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
      */
 	public func openSystemBrowser(url: NSURL) {
 		let urlToOpen: NSURL = checkSimulatorURL(url)
-		Logger.debugf("\n\nRequesting to Safari: %@\n\n", urlToOpen.absoluteString)
+		Logger.debugf("\n\nRequesting to Safari: %@\n\n", urlToOpen.absoluteString!)
 		if UIApplication.sharedApplication().canOpenURL(url) {
 			UIApplication.sharedApplication().openURL(url)
 		}

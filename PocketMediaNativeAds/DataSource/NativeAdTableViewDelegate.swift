@@ -95,10 +95,10 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 		delegate.tableView?(tableView, didEndDisplayingFooterView: view, forSection: section)
 	}
 
-	public func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
-		if datasource.isAdAtposition(indexPath) != nil {
+	public func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath?) {
+		if datasource.isAdAtposition(indexPath!) != nil {
 		} else {
-			delegate.tableView?(tableView, didEndEditingRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section))
+			delegate.tableView?(tableView, didEndEditingRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath!), inSection: indexPath!.section))
 		}
 	}
 

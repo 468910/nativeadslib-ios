@@ -18,7 +18,7 @@ class AbstractAdUnitTableViewCellTest: XCTestCase {
 
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!
         let nib = bundle.loadNibNamed("NativeAdCell", owner: nil, options: nil)
-        subject = nib.first as! PocketMediaNativeAds.AbstractAdUnitTableViewCell
+        subject = nib!.first as! PocketMediaNativeAds.AbstractAdUnitTableViewCell
     }
 
     override func tearDown() {

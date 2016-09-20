@@ -27,7 +27,7 @@ extension NSURL {
     /// You should call this before calling fetchImage.
     var cachedImage: UIImage? {
         return Caching.sharedCache.objectForKey(
-            absoluteString) as? UIImage
+            absoluteString!) as? UIImage
     }
 
     /// Fetches the image from the network.
@@ -42,7 +42,7 @@ extension NSURL {
                     image = UIImage(data: data) {
                     Caching.sharedCache.setObject(
                         image,
-                        forKey: self.absoluteString,
+                        forKey: self.absoluteString!,
                         cost: data.length)
                     dispatch_async(dispatch_get_main_queue()) {
                         completion(image)

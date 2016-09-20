@@ -329,7 +329,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
             var didEndEditingRowAtIndexPath: Bool! = false
             @objc
-            func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
+            func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath?) {
                 didEndEditingRowAtIndexPath = true
             }
         }
