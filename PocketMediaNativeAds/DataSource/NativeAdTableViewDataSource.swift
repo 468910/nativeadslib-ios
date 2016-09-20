@@ -105,48 +105,41 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
 	public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		if let string = datasource.tableView?(tableView, titleForHeaderInSection: section) {
 			return string
-		} else {
-			return nil
 		}
+        return nil
 	}
 
 	public func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		if let string = datasource.tableView?(tableView, titleForFooterInSection: section) {
 			return string
-		} else {
-			return nil
 		}
+        return nil
 	}
 
 	public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		if (respondsToSelector(Selector("tableView:canEditRowAtIndexPath"))) {
 			return datasource.tableView!(tableView, canEditRowAtIndexPath: indexPath)
-		} else {
-			return true
 		}
+        return true
 	}
 
 	public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		if (respondsToSelector(Selector("tableView:canMoveRowAtIndexPath"))) {
 			return datasource.tableView!(tableView, canEditRowAtIndexPath: indexPath)
-		} else {
-			return true
 		}
+		return true
 	}
 
 	public func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
 		if (respondsToSelector(Selector("tableView:sectionForSectionIndexTitle"))) {
 			return datasource.tableView!(tableView, sectionForSectionIndexTitle: title, atIndex: index)
-		} else {
-			return 0
 		}
+        return 0
 	}
 
 	public func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
 		if (respondsToSelector(Selector("tableView:moveRowAtIndexPath"))) {
 			datasource.tableView?(tableView, moveRowAtIndexPath: sourceIndexPath, toIndexPath: destinationIndexPath)
-		} else {
-			return
 		}
 	}
 
@@ -163,9 +156,8 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
 	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		if let numOfSectionsFunc = datasource.numberOfSectionsInTableView {
 			return numOfSectionsFunc(tableView)
-		} else {
-			return 0
 		}
+        return 0
 	}
 
     public override func numberOfElements() -> Int {
