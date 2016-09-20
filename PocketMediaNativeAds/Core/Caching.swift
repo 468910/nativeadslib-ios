@@ -38,7 +38,7 @@ extension NSURL {
         let task = NSURLSession.sharedSession().dataTaskWithURL(self) {
             data, response, error in
             if error == nil {
-                if let  data = data,
+                if let data = data,
                     image = UIImage(data: data) {
                     Caching.sharedCache.setObject(
                         image,
@@ -57,29 +57,18 @@ extension NSURL {
 
 extension UIImageView {
     func setImageFromURL(url: NSURL) {
-        self.image = UIImage()
+        //self.image = drawCustomImage(CGSize(width: 100, height: 100))
         if let campaignImage = url.cachedImage {
             //Cached
-            dispatch_async(dispatch_get_main_queue(), {
+            UIView.transitionWithView(self, duration: 0.3, options: .TransitionCrossDissolve, animations: {
                 self.image = campaignImage
-                self.alpha = 1
-            })
+            }, completion: nil)
         } else {
-            dispatch_async(dispatch_get_main_queue(), {
-                // Not cached, so load then fade it in.
-                self.alpha = 0
-            })
             url.fetchImage { downloadedImage in
                 // Check the cell hasn't recycled while loading.
-                if url == downloadedImage {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.image = downloadedImage
-                        self.reloadInputViews()
-                    })
-                    UIView.animateWithDuration(0.3) {
-                        self.alpha = 1
-                    }
-                }
+                UIView.transitionWithView(self, duration: 0.3, options: .TransitionCrossDissolve, animations: {
+                    self.image = downloadedImage
+                }, completion: nil)
             }
         }
     }

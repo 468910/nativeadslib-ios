@@ -16,7 +16,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	public var delegate: UITableViewDelegate
 	public var datasource: NativeAdTableViewDataSource
   
-    private static let heightForStandardAdUnit : CGFloat = 80
+    internal static let heightForStandardAdUnit : CGFloat = 80
 
 	required public init(datasource: NativeAdTableViewDataSource, controller: UIViewController, delegate: UITableViewDelegate) {
 		self.datasource = datasource
