@@ -55,6 +55,7 @@
 		2758CCAC1D8EE4C1000181CD /* ReferenceArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2758CCAA1D8EE4C1000181CD /* ReferenceArray.swift */; };
 		2758CCAF1D8EE4D6000181CD /* AbstractAdUnitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2758CCAD1D8EE4D6000181CD /* AbstractAdUnitTableViewCell.swift */; };
 		2758CCB01D8EE4D6000181CD /* NativeAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2758CCAE1D8EE4D6000181CD /* NativeAdCell.swift */; };
+		27592C0A1D91657700B98D71 /* DataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27592C091D91657700B98D71 /* DataSourceTest.swift */; };
 		278E19101D912F9B0087A259 /* NativeAdStreamTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271E99B01D883CFB00FA001E /* NativeAdStreamTest.swift */; };
 		278E19121D915C7E0087A259 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E19111D915C7E0087A259 /* DataSource.swift */; };
 		278E19131D915C7E0087A259 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E19111D915C7E0087A259 /* DataSource.swift */; };
@@ -132,6 +133,7 @@
 		2758CCAA1D8EE4C1000181CD /* ReferenceArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReferenceArray.swift; path = PocketMediaNativeAds/Util/ReferenceArray.swift; sourceTree = "<group>"; };
 		2758CCAD1D8EE4D6000181CD /* AbstractAdUnitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractAdUnitTableViewCell.swift; path = PocketMediaNativeAds/Adunits/AbstractAdUnitTableViewCell.swift; sourceTree = "<group>"; };
 		2758CCAE1D8EE4D6000181CD /* NativeAdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdCell.swift; path = PocketMediaNativeAds/Adunits/NativeAdCell.swift; sourceTree = "<group>"; };
+		27592C091D91657700B98D71 /* DataSourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSourceTest.swift; path = DataSource/DataSourceTest.swift; sourceTree = "<group>"; };
 		277F1C0B1D7EF51C00E14A68 /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PocketMediaNativeAds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		278CE8591D8EDD2E00F6CF8A /* PocketMediaNativeAds-PocketMediaNativeAds-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PocketMediaNativeAds-PocketMediaNativeAds-Bridging-Header.h"; path = "PocketMediaNativeAds/PocketMediaNativeAds-PocketMediaNativeAds-Bridging-Header.h"; sourceTree = "<group>"; };
 		278CE85A1D8EDD2E00F6CF8A /* PocketMediaNativeAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PocketMediaNativeAds.h; path = PocketMediaNativeAds/PocketMediaNativeAds.h; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				27A2A8DE1D830D8600BE8DFD /* IndexRowNormalizerTest.swift */,
 				27C82FB21D882B2300FE3E6D /* NativeAdTableViewDelegateTest.swift */,
 				271E99B01D883CFB00FA001E /* NativeAdStreamTest.swift */,
+				27592C091D91657700B98D71 /* DataSourceTest.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 				274C71B01D8EE62F007F0B27 /* FullscreenBrowser.swift in Sources */,
 				274C71BB1D8EE632007F0B27 /* NativeAdCell.swift in Sources */,
 				274C71BA1D8EE632007F0B27 /* AbstractAdUnitTableViewCell.swift in Sources */,
+				27592C0A1D91657700B98D71 /* DataSourceTest.swift in Sources */,
 				27A2A8DB1D830D7C00BE8DFD /* FullscreenBrowserTest.swift in Sources */,
 				274C71B51D8EE62F007F0B27 /* NativeAdsError.swift in Sources */,
 				27402DEE1D8ADAA4002B3747 /* NativeAdCellTest.swift in Sources */,
@@ -819,6 +823,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = L7E3AY2W7R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -881,6 +886,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = L7E3AY2W7R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

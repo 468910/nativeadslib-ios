@@ -49,7 +49,7 @@ public class DataSource: NSObject, DataSourceProtocol {
         preconditionFailure("This method must be overridden")
     }
 
-    public func getTruePosistionInDataSource(indexPath: NSIndexPath) -> Int {
+    public func getTruePositionInDataSource(indexPath: NSIndexPath) -> Int {
         preconditionFailure("This method must be overridden")
     }
 
@@ -58,7 +58,7 @@ public class DataSource: NSObject, DataSourceProtocol {
     }
 
     func isAdAtposition(indexPath: NSIndexPath) -> NativeAd? {
-        let position = getTruePosistionInDataSource(indexPath)
+        let position = getTruePositionInDataSource(indexPath)
         if let val = ads[position] {
             return val
         } else {

@@ -23,19 +23,19 @@ class TableViewController: UITableViewController {
         tableViewDataSource = ExampleTableViewDataSource()
         tableViewDataSource?.loadLocalJSON()
         tableView.dataSource = tableViewDataSource
-
-        _ = UINib(nibName: "TestSupplied", bundle: nil)
-
         self.refreshControl?.addTarget(self, action: #selector(TableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        _ = [5, 2, 4, 99]
-        stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165")
 
-        stream?.requestAds(5)
+        //PocketMedia add ads
+        stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165") /* replace with your own token!! */
+        //stream?.setAdMargin(3)
+        //stream?.adsPositions = [5, 2, 4]//Set ads to these positions in our tableView
+        stream?.requestAds(5)//Add 5 ads
+
 		super.viewDidLoad()
     }
 
     override func viewWillAppear(animated: Bool) {
-        
+
     }
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

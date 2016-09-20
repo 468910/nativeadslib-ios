@@ -112,7 +112,7 @@ class NativeAdStreamTest: XCTestCase {
         subject.adsPositions = [1, 0, 3]
         XCTAssert(subject.adsPositions! == [0, 1, 3], "It should sort the adsPositions")
         subject.didReceiveResults(ads)
-        //TODO: Finish this here.
+        //XCTAssert(subject.datasource.ads)
     }
     
 }

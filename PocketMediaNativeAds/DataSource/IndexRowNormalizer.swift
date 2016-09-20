@@ -13,7 +13,7 @@ public class IndexRowNormalizer {
     private static let INDEX_OFFSET_FOR_INSERTION = 1
 
     // Calculates the true position for a given index path in the datasource meaning that it checks the position relative to all the sections.
-    static internal func getTruePosistionForIndexPath(indexPath: NSIndexPath, datasource: NativeAdTableViewDataSourceProtocol) -> Int {
+    static internal func getTruePositionForIndexPath(indexPath: NSIndexPath, datasource: NativeAdTableViewDataSourceProtocol) -> Int {
         if (indexPath.section == 0) {
             return indexPath.row
         }

@@ -22,7 +22,7 @@ class FakeNativeAdTableViewDataSource: NativeAdTableViewDataSourceProtocol {
 	}
 
 	@objc
-	func getTruePosistionInDataSource(indexPath: NSIndexPath) -> Int {
+	func getTruePositionInDataSource(indexPath: NSIndexPath) -> Int {
 		return 0
 	}
 
@@ -60,8 +60,8 @@ class IndexRowNormalizerTest: XCTestCase {
 			numOfRowsInPreviousSection = dataSource!.getNumberOfRowsInSection(numberOfRowsInSection: previousSection),
 			expectedIndexForRow = index + numOfRowsInPreviousSection - 1
 
-		var result = IndexRowNormalizer.getTruePosistionForIndexPath(NSIndexPath(forItem: index, inSection: currentSection), datasource: dataSource!)
-		XCTAssert(expectedIndexForRow == result, "getTruePosistionForIndexPath should add 9. Because the index starts from 10 - 1")
+		var result = IndexRowNormalizer.getTruePositionForIndexPath(NSIndexPath(forItem: index, inSection: currentSection), datasource: dataSource!)
+		XCTAssert(expectedIndexForRow == result, "getTruePositionForIndexPath should add 9. Because the index starts from 10 - 1")
 
 		index = 10
 		previousSection = 1
@@ -70,8 +70,8 @@ class IndexRowNormalizerTest: XCTestCase {
 		numOfRowsInPreviousSection += dataSource!.getNumberOfRowsInSection(numberOfRowsInSection: (previousSection - 1))
 		expectedIndexForRow = index + numOfRowsInPreviousSection - 1
 
-		result = IndexRowNormalizer.getTruePosistionForIndexPath(NSIndexPath(forItem: index, inSection: currentSection), datasource: dataSource!)
-		XCTAssert(expectedIndexForRow == result, "getTruePosistionForIndexPath should return 10 because its in section 0")
+		result = IndexRowNormalizer.getTruePositionForIndexPath(NSIndexPath(forItem: index, inSection: currentSection), datasource: dataSource!)
+		XCTAssert(expectedIndexForRow == result, "getTruePositionForIndexPath should return 10 because its in section 0")
 	}
 
 	func testNormalizeIndex66with17AdsShouldReturn49() {

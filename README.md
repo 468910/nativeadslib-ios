@@ -8,9 +8,11 @@
 [![License](https://img.shields.io/cocoapods/l/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 [![Platform](https://img.shields.io/cocoapods/p/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 
-This library allows developers to easily show ads provided by PocketMedia natively in their apps. While the traditional way of advertising in mobile applications usually involves a pause before displaying the ad (Interstitial ads, banners, etc.) this native solution allows the ads to be integrated with the user flow, making it less intrusive for the user experience.
+This open-source (Swift/Objective-c) library allows developers to easily show ads provided by PocketMedia natively in their apps. While the traditional way of advertising in mobile applications usually involves a pause before displaying the ad (Interstitial ads, banners, etc.) this native solution allows the ads to be integrated in the user flow. That in turn makes it less intrusive for the user experience.
 
-The library comes with standard ad units (Ways of displaying the ad). However it is recommended to customize these ad units, so they integrate into your app style. The other option of showing ads is building custom ad units based on the structured format of the ad.
+The library comes with standard ad units (ways of displaying the ad). You are encouraged to extend/copy these into project and and customize them to your liking. This way the library empowers App developers to show ads that integrate into the host app style. This method is called using the adStream.
+
+The alternative solution is using the library to just do the network calls and use the NativeAd (Class) model. Using these core functionalities, you are able to write your own custom ad units. This method is called manual integration.
 
 ## Requirements
 
@@ -34,48 +36,42 @@ pod "PocketMediaNativeAds"
 ```
 
 ## Usage
-There are several ways to implement the native ads in your application. Firstly there is the AdStream which will take care of the integration for you. For Maximum customizability however there is always the option to manually integrate the NativeAds.
+There are several ways to implement the native ads in your application. Firstly, there is the AdStream which will take care of the integration for you. For maximum customizability however there is always the option to manually integrate the NativeAds.
 
 For both methods the parameters used are:
 
 - placement token, to be generated in the [user dashboard](http://third-party.pmgbrain.com/)
-- delegate, to receive the even callbacks as the ads are ready
+- delegate, to receive the event callbacks as the ads are ready
 
 [Docs](https://htmlpreview.github.io/?https://github.com/Pocketbrain/nativeadslib-ios/feature/new-structure-tests/docs/index.html)
 
 ### AdStream
-The Adstream easily places native ads in your UITableView or UICollectionView.
-You can specifiy the positions in various ways by giving an Array with fixed positions or by frequency.
-Simply add the following code in your UIViewController and your ads will be automatically loaded into your view. 
-
-
+The Adstream allows to easily show native ads in your UITableView and or UICollectionView.
+You can specify the positions by giving an Array with fixed positions or frequency. Simply add the following code in your UIViewController and your ads will be automatically loaded into your view.
 
 #### AdStream - AdFrequency
 ```swift
-	 var stream = NativeAdStream(controller: self, mainView: self.tableView, adMargin: 1, firstAdPosition: 1)
-     stream!.requestAds("PLACEMENT_TOKEN", limit: 10) /* replace with your own token!! */
+    stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165") /* replace with your own token!! */
+    stream?.setAdMargin(3)//Every 3 rows add an add.
+    stream?.requestAds(5)//Add 5 ads
 ```
 
 #### AdStream - Fixed positions
 ```swift
-	 var adPos = [5, 2, 4]
-    var stream = NativeAdStream(controller: self, mainView: self.collectionView, adsPositions: adPos)
-    stream.requestAds("PLACEMENT_TOKEN", limit: 10) /* replace with your own token!! */
+    stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165") /* replace with your own token!! */
+    stream?.adsPositions = [5, 2, 4]//Set ads to these positions in our tableView
+    stream?.requestAds(5)//Add 5 ads
 ```
 
-There is also the option to pass a custom XIB this has to be or a subclass of the corrosponding AbstractAdUnit for example ```AbstractAdUnitTableViewCell```. 
+There is also the option to pass a custom XIB this has to be or a subclass of the corresponding  AbstractAdUnit for example ```AbstractAdUnitTableViewCell```. 
 Dont forget to link up the outlets to your xib!
 
-
 ### Manual Integration
-For Manual Integration the Core classes in the Pod Contain everything you need. 
-To make a simple request let your designated class implement the ```NativeAdsConnectionDelegate``` like you're used to with any other IOS delegate. Then start the request, with code fragment below shows an example how to. 
+You could also opt for just using the library to do the network request and manually integrate the ads. To do so create a new delegate class that implements ```NativeAdsConnectionDelegate``` and call NativeAdsRequest to initiate an ad request call.
 
 ```swift
-        let adRequest = NativeAdsRequest(adPlacementToken: "PLACEMENT_TOKEN", delegate: self) /* replace with your own token!! */
-        adRequest.debugModeEnabled = true
-        adRequest.retrieveAds(5)
-    
+    let adRequest = NativeAdsRequest(adPlacementToken: "PLACEMENT_TOKEN", delegate: self) /* replace with your own token!! */
+    adRequest.retrieveAds(5)//The amount of ads you want to receive.
 ```
 
 ## App Transport Security
@@ -84,24 +80,18 @@ To make a simple request let your designated class implement the ```NativeAdsCon
 
 ![Info.plist â€” Edited 2016-02-21 18-14-09.png](https://bitbucket.org/repo/46g5gL/images/2846838342-Info.plist%20%E2%80%94%20Edited%202016-02-21%2018-14-09.png)
 
-In the future all the content will be downloaded through https, following Apple recommendations.
-
+In the future this will change to https, following Apple recommendations.
 
 ### Receiving the results
-After the request is started, the library will notify of the changes in it trough a delegate that implements the ```NativeAdsConnectionDelegate``` protocol.
-
-This protocol has three methods:
+After the request has started requesting adds it will call the following three methods to notify the delegate class (the host application) of the ad status: 
 
 - ```didRecieveError```: compulsory method, to be invoked in case there is an error retrieving the ads. This can happen due to network conditions, some systems error, parsing error...
 - ```didRecieveResults```: when the library gets the JSON, parses it and delivers to your app, you will be notified with an Array of the NativeAd objects retrieved.
 - ```didUpdateNativeAd```: not required method. In case some of the ads is modified after it has been delivered, your class will be notified trough this method.
 
 ### Displaying the ads
-
-This is the procotol method invoked when the ads are available. In our example, we add the ads to our datasource and display it:
-
+This is the protocol method invoked when the ads are available. In our example, we add the ads to our datasource and display it:
 ```swift
-
     func didRecieveResults(nativeAds: [NativeAd]){
         self.nativeAds = nativeAds
         if itemsTable.count > 0 {
@@ -114,7 +104,6 @@ This is the procotol method invoked when the ads are available. In our example, 
 ```
 
 Together with the method were the table cell is displayed:
-
 ```swift
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -142,28 +131,24 @@ Together with the method were the table cell is displayed:
 ```
 
 ### Opening the URL
-
-One of the possible moments when the ads might create a bad experience for the users is in the moment of the click. As we have to notify the different partners that provide the ads about the click, to be able to know that the users come from your app, we need to follow some tracking link redirections. 
-
-In order to avoid that bad experience, we provide you the ```openAdUrl``` method in the ```NativeAd``` class. The method receives the parent view as an argument, and it will create a UIWebView inside of your app, where the links will be followed.
+When a user clicks on one of the ads it will open a third party link. In other ad solutions this usually creates a bad experience for the user. However this library comes with a solution to circumvent this experience and avoid the user clicking away. Each NativeAd instance comes with a method called ```openAdUrl``` which using the FullScreenBrowser opener creates a smooth transition to the publisher.
 
 ```swift
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let ad = itemsTable[indexPath.row] as? NativeAd{
             print("Opening url: \(ad.clickURL.absoluteString)")
             // This method will take of opening the ad inside of the app, until we have an iTunes url
-            ad.openAdUrl(self)
+            ad.openAdUrl(FullscreenBrowser(parentViewController: self))
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 ```
 
-Alternatively you can use ```openAdUrlInForeground()``` to open the URL directly in the browser - but the user experience will be much worse.
-
+Alternatively you can use ```openAdUrlInForeground()``` to open the URL directly in the browser.
 
 ## Look and feel
 
-The look of the ads is totally customisable, that's the main objective of the project. One of the easiest ad units to adapt would be the in-feed native ads, but you can use the data we provide you in any way, as long as you don't trick the users and don't force them to click your ads.
+One of the main objectives of these project is creating a easy to use library that allowes the ads to be totally customisable. An example of this is the Adstream UITableView example. All you have to provide is an existing UITableView and the placement token and you are good to go!
 
 ![Simulator Screen Shot 22 Jan 2016 15.26.27.png](https://bitbucket.org/repo/46g5gL/images/3807516826-Simulator%20Screen%20Shot%2022%20Jan%202016%2015.26.27.png)
 

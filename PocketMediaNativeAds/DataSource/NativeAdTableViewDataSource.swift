@@ -179,12 +179,12 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
         return numOfRows
     }
 
-    public override func getTruePosistionInDataSource(indexPath: NSIndexPath) -> Int {
-        return IndexRowNormalizer.getTruePosistionForIndexPath(indexPath, datasource: self)
+    public override func getTruePositionInDataSource(indexPath: NSIndexPath) -> Int {
+        return IndexRowNormalizer.getTruePositionForIndexPath(indexPath, datasource: self)
     }
 
     func normalize(indexRow: NSIndexPath) -> Int {
-        let pos = IndexRowNormalizer.getTruePosistionForIndexPath(indexRow, datasource: self as! NativeAdTableViewDataSourceProtocol)
+        let pos = IndexRowNormalizer.getTruePositionForIndexPath(indexRow, datasource: self as! NativeAdTableViewDataSourceProtocol)
         return IndexRowNormalizer.normalize(pos, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: ads.count)
     }
 }
