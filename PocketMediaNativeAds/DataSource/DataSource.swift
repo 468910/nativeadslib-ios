@@ -3,15 +3,15 @@
 //  PocketMediaNativeAds
 //
 //  Created by Iain Munro on 19/09/16.
-//
+//  This class is a abstract class that contains all important stuff that the datasources will have alike.
 //
 
 import Foundation
 
-//TODO: When we have more than just tableviews. Simply this type and get rid of NativeAdTableViewDataSourceProtocol
 @objc
 public class DataSource: NSObject, DataSourceProtocol {
     
+    //The admargin is the frequency of how many times a ad is shown in the datasource.
     private var _adMargin:Int = 3
     public var adMargin: Int {
         set {
@@ -32,8 +32,11 @@ public class DataSource: NSObject, DataSourceProtocol {
             return _firstAdPosition
         }
     }
-
+    
+    //The AdUnitType defines what kind of ad is shown.
     public var adUnitType: AdUnitType = .Standard
+    
+    //This holds a array of ads that are available to show.
     public var ads: [Int: NativeAd]!
 
     public override init() {
@@ -44,7 +47,16 @@ public class DataSource: NSObject, DataSourceProtocol {
     func getCountForSection(numOfRowsInSection: Int, totalRowsInSection: Int) -> Int {
         return IndexRowNormalizer.getNumberOfRowsForSectionIncludingAds(numOfRowsInSection, totalRowsInSection: totalRowsInSection, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: ads.count)
     }
-
+    
+    func isAdAtposition(indexPath: NSIndexPath) -> NativeAd? {
+        let position = getTruePositionInDataSource(indexPath)
+        if let val = ads[position] {
+            return val
+        }
+        return nil
+    }
+    
+    //Abstract classes that a datasource should override
     public func onUpdateDataSource() {
         preconditionFailure("This method must be overridden")
     }
@@ -56,14 +68,5 @@ public class DataSource: NSObject, DataSourceProtocol {
     public func numberOfElements() -> Int {
         preconditionFailure("This method must be overridden")
     }
-
-    func isAdAtposition(indexPath: NSIndexPath) -> NativeAd? {
-        let position = getTruePositionInDataSource(indexPath)
-        if let val = ads[position] {
-            return val
-        } else {
-            return nil
-        }
-    }
-
+    
 }

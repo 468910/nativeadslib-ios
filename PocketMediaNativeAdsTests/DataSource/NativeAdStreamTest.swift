@@ -18,7 +18,10 @@ class mocked2UITableView: UITableView {
 }
 
 class mocked2NativeAdsRequest: NativeAdsRequest {
-
+    var limit:UInt! = 0
+    override func retrieveAds(limit: UInt, imageType: EImageType = EImageType.allImages) {
+        self.limit = limit
+    }
 }
 
 class mocked2NativeAdsConnection: NativeAdsConnectionDelegate {
@@ -115,4 +118,10 @@ class NativeAdStreamTest: XCTestCase {
         XCTAssert((subject.datasource.ads) != nil)
     }
     
+    func testRequestAds() {
+        let expected = UInt(80)
+        subject.requestAds(expected)
+        XCTAssert(requester.limit == expected, "The sent limit should be passed along to the requestAds function inside the requester.")
+    }
+
 }
