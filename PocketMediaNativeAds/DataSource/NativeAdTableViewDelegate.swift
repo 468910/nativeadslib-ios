@@ -15,6 +15,8 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	public var controller: UIViewController
 	public var delegate: UITableViewDelegate
 	public var datasource: NativeAdTableViewDataSource
+  
+    private static let heightForStandardAdUnit : CGFloat = 80
 
 	required public init(datasource: NativeAdTableViewDataSource, controller: UIViewController, delegate: UITableViewDelegate) {
 		self.datasource = datasource
@@ -43,7 +45,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		if datasource.isAdAtposition(indexPath) != nil {
-			return UITableViewAutomaticDimension
+			return NativeAdTableViewDelegate.heightForStandardAdUnit
 		}
         // not an ad - let the original datasource handle it
         if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
