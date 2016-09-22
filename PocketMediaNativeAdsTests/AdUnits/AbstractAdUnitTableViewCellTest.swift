@@ -7,19 +7,22 @@
 //
 
 import XCTest
+import Foundation
 import UIKit
 @testable import PocketMediaNativeAds
 
+
 class AbstractAdUnitTableViewCellTest: XCTestCase {
-    var subject: PocketMediaNativeAds.AbstractAdUnitTableViewCell!
+    var subject: AbstractAdUnitTableViewCell!
 
     override func setUp() {
         super.setUp()
 
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-        let nib = bundle.loadNibNamed("NativeAdCell", owner: nil, options: nil)
-        subject = nib!.first as! PocketMediaNativeAds.AbstractAdUnitTableViewCell
-    }
+      
+        let nib = UINib.init(nibName: "NativeAdView", bundle: bundle)
+        subject = nib.instantiateWithOwner(nil, options: nil)[0] as! NativeAdCell
+  }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
@@ -42,7 +45,7 @@ class AbstractAdUnitTableViewCellTest: XCTestCase {
     func testConfigureAdView() {
         let adDictionary = testHelpers.getNativeAdData()
         do {
-            let nativeAd = try PocketMediaNativeAds.NativeAd(adDictionary: adDictionary!, adPlacementToken: "123")
+            let nativeAd = try NativeAd(adDictionary: adDictionary!, adPlacementToken: "123")
             subject.configureAdView(nativeAd)
 
             if let title = subject.adTitle {

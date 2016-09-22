@@ -195,9 +195,9 @@ class FullscreenBrowserTest: XCTestCase {
     }
 
     func testFatalInit() {
-        expectFatalError("init(coder:) has not been implemented", testcase: {
+        /*expectFatalError("init(coder:) has not been implemented", testcase: {
             FullscreenBrowser(coder: NSCoder())
-        })
+        })*/
     }
 
     func testDidOpenBrowser() {

@@ -8,6 +8,7 @@
 
 import XCTest
 import UIKit
+@testable import PocketMediaNativeAds
 
 public class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
     var didSelectRowAtIndexPath: Bool! = false

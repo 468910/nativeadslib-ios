@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import PocketMediaNativeAds
 
 class FakeNativeAdTableViewDataSource: NativeAdTableViewDataSourceProtocol {
 
@@ -75,40 +76,40 @@ class IndexRowNormalizerTest: XCTestCase {
 	}
 
 	func testNormalizeIndex66with17AdsShouldReturn49() {
-		var result = IndexRowNormalizer.normalize(66, firstAdPosition: 2, adMargin: 4, adsCount: 40)
+		let result = IndexRowNormalizer.normalize(66, firstAdPosition: 2, adMargin: 4, adsCount: 40)
 		XCTAssert(result == 66 - 17, "The normalized index should be 49")
 
 	}
 
 	func testNormalizeIndex66with0AdsShouldReturn66() {
-		var result = IndexRowNormalizer.normalize(66, firstAdPosition: 2, adMargin: 4, adsCount: 0)
+		let result = IndexRowNormalizer.normalize(66, firstAdPosition: 2, adMargin: 4, adsCount: 0)
 		XCTAssert(result == 66 - 0, "The normalized index should be 66")
 
 	}
 
 	func testNormalizeIndex66with1AdsShouldReturn65() {
-		var result = IndexRowNormalizer.normalize(66, firstAdPosition: 2, adMargin: 4, adsCount: 1)
+		let result = IndexRowNormalizer.normalize(66, firstAdPosition: 2, adMargin: 4, adsCount: 1)
 		XCTAssert(result == 66 - 1, "The normalized index should be 66")
 	}
 
   func testGetCountForSection() {
      let numOfExpectedAds = 10
-     var result = IndexRowNormalizer.getNumberOfRowsForSectionIncludingAds(20, totalRowsInSection: 100, firstAdPosition: 4, adMargin: 10, adsCount: 40)
+     let result = IndexRowNormalizer.getNumberOfRowsForSectionIncludingAds(20, totalRowsInSection: 100, firstAdPosition: 4, adMargin: 10, adsCount: 40)
      XCTAssert(result == 20 + numOfExpectedAds)
   }
 
 	func testGetAdsForRange0till20returns5() {
-		var result = IndexRowNormalizer.getAdsForRange(0...20, firstAdPosition: 2, adMargin: 4)
+		let result = IndexRowNormalizer.getAdsForRange(0...20, firstAdPosition: 2, adMargin: 4)
 		XCTAssert(result == 5, "Ads for range should return 5")
 	}
 
 	func testGetAdsForRange0till0returns0() {
-		var result = IndexRowNormalizer.getAdsForRange(0...0, firstAdPosition: 2, adMargin: 4)
+		let result = IndexRowNormalizer.getAdsForRange(0...0, firstAdPosition: 2, adMargin: 4)
 		XCTAssert(result == 0, "Ads for range should return 0")
 	}
 
 	func testGetAdsForRange0till2returns2() {
-		var result = IndexRowNormalizer.getAdsForRange(0...2, firstAdPosition: 2, adMargin: 4)
+		let result = IndexRowNormalizer.getAdsForRange(0...2, firstAdPosition: 2, adMargin: 4)
 		XCTAssert(result == 1, "Ads for range should return 1")
 	}
 

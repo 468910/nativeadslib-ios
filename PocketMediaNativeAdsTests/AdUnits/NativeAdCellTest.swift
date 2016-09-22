@@ -11,14 +11,14 @@ import XCTest
 
 class NativeAdCellTest: XCTestCase {
 
-    var subject: PocketMediaNativeAds.NativeAdCell!
+    var subject: NativeAdCell!
 
     override func setUp() {
         super.setUp()
 
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-        let nib = bundle.loadNibNamed("NativeAdCell", owner: nil, options: nil)
-        subject = nib!.first as! PocketMediaNativeAds.NativeAdCell
+        var nib = bundle.loadNibNamed("NativeAdView", owner: nil, options: nil)!.first!
+        subject = nib as! NativeAdCell
     }
 
     override func tearDown() {

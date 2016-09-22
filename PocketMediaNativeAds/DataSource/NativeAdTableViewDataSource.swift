@@ -63,7 +63,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
 	public func getAdCellForTableView(nativeAd: NativeAd) -> UITableViewCell {
 		switch (adUnitType) {
 		case .Custom:
-			let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as! NativeAdCell
+          let cell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as! NativeAdCell
 			cell.configureAdView(nativeAd)
 			return cell
 //		case .Big:
@@ -71,7 +71,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
 //			cell.configureAdView(nativeAd)
 //			return cell;
 		default:
-			let cell: NativeAdCell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
+          let cell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
 			cell.configureAdView(nativeAd)
 			return cell
 		}

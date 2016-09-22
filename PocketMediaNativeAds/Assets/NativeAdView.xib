@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -15,11 +16,9 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MD6-t4-976" userLabel="AdInfoView">
-                    <rect key="frame" x="105" y="0.0" width="416" height="89"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HdH-M1-9kX" userLabel="MiddleView">
-                            <rect key="frame" x="0.0" y="24" width="416" height="0.0"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" id="7GV-x5-cBs"/>
                                 <constraint firstAttribute="height" id="PyH-i8-1vw"/>
@@ -31,19 +30,17 @@
                             </variation>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cU1-hR-AOS" userLabel="AdName">
-                            <rect key="frame" x="8" y="6" width="480" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Spt-Fz-sOx" userLabel="AdDescription">
-                            <rect key="frame" x="8" y="24" width="374" height="61"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Spt-Fz-sOx" firstAttribute="height" relation="lessThanOrEqual" secondItem="MD6-t4-976" secondAttribute="height" id="086-Dk-W3C"/>
                         <constraint firstAttribute="bottom" secondItem="Spt-Fz-sOx" secondAttribute="bottom" id="8Un-Fp-XaG"/>
@@ -65,21 +62,19 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="wgD-AA-UAq"/>
-                            <exclude reference="yOb-Qk-S7I"/>
                             <exclude reference="086-Dk-W3C"/>
                             <exclude reference="8Un-Fp-XaG"/>
                             <exclude reference="Xfo-Ql-Tnd"/>
                             <exclude reference="lRN-uT-WDg"/>
                             <exclude reference="zdd-1r-7yU"/>
+                            <exclude reference="wgD-AA-UAq"/>
+                            <exclude reference="yOb-Qk-S7I"/>
                         </mask>
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRJ-ce-gbH" userLabel="Install">
-                    <rect key="frame" x="526" y="0.0" width="93" height="89"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loud_Speaker_64.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z0j-F3-XlP" userLabel="SpeakerPhone">
-                            <rect key="frame" x="72" y="9" width="13" height="13"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Z0j-F3-XlP" secondAttribute="height" multiplier="1:1" id="4Ah-RT-1Ee"/>
                                 <constraint firstAttribute="width" secondItem="Z0j-F3-XlP" secondAttribute="height" multiplier="1:1" id="BKP-Wa-cLU"/>
@@ -95,20 +90,18 @@
                             </variation>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ad" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fMi-IE-VLB" userLabel="LabelThatDisplaysAd">
-                            <rect key="frame" x="54" y="9" width="13" height="13"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="DG0-n3-u0P">
-                            <rect key="frame" x="-2" y="27" width="74" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="DG0-n3-u0P" secondAttribute="height" multiplier="15 : 9" id="30w-W2-EIK"/>
                                 <constraint firstAttribute="width" secondItem="DG0-n3-u0P" secondAttribute="height" multiplier="6:2" id="7P9-3F-4em"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                             <state key="normal" title="INSTALL">
-                                <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <variation key="default">
                                 <mask key="constraints">
@@ -117,7 +110,7 @@
                             </variation>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="fMi-IE-VLB" firstAttribute="leading" secondItem="wRJ-ce-gbH" secondAttribute="leading" id="07I-NT-mJl"/>
                         <constraint firstItem="fMi-IE-VLB" firstAttribute="trailing" secondItem="Z0j-F3-XlP" secondAttribute="trailing" constant="10" id="3KS-J8-5fz"/>
@@ -141,6 +134,9 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="5YW-2O-bnT"/>
+                            <exclude reference="Rve-G6-bQK"/>
+                            <exclude reference="efe-dy-XTy"/>
                             <exclude reference="07I-NT-mJl"/>
                             <exclude reference="3KS-J8-5fz"/>
                             <exclude reference="62N-2a-n2a"/>
@@ -151,17 +147,12 @@
                             <exclude reference="i2T-DG-CoE"/>
                             <exclude reference="pMY-xd-Hxo"/>
                             <exclude reference="qqT-sn-Shr"/>
-                            <exclude reference="5YW-2O-bnT"/>
-                            <exclude reference="Rve-G6-bQK"/>
-                            <exclude reference="efe-dy-XTy"/>
                         </mask>
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xct-uV-WqM" userLabel="AdImageView">
-                    <rect key="frame" x="-19" y="0.0" width="124" height="89"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dsE-td-uYg">
-                            <rect key="frame" x="27" y="9" width="71" height="71"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="dsE-td-uYg" secondAttribute="height" multiplier="1:1" id="CwW-hm-cNS"/>
                                 <constraint firstAttribute="width" secondItem="dsE-td-uYg" secondAttribute="height" multiplier="1:1" id="Dl7-bP-oC0"/>
@@ -173,7 +164,7 @@
                             </variation>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="dsE-td-uYg" firstAttribute="height" secondItem="xct-uV-WqM" secondAttribute="height" multiplier="0.8" id="2iU-Hw-UfJ"/>
                         <constraint firstItem="dsE-td-uYg" firstAttribute="top" secondItem="xct-uV-WqM" secondAttribute="top" id="4za-Qe-D29"/>
@@ -219,7 +210,7 @@
                     </variation>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Z0j-F3-XlP" firstAttribute="centerY" secondItem="cU1-hR-AOS" secondAttribute="centerY" id="0o6-j3-gmg"/>
                 <constraint firstAttribute="trailing" secondItem="wRJ-ce-gbH" secondAttribute="trailing" id="25F-48-ORs"/>
@@ -265,9 +256,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="F9u-GZ-r2V"/>
-                    <exclude reference="LSw-Iv-dxK"/>
-                    <exclude reference="bow-1E-noV"/>
                     <exclude reference="3WO-XC-Oxp"/>
                     <exclude reference="7Eb-94-u1t"/>
                     <exclude reference="Aac-8d-O4d"/>
@@ -280,22 +268,25 @@
                     <exclude reference="tid-fw-AHT"/>
                     <exclude reference="wGZ-Ry-Bzt"/>
                     <exclude reference="wqn-qm-cTF"/>
-                    <exclude reference="W1x-GR-7dE"/>
                     <exclude reference="qIL-aK-O5D"/>
+                    <exclude reference="XjI-63-r6S"/>
+                    <exclude reference="W1x-GR-7dE"/>
+                    <exclude reference="Csr-xH-8g4"/>
+                    <exclude reference="xnE-nE-JAc"/>
                     <exclude reference="3XX-nS-gGs"/>
                     <exclude reference="cKR-wi-JEO"/>
                     <exclude reference="vOc-e2-gkF"/>
-                    <exclude reference="Csr-xH-8g4"/>
-                    <exclude reference="xnE-nE-JAc"/>
-                    <exclude reference="XjI-63-r6S"/>
+                    <exclude reference="F9u-GZ-r2V"/>
+                    <exclude reference="LSw-Iv-dxK"/>
+                    <exclude reference="bow-1E-noV"/>
                 </mask>
             </variation>
             <connections>
-                <outlet property="adDescription" destination="Spt-Fz-sOx" id="wCk-lR-yQm"/>
-                <outlet property="adImage" destination="dsE-td-uYg" id="xZN-12-dfm"/>
-                <outlet property="adTitle" destination="cU1-hR-AOS" id="CsC-J2-TKQ"/>
-                <outlet property="installButton" destination="DG0-n3-u0P" id="ich-Yj-Zs1"/>
-                <outlet property="speakerPhone" destination="Z0j-F3-XlP" id="aW9-JO-FcA"/>
+                <outlet property="adDescription" destination="Spt-Fz-sOx" id="iMm-4c-4S7"/>
+                <outlet property="adImage" destination="dsE-td-uYg" id="556-A2-wbq"/>
+                <outlet property="adTitle" destination="cU1-hR-AOS" id="u2B-l7-MiP"/>
+                <outlet property="installButton" destination="DG0-n3-u0P" id="Rpw-Si-YCc"/>
+                <outlet property="speakerPhone" destination="Z0j-F3-XlP" id="MHq-sT-hHE"/>
             </connections>
             <point key="canvasLocation" x="-599.5" y="399.5"/>
         </view>

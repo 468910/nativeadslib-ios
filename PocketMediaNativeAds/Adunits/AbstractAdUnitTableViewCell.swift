@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Darwin
 
 /**
  Class to be subclassed for use with the AdStream.
