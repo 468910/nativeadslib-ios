@@ -117,28 +117,28 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
 	}
 
 	public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-		if (respondsToSelector(Selector("tableView:canEditRowAtIndexPath"))) {
+      if (datasource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:canEditRowAtIndexPath:)))){
 			return datasource.tableView!(tableView, canEditRowAtIndexPath: indexPath)
 		}
         return true
 	}
 
 	public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-		if (respondsToSelector(Selector("tableView:canMoveRowAtIndexPath"))) {
-			return datasource.tableView!(tableView, canEditRowAtIndexPath: indexPath)
+      if (datasource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:canMoveRowAtIndexPath:)))) {
+			return datasource.tableView!(tableView, canMoveRowAtIndexPath: indexPath)
 		}
 		return true
 	}
 
 	public func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-		if (respondsToSelector(Selector("tableView:sectionForSectionIndexTitle"))) {
+      if (datasource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:sectionForSectionIndexTitle:atIndex:)))) {
 			return datasource.tableView!(tableView, sectionForSectionIndexTitle: title, atIndex: index)
 		}
         return 0
 	}
 
 	public func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-		if (respondsToSelector(Selector("tableView:moveRowAtIndexPath"))) {
+      if (datasource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:moveRowAtIndexPath:toIndexPath:)))) {
 			datasource.tableView?(tableView, moveRowAtIndexPath: sourceIndexPath, toIndexPath: destinationIndexPath)
 		}
 	}
