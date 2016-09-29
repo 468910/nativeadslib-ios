@@ -8,6 +8,13 @@
 
 import Foundation
 
+
+
+struct NativeAdInfo {
+    let nativeAd : NativeAd
+    let position : Int
+}
+
 @objc
 public class DataSource: NSObject, DataSourceProtocol {
     

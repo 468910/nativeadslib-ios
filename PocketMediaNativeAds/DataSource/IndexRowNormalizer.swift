@@ -9,8 +9,8 @@
 import Foundation
 
 public class IndexRowNormalizer {
-
-    private static let INDEX_OFFSET_FOR_INSERTION = 1
+    
+    private static var INDEX_OFFSET = 1
 
     // Calculates the true position for a given index path in the datasource meaning that it checks the position relative to all the sections.
     static internal func getTruePositionForIndexPath(indexPath: NSIndexPath, datasource: NativeAdTableViewDataSourceProtocol) -> Int {
@@ -20,12 +20,12 @@ public class IndexRowNormalizer {
 
         // The totalPreviousSectionsRows is the amount of rows that are in the previous sections. When we say previous sections we mean: Sections before the current section of the indexPath.
         var totalPreviousSectionsRows = 0
-        for i in (0...max(indexPath.section - 1, 0)) {
+        for i in (0..<max(indexPath.section, 0)) {
             let rowsInSection = datasource.getNumberOfRowsInSection(numberOfRowsInSection: i)
             totalPreviousSectionsRows += rowsInSection
         }
 
-        let truePath = max(totalPreviousSectionsRows - 1, 0) + indexPath.row
+        let truePath = max(totalPreviousSectionsRows - IndexRowNormalizer.INDEX_OFFSET, 0) + indexPath.row
         Logger.debug("The true path is : \(truePath)")
 
         return truePath
@@ -34,16 +34,13 @@ public class IndexRowNormalizer {
     // Normalizes Index to the Index in the original Datasource
     static internal func normalize(trueIndexCount: Int, firstAdPosition: Int, adMargin: Int, adsCount: Int) -> Int {
         var adsInserted = 0
-        if (adsCount == 0 || trueIndexCount == 0 || firstAdPosition > trueIndexCount) {
-            Logger.debug("Normalized position = position \(trueIndexCount) (original was \(trueIndexCount))")
-            return trueIndexCount
-        } else {
-            adsInserted = min(((trueIndexCount - firstAdPosition) / adMargin) + 1, adsCount)
+        if (!(adsCount == 0 || firstAdPosition > trueIndexCount)) {
+            adsInserted = getAdsForRange(0...trueIndexCount, firstAdPosition: firstAdPosition, adMargin: adMargin)
         }
         Logger.debug("Normalized position = position - adsInserted \(trueIndexCount - adsInserted) (original was \(trueIndexCount)")
-        return trueIndexCount - adsInserted
+        return trueIndexCount - min(adsInserted, adsCount)
     }
-
+    
     // Gets number of Ads In A given Section
     static internal func getNumberOfRowsForSectionIncludingAds(numOfRowsInSection: Int, totalRowsInSection: Int, firstAdPosition: Int, adMargin: Int, adsCount: Int) -> Int {
         Logger.debug("numOfRowsInSection \(numOfRowsInSection) totalRowsInSection \(totalRowsInSection)")
@@ -64,8 +61,11 @@ public class IndexRowNormalizer {
     // Gets Ads for a given Range
     static internal func getAdsForRange(range: Range<Int>, firstAdPosition: Int, adMargin: Int) -> Int {
         let containsFirstAd = range.contains(firstAdPosition)
-        return range.filter { ($0 > firstAdPosition + adMargin - 1) }
-            .filter { ($0 % adMargin == 0) }.count + (containsFirstAd ? 1 : 0)
+      
+        return range.filter({
+            ((firstAdPosition - $0) % adMargin == 0) && $0 >= (firstAdPosition + adMargin)
+        }).count + (containsFirstAd ? 1 : 0)
+            
     }
 
 }
