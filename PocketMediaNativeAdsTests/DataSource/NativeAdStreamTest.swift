@@ -108,7 +108,7 @@ class NativeAdStreamTest: XCTestCase {
         //Higher firstAdPosition than we have ads
         subject.datasource.firstAdPosition = 100
         subject.didReceiveResults(ads)
-        XCTAssert(subject.datasource.ads.count == 0, "Ads should've been added")
+        XCTAssert(subject.datasource.ads.count == 0, "No Ads shoud've been added")
         
         
         subject.datasource.firstAdPosition = 1

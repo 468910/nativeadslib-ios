@@ -97,31 +97,33 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
         clear()
         
         //Loop through each new ad and depending on our adding strategy add it to our datasource.ads
-        let orginalCount = datasource!.numberOfElements()
-        var adsInserted = 0
-        for ad in newAds {
-            if (adsPositions == nil) {
-                let index = (datasource.firstAdPosition - 1) + (datasource.adMargin * adsInserted)
-                if (index > (orginalCount + adsInserted)) {
-                    break
-                }
-                datasource.ads[index] = ad
-            } else {
-                if (adsInserted >= adsPositions!.count) {
-                    break
-                }
-                if (adsPositions![adsInserted] >= orginalCount) {
-                    break
-                }
-                datasource.ads[adsPositions![adsInserted] - 1] = ad
-            }
-            adsInserted += 1
+        
+        let originalCount = datasource!.numberOfElements()
+        if(datasource.firstAdPosition > originalCount) {
+            Logger.debug("FirstAdPosition exceeds numberOfElements")
+            return
         }
         
-        //If any new ads were added into the datasource, please inform the datasource that it has updated.
-        if adsInserted > 0 {
-            datasource!.onUpdateDataSource()
+        if(adsPositions != nil){
+            let filterAdPositions = adsPositions!.filter( {
+                $0 <= min(newAds.count, datasource!.adMargin / (originalCount - datasource.firstAdPosition))
+                    * datasource!.adMargin})
+            
+            for position in filterAdPositions {
+                for i in 0...filterAdPositions.count - 1 {
+                    datasource.ads[position] = newAds[i]
+                }
+            }
         }
+        else {
+            for i in 0...min(newAds.count, (datasource!.adMargin / (originalCount - datasource.firstAdPosition))
+                + originalCount > datasource.firstAdPosition ? 1 : 0){
+                datasource.ads[(datasource.firstAdPosition - 1) + (datasource.adMargin * i)] = newAds[i]
+            }
+        }
+     
+        datasource!.onUpdateDataSource()
+        
         Logger.debug("updateAdPositions. Count: \(datasource?.numberOfElements())")
     }
     

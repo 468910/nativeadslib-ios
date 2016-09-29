@@ -64,17 +64,16 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
 		switch (adUnitType) {
 		case .Custom:
           let cell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as! NativeAdCell
-			cell.configureAdView(nativeAd)
+			//cell.configureAdView(nativeAd)
 			return cell
 //		case .Big:
 //			let cell: AbstractBigAdUnitTableViewCell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
 //			cell.configureAdView(nativeAd)
 //			return cell;
 		default:
-          let cell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
 			cell.configureAdView(nativeAd)
-			return cell
-		}
+			return cell		}
 	}
 
 	// Data Source
@@ -157,13 +156,18 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
 		if let numOfSectionsFunc = datasource.numberOfSectionsInTableView {
 			return numOfSectionsFunc(tableView)
 		}
-        return 0
+        return 1
 	}
 
     public override func numberOfElements() -> Int {
+        
+        if (!datasource.respondsToSelector(#selector(UITableViewDataSource.numberOfSectionsInTableView(_:)))){
+                return tableView(tableView, numberOfRowsInSection: 0)
+        }
+
         var numOfRows = 0
-        for i in 0...max(0, datasource.numberOfSectionsInTableView!(tableView) - 1) {
-            numOfRows += datasource.tableView(tableView, numberOfRowsInSection: i)
+        for i in 0...max(0, max(datasource.numberOfSectionsInTableView!(tableView) - 1, 0)) {
+            numOfRows += tableView(tableView, numberOfRowsInSection: i)
         }
         return numOfRows
     }
