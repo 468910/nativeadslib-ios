@@ -110,18 +110,20 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
                     * datasource!.adMargin})
             
             for position in filterAdPositions {
-                for i in 0...filterAdPositions.count - 1 {
+                for i in 0..<filterAdPositions.count {
                     datasource.ads[position] = newAds[i]
                 }
             }
         }
-        else {
-            for i in 0...min(newAds.count, (datasource!.adMargin / (originalCount - datasource.firstAdPosition))
-                + originalCount > datasource.firstAdPosition ? 1 : 0){
+        else { 
+        
+        // Get the minimum of Received ads vs Max amount of ads to insert
+        let numOfAdsToInsert = min(newAds.count, ((originalCount - datasource.firstAdPosition) / datasource!.adMargin) + 1)
+    
+            for i in 0..<numOfAdsToInsert{
                 datasource.ads[(datasource.firstAdPosition - 1) + (datasource.adMargin * i)] = newAds[i]
             }
         }
-     
         datasource!.onUpdateDataSource()
         
         Logger.debug("updateAdPositions. Count: \(datasource?.numberOfElements())")
