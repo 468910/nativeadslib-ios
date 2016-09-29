@@ -121,7 +121,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
         let numOfAdsToInsert = min(newAds.count, ((originalCount - datasource.firstAdPosition) / datasource!.adMargin) + 1)
     
             for i in 0..<numOfAdsToInsert{
-                datasource.ads[(datasource.firstAdPosition - 1) + (datasource.adMargin * i)] = newAds[i]
+                datasource.ads[(datasource.firstAdPosition) + (datasource.adMargin * i)] = newAds[i]
             }
         }
         datasource!.onUpdateDataSource()
