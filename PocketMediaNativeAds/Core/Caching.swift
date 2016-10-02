@@ -55,7 +55,7 @@ extension NSURL {
 
 }
 
-extension UIImageView {
+public extension UIImageView {
     func nativeSetImageFromURL(url: NSURL) {
         //self.image = drawCustomImage(CGSize(width: 100, height: 100))
         if let campaignImage = url.cachedImage {

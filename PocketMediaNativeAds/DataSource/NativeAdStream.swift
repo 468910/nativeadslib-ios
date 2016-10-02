@@ -92,50 +92,14 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     */
 	@objc
 	public func didReceiveResults(newAds: [NativeAd]) {
-		Logger.debug("Received \(newAds.count) new ads.")
-        //Clear any existing ads
-        clear()
-        
-        //Loop through each new ad and depending on our adding strategy add it to our datasource.ads
-        
-        let originalCount = datasource!.numberOfElements()
-        if(datasource.firstAdPosition > originalCount) {
-            Logger.debug("FirstAdPosition exceeds numberOfElements")
-            return
+        if(newAds.count < 0){
+            Logger.debug("Received no Ads")
         }
+        Logger.debug("Received \(newAds.count) new ads.")
+        datasource!.onUpdateDataSource(newAds)
         
-        if(adsPositions != nil){
-            let filterAdPositions = adsPositions!.filter( {
-                $0 <= min(newAds.count, datasource!.adMargin / (originalCount - datasource.firstAdPosition))
-                    * datasource!.adMargin})
-            
-            for position in filterAdPositions {
-                for i in 0..<filterAdPositions.count {
-                    datasource.ads[position] = newAds[i]
-                }
-            }
-        }
-        else { 
-        
-        // Get the minimum of Received ads vs Max amount of ads to insert
-        let numOfAdsToInsert = min(newAds.count, ((originalCount - datasource.firstAdPosition) / datasource!.adMargin) + 1)
-    
-            for i in 0..<numOfAdsToInsert{
-                datasource.ads[(datasource.firstAdPosition) + (datasource.adMargin * i)] = newAds[i]
-            }
-        }
-        datasource!.onUpdateDataSource()
-        
-        Logger.debug("updateAdPositions. Count: \(datasource?.numberOfElements())")
     }
     
-    /*
-     * This method clears the ads in the datasource and informs the datasource about this.
-     */
-    internal func clear() {
-        datasource!.ads.removeAll()
-        datasource!.onUpdateDataSource()
-    }
     
     /*
      * This method reloads the known ads.

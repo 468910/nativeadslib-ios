@@ -42,7 +42,6 @@
 		27E83B971D8EE0FE002C94A3 /* PocketMediaNativeAds-PocketMediaNativeAds-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 278CE8591D8EDD2E00F6CF8A /* PocketMediaNativeAds-PocketMediaNativeAds-Bridging-Header.h */; };
 		27E83B981D8EE0FE002C94A3 /* PocketMediaNativeAds.h in Sources */ = {isa = PBXBuildFile; fileRef = 278CE85A1D8EDD2E00F6CF8A /* PocketMediaNativeAds.h */; };
 		27E83BA31D8EE0FE002C94A3 /* AdUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278CE8751D8EDD4700F6CF8A /* AdUnitType.swift */; };
-		27E83BA41D8EE0FE002C94A3 /* DatasourceNormalizerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278CE8761D8EDD4700F6CF8A /* DatasourceNormalizerProtocol.swift */; };
 		27E83BA51D8EE0FE002C94A3 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278CE8771D8EDD4700F6CF8A /* DataSourceProtocol.swift */; };
 		27E83BA61D8EE0FE002C94A3 /* IndexRowNormalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278CE8781D8EDD4700F6CF8A /* IndexRowNormalizer.swift */; };
 		27E83BA71D8EE0FE002C94A3 /* NativeAdStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278CE8791D8EDD4700F6CF8A /* NativeAdStream.swift */; };
@@ -114,7 +113,6 @@
 		278CE8671D8EDD3D00F6CF8A /* NativeAdsWebviewRedirectionsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdsWebviewRedirectionsDelegate.swift; path = PocketMediaNativeAds/Core/NativeAdsWebviewRedirectionsDelegate.swift; sourceTree = "<group>"; };
 		278CE8681D8EDD3D00F6CF8A /* URLSessionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionProtocol.swift; path = PocketMediaNativeAds/Core/URLSessionProtocol.swift; sourceTree = "<group>"; };
 		278CE8751D8EDD4700F6CF8A /* AdUnitType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdUnitType.swift; path = PocketMediaNativeAds/DataSource/AdUnitType.swift; sourceTree = "<group>"; };
-		278CE8761D8EDD4700F6CF8A /* DatasourceNormalizerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatasourceNormalizerProtocol.swift; path = PocketMediaNativeAds/DataSource/DatasourceNormalizerProtocol.swift; sourceTree = "<group>"; };
 		278CE8771D8EDD4700F6CF8A /* DataSourceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSourceProtocol.swift; path = PocketMediaNativeAds/DataSource/DataSourceProtocol.swift; sourceTree = "<group>"; };
 		278CE8781D8EDD4700F6CF8A /* IndexRowNormalizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IndexRowNormalizer.swift; path = PocketMediaNativeAds/DataSource/IndexRowNormalizer.swift; sourceTree = "<group>"; };
 		278CE8791D8EDD4700F6CF8A /* NativeAdStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdStream.swift; path = PocketMediaNativeAds/DataSource/NativeAdStream.swift; sourceTree = "<group>"; };
@@ -271,7 +269,6 @@
 				278E19111D915C7E0087A259 /* DataSource.swift */,
 				278CE8751D8EDD4700F6CF8A /* AdUnitType.swift */,
 				27B459101D900B8B00C6F611 /* TableView */,
-				278CE8761D8EDD4700F6CF8A /* DatasourceNormalizerProtocol.swift */,
 				278CE8771D8EDD4700F6CF8A /* DataSourceProtocol.swift */,
 				278CE8781D8EDD4700F6CF8A /* IndexRowNormalizer.swift */,
 				278CE8791D8EDD4700F6CF8A /* NativeAdStream.swift */,
@@ -583,7 +580,6 @@
 				278E19121D915C7E0087A259 /* DataSource.swift in Sources */,
 				27E83BA31D8EE0FE002C94A3 /* AdUnitType.swift in Sources */,
 				2758CCAF1D8EE4D6000181CD /* AbstractAdUnitTableViewCell.swift in Sources */,
-				27E83BA41D8EE0FE002C94A3 /* DatasourceNormalizerProtocol.swift in Sources */,
 				27E83BA51D8EE0FE002C94A3 /* DataSourceProtocol.swift in Sources */,
 				27E83BA61D8EE0FE002C94A3 /* IndexRowNormalizer.swift in Sources */,
 				27E83BA71D8EE0FE002C94A3 /* NativeAdStream.swift in Sources */,

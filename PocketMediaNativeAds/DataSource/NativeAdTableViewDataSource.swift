@@ -9,11 +9,22 @@
 import UIKit
 import Foundation
 
-public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, NativeAdTableViewDataSourceProtocol {
+
+public struct NativeAdInfo {
+    var ad : NativeAd
+    var position : Int
+    var adsInsertedAtThisPoint : Int
+}
+
+public typealias AdsForSectionMap = [Int : [Int : NativeAdInfo]]
+
+public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     public var datasource: UITableViewDataSource
     public var tableView: UITableView
     public var delegate: NativeAdTableViewDelegate?
     public var controller: UIViewController!
+    
+    public var adsForSection : AdsForSectionMap = AdsForSectionMap()
 
 	deinit {
 		self.tableView.dataSource = datasource
@@ -80,25 +91,20 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
 	@objc
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     	if let val = isAdAtposition(indexPath) {
-			return getAdCellForTableView(val)
+			var cell = getAdCellForTableView(val) as! NativeAdCell
+            cell.adTitle?.text = String(indexPath.row.description)
+            return cell
 		}
 			return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: normalize(indexPath), inSection: indexPath.section))
 	}
-
-	public func getNumberOfRowsInSection(numberOfRowsInSection section: Int) -> Int {
-		return tableView(tableView, numberOfRowsInSection: section)
-	}
-
+    
 	@objc
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		var totalRows = 0
-
-		for i in (0...section) {
-			let rowsInSection = datasource.tableView(tableView, numberOfRowsInSection: i)
-			totalRows += rowsInSection
-		}
-
-		return getCountForSection(datasource.tableView(tableView, numberOfRowsInSection: section), totalRowsInSection: totalRows)
+        if let ads = adsForSection[section]?.count {
+            return datasource.tableView(tableView, numberOfRowsInSection: section) + ads
+        }
+        
+        return datasource.tableView(tableView, numberOfRowsInSection: section)
 	}
 
 	public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -146,7 +152,37 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
 		datasource.tableView?(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
 	}
 
-    public override func onUpdateDataSource() {
+    public override func onUpdateDataSource(newAds: [NativeAd]) {
+        adsForSection.removeAll()
+        
+        let numOfSections = datasource.numberOfSectionsInTableView!(tableView)
+        var adsInsertedAtThisPoint = 0
+        var totalNumOfElements = 0
+        var ads = newAds
+        
+        for i in 0...numOfSections {
+            let numOfRowsInCurrentSection = datasource.tableView(tableView, numberOfRowsInSection: i)
+            adsForSection[i] = [:]
+            for y in 0..<numOfRowsInCurrentSection {
+                if(totalNumOfElements == firstAdPosition){
+                    adsForSection[i]![y] = NativeAdInfo(ad: ads.removeFirst(), position: y,
+                        adsInsertedAtThisPoint: adsInsertedAtThisPoint)
+                    adsInsertedAtThisPoint += 1
+                }
+                
+                if(totalNumOfElements > firstAdPosition){
+                    if((totalNumOfElements - firstAdPosition) % adMargin == 0){
+                        adsForSection[i]![y] = NativeAdInfo(ad: ads.removeFirst(), position: y,
+                                                            adsInsertedAtThisPoint: adsInsertedAtThisPoint)
+                         adsInsertedAtThisPoint += 1
+                    }
+                }
+                
+                totalNumOfElements += 1
+            }
+        }
+        
+        
         tableView.reloadData()
     }
 
@@ -159,25 +195,32 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, Nat
         return 1
 	}
 
-    public override func numberOfElements() -> Int {
-        
-        if (!datasource.respondsToSelector(#selector(UITableViewDataSource.numberOfSectionsInTableView(_:)))){
-                return tableView(tableView, numberOfRowsInSection: 0)
-        }
-
-        var numOfRows = 0
-        for i in 0...max(0, max(datasource.numberOfSectionsInTableView!(tableView) - 1, 0)) {
-            numOfRows += tableView(tableView, numberOfRowsInSection: i)
-        }
-        return numOfRows
-    }
-
-    public override func getTruePositionInDataSource(indexPath: NSIndexPath) -> Int {
-        return IndexRowNormalizer.getTruePositionForIndexPath(indexPath, datasource: self)
-    }
 
     func normalize(indexRow: NSIndexPath) -> Int {
-        let pos = IndexRowNormalizer.getTruePositionForIndexPath(indexRow, datasource: self as! NativeAdTableViewDataSourceProtocol)
-        return IndexRowNormalizer.normalize(pos, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: ads.count)
+        var numOfAdsInsertedInSection = 0
+    
+        if var ads = adsForSection[indexRow.row]?.sort({ $0.0 < $1.0 }) {
+            while(ads.count > 0){
+                if(ads.removeFirst().1.position > indexRow.row){
+                numOfAdsInsertedInSection += 1
+                }else {
+                    break;
+                }
+            }
+        }
+        
+        return indexRow.row - numOfAdsInsertedInSection
     }
+    
+    public override func isAdAtposition(indexPath: NSIndexPath) -> NativeAd? {
+        if let val = adsForSection[indexPath.section]?[indexPath.row]?.ad {
+            return val
+        }
+        return nil
+    }
+    
+    func getCountForSection(numOfRowsInSection: Int, totalRowsInSection: Int) -> Int {
+        return 1
+    }
+    
 }

@@ -9,9 +9,10 @@
 import Foundation
 
 @objc
-public protocol DataSourceProtocol : DatasourceNormalizerProtocol {
-	func onUpdateDataSource()
-	func numberOfElements() -> Int
+public protocol DataSourceProtocol {
+    func onUpdateDataSource(newAds : [NativeAd])
+    func isAdAtposition(indexPath: NSIndexPath) -> NativeAd? 
+    
 }
 
 public protocol NativeAdTableViewDataSourceProtocol : DataSourceProtocol {

@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import PocketMediaNativeAds
 
 public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 
 	var collection: [AnyObject] = []
 
 	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 1
+		return 2
 	}
 
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,9 +41,10 @@ public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 		switch collection[indexPath.row] {
             case let item as ItemTableModel:
                 let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
-                cell.name.text = item.title
+                //cell.name.text = item.title
+                cell.name.text = String(indexPath.row)
                 cell.descriptionItem.text = item.descriptionItem
-                //cell.artworkImageView.hnk_setImageFromURL(item.imageURL)
+                cell.artworkImageView.nativeSetImageFromURL(item.imageURL)
                 return cell
             default:
                 return UITableViewCell()
