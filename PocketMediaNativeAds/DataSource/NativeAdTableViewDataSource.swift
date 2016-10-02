@@ -13,7 +13,6 @@ import Foundation
 public struct NativeAdInfo {
     var ad : NativeAd
     var position : Int
-    var adsInsertedAtThisPoint : Int
 }
 
 public typealias AdsForSectionMap = [Int : [Int : NativeAdInfo]]
@@ -156,33 +155,37 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         adsForSection.removeAll()
         
         let numOfSections = datasource.numberOfSectionsInTableView!(tableView)
-        var adsInsertedAtThisPoint = 0
         var totalNumOfElements = 0
         var ads = newAds
         
-        for i in 0...numOfSections {
+        
+        for i in 0..<numOfSections {
             let numOfRowsInCurrentSection = datasource.tableView(tableView, numberOfRowsInSection: i)
+            
+            if(ads.count <= 0 || firstAdPosition > numOfRowsInCurrentSection){
+                break;
+            }
+        
             adsForSection[i] = [:]
-            for y in 0..<numOfRowsInCurrentSection {
-                if(totalNumOfElements == firstAdPosition){
-                    adsForSection[i]![y] = NativeAdInfo(ad: ads.removeFirst(), position: y,
-                        adsInsertedAtThisPoint: adsInsertedAtThisPoint)
-                    adsInsertedAtThisPoint += 1
+            var adsInsertedCurrentSection = 0
+            var adsLeft = true
+            
+            
+            if(numOfRowsInCurrentSection > firstAdPosition){
+                adsForSection[i]![firstAdPosition] = NativeAdInfo(ad: ads.removeFirst(), position: firstAdPosition)
+                adsInsertedCurrentSection += 1
+            }
+            
+            while(adsLeft){
+                if(numOfRowsInCurrentSection + adsInsertedCurrentSection >= firstAdPosition + adMargin * adsInsertedCurrentSection){
+                    adsForSection[i]![firstAdPosition + adMargin * adsInsertedCurrentSection] = NativeAdInfo(ad: ads.removeFirst(),
+                                    position: firstAdPosition + adMargin * adsInsertedCurrentSection)
+                    adsInsertedCurrentSection += 1
+                }else {
+                    adsLeft = false
                 }
-                
-                if(totalNumOfElements > firstAdPosition){
-                    if((totalNumOfElements - firstAdPosition) % adMargin == 0){
-                        adsForSection[i]![y] = NativeAdInfo(ad: ads.removeFirst(), position: y,
-                                                            adsInsertedAtThisPoint: adsInsertedAtThisPoint)
-                         adsInsertedAtThisPoint += 1
-                    }
-                }
-                
-                totalNumOfElements += 1
             }
         }
-        
-        
         tableView.reloadData()
     }
 
@@ -199,16 +202,16 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     func normalize(indexRow: NSIndexPath) -> Int {
         var numOfAdsInsertedInSection = 0
     
-        if var ads = adsForSection[indexRow.row]?.sort({ $0.0 < $1.0 }) {
-            while(ads.count > 0){
-                if(ads.removeFirst().1.position > indexRow.row){
+        if let ads = adsForSection[indexRow.section]?.sort({ $0.0 < $1.0 }) {
+            for ad in ads {
+                if(indexRow.row >= ad.1.position){
                 numOfAdsInsertedInSection += 1
                 }else {
                     break;
                 }
             }
         }
-        
+    
         return indexRow.row - numOfAdsInsertedInSection
     }
     
