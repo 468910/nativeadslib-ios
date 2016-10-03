@@ -17,5 +17,6 @@ target 'PocketMediaNativeAds' do
 #	end
 	target 'PocketMediaNativeAdsExample' do
 		project ‘PocketMediaNativeAdsExample.xcodeproj’
+		inherit! :search_paths
 	end
 end

@@ -91,7 +91,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     	if let val = isAdAtposition(indexPath) {
 			var cell = getAdCellForTableView(val) as! NativeAdCell
-            cell.adTitle?.text = String(indexPath.row.description)
+//            cell.adTitle?.text = String(indexPath.row.description)
             return cell
 		}
 			return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: normalize(indexPath), inSection: indexPath.section))
