@@ -92,46 +92,14 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     */
 	@objc
 	public func didReceiveResults(newAds: [NativeAd]) {
-		Logger.debug("Received \(newAds.count) new ads.")
-        //Clear any existing ads
-        clear()
-        
-        //Loop through each new ad and depending on our adding strategy add it to our datasource.ads
-        let orginalCount = datasource!.numberOfElements()
-        var adsInserted = 0
-        for ad in newAds {
-            if (adsPositions == nil) {
-                let index = (datasource.firstAdPosition - 1) + (datasource.adMargin * adsInserted)
-                if (index > (orginalCount + adsInserted)) {
-                    break
-                }
-                datasource.ads[index] = ad
-            } else {
-                if (adsInserted >= adsPositions!.count) {
-                    break
-                }
-                if (adsPositions![adsInserted] >= orginalCount) {
-                    break
-                }
-                datasource.ads[adsPositions![adsInserted] - 1] = ad
-            }
-            adsInserted += 1
+        if(newAds.count < 0){
+            Logger.debug("Received no Ads")
         }
+        Logger.debug("Received \(newAds.count) new ads.")
+        datasource!.onUpdateDataSource(newAds)
         
-        //If any new ads were added into the datasource, please inform the datasource that it has updated.
-        if adsInserted > 0 {
-            datasource!.onUpdateDataSource()
-        }
-        Logger.debug("updateAdPositions. Count: \(datasource?.numberOfElements())")
     }
     
-    /*
-     * This method clears the ads in the datasource and informs the datasource about this.
-     */
-    internal func clear() {
-        datasource!.ads.removeAll()
-        datasource!.onUpdateDataSource()
-    }
     
     /*
      * This method reloads the known ads.

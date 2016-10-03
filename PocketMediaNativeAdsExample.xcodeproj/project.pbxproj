@@ -28,6 +28,8 @@
 		27DD16291D8ED5A100B31C6A /* questionMarkBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DD16201D8ED5A100B31C6A /* questionMarkBtn@3x.png */; };
 		27DD162C1D8ED5B100B31C6A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27DD162B1D8ED5B100B31C6A /* Info.plist */; };
 		27DD162E1D8ED5B500B31C6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD162D1D8ED5B500B31C6A /* AppDelegate.swift */; };
+		2ABD49611D9E6777006AF60A /* TableViewWithSectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABD49601D9E6777006AF60A /* TableViewWithSectionsController.swift */; };
+		2ABD49631D9E68D5006AF60A /* ExampleTableViewDataSourceWithSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABD49621D9E68D5006AF60A /* ExampleTableViewDataSourceWithSections.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,6 +78,8 @@
 		27DD16201D8ED5A100B31C6A /* questionMarkBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "questionMarkBtn@3x.png"; path = "PocketMediaNativeAdsExample/Resources/questionMarkBtn@3x.png"; sourceTree = "<group>"; };
 		27DD162B1D8ED5B100B31C6A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PocketMediaNativeAdsExample/Info.plist; sourceTree = "<group>"; };
 		27DD162D1D8ED5B500B31C6A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PocketMediaNativeAdsExample/AppDelegate.swift; sourceTree = "<group>"; };
+		2ABD49601D9E6777006AF60A /* TableViewWithSectionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewWithSectionsController.swift; sourceTree = "<group>"; };
+		2ABD49621D9E68D5006AF60A /* ExampleTableViewDataSourceWithSections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleTableViewDataSourceWithSections.swift; sourceTree = "<group>"; };
 		5A9D94EEB3592BF48992A75D /* Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample/Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.debug.xcconfig"; sourceTree = "<group>"; };
 		AC52F5D876FBF7B3C40E64AB /* Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample/Pods-PocketMediaNativeAds-PocketMediaNativeAdsExample.release.xcconfig"; sourceTree = "<group>"; };
 		ADD4BC011A3F8AE7FE9FF31E /* Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAds_PocketMediaNativeAdsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +113,8 @@
 			children = (
 				27DD16151D8ED58E00B31C6A /* ExampleTableViewDataSource.swift */,
 				27DD16161D8ED58E00B31C6A /* TableViewController.swift */,
+				2ABD49601D9E6777006AF60A /* TableViewWithSectionsController.swift */,
+				2ABD49621D9E68D5006AF60A /* ExampleTableViewDataSourceWithSections.swift */,
 			);
 			name = TableView;
 			sourceTree = "<group>";
@@ -330,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27DD16141D8ED57F00B31C6A /* ItemTableView.swift in Sources */,
+				2ABD49611D9E6777006AF60A /* TableViewWithSectionsController.swift in Sources */,
 				27DD16121D8ED57F00B31C6A /* AdCell.swift in Sources */,
 				27DD16171D8ED58E00B31C6A /* ExampleTableViewDataSource.swift in Sources */,
 				27DD162E1D8ED5B500B31C6A /* AppDelegate.swift in Sources */,
@@ -337,6 +344,7 @@
 				27DD160C1D8ED56F00B31C6A /* CollectionViewController.swift in Sources */,
 				27DD160E1D8ED57900B31C6A /* MenuViewController.swift in Sources */,
 				27DD16131D8ED57F00B31C6A /* ItemCell.swift in Sources */,
+				2ABD49631D9E68D5006AF60A /* ExampleTableViewDataSourceWithSections.swift in Sources */,
 				27DD160B1D8ED56F00B31C6A /* CollectionAdCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

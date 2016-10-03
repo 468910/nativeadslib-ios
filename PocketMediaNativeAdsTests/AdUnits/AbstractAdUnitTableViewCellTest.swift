@@ -55,7 +55,7 @@ class AbstractAdUnitTableViewCellTest: XCTestCase {
                 description.text = nativeAd.campaignDescription
             }
             if let image = subject.adImage {
-                image.setImageFromURL(nativeAd.campaignImage)
+                image.nativeSetImageFromURL(nativeAd.campaignImage)
             }
         } catch {
             XCTFail("Could not create an instance of nativeAd")

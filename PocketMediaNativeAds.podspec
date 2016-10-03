@@ -25,13 +25,9 @@ s.homepage         = "http://pocketmedia.mobi"
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.dependency  'AlamofireImage' 
-  s.dependency  'HanekeSwift'
 
-#  s.source_files = 'Classes/*/*.swift'
-#  s.resource_bundles = {
-#    'Resources' => ['Assets/*.{png,xib}']
-#  }
+  s.source_files = 'PocketMediaNativeAds/*/*.{swift, png, xib}'
+  s.resources = 'PocketMediaNativeAds/Assets/*'
 
   # s.public_header_files = 'Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

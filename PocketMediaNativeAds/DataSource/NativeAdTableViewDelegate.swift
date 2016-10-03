@@ -51,7 +51,11 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
         if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
             return heightForRow
         }
-        return UITableViewAutomaticDimension
+        /* Instead of returning AutomaticDimension dont bother with esimatedHeight just return the
+           tableview rowHeight
+        */
+        return tableView.rowHeight
+        
 	}
 
 	public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

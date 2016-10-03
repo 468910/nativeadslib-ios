@@ -28,8 +28,9 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 
 		if let image = adImage {
             image.image = UIImage()
-            image.setImageFromURL(nativeAd.campaignImage)
+            image.nativeSetImageFromURL(nativeAd.campaignImage)
 		}
+        
 	}
 
 	// After has been loaded from Nib

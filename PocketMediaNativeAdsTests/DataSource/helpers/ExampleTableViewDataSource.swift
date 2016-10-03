@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import PocketMediaNativeAds
 
 public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 
@@ -18,6 +19,7 @@ public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 	}
 
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var count = self.collection.count
 		return self.collection.count
 	}
 
@@ -45,7 +47,7 @@ public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 			let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
 			cell.name.text = item.title
 			cell.descriptionItem.text = item.descriptionItem
-			// cell.artworkImageView.hnk_setImageFromURL(item.imageURL)
+            cell.artworkImageView.nativeSetImageFromURL(item.imageURL)
 			return cell
 
 		default:

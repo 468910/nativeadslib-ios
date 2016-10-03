@@ -16,5 +16,5 @@ import UIKit
 public class PocketMediaNativeAdsBundle: NSObject {
 	public static func loadBundle() -> NSBundle? {
         return NSBundle(forClass: NativeAd.self)
-	}
+    }
 }

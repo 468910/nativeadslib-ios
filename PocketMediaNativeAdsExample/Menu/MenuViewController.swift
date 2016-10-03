@@ -21,12 +21,13 @@ class MenuViewController: UIViewController, UIPopoverPresentationControllerDeleg
 		let nav = self.navigationController?.navigationBar
 		nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
-		// CollectionViewButton
+		/* TODO CollectionViewButton
 		collectionViewAdsButton.titleEdgeInsets.left = 10
 		collectionViewAdsButton.titleEdgeInsets.right = 10
 		collectionViewAdsButton.titleLabel?.textColor = UIColor.whiteColor()
 		collectionViewAdsButton.layer.cornerRadius = 10
 		collectionViewAdsButton.backgroundColor = UIColor(red: 11 / 255, green: 148 / 255, blue: 68 / 255, alpha: 1)
+        */
 
 		// TableViewButton
 		tableViewAdsButton.layer.cornerRadius = 10

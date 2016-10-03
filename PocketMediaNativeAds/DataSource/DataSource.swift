@@ -35,29 +35,16 @@ public class DataSource: NSObject, DataSourceProtocol {
     
     //The AdUnitType defines what kind of ad is shown.
     public var adUnitType: AdUnitType = .Standard
+
+  
     
-    //This holds a array of ads that are available to show.
-    public var ads: [Int: NativeAd]!
-
-    public override init() {
-        super.init()
-        self.ads = [Int: NativeAd]()
-    }
-
-    func getCountForSection(numOfRowsInSection: Int, totalRowsInSection: Int) -> Int {
-        return IndexRowNormalizer.getNumberOfRowsForSectionIncludingAds(numOfRowsInSection, totalRowsInSection: totalRowsInSection, firstAdPosition: firstAdPosition, adMargin: adMargin, adsCount: ads.count)
+    public func isAdAtposition(indexPath: NSIndexPath) -> NativeAd? {
+        preconditionFailure("This method must be overriden")
     }
     
-    func isAdAtposition(indexPath: NSIndexPath) -> NativeAd? {
-        let position = getTruePositionInDataSource(indexPath)
-        if let val = ads[position] {
-            return val
-        }
-        return nil
-    }
     
     //Abstract classes that a datasource should override
-    public func onUpdateDataSource() {
+    public func onUpdateDataSource(newAds: [NativeAd]) {
         preconditionFailure("This method must be overridden")
     }
 
