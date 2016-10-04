@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		271066B91DA2B6BC00AFAC06 /* PocketMediaNativeAds.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 278C134C1DA2B4B700C604F0 /* PocketMediaNativeAds.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		271066BB1DA2B72800AFAC06 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DD16191D8ED5A100B31C6A /* close.png */; };
+		279E200E1DA3EF07002FEB8C /* PocketMediaNativeAds.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27DD16021D8ED04500B31C6A /* PocketMediaNativeAds.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27DD16081D8ED10C00B31C6A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DD16071D8ED10C00B31C6A /* Images.xcassets */; };
 		27DD160B1D8ED56F00B31C6A /* CollectionAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16091D8ED56F00B31C6A /* CollectionAdCell.swift */; };
 		27DD160C1D8ED56F00B31C6A /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD160A1D8ED56F00B31C6A /* CollectionViewController.swift */; };
@@ -39,7 +39,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				271066B91DA2B6BC00AFAC06 /* PocketMediaNativeAds.framework in Embed Frameworks */,
+				279E200E1DA3EF07002FEB8C /* PocketMediaNativeAds.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
