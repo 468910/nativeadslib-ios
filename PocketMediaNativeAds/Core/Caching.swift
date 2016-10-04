@@ -60,9 +60,9 @@ public extension UIImageView {
         //self.image = drawCustomImage(CGSize(width: 100, height: 100))
         if let campaignImage = url.cachedImage {
             //Cached
-            UIView.transitionWithView(self, duration: 0.3, options: .TransitionCrossDissolve, animations: {
+            dispatch_async(dispatch_get_main_queue()) {
                 self.image = campaignImage
-            }, completion: nil)
+            }
         } else {
             url.fetchImage { downloadedImage in
                 // Check the cell hasn't recycled while loading.

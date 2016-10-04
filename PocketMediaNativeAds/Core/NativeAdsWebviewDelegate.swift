@@ -9,10 +9,6 @@
 import UIKit
 import Foundation
 
-extension Selector {
-	static let notifyServer = #selector(NativeAdsWebviewDelegate.notifyServerOfFalseRedirection)
-}
-
 /**
  Creates a webview with a native load indicator to tell the user we are loading some content
  */
@@ -60,7 +56,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 			Logger.debug("Could not open URL. Opening in system browser: \(webView.request?.URL?.absoluteString)")
 			self.openSystemBrowser(webView.request!.URL!)
 		} else if loadStatusCheckTimer == nil {
-			notifyServerOfFalseRedirection()
+            notifyServerOfFalseRedirection()
 		}
 
 		if let description = error?.description {
@@ -108,7 +104,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 
 	public func webViewDidFinishLoad(webView: UIWebView) {
 		if (loadStatusCheckTimer == nil) {
-			self.loadStatusCheckTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: .notifyServer, userInfo: nil, repeats: false)
+            self.loadStatusCheckTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(timeout), userInfo: nil, repeats: false)
 		}
 	}
 
@@ -120,10 +116,15 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 		self.webView!.loadRequest(request)
 		Logger.debug("webview LoadUrl Exited")
 	}
+    
+    //Called when a redirect takes too long.
+    public func timeout() {
+        Logger.debug("Timed out")
+        self.notifyServerOfFalseRedirection()
+    }
 
 	@objc
 	internal func notifyServerOfFalseRedirection(session: NSURLSession = NSURLSession.sharedSession()) {
-		Logger.debug("Notifying wrong redirect.")
 		let url = NSURL(string: NativeAdsConstants.NativeAds.notifyBadAdsUrl)
 		let req = NSMutableURLRequest(URL: url!)
 		let dataBody = constructDataBodyForNotifyingServerOfFalseRedirection()
@@ -136,14 +137,16 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
                 Logger.error("error", error!)
             }
             if let httpResponse = response as? NSHTTPURLResponse {
-				if httpResponse.statusCode != 200 {
-					Logger.debug("response was not 200: \(response)")
-					return
-				}
-			}
+                if httpResponse.statusCode != 200 {
+                    Logger.debug("response was not 200: \(response)")
+                    return
+                }
+            }
 		})
-		dataTask.resume()
-
+        dataTask.resume()
+        
+        //Open the url that won't redirect to something proper.
+        //Big chance its an app which is not available anymore in our region.
 		if self.webView?.request != nil {
 			openSystemBrowser((self.webView?.request?.URL)!)
 		}

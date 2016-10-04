@@ -30,11 +30,20 @@ public class NativeAdCell: AbstractAdUnitTableViewCell {
 			iButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
 			iButton.titleLabel?.minimumScaleFactor = 0.50
 			iButton.titleLabel?.adjustsFontSizeToFitWidth = true
-			if let image = adImage {
-				iButton.layer.cornerRadius = CGRectGetWidth(image.frame) / 20
-				image.layer.cornerRadius = CGRectGetWidth(image.frame) / 10
-				image.layer.masksToBounds = true
-			}
+            
+            if let image = adImage {
+                iButton.layer.cornerRadius = CGRectGetWidth(image.frame) / 20
+            }
 		}
+        if let image = adImage {
+            image.layer.cornerRadius = CGRectGetWidth(image.frame) / 10
+            image.layer.masksToBounds = true
+        }
 	}
+    
+    @IBAction func install(sender: AnyObject) {
+        if let viewController = UIApplication.sharedApplication().delegate?.window??.rootViewController {
+            self.ad?.openAdUrl(FullscreenBrowser(parentViewController: viewController))
+        }
+    }
 }

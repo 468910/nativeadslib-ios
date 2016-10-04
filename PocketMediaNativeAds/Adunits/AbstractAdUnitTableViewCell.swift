@@ -17,8 +17,12 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 	@IBOutlet weak var adImage: UIImageView?
 	@IBOutlet weak var adTitle: UILabel?
 	@IBOutlet weak var adDescription: UILabel?
+    
+    private(set) public var ad: NativeAd?
 
 	public func configureAdView(nativeAd: NativeAd) {
+        self.selectionStyle = UITableViewCellSelectionStyle.None
+        self.ad = nativeAd
 		if let title = adTitle {
 			title.text = nativeAd.campaignName
 		}

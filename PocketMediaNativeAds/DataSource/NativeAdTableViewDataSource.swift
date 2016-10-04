@@ -9,34 +9,27 @@
 import UIKit
 import Foundation
 
-
-public struct NativeAdInfo {
-    var ad : NativeAd
-    var position : Int
-}
-
-public typealias AdsForSectionMap = [Int : [Int : NativeAdInfo]]
-
 public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     public var datasource: UITableViewDataSource
     public var tableView: UITableView
     public var delegate: NativeAdTableViewDelegate?
     public var controller: UIViewController!
-    
-    public var adsForSection : AdsForSectionMap = AdsForSectionMap()
+    private var adPosition: AdPosition
 
 	deinit {
 		self.tableView.dataSource = datasource
 	}
 
 	@objc
-    public required init(controller: UIViewController, tableView: UITableView) {
-        self.controller = controller
+    public required init(controller: UIViewController, tableView: UITableView, adPosition: AdPosition) {
         if tableView.dataSource != nil {
             self.datasource = tableView.dataSource!
         } else {
             preconditionFailure("Your tableview must have a dataSource set before use.")
         }
+
+        self.controller = controller
+        self.adPosition = adPosition
 		self.tableView = tableView
 		super.init()
         
@@ -70,31 +63,30 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 		}
 	}
 
-	public func getAdCellForTableView(nativeAd: NativeAd) -> UITableViewCell {
+	public func getAdCell(nativeAd: NativeAd) -> NativeAdCell {
 		switch (adUnitType) {
-		case .Custom:
-          let cell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as! NativeAdCell
-			//cell.configureAdView(nativeAd)
-			return cell
-//		case .Big:
-//			let cell: AbstractBigAdUnitTableViewCell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
-//			cell.configureAdView(nativeAd)
-//			return cell;
-		default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
-			cell.configureAdView(nativeAd)
-			return cell		}
+            case .Custom:
+              let cell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as! NativeAdCell
+                //cell.configureAdView(nativeAd)
+                return cell
+        //		case .Big:
+        //			let cell: AbstractBigAdUnitTableViewCell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
+        //			cell.configureAdView(nativeAd)
+        //			return cell;
+            default:
+                let cell = tableView.dequeueReusableCellWithIdentifier("NativeAdTableViewCell") as! NativeAdCell
+                cell.configureAdView(nativeAd)
+                return cell
+        }
 	}
 
 	// Data Source
 	@objc
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    	if let val = isAdAtposition(indexPath) {
-			var cell = getAdCellForTableView(val) as! NativeAdCell
-//            cell.adTitle?.text = String(indexPath.row.description)
-            return cell
+    	if let nativeAd = getNativeAdListing(indexPath) {
+			return getAdCell(nativeAd)
 		}
-			return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: normalize(indexPath), inSection: indexPath.section))
+        return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: normalize(indexPath), inSection: indexPath.section))
 	}
     
 	@objc
@@ -151,40 +143,36 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 		datasource.tableView?(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
 	}
 
-    public override func onUpdateDataSource(newAds: [NativeAd]) {
+    public override func onUpdateDataSource(ads: [NativeAd]) {
         adsForSection.removeAll()
+        adPosition.reset()
         
         let numOfSections = datasource.numberOfSectionsInTableView!(tableView)
-        var totalNumOfElements = 0
-        var ads = newAds
-        
-        
-        for i in 0..<numOfSections {
-            let numOfRowsInCurrentSection = datasource.tableView(tableView, numberOfRowsInSection: i)
-            
-            if(ads.count <= 0 || firstAdPosition > numOfRowsInCurrentSection){
-                break;
+        var section = 0
+        for ad in ads {
+            let numOfRowsInCurrentSection = datasource.tableView(tableView, numberOfRowsInSection: section)
+            var position: Int
+            do {
+                position = try Int(adPosition.getAdPosition(numOfRowsInCurrentSection))
+            } catch let err as NSError {
+                Logger.error(err)
+                continue
             }
-        
-            adsForSection[i] = [:]
-            var adsInsertedCurrentSection = 0
-            var adsLeft = true
-            
-            
-            if(numOfRowsInCurrentSection > firstAdPosition){
-                adsForSection[i]![firstAdPosition] = NativeAdInfo(ad: ads.removeFirst(), position: firstAdPosition)
-                adsInsertedCurrentSection += 1
+            //If we're out of positions move up a section.
+            if position > numOfRowsInCurrentSection {
+                adPosition.reset()
+                section += 1
+            }
+            //If that new section doesn't exist. Stop adding ads.
+            if section > numOfSections {
+                break
+            }
+            if adsForSection[section] == nil {
+                adsForSection[section] = [:]
             }
             
-            while(adsLeft){
-                if(numOfRowsInCurrentSection + adsInsertedCurrentSection >= firstAdPosition + adMargin * adsInsertedCurrentSection){
-                    adsForSection[i]![firstAdPosition + adMargin * adsInsertedCurrentSection] = NativeAdInfo(ad: ads.removeFirst(),
-                                    position: firstAdPosition + adMargin * adsInsertedCurrentSection)
-                    adsInsertedCurrentSection += 1
-                }else {
-                    adsLeft = false
-                }
-            }
+            //Add the ad
+            adsForSection[section]![position] = NativeAdInfo(ad: ad, position: position)
         }
         tableView.reloadData()
     }
@@ -198,32 +186,18 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         return 1
 	}
 
-
     func normalize(indexRow: NSIndexPath) -> Int {
         var numOfAdsInsertedInSection = 0
-    
         if let ads = adsForSection[indexRow.section]?.sort({ $0.0 < $1.0 }) {
             for ad in ads {
-                if(indexRow.row >= ad.1.position){
-                numOfAdsInsertedInSection += 1
-                }else {
+                if(indexRow.row >= ad.1.position) {
+                    numOfAdsInsertedInSection += 1
+                } else {
                     break;
                 }
             }
         }
-    
         return indexRow.row - numOfAdsInsertedInSection
-    }
-    
-    public override func isAdAtposition(indexPath: NSIndexPath) -> NativeAd? {
-        if let val = adsForSection[indexPath.section]?[indexPath.row]?.ad {
-            return val
-        }
-        return nil
-    }
-    
-    func getCountForSection(numOfRowsInSection: Int, totalRowsInSection: Int) -> Int {
-        return 1
     }
     
 }

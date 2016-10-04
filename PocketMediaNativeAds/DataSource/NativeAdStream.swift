@@ -36,7 +36,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     }
 
     @objc
-    public required init(controller: UIViewController, view: UIView, adPlacementToken: String, customXib: UINib? = nil, requester: NativeAdsRequest? = nil) {
+    public required init(controller: UIViewController, view: UIView, adPlacementToken: String, customXib: UINib? = nil, requester: NativeAdsRequest? = nil, adPosition: AdPosition? = MarginAdPosition(margin: 2)) {
         super.init()
         
         //Create a new instance of a requester or use the one sent along. This is done for unit testing purposes.
@@ -53,7 +53,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
                     tableView.registerNib(customXib, forCellReuseIdentifier: "CustomAdCell")
                 }
                 self.view = tableView
-                datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView)
+                datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adPosition: adPosition!)
                 break
 //            case let collectionView as UICollectionView:
 //                break
@@ -67,20 +67,6 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
             datasource?.adUnitType = AdUnitType.Custom
         }
 	}
-    
-    /*
-     * This sets the adMargin within the datasource. In other words this sets the frequency of the ads.
-     */
-    public func setAdMargin(value: Int = 3) {
-        self.datasource.adMargin = value
-    }
-
-    /*
-     * This sets the firstAdPosition within the datasource. In other words this sets the position of the first ad.
-     */
-    public func setFirstAdPosition(value: Int = 1) {
-        self.datasource.firstAdPosition = value
-    }
     
 	@objc
 	public func didReceiveError(error: NSError) {

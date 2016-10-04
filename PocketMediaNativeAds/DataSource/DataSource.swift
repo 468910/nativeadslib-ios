@@ -8,40 +8,27 @@
 
 import Foundation
 
+public struct NativeAdInfo {
+    var ad : NativeAd
+    var position : Int
+}
+
+public typealias AdsForSectionMap = [Int : [Int : NativeAdInfo]]
+
 @objc
 public class DataSource: NSObject, DataSourceProtocol {
     
-    //The admargin is the frequency of how many times a ad is shown in the datasource.
-    private var _adMargin:Int = 3
-    public var adMargin: Int {
-        set {
-            _adMargin = newValue
-        }
-        get {
-            return _adMargin
-        }
-    }
-    
-    // They are not called when variables are written to from an initializer or with a default value.
-    private var _firstAdPosition:Int = 1
-    public var firstAdPosition: Int {
-        set {
-            _firstAdPosition = newValue + 1
-        }
-        get {
-            return _firstAdPosition
-        }
-    }
+    public var adsForSection : AdsForSectionMap = AdsForSectionMap()
     
     //The AdUnitType defines what kind of ad is shown.
     public var adUnitType: AdUnitType = .Standard
-
-  
     
-    public func isAdAtposition(indexPath: NSIndexPath) -> NativeAd? {
-        preconditionFailure("This method must be overriden")
+    public func getNativeAdListing(indexPath: NSIndexPath) -> NativeAd? {
+        if let val = adsForSection[indexPath.section]?[indexPath.row]?.ad {
+            return val
+        }
+        return nil
     }
-    
     
     //Abstract classes that a datasource should override
     public func onUpdateDataSource(newAds: [NativeAd]) {

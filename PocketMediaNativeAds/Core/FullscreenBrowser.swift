@@ -110,6 +110,10 @@ public class FullscreenBrowser: UIViewController, NativeAdOpenerProtocol {
 			self.closeAction()
 		}
 	}
+    
+    override public func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
 
 	override public func willMoveToParentViewController(parent: UIViewController?) {
 		if parent == nil {

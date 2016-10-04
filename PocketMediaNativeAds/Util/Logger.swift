@@ -39,5 +39,9 @@ struct Logger {
     static func error(@autoclosure message: () -> String, _ error: NSError? = nil) {
         log(.Error, message, error)
     }
+    
+    static func error(error: NSError? = nil) {
+        log(.Error, "An error occured", error)
+    }
 
 }

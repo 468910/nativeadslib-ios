@@ -11,32 +11,30 @@ import UIKit
 @testable import PocketMediaNativeAds
 
 class baseMockedNativeAdDataSource: NativeAdTableViewDataSource {
-    var returnIsAdAtposition: Bool = false
-    var isAdAtpositionCalled: Bool = false
+    var returngetNativeAdListing: Bool = false
+    var getNativeAdListingCalled: Bool = false
     var isGetAdCellForTableViewCalled: Bool = false
     var ad: NativeAd?
     
-    override func isAdAtposition(indexPath: NSIndexPath) -> NativeAd? {
-        isAdAtpositionCalled = true
-        if returnIsAdAtposition {
+    override func getNativeAdListing(indexPath: NSIndexPath) -> NativeAd? {
+        getNativeAdListingCalled = true
+        if returngetNativeAdListing {
             return ad
         }
         return nil
     }
     
-    override func getAdCellForTableView(nativeAd: NativeAd) -> UITableViewCell {
+    override func getAdCell(nativeAd: NativeAd) -> NativeAdCell {
         isGetAdCellForTableViewCalled = true
         return NativeAdCell()
     }
     
     func setupAd() {
-        var data = testHelpers.getNativeAdData()!
+        let data = testHelpers.getNativeAdData()!
         self.ad = try! NativeAd(adDictionary: data, adPlacementToken: "test")
         
     }
 }
-
-
 
 class nonImplementedDatasource: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -71,16 +69,14 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
         tableView.delegate = baseMockedDelegate()
         
         originalDataSource = mockedDatasource
-        if originalDataSource.dynamicType == ExampleTableViewDataSource.self {
-            (originalDataSource as! ExampleTableViewDataSource).loadLocalJSON()
+        if let ExampleOriginalDataSource = originalDataSource as? ExampleTableViewDataSource {
+            ExampleOriginalDataSource.loadLocalJSON()
         }
+
         tableView.dataSource = originalDataSource
-        
-        subject = baseMockedNativeAdDataSource(controller: controller, tableView: tableView)
+        subject = baseMockedNativeAdDataSource(controller: controller, tableView: tableView, adPosition: MarginAdPosition(margin: 2))
         
     }
-  
-  
     
     func testcellForRowAtIndexPath() {
         class mockedDatasource: ExampleTableViewDataSource {
@@ -95,14 +91,14 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
         let view = UITableView()
         
         // Test If Original IndexPathForRowAtIndexPath gets called
-        subject.returnIsAdAtposition = false
+        subject.returngetNativeAdListing = false
         let indexPath = NSIndexPath(forItem: 0, inSection: 0)
         subject.tableView(tableView, cellForRowAtIndexPath: indexPath)
         let result = (originalDataSource as! mockedDatasource).calledCellForRowAtIndexPath
         XCTAssert(result == true, "cellForRowAtIndexPath has been called in the original DataSource")
         
         // Test if NativeAdCell gets returned
-        subject.returnIsAdAtposition = true
+        subject.returngetNativeAdListing = true
         subject.setupAd()
         subject.tableView(tableView, cellForRowAtIndexPath: indexPath)
         XCTAssert(subject.isGetAdCellForTableViewCalled == true, "isGetAdCellForTableViewHasBeenCalled")
@@ -278,21 +274,21 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
   
   func testGetAdCellForTableView(){
     class xMocked: NativeAdTableViewDataSource {
-      var returnIsAdAtposition: Bool = false
-      var isAdAtpositionCalled: Bool = false
+      var returngetNativeAdListing: Bool = false
+      var getNativeAdListingCalled: Bool = false
       var isGetAdCellForTableViewCalled: Bool = false
       var ad: NativeAd?
       
-      override func isAdAtposition(indexPath: NSIndexPath) -> NativeAd? {
-        isAdAtpositionCalled = true
-        if returnIsAdAtposition {
+      override func getNativeAdListing(indexPath: NSIndexPath) -> NativeAd? {
+        getNativeAdListingCalled = true
+        if returngetNativeAdListing {
           return ad
         }
         return nil
       }
       
       func setupAd() {
-        var data = testHelpers.getNativeAdData()!
+        let data = testHelpers.getNativeAdData()!
         self.ad = try! NativeAd(adDictionary: data, adPlacementToken: "test")
         
       }
@@ -304,18 +300,19 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
       tableView.delegate = baseMockedDelegate()
       
       originalDataSource = nonImplementedDatasource()
-      if originalDataSource.dynamicType == ExampleTableViewDataSource.self {
-      (originalDataSource as! ExampleTableViewDataSource).loadLocalJSON()
-      }
+    
+        if let ExampleOriginalDataSource = originalDataSource as? ExampleTableViewDataSource {
+            ExampleOriginalDataSource.loadLocalJSON()
+        }
       tableView.dataSource = originalDataSource
       
-      var localsubject = xMocked(controller: controller, tableView: tableView)
+      var localsubject = xMocked(controller: controller, tableView: tableView, adPosition: MarginAdPosition(margin: 2))
     
-    var data = testHelpers.getNativeAdData()!
-    var ad = try! NativeAd(adDictionary: data, adPlacementToken: "test")
-    
-    var result = localsubject.getAdCellForTableView(ad)
-    XCTAssert(result is NativeAdCell, "Succesfully return NativeAdCell")
+        var data = testHelpers.getNativeAdData()!
+        var ad = try! NativeAd(adDictionary: data, adPlacementToken: "test")
+
+        var result = localsubject.getAdCell(ad)
+        XCTAssert(result is NativeAdCell, "Succesfully return NativeAdCell")
     
   }
   

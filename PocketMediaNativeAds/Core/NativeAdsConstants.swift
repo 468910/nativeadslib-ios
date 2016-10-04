@@ -40,7 +40,7 @@ public struct NativeAdsConstants {
 	}
 	public struct NativeAds {
         public static let tokenAdKey = "nativeAdToken"
-		public static let notifyBadAdsUrl = "http://beta.nativeadsapi.pocketmedia.mobi/api.php"
+		public static let notifyBadAdsUrl = "http://nativeadsapi.pocketmedia.mobi/api.php"
 		public static let userToken = "978d0f4b08ec25a8c32a2de208c23acbbfb3fb465b66e51fd79194fb0a6811e1"
         #if BETA
             public static let baseURL = "http://offerwall.beta.pmgbrain.com/ow.php?output=json"

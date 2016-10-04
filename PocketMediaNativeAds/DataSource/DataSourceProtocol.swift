@@ -11,8 +11,7 @@ import Foundation
 @objc
 public protocol DataSourceProtocol {
     func onUpdateDataSource(newAds : [NativeAd])
-    func isAdAtposition(indexPath: NSIndexPath) -> NativeAd? 
-    
+    func getNativeAdListing(indexPath: NSIndexPath) -> NativeAd?
 }
 
 public protocol NativeAdTableViewDataSourceProtocol : DataSourceProtocol {

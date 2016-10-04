@@ -80,16 +80,6 @@ class NativeAdStreamTest: XCTestCase {
         XCTAssert(tableView.registerNibCalled, "registerNib called")
     }
 
-    func testSetAdMargin() {
-        subject.setAdMargin(1)
-        XCTAssert(subject.datasource.adMargin == 1, "Setter should set the adMargin within the datasource.")
-    }
-
-    func testSetFirstAdPosition() {
-        subject.setFirstAdPosition(0)
-        XCTAssert(subject.datasource.firstAdPosition == 1, "Setter should set the firstAdPosition within the datasource.")
-    }
-
     func testDidReceiveResults() {
         var ads: [NativeAd] = [NativeAd]()
         for adDict in testHelpers.getNativeAdsData()! {
