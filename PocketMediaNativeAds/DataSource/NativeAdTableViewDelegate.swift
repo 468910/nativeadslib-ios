@@ -22,7 +22,6 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 		self.datasource = datasource
 		self.controller = controller
 		self.delegate = delegate
-		Logger.debug("Screen width: \(UIScreen.mainScreen().bounds.size.width) ")
 	}
 
 	// Patching of the delegate. Either replace certain calls to our library or do some checks and call the original implementation of the host
@@ -40,7 +39,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 		if let heightForHeader = delegate.tableView?(tableView, heightForHeaderInSection: section) {
 			return heightForHeader
 		}
-        return UITableViewAutomaticDimension
+        return tableView.rowHeight
 	}
 
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

@@ -326,7 +326,7 @@
                     <navigationItem key="navigationItem" id="vq8-vW-Lkv">
                         <nil key="title"/>
                         <view key="titleView" userInteractionEnabled="NO" contentMode="scaleToFill" id="gka-Rt-nuj" userLabel="LogoContainer">
-                            <rect key="frame" x="8" y="6" width="359" height="33"/>
+                            <rect key="frame" x="87.5" y="5.5" width="425" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMarkBtn.png" translatesAutoresizingMaskIntoConstraints="NO" id="diO-n4-iLc">
@@ -607,8 +607,9 @@
         <!--Table View With Sections Controller-->
         <scene sceneID="vme-67-iGB">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QGa-ag-PFL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="ntO-zd-uYh" customClass="TableViewWithSectionsController" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="30" sectionFooterHeight="30" id="EBf-PB-vyI">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="4" sectionHeaderHeight="30" sectionFooterHeight="30" id="EBf-PB-vyI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -746,7 +747,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QGa-ag-PFL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="480" y="-456"/>
         </scene>
