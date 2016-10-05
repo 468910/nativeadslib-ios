@@ -18,20 +18,21 @@ public typealias AdsForSectionMap = [Int : [Int : NativeAdInfo]]
 @objc
 public class DataSource: NSObject, DataSourceProtocol {
     
-    public var adsForSection : AdsForSectionMap = AdsForSectionMap()
+    public var adListings: AdsForSectionMap = AdsForSectionMap()
+    public var ads: [NativeAd] = [NativeAd]()
     
     //The AdUnitType defines what kind of ad is shown.
     public var adUnitType: AdUnitType = .Standard
     
     public func getNativeAdListing(indexPath: NSIndexPath) -> NativeAd? {
-        if let val = adsForSection[indexPath.section]?[indexPath.row]?.ad {
+        if let val = adListings[indexPath.section]?[indexPath.row]?.ad {
             return val
         }
         return nil
     }
     
     //Abstract classes that a datasource should override
-    public func onUpdateDataSource(newAds: [NativeAd]) {
+    public func onAdRequestSuccess(newAds: [NativeAd]) {
         preconditionFailure("This method must be overridden")
     }
 

@@ -32,7 +32,8 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         self.adPosition = adPosition
 		self.tableView = tableView
 		super.init()
-        
+        UITableView.swizzleNativeAds(tableView)
+
         //Hijack the delegate and datasource and make it use our wrapper.
         if tableView.delegate != nil {
             self.delegate = NativeAdTableViewDelegate(datasource: self, controller: controller, delegate: tableView.delegate!)
@@ -91,7 +92,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     
 	@objc
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let ads = adsForSection[section]?.count {
+        if let ads = adListings[section]?.count {
             return datasource.tableView(tableView, numberOfRowsInSection: section) + ads
         }
         
@@ -142,12 +143,20 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 	public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 		datasource.tableView?(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
 	}
-
-    public override func onUpdateDataSource(ads: [NativeAd]) {
-        adsForSection.removeAll()
+    
+    public override func onAdRequestSuccess(ads: [NativeAd]) {
+        Logger.debugf("Received %d ads", ads.count);
+        self.ads = ads
+        setAdPositions(ads)
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
+    }
+    
+    public func setAdPositions(ads: [NativeAd]) {
         adPosition.reset()
-        
-        let numOfSections = datasource.numberOfSectionsInTableView!(tableView)
+        clear()
+        let maxSections = datasource.numberOfSectionsInTableView!(tableView)
         var section = 0
         for ad in ads {
             let numOfRowsInCurrentSection = datasource.tableView(tableView, numberOfRowsInSection: section)
@@ -164,17 +173,28 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
                 section += 1
             }
             //If that new section doesn't exist. Stop adding ads.
-            if section > numOfSections {
+            if section > maxSections {
                 break
             }
-            if adsForSection[section] == nil {
-                adsForSection[section] = [:]
+            if adListings[section] == nil {
+                adListings[section] = [:]
             }
             
             //Add the ad
-            adsForSection[section]![position] = NativeAdInfo(ad: ad, position: position)
+            adListings[section]![position] = NativeAdInfo(ad: ad, position: position)
         }
-        tableView.reloadData()
+        Logger.debugf("Set %d ad listings", adListings.count)
+    }
+    
+    private func clear() {
+        adListings.removeAll()
+        Logger.debug("Cleared adListings.");
+    }
+    
+    //Called everytime tableView.reloadData is called.
+    //Like 'notifyDataSetChanged' in android
+    public func reload() {
+        setAdPositions(self.ads)
     }
 
     //The actual important to a UITableView functions are down below here.
@@ -188,7 +208,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 
     func normalize(indexRow: NSIndexPath) -> Int {
         var numOfAdsInsertedInSection = 0
-        if let ads = adsForSection[indexRow.section]?.sort({ $0.0 < $1.0 }) {
+        if let ads = adListings[indexRow.section]?.sort({ $0.0 < $1.0 }) {
             for ad in ads {
                 if(indexRow.row >= ad.1.position) {
                     numOfAdsInsertedInSection += 1

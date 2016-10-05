@@ -18,22 +18,6 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     private var requester: NativeAdsRequest!
     private var limit: UInt = 2
 
-    /*
-     * This sets the adsPositions within the datasource. In other words this sets the positions (indexes) of where the ads are supposed to be.
-     */
-    private var _adsPositions: [Int]? = nil
-    //Positions of the ads given by the user
-    public var adsPositions: [Int]? {
-        set {
-            if newValue != nil {
-                _adsPositions = Array(Set(newValue!)).sort { $0 < $1 }
-            }
-        }
-        get {
-            return _adsPositions
-        }
-    }
-
     @objc
     public required init(controller: UIViewController, view: UIView, adPlacementToken: String, customXib: UINib? = nil, adPosition: AdPosition? = MarginAdPosition(margin: 2), requester: NativeAdsRequest? = nil) {
         super.init()
@@ -81,11 +65,9 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
             Logger.debug("Received no Ads")
         }
         Logger.debug("Received \(newAds.count) new ads.")
-        datasource!.onUpdateDataSource(newAds)
-        
+        datasource!.onAdRequestSuccess(newAds)
     }
-    
-    
+
     /*
      * This method reloads the known ads.
      */
