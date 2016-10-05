@@ -49,18 +49,16 @@ For both methods the parameters used are:
 The Adstream allows to easily show native ads in your UITableView and or UICollectionView.
 You can specify the positions by giving an Array with fixed positions or frequency. Simply add the following code in your UIViewController and your ads will be automatically loaded into your view.
 
-#### AdStream - AdFrequency
+#### AdStream - Ad margin
 ```swift
-    stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165") /* replace with your own token!! */
-    stream?.setAdMargin(3)//Every 3 rows add an add.
-    stream?.requestAds(5)//Add 5 ads
+    stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165", adPosition: MarginAdPosition(margin: 2, adPositionOffset: 0)) /* replace with your own token!! */
+    stream?.requestAds(10)//Add 5 ads
 ```
 
 #### AdStream - Fixed positions
 ```swift
-    stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165") /* replace with your own token!! */
-    stream?.adsPositions = [5, 2, 4]//Set ads to these positions in our tableView
-    stream?.requestAds(5)//Add 5 ads
+    stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165", adPosition: PredefinedAdPosition(positions: [1, 3, 8], adPositionOffset: 0)) /* replace with your own token!! */
+    stream?.requestAds(10)//Add 5 ads
 ```
 
 There is also the option to pass a custom XIB this has to be or a subclass of the corresponding  AbstractAdUnit for example ```AbstractAdUnitTableViewCell```. 

@@ -19,7 +19,7 @@ public class PredefinedAdPosition: NSObject, AdPosition {
     private var adPositionOffset: Int = 0
     private var currentIndex:Int = 0
     
-    init(positions:[Int], adPositionOffset: Int = 0) {
+    public init(positions:[Int], adPositionOffset: Int = 0) {
         super.init()
         //Remove duplicates and sort in ascending order.
         self.positions = Array(Set(positions)).sort { $0 < $1 }
