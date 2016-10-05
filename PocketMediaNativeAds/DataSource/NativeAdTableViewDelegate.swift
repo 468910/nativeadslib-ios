@@ -46,9 +46,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		if datasource.getNativeAdListing(indexPath) != nil {
 			return NativeAdTableViewDelegate.heightForStandardAdUnit
-		}
-        // not an ad - let the original datasource handle it
-        if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
+		} else if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
             return heightForRow
         }
         /* Instead of returning AutomaticDimension dont bother with esimatedHeight just return the
@@ -73,24 +71,20 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	public func tableView(tableView: UITableView, canFocusRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		if datasource.getNativeAdListing(indexPath) != nil {
 			return true
-		}
-        if let canFocus = delegate.tableView?(tableView, canFocusRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
+		} else if let canFocus = delegate.tableView?(tableView, canFocusRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
             return canFocus
         }
         return true
 	}
 
 	public func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-		if datasource.getNativeAdListing(indexPath) != nil {
-		} else {
+		if datasource.getNativeAdListing(indexPath) == nil {
 			delegate.tableView?(tableView, didDeselectRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section))
 		}
-
 	}
 
 	public func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-		if datasource.getNativeAdListing(indexPath) != nil {
-		} else {
+		if datasource.getNativeAdListing(indexPath) == nil {
 			delegate.tableView?(tableView, didEndDisplayingCell: cell, forRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section))
 		}
 	}
@@ -100,8 +94,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	public func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath?) {
-		if datasource.getNativeAdListing(indexPath!) != nil {
-		} else {
+		if datasource.getNativeAdListing(indexPath!) == nil {
 			delegate.tableView?(tableView, didEndEditingRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath!), inSection: indexPath!.section))
 		}
 	}
@@ -113,25 +106,20 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	public func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
 		if datasource.getNativeAdListing(indexPath) != nil {
 			return true
-		} else {
-			if let canPerform = delegate.tableView?(tableView, canPerformAction: action, forRowAtIndexPath: indexPath, withSender: sender) {
-				return canPerform
-			} else {
-				return true
-			}
-		}
+		} else if let canPerform = delegate.tableView?(tableView, canPerformAction: action, forRowAtIndexPath: indexPath, withSender: sender) {
+            return canPerform
+        }
+        return true
 	}
 
 	public func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
-		if datasource.getNativeAdListing(indexPath) != nil {
-		} else {
+		if datasource.getNativeAdListing(indexPath) == nil {
 			delegate.tableView?(tableView, didHighlightRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section))
 		}
 	}
 
 	public func tableView(tableView: UITableView, didUnhighlightRowAtIndexPath indexPath: NSIndexPath) {
-		if datasource.getNativeAdListing(indexPath) != nil {
-		} else {
+		if datasource.getNativeAdListing(indexPath) == nil {
 			delegate.tableView?(tableView, didUnhighlightRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section))
 		}
 	}
@@ -144,74 +132,59 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	public func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
 		if datasource.getNativeAdListing(indexPath) != nil {
 			return nil
-		} else {
-			if let rowAction = delegate.tableView?(tableView, editActionsForRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
-				return rowAction
-			} else {
-				return nil
-			}
-		}
+		} else if let rowAction = delegate.tableView?(tableView, editActionsForRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
+            return rowAction
+        }
+        return nil
 	}
 
 	public func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
 		if datasource.getNativeAdListing(indexPath) != nil {
 			return UITableViewCellEditingStyle.None
-		} else {
-			if let editingStyle = delegate.tableView?(tableView, editingStyleForRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
-				return editingStyle
-			} else {
-				return UITableViewCellEditingStyle.None
-			}
+        } else if let editingStyle = delegate.tableView?(tableView, editingStyleForRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
+            return editingStyle
 		}
+        return UITableViewCellEditingStyle.None
 	}
 
 	public func tableView(tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
 		if let estimatedHeightForFooter = delegate.tableView?(tableView, estimatedHeightForFooterInSection: section) {
 			return estimatedHeightForFooter
-		} else {
-			return UITableViewAutomaticDimension
 		}
+        return UITableViewAutomaticDimension
 	}
 
 	public func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
 		if let estimatedHeight = delegate.tableView?(tableView, estimatedHeightForHeaderInSection: section) {
 			return estimatedHeight
-		} else {
-			return UITableViewAutomaticDimension
 		}
+        return UITableViewAutomaticDimension
 	}
 
 	public func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		if datasource.getNativeAdListing(indexPath) != nil {
 			return UITableViewAutomaticDimension
-		} else {
-			// not an ad - let the original datasource handle it
-			if let estimatedHeightForRowAtIndexPath = delegate.tableView?(tableView, estimatedHeightForRowAtIndexPath: NSIndexPath(forItem: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
-				return estimatedHeightForRowAtIndexPath
-			} else {
-				return UITableViewAutomaticDimension
-			}
-		}
+        // not an ad - let the original datasource handle it
+		} else if let estimatedHeightForRowAtIndexPath = delegate.tableView?(tableView, estimatedHeightForRowAtIndexPath: NSIndexPath(forItem: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
+            return estimatedHeightForRowAtIndexPath
+        }
+		return UITableViewAutomaticDimension
 	}
 
 	public func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
 		if let heightForFooter = delegate.tableView?(tableView, heightForFooterInSection: section) {
 			return heightForFooter
-		} else {
-			return UITableViewAutomaticDimension
 		}
+        return UITableViewAutomaticDimension
 	}
 
 	public func tableView(tableView: UITableView, indentationLevelForRowAtIndexPath indexPath: NSIndexPath) -> Int {
 		if datasource.getNativeAdListing(indexPath) != nil {
 			return -1
-		} else {
-			if let indenLevel = delegate.tableView?(tableView, indentationLevelForRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
-				return indenLevel
-			} else {
-				return -1
-			}
-		}
+		} else if let indenLevel = delegate.tableView?(tableView, indentationLevelForRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
+            return indenLevel
+        }
+        return -1
 	}
 
 	public func tableView(tableView: UITableView, performAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
@@ -221,66 +194,55 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	public func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		if let shouldHighLight = delegate.tableView?(tableView, shouldHighlightRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
 			return shouldHighLight
-		} else {
-			return true
 		}
+		return true
 	}
 
 	public func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		if datasource.getNativeAdListing(indexPath) != nil {
 			return true
-		} else {
-			if let ShouldIndent = delegate.tableView?(tableView, shouldIndentWhileEditingRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
-				return ShouldIndent
-			} else {
-				return true
-			}
-		}
+		} else if let ShouldIndent = delegate.tableView?(tableView, shouldIndentWhileEditingRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
+            return ShouldIndent
+        }
+        return true
 	}
 
 	public func tableView(tableView: UITableView, shouldShowMenuForRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		if datasource.getNativeAdListing(indexPath) != nil {
 			return true
-		} else {
-			if let shouldShowMenu = delegate.tableView?(tableView, shouldShowMenuForRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
-				return shouldShowMenu
-			} else {
-				return true
-			}
-		}
+		} else if let shouldShowMenu = delegate.tableView?(tableView, shouldShowMenuForRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
+            return shouldShowMenu
+        }
+        return true
 	}
 
 	public func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
 		if let path = delegate.tableView?(tableView, willSelectRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
 			return path
-		} else {
-			return indexPath
 		}
+		return indexPath
 	}
 
 	@available(iOS 9.0, *)
 	public func tableView(tableView: UITableView, shouldUpdateFocusInContext context: UITableViewFocusUpdateContext) -> Bool {
 		if let shouldUpdateFocusInContext = delegate.tableView?(tableView, shouldUpdateFocusInContext: context) {
 			return shouldUpdateFocusInContext
-		} else {
-			return true
 		}
+		return true
 	}
 
 	public func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
 		if let path = delegate.tableView?(tableView, targetIndexPathForMoveFromRowAtIndexPath: sourceIndexPath, toProposedIndexPath: proposedDestinationIndexPath) {
 			return path
-		} else {
-			return proposedDestinationIndexPath
 		}
+        return proposedDestinationIndexPath
 	}
 
 	public func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
 		if let title = delegate.tableView?(tableView, titleForDeleteConfirmationButtonForRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
 			return title
-		} else {
-			return nil
 		}
+        return nil
 	}
 
 	public func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -289,23 +251,19 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 
 	public func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
 		if datasource.getNativeAdListing(indexPath) != nil {
-		} else {
-			delegate.tableView?(tableView, willBeginEditingRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section))
 		}
-
+        delegate.tableView?(tableView, willBeginEditingRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section))
 	}
 
 	public func tableView(tableView: UITableView, willDeselectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
 		if let path = delegate.tableView?(tableView, willDeselectRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section)) {
 			return path
-		} else {
-			return indexPath
 		}
+		return indexPath
 	}
 
 	public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-		if datasource.getNativeAdListing(indexPath) != nil {
-		} else {
+		if datasource.getNativeAdListing(indexPath) == nil {
 			delegate.tableView?(tableView, willDisplayCell: cell, forRowAtIndexPath: NSIndexPath(forRow: self.datasource.normalize(indexPath), inSection: indexPath.section))
 		}
 	}
