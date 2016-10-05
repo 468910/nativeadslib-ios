@@ -96,7 +96,6 @@
                                     <outlet property="artworkImageView" destination="isQ-Gi-Obq" id="ony-Rn-ktd"/>
                                     <outlet property="descriptionItem" destination="EFX-jN-4W4" id="LPL-ks-tEQ"/>
                                     <outlet property="name" destination="f5h-pN-8dy" id="ui1-na-rw0"/>
-                                    <segue destination="iPJ-QS-c3F" kind="show" id="qtq-y6-tTa"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdCell" rowHeight="80" id="gn9-IO-c81" customClass="AdCell" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target">
@@ -458,24 +457,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="305-Fi-rRi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="488" y="205"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="mdT-8f-JK9">
-            <objects>
-                <viewController id="iPJ-QS-c3F" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cZN-FD-iHh"/>
-                        <viewControllerLayoutGuide type="bottom" id="020-6t-k3y"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PXF-Pw-Wp5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xIt-hg-L6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="395" y="870"/>
         </scene>
         <!--Big Table View Controller-->
         <scene sceneID="ZEQ-Sl-Kui">

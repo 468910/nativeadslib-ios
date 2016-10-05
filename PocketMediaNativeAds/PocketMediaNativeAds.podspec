@@ -25,12 +25,12 @@ s.homepage         = "http://pocketmedia.mobi"
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.pod_target_xcconfig = { "SWIFT_VERSION" => "2.3" }
+  #s.pod_target_xcconfig = { "SWIFT_VERSION" => "2.3" }
 
-  s.source_files = 'PocketMediaNativeAds/**/*.{swift, .h}'
+  s.source_files = 'PocketMediaNativeAds/*/*.{swift, png, xib}'
   s.resources = 'PocketMediaNativeAds/Assets/*'
 
-  #s.public_header_files = 'PocketMediaNativeAds/*.h'
+  s.public_header_files = 'Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

@@ -42,7 +42,6 @@ public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
             case let item as ItemTableModel:
                 let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
                 cell.name.text = item.title
-//                cell.name.text = String(indexPath.row)
                 cell.descriptionItem.text = item.descriptionItem
                 cell.artworkImageView.nativeSetImageFromURL(item.imageURL)
                 return cell

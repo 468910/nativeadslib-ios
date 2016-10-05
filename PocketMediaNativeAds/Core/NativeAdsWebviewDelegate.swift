@@ -40,14 +40,14 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 		return url
 	}
 
-	public func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+	public func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
 		// Ignore NSURLErrorDomain error -999.
-		if (error?.code == NSURLErrorCancelled) {
+		if (error.code == NSURLErrorCancelled) {
 			return
 		}
 
 		// Ignore "Frame Load Interrupted" errors. Seen after app store links.
-		if (error?.code == 102) {
+		if (error.code == 102) {
 			Logger.debug("FrameLoad Error supressed")
 			return
 		}
@@ -59,9 +59,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
             notifyServerOfFalseRedirection()
 		}
 
-		if let description = error?.description {
-			Logger.debugf("DidFailLoadWithError: %@", description)
-		}
+        Logger.debugf("DidFailLoadWithError: %@", description)
 	}
 
 	public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
@@ -78,7 +76,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 	}
 
 	public func checkIfAppStoreUrl(request: NSURLRequest) -> Bool {
-		Logger.debug(request.URL!.absoluteString!)
+//		Logger.debug(request.URL!.absoluteString!)
 		if let finalUrl = request.URL?.absoluteString {
 			if (finalUrl.lowercaseString.hasPrefix("itms")) {
 				Logger.debug("has prefix itms")
@@ -118,6 +116,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 	}
     
     //Called when a redirect takes too long.
+    //We can't instantly call notifyServerOfFalseRedirection from scheduledTimerWithTimeInterval. It throws an exception.
     public func timeout() {
         Logger.debug("Timed out")
         self.notifyServerOfFalseRedirection()

@@ -26,9 +26,7 @@ class TableViewWithSectionsController: UITableViewController {
         self.refreshControl?.addTarget(self, action: #selector(TableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         //PocketMedia add ads
-        stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165")
-        //stream?.setAdMargin(3)
-        //stream?.adsPositions = [5, 2, 4]//Set ads to these positions in our tableView
+        stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165") /* replace with your own token!! */
         stream?.requestAds(10)//Add 5 ads
         
         super.viewDidLoad()

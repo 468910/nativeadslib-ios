@@ -92,17 +92,17 @@ class NativeAdStreamTest: XCTestCase {
         }
         
         /*
-        subject.datasource.firstAdPosition = 1
+        subject.datasource.adPositionOffset = 1
         subject.didReceiveResults(ads)
         XCTAssert(subject.datasource.ads.count == ads.count, "Ads should've been added")
 
-        //Higher firstAdPosition than we have ads
-        subject.datasource.firstAdPosition = 100
+        //Higher adPositionOffset than we have ads
+        subject.datasource.adPositionOffset = 100
         subject.didReceiveResults(ads)
         XCTAssert(subject.datasource.ads.count == 0, "No Ads shoud've been added")
         
         
-        subject.datasource.firstAdPosition = 1
+        subject.datasource.adPositionOffset = 1
         subject.adsPositions = [1, 0, 3]
         XCTAssert(subject.adsPositions! == [0, 1, 3], "It should sort the adsPositions")
         subject.didReceiveResults(ads)

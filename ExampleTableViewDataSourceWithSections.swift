@@ -50,11 +50,11 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var temp = indexPath.row
+        let temp = indexPath.row
         
         if(indexPath.row > 8 || indexPath.row < 0){
             print("[INDEX] Wrongly indexed @ \(temp)")
-            var x = UITableViewCell()
+            let x = UITableViewCell()
                 x.backgroundColor = UIColor.redColor()
             return x
         }

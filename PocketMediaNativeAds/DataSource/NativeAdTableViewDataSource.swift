@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 
 public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     public var datasource: UITableViewDataSource
@@ -27,7 +26,8 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         } else {
             preconditionFailure("Your tableview must have a dataSource set before use.")
         }
-
+        
+        self.adPosition = adPosition
         self.controller = controller
         self.adPosition = adPosition
 		self.tableView = tableView

@@ -9,6 +9,5 @@
 import UIKit
 
 public class CollectionAdCell : UICollectionViewCell {
-  
-  @IBOutlet weak var appIcon: UIImageView!
+    @IBOutlet weak var appIcon: UIImageView!
 }

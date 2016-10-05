@@ -20,14 +20,15 @@ class MenuViewController: UIViewController, UIPopoverPresentationControllerDeleg
 	override func viewDidLoad() {
 		let nav = self.navigationController?.navigationBar
 		nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-
-		/* TODO CollectionViewButton
+		pocketMediaLogo.contentMode = .ScaleAspectFit
+        
+        //Collection view button
 		collectionViewAdsButton.titleEdgeInsets.left = 10
 		collectionViewAdsButton.titleEdgeInsets.right = 10
 		collectionViewAdsButton.titleLabel?.textColor = UIColor.whiteColor()
 		collectionViewAdsButton.layer.cornerRadius = 10
 		collectionViewAdsButton.backgroundColor = UIColor(red: 11 / 255, green: 148 / 255, blue: 68 / 255, alpha: 1)
-        */
+        collectionViewAdsButton.hidden = true
 
 		// TableViewButton
 		tableViewAdsButton.layer.cornerRadius = 10
@@ -53,16 +54,17 @@ class MenuViewController: UIViewController, UIPopoverPresentationControllerDeleg
 		scrollViewButton.layer.cornerRadius = 10
 		scrollViewButton.backgroundColor = UIColor(red: 11 / 255, green: 148 / 255, blue: 68 / 255, alpha: 1)
 		scrollViewButton.titleLabel?.textColor = UIColor.whiteColor()
-
-		pocketMediaLogo.contentMode = .ScaleAspectFit
+        scrollViewButton.hidden = true
 
 		// tableViewBigAdsButton
+        
 		tableviewBigAdsButton.setTitle("TableViewBigAdsButton", forState: UIControlState.Normal)
 		tableviewBigAdsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
 		tableviewBigAdsButton.titleEdgeInsets.left = 10
 		tableviewBigAdsButton.titleEdgeInsets.right = 10
 		tableviewBigAdsButton.layer.cornerRadius = 10
 		tableviewBigAdsButton.backgroundColor = UIColor(red: 11 / 255, green: 148 / 255, blue: 68 / 255, alpha: 1)
+        tableviewBigAdsButton.hidden = true
 
 	}
 

@@ -5,7 +5,6 @@
 //  This class is the entry point of easily integrating nativeAds in existing UI elements of the host.
 //
 
-import Foundation
 import UIKit
 
 /**
@@ -36,7 +35,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     }
 
     @objc
-    public required init(controller: UIViewController, view: UIView, adPlacementToken: String, customXib: UINib? = nil, requester: NativeAdsRequest? = nil, adPosition: AdPosition? = MarginAdPosition(margin: 2)) {
+    public required init(controller: UIViewController, view: UIView, adPlacementToken: String, customXib: UINib? = nil, adPosition: AdPosition? = MarginAdPosition(margin: 2), requester: NativeAdsRequest? = nil) {
         super.init()
         
         //Create a new instance of a requester or use the one sent along. This is done for unit testing purposes.

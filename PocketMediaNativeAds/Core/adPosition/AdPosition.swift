@@ -5,12 +5,12 @@
 //  Created by Iain Munro on 04/10/2016.
 //
 //
-
 import Foundation
 
-//TODO: Bring back first ad position.
 @objc
 public protocol AdPosition {
+    //Set the first ad position.
+    func setadPositionOffset(position : Int)
     
     //Called every time the positions are calculated
     func reset()
