@@ -7,19 +7,19 @@ platform :ios, '8.0'
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://bitbucket.org/pocketbrain/pocketmedia-podspecs.git'
 
-use_frameworks! 
+use_frameworks!
 
 target 'PocketMediaNativeAds' do
 	project 'PocketMediaNativeAds.xcodeproj'
 	workspace 'PocketMediaNativeAds.xcworkspace'
-	
+
 	target 'PocketMediaNativeAdsTests' do
 	  inherit! :search_paths
 	end
 
 	target 'PocketMediaNativeAdsExample' do
 	    inherit! :search_paths
-	    project ‘PocketMediaNativeAdsExample.xcodeproj’
+	    project 'PocketMediaNativeAdsExample.xcodeproj'
 	    pod 'PocketMediaNativeAds', :path => './'
 	end
 end
