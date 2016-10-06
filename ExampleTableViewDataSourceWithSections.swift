@@ -72,6 +72,13 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
         }
         
     }
+    
+    public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return CGFloat.min
+        }
+        return tableView.sectionHeaderHeight
+    }
  
     
 }
