@@ -8,11 +8,11 @@
 [![License](https://img.shields.io/cocoapods/l/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 [![Platform](https://img.shields.io/cocoapods/p/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 
-This open-source (Swift/Objective-c) library allows developers to easily show ads provided by PocketMedia natively in their apps. While the traditional way of advertising in mobile applications usually involves a pause before displaying the ad (Interstitial ads, banners, etc.) this native solution allows the ads to be integrated in the user flow. That in turn makes it less intrusive for the user experience.
+This open-source (Swift/Objective-c) library allows developers to easily show ads provided by PocketMedia natively in their apps. While the traditional way of advertising in mobile applications usually involves a disruption in natural user-flow to show the ad (Interstitial ads, banners, etc.) this native solution allows the ads to be integrated in the context where they will be displayed. That in turn makes it less intrusive for the user experience.
 
-The library comes with standard ad units (ways of displaying the ad). You are encouraged to extend/copy these into project and and customize them to your liking. This way the library empowers App developers to show ads that integrate into the host app style. This method is called using the adStream.
+The library comes with standard ad units (ways of displaying the ad). You are encouraged to extend/copy these into project and and customize them to your liking, specially to match your application look and feel. This method is called using the adStream - and requires just a few lines of code to start using it.
 
-The alternative solution is using the library to just do the network calls and use the NativeAd (Class) model. Using these core functionalities, you are able to write your own custom ad units. This method is called manual integration.
+The alternative solution is using the library to just do the network calls and use the NativeAd (Class) model. Using these core functionalities, you are able to write your own custom ad units and manipulate them in any way that fits your app. This method is called manual integration.
 
 ## Requirements
 

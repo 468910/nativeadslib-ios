@@ -25,7 +25,6 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	}
 
 	// Patching of the delegate. Either replace certain calls to our library or do some checks and call the original implementation of the host
-	@objc
 	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		if let val = datasource.getNativeAdListing(indexPath) {
 			val.openAdUrl(FullscreenBrowser(parentViewController: controller))
