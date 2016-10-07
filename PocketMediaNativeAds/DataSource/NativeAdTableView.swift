@@ -37,8 +37,8 @@ public extension UITableView {
     
     public class func swizzleNativeAds(instance: UITableView) {
         let aClass: AnyClass! = object_getClass(instance)
-        let originalMethod = class_getInstanceMethod(aClass, "reloadData")
-        let swizzledMethod = class_getInstanceMethod(aClass, "nativeAdsReloadData")
+        let originalMethod = class_getInstanceMethod(aClass, #selector(UICollectionView.reloadData))
+        let swizzledMethod = class_getInstanceMethod(aClass, #selector(UITableView.nativeAdsReloadData))
         method_exchangeImplementations(originalMethod, swizzledMethod)
     }
 }
