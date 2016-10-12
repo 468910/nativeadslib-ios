@@ -19,7 +19,7 @@ class mocked2UITableView: UITableView {
 
 class mocked2NativeAdsRequest: NativeAdsRequest {
     var limit:UInt! = 0
-    override func retrieveAds(limit: UInt, imageType: EImageType = EImageType.allImages) {
+    override func retrieveAds(_ limit: UInt, imageType: EImageType = EImageType.allImages) {
         self.limit = limit
     }
 }
@@ -27,12 +27,12 @@ class mocked2NativeAdsRequest: NativeAdsRequest {
 class mocked2NativeAdsConnection: NativeAdsConnectionDelegate {
 
     @objc
-    func didReceiveError(error: NSError) {
+    func didReceiveError(_ error: NSError) {
 
     }
 
     @objc
-    func didReceiveResults(nativeAds: [NativeAd]) {
+    func didReceiveResults(_ nativeAds: [NativeAd]) {
 
     }
 }
@@ -66,7 +66,7 @@ class NativeAdStreamTest: XCTestCase {
     func testInitRegisterNib() {
         class mockedUITableView: UITableView {
             var registerNibCalled: Bool = false
-            override func registerNib(nib: UINib?, forCellReuseIdentifier identifier: String) {
+            override func register(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
                 registerNibCalled = true
             }
         }

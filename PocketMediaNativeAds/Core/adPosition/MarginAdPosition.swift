@@ -8,16 +8,16 @@
 
 import Foundation
 
-public enum MarginAdPositionError: ErrorType {
+public enum MarginAdPositionError: Error {
     case invalidmargin
 }
 
 @objc
-public class MarginAdPosition: NSObject, AdPosition {
+open class MarginAdPosition: NSObject, AdPosition {
     
-    private var margin: Int = 2
-    private var adPositionOffset: Int = -1
-    private var currentValue: Int = 0
+    fileprivate var margin: Int = 2
+    fileprivate var adPositionOffset: Int = -1
+    fileprivate var currentValue: Int = 0
     
     public init(margin:Int = 2, adPositionOffset: Int = 0) {
         super.init()
@@ -26,20 +26,20 @@ public class MarginAdPosition: NSObject, AdPosition {
         reset()
     }
     
-    public func reset() {
+    open func reset() {
         self.currentValue = adPositionOffset
     }
     
-    public func getAdPosition(maxSize: Int) throws -> NSNumber {
+    open func getAdPosition(_ maxSize: Int) throws -> NSNumber {
         if margin < 1 {
             throw MarginAdPositionError.invalidmargin
         }
         currentValue += margin
-        return NSNumber(integer: currentValue)
+        return NSNumber(value: currentValue as Int)
     }
     
     //Default is 0
-    public func setadPositionOffset(position : Int) {
+    open func setadPositionOffset(_ position : Int) {
         self.adPositionOffset = position < 0 ? 0 : position - 1
     }
     

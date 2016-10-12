@@ -9,20 +9,20 @@
 import UIKit
 import PocketMediaNativeAds
 
-public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSource {
+open class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSource {
     
     var collection: [AnyObject] = []
     
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
     
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return collection.count
     }
     
-    public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch(section){
         case 0:
             return "Section 1"
@@ -35,12 +35,12 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
     
     func loadLocalJSON() {
         do {
-            let path = NSBundle.mainBundle().pathForResource("DummyData", ofType: "json")
-            let jsonData: NSData = NSData(contentsOfFile: path!)!
+            let path = Bundle.main.path(forResource: "DummyData", ofType: "json")
+            let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: path!))
             var jsonArray: NSArray = NSArray()
-            jsonArray = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+            jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSArray
             for itemJson in jsonArray {
-                if let itemDictionary = itemJson as? NSDictionary, item = ItemTableModel(dictionary: itemDictionary) {
+                if let itemDictionary = itemJson as? NSDictionary, let item = ItemTableModel(dictionary: itemDictionary) {
                     collection.append(item)
                 }
             }
@@ -49,20 +49,20 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
         }
     }
     
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let temp = indexPath.row
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let temp = (indexPath as NSIndexPath).row
         
-        if(indexPath.row > 8 || indexPath.row < 0){
+        if((indexPath as NSIndexPath).row > 8 || (indexPath as NSIndexPath).row < 0){
             print("[INDEX] Wrongly indexed @ \(temp)")
             let x = UITableViewCell()
-                x.backgroundColor = UIColor.redColor()
+                x.backgroundColor = UIColor.red
             return x
         }
        
         
         switch collection[temp] {
         case let item as ItemTableModel:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
             cell.name.text = item.title
             cell.descriptionItem.text = item.descriptionItem
             cell.artworkImageView.nativeSetImageFromURL(item.imageURL)
@@ -73,9 +73,9 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
         
     }
     
-    public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return CGFloat.min
+            return CGFloat.leastNormalMagnitude
         }
         return tableView.sectionHeaderHeight
     }

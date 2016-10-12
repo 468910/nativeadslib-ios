@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UITableView {
-    private func GetNativeTableDataSource() -> NativeAdTableViewDataSource? {
+    fileprivate func GetNativeTableDataSource() -> NativeAdTableViewDataSource? {
         return self.dataSource as? NativeAdTableViewDataSource
     }
     
@@ -35,7 +35,7 @@ public extension UITableView {
 //        }
 //    }
     
-    public class func swizzleNativeAds(instance: UITableView) {
+    public class func swizzleNativeAds(_ instance: UITableView) {
         let aClass: AnyClass! = object_getClass(instance)
         let originalMethod = class_getInstanceMethod(aClass, #selector(UICollectionView.reloadData))
         let swizzledMethod = class_getInstanceMethod(aClass, #selector(UITableView.nativeAdsReloadData))

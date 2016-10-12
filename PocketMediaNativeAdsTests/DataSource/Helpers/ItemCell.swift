@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-public class ItemCell: UITableViewCell {
+open class ItemCell: UITableViewCell {
 
-	@IBOutlet public weak var name: UILabel!
-	@IBOutlet public weak var artworkImageView: UIImageView!
-	@IBOutlet public weak var descriptionItem: UILabel!
+	@IBOutlet open weak var name: UILabel!
+	@IBOutlet open weak var artworkImageView: UIImageView!
+	@IBOutlet open weak var descriptionItem: UILabel!
 
-	override public func awakeFromNib() {
+	override open func awakeFromNib() {
 		super.awakeFromNib()
 	}
 

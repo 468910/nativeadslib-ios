@@ -18,31 +18,31 @@ public class NativeAdCell: AbstractAdUnitTableViewCell {
 	public override func awakeFromNib() {
 		super.awakeFromNib()
         if let iButton = installButton {
-			iButton.layer.borderColor = self.tintColor.CGColor
+			iButton.layer.borderColor = self.tintColor.cgColor
 			iButton.layer.borderWidth = 1
 			iButton.layer.masksToBounds = true
-			iButton.titleLabel?.baselineAdjustment = .AlignCenters
-			iButton.titleLabel?.textAlignment = .Center
+			iButton.titleLabel?.baselineAdjustment = .alignCenters
+			iButton.titleLabel?.textAlignment = .center
 			iButton.titleLabel?.minimumScaleFactor = 0.1
 			let color = UIColor(red: 17.0 / 255.0, green: 147.0 / 255.0, blue: 67.0 / 255.0, alpha: 1)
-			iButton.setTitleColor(color, forState: .Normal)
-			iButton.layer.borderColor = color.CGColor
+			iButton.setTitleColor(color, for: UIControlState())
+			iButton.layer.borderColor = color.cgColor
 			iButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
 			iButton.titleLabel?.minimumScaleFactor = 0.50
 			iButton.titleLabel?.adjustsFontSizeToFitWidth = true
             
             if let image = adImage {
-                iButton.layer.cornerRadius = CGRectGetWidth(image.frame) / 20
+                iButton.layer.cornerRadius = image.frame.width / 20
             }
 		}
         if let image = adImage {
-            image.layer.cornerRadius = CGRectGetWidth(image.frame) / 10
+            image.layer.cornerRadius = image.frame.width / 10
             image.layer.masksToBounds = true
         }
 	}
     
-    @IBAction func install(sender: AnyObject) {
-        if let viewController = UIApplication.sharedApplication().delegate?.window??.rootViewController {
+    @IBAction func install(_ sender: AnyObject) {
+        if let viewController = UIApplication.shared.delegate?.window??.rootViewController {
             self.ad?.openAdUrl(FullscreenBrowser(parentViewController: viewController))
         }
     }

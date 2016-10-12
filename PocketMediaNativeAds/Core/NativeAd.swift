@@ -8,7 +8,7 @@
 import UIKit
 
 public struct sImage {
-    var url: NSURL!
+    var url: URL!
     var width: UInt!
     var height: UInt!
 }
@@ -17,21 +17,21 @@ public struct sImage {
  NativeAd model object
  It contains the attributes received from the API, and allows to open the click URL
  */
-public class NativeAd: NSObject {
+open class NativeAd: NSObject {
     /// Name of the ad, the title to be displayed.
-	private(set) public var campaignName: String!
+	fileprivate(set) open var campaignName: String!
 	/// Long description of the ad, with a description
-	private(set) public var campaignDescription: String!
+	fileprivate(set) open var campaignDescription: String!
 	/// URL to be opened when the user interacts with the ad
-	private(set) public var clickURL: NSURL!
+	fileprivate(set) open var clickURL: URL!
 	/// URL for the campaign icon
-	private(set) public var campaignImage: NSURL!
+	fileprivate(set) open var campaignImage: URL!
 	/// PocketMedia's Offer ID the ad is linked to
-	private(set) var offerId: UInt?
+	fileprivate(set) var offerId: UInt?
 	/// Ad Placement token the ad is linked to (via the ads request)
-	private(set) var adPlacementToken: String!
+	fileprivate(set) var adPlacementToken: String!
 	/// Images including hq_icon , banners and icon
-    private(set) var images = [EImageType: sImage]()
+    fileprivate(set) var images = [EImageType: sImage]()
 
 	/**
      Fallible Constructor
@@ -47,13 +47,13 @@ public class NativeAd: NSObject {
 		if let name = adDictionary["campaign_name"] as? String {
 			self.campaignName = name
 		} else {
-			throw NativeAdsError.InvalidAdNoCampaign
+			throw NativeAdsError.invalidAdNoCampaign
 		}
 
-		if let urlClick = adDictionary["click_url"] as? String, url = NSURL(string: urlClick) {
+		if let urlClick = adDictionary["click_url"] as? String, let url = URL(string: urlClick) {
 			self.clickURL = url
 		} else {
-			throw NativeAdsError.InvalidAdNoClickUrl
+			throw NativeAdsError.invalidAdNoClickUrl
 		}
 
 		if let description = adDictionary["campaign_description"] as? String {
@@ -62,19 +62,19 @@ public class NativeAd: NSObject {
 			self.campaignDescription = ""
 		}
 
-		if let offerIdString = adDictionary["id"] as? String, offerId = UInt(offerIdString) {
+		if let offerIdString = adDictionary["id"] as? String, let offerId = UInt(offerIdString) {
 			self.offerId = offerId
 		} else {
-			throw NativeAdsError.InvalidAdNoId
+			throw NativeAdsError.invalidAdNoId
 		}
 
-		if let urlImage = adDictionary["default_icon"] as? String, url = NSURL(string: urlImage) {
+		if let urlImage = adDictionary["default_icon"] as? String, let url = URL(string: urlImage) {
 			self.campaignImage = url
 		} else {
-			if let urlImage = adDictionary["campaign_image"] as? String, url = NSURL(string: urlImage) {
+			if let urlImage = adDictionary["campaign_image"] as? String, let url = URL(string: urlImage) {
 				self.campaignImage = url
 			} else {
-				throw NativeAdsError.InvalidAdNoImage
+				throw NativeAdsError.invalidAdNoImage
 			}
 		}
 
@@ -84,7 +84,7 @@ public class NativeAd: NSObject {
 
                 var width = UInt(0),
                     height = UInt(0),
-                    url = NSURL()
+                    url = URL(string: "")
 
                 if let sWidth = image["width"] {
                     width = UInt(sWidth)!
@@ -95,24 +95,24 @@ public class NativeAd: NSObject {
                 }
 
                 if let sUrl = image["url"] {
-                    url = NSURL(string: sUrl)!
+                    url = URL(string: sUrl)!
                 }
                 self.images[EImageType(rawValue: imageType.0)!] = sImage(url: url, width: width, height: height)
             }
 		} else {
-			throw NativeAdsError.InvalidAdNoImages
+			throw NativeAdsError.invalidAdNoImages
 		}
 	}
 
-	override public var description: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }
-	override public var debugDescription: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }
+	override open var description: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }
+	override open var debugDescription: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }
 
 	/**
      Opens Native Ad in an View handled by the NativeAdOpener
      - opener: NativeAdOpener instance handling the opening of the view where the NativeAd will be displayed.
      */
 	@objc
-	public func openAdUrl(opener: NativeAdOpenerProtocol) {
+	open func openAdUrl(_ opener: NativeAdOpenerProtocol) {
 		opener.load(self)
 	}
 

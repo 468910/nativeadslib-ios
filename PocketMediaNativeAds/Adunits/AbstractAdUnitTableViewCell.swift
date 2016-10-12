@@ -18,10 +18,10 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 	@IBOutlet weak var adTitle: UILabel?
 	@IBOutlet weak var adDescription: UILabel?
     
-    private(set) public var ad: NativeAd?
+    private(set) open var ad: NativeAd?
 
-	public func configureAdView(nativeAd: NativeAd) {
-        self.selectionStyle = UITableViewCellSelectionStyle.None
+	public func configureAdView(_ nativeAd: NativeAd) {
+        self.selectionStyle = UITableViewCellSelectionStyle.none
         self.ad = nativeAd
 		if let title = adTitle {
 			title.text = nativeAd.campaignName
@@ -43,9 +43,9 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 
 		if let ad_description = adDescription {
 			ad_description.numberOfLines = 0
-			ad_description.lineBreakMode = .ByTruncatingTail
-			ad_description.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width * 0.80
-			ad_description.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width * 0.70
+			ad_description.lineBreakMode = .byTruncatingTail
+			ad_description.preferredMaxLayoutWidth = UIScreen.main.bounds.width * 0.80
+			ad_description.preferredMaxLayoutWidth = UIScreen.main.bounds.width * 0.70
 		}
 
         if let image = adImage {
@@ -54,7 +54,7 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 
 		if let title = adTitle {
 			title.numberOfLines = 0
-			title.lineBreakMode = .ByTruncatingTail
+			title.lineBreakMode = .byTruncatingTail
 		}
 	}
 

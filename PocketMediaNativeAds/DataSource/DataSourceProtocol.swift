@@ -10,8 +10,8 @@ import Foundation
 
 @objc
 public protocol DataSourceProtocol {
-    func onAdRequestSuccess(newAds : [NativeAd])
-    func getNativeAdListing(indexPath: NSIndexPath) -> NativeAd?
+    func onAdRequestSuccess(_ newAds : [NativeAd])
+    func getNativeAdListing(_ indexPath: IndexPath) -> NativeAd?
 }
 
 public protocol NativeAdTableViewDataSourceProtocol : DataSourceProtocol {

@@ -11,8 +11,8 @@ import Foundation
 class testHelpers {
 
     static func getNativeAdsData() -> [NSMutableDictionary]? {
-        if let file = NSBundle(forClass: NativeAdsRequestTest.self).pathForResource("Tests", ofType: "json") {
-            if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: file)!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
+        if let file = Bundle(for: NativeAdsRequestTest.self).path(forResource: "Tests", ofType: "json") {
+            if let json: NSArray = (try? JSONSerialization.JSONObjectWithData(Data(contentsOfFile: file)!, options: JSONSerialization.ReadingOptions.MutableContainers)) as? NSArray {
                 let ads = json.filter({
                     ($0 as? NSDictionary) != nil
                 })

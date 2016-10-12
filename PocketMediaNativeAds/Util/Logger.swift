@@ -16,31 +16,31 @@ struct Logger {
         case Error = "[ERROR]"
     }
 
-    private static func log(level: Level, @autoclosure _ message: () -> String, _ error: NSError? = nil) {
+    private static func log(_ level: Level, _ message: String, _ error: Error? = nil) {
         if let error = error {
-            NSLog("%@%@ %@ with error %@", Tag, level.rawValue, message(), error)
+//            NSLog("%@%@ %@ with error %@", Tag, level.rawValue, message, error)
         } else {
-            NSLog("%@%@ %@", Tag, level.rawValue, message())
+            NSLog("%@%@ %@", Tag, level.rawValue, message)
         }
     }
 
-    static func debug(@autoclosure message: () -> String, _ error: NSError? = nil) {
+    public static func debug(_ message: String, _ error: Error? = nil) {
         //#if DEBUG
             log(.Debug, message, error)
         //#endif
     }
 
-    static func debugf(format: String, _ args: CVarArgType...) {
+    public static func debugf(_ format: String, _ args: CVarArg...) {
         #if DEBUG
             log(.Debug, NSString(format, args), error)
         #endif
     }
 
-    static func error(@autoclosure message: () -> String, _ error: NSError? = nil) {
+    public static func error(_ message: String, _ error: Error? = nil) {
         log(.Error, message, error)
     }
     
-    static func error(error: NSError? = nil) {
+    public static func error(_ error: NSError? = nil) {
         log(.Error, "An error occured", error)
     }
 

@@ -37,25 +37,25 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
 	var collection: [AnyObject] = []
 
-	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return collection.count
 	}
 
-	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TestCell", forIndexPath: indexPath) as! CollectionAdCell
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TestCell", for: indexPath) as! CollectionAdCell
 		return cell
 	}
 
 	func loadLocalJSON() {
 
 		do {
-			let path = NSBundle.mainBundle().pathForResource("DummyData", ofType: "json")
-			let jsonData: NSData = NSData(contentsOfFile: path!)!
+			let path = Bundle.main.path(forResource: "DummyData", ofType: "json")
+			let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: path!))
 			var jsonArray: NSArray = NSArray()
-			jsonArray = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+			jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSArray
 
 			for itemJson in jsonArray {
-				if let itemDictionary = itemJson as? NSDictionary, item = ItemTableModel(dictionary: itemDictionary) {
+				if let itemDictionary = itemJson as? NSDictionary, let item = ItemTableModel(dictionary: itemDictionary) {
 					collection.append(item)
 				}
 			}

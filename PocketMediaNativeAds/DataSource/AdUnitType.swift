@@ -9,7 +9,7 @@ import Foundation
 
 @objc
 public enum AdUnitType: Int {
-	case Standard
-	case Big
-	case Custom
+	case standard
+	case big
+	case custom
 }

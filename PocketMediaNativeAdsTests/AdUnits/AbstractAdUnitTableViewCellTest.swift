@@ -21,7 +21,7 @@ class AbstractAdUnitTableViewCellTest: XCTestCase {
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!
       
         let nib = UINib.init(nibName: "NativeAdView", bundle: bundle)
-        subject = nib.instantiateWithOwner(nil, options: nil)[0] as! NativeAdCell
+        subject = nib.instantiate(withOwner: nil, options: nil)[0] as! NativeAdCell
   }
 
     override func tearDown() {
@@ -32,13 +32,13 @@ class AbstractAdUnitTableViewCellTest: XCTestCase {
     func testAwakeFromNib() {
         if let ad_description = subject.adDescription {
             XCTAssert(ad_description.numberOfLines == 0)
-            XCTAssert(ad_description.lineBreakMode == .ByTruncatingTail)
+            XCTAssert(ad_description.lineBreakMode == .byTruncatingTail)
             XCTAssert(ad_description.preferredMaxLayoutWidth != 0)
             XCTAssert(ad_description.preferredMaxLayoutWidth != 0)
         }
         if let title = subject.adTitle {
             XCTAssert(title.numberOfLines == 0)
-            XCTAssert(title.lineBreakMode == .ByTruncatingTail)
+            XCTAssert(title.lineBreakMode == .byTruncatingTail)
         }
     }
 

@@ -17,7 +17,7 @@ class NativeAdCellTest: XCTestCase {
         super.setUp()
 
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-        var nib = bundle.loadNibNamed("NativeAdView", owner: nil, options: nil)!.first!
+        let nib = bundle.loadNibNamed("NativeAdView", owner: nil, options: nil)!.first!
         subject = nib as! NativeAdCell
     }
 
@@ -32,13 +32,13 @@ class NativeAdCellTest: XCTestCase {
 //        XCTAssert(CGColorEqualToColor(iButton.layer.borderColor, subject.tintColor.CGColor))
         XCTAssert(iButton.layer.borderWidth == 1)
         XCTAssert(iButton.layer.masksToBounds == true)
-        XCTAssert(iButton.titleLabel?.baselineAdjustment == .AlignCenters)
-        XCTAssert(iButton.titleLabel?.textAlignment == .Center)
+        XCTAssert(iButton.titleLabel?.baselineAdjustment == .alignCenters)
+        XCTAssert(iButton.titleLabel?.textAlignment == .center)
 //        XCTAssert(iButton.titleLabel?.minimumScaleFactor == 0.1)
 
         let color = UIColor(red: 17.0 / 255.0, green: 147.0 / 255.0, blue: 67.0 / 255.0, alpha: 1)
         //iButton.setTitleColor(color, forState: .Normal)
-        XCTAssert(CGColorEqualToColor(iButton.layer.borderColor!, color.CGColor))
+        XCTAssertTrue(iButton.layer.borderColor! == color.cgColor)
         XCTAssert(iButton.titleEdgeInsets == UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5))
         XCTAssert(iButton.titleLabel?.minimumScaleFactor == 0.50)
         XCTAssert(iButton.titleLabel?.adjustsFontSizeToFitWidth == true)

@@ -16,7 +16,7 @@ class baseMockedNativeAdDataSource: NativeAdTableViewDataSource {
     var isGetAdCellForTableViewCalled: Bool = false
     var ad: NativeAd?
     
-    override func getNativeAdListing(indexPath: NSIndexPath) -> NativeAd? {
+    override func getNativeAdListing(_ indexPath: NSIndexPath) -> NativeAd? {
         getNativeAdListingCalled = true
         if returngetNativeAdListing {
             return ad
@@ -24,7 +24,7 @@ class baseMockedNativeAdDataSource: NativeAdTableViewDataSource {
         return nil
     }
     
-    override func getAdCell(nativeAd: NativeAd) -> NativeAdCell {
+    override func getAdCell(_ nativeAd: NativeAd) -> NativeAdCell {
         isGetAdCellForTableViewCalled = true
         return NativeAdCell()
     }
@@ -37,11 +37,11 @@ class baseMockedNativeAdDataSource: NativeAdTableViewDataSource {
 }
 
 class nonImplementedDatasource: NSObject, UITableViewDataSource {
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
 }
@@ -50,20 +50,20 @@ class baseMockedDelegate: NSObject, UITableViewDelegate {
     
 }
 
-public class NativeAdTableViewDatasourceTest: XCTestCase {
+open class NativeAdTableViewDatasourceTest: XCTestCase {
     
     var subject: baseMockedNativeAdDataSource!
     var originalDataSource: UITableViewDataSource!
     var tableView: UITableView!
     var controller: UIViewController!
     
-    override public func setUp() {
+    override open func setUp() {
         super.setUp()
     }
     
-    func setUpDataSource(mockedDatasource: UITableViewDataSource) {
+    func setUpDataSource(_ mockedDatasource: UITableViewDataSource) {
         controller = UIViewController()
-        tableView = UITableView(frame: CGRect(), style: UITableViewStyle.Plain)
+        tableView = UITableView(frame: CGRect(), style: UITableViewStyle.plain)
         controller.view = tableView
         
         tableView.delegate = baseMockedDelegate()
@@ -80,8 +80,8 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
     
     func testcellForRowAtIndexPath() {
         class mockedDatasource: ExampleTableViewDataSource {
-            public var calledCellForRowAtIndexPath: Bool = false
-            @objc override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+            open var calledCellForRowAtIndexPath: Bool = false
+            @objc override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 calledCellForRowAtIndexPath = true
                 return UITableViewCell()
             }
@@ -92,7 +92,7 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
         
         // Test If Original IndexPathForRowAtIndexPath gets called
         subject.returngetNativeAdListing = false
-        let indexPath = NSIndexPath(forItem: 0, inSection: 0)
+        let indexPath = IndexPath(item: 0, section: 0)
         subject.tableView(tableView, cellForRowAtIndexPath: indexPath)
         let result = (originalDataSource as! mockedDatasource).calledCellForRowAtIndexPath
         XCTAssert(result == true, "cellForRowAtIndexPath has been called in the original DataSource")
@@ -107,7 +107,7 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
     
     func testTitleForHeaderInSection() {
         class mockedDataSource: ExampleTableViewDataSource {
-            public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
                 return "This is an amazing Title"
             }
         }
@@ -126,7 +126,7 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
     
     func testTitleForFooterInSection() {
         class mockedDataSource: ExampleTableViewDataSource {
-            public func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+            open func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
                 return "This is an amazing Title"
             }
         }
@@ -146,7 +146,7 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
     func testCommitEditingStyle() {
         class mockedDataSource: ExampleTableViewDataSource {
             var commitEditingStyleHasBeenCalled : Bool = false
-            public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+            open func tableView(_ tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: IndexPath) {
                 commitEditingStyleHasBeenCalled = true
             }
         }
@@ -157,7 +157,7 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
          */
         
         setUpDataSource(nonImplementedDatasource())
-      if (originalDataSource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:commitEditingStyle:forRowAtIndexPath:)))) {
+      if (originalDataSource.responds(to: #selector(UITableViewDataSource.tableView(_:commit:forRowAt:)))) {
             XCTFail("tableView:commitEditingStyle shouldnt be implemented")
         }
         
@@ -167,17 +167,17 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
     func testmoveRowAtIndexPath() {
         class mockedDataSource: ExampleTableViewDataSource {
           var moveRowAtIndexPathHasBeenCalled = false
-          public func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+          open func tableView(_ tableView: UITableView, moveRowAtIndexPath sourceIndexPath: IndexPath, toIndexPath destinationIndexPath: IndexPath) {
             moveRowAtIndexPathHasBeenCalled = true
           }
         }
       
         setUpDataSource(mockedDataSource())
-        subject.tableView(tableView, moveRowAtIndexPath: NSIndexPath(), toIndexPath: NSIndexPath())
+        subject.tableView(tableView, moveRowAtIndexPath: IndexPath(), toIndexPath: IndexPath())
         XCTAssert((originalDataSource as! mockedDataSource).moveRowAtIndexPathHasBeenCalled == true, "MoveRowAtIndexPathHasBeenCalled")
       
       setUpDataSource(nonImplementedDatasource())
-      if (originalDataSource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:moveRowAtIndexPath:toIndexPath:)))) {
+      if (originalDataSource.responds(to: #selector(UITableViewDataSource.tableView(_:moveRowAt:to:)))) {
         XCTFail("tableView:commitEditingStyle shouldnt be implemented")
       }
     }
@@ -186,7 +186,7 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
       
         class mockedDataSource: ExampleTableViewDataSource {
            var sectionForSectionIndexTitleHasBeenCalled = false
-          public func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+          open func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
             sectionForSectionIndexTitleHasBeenCalled = true
             return 0
           }
@@ -197,7 +197,7 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
           XCTAssert((originalDataSource as! mockedDataSource).sectionForSectionIndexTitleHasBeenCalled == true, "Section for Section Index title has been called!")
       
       setUpDataSource(nonImplementedDatasource())
-      if (originalDataSource.respondsToSelector(#selector(UITableViewDataSource.sectionIndexTitlesForTableView(_:)))) {
+      if (originalDataSource.responds(to: #selector(UITableViewDataSource.sectionIndexTitles(`for`:)))) {
         XCTFail("tableView:commitEditingStyle shouldnt be implemented")
       }
       
@@ -209,7 +209,7 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
     func testcanEditRowAtIndexPath() {
       class mockedDataSource : ExampleTableViewDataSource {
         var canEditRowAtIndexPathHasBeenCalled = false
-       public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+       open func tableView(_ tableView: UITableView, canEditRowAtIndexPath indexPath: IndexPath) -> Bool {
         canEditRowAtIndexPathHasBeenCalled = true
         return true
       }
@@ -219,14 +219,14 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
       
       
       setUpDataSource(mockedDataSource())
-      subject.tableView(tableView, canEditRowAtIndexPath: NSIndexPath(forItem: 1, inSection: 0))
+      subject.tableView(tableView, canEditRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
        XCTAssert((originalDataSource as! mockedDataSource).canEditRowAtIndexPathHasBeenCalled == true, "CanEditRowAtIndexPath has been called!")
       
       setUpDataSource(nonImplementedDatasource())
-      if (originalDataSource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:canEditRowAtIndexPath:)))) {
+      if (originalDataSource.responds(to: #selector(UITableViewDataSource.tableView(_:canEditRowAt:)))) {
         XCTFail("tableView:commitEditingStyle shouldnt be implemented")
       }
-      var result = subject.tableView(tableView, canEditRowAtIndexPath: NSIndexPath())
+      var result = subject.tableView(tableView, canEditRowAtIndexPath: IndexPath())
       XCTAssert(result == true, "Can Edit Row At IndexPath returns default value which is TRUE")
 
       
@@ -234,22 +234,22 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
     func testcanMoveAtIndexPath() {
       class mockedDataSource : ExampleTableViewDataSource {
       var canMoveRowAtIndexPathHasBeenCalled = false
-       public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+       open func tableView(_ tableView: UITableView, canMoveRowAtIndexPath indexPath: IndexPath) -> Bool {
         canMoveRowAtIndexPathHasBeenCalled = true
         return true
         }
       }
       
       setUpDataSource(mockedDataSource())
-      subject.tableView(tableView, canMoveRowAtIndexPath: NSIndexPath())
+      subject.tableView(tableView, canMoveRowAtIndexPath: IndexPath())
       XCTAssert((originalDataSource as! mockedDataSource).canMoveRowAtIndexPathHasBeenCalled == true, "canMoveRowAtIndexPathHasBeenCalled has been called!")
       
       setUpDataSource(nonImplementedDatasource())
-      if (originalDataSource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:canMoveRowAtIndexPath:)))) {
+      if (originalDataSource.responds(to: #selector(UITableViewDataSource.tableView(_:canMoveRowAt:)))) {
         XCTFail("tableView:commitEditingStyle shouldnt be implemented")
       }
       
-      var result = subject.tableView(tableView, canMoveRowAtIndexPath: NSIndexPath())
+      var result = subject.tableView(tableView, canMoveRowAtIndexPath: IndexPath())
       XCTAssert(result == true, "Can Move Row At Index Path returns default value which is True")
 
       
@@ -259,13 +259,13 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
   func testcommitEditingStyle() {
     class mockedDataSource : ExampleTableViewDataSource {
       var commitEditingStyleHasBeenCommited = false
-     public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+     open func tableView(_ tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: IndexPath) {
          commitEditingStyleHasBeenCommited = true
       }
     }
     
     setUpDataSource(mockedDataSource())
-    subject.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Delete, forRowAtIndexPath: NSIndexPath())
+    subject.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Delete, forRowAtIndexPath: IndexPath())
     XCTAssert((originalDataSource as! mockedDataSource).commitEditingStyleHasBeenCommited == true, "CommitEditingStyle has been called!")
     
 
@@ -279,7 +279,7 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
       var isGetAdCellForTableViewCalled: Bool = false
       var ad: NativeAd?
       
-      override func getNativeAdListing(indexPath: NSIndexPath) -> NativeAd? {
+      override func getNativeAdListing(_ indexPath: NSIndexPath) -> NativeAd? {
         getNativeAdListingCalled = true
         if returngetNativeAdListing {
           return ad
@@ -294,7 +294,7 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
       }
     }
       controller = UIViewController()
-      tableView = UITableView(frame: CGRect(), style: UITableViewStyle.Plain)
+      tableView = UITableView(frame: CGRect(), style: UITableViewStyle.plain)
       controller.view = tableView
       
       tableView.delegate = baseMockedDelegate()
@@ -306,12 +306,12 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
         }
       tableView.dataSource = originalDataSource
       
-      var localsubject = xMocked(controller: controller, tableView: tableView, adPosition: MarginAdPosition(margin: 2))
+      let localsubject = xMocked(controller: controller, tableView: tableView, adPosition: MarginAdPosition(margin: 2))
     
-        var data = testHelpers.getNativeAdData()!
-        var ad = try! NativeAd(adDictionary: data, adPlacementToken: "test")
+        let data = testHelpers.getNativeAdData()!
+        let ad = try! NativeAd(adDictionary: data, adPlacementToken: "test")
 
-        var result = localsubject.getAdCell(ad)
+        let result = localsubject.getAdCell(ad)
         XCTAssert(result is NativeAdCell, "Succesfully return NativeAdCell")
     
   }

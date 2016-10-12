@@ -16,31 +16,31 @@ public struct NativeAdInfo {
 public typealias AdsForSectionMap = [Int : [Int : NativeAdInfo]]
 
 @objc
-public class DataSource: NSObject, DataSourceProtocol {
+open class DataSource: NSObject, DataSourceProtocol {
     
-    public var adListings: AdsForSectionMap = AdsForSectionMap()
-    public var ads: [NativeAd] = [NativeAd]()
+    open var adListings: AdsForSectionMap = AdsForSectionMap()
+    open var ads: [NativeAd] = [NativeAd]()
     
     //The AdUnitType defines what kind of ad is shown.
-    public var adUnitType: AdUnitType = .Standard
+    open var adUnitType: AdUnitType = .standard
     
-    public func getNativeAdListing(indexPath: NSIndexPath) -> NativeAd? {
-        if let val = adListings[indexPath.section]?[indexPath.row]?.ad {
+    open func getNativeAdListing(_ indexPath: IndexPath) -> NativeAd? {
+        if let val = adListings[(indexPath as NSIndexPath).section]?[(indexPath as NSIndexPath).row]?.ad {
             return val
         }
         return nil
     }
     
     //Abstract classes that a datasource should override
-    public func onAdRequestSuccess(newAds: [NativeAd]) {
+    open func onAdRequestSuccess(_ newAds: [NativeAd]) {
         preconditionFailure("This method must be overridden")
     }
 
-    public func getTruePositionInDataSource(indexPath: NSIndexPath) -> Int {
+    open func getTruePositionInDataSource(_ indexPath: IndexPath) -> Int {
         preconditionFailure("This method must be overridden")
     }
 
-    public func numberOfElements() -> Int {
+    open func numberOfElements() -> Int {
         preconditionFailure("This method must be overridden")
     }
     
