@@ -154,7 +154,8 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xct-uV-WqM" userLabel="AdImageView">
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dsE-td-uYg">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsE-td-uYg">
+                            <frame key="frameInset" minX="28" minY="9" width="70" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="dsE-td-uYg" secondAttribute="height" multiplier="1:1" id="CwW-hm-cNS"/>
                                 <constraint firstAttribute="width" secondItem="dsE-td-uYg" secondAttribute="height" multiplier="1:1" id="Dl7-bP-oC0"/>
