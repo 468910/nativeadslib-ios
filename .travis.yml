@@ -12,7 +12,10 @@ rvm: 2.3
 podfile: Podfile
 script: 'sh scripts/ci.sh'
 before_script:
-  - pod install
+  - gem install bundler # if bundler is not installed already
+  - bundle install
+  - bundle exec pod repo update
+  - bundle exec pod install
 #  - brew install npm
 #  - npm install -g codeclimate-test-reporter
 after_success:
