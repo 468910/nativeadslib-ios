@@ -13,10 +13,10 @@ extension Selector {
 }
 
 /**
- Class that is used to open the NativeAd in An FullScreen Embedded WebView.
+ Class that is used to public the NativeAd in An FullScreen Embedded WebView.
  Default implementation for the NativeAdOpenerProtocol
  **/
-open class FullscreenBrowser: UIViewController, NativeAdOpenerProtocol {
+public class FullscreenBrowser: UIViewController, NativeAdOpenerProtocol {
 
 	internal var originalViewController: UIViewController?
 
@@ -87,7 +87,7 @@ open class FullscreenBrowser: UIViewController, NativeAdOpenerProtocol {
      - adUnit: adUnit whose ad we want to display
      */
 	@objc
-	open func load(_ adUnit: NativeAd) {
+	public func load(_ adUnit: NativeAd) {
 		// In case the original controller is attached to a UINavigationController, we use it
 		// to push our new fullscreen browser
 		if self.originalViewController!.navigationController != nil {
@@ -103,7 +103,7 @@ open class FullscreenBrowser: UIViewController, NativeAdOpenerProtocol {
 	}
 
 	@objc
-	open func didOpenBrowser(_ url: URL) {
+	public func didOpenBrowser(_ url: URL) {
 		if let _ = self.originalViewController?.navigationController {
 			self.originalViewController?.navigationController?.popViewController(animated: true)
 		} else {
@@ -111,11 +111,11 @@ open class FullscreenBrowser: UIViewController, NativeAdOpenerProtocol {
 		}
 	}
     
-    override open func viewDidDisappear(_ animated: Bool) {
+    override public func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
 
-	override open func willMove(toParentViewController parent: UIViewController?) {
+	override public func willMove(toParentViewController parent: UIViewController?) {
 		if parent == nil {
 			self.webView!.stopLoading()
 		}

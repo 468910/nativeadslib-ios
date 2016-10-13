@@ -8,6 +8,6 @@
 
 import UIKit
 
-open class CollectionAdCell : UICollectionViewCell {
+public class CollectionAdCell : UICollectionViewCell {
     @IBOutlet weak var appIcon: UIImageView!
 }

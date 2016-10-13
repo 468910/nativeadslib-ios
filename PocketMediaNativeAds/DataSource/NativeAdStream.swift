@@ -52,7 +52,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	}
     
 	@objc
-	open func didReceiveError(_ error: Error) {
+	public func didReceiveError(_ error: Error) {
         Logger.debug("There was an Error Retrieving ads", error)
 	}
     
@@ -60,7 +60,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     * This method is called when we hear back from the server.
     */
 	@objc
-	open func didReceiveResults(_ newAds: [NativeAd]) {
+	public func didReceiveResults(_ newAds: [NativeAd]) {
         if(newAds.count < 0){
             Logger.debug("Received no Ads")
         }
@@ -71,7 +71,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     /*
      * This method reloads the known ads.
      */
-	@objc open func reloadAds() {
+	@objc public func reloadAds() {
 		self.requestAds(self.limit)
 	}
 
@@ -79,7 +79,7 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	 Method used to load native ads.
 	 - limit: Limit on how many native ads are to be retrieved.
 	 */
-	@objc open func requestAds(_ limit: UInt) {
+	@objc public func requestAds(_ limit: UInt) {
         //Set the limit so that when the user does a reloadAds call we know what limit they want.
         self.limit = limit
         Logger.debug("Requesting ads (\(limit)) for affiliate id \(requester.adPlacementToken)")

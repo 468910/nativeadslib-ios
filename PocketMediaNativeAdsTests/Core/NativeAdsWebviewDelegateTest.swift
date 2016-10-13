@@ -54,7 +54,7 @@ class MockNativeAdsWebviewDelegate: NativeAdsWebviewDelegate {
     }
     
     var notifyServerOfFalseRedirectionCalled: Bool = false
-    override func notifyServerOfFalseRedirection(_ session: URLSession = URLSession.shared) {
+    override func notifyServerOfFalseRedirection(_ session: URLSession? = URLSession.shared) {
         notifyServerOfFalseRedirectionCalled = true
     }
 }
@@ -169,7 +169,12 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
             
             //It should succeed
             mockedSubject.returnCheckIfAppStoreUrl = true
-            var result = self.subject?.webView(self.webview!, shouldStartLoadWithRequest: URLRequest(URL: URL(string: "https://itunes.apple.com/us/app/2048/id839720238?mt=8")!), navigationType: UIWebViewNavigationType.LinkClicked)
+            
+            
+            //public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+            var request = URLRequest(url: URL(string: "https://itunes.apple.com/us/app/2048/id839720238?mt=8")!)
+            
+            var result = self.subject?.webView(self.webview!, shouldStartLoadWith: request, navigationType: UIWebViewNavigationType.linkClicked)
             XCTAssert(self.subject?.loadStatusCheckTimer == nil, "loadStatusCheckTimer should be nil")
             
             XCTAssert(mockedSubject.checkIfAppStoreUrlCalled == true, "checkIfAppStoreUrl should have called checkIfAppStoreUrl")
@@ -177,7 +182,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
             XCTAssert(result! == false, "webView should return false")
             
             mockedSubject.returnCheckIfAppStoreUrl = false
-            result = self.subject?.webView(self.webview!, shouldStartLoadWithRequest: URLRequest(URL: URL(string: "https://itunes.apple.com/us/app/2048/id839720238?mt=8")!), navigationType: UIWebViewNavigationType.LinkClicked)
+            result = self.subject?.webView(self.webview!, shouldStartLoadWith: request, navigationType: UIWebViewNavigationType.linkClicked)
             XCTAssert(result!, "webView should return true since its not done yet.")
         }
     }
@@ -240,7 +245,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
     
     func testNotifyServerOfFalseRedirection() {
         
-        class MockNSURLSessionDownloadTask: URLSessionDownloadTask {
+        class MockNSURLSessionDownloadTask: URLSessionDataTask {
             
             var resumeExpectation: XCTestExpectation?
             override func resume() {
@@ -256,11 +261,11 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
             
             var downloadTaskWithRequestCalled: Bool = false
             var downloadTask:MockNSURLSessionDownloadTask = MockNSURLSessionDownloadTask()
-            override func downloadTask(with request: URLRequest, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask {
+            
+            override open func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Swift.Void) -> URLSessionDataTask {
                 downloadTaskWithRequestCalled = true
                 
-                let url = URL(string: "http://google.co.uk/")!
-                completionHandler(url, URLResponse(url: url, mimeType: "", expectedContentLength: 0, textEncodingName: ""), nil)
+                completionHandler(nil, URLResponse(url: url, mimeType: "", expectedContentLength: 0, textEncodingName: ""), nil)
                 return downloadTask
             }
             
@@ -269,6 +274,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
         let session = MockSession()
         
         session.downloadTask.resumeExpectation = expectation(description: "Resume should be called")
+        
         subject!.notifyServerOfFalseRedirection(session)
         
         //wait for webview.request

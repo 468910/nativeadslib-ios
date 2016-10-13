@@ -40,7 +40,7 @@ struct Logger {
         log(.Error, message, error)
     }
     
-    public static func error(_ error: NSError? = nil) {
+    public static func error(_ error: Error? = nil) {
         log(.Error, "An error occured", error)
     }
 

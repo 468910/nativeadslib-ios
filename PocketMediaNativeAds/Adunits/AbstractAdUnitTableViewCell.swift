@@ -18,7 +18,7 @@ public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderPro
 	@IBOutlet weak var adTitle: UILabel?
 	@IBOutlet weak var adDescription: UILabel?
     
-    private(set) open var ad: NativeAd?
+    private(set) public var ad: NativeAd?
 
 	public func configureAdView(_ nativeAd: NativeAd) {
         self.selectionStyle = UITableViewCellSelectionStyle.none

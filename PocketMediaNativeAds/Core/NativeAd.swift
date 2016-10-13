@@ -15,17 +15,17 @@ public struct sImage {
 
 /**
  NativeAd model object
- It contains the attributes received from the API, and allows to open the click URL
+ It contains the attributes received from the API, and allows to public the click URL
  */
-open class NativeAd: NSObject {
+public class NativeAd: NSObject {
     /// Name of the ad, the title to be displayed.
-	fileprivate(set) open var campaignName: String!
+	fileprivate(set) public var campaignName: String!
 	/// Long description of the ad, with a description
-	fileprivate(set) open var campaignDescription: String!
+	fileprivate(set) public var campaignDescription: String!
 	/// URL to be opened when the user interacts with the ad
-	fileprivate(set) open var clickURL: URL!
+	fileprivate(set) public var clickURL: URL!
 	/// URL for the campaign icon
-	fileprivate(set) open var campaignImage: URL!
+	fileprivate(set) public var campaignImage: URL!
 	/// PocketMedia's Offer ID the ad is linked to
 	fileprivate(set) var offerId: UInt?
 	/// Ad Placement token the ad is linked to (via the ads request)
@@ -104,15 +104,15 @@ open class NativeAd: NSObject {
 		}
 	}
 
-	override open var description: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }
-	override open var debugDescription: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }
+	override public var description: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }
+	override public var debugDescription: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }
 
 	/**
      Opens Native Ad in an View handled by the NativeAdOpener
      - opener: NativeAdOpener instance handling the opening of the view where the NativeAd will be displayed.
      */
 	@objc
-	open func openAdUrl(_ opener: NativeAdOpenerProtocol) {
+	public func openAdUrl(_ opener: NativeAdOpenerProtocol) {
 		opener.load(self)
 	}
 

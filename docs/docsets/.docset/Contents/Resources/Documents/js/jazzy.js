@@ -1,10 +1,10 @@
-window.jazzy = {'docset': false}
+window.jazzy = {'docset': false};
 if (typeof window.dash != 'undefined') {
-  document.documentElement.className += ' dash'
+  document.documentElement.className += ' dash';
   window.jazzy.docset = true
 }
 if (navigator.userAgent.match(/xcode/i)) {
-  document.documentElement.className += ' xcode'
+  document.documentElement.className += ' xcode';
   window.jazzy.docset = true
 }
 

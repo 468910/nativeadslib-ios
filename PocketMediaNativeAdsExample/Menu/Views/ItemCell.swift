@@ -8,13 +8,13 @@
 
 import UIKit
 
-open class ItemCell: UITableViewCell {
+public class ItemCell: UITableViewCell {
   
-  @IBOutlet open weak var name: UILabel!
-  @IBOutlet open weak var artworkImageView: UIImageView!
-  @IBOutlet open weak var descriptionItem: UILabel!
+  @IBOutlet public weak var name: UILabel!
+  @IBOutlet public weak var artworkImageView: UIImageView!
+  @IBOutlet public weak var descriptionItem: UILabel!
   
-  override open func awakeFromNib() {
+  override public func awakeFromNib() {
     super.awakeFromNib()
   }
   

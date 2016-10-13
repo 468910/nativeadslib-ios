@@ -13,7 +13,7 @@ public enum PredefinedAdPositionError: Error {
 }
 
 @objc
-open class PredefinedAdPosition: NSObject, AdPosition {
+public class PredefinedAdPosition: NSObject, AdPosition {
     
     fileprivate var positions: [Int] = []
     fileprivate var adPositionOffset: Int = 0
@@ -27,11 +27,11 @@ open class PredefinedAdPosition: NSObject, AdPosition {
         reset()
     }
     
-    open func reset() {
+    public func reset() {
         currentIndex = adPositionOffset
     }
     
-    open func getAdPosition(_ maxSize: Int) throws -> NSNumber {
+    public func getAdPosition(_ maxSize: Int) throws -> NSNumber {
         if currentIndex >= positions.count {
             throw PredefinedAdPositionError.notEnoughPositions
         }
@@ -41,7 +41,7 @@ open class PredefinedAdPosition: NSObject, AdPosition {
     }
     
     //Default is 0
-    open func setadPositionOffset(_ position : Int) {
+    public func setadPositionOffset(_ position : Int) {
         self.adPositionOffset = position < 0 ? 0 : position
     }
     

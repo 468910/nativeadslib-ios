@@ -11,7 +11,7 @@ import UIKit
 
 @testable import PocketMediaNativeAds
 
-open class MockNativeAd: NativeAd {
+public class MockNativeAd: NativeAd {
 
 }
 
@@ -144,7 +144,7 @@ class FullscreenBrowserTest: XCTestCase {
             //Check if the close button was added
             var found = false
             for subview in (subject?.view.subviews)! {
-                if subview.isKindOfClass(UIButton) {
+                if subview is UIButton {
                     found = true
                 }
             }

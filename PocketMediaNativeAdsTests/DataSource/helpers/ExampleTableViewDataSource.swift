@@ -10,15 +10,15 @@ import Foundation
 import UIKit
 import PocketMediaNativeAds
 
-open class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
+public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 
 	var collection: [AnyObject] = []
 
-	open func numberOfSections(in tableView: UITableView) -> Int {
+	public func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
 
-	open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = self.collection.count
 		return self.collection.count
 	}
@@ -41,7 +41,7 @@ open class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 		}
 	}
 
-	open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		switch collection[(indexPath as NSIndexPath).row] {
 		case let item as ItemTableModel:
 			let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell

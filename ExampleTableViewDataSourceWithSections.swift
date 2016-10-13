@@ -9,20 +9,20 @@
 import UIKit
 import PocketMediaNativeAds
 
-open class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSource {
+public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSource {
     
     var collection: [AnyObject] = []
     
-    open func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
     
-    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return collection.count
     }
     
-    open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch(section){
         case 0:
             return "Section 1"
@@ -49,7 +49,7 @@ open class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSour
         }
     }
     
-    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let temp = (indexPath as NSIndexPath).row
         
         if((indexPath as NSIndexPath).row > 8 || (indexPath as NSIndexPath).row < 0){
@@ -73,7 +73,7 @@ open class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSour
         
     }
     
-    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return CGFloat.leastNormalMagnitude
         }

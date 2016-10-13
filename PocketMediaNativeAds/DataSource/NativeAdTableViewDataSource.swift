@@ -6,13 +6,15 @@
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
-    open var datasource: UITableViewDataSource
-    open var tableView: UITableView
-    open var delegate: NativeAdTableViewDelegate?
-    open var controller: UIViewController!
+public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
+    
+    public var datasource: UITableViewDataSource
+    public var tableView: UITableView
+    public var delegate: NativeAdTableViewDelegate?
+    public var controller: UIViewController!
     fileprivate var adPosition: AdPosition
 
 	deinit {
@@ -26,7 +28,7 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         } else {
             preconditionFailure("Your tableview must have a dataSource set before use.")
         }
-        
+
         self.adPosition = adPosition
         self.controller = controller
         self.adPosition = adPosition
@@ -64,7 +66,7 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 		}
 	}
 
-	open func getAdCell(_ nativeAd: NativeAd) -> NativeAdCell {
+	public func getAdCell(_ nativeAd: NativeAd) -> NativeAdCell {
 		switch (adUnitType) {
             case .custom:
               let cell = tableView.dequeueReusableCell(withIdentifier: "CustomAdCell") as! NativeAdCell
@@ -83,68 +85,66 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 
 	// Data Source
 	@objc
-	open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     	if let nativeAd = getNativeAdListing(indexPath) {
 			return getAdCell(nativeAd)
 		}
         return datasource.tableView(tableView, cellForRowAt: IndexPath(row: normalize(indexPath), section: (indexPath as NSIndexPath).section))
 	}
-    
+
 	@objc
-	open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let ads = adListings[section]?.count {
             return datasource.tableView(tableView, numberOfRowsInSection: section) + ads
         }
-        
+
         return datasource.tableView(tableView, numberOfRowsInSection: section)
 	}
 
-	open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+	public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		if let string = datasource.tableView?(tableView, titleForHeaderInSection: section) {
 			return string
 		}
         return nil
 	}
 
-	open func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+	public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		if let string = datasource.tableView?(tableView, titleForFooterInSection: section) {
 			return string
 		}
         return nil
 	}
 
-	open func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
       if (datasource.responds(to: #selector(UITableViewDataSource.tableView(_:canEditRowAt:)))){
 			return datasource.tableView!(tableView, canEditRowAt: indexPath)
 		}
         return true
 	}
 
-	open func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+	public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
       if (datasource.responds(to: #selector(UITableViewDataSource.tableView(_:canMoveRowAt:)))) {
 			return datasource.tableView!(tableView, canMoveRowAt: indexPath)
-		}
+        }
 		return true
 	}
 
-	open func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+	public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
       if (datasource.responds(to: #selector(UITableViewDataSource.tableView(_:sectionForSectionIndexTitle:at:)))) {
 			return datasource.tableView!(tableView, sectionForSectionIndexTitle: title, at: index)
 		}
         return 0
 	}
 
-	open func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-      if (datasource.responds(to: #selector(UITableViewDataSource.tableView(_:moveRowAt:to:)))) {
-			datasource.tableView?(tableView, moveRowAt: sourceIndexPath, to: destinationIndexPath)
-		}
+	public func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        datasource.tableView?(tableView, moveRowAt: sourceIndexPath, to: destinationIndexPath)
 	}
 
-	open func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-		datasource.tableView?(tableView, commit: editingStyle, forRowAt: indexPath)
+	public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        datasource.tableView?(tableView, commit: editingStyle, forRowAt: indexPath)
 	}
-    
-    open override func onAdRequestSuccess(_ ads: [NativeAd]) {
+
+    public override func onAdRequestSuccess(_ ads: [NativeAd]) {
         Logger.debugf("Received %d ads", ads.count);
         self.ads = ads
         setAdPositions(ads)
@@ -152,8 +152,8 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
             self.tableView.reloadData()
         })
     }
-    
-    open func setAdPositions(_ ads: [NativeAd]) {
+
+    public func setAdPositions(_ ads: [NativeAd]) {
         adPosition.reset()
         clear()
         let maxSections = datasource.numberOfSections!(in: tableView)
@@ -179,27 +179,27 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
             if adListings[section] == nil {
                 adListings[section] = [:]
             }
-            
+
             //Add the ad
             adListings[section]![position] = NativeAdInfo(ad: ad, position: position)
         }
         Logger.debugf("Set %d ad listings", adListings.count)
     }
-    
+
     fileprivate func clear() {
         adListings.removeAll()
         Logger.debug("Cleared adListings.");
     }
-    
+
     //Called everytime tableView.reloadData is called.
     //Like 'notifyDataSetChanged' in android
-    open func reload() {
+    public func reload() {
         setAdPositions(self.ads)
     }
 
     //The actual important to a UITableView functions are down below here.
 	@objc
-	open func numberOfSections(in tableView: UITableView) -> Int {
+	public func numberOfSections(in tableView: UITableView) -> Int {
 		if let numOfSectionsFunc = datasource.numberOfSections(`in`:) {
 			return numOfSectionsFunc(tableView)
 		}
@@ -219,5 +219,5 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         }
         return (indexRow as NSIndexPath).row - numOfAdsInsertedInSection
     }
-    
+
 }

@@ -8,11 +8,11 @@
 
 import UIKit
 
-open class ItemTableModel {
+public class ItemTableModel {
   
-  open var title           : String!
-  open var descriptionItem : String!
-  open var imageURL        : URL!
+  public var title           : String!
+  public var descriptionItem : String!
+  public var imageURL        : URL!
   
   public init?(dictionary: NSDictionary){
     if let name = dictionary["name"] as? String {

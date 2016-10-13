@@ -13,7 +13,7 @@ public enum MarginAdPositionError: Error {
 }
 
 @objc
-open class MarginAdPosition: NSObject, AdPosition {
+public class MarginAdPosition: NSObject, AdPosition {
     
     fileprivate var margin: Int = 2
     fileprivate var adPositionOffset: Int = -1
@@ -26,11 +26,11 @@ open class MarginAdPosition: NSObject, AdPosition {
         reset()
     }
     
-    open func reset() {
+    public func reset() {
         self.currentValue = adPositionOffset
     }
     
-    open func getAdPosition(_ maxSize: Int) throws -> NSNumber {
+    public func getAdPosition(_ maxSize: Int) throws -> NSNumber {
         if margin < 1 {
             throw MarginAdPositionError.invalidmargin
         }
@@ -39,7 +39,7 @@ open class MarginAdPosition: NSObject, AdPosition {
     }
     
     //Default is 0
-    open func setadPositionOffset(_ position : Int) {
+    public func setadPositionOffset(_ position : Int) {
         self.adPositionOffset = position < 0 ? 0 : position - 1
     }
     

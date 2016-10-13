@@ -52,7 +52,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 		}
 
 		if (webView.request != nil && checkIfAppStoreUrl(webView.request!)) {
-			Logger.debug("Could not open URL. Opening in system browser: \(webView.request?.url?.absoluteString)")
+			Logger.debug("Could not public URL. Opening in system browser: \(webView.request?.url?.absoluteString)")
 			self.openSystemBrowser(webView.request!.url!)
 		} else if loadStatusCheckTimer == nil {
             notifyServerOfFalseRedirection()
@@ -142,7 +142,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 		})
         dataTask.resume()
         
-        //Open the url that won't redirect to something proper.
+        //public the url that won't redirect to something proper.
         //Big chance its an app which is not available anymore in our region.
 		if self.webView?.request != nil {
 			openSystemBrowser((self.webView?.request?.url)!)
