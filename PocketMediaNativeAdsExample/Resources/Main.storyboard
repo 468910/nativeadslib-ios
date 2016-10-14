@@ -46,7 +46,7 @@
                                 <rect key="frame" x="0.0" y="86" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wLs-Ze-839" id="pCJ-SA-CqR">
-                                    <frame key="frameInset" width="342" height="79"/>
+                                    <frame key="frameInset" width="342" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ldj-Ln-pvM">
@@ -102,7 +102,7 @@
                                 <rect key="frame" x="0.0" y="166" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gn9-IO-c81" id="7iN-qb-MPW">
-                                    <frame key="frameInset" width="375" height="79"/>
+                                    <frame key="frameInset" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VJT-TG-8DU">
@@ -226,13 +226,13 @@
                                     <segue destination="4XU-81-jBI" kind="show" id="hgd-Yr-mYG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="25" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJa-Dl-1J1" userLabel="CollectionViewAdsButton">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="25" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJa-Dl-1J1" userLabel="TableViewWithSectionsButton">
                                 <frame key="frameInset" minX="123" minY="99" width="300" height="30"/>
                                 <state key="normal" title="CollectionView ">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="oB1-9S-LzC" kind="show" id="lVY-6C-XcP"/>
+                                    <segue destination="ntO-zd-uYh" kind="show" id="mCc-cM-j94"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OaE-zF-h95" userLabel="ScrollViewButton">
@@ -249,11 +249,11 @@
                                     <segue destination="I5O-nJ-ONb" kind="show" id="vd6-PJ-TH4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ax7-F0-Isp" userLabel="TableViewWithSections">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ax7-F0-Isp" userLabel="CollectionViewAdsButton">
                                 <frame key="frameInset" minX="75" minY="338" width="300" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="ntO-zd-uYh" kind="show" id="hU7-kB-GKV"/>
+                                    <segue destination="oB1-9S-LzC" kind="show" id="R0A-Ey-m2n"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -326,7 +326,7 @@
                     <navigationItem key="navigationItem" id="vq8-vW-Lkv">
                         <nil key="title"/>
                         <view key="titleView" userInteractionEnabled="NO" contentMode="scaleToFill" id="gka-Rt-nuj" userLabel="LogoContainer">
-                            <rect key="frame" x="8" y="6" width="359" height="33"/>
+                            <rect key="frame" x="8" y="5.5" width="359" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMarkBtn.png" translatesAutoresizingMaskIntoConstraints="NO" id="diO-n4-iLc">
@@ -359,12 +359,12 @@
                         </view>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionViewAdsButton" destination="vJa-Dl-1J1" id="4ZY-ii-5JN"/>
+                        <outlet property="collectionViewAdsButton" destination="Ax7-F0-Isp" id="CbA-bU-6QB"/>
                         <outlet property="pocketMediaLogo" destination="zSW-xU-dyf" id="5PS-UN-1p4"/>
                         <outlet property="scrollViewButton" destination="OaE-zF-h95" id="5Nl-SZ-QVS"/>
                         <outlet property="tableViewAdsButton" destination="DQ4-Vh-xFL" id="RnV-yR-F0n"/>
                         <outlet property="tableviewBigAdsButton" destination="VBe-sW-453" id="6UQ-dN-0ar"/>
-                        <outlet property="tableviewWithSectionsButton" destination="Ax7-F0-Isp" id="60i-IL-zuO"/>
+                        <outlet property="tableviewWithSectionsButton" destination="vJa-Dl-1J1" id="u9J-Fp-xTK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0LD-EP-jCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -471,7 +471,7 @@
                                 <rect key="frame" x="0.0" y="86" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OTQ-EG-haI" id="xBb-gP-G9w">
-                                    <frame key="frameInset" width="375" height="79"/>
+                                    <frame key="frameInset" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lqa-u5-a7b">
@@ -536,7 +536,7 @@
                                 <rect key="frame" x="0.0" y="166" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WbT-YL-P9L" id="F4x-l1-TOI">
-                                    <frame key="frameInset" width="342" height="79"/>
+                                    <frame key="frameInset" width="342" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lqQ-pX-lgR">
@@ -617,7 +617,7 @@
                                 <rect key="frame" x="0.0" y="94" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Fa-27-r3J" id="PKI-uH-2HI">
-                                    <frame key="frameInset" width="342" height="79"/>
+                                    <frame key="frameInset" width="342" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="90b-UL-l0e">
@@ -673,7 +673,7 @@
                                 <rect key="frame" x="0.0" y="174" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tyR-I2-l0F" id="7OD-A5-7zr">
-                                    <frame key="frameInset" width="375" height="79"/>
+                                    <frame key="frameInset" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="olo-aJ-w3v">
