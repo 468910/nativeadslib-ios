@@ -14,7 +14,7 @@
     <a title="NativeAdTableViewDelegate Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (21% documented)</p>
+        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (18% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -34,10 +34,13 @@
                 <a href="../Classes/AbstractAdUnitTableViewCell.html">AbstractAdUnitTableViewCell</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/AbstractAdUnitUIView.html">AbstractAdUnitUIView</a>
+                <a href="../Classes/DataSource.html">DataSource</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/AdViewLoader.html">AdViewLoader</a>
+                <a href="../Classes/FullscreenBrowser.html">FullscreenBrowser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MarginAdPosition.html">MarginAdPosition</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NativeAd.html">NativeAd</a>
@@ -46,22 +49,7 @@
                 <a href="../Classes/NativeAdCell.html">NativeAdCell</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/NativeAdCollectionCell.html">NativeAdCollectionCell</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/NativeAdCollectionViewDataSource.html">NativeAdCollectionViewDataSource</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/NativeAdCollectionViewDelegate.html">NativeAdCollectionViewDelegate</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/NativeAdCollectionViewLayout.html">NativeAdCollectionViewLayout</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/NativeAdStream.html">NativeAdStream</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes.html#/s:C20PocketMediaNativeAds21NativeAdTableViewCell">NativeAdTableViewCell</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NativeAdTableViewDataSource.html">NativeAdTableViewDataSource</a>
@@ -79,7 +67,35 @@
                 <a href="../Classes/PocketMediaNativeAdsBundle.html">PocketMediaNativeAdsBundle</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/ReferenceArray.html">ReferenceArray</a>
+                <a href="../Classes/PredefinedAdPosition.html">PredefinedAdPosition</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/AdUnitType.html">AdUnitType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/EImageType.html">EImageType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MarginAdPositionError.html">MarginAdPositionError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PredefinedAdPositionError.html">PredefinedAdPositionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImageView.html">UIImageView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableView.html">UITableView</a>
               </li>
             </ul>
           </li>
@@ -87,10 +103,16 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Protocols/AdPosition.html">AdPosition</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/DataSourceProtocol.html">DataSourceProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdTableViewDataSourceProtocol.html">NativeAdTableViewDataSourceProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a>
@@ -107,6 +129,9 @@
             <a href="../Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Structs.html#/s:V20PocketMediaNativeAds12NativeAdInfo">NativeAdInfo</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/NativeAdsConstants.html">NativeAdsConstants</a>
               </li>
               <li class="nav-group-task">
@@ -114,6 +139,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/NativeAdsConstants/NativeAds.html">– NativeAds</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V20PocketMediaNativeAds6sImage">sImage</a>
               </li>
             </ul>
           </li>
@@ -208,9 +236,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView23didSelectRowAtIndexPathCSo11NSIndexPath_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:didSelectRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView23didSelectRowAtIndexPathCSo11NSIndexPath_T_">tableView(_:didSelectRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView23didSelectRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didSelectRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView23didSelectRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:didSelectRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -227,9 +255,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView24heightForHeaderInSectionSi_V12CoreGraphics7CGFloat"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:heightForHeaderInSection:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView24heightForHeaderInSectionSi_V12CoreGraphics7CGFloat">tableView(_:heightForHeaderInSection:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView24heightForHeaderInSectionSi_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:heightForHeaderInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView24heightForHeaderInSectionSi_V12CoreGraphics7CGFloat">tableView(tableView:heightForHeaderInSection:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -246,9 +274,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView23heightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:heightForRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView23heightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat">tableView(_:heightForRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView23heightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:heightForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView23heightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat">tableView(tableView:heightForRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -265,9 +293,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView22viewForHeaderInSectionSi_GSqCSo6UIView_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:viewForHeaderInSection:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView22viewForHeaderInSectionSi_GSqCSo6UIView_">tableView(_:viewForHeaderInSection:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView22viewForHeaderInSectionSi_GSqCSo6UIView_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:viewForHeaderInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView22viewForHeaderInSectionSi_GSqCSo6UIView_">tableView(tableView:viewForHeaderInSection:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -284,9 +312,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView40accessoryButtonTappedForRowWithIndexPathCSo11NSIndexPath_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:accessoryButtonTappedForRowWithIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView40accessoryButtonTappedForRowWithIndexPathCSo11NSIndexPath_T_">tableView(_:accessoryButtonTappedForRowWithIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView40accessoryButtonTappedForRowWithIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:accessoryButtonTappedForRowWithIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView40accessoryButtonTappedForRowWithIndexPathCSo11NSIndexPath_T_">tableView(tableView:accessoryButtonTappedForRowWithIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -303,9 +331,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView22canFocusRowAtIndexPathCSo11NSIndexPath_Sb"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:canFocusRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView22canFocusRowAtIndexPathCSo11NSIndexPath_Sb">tableView(_:canFocusRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView22canFocusRowAtIndexPathCSo11NSIndexPath_Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:canFocusRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView22canFocusRowAtIndexPathCSo11NSIndexPath_Sb">tableView(tableView:canFocusRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -322,9 +350,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView25didDeselectRowAtIndexPathCSo11NSIndexPath_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:didDeselectRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView25didDeselectRowAtIndexPathCSo11NSIndexPath_T_">tableView(_:didDeselectRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView25didDeselectRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didDeselectRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView25didDeselectRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:didDeselectRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -341,9 +369,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView20didEndDisplayingCellCSo15UITableViewCell17forRowAtIndexPathCSo11NSIndexPath_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:didEndDisplayingCell:forRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView20didEndDisplayingCellCSo15UITableViewCell17forRowAtIndexPathCSo11NSIndexPath_T_">tableView(_:didEndDisplayingCell:forRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView20didEndDisplayingCellCSo15UITableViewCell17forRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didEndDisplayingCell:forRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView20didEndDisplayingCellCSo15UITableViewCell17forRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:didEndDisplayingCell:forRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -360,9 +388,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView26didEndDisplayingFooterViewCSo6UIView10forSectionSi_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:didEndDisplayingFooterView:forSection:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView26didEndDisplayingFooterViewCSo6UIView10forSectionSi_T_">tableView(_:didEndDisplayingFooterView:forSection:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26didEndDisplayingFooterViewCSo6UIView10forSectionSi_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didEndDisplayingFooterView:forSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26didEndDisplayingFooterViewCSo6UIView10forSectionSi_T_">tableView(tableView:didEndDisplayingFooterView:forSection:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -379,9 +407,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView27didEndEditingRowAtIndexPathCSo11NSIndexPath_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:didEndEditingRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView27didEndEditingRowAtIndexPathCSo11NSIndexPath_T_">tableView(_:didEndEditingRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView27didEndEditingRowAtIndexPathGSqCSo11NSIndexPath__T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didEndEditingRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView27didEndEditingRowAtIndexPathGSqCSo11NSIndexPath__T_">tableView(tableView:didEndEditingRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -398,9 +426,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView26didEndDisplayingHeaderViewCSo6UIView10forSectionSi_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:didEndDisplayingHeaderView:forSection:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView26didEndDisplayingHeaderViewCSo6UIView10forSectionSi_T_">tableView(_:didEndDisplayingHeaderView:forSection:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26didEndDisplayingHeaderViewCSo6UIView10forSectionSi_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didEndDisplayingHeaderView:forSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26didEndDisplayingHeaderViewCSo6UIView10forSectionSi_T_">tableView(tableView:didEndDisplayingHeaderView:forSection:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -417,9 +445,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView16canPerformActionV10ObjectiveC8Selector17forRowAtIndexPathCSo11NSIndexPath10withSenderGSqPs9AnyObject___Sb"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:canPerformAction:forRowAtIndexPath:withSender:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView16canPerformActionV10ObjectiveC8Selector17forRowAtIndexPathCSo11NSIndexPath10withSenderGSqPs9AnyObject___Sb">tableView(_:canPerformAction:forRowAtIndexPath:withSender:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView16canPerformActionV10ObjectiveC8Selector17forRowAtIndexPathCSo11NSIndexPath10withSenderGSqPs9AnyObject___Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:canPerformAction:forRowAtIndexPath:withSender:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView16canPerformActionV10ObjectiveC8Selector17forRowAtIndexPathCSo11NSIndexPath10withSenderGSqPs9AnyObject___Sb">tableView(tableView:canPerformAction:forRowAtIndexPath:withSender:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -436,9 +464,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView26didHighlightRowAtIndexPathCSo11NSIndexPath_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:didHighlightRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView26didHighlightRowAtIndexPathCSo11NSIndexPath_T_">tableView(_:didHighlightRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26didHighlightRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didHighlightRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26didHighlightRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:didHighlightRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -455,9 +483,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView28didUnhighlightRowAtIndexPathCSo11NSIndexPath_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:didUnhighlightRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView28didUnhighlightRowAtIndexPathCSo11NSIndexPath_T_">tableView(_:didUnhighlightRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView28didUnhighlightRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didUnhighlightRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView28didUnhighlightRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:didUnhighlightRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -474,9 +502,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView23didUpdateFocusInContextCSo29UITableViewFocusUpdateContext24withAnimationCoordinatorCSo27UIFocusAnimationCoordinator_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:didUpdateFocusInContext:withAnimationCoordinator:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView23didUpdateFocusInContextCSo29UITableViewFocusUpdateContext24withAnimationCoordinatorCSo27UIFocusAnimationCoordinator_T_">tableView(_:didUpdateFocusInContext:withAnimationCoordinator:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView23didUpdateFocusInContextCSo29UITableViewFocusUpdateContext24withAnimationCoordinatorCSo27UIFocusAnimationCoordinator_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didUpdateFocusInContext:withAnimationCoordinator:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView23didUpdateFocusInContextCSo29UITableViewFocusUpdateContext24withAnimationCoordinatorCSo27UIFocusAnimationCoordinator_T_">tableView(tableView:didUpdateFocusInContext:withAnimationCoordinator:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -493,9 +521,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView28editActionsForRowAtIndexPathCSo11NSIndexPath_GSqGSaCSo20UITableViewRowAction__"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:editActionsForRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView28editActionsForRowAtIndexPathCSo11NSIndexPath_GSqGSaCSo20UITableViewRowAction__">tableView(_:editActionsForRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView28editActionsForRowAtIndexPathCSo11NSIndexPath_GSqGSaCSo20UITableViewRowAction__"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:editActionsForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView28editActionsForRowAtIndexPathCSo11NSIndexPath_GSqGSaCSo20UITableViewRowAction__">tableView(tableView:editActionsForRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -512,9 +540,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView29editingStyleForRowAtIndexPathCSo11NSIndexPath_OSC27UITableViewCellEditingStyle"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:editingStyleForRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView29editingStyleForRowAtIndexPathCSo11NSIndexPath_OSC27UITableViewCellEditingStyle">tableView(_:editingStyleForRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView29editingStyleForRowAtIndexPathCSo11NSIndexPath_OSC27UITableViewCellEditingStyle"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:editingStyleForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView29editingStyleForRowAtIndexPathCSo11NSIndexPath_OSC27UITableViewCellEditingStyle">tableView(tableView:editingStyleForRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -531,9 +559,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView33estimatedHeightForFooterInSectionSi_V12CoreGraphics7CGFloat"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:estimatedHeightForFooterInSection:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView33estimatedHeightForFooterInSectionSi_V12CoreGraphics7CGFloat">tableView(_:estimatedHeightForFooterInSection:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView33estimatedHeightForFooterInSectionSi_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:estimatedHeightForFooterInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView33estimatedHeightForFooterInSectionSi_V12CoreGraphics7CGFloat">tableView(tableView:estimatedHeightForFooterInSection:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -550,9 +578,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView33estimatedHeightForHeaderInSectionSi_V12CoreGraphics7CGFloat"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:estimatedHeightForHeaderInSection:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView33estimatedHeightForHeaderInSectionSi_V12CoreGraphics7CGFloat">tableView(_:estimatedHeightForHeaderInSection:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView33estimatedHeightForHeaderInSectionSi_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:estimatedHeightForHeaderInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView33estimatedHeightForHeaderInSectionSi_V12CoreGraphics7CGFloat">tableView(tableView:estimatedHeightForHeaderInSection:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -569,9 +597,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView32estimatedHeightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:estimatedHeightForRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView32estimatedHeightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat">tableView(_:estimatedHeightForRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView32estimatedHeightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:estimatedHeightForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView32estimatedHeightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat">tableView(tableView:estimatedHeightForRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -588,9 +616,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView24heightForFooterInSectionSi_V12CoreGraphics7CGFloat"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:heightForFooterInSection:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView24heightForFooterInSectionSi_V12CoreGraphics7CGFloat">tableView(_:heightForFooterInSection:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView24heightForFooterInSectionSi_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:heightForFooterInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView24heightForFooterInSectionSi_V12CoreGraphics7CGFloat">tableView(tableView:heightForFooterInSection:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -607,9 +635,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView33indentationLevelForRowAtIndexPathCSo11NSIndexPath_Si"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:indentationLevelForRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView33indentationLevelForRowAtIndexPathCSo11NSIndexPath_Si">tableView(_:indentationLevelForRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView33indentationLevelForRowAtIndexPathCSo11NSIndexPath_Si"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:indentationLevelForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView33indentationLevelForRowAtIndexPathCSo11NSIndexPath_Si">tableView(tableView:indentationLevelForRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -626,9 +654,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView13performActionV10ObjectiveC8Selector17forRowAtIndexPathCSo11NSIndexPath10withSenderGSqPs9AnyObject___T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:performAction:forRowAtIndexPath:withSender:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView13performActionV10ObjectiveC8Selector17forRowAtIndexPathCSo11NSIndexPath10withSenderGSqPs9AnyObject___T_">tableView(_:performAction:forRowAtIndexPath:withSender:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView13performActionV10ObjectiveC8Selector17forRowAtIndexPathCSo11NSIndexPath10withSenderGSqPs9AnyObject___T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:performAction:forRowAtIndexPath:withSender:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView13performActionV10ObjectiveC8Selector17forRowAtIndexPathCSo11NSIndexPath10withSenderGSqPs9AnyObject___T_">tableView(tableView:performAction:forRowAtIndexPath:withSender:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -645,9 +673,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView29shouldHighlightRowAtIndexPathCSo11NSIndexPath_Sb"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:shouldHighlightRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView29shouldHighlightRowAtIndexPathCSo11NSIndexPath_Sb">tableView(_:shouldHighlightRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView29shouldHighlightRowAtIndexPathCSo11NSIndexPath_Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:shouldHighlightRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView29shouldHighlightRowAtIndexPathCSo11NSIndexPath_Sb">tableView(tableView:shouldHighlightRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -664,9 +692,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView38shouldIndentWhileEditingRowAtIndexPathCSo11NSIndexPath_Sb"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:shouldIndentWhileEditingRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView38shouldIndentWhileEditingRowAtIndexPathCSo11NSIndexPath_Sb">tableView(_:shouldIndentWhileEditingRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView38shouldIndentWhileEditingRowAtIndexPathCSo11NSIndexPath_Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:shouldIndentWhileEditingRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView38shouldIndentWhileEditingRowAtIndexPathCSo11NSIndexPath_Sb">tableView(tableView:shouldIndentWhileEditingRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -683,9 +711,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView31shouldShowMenuForRowAtIndexPathCSo11NSIndexPath_Sb"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:shouldShowMenuForRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView31shouldShowMenuForRowAtIndexPathCSo11NSIndexPath_Sb">tableView(_:shouldShowMenuForRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView31shouldShowMenuForRowAtIndexPathCSo11NSIndexPath_Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:shouldShowMenuForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView31shouldShowMenuForRowAtIndexPathCSo11NSIndexPath_Sb">tableView(tableView:shouldShowMenuForRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -702,9 +730,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView24willSelectRowAtIndexPathCSo11NSIndexPath_GSqS2__"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:willSelectRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView24willSelectRowAtIndexPathCSo11NSIndexPath_GSqS2__">tableView(_:willSelectRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView24willSelectRowAtIndexPathCSo11NSIndexPath_GSqS2__"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:willSelectRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView24willSelectRowAtIndexPathCSo11NSIndexPath_GSqS2__">tableView(tableView:willSelectRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -721,9 +749,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView26shouldUpdateFocusInContextCSo29UITableViewFocusUpdateContext_Sb"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:shouldUpdateFocusInContext:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView26shouldUpdateFocusInContextCSo29UITableViewFocusUpdateContext_Sb">tableView(_:shouldUpdateFocusInContext:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26shouldUpdateFocusInContextCSo29UITableViewFocusUpdateContext_Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:shouldUpdateFocusInContext:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26shouldUpdateFocusInContextCSo29UITableViewFocusUpdateContext_Sb">tableView(tableView:shouldUpdateFocusInContext:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -740,9 +768,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView40targetIndexPathForMoveFromRowAtIndexPathCSo11NSIndexPath19toProposedIndexPathS2__S2_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:targetIndexPathForMoveFromRowAtIndexPath:toProposedIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView40targetIndexPathForMoveFromRowAtIndexPathCSo11NSIndexPath19toProposedIndexPathS2__S2_">tableView(_:targetIndexPathForMoveFromRowAtIndexPath:toProposedIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView40targetIndexPathForMoveFromRowAtIndexPathCSo11NSIndexPath19toProposedIndexPathS2__S2_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:targetIndexPathForMoveFromRowAtIndexPath:toProposedIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView40targetIndexPathForMoveFromRowAtIndexPathCSo11NSIndexPath19toProposedIndexPathS2__S2_">tableView(tableView:targetIndexPathForMoveFromRowAtIndexPath:toProposedIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -759,9 +787,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView49titleForDeleteConfirmationButtonForRowAtIndexPathCSo11NSIndexPath_GSqSS_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:titleForDeleteConfirmationButtonForRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView49titleForDeleteConfirmationButtonForRowAtIndexPathCSo11NSIndexPath_GSqSS_">tableView(_:titleForDeleteConfirmationButtonForRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView49titleForDeleteConfirmationButtonForRowAtIndexPathCSo11NSIndexPath_GSqSS_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView49titleForDeleteConfirmationButtonForRowAtIndexPathCSo11NSIndexPath_GSqSS_">tableView(tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -778,9 +806,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView22viewForFooterInSectionSi_GSqCSo6UIView_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:viewForFooterInSection:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView22viewForFooterInSectionSi_GSqCSo6UIView_">tableView(_:viewForFooterInSection:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView22viewForFooterInSectionSi_GSqCSo6UIView_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:viewForFooterInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView22viewForFooterInSectionSi_GSqCSo6UIView_">tableView(tableView:viewForFooterInSection:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -797,9 +825,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView30willBeginEditingRowAtIndexPathCSo11NSIndexPath_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:willBeginEditingRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView30willBeginEditingRowAtIndexPathCSo11NSIndexPath_T_">tableView(_:willBeginEditingRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView30willBeginEditingRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:willBeginEditingRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView30willBeginEditingRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:willBeginEditingRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -816,9 +844,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView26willDeselectRowAtIndexPathCSo11NSIndexPath_GSqS2__"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:willDeselectRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView26willDeselectRowAtIndexPathCSo11NSIndexPath_GSqS2__">tableView(_:willDeselectRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26willDeselectRowAtIndexPathCSo11NSIndexPath_GSqS2__"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:willDeselectRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26willDeselectRowAtIndexPathCSo11NSIndexPath_GSqS2__">tableView(tableView:willDeselectRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -835,9 +863,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView15willDisplayCellCSo15UITableViewCell17forRowAtIndexPathCSo11NSIndexPath_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:willDisplayCell:forRowAtIndexPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView15willDisplayCellCSo15UITableViewCell17forRowAtIndexPathCSo11NSIndexPath_T_">tableView(_:willDisplayCell:forRowAtIndexPath:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView15willDisplayCellCSo15UITableViewCell17forRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:willDisplayCell:forRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView15willDisplayCellCSo15UITableViewCell17forRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:willDisplayCell:forRowAtIndexPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -854,9 +882,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView21willDisplayFooterViewCSo6UIView10forSectionSi_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:willDisplayFooterView:forSection:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView21willDisplayFooterViewCSo6UIView10forSectionSi_T_">tableView(_:willDisplayFooterView:forSection:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView21willDisplayFooterViewCSo6UIView10forSectionSi_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:willDisplayFooterView:forSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView21willDisplayFooterViewCSo6UIView10forSectionSi_T_">tableView(tableView:willDisplayFooterView:forSection:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -873,9 +901,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView21willDisplayHeaderViewCSo6UIView10forSectionSi_T_"></a>
-                    <a name="//apple_ref/swift/Method/tableView(_:willDisplayHeaderView:forSection:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFTCSo11UITableView21willDisplayHeaderViewCSo6UIView10forSectionSi_T_">tableView(_:willDisplayHeaderView:forSection:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView21willDisplayHeaderViewCSo6UIView10forSectionSi_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:willDisplayHeaderView:forSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView21willDisplayHeaderViewCSo6UIView10forSectionSi_T_">tableView(tableView:willDisplayHeaderView:forSection:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -894,8 +922,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="http://pocketmedia.mobi" target="_blank" rel="external">Pocket Media Tech Team</a>. All rights reserved. (Last updated: 2016-09-08)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2016 <a class="link" href="http://pocketmedia.mobi" target="_blank" rel="external">Pocket Media Support</a>. All rights reserved. (Last updated: 2016-10-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
