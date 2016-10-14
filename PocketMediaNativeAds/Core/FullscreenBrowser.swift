@@ -24,7 +24,7 @@ public class FullscreenBrowser: UIViewController, NativeAdOpenerDelegate {
 	internal var webViewDelegate: NativeAdsWebviewDelegate?
 
 	@objc
-	internal init(parentViewController: UIViewController) {
+	public init(parentViewController: UIViewController) {
 		super.init(nibName: nil, bundle: NSBundle.mainBundle())
 
 		self.originalViewController = parentViewController
