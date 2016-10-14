@@ -8,7 +8,7 @@
 
 import Foundation
 @objc
-public protocol NativeAdOpenerProtocol: NativeAdsWebviewRedirectionsDelegate {
+public protocol NativeAdOpenerDelegate: NativeAdsWebviewRedirectionsDelegate {
     /**
      Starts loading the ad within the current context (controller and navigation)
      - adUnit: adUnit whose ad we want to display

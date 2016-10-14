@@ -112,7 +112,7 @@ public class NativeAd: NSObject {
      - opener: NativeAdOpener instance handling the opening of the view where the NativeAd will be displayed.
      */
 	@objc
-	public func openAdUrl(opener: NativeAdOpenerProtocol) {
+	public func openAdUrl(opener: NativeAdOpenerDelegate) {
 		opener.load(self)
 	}
 

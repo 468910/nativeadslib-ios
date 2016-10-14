@@ -14,9 +14,9 @@ extension Selector {
 
 /**
  Class that is used to open the NativeAd in An FullScreen Embedded WebView.
- Default implementation for the NativeAdOpenerProtocol
+ Default implementation for the NativeAdOpenerDelegate
  **/
-public class FullscreenBrowser: UIViewController, NativeAdOpenerProtocol {
+public class FullscreenBrowser: UIViewController, NativeAdOpenerDelegate {
 
 	internal var originalViewController: UIViewController?
 
