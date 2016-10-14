@@ -9,7 +9,7 @@
 import XCTest
 @testable import PocketMediaNativeAds
 
-public class MockOpener: NativeAdOpenerProtocol {
+public class MockOpener: NativeAdOpenerDelegate {
 	private (set) var loadCalled: Bool = false
 
 	@objc
