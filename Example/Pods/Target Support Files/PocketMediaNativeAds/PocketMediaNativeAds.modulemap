@@ -1,6 +1,0 @@
-framework module PocketMediaNativeAds {
-  umbrella header "PocketMediaNativeAds-umbrella.h"
-
-  export *
-  module * { export * }
-}

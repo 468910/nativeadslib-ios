@@ -8,8 +8,11 @@
 
 import Foundation
 
+@objc
 public protocol DataSourceProtocol {
-   func onUpdateDataSource()
-   func numberOfElements() -> Int
-  
+	func onUpdateDataSource()
+	func numberOfElements() -> Int
+    func attachAdStream(adStream : NativeAdStream)
+ 
+
 }
