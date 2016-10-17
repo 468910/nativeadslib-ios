@@ -40,14 +40,14 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 		return url
 	}
 
-	public func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+	public func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
 		// Ignore NSURLErrorDomain error -999.
-		if (error.code == NSURLErrorCancelled) {
+		if (error!.code == NSURLErrorCancelled) {
 			return
 		}
 
 		// Ignore "Frame Load Interrupted" errors. Seen after app store links.
-		if (error.code == 102) {
+		if (error!.code == 102) {
 			Logger.debug("FrameLoad Error supressed")
 			return
 		}
@@ -56,10 +56,10 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 			Logger.debug("Could not open URL. Opening in system browser: \(webView.request?.URL?.absoluteString)")
 			self.openSystemBrowser(webView.request!.URL!)
 		} else if loadStatusCheckTimer == nil {
-            notifyServerOfFalseRedirection()
+			notifyServerOfFalseRedirection()
 		}
 
-        Logger.debugf("DidFailLoadWithError: %@", description)
+		Logger.debugf("DidFailLoadWithError: %@", description)
 	}
 
 	public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
@@ -102,7 +102,7 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 
 	public func webViewDidFinishLoad(webView: UIWebView) {
 		if (loadStatusCheckTimer == nil) {
-            self.loadStatusCheckTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(timeout), userInfo: nil, repeats: false)
+			self.loadStatusCheckTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(timeout), userInfo: nil, repeats: false)
 		}
 	}
 
@@ -114,13 +114,13 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 		self.webView!.loadRequest(request)
 		Logger.debug("webview LoadUrl Exited")
 	}
-    
-    //Called when a redirect takes too long.
-    //We can't instantly call notifyServerOfFalseRedirection from scheduledTimerWithTimeInterval. It throws an exception.
-    public func timeout() {
-        Logger.debug("Timed out")
-        self.notifyServerOfFalseRedirection()
-    }
+
+	// Called when a redirect takes too long.
+	// We can't instantly call notifyServerOfFalseRedirection from scheduledTimerWithTimeInterval. It throws an exception.
+	public func timeout() {
+		Logger.debug("Timed out")
+		self.notifyServerOfFalseRedirection()
+	}
 
 	@objc
 	internal func notifyServerOfFalseRedirection(session: NSURLSession = NSURLSession.sharedSession()) {
@@ -132,27 +132,27 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 		req.HTTPBody = dataBody.dataUsingEncoding(NSUTF8StringEncoding)
 
 		let dataTask = session.downloadTaskWithRequest(req, completionHandler: { data, response, error in
-            if error != nil {
-                Logger.error("error", error!)
-            }
-            if let httpResponse = response as? NSHTTPURLResponse {
-                if httpResponse.statusCode != 200 {
-                    Logger.debug("response was not 200: \(response)")
-                    return
-                }
-            }
+			if error != nil {
+				Logger.error("error", error!)
+			}
+			if let httpResponse = response as? NSHTTPURLResponse {
+				if httpResponse.statusCode != 200 {
+					Logger.debug("response was not 200: \(response)")
+					return
+				}
+			}
 		})
-        dataTask.resume()
-        
-        //Open the url that won't redirect to something proper.
-        //Big chance its an app which is not available anymore in our region.
+		dataTask.resume()
+
+		// Open the url that won't redirect to something proper.
+		// Big chance its an app which is not available anymore in our region.
 		if self.webView?.request != nil {
 			openSystemBrowser((self.webView?.request?.URL)!)
 		}
 	}
 
 	private func constructDataBodyForNotifyingServerOfFalseRedirection() -> String {
-        let finalUrl: String = (webView != nil && webView!.request != nil) ? webView!.request!.URL!.absoluteString! : ""
+		let finalUrl: String = (webView != nil && webView!.request != nil) ? webView!.request!.URL!.absoluteString! : ""
 		let offerid = String(nativeAdUnit?.offerId!)
 		let adPlacementToken = nativeAdUnit?.adPlacementToken
 		let dataBody = "offer_id=\(offerid)" + "&placement_id=\(adPlacementToken)" + "&final_url=\(finalUrl)"
@@ -160,8 +160,8 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 	}
 
 	/**
-     Opens the system URL, will be invoked when we must not display the URL in the webview.
-     */
+	 Opens the system URL, will be invoked when we must not display the URL in the webview.
+	 */
 	public func openSystemBrowser(url: NSURL) {
 		let urlToOpen: NSURL = checkSimulatorURL(url)
 		Logger.debugf("\n\nRequesting to Safari: %@\n\n", urlToOpen.absoluteString!)
