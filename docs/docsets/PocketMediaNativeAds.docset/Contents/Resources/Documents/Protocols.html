@@ -13,7 +13,7 @@
     <a title="Protocols  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">PocketMediaNativeAds Docs</a> (21% documented)</p>
+        <p><a href="index.html">PocketMediaNativeAds Docs</a> (18% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -33,10 +33,13 @@
                 <a href="Classes/AbstractAdUnitTableViewCell.html">AbstractAdUnitTableViewCell</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/AbstractAdUnitUIView.html">AbstractAdUnitUIView</a>
+                <a href="Classes/DataSource.html">DataSource</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/AdViewLoader.html">AdViewLoader</a>
+                <a href="Classes/FullscreenBrowser.html">FullscreenBrowser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MarginAdPosition.html">MarginAdPosition</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/NativeAd.html">NativeAd</a>
@@ -45,22 +48,7 @@
                 <a href="Classes/NativeAdCell.html">NativeAdCell</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/NativeAdCollectionCell.html">NativeAdCollectionCell</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/NativeAdCollectionViewDataSource.html">NativeAdCollectionViewDataSource</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/NativeAdCollectionViewDelegate.html">NativeAdCollectionViewDelegate</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/NativeAdCollectionViewLayout.html">NativeAdCollectionViewLayout</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Classes/NativeAdStream.html">NativeAdStream</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes.html#/s:C20PocketMediaNativeAds21NativeAdTableViewCell">NativeAdTableViewCell</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/NativeAdTableViewDataSource.html">NativeAdTableViewDataSource</a>
@@ -78,7 +66,35 @@
                 <a href="Classes/PocketMediaNativeAdsBundle.html">PocketMediaNativeAdsBundle</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/ReferenceArray.html">ReferenceArray</a>
+                <a href="Classes/PredefinedAdPosition.html">PredefinedAdPosition</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/AdUnitType.html">AdUnitType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/EImageType.html">EImageType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/MarginAdPositionError.html">MarginAdPositionError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/PredefinedAdPositionError.html">PredefinedAdPositionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/UIImageView.html">UIImageView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UITableView.html">UITableView</a>
               </li>
             </ul>
           </li>
@@ -86,10 +102,16 @@
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Protocols/AdPosition.html">AdPosition</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/DataSourceProtocol.html">DataSourceProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/NativeAdTableViewDataSourceProtocol.html">NativeAdTableViewDataSourceProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a>
@@ -106,6 +128,9 @@
             <a href="Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Structs.html#/s:V20PocketMediaNativeAds12NativeAdInfo">NativeAdInfo</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/NativeAdsConstants.html">NativeAdsConstants</a>
               </li>
               <li class="nav-group-task">
@@ -113,6 +138,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/NativeAdsConstants/NativeAds.html">– NativeAds</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs.html#/s:V20PocketMediaNativeAds6sImage">sImage</a>
               </li>
             </ul>
           </li>
@@ -126,6 +154,30 @@
 
           </section>
           <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P20PocketMediaNativeAds10AdPosition"></a>
+                    <a name="//apple_ref/swift/Protocol/AdPosition" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P20PocketMediaNativeAds10AdPosition">AdPosition</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/AdPosition.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
             <div class="task-group">
               <ul>
                 <li class="item">
@@ -148,16 +200,12 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:P20PocketMediaNativeAds18URLSessionProtocol"></a>
-                    <a name="//apple_ref/swift/Protocol/URLSessionProtocol" class="dashAnchor"></a>
-                    <a class="token" href="#/s:P20PocketMediaNativeAds18URLSessionProtocol">URLSessionProtocol</a>
+                    <a name="/s:P20PocketMediaNativeAds35NativeAdTableViewDataSourceProtocol"></a>
+                    <a name="//apple_ref/swift/Protocol/NativeAdTableViewDataSourceProtocol" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P20PocketMediaNativeAds35NativeAdTableViewDataSourceProtocol">NativeAdTableViewDataSourceProtocol</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -167,7 +215,7 @@
                       <div class="abstract">
                         <p>Undocumented</p>
 
-                        <a href="Protocols/URLSessionProtocol.html" class="slightly-smaller">See more</a>
+                        <a href="Protocols/NativeAdTableViewDataSourceProtocol.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>
@@ -189,15 +237,39 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Protocol for the opening of the Native ads.</p>
+                        <p>Undocumented</p>
 
                         <a href="Protocols/NativeAdOpenerDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P20PocketMediaNativeAds27NativeAdsConnectionDelegate"></a>
+                    <a name="//apple_ref/swift/Protocol/NativeAdsConnectionDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P20PocketMediaNativeAds27NativeAdsConnectionDelegate">NativeAdsConnectionDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This delegate allows the invoking classes to react to native-ads related events</p>
+
+                        <a href="Protocols/NativeAdsConnectionDelegate.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">NativeAdOpenerDelegate</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">NativeAdsConnectionDelegate</span></code></pre>
 
                         </div>
                       </div>
@@ -244,9 +316,9 @@ when the final url was opened in the external browser (this will usually an app 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:P20PocketMediaNativeAds27NativeAdsConnectionDelegate"></a>
-                    <a name="//apple_ref/swift/Protocol/NativeAdsConnectionDelegate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:P20PocketMediaNativeAds27NativeAdsConnectionDelegate">NativeAdsConnectionDelegate</a>
+                    <a name="/s:P20PocketMediaNativeAds18URLSessionProtocol"></a>
+                    <a name="//apple_ref/swift/Protocol/URLSessionProtocol" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P20PocketMediaNativeAds18URLSessionProtocol">URLSessionProtocol</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -254,17 +326,9 @@ when the final url was opened in the external browser (this will usually an app 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This delegate allows the invoking classes to react to native-ads related events</p>
+                        <p>Undocumented</p>
 
-                        <a href="Protocols/NativeAdsConnectionDelegate.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">NativeAdsConnectionDelegate</span></code></pre>
-
-                        </div>
+                        <a href="Protocols/URLSessionProtocol.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>
@@ -274,8 +338,8 @@ when the final url was opened in the external browser (this will usually an app 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="http://pocketmedia.mobi" target="_blank" rel="external">Pocket Media Tech Team</a>. All rights reserved. (Last updated: 2016-09-08)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2016 <a class="link" href="http://pocketmedia.mobi" target="_blank" rel="external">Pocket Media Support</a>. All rights reserved. (Last updated: 2016-10-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

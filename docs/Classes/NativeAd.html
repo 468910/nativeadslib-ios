@@ -14,7 +14,7 @@
     <a title="NativeAd Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (21% documented)</p>
+        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (18% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -34,10 +34,13 @@
                 <a href="../Classes/AbstractAdUnitTableViewCell.html">AbstractAdUnitTableViewCell</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/AbstractAdUnitUIView.html">AbstractAdUnitUIView</a>
+                <a href="../Classes/DataSource.html">DataSource</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/AdViewLoader.html">AdViewLoader</a>
+                <a href="../Classes/FullscreenBrowser.html">FullscreenBrowser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MarginAdPosition.html">MarginAdPosition</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NativeAd.html">NativeAd</a>
@@ -46,22 +49,7 @@
                 <a href="../Classes/NativeAdCell.html">NativeAdCell</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/NativeAdCollectionCell.html">NativeAdCollectionCell</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/NativeAdCollectionViewDataSource.html">NativeAdCollectionViewDataSource</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/NativeAdCollectionViewDelegate.html">NativeAdCollectionViewDelegate</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/NativeAdCollectionViewLayout.html">NativeAdCollectionViewLayout</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/NativeAdStream.html">NativeAdStream</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes.html#/s:C20PocketMediaNativeAds21NativeAdTableViewCell">NativeAdTableViewCell</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NativeAdTableViewDataSource.html">NativeAdTableViewDataSource</a>
@@ -79,7 +67,35 @@
                 <a href="../Classes/PocketMediaNativeAdsBundle.html">PocketMediaNativeAdsBundle</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/ReferenceArray.html">ReferenceArray</a>
+                <a href="../Classes/PredefinedAdPosition.html">PredefinedAdPosition</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/AdUnitType.html">AdUnitType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/EImageType.html">EImageType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MarginAdPositionError.html">MarginAdPositionError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PredefinedAdPositionError.html">PredefinedAdPositionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImageView.html">UIImageView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableView.html">UITableView</a>
               </li>
             </ul>
           </li>
@@ -87,10 +103,16 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Protocols/AdPosition.html">AdPosition</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/DataSourceProtocol.html">DataSourceProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdTableViewDataSourceProtocol.html">NativeAdTableViewDataSourceProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a>
@@ -107,6 +129,9 @@
             <a href="../Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Structs.html#/s:V20PocketMediaNativeAds12NativeAdInfo">NativeAdInfo</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/NativeAdsConstants.html">NativeAdsConstants</a>
               </li>
               <li class="nav-group-task">
@@ -114,6 +139,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/NativeAdsConstants/NativeAds.html">– NativeAds</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V20PocketMediaNativeAds6sImage">sImage</a>
               </li>
             </ul>
           </li>
@@ -129,9 +157,8 @@
 
                 </div>
               </div>
-            <p>NativeAd model object</p>
-
-<p>It contains the attributes received from the API, and allows to open the click URL</p>
+            <p>NativeAd model object
+It contains the attributes received from the API, and allows to open the click URL</p>
 
           </section>
           <section class="section task-group-section">
@@ -248,87 +275,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC20PocketMediaNativeAds8NativeAd14destinationURLGSqCSo5NSURL_"></a>
-                    <a name="//apple_ref/swift/Property/destinationURL" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC20PocketMediaNativeAds8NativeAd14destinationURLGSqCSo5NSURL_">destinationURL</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Preview url (itunes one)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">destinationURL</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:vC20PocketMediaNativeAds8NativeAd7offerIdGSqSu_"></a>
-                    <a name="//apple_ref/swift/Property/offerId" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC20PocketMediaNativeAds8NativeAd7offerIdGSqSu_">offerId</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>PocketMedia&rsquo;s Offer ID the ad is linked to</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">offerId</span><span class="p">:</span> <span class="kt">UInt</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:vC20PocketMediaNativeAds8NativeAd16adPlacementTokenGSQSS_"></a>
-                    <a name="//apple_ref/swift/Property/adPlacementToken" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC20PocketMediaNativeAds8NativeAd16adPlacementTokenGSQSS_">adPlacementToken</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Ad Placement token the ad is linked to (via the ads request)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">adPlacementToken</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:FC20PocketMediaNativeAds8NativeAdcFzT12adDictionaryCSo12NSDictionary16adPlacementTokenSS_S0_"></a>
                     <a name="//apple_ref/swift/Method/init(adDictionary:adPlacementToken:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:FC20PocketMediaNativeAds8NativeAdcFzT12adDictionaryCSo12NSDictionary16adPlacementTokenSS_S0_">init(adDictionary:adPlacementToken:)</a>
@@ -411,37 +357,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds8NativeAd9openAdUrlFCSo16UIViewControllerT_"></a>
-                    <a name="//apple_ref/swift/Method/openAdUrl(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds8NativeAd9openAdUrlFCSo16UIViewControllerT_">openAdUrl(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Opens NativeAd in an closeable embedded webview.
-- parentViewController: view controller where the webview will be attached to</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">openAdUrl</span><span class="p">(</span><span class="nv">parentViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC20PocketMediaNativeAds8NativeAd9openAdUrlFTCSo16UIViewController6openerPS_22NativeAdOpenerDelegate__T_"></a>
-                    <a name="//apple_ref/swift/Method/openAdUrl(_:opener:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds8NativeAd9openAdUrlFTCSo16UIViewController6openerPS_22NativeAdOpenerDelegate__T_">openAdUrl(_:opener:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds8NativeAd9openAdUrlFT6openerPS_22NativeAdOpenerDelegate__T_"></a>
+                    <a name="//apple_ref/swift/Method/openAdUrl(opener:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds8NativeAd9openAdUrlFT6openerPS_22NativeAdOpenerDelegate__T_">openAdUrl(opener:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -457,34 +375,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">openAdUrl</span><span class="p">(</span><span class="nv">parentViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">opener</span><span class="p">:</span> <span class="kt"><a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC20PocketMediaNativeAds8NativeAd21openAdUrlInForegroundFT_T_"></a>
-                    <a name="//apple_ref/swift/Method/openAdUrlInForeground()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds8NativeAd21openAdUrlInForegroundFT_T_">openAdUrlInForeground()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Opens NativeAd in foreground.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">openAdUrlInForeground</span><span class="p">()</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">openAdUrl</span><span class="p">(</span><span class="nv">opener</span><span class="p">:</span> <span class="kt">NativeAdOpenerDelegate</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -496,8 +387,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="http://pocketmedia.mobi" target="_blank" rel="external">Pocket Media Tech Team</a>. All rights reserved. (Last updated: 2016-09-08)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2016 <a class="link" href="http://pocketmedia.mobi" target="_blank" rel="external">Pocket Media Support</a>. All rights reserved. (Last updated: 2016-10-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
