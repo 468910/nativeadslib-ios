@@ -1,0 +1,22 @@
+module_name: AdyenCheckout
+author_name: PocketMedia
+author_url: http://pocketmedia.mobi
+github_url: https://github.com/Pocketbrain/nativeadslib-ios
+clean: true
+
+podspec: AdyenCheckout.podspec
+
+docset_icon: Example/PocketMediaNativeAds/Images.xcassets/AppIcon.appiconset/Icon-512@2x.png
+
+excluded_files: Example/
+
+swift_version: 2.1
+
+copyright: '© 2016 [PocketMedia](http://pocketmedia.mobi).'
+
+
+  # --clean \
+  # --author Adyen \
+  # --author_url https://adyen.com \
+  # --github_url https://github.com/adyen/Checkout-iOS \
+  # --module Checkout

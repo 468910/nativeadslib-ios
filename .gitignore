@@ -1,5 +1,8 @@
 # OS X
 .DS_Store
+.idea/*
+*.xcworkspace/*
+Podfile.lock
 
 # Xcode
 build/
@@ -30,4 +33,5 @@ Carthage
 # Note: if you ignore the Pods directory, make sure to uncomment
 # `pod install` in .travis.yml
 #
-# Pods/
+Pods/
+Example/Pods/

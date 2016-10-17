@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NativeAdTableViewDelegate Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/NativeAdTableViewDelegate" class="dashAnchor"></a>
+    <a title="NativeAdTableViewDelegate Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (18% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">PocketMediaNativeAds Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        NativeAdTableViewDelegate Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AbstractAdUnitTableViewCell.html">AbstractAdUnitTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DataSource.html">DataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FullscreenBrowser.html">FullscreenBrowser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MarginAdPosition.html">MarginAdPosition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAd.html">NativeAd</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdCell.html">NativeAdCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdStream.html">NativeAdStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdTableViewDataSource.html">NativeAdTableViewDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdTableViewDelegate.html">NativeAdTableViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdsRequest.html">NativeAdsRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdsWebviewDelegate.html">NativeAdsWebviewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketMediaNativeAdsBundle.html">PocketMediaNativeAdsBundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PredefinedAdPosition.html">PredefinedAdPosition</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/AdUnitType.html">AdUnitType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/EImageType.html">EImageType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MarginAdPositionError.html">MarginAdPositionError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PredefinedAdPositionError.html">PredefinedAdPositionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImageView.html">UIImageView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableView.html">UITableView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/AdPosition.html">AdPosition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DataSourceProtocol.html">DataSourceProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdTableViewDataSourceProtocol.html">NativeAdTableViewDataSourceProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdsWebviewRedirectionsDelegate.html">NativeAdsWebviewRedirectionsDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/URLSessionProtocol.html">URLSessionProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V20PocketMediaNativeAds12NativeAdInfo">NativeAdInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NativeAdsConstants.html">NativeAdsConstants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NativeAdsConstants.html#/s:VV20PocketMediaNativeAds18NativeAdsConstants6Device">– Device</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NativeAdsConstants/NativeAds.html">– NativeAds</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V20PocketMediaNativeAds6sImage">sImage</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>NativeAdTableViewDelegate</h1>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC20PocketMediaNativeAds25NativeAdTableViewDelegate10controllerCSo16UIViewController"></a>
+                    <a name="//apple_ref/swift/Property/controller" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC20PocketMediaNativeAds25NativeAdTableViewDelegate10controllerCSo16UIViewController">controller</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC20PocketMediaNativeAds25NativeAdTableViewDelegate8delegatePSo19UITableViewDelegate_"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC20PocketMediaNativeAds25NativeAdTableViewDelegate8delegatePSo19UITableViewDelegate_">delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC20PocketMediaNativeAds25NativeAdTableViewDelegate10datasourceCS_27NativeAdTableViewDataSource"></a>
+                    <a name="//apple_ref/swift/Property/datasource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC20PocketMediaNativeAds25NativeAdTableViewDelegate10datasourceCS_27NativeAdTableViewDataSource">datasource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegatecFT10datasourceCS_27NativeAdTableViewDataSource10controllerCSo16UIViewController8delegatePSo19UITableViewDelegate__S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(datasource:controller:delegate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegatecFT10datasourceCS_27NativeAdTableViewDataSource10controllerCSo16UIViewController8delegatePSo19UITableViewDelegate__S0_">init(datasource:controller:delegate:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView23didSelectRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didSelectRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView23didSelectRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:didSelectRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView24heightForHeaderInSectionSi_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:heightForHeaderInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView24heightForHeaderInSectionSi_V12CoreGraphics7CGFloat">tableView(tableView:heightForHeaderInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView23heightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:heightForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView23heightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat">tableView(tableView:heightForRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView22viewForHeaderInSectionSi_GSqCSo6UIView_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:viewForHeaderInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView22viewForHeaderInSectionSi_GSqCSo6UIView_">tableView(tableView:viewForHeaderInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView40accessoryButtonTappedForRowWithIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:accessoryButtonTappedForRowWithIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView40accessoryButtonTappedForRowWithIndexPathCSo11NSIndexPath_T_">tableView(tableView:accessoryButtonTappedForRowWithIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView22canFocusRowAtIndexPathCSo11NSIndexPath_Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:canFocusRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView22canFocusRowAtIndexPathCSo11NSIndexPath_Sb">tableView(tableView:canFocusRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView25didDeselectRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didDeselectRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView25didDeselectRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:didDeselectRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView20didEndDisplayingCellCSo15UITableViewCell17forRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didEndDisplayingCell:forRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView20didEndDisplayingCellCSo15UITableViewCell17forRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:didEndDisplayingCell:forRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26didEndDisplayingFooterViewCSo6UIView10forSectionSi_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didEndDisplayingFooterView:forSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26didEndDisplayingFooterViewCSo6UIView10forSectionSi_T_">tableView(tableView:didEndDisplayingFooterView:forSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView27didEndEditingRowAtIndexPathGSqCSo11NSIndexPath__T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didEndEditingRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView27didEndEditingRowAtIndexPathGSqCSo11NSIndexPath__T_">tableView(tableView:didEndEditingRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26didEndDisplayingHeaderViewCSo6UIView10forSectionSi_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didEndDisplayingHeaderView:forSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26didEndDisplayingHeaderViewCSo6UIView10forSectionSi_T_">tableView(tableView:didEndDisplayingHeaderView:forSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView16canPerformActionV10ObjectiveC8Selector17forRowAtIndexPathCSo11NSIndexPath10withSenderGSqPs9AnyObject___Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:canPerformAction:forRowAtIndexPath:withSender:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView16canPerformActionV10ObjectiveC8Selector17forRowAtIndexPathCSo11NSIndexPath10withSenderGSqPs9AnyObject___Sb">tableView(tableView:canPerformAction:forRowAtIndexPath:withSender:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26didHighlightRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didHighlightRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26didHighlightRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:didHighlightRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView28didUnhighlightRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didUnhighlightRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView28didUnhighlightRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:didUnhighlightRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView23didUpdateFocusInContextCSo29UITableViewFocusUpdateContext24withAnimationCoordinatorCSo27UIFocusAnimationCoordinator_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:didUpdateFocusInContext:withAnimationCoordinator:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView23didUpdateFocusInContextCSo29UITableViewFocusUpdateContext24withAnimationCoordinatorCSo27UIFocusAnimationCoordinator_T_">tableView(tableView:didUpdateFocusInContext:withAnimationCoordinator:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView28editActionsForRowAtIndexPathCSo11NSIndexPath_GSqGSaCSo20UITableViewRowAction__"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:editActionsForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView28editActionsForRowAtIndexPathCSo11NSIndexPath_GSqGSaCSo20UITableViewRowAction__">tableView(tableView:editActionsForRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView29editingStyleForRowAtIndexPathCSo11NSIndexPath_OSC27UITableViewCellEditingStyle"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:editingStyleForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView29editingStyleForRowAtIndexPathCSo11NSIndexPath_OSC27UITableViewCellEditingStyle">tableView(tableView:editingStyleForRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView33estimatedHeightForFooterInSectionSi_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:estimatedHeightForFooterInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView33estimatedHeightForFooterInSectionSi_V12CoreGraphics7CGFloat">tableView(tableView:estimatedHeightForFooterInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView33estimatedHeightForHeaderInSectionSi_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:estimatedHeightForHeaderInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView33estimatedHeightForHeaderInSectionSi_V12CoreGraphics7CGFloat">tableView(tableView:estimatedHeightForHeaderInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView32estimatedHeightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:estimatedHeightForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView32estimatedHeightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat">tableView(tableView:estimatedHeightForRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView24heightForFooterInSectionSi_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:heightForFooterInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView24heightForFooterInSectionSi_V12CoreGraphics7CGFloat">tableView(tableView:heightForFooterInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView33indentationLevelForRowAtIndexPathCSo11NSIndexPath_Si"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:indentationLevelForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView33indentationLevelForRowAtIndexPathCSo11NSIndexPath_Si">tableView(tableView:indentationLevelForRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView13performActionV10ObjectiveC8Selector17forRowAtIndexPathCSo11NSIndexPath10withSenderGSqPs9AnyObject___T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:performAction:forRowAtIndexPath:withSender:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView13performActionV10ObjectiveC8Selector17forRowAtIndexPathCSo11NSIndexPath10withSenderGSqPs9AnyObject___T_">tableView(tableView:performAction:forRowAtIndexPath:withSender:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView29shouldHighlightRowAtIndexPathCSo11NSIndexPath_Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:shouldHighlightRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView29shouldHighlightRowAtIndexPathCSo11NSIndexPath_Sb">tableView(tableView:shouldHighlightRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView38shouldIndentWhileEditingRowAtIndexPathCSo11NSIndexPath_Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:shouldIndentWhileEditingRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView38shouldIndentWhileEditingRowAtIndexPathCSo11NSIndexPath_Sb">tableView(tableView:shouldIndentWhileEditingRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView31shouldShowMenuForRowAtIndexPathCSo11NSIndexPath_Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:shouldShowMenuForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView31shouldShowMenuForRowAtIndexPathCSo11NSIndexPath_Sb">tableView(tableView:shouldShowMenuForRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView24willSelectRowAtIndexPathCSo11NSIndexPath_GSqS2__"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:willSelectRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView24willSelectRowAtIndexPathCSo11NSIndexPath_GSqS2__">tableView(tableView:willSelectRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26shouldUpdateFocusInContextCSo29UITableViewFocusUpdateContext_Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:shouldUpdateFocusInContext:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26shouldUpdateFocusInContextCSo29UITableViewFocusUpdateContext_Sb">tableView(tableView:shouldUpdateFocusInContext:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView40targetIndexPathForMoveFromRowAtIndexPathCSo11NSIndexPath19toProposedIndexPathS2__S2_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:targetIndexPathForMoveFromRowAtIndexPath:toProposedIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView40targetIndexPathForMoveFromRowAtIndexPathCSo11NSIndexPath19toProposedIndexPathS2__S2_">tableView(tableView:targetIndexPathForMoveFromRowAtIndexPath:toProposedIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView49titleForDeleteConfirmationButtonForRowAtIndexPathCSo11NSIndexPath_GSqSS_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView49titleForDeleteConfirmationButtonForRowAtIndexPathCSo11NSIndexPath_GSqSS_">tableView(tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView22viewForFooterInSectionSi_GSqCSo6UIView_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:viewForFooterInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView22viewForFooterInSectionSi_GSqCSo6UIView_">tableView(tableView:viewForFooterInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView30willBeginEditingRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:willBeginEditingRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView30willBeginEditingRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:willBeginEditingRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26willDeselectRowAtIndexPathCSo11NSIndexPath_GSqS2__"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:willDeselectRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView26willDeselectRowAtIndexPathCSo11NSIndexPath_GSqS2__">tableView(tableView:willDeselectRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView15willDisplayCellCSo15UITableViewCell17forRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:willDisplayCell:forRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView15willDisplayCellCSo15UITableViewCell17forRowAtIndexPathCSo11NSIndexPath_T_">tableView(tableView:willDisplayCell:forRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView21willDisplayFooterViewCSo6UIView10forSectionSi_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:willDisplayFooterView:forSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView21willDisplayFooterViewCSo6UIView10forSectionSi_T_">tableView(tableView:willDisplayFooterView:forSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView21willDisplayHeaderViewCSo6UIView10forSectionSi_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(tableView:willDisplayHeaderView:forSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds25NativeAdTableViewDelegate9tableViewFT9tableViewCSo11UITableView21willDisplayHeaderViewCSo6UIView10forSectionSi_T_">tableView(tableView:willDisplayHeaderView:forSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="http://pocketmedia.mobi" target="_blank" rel="external">Pocket Media Support</a>. All rights reserved. (Last updated: 2016-10-17)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
