@@ -40,14 +40,14 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 		return url
 	}
 
-	public func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+	public func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
 		// Ignore NSURLErrorDomain error -999.
-		if (error!.code == NSURLErrorCancelled) {
+		if (error.code == NSURLErrorCancelled) {
 			return
 		}
 
 		// Ignore "Frame Load Interrupted" errors. Seen after app store links.
-		if (error!.code == 102) {
+		if (error.code == 102) {
 			Logger.debug("FrameLoad Error supressed")
 			return
 		}
