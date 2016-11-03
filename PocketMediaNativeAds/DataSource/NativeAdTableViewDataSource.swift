@@ -96,15 +96,18 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 	// Data Source
 	@objc
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    	if let nativeAd = getNativeAdListing(indexPath) {
-			return getAdCell(nativeAd)
+    	if let listing = getNativeAdListing(indexPath) {
+			return getAdCell(listing.ad)
 		}
-        return datasource.tableView(tableView, cellForRowAtIndexPath: NSIndexPath(forRow: normalize(indexPath), inSection: indexPath.section))
+        
+        let normalizedPosition = getOriginalPositionForElement(indexPath)
+        
+        return datasource.tableView(tableView, cellForRowAtIndexPath: normalizedPosition)
 	}
     
 	@objc
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let ads = adListings[section]?.count {
+        if let ads = adListingsPerSection[section]?.count {
             return datasource.tableView(tableView, numberOfRowsInSection: section) + ads
         }
         
@@ -170,6 +173,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         clear()
         let maxSections = datasource.numberOfSectionsInTableView!(tableView)
         var section = 0
+        var adsInserted = 1
         for ad in ads {
             let numOfRowsInCurrentSection = datasource.tableView(tableView, numberOfRowsInSection: section)
             var position: Int
@@ -183,23 +187,33 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
             if position > numOfRowsInCurrentSection {
                 adPosition.reset()
                 section += 1
+                adsInserted = 0
             }
             //If that new section doesn't exist. Stop adding ads.
-            if section > maxSections {
+            if section >= maxSections {
                 break
             }
-            if adListings[section] == nil {
-                adListings[section] = [:]
+            if adListingsPerSection[section] == nil {
+                adListingsPerSection[section] = [:]
             }
             
             //Add the ad
-            adListings[section]![position] = NativeAdInfo(ad: ad, position: position)
+            adListingsPerSection[section]![position] = NativeAdListing(ad: ad, position: position, numOfAdsBefore: adsInserted)
+            adsInserted += 1
         }
-        Logger.debugf("Set %d ad listings", adListings.count)
+        
+        /*
+        for (section, adListings) in adListingsPerSection {
+            //Sort
+            adListingsPerSection[section] = adListingsPerSection[section]!.sort({ $0.0 < $1.0 }) as! [Int : NativeAdListing]
+        }
+         */
+        
+        Logger.debugf("Set %d section ad listings", adListingsPerSection.count)
     }
     
     private func clear() {
-        adListings.removeAll()
+        adListingsPerSection.removeAll()
         Logger.debug("Cleared adListings.");
     }
     
@@ -218,18 +232,19 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         return 1
 	}
 
-    func normalize(indexRow: NSIndexPath) -> Int {
-        var numOfAdsInsertedInSection = 0
-        if let ads = adListings[indexRow.section]?.sort({ $0.0 < $1.0 }) {
-            for ad in ads {
-                if(indexRow.row >= ad.1.position) {
-                    numOfAdsInsertedInSection += 1
-                } else {
-                    break;
-                }
-            }
+    func getOriginalPositionForElement(indexRow: NSIndexPath) -> NSIndexPath {
+        let position = indexRow.row
+        
+        /*
+        if position == 3 {
+            print("death")
         }
-        return indexRow.row - numOfAdsInsertedInSection
+        */
+        
+        if let listing = getNativeAdListingHigherThan(indexRow) {
+            return listing.getOriginalPosition(indexRow)
+        }
+        return indexRow
     }
     
 }

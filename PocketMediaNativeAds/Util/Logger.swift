@@ -43,5 +43,11 @@ struct Logger {
     static func error(error: NSError? = nil) {
         log(.Error, "An error occured", error)
     }
+    
+    static func errorf(format: String, _ args: CVarArgType...) {
+        #if DEBUG
+            log(.Error, NSString(format, args), error)
+        #endif
+    }
 
 }

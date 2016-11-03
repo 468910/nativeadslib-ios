@@ -90,7 +90,7 @@ public extension UIImageView {
             self.image = campaignImage
             
             //Clear up after ourselves.
-            UIImageView.currentUrl.filter { $1 != self }
+            UIImageView.currentUrl[self] = nil
             
 		} else {
             //Set this url as the last url we've asked for.

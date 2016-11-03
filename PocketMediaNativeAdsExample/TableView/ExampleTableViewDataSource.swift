@@ -14,7 +14,7 @@ public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 	var collection: [ItemTableModel] = []
 
 	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 2
+		return 1
 	}
 
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
