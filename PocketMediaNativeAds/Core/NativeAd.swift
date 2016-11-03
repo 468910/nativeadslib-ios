@@ -50,7 +50,7 @@ public class NativeAd: NSObject {
 			throw NativeAdsError.InvalidAdNoCampaign
 		}
 
-		if let urlClick = adDictionary["click_url"] as? String, url = NSURL(string: urlClick) {
+		if let urlClick = adDictionary["click_url"] as? String, let url = NSURL(string: urlClick) {
 			self.clickURL = url
 		} else {
 			throw NativeAdsError.InvalidAdNoClickUrl

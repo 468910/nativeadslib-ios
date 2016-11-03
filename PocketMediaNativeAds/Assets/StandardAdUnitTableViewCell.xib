@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="med-7r-ffj" customClass="NativeAdCell" customModule="PocketMediaNativeAds">
+        <view contentMode="scaleToFill" id="med-7r-ffj" customClass="StandardAdUnitTableViewCell" customModule="PocketMediaNativeAds">
             <rect key="frame" x="0.0" y="0.0" width="619" height="89"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>

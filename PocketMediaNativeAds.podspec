@@ -31,6 +31,7 @@ s.homepage         = "http://pocketmedia.mobi"
   s.resources = 'PocketMediaNativeAds/Assets/*'
 
   #s.public_header_files = 'PocketMediaNativeAds/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit'
+
+  #s.dependency 'Render', '~> 0.5.2'
 end

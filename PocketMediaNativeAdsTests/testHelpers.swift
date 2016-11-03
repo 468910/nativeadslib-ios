@@ -25,7 +25,7 @@ class testHelpers {
     //Return a valid dict please.
     static func getNativeAdData() -> NSMutableDictionary? {
         if let ads = getNativeAdsData() {
-            return ads[0] as? NSMutableDictionary
+            return ads[0]
         }
         return nil
     }
