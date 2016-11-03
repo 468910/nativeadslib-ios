@@ -31,6 +31,8 @@
 		274C71971D8EE5AC007F0B27 /* Loud_Speaker_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 274C718F1D8EE5AC007F0B27 /* Loud_Speaker_64.png */; };
 		274C71991D8EE5AC007F0B27 /* NativeAdCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274C71911D8EE5AC007F0B27 /* NativeAdCollectionCell.xib */; };
 		274C719A1D8EE5AC007F0B27 /* StandardAdUnitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274C71921D8EE5AC007F0B27 /* StandardAdUnitTableViewCell.xib */; };
+		275724421DCB59E900E1717A /* DynamicAdUnitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275724401DCB59E900E1717A /* DynamicAdUnitTableViewCell.swift */; };
+		275724431DCB59E900E1717A /* DynamicAdUnitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275724411DCB59E900E1717A /* DynamicAdUnitTableViewCell.xib */; };
 		2758CCAB1D8EE4C1000181CD /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2758CCA91D8EE4C1000181CD /* Logger.swift */; };
 		2758CCAC1D8EE4C1000181CD /* ReferenceArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2758CCAA1D8EE4C1000181CD /* ReferenceArray.swift */; };
 		2758CCAF1D8EE4D6000181CD /* AbstractAdUnitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2758CCAD1D8EE4D6000181CD /* AbstractAdUnitTableViewCell.swift */; };
@@ -95,6 +97,8 @@
 		274C718F1D8EE5AC007F0B27 /* Loud_Speaker_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Loud_Speaker_64.png; path = PocketMediaNativeAds/Assets/Loud_Speaker_64.png; sourceTree = "<group>"; };
 		274C71911D8EE5AC007F0B27 /* NativeAdCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NativeAdCollectionCell.xib; path = PocketMediaNativeAds/Assets/NativeAdCollectionCell.xib; sourceTree = "<group>"; };
 		274C71921D8EE5AC007F0B27 /* StandardAdUnitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StandardAdUnitTableViewCell.xib; path = PocketMediaNativeAds/Assets/StandardAdUnitTableViewCell.xib; sourceTree = "<group>"; };
+		275724401DCB59E900E1717A /* DynamicAdUnitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicAdUnitTableViewCell.swift; path = PocketMediaNativeAds/Adunits/DynamicAdUnitTableViewCell.swift; sourceTree = "<group>"; };
+		275724411DCB59E900E1717A /* DynamicAdUnitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DynamicAdUnitTableViewCell.xib; path = PocketMediaNativeAds/Adunits/DynamicAdUnitTableViewCell.xib; sourceTree = "<group>"; };
 		2758CCA91D8EE4C1000181CD /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = PocketMediaNativeAds/Util/Logger.swift; sourceTree = "<group>"; };
 		2758CCAA1D8EE4C1000181CD /* ReferenceArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReferenceArray.swift; path = PocketMediaNativeAds/Util/ReferenceArray.swift; sourceTree = "<group>"; };
 		2758CCAD1D8EE4D6000181CD /* AbstractAdUnitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractAdUnitTableViewCell.swift; path = PocketMediaNativeAds/Adunits/AbstractAdUnitTableViewCell.swift; sourceTree = "<group>"; };
@@ -260,6 +264,8 @@
 				274C71921D8EE5AC007F0B27 /* StandardAdUnitTableViewCell.xib */,
 				2758CCAD1D8EE4D6000181CD /* AbstractAdUnitTableViewCell.swift */,
 				2758CCAE1D8EE4D6000181CD /* StandardAdUnitTableViewCell.swift */,
+				275724401DCB59E900E1717A /* DynamicAdUnitTableViewCell.swift */,
+				275724411DCB59E900E1717A /* DynamicAdUnitTableViewCell.xib */,
 			);
 			name = AdUnits;
 			sourceTree = "<group>";
@@ -524,6 +530,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275724431DCB59E900E1717A /* DynamicAdUnitTableViewCell.xib in Resources */,
 				274C719A1D8EE5AC007F0B27 /* StandardAdUnitTableViewCell.xib in Resources */,
 				274C71971D8EE5AC007F0B27 /* Loud_Speaker_64.png in Resources */,
 				274C71931D8EE5AC007F0B27 /* close.png in Resources */,
@@ -652,6 +659,7 @@
 				27E83BA91D8EE0FE002C94A3 /* NativeAdTableView.swift in Sources */,
 				2758CCAB1D8EE4C1000181CD /* Logger.swift in Sources */,
 				27E83BAA1D8EE0FE002C94A3 /* NativeAdTableViewDataSource.swift in Sources */,
+				275724421DCB59E900E1717A /* DynamicAdUnitTableViewCell.swift in Sources */,
 				27C31D521DA407D300DE80C9 /* PredefinedAdPosition.swift in Sources */,
 				27E83BAB1D8EE0FE002C94A3 /* NativeAdTableViewDelegate.swift in Sources */,
 				2758CCAC1D8EE4C1000181CD /* ReferenceArray.swift in Sources */,

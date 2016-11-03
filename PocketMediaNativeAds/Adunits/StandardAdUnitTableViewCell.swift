@@ -42,7 +42,6 @@ public class StandardAdUnitTableViewCell: AbstractAdUnitTableViewCell {
         }
         
         if let image = adImage {
-            image.image = UIImage()
             image.nativeSetImageFromURL(ad!.campaignImage)
             image.layer.cornerRadius = CGRectGetWidth(image.frame) / 10
             image.layer.masksToBounds = true

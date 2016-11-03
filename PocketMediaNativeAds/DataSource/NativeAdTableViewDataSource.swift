@@ -44,11 +44,23 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 		// Check the kind of cell to use
 		switch (adUnitType) {
             case .Dynamic:
-                if (tableView.dequeueReusableCellWithIdentifier("DynamicNativeAdTableViewCell") == nil) {
+                if (tableView.dequeueReusableCellWithIdentifier("DynamicAdUnitTableViewCell") == nil) {
                     let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-                    tableView.registerNib(UINib(nibName: "DynamicNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "DynamicNativeAdTableViewCell")
+                    tableView.registerNib(UINib(nibName: "DynamicAdUnitTableViewCell", bundle: bundle), forCellReuseIdentifier: "DynamicAdUnitTableViewCell")
                 }
                 break
+            case .Custom:
+                if (tableView.dequeueReusableCellWithIdentifier("CustomAdCell") == nil) {
+                    let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+                    tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
+                }
+                break
+//            case .Big:
+//                if (tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") == nil) {
+//                    let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+//                    tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
+//                }
+//            break
             case .Standard:
                 fallthrough
             default:
@@ -63,13 +75,19 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 	public func getAdCell(nativeAd: NativeAd) -> AbstractAdUnitTableViewCell {
         var cell: AbstractAdUnitTableViewCell?
 		switch (adUnitType) {
-//            case .Dynamic:
-//                let cell = tableView.dequeueReusableCellWithIdentifier("DynamicNativeAdTableViewCell") as! AbstractBigAdUnitTableViewCell
+            case .Dynamic:
+                cell = tableView.dequeueReusableCellWithIdentifier("DynamicAdUnitTableViewCell") as? AbstractAdUnitTableViewCell
+                break
+            case .Custom:
+                cell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as? AbstractAdUnitTableViewCell
+                break
+//            case .Big:
+//                cell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as? AbstractAdUnitTableViewCell
 //                break
             case .Standard:
                 fallthrough
             default:
-                cell = tableView.dequeueReusableCellWithIdentifier("StandardAdUnitTableViewCell") as! AbstractAdUnitTableViewCell
+                cell = tableView.dequeueReusableCellWithIdentifier("StandardAdUnitTableViewCell") as? AbstractAdUnitTableViewCell
         }
         cell?.render(nativeAd)
         return cell!

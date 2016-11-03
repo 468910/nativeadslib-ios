@@ -19,7 +19,14 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     private var limit: UInt = 2
 
     @objc
-    public required init(controller: UIViewController, view: UIView, adPlacementToken: String, customXib: UINib? = nil, adPosition: AdPosition? = MarginAdPosition(margin: 2), requester: NativeAdsRequest? = nil) {
+    public required init(
+        controller: UIViewController,
+        view: UIView,
+        adPlacementToken: String,
+        customXib: UINib? = nil,
+        adPosition: AdPosition? = MarginAdPosition(margin: 2),
+        requester: NativeAdsRequest? = nil
+        ) {
         super.init()
         
         //Create a new instance of a requester or use the one sent along. This is done for unit testing purposes.
@@ -32,9 +39,14 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
         //Depending on the view that was sent along, use one of our known implementations.
         switch view {
             case let tableView as UITableView:
+                
+                //If a custom xib was sent. Register it.
                 if customXib != nil {
-                    tableView.registerNib(customXib, forCellReuseIdentifier: "CustomAdCell")
+                    if (tableView.dequeueReusableCellWithIdentifier("CustomAdCell") == nil) {
+                        tableView.registerNib(customXib, forCellReuseIdentifier: "CustomAdCell")
+                    }
                 }
+                
                 self.view = tableView
                 datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adPosition: adPosition!)
                 break
@@ -79,9 +91,14 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 	 Method used to load native ads.
 	 - limit: Limit on how many native ads are to be retrieved.
 	 */
-	@objc public func requestAds(limit: UInt) {
+    @objc public func requestAds(limit: UInt, adUnitType: AdUnitType = AdUnitType.Standard) {
         //Set the limit so that when the user does a reloadAds call we know what limit they want.
         self.limit = limit
+        
+        if self.datasource.adUnitType != AdUnitType.Custom {
+            self.datasource.adUnitType = adUnitType
+        }
+        
         Logger.debug("Requesting ads (\(limit)) for affiliate id \(requester.adPlacementToken)")
         
         var imageType = EImageType.allImages
