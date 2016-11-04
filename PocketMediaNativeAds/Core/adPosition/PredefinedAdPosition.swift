@@ -21,7 +21,7 @@ public class PredefinedAdPosition: NSObject, AdPosition {
 
     public init(positions: [Int], adPositionOffset: Int = 0) {
         super.init()
-        //Remove duplicates and sort in ascending order.
+        // Remove duplicates and sort in ascending order.
         self.positions = Array(Set(positions)).sort { $0 < $1 }
         setadPositionOffset(adPositionOffset)
         reset()
@@ -40,9 +40,8 @@ public class PredefinedAdPosition: NSObject, AdPosition {
         return NSNumber(integer: result)
     }
 
-    //Default is 0
+    // Default is 0
     public func setadPositionOffset(position: Int) {
         self.adPositionOffset = position < 0 ? 0 : position
     }
-
 }

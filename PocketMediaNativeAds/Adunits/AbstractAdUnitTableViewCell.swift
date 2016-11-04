@@ -14,13 +14,12 @@ import UIKit
 public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderProtocol {
     private(set) public var ad: NativeAd?
 
-	public func render(nativeAd: NativeAd) {
+    public func render(nativeAd: NativeAd) {
         self.ad = nativeAd
     }
 
-	// After has been loaded from Nib
-	public override func awakeFromNib() {
-		super.awakeFromNib()
-	}
-
+    // After has been loaded from Nib
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 }

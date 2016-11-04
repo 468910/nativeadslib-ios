@@ -22,7 +22,7 @@ class testHelpers {
         return nil
     }
 
-    //Return a valid dict please.
+    // Return a valid dict please.
     static func getNativeAdData() -> NSMutableDictionary? {
         if let ads = getNativeAdsData() {
             return ads[0]

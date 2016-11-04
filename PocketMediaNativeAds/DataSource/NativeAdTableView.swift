@@ -14,26 +14,26 @@ public extension UITableView {
     }
 
     func nativeAdsReloadData() {
-        //If we have our data source. Inform it!
+        // If we have our data source. Inform it!
         if let source = GetNativeTableDataSource() {
             source.reload()
         }
 
-        //Call original method
+        // Call original method
         self.nativeAdsReloadData()
     }
 
-//    var indexPathForSelectedRow: NSIndexPath? {
-//        get {
-//            if let indexPath = super.indexPathForSelectedRow {
-//                if let source = GetNativeTableDataSource() {
-//                    let normalized = source.normalize(indexPath)
-//                    return NSIndexPath(forRow: normalized, inSection: indexPath.section)
-//                }
-//            }
-//            return nil
-//        }
-//    }
+    //    var indexPathForSelectedRow: NSIndexPath? {
+    //        get {
+    //            if let indexPath = super.indexPathForSelectedRow {
+    //                if let source = GetNativeTableDataSource() {
+    //                    let normalized = source.normalize(indexPath)
+    //                    return NSIndexPath(forRow: normalized, inSection: indexPath.section)
+    //                }
+    //            }
+    //            return nil
+    //        }
+    //    }
 
     public class func swizzleNativeAds(instance: UITableView) {
         let aClass: AnyClass! = object_getClass(instance)

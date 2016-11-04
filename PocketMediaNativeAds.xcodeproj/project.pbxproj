@@ -463,13 +463,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 277F1C1D1D7EF51C00E14A68 /* Build configuration list for PBXNativeTarget "PocketMediaNativeAds" */;
 			buildPhases = (
+				27ECE08A1DCC9EDB001DCD10 /* ShellScript */,
+				27ECE0891DCC99B8001DCD10 /* ShellScript */,
 				36312B018E593BD8CD5038A1 /* [CP] Check Pods Manifest.lock */,
 				277F1C061D7EF51C00E14A68 /* Sources */,
 				277F1C071D7EF51C00E14A68 /* Frameworks */,
 				277F1C081D7EF51C00E14A68 /* Headers */,
 				277F1C091D7EF51C00E14A68 /* Resources */,
 				5290B9FD822A58F60E9AA847 /* [CP] Copy Pods Resources */,
-				27ECE0891DCC99B8001DCD10 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -559,6 +560,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect > /dev/null 2>&1\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		27ECE08A1DCC9EDB001DCD10 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftformat .\nelse\necho \"warning: swiftformat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi";
 		};
 		2A9CD9B5594478306F0B6F58 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

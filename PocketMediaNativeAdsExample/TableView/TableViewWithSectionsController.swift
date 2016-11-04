@@ -25,15 +25,14 @@ class TableViewWithSectionsController: UITableViewController {
         tableView.dataSource = tableViewDataSource
         self.refreshControl?.addTarget(self, action: #selector(TableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
-        //PocketMedia add ads
+        // PocketMedia add ads
         stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165") /* replace with your own token!! */
-        stream?.requestAds(10)//Add 5 ads
+        stream?.requestAds(10) // Add 5 ads
 
         super.viewDidLoad()
     }
 
     override func viewWillAppear(animated: Bool) {
-
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -44,7 +43,6 @@ class TableViewWithSectionsController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }
-
 
     func handleRefresh(refreshControl: UIRefreshControl) {
         stream?.reloadAds()

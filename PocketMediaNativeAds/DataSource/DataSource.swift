@@ -43,11 +43,9 @@ public class NativeAdListing: NSObject {
 
         return NSIndexPath(forRow: row, inSection: position.section)
     }
-
 }
 
-
-public typealias AdsForSectionMap = [Int : [Int : NativeAdListing]]
+public typealias AdsForSectionMap = [Int: [Int: NativeAdListing]]
 
 @objc
 public class DataSource: NSObject, DataSourceProtocol {
@@ -55,7 +53,7 @@ public class DataSource: NSObject, DataSourceProtocol {
     public var adListingsPerSection: AdsForSectionMap = AdsForSectionMap()
     public var ads: [NativeAd] = [NativeAd]()
 
-    //The AdUnitType defines what kind of ad is shown.
+    // The AdUnitType defines what kind of ad is shown.
     public var adUnitType: AdUnitType = .Standard
 
     public func getNativeAdListing(indexPath: NSIndexPath) -> NativeAdListing? {
@@ -70,10 +68,10 @@ public class DataSource: NSObject, DataSourceProtocol {
         let position = indexRow.row
         if let listings = adListingsPerSection[indexRow.section] {
             for (_, listing) in listings {
-                if listing.position < position {
+                if listing.position<position {
                     result = listing
                 }
-                if listing.position >= position {
+                if position >= listing.position {
                     break
                 }
             }
@@ -85,7 +83,7 @@ public class DataSource: NSObject, DataSourceProtocol {
         return result
     }
 
-    //Abstract classes that a datasource should override
+    // Abstract classes that a datasource should override
     public func onAdRequestSuccess(newAds: [NativeAd]) {
         preconditionFailure("This method must be overridden")
     }
@@ -97,5 +95,4 @@ public class DataSource: NSObject, DataSourceProtocol {
     public func numberOfElements() -> Int {
         preconditionFailure("This method must be overridden")
     }
-
 }

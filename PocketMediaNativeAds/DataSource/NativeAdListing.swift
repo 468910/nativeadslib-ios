@@ -5,4 +5,4 @@
 
 import Foundation
 
-//I want to put NativeAdListing here. But xcode is being a *****
+// I want to put NativeAdListing here. But xcode is being a *****

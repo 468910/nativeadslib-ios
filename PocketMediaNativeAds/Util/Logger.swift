@@ -25,9 +25,9 @@ struct Logger {
     }
 
     static func debug(@autoclosure message: () -> String, _ error: NSError? = nil) {
-        //#if DEBUG
-            log(.Debug, message, error)
-        //#endif
+        // #if DEBUG
+        log(.Debug, message, error)
+        // #endif
     }
 
     static func debugf(format: String, _ args: CVarArgType...) {
@@ -49,5 +49,4 @@ struct Logger {
             log(.Error, NSString(format, args), error)
         #endif
     }
-
 }

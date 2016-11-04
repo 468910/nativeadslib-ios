@@ -17,19 +17,18 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
         return 2
     }
 
-
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return collection.count
     }
 
     public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch(section) {
-        case 0:
-            return "Section 1"
-        case 1:
-            return "Section 2"
-        default:
-            return "This is not a valid section?"
+        switch section {
+            case 0:
+                return "Section 1"
+            case 1:
+                return "Section 2"
+            default:
+                return "This is not a valid section?"
         }
     }
 
@@ -52,13 +51,12 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let temp = indexPath.row
 
-        if(indexPath.row >= collection.count || indexPath.row < 0) {
+        if indexPath.row >= collection.count || indexPath.row < 0 {
             print("[INDEX] Wrongly indexed @ \(temp)")
             let x = UITableViewCell()
-                x.backgroundColor = UIColor.redColor()
+            x.backgroundColor = UIColor.redColor()
             return x
         }
-
 
         switch collection[temp] {
         case let item as ItemTableModel:
@@ -70,7 +68,6 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
         default:
             return UITableViewCell()
         }
-
     }
 
     public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -79,6 +76,4 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
         }
         return tableView.sectionHeaderHeight
     }
-
-
 }

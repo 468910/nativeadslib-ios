@@ -26,13 +26,13 @@ import UIKit
 struct FatalErrorUtil {
 
     // Called by the custom implementation of `fatalError`.
-    static var fatalErrorClosure: (String, StaticString, UInt) -> () = defaultFatalErrorClosure
+    static var fatalErrorClosure: (String, StaticString, UInt) -> Void = defaultFatalErrorClosure
 
     // backup of the original Swift `fatalError`
     private static let defaultFatalErrorClosure = { Swift.fatalError($0, file: $1, line: $2) }
 
     /// Replace the `fatalError` global function with something else.
-    static func replaceFatalError(closure: (String, StaticString, UInt) -> ()) {
+    static func replaceFatalError(closure: (String, StaticString, UInt) -> Void) {
         fatalErrorClosure = closure
     }
 

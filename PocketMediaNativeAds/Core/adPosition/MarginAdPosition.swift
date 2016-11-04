@@ -38,9 +38,8 @@ public class MarginAdPosition: NSObject, AdPosition {
         return NSNumber(integer: currentValue)
     }
 
-    //Default is 0
+    // Default is 0
     public func setadPositionOffset(position: Int) {
         self.adPositionOffset = position < 0 ? 0 : position - 1
     }
-
 }

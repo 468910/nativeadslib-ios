@@ -19,10 +19,10 @@ import Foundation
  - InvalidAdNoImages: Thrown when the ad doesn't have images.
  */
 enum NativeAdsError: ErrorType {
-	case InvalidAdNoCampaign
-	case InvalidAdNoClickUrl
-	case InvalidAdNoCampaignDescription
-	case InvalidAdNoId
-	case InvalidAdNoImage
-	case InvalidAdNoImages
+    case InvalidAdNoCampaign
+    case InvalidAdNoClickUrl
+    case InvalidAdNoCampaignDescription
+    case InvalidAdNoId
+    case InvalidAdNoImage
+    case InvalidAdNoImages
 }

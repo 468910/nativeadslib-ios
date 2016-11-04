@@ -56,7 +56,7 @@ class StandardAdUnitTableViewCellTest: XCTestCase {
         //        XCTAssert(iButton.titleLabel?.minimumScaleFactor == 0.1)
 
         let color = UIColor(red: 17.0 / 255.0, green: 147.0 / 255.0, blue: 67.0 / 255.0, alpha: 1)
-        //iButton.setTitleColor(color, forState: .Normal)
+        // iButton.setTitleColor(color, forState: .Normal)
         XCTAssert(CGColorEqualToColor(iButton.layer.borderColor!, color.CGColor))
         XCTAssert(iButton.titleEdgeInsets == UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5))
         XCTAssert(iButton.titleLabel?.minimumScaleFactor == 0.50)
@@ -77,8 +77,5 @@ class StandardAdUnitTableViewCellTest: XCTestCase {
             XCTAssert(title.numberOfLines == 0)
             XCTAssert(title.lineBreakMode == .ByTruncatingTail)
         }
-
     }
-
-
 }
