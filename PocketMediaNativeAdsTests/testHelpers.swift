@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PocketMediaNativeAds
 
 class testHelpers {
 
@@ -28,5 +29,16 @@ class testHelpers {
             return ads[0]
         }
         return nil
+    }
+
+    static func getNativeAd() -> NativeAd {
+        let adDictionary = testHelpers.getNativeAdData()
+        var nativeAd: NativeAd?
+        do {
+            nativeAd = try NativeAd(adDictionary: adDictionary!, adPlacementToken: "123")
+        } catch {
+            print("Could not create an instance of nativeAd")
+        }
+        return nativeAd!
     }
 }

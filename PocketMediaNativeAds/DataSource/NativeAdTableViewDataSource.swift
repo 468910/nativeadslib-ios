@@ -107,7 +107,6 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         if let ads = adListingsPerSection[section]?.count {
             return datasource.tableView(tableView, numberOfRowsInSection: section) + ads
         }
-
         return datasource.tableView(tableView, numberOfRowsInSection: section)
     }
 
@@ -199,13 +198,6 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
             adsInserted += 1
         }
 
-        /*
-         for (section, adListings) in adListingsPerSection {
-         //Sort
-         adListingsPerSection[section] = adListingsPerSection[section]!.sort({ $0.0 < $1.0 }) as! [Int : NativeAdListing]
-         }
-         */
-
         Logger.debugf("Set %d section ad listings", adListingsPerSection.count)
     }
 
@@ -229,10 +221,11 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         return 1
     }
 
-    func getOriginalPositionForElement(indexRow: NSIndexPath) -> NSIndexPath {
+    public func getOriginalPositionForElement(indexRow: NSIndexPath) -> NSIndexPath {
         if let listing = getNativeAdListingHigherThan(indexRow) {
             let normalizedIndexRow = listing.getOriginalPosition(indexRow)
             let maxRows = datasource.tableView(tableView, numberOfRowsInSection: normalizedIndexRow.section)
+            
             // Because we really never want to be responsible for a crash :-(
             // We'll just do a quick fail safe. So we can all sleep at night: the normalizedIndexRow.row may not be higher than the the amount of rows we have for this section.
             if normalizedIndexRow.row >= maxRows || normalizedIndexRow.row < 0 {
@@ -240,7 +233,6 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
                 // We'll return 0. That one is probably available. Stops this unexpected behaviour from crashing the host app
                 return NSIndexPath(forRow: 0, inSection: indexRow.section)
             }
-
             return normalizedIndexRow
         }
         return indexRow

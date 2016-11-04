@@ -45,12 +45,14 @@ public class NativeAdListing: NSObject {
     }
 }
 
-public typealias AdsForSectionMap = [Int: [Int: NativeAdListing]]
+public typealias AdListingsAndPositions = [Int: NativeAdListing]
+public typealias AdsForSectionMap = [Int: AdListingsAndPositions]
 
 @objc
 public class DataSource: NSObject, DataSourceProtocol {
 
     public var adListingsPerSection: AdsForSectionMap = AdsForSectionMap()
+
     public var ads: [NativeAd] = [NativeAd]()
 
     // The AdUnitType defines what kind of ad is shown.
@@ -66,9 +68,9 @@ public class DataSource: NSObject, DataSourceProtocol {
     public func getNativeAdListingHigherThan(indexRow: NSIndexPath) -> NativeAdListing? {
         var result: NativeAdListing?
         let position = indexRow.row
-        // This all is based on the fact that the positions are ascending ordered.
+
         if let listings = adListingsPerSection[indexRow.section] {
-            for (_, listing) in listings {
+            for (_, listing) in listings.sort({ $0.0 < $1.0 }) {
                 // if the iterated position is lower than the position we are looking for save it.
                 // So in the end we have the highest listing position for the position we are looking for. Aka the closest previous ad listing
                 if listing.position < position {
@@ -79,10 +81,6 @@ public class DataSource: NSObject, DataSourceProtocol {
                     break
                 }
             }
-        }
-
-        if result == nil {
-            Logger.errorf("We don't have a listing for this unknown section (%d) and or position (%d)? Something very bad just happened.", indexRow.row, indexRow.section)
         }
         return result
     }

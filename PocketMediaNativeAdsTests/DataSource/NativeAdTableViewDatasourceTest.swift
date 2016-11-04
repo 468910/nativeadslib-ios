@@ -277,4 +277,31 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
         var result = localsubject.getAdCell(ad)
         XCTAssert(result is StandardAdUnitTableViewCell, "Succesfully return StandardAdUnitTableViewCell")
     }
+
+    func testGetOriginalPositionForElement() {
+        class mockedDatasource: ExampleTableViewDataSource {
+            @objc
+            override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+                return UITableViewCell()
+            }
+        }
+
+        setUpDataSource(mockedDatasource())
+
+        let ad = testHelpers.getNativeAd()
+        subject.adListingsPerSection = [
+            0: [
+                3: NativeAdListing(ad: ad, position: 3, numOfAdsBefore: 1),
+            ],
+        ]
+
+        var result = subject.getOriginalPositionForElement(NSIndexPath(forRow: 1, inSection: 0))
+        XCTAssert(result.row == 1, "Because there is no ad listing on this row. We'll get the same row back we sent")
+
+        result = subject.getOriginalPositionForElement(NSIndexPath(forRow: 3, inSection: 0))
+        XCTAssert(result.row == 3, "When we ask for 3. It is an ad, so we don't normalize")
+
+        result = subject.getOriginalPositionForElement(NSIndexPath(forRow: 4, inSection: 0))
+        XCTAssert(result.row == 3, "When we ask for 4, we should get 3. Because there is an ad at 3")
+    }
 }
