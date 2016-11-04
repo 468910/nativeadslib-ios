@@ -170,9 +170,12 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         let maxSections = datasource.numberOfSectionsInTableView!(tableView)
         var section = 0
         var adsInserted = 1
+        let numOfRowsInCurrentSection = datasource.tableView(tableView, numberOfRowsInSection: section)
+        
         for ad in ads {
-            let numOfRowsInCurrentSection = datasource.tableView(tableView, numberOfRowsInSection: section)
+            let limit = numOfRowsInCurrentSection + adsInserted
             var position: Int
+            //try and get an ad position
             do {
                 position = try Int(adPosition.getAdPosition(numOfRowsInCurrentSection))
             } catch let err as NSError {
@@ -180,7 +183,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
                 continue
             }
             // If we're out of positions move up a section.
-            if position >= numOfRowsInCurrentSection {
+            if position >= limit {
                 adPosition.reset()
                 section += 1
                 adsInserted = 1
@@ -225,7 +228,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         if let listing = getNativeAdListingHigherThan(indexRow) {
             let normalizedIndexRow = listing.getOriginalPosition(indexRow)
             let maxRows = datasource.tableView(tableView, numberOfRowsInSection: normalizedIndexRow.section)
-            
+
             // Because we really never want to be responsible for a crash :-(
             // We'll just do a quick fail safe. So we can all sleep at night: the normalizedIndexRow.row may not be higher than the the amount of rows we have for this section.
             if normalizedIndexRow.row >= maxRows || normalizedIndexRow.row < 0 {

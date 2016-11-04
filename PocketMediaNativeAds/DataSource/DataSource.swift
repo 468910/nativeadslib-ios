@@ -41,6 +41,7 @@ public class NativeAdListing: NSObject {
     func getOriginalPosition(indexPath: NSIndexPath) -> NSIndexPath {
         let position = indexPath.row
         let normalizedPosition = position - self.numOfAdsBefore
+        
         return NSIndexPath(forRow: normalizedPosition, inSection: indexPath.section)
     }
 }
