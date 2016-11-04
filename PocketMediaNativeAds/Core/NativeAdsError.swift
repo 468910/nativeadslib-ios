@@ -10,7 +10,7 @@ import Foundation
 
 /**
  Error types that are thrown when building an ad.
- 
+
  - InvalidAdNoCampaign: Thrown when the ad doesn't have name: campaign_name.
  - InvalidAdNoClickUrl: Thrown when the ad doesn't have a click URL: click_url.
  - InvalidAdNoCampaignDescription: Thrown when the ad doesn't have a description: campaign_description.

@@ -15,8 +15,8 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 	public var controller: UIViewController
 	public var delegate: UITableViewDelegate
 	public var datasource: NativeAdTableViewDataSource
-  
-    internal static let heightForStandardAdUnit : CGFloat = 80
+
+    internal static let heightForStandardAdUnit: CGFloat = 80
 
 	required public init(datasource: NativeAdTableViewDataSource, controller: UIViewController, delegate: UITableViewDelegate) {
 		self.datasource = datasource
@@ -51,7 +51,7 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
            tableview rowHeight
         */
         return tableView.rowHeight
-        
+
 	}
 
 	public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

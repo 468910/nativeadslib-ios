@@ -25,7 +25,7 @@ class StandardAdUnitTableViewCellTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
     func testRender() {
         let adDictionary = testHelpers.getNativeAdData()
         var nativeAd: NativeAd?
@@ -34,9 +34,9 @@ class StandardAdUnitTableViewCellTest: XCTestCase {
         } catch {
             XCTFail("Could not create an instance of nativeAd")
         }
-        
+
         subject.render(nativeAd!)
-        
+
         if let title = subject.adTitle {
             title.text = nativeAd!.campaignName
         }
@@ -46,7 +46,7 @@ class StandardAdUnitTableViewCellTest: XCTestCase {
         if let image = subject.adImage {
             image.nativeSetImageFromURL(nativeAd!.campaignImage)
         }
-        
+
         let iButton = subject.installButton!
         //        XCTAssert(CGColorEqualToColor(iButton.layer.borderColor, subject.tintColor.CGColor))
         XCTAssert(iButton.layer.borderWidth == 1)
@@ -54,7 +54,7 @@ class StandardAdUnitTableViewCellTest: XCTestCase {
         XCTAssert(iButton.titleLabel?.baselineAdjustment == .AlignCenters)
         XCTAssert(iButton.titleLabel?.textAlignment == .Center)
         //        XCTAssert(iButton.titleLabel?.minimumScaleFactor == 0.1)
-        
+
         let color = UIColor(red: 17.0 / 255.0, green: 147.0 / 255.0, blue: 67.0 / 255.0, alpha: 1)
         //iButton.setTitleColor(color, forState: .Normal)
         XCTAssert(CGColorEqualToColor(iButton.layer.borderColor!, color.CGColor))
@@ -66,7 +66,7 @@ class StandardAdUnitTableViewCellTest: XCTestCase {
         //            image.layer.cornerRadius = CGRectGetWidth(image.frame) / 10
         //            image.layer.masksToBounds = true
         //        }
-        
+
         if let ad_description = subject.adDescription {
             XCTAssert(ad_description.numberOfLines == 0)
             XCTAssert(ad_description.lineBreakMode == .ByTruncatingTail)
@@ -77,8 +77,8 @@ class StandardAdUnitTableViewCellTest: XCTestCase {
             XCTAssert(title.numberOfLines == 0)
             XCTAssert(title.lineBreakMode == .ByTruncatingTail)
         }
-        
+
     }
-    
+
 
 }

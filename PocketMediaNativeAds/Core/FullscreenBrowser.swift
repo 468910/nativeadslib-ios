@@ -30,8 +30,7 @@ public class FullscreenBrowser: UIViewController, NativeAdOpenerDelegate {
 		self.originalViewController = parentViewController
 		if (self.originalViewController!.view.bounds.width != 0 && self.originalViewController!.view.bounds.height != 0) {
 			setupWebView(self.originalViewController!.view.bounds.width, height: self.originalViewController!.view.bounds.height)
-		}
-        else {
+		} else {
 			setupWebView(UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
 		}
 		addSubView()
@@ -58,7 +57,7 @@ public class FullscreenBrowser: UIViewController, NativeAdOpenerDelegate {
 			)
 		)
         self.view = self.webView
-        
+
         self.webViewDelegate = delegate != nil ? delegate : NativeAdsWebviewDelegate(delegate: self, webView: self.webView!)
         self.webView!.delegate = self.webViewDelegate
 	}
@@ -110,7 +109,7 @@ public class FullscreenBrowser: UIViewController, NativeAdOpenerDelegate {
 			self.closeAction()
 		}
 	}
-    
+
     override public func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
     }

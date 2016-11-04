@@ -40,7 +40,7 @@ public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let item = collection[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
-        
+
         cell.name.text = item.title
         cell.descriptionItem.text = item.descriptionItem
         cell.artworkImageView.nativeSetImageFromURL(item.imageURL)

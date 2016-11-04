@@ -50,7 +50,7 @@ class SpyDelegate: NativeAdsConnectionDelegate {
 }
 
 class MockedNSURLSessionDataTask: NSURLSessionDataTask {
-    var resumeCalled:Bool? = false
+    var resumeCalled: Bool? = false
     override func resume() {
         resumeCalled = true
     }
@@ -58,11 +58,10 @@ class MockedNSURLSessionDataTask: NSURLSessionDataTask {
 
 class MockURLSession: URLSessionProtocol {
 	private (set) var lastURL: NSURL?
-    var task:MockedNSURLSessionDataTask = MockedNSURLSessionDataTask()
-    
+    var task: MockedNSURLSessionDataTask = MockedNSURLSessionDataTask()
+
 	func dataTaskWithURL(url: NSURL, completionHandler: DataTaskResult)
-		-> NSURLSessionDataTask
-	{
+		-> NSURLSessionDataTask {
 		lastURL = url
 		return task
 	}
@@ -92,7 +91,7 @@ class NativeAdsRequestTest: XCTestCase {
 		let nativeAdsrequest = NativeAdsRequest(adPlacementToken: "test", delegate: delegate, session: session)
 		nativeAdsrequest.retrieveAds(10)
 		let expected = nativeAdsrequest.getNativeAdsURL("test", limit: 10)
-        
+
         XCTAssert(session.task.resumeCalled!, "NativeAdsRequest should've called resume to actually do the network request.§")
 
 		if let expectedUrl = NSURL(string: expected) {

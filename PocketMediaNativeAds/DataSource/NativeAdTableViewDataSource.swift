@@ -26,7 +26,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         } else {
             preconditionFailure("Your tableview must have a dataSource set before use.")
         }
-        
+
         self.adPosition = adPosition
         self.controller = controller
         self.adPosition = adPosition
@@ -99,18 +99,15 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     	if let listing = getNativeAdListing(indexPath) {
 			return getAdCell(listing.ad)
 		}
-        
-        let normalizedPosition = getOriginalPositionForElement(indexPath)
-        
-        return datasource.tableView(tableView, cellForRowAtIndexPath: normalizedPosition)
+        return datasource.tableView(tableView, cellForRowAtIndexPath: getOriginalPositionForElement(indexPath))
 	}
-    
+
 	@objc
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let ads = adListingsPerSection[section]?.count {
             return datasource.tableView(tableView, numberOfRowsInSection: section) + ads
         }
-        
+
         return datasource.tableView(tableView, numberOfRowsInSection: section)
 	}
 
@@ -129,7 +126,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 	}
 
 	public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-      if (datasource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:canEditRowAtIndexPath:)))){
+      if (datasource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:canEditRowAtIndexPath:)))) {
 			return datasource.tableView!(tableView, canEditRowAtIndexPath: indexPath)
 		}
         return true
@@ -158,16 +155,16 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 	public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 		datasource.tableView?(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
 	}
-    
+
     public override func onAdRequestSuccess(ads: [NativeAd]) {
-        Logger.debugf("Received %d ads", ads.count);
+        Logger.debugf("Received %d ads", ads.count)
         self.ads = ads
         setAdPositions(ads)
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
         })
     }
-    
+
     public func setAdPositions(ads: [NativeAd]) {
         adPosition.reset()
         clear()
@@ -184,7 +181,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
                 continue
             }
             //If we're out of positions move up a section.
-            if position > numOfRowsInCurrentSection {
+            if position >= numOfRowsInCurrentSection {
                 adPosition.reset()
                 section += 1
                 adsInserted = 0
@@ -196,27 +193,27 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
             if adListingsPerSection[section] == nil {
                 adListingsPerSection[section] = [:]
             }
-            
+
             //Add the ad
             adListingsPerSection[section]![position] = NativeAdListing(ad: ad, position: position, numOfAdsBefore: adsInserted)
             adsInserted += 1
         }
-        
+
         /*
         for (section, adListings) in adListingsPerSection {
             //Sort
             adListingsPerSection[section] = adListingsPerSection[section]!.sort({ $0.0 < $1.0 }) as! [Int : NativeAdListing]
         }
          */
-        
+
         Logger.debugf("Set %d section ad listings", adListingsPerSection.count)
     }
-    
+
     private func clear() {
         adListingsPerSection.removeAll()
-        Logger.debug("Cleared adListings.");
+        Logger.debug("Cleared adListings.")
     }
-    
+
     //Called everytime tableView.reloadData is called.
     //Like 'notifyDataSetChanged' in android
     public func reload() {
@@ -233,18 +230,20 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 	}
 
     func getOriginalPositionForElement(indexRow: NSIndexPath) -> NSIndexPath {
-        let position = indexRow.row
-        
-        /*
-        if position == 3 {
-            print("death")
-        }
-        */
-        
         if let listing = getNativeAdListingHigherThan(indexRow) {
+            let normalizedIndexRow = listing.getOriginalPosition(indexRow)
+
+            //Because we really never want to be responsible for a crash :-(
+            //We'll just do a quick fail safe. So we can all sleep at night: the normalizedIndexRow.row may not be higher than the the amount of rows we have for this section.
+            if(normalizedIndexRow.row >= datasource.tableView(tableView, numberOfRowsInSection: normalizedIndexRow.section) || normalizedIndexRow.row < 0) {
+                print("[INDEX] Normalized row is invalid @ \(normalizedIndexRow.row)")
+                //We'll return 0. That one is probably available. Stops this unexpected behaviour from crashing the host app
+                return NSIndexPath(forRow: 0, inSection: indexRow.section)
+            }
+
             return listing.getOriginalPosition(indexRow)
         }
         return indexRow
     }
-    
+
 }

@@ -21,7 +21,7 @@ class MenuViewController: UIViewController, UIPopoverPresentationControllerDeleg
 		let nav = self.navigationController?.navigationBar
 		nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 		pocketMediaLogo.contentMode = .ScaleAspectFit
-        
+
         //Collection view button
 		collectionViewAdsButton.titleEdgeInsets.left = 10
 		collectionViewAdsButton.titleEdgeInsets.right = 10
@@ -57,7 +57,7 @@ class MenuViewController: UIViewController, UIPopoverPresentationControllerDeleg
         scrollViewButton.hidden = true
 
 		// tableViewBigAdsButton
-        
+
 		tableviewBigAdsButton.setTitle("TableViewBigAdsButton", forState: UIControlState.Normal)
 		tableviewBigAdsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
 		tableviewBigAdsButton.titleEdgeInsets.left = 10

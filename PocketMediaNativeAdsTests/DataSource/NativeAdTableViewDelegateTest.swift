@@ -20,12 +20,12 @@ public class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
 class mockedNativeAdTableViewDataSource: NativeAdTableViewDataSource {
     var returngetNativeAdListing: Bool = false
     var getNativeAdListingCalled: Bool = false
-    var ad: mockedNativeAd?
+    var adListing: NativeAdListing?
 
-    override func getNativeAdListing(indexPath: NSIndexPath) -> NativeAd? {
+    override func getNativeAdListing(indexPath: NSIndexPath) -> NativeAdListing? {
         getNativeAdListingCalled = true
         if returngetNativeAdListing {
-            return ad
+            return adListing
         }
         return nil
     }
@@ -80,7 +80,8 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         datasource = mockedNativeAdTableViewDataSource(controller: controller, tableView: tableView, adPosition: MarginAdPosition(margin: 2))
 
         do {
-            datasource.ad = try mockedNativeAd(adDictionary: testHelpers.getNativeAdData()!, adPlacementToken: "test")
+            let ad = try mockedNativeAd(adDictionary: testHelpers.getNativeAdData()!, adPlacementToken: "test")
+            datasource.adListing = NativeAdListing(ad : ad, position : 0, numOfAdsBefore: 0)
         } catch {
             XCTFail("Could not create an instance of NativeAd")
         }
@@ -108,14 +109,17 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         subject?.tableView(tableView, didSelectRowAtIndexPath: NSIndexPath(forItem: 1, inSection: 0))
         XCTAssert(mockedDelegate.didSelectRowAtIndexPath, "It should've called the orginal function")
         mockedDelegate.didSelectRowAtIndexPath = false
-        datasource.ad!.openAdUrlCalled = false
+
+        let ad = (datasource.adListing!.ad as! mockedNativeAd)
+
+        ad.openAdUrlCalled = false
 
         datasource.returngetNativeAdListing = true
         subject?.tableView(tableView, didSelectRowAtIndexPath: NSIndexPath(forItem: 1, inSection: 0))
         XCTAssert(mockedDelegate.didSelectRowAtIndexPath == false, "It should NOT have called the orginal function")
-        XCTAssert(datasource.ad!.openAdUrlCalled, "It should've called our function")
+        XCTAssert(ad.openAdUrlCalled, "It should've called our function")
         mockedDelegate.didSelectRowAtIndexPath = false
-        datasource.ad!.openAdUrlCalled = false
+        ad.openAdUrlCalled = false
         datasource.returngetNativeAdListing = false
 
         //If adsteam is weak + optional

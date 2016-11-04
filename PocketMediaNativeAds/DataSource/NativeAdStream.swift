@@ -28,25 +28,25 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
         requester: NativeAdsRequest? = nil
         ) {
         super.init()
-        
+
         //Create a new instance of a requester or use the one sent along. This is done for unit testing purposes.
         if requester == nil {
             self.requester = NativeAdsRequest(adPlacementToken: adPlacementToken, delegate: self)
         } else {
             self.requester = requester
         }
-        
+
         //Depending on the view that was sent along, use one of our known implementations.
         switch view {
             case let tableView as UITableView:
-                
+
                 //If a custom xib was sent. Register it.
                 if customXib != nil {
                     if (tableView.dequeueReusableCellWithIdentifier("CustomAdCell") == nil) {
                         tableView.registerNib(customXib, forCellReuseIdentifier: "CustomAdCell")
                     }
                 }
-                
+
                 self.view = tableView
                 datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adPosition: adPosition!)
                 break
@@ -56,24 +56,24 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
                 datasource = DataSource()
                 break
 		}
-        
+
         //If a custom XIB was sent along. Set the adUnitType to custom
         if customXib != nil {
             datasource?.adUnitType = AdUnitType.Custom
         }
 	}
-    
+
 	@objc
 	public func didReceiveError(error: NSError) {
         Logger.debug("There was an Error Retrieving ads", error)
 	}
-    
+
     /*
     * This method is called when we hear back from the server.
     */
 	@objc
 	public func didReceiveResults(newAds: [NativeAd]) {
-        if(newAds.count < 0){
+        if(newAds.count < 0) {
             Logger.debug("Received no Ads")
         }
         Logger.debug("Received \(newAds.count) new ads.")
@@ -94,19 +94,19 @@ public class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     @objc public func requestAds(limit: UInt, adUnitType: AdUnitType = AdUnitType.Standard) {
         //Set the limit so that when the user does a reloadAds call we know what limit they want.
         self.limit = limit
-        
+
         if self.datasource.adUnitType != AdUnitType.Custom {
             self.datasource.adUnitType = adUnitType
         }
-        
+
         Logger.debug("Requesting ads (\(limit)) for affiliate id \(requester.adPlacementToken)")
-        
+
         var imageType = EImageType.allImages
         //If our adunit is of the type Big. Then let us ask our api to send back banner like images
         if self.datasource.adUnitType == AdUnitType.Big {
             imageType = EImageType.banner
         }
-        
+
         requester.retrieveAds(limit, imageType: imageType)
 	}
 }

@@ -9,12 +9,12 @@
 import UIKit
 
 public class ItemTableModel {
-  
-  public var title           : String!
-  public var descriptionItem : String!
-  public var imageURL        : NSURL!
-  
-  public init?(dictionary: NSDictionary){
+
+  public var title: String!
+  public var descriptionItem: String!
+  public var imageURL: NSURL!
+
+  public init?(dictionary: NSDictionary) {
     if let name = dictionary["name"] as? String {
       self.title = name
     } else {
@@ -26,6 +26,6 @@ public class ItemTableModel {
     if let urlImage = dictionary["artworkUrl"] as? String, url = NSURL(string: urlImage) {
       self.imageURL = url
     }
-    
+
   }
 }
