@@ -71,7 +71,11 @@ public class FullscreenBrowser: UIViewController, NativeAdOpenerDelegate {
 
     private func addCloseButton() {
         let button = UIButton(type: UIButtonType.System)
-        button.frame = CGRectMake(UIScreen.mainScreen().bounds.width - UIScreen.mainScreen().bounds.width * 0.10, 0, UIScreen.mainScreen().bounds.width * 0.10, UIScreen.mainScreen().bounds.height * 0.10)
+        button.frame = CGRectMake(
+            UIScreen.mainScreen().bounds.width - UIScreen.mainScreen().bounds.width * 0.10, 0,
+            UIScreen.mainScreen().bounds.width * 0.10,
+            UIScreen.mainScreen().bounds.height * 0.10
+        )
         button.backgroundColor = UIColor.clearColor()
         button.setImage(UIImage(named: "close"), forState: UIControlState.Normal)
         button.addTarget(self, action: .closeAction, forControlEvents: UIControlEvents.TouchUpInside)

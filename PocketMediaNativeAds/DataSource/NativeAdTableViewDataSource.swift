@@ -184,7 +184,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
             if position >= numOfRowsInCurrentSection {
                 adPosition.reset()
                 section += 1
-                adsInserted = 0
+                adsInserted = 1
             }
             // If that new section doesn't exist. Stop adding ads.
             if section >= maxSections {
@@ -241,7 +241,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
                 return NSIndexPath(forRow: 0, inSection: indexRow.section)
             }
 
-            return listing.getOriginalPosition(indexRow)
+            return normalizedIndexRow
         }
         return indexRow
     }

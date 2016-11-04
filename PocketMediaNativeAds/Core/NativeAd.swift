@@ -7,7 +7,11 @@
 //
 import UIKit
 
-public struct sImage {
+/**
+ Image model object
+ It contains the attributes that every image in an ad has.
+ */
+public struct SImage {
     var url: NSURL!
     var width: UInt!
     var height: UInt!
@@ -31,7 +35,7 @@ public class NativeAd: NSObject {
     /// Ad Placement token the ad is linked to (via the ads request)
     private(set) var adPlacementToken: String!
     /// Images including hq_icon , banners and icon
-    private(set) var images = [EImageType: sImage]()
+    private(set) var images = [EImageType: SImage]()
 
     /**
      Fallible Constructor
@@ -43,41 +47,15 @@ public class NativeAd: NSObject {
         super.init()
 
         self.adPlacementToken = adPlacementToken
+        try parseName(adDictionary)
+        try parseURL(adDictionary)
+        try parseDescription(adDictionary)
+        try parseIds(adDictionary)
+        try parseMainImage(adDictionary)
+        try parseImages(adDictionary)
+    }
 
-        if let name = adDictionary["campaign_name"] as? String {
-            self.campaignName = name
-        } else {
-            throw NativeAdsError.InvalidAdNoCampaign
-        }
-
-        if let urlClick = adDictionary["click_url"] as? String, let url = NSURL(string: urlClick) {
-            self.clickURL = url
-        } else {
-            throw NativeAdsError.InvalidAdNoClickUrl
-        }
-
-        if let description = adDictionary["campaign_description"] as? String {
-            self.campaignDescription = description
-        } else {
-            self.campaignDescription = ""
-        }
-
-        if let offerIdString = adDictionary["id"] as? String, offerId = UInt(offerIdString) {
-            self.offerId = offerId
-        } else {
-            throw NativeAdsError.InvalidAdNoId
-        }
-
-        if let urlImage = adDictionary["default_icon"] as? String, url = NSURL(string: urlImage) {
-            self.campaignImage = url
-        } else {
-            if let urlImage = adDictionary["campaign_image"] as? String, url = NSURL(string: urlImage) {
-                self.campaignImage = url
-            } else {
-                throw NativeAdsError.InvalidAdNoImage
-            }
-        }
-
+    private func parseImages(adDictionary: NSDictionary) throws {
         if let imageTypes = adDictionary["images"] as? [String: [String: String]] {
             for imageType in imageTypes {
                 let image = imageType.1
@@ -97,10 +75,54 @@ public class NativeAd: NSObject {
                 if let sUrl = image["url"] {
                     url = NSURL(string: sUrl)!
                 }
-                self.images[EImageType(rawValue: imageType.0)!] = sImage(url: url, width: width, height: height)
+                self.images[EImageType(rawValue: imageType.0)!] = SImage(url: url, width: width, height: height)
             }
         } else {
             throw NativeAdsError.InvalidAdNoImages
+        }
+    }
+
+    private func parseMainImage(adDictionary: NSDictionary) throws {
+        if let urlImage = adDictionary["default_icon"] as? String, url = NSURL(string: urlImage) {
+            self.campaignImage = url
+        } else {
+            if let urlImage = adDictionary["campaign_image"] as? String, url = NSURL(string: urlImage) {
+                self.campaignImage = url
+            } else {
+                throw NativeAdsError.InvalidAdNoImage
+            }
+        }
+    }
+
+    private func parseIds(adDictionary: NSDictionary) throws {
+        if let offerIdString = adDictionary["id"] as? String, let offerId = UInt(offerIdString) {
+            self.offerId = offerId
+        } else {
+            throw NativeAdsError.InvalidAdNoId
+        }
+    }
+
+    private func parseDescription(adDictionary: NSDictionary) throws {
+        if let description = adDictionary["campaign_description"] as? String {
+            self.campaignDescription = description
+        } else {
+            self.campaignDescription = ""
+        }
+    }
+
+    private func parseURL(adDictionary: NSDictionary) throws {
+        if let urlClick = adDictionary["click_url"] as? String, let url = NSURL(string: urlClick) {
+            self.clickURL = url
+        } else {
+            throw NativeAdsError.InvalidAdNoClickUrl
+        }
+    }
+
+    private func parseName(adDictionary: NSDictionary) throws {
+        if let name = adDictionary["campaign_name"] as? String {
+            self.campaignName = name
+        } else {
+            throw NativeAdsError.InvalidAdNoCampaign
         }
     }
 

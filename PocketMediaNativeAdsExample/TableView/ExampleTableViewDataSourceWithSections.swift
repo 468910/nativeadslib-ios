@@ -23,12 +23,12 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
 
     public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-            case 0:
-                return "Section 1"
-            case 1:
-                return "Section 2"
-            default:
-                return "This is not a valid section?"
+        case 0:
+            return "Section 1"
+        case 1:
+            return "Section 2"
+        default:
+            return "This is not a valid section?"
         }
     }
 

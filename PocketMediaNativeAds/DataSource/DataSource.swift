@@ -8,7 +8,7 @@
 
 import Foundation
 
-/**
+/*
  * Wraps around the native ad. It represents an ad displayed in a collection.
  * Contains all the logic of the position of the original host array.
  * The idea is that we find the last adListing in the shown list, and based on that figure out what the original position was of a non ad view.
@@ -38,10 +38,10 @@ public class NativeAdListing: NSObject {
         self.numOfAdsBefore = numOfAdsBefore
     }
 
-    func getOriginalPosition(position: NSIndexPath) -> NSIndexPath {
-        let row = position.row - self.numOfAdsBefore - 1
-
-        return NSIndexPath(forRow: row, inSection: position.section)
+    func getOriginalPosition(indexPath: NSIndexPath) -> NSIndexPath {
+        let position = indexPath.row
+        let normalizedPosition = position - self.numOfAdsBefore
+        return NSIndexPath(forRow: normalizedPosition, inSection: indexPath.section)
     }
 }
 
@@ -66,12 +66,16 @@ public class DataSource: NSObject, DataSourceProtocol {
     public func getNativeAdListingHigherThan(indexRow: NSIndexPath) -> NativeAdListing? {
         var result: NativeAdListing?
         let position = indexRow.row
+        // This all is based on the fact that the positions are ascending ordered.
         if let listings = adListingsPerSection[indexRow.section] {
             for (_, listing) in listings {
-                if listing.position<position {
+                // if the iterated position is lower than the position we are looking for save it.
+                // So in the end we have the highest listing position for the position we are looking for. Aka the closest previous ad listing
+                if listing.position < position {
                     result = listing
                 }
-                if position >= listing.position {
+                // If the listing we are iterating through is higher than the position. Than we can stop. Because we're looking for previous ad listings. Not ones that are ahead of us.
+                if position <= listing.position {
                     break
                 }
             }

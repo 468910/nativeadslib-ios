@@ -33,7 +33,7 @@ class BaseMockedNativeAdDataSource: NativeAdTableViewDataSource {
         let data = testHelpers.getNativeAdData()!
         let ad = try? NativeAd(adDictionary: data, adPlacementToken: "test")
 
-        self.adListing = NativeAdListing(ad: ad, position: 0, numOfAdsBefore: 0)
+        self.adListing = NativeAdListing(ad: ad!, position: 0, numOfAdsBefore: 0)
     }
 }
 

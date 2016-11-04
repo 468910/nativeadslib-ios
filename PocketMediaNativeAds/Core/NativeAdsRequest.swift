@@ -92,8 +92,10 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
         var nativeAds: [NativeAd] = []
         for ad in ads {
             do {
-                let ad = try NativeAd(adDictionary: ad as! NSDictionary, adPlacementToken: self.adPlacementToken!)
-                nativeAds.append(ad)
+                if let adDict = ad as? NSDictionary {
+                    let ad = try NativeAd(adDictionary: adDict, adPlacementToken: self.adPlacementToken!)
+                    nativeAds.append(ad)
+                }
             } catch let error as NSError {
                 self.delegate?.didReceiveError(error)
                 return
@@ -122,8 +124,22 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
         let token = provideIdentifierForAdvertisingIfAvailable()
 
         let baseUrl = NativeAdsConstants.NativeAds.baseURL
-        // token
-        var apiUrl = baseUrl + "&req_version=002&os=ios&limit=\(limit)&version=\(NativeAdsConstants.Device.iosVersion)&model=\(NativeAdsConstants.Device.model)&token=\(token!)&placement_key=\(placementKey!)&image_type=\(imageType.rawValue)"
+        // Version
+        var apiUrl = baseUrl + "&req_version=002"
+        // OS
+        apiUrl += "&os=ios"
+        // Limit
+        apiUrl += "&limit=\(limit)"
+        // Version
+        apiUrl += "&version=\(NativeAdsConstants.Device.iosVersion)"
+        // Model
+        apiUrl += "&model=\(NativeAdsConstants.Device.model)"
+        // Token
+        apiUrl += "&token=\(token!)"
+        // Placement key
+        apiUrl += "&placement_key=\(placementKey!)"
+        // Image type
+        apiUrl += "&image_type=\(imageType.rawValue)"
 
         if advertisingTrackingEnabled == nil || advertisingTrackingEnabled == false {
             apiUrl = apiUrl + "&optout=1"
