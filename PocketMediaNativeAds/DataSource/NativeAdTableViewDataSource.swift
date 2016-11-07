@@ -170,12 +170,12 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         let maxSections = datasource.numberOfSectionsInTableView!(tableView)
         var section = 0
         var adsInserted = 1
-        let numOfRowsInCurrentSection = datasource.tableView(tableView, numberOfRowsInSection: section)
-        
+
         for ad in ads {
+            var numOfRowsInCurrentSection = datasource.tableView(tableView, numberOfRowsInSection: section)
             let limit = numOfRowsInCurrentSection + adsInserted
             var position: Int
-            //try and get an ad position
+            // try and get an ad position
             do {
                 position = try Int(adPosition.getAdPosition(numOfRowsInCurrentSection))
             } catch let err as NSError {
@@ -187,6 +187,15 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
                 adPosition.reset()
                 section += 1
                 adsInserted = 1
+
+                numOfRowsInCurrentSection = datasource.tableView(tableView, numberOfRowsInSection: section)
+                // Get a new position
+                do {
+                    position = try Int(adPosition.getAdPosition(numOfRowsInCurrentSection))
+                } catch let err as NSError {
+                    Logger.error(err)
+                    continue
+                }
             }
             // If that new section doesn't exist. Stop adding ads.
             if section >= maxSections {

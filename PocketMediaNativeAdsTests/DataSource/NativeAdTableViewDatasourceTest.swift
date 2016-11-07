@@ -61,7 +61,7 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
         super.setUp()
     }
 
-    func setUpDataSource(mockedDatasource: UITableViewDataSource) {
+    func setUpDataSource(mockedDatasource: UITableViewDataSource, margin: Int = 2) {
         controller = UIViewController()
         tableView = UITableView(frame: CGRect(), style: UITableViewStyle.Plain)
         controller.view = tableView
@@ -74,7 +74,7 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
         }
 
         tableView.dataSource = originalDataSource
-        subject = BaseMockedNativeAdDataSource(controller: controller, tableView: tableView, adPosition: MarginAdPosition(margin: 2))
+        subject = BaseMockedNativeAdDataSource(controller: controller, tableView: tableView, adPosition: MarginAdPosition(margin: margin))
     }
 
     func testcellForRowAtIndexPath() {
@@ -303,5 +303,113 @@ public class NativeAdTableViewDatasourceTest: XCTestCase {
 
         result = subject.getOriginalPositionForElement(NSIndexPath(forRow: 4, inSection: 0))
         XCTAssert(result.row == 3, "When we ask for 4, we should get 3. Because there is an ad at 3")
+    }
+
+    private func setupSetAdPositions(rows: Int = 2, margin: Int = 1, sections: Int = 2) {
+        class mockedDatasource: ExampleTableViewDataSource {
+            @objc
+            override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+                return UITableViewCell()
+            }
+
+            var rows: Int = 1
+            override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+                return rows
+            }
+
+            var sections: Int = 2
+            override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+                return sections
+            }
+        }
+        let dataSource = mockedDatasource()
+
+        let ads = testHelpers.getNativeAds()
+        XCTAssert(ads.count == 2, "For this test we need 2 ads")
+
+        dataSource.rows = rows
+        dataSource.sections = sections
+        setUpDataSource(dataSource, margin: margin)
+
+        // Call subject
+        subject.setAdPositions(ads)
+    }
+
+    func testSetAdPositions() {
+
+        // 2 rows. 1 ad margin. 2 ads. Should fit.
+        setupSetAdPositions(2, margin: 1)
+        var result = subject.adListingsPerSection
+
+        // Expected:
+        /** Section 0:
+         0 = item.
+         1 = ad.
+         2 = item.
+         3 = ad.
+         */
+        XCTAssert(result.count == 1, "One section. Because it should fit.")
+        XCTAssert(result[0]?.count == 2, "We have two ads. And two ads should fit with 2 rows and 1 margin.")
+        XCTAssertNotNil(result[0]?[1], "First ad should be on position 1")
+        XCTAssert(result[0]?[1]!.position == 1, "Position should be the same as the index")
+
+        // If we only have 1 row. Then we should use the second section
+        // Expected:
+        /** Section 0:
+         0 = item.
+         1 = ad.
+         Section 1:
+         0 = item
+         1 = ad
+         */
+        setupSetAdPositions(1, margin: 1)
+        result = subject.adListingsPerSection
+
+        XCTAssert(result.count == 2, "Because we have two ads. And a ad margin of 1. We should be using the second section!")
+        XCTAssert(result[0]?.count == 1)
+        XCTAssert(result[1]?.count == 1)
+
+        XCTAssertNotNil(result[0]?[1], "First ad should be on position 1")
+        XCTAssert(result[0]?[1]!.position == 1, "Position should be the same as the index")
+
+        XCTAssertNotNil(result[1]?[1], "Second ad should be on position 1")
+        XCTAssert(result[1]?[1]!.position == 1, "Position should be the same as the index")
+
+        // If we have a higher ad margin. It won't fit.
+        // Expected:
+        /** Section 0:
+         0 = item.
+         1 = item.
+         */
+        setupSetAdPositions(2, margin: 3, sections: 1)
+        result = subject.adListingsPerSection
+        XCTAssert(result.count == 0, "Not enough room for ads! Because the margin is 3 and there is just 1 section of this.")
+
+        // If we only have 10 row. We should not be using another section
+        // Expected:
+        /** Section 0:
+         0 = item.
+         1 = item.
+         2 = item.
+         3 = ad.
+         4 = item.
+         5 = item.
+         6 = item.
+         7 = ad.
+         8 = item.
+         9 = item.
+         10 = item.
+         */
+        setupSetAdPositions(10, margin: 3)
+        result = subject.adListingsPerSection
+
+        XCTAssert(result.count == 1, "Enough space. No need for more than 1 section")
+        XCTAssert(result[0]?.count == 2, "Our two ads should fit with a ad margin of 3")
+
+        XCTAssertNotNil(result[0]?[3], "First ad should be on position 3")
+        XCTAssert(result[0]?[3]!.position == 3, "Position should be the same as the index")
+
+        XCTAssertNotNil(result[0]?[7], "Second ad should be on position 7")
+        XCTAssert(result[0]?[7]!.position == 7, "Position should be the same as the index")
     }
 }

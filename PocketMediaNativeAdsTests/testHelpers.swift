@@ -31,14 +31,27 @@ class testHelpers {
         return nil
     }
 
-    static func getNativeAd() -> NativeAd {
-        let adDictionary = testHelpers.getNativeAdData()
+    private static func createNativeAd(dict: NSMutableDictionary) -> NativeAd! {
         var nativeAd: NativeAd?
         do {
-            nativeAd = try NativeAd(adDictionary: adDictionary!, adPlacementToken: "123")
+            nativeAd = try NativeAd(adDictionary: dict, adPlacementToken: "123")
         } catch {
             print("Could not create an instance of nativeAd")
         }
         return nativeAd!
+    }
+
+    static func getNativeAd() -> NativeAd {
+        let adDictionary = testHelpers.getNativeAdData()
+        return testHelpers.createNativeAd(adDictionary!)
+    }
+
+    static func getNativeAds() -> [NativeAd] {
+        let adsDicts = getNativeAdsData()
+        var results = [NativeAd]()
+        for adDict in adsDicts! {
+            results.append(createNativeAd(adDict))
+        }
+        return results
     }
 }
