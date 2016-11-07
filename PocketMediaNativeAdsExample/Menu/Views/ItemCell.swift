@@ -9,16 +9,6 @@
 import UIKit
 
 public class ItemCell: UITableViewCell {
-  
-  @IBOutlet public weak var name: UILabel!
-  @IBOutlet public weak var artworkImageView: UIImageView!
-  @IBOutlet public weak var descriptionItem: UILabel!
-  
-  override public func awakeFromNib() {
-    super.awakeFromNib()
-  }
-  
-}
 
     @IBOutlet public weak var name: UILabel!
     @IBOutlet public weak var artworkImageView: UIImageView!

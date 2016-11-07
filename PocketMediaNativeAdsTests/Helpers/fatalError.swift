@@ -10,15 +10,15 @@ import Foundation
 import UIKit
 
 // overrides Swift global `fatalError`
-@noreturn func fatalError(@autoclosure message: () -> String = "", file: StaticString = #file, line: UInt = #line) {
+func fatalError(_ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) -> Never {
     FatalErrorUtil.fatalErrorClosure(message(), file, line)
     unreachable()
 }
 
 /// This is a `noreturn` function that pauses forever
-@noreturn func unreachable() {
+func unreachable() -> Never {
     repeat {
-        NSRunLoop.currentRunLoop().run()
+        RunLoop.current.run()
     } while (true)
 }
 
@@ -29,10 +29,10 @@ struct FatalErrorUtil {
     static var fatalErrorClosure: (String, StaticString, UInt) -> Void = defaultFatalErrorClosure
 
     // backup of the original Swift `fatalError`
-    private static let defaultFatalErrorClosure = { Swift.fatalError($0, file: $1, line: $2) }
+    fileprivate static let defaultFatalErrorClosure = { Swift.fatalError($0, file: $1, line: $2) }
 
     /// Replace the `fatalError` global function with something else.
-    static func replaceFatalError(closure: (String, StaticString, UInt) -> Void) {
+    static func replaceFatalError(_ closure: @escaping (String, StaticString, UInt) -> Void) {
         fatalErrorClosure = closure
     }
 
@@ -43,10 +43,10 @@ struct FatalErrorUtil {
 }
 
 extension XCTestCase {
-    func expectFatalError(expectedMessage: String, testcase: () -> Void) {
+    func expectFatalError(_ expectedMessage: String, testcase: @escaping () -> Void) {
 
         // arrange
-        let expectation = expectationWithDescription("expectingFatalError")
+        let expectation = self.expectation(description: "expectingFatalError")
         var assertionMessage: String? = nil
 
         // override fatalError. This will pause forever when fatalError is called.
@@ -56,9 +56,9 @@ extension XCTestCase {
         }
 
         // act, perform on separate thead because a call to fatalError pauses forever
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), testcase)
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async(execute: testcase)
 
-        waitForExpectationsWithTimeout(0.1) { _ in
+        waitForExpectations(timeout: 0.1) { _ in
             // assert
             XCTAssertEqual(assertionMessage, expectedMessage)
 

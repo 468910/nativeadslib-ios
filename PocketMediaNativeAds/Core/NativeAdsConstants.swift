@@ -34,8 +34,8 @@ struct Platform {
  */
 public struct NativeAdsConstants {
     public struct Device {
-        static let iosVersion = NSString(string: UIDevice.currentDevice().systemVersion).doubleValue
-        static let model = UIDevice.currentDevice().model.characters.split { $0 == " " }.map { String($0) }[0]
+        static let iosVersion = NSString(string: UIDevice.current.systemVersion).doubleValue
+        static let model = UIDevice.current.model.characters.split { $0 == " " }.map { String($0) }[0]
     }
 
     public struct NativeAds {

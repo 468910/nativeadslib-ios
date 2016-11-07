@@ -9,16 +9,16 @@
 import XCTest
 @testable import PocketMediaNativeAds
 
-public class MockOpener: NativeAdOpenerDelegate {
-    private(set) var loadCalled: Bool = false
+open class MockOpener: NativeAdOpenerDelegate {
+    fileprivate(set) var loadCalled: Bool = false
 
     @objc
-    public func load(adUnit: NativeAd) {
+    open func load(_ adUnit: NativeAd) {
         loadCalled = true
     }
 
     @objc
-    public func didOpenBrowser(url: NSURL) {
+    open func didOpenBrowser(_ url: URL) {
     }
 }
 
@@ -38,7 +38,7 @@ class NativeAdTest: XCTestCase {
 
     func testInitCampaign_name() {
 
-        data.removeObjectForKey("campaign_name")
+        data.removeObject(forKey: "campaign_name")
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTFail("Exception should have been thrown")
@@ -50,7 +50,7 @@ class NativeAdTest: XCTestCase {
     }
 
     func testInitClickUrl() {
-        data.removeObjectForKey("click_url")
+        data.removeObject(forKey: "click_url")
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTFail("Exception should have been thrown")
@@ -72,7 +72,7 @@ class NativeAdTest: XCTestCase {
     }
 
     func testInitCampaignDescription() {
-        data.removeObjectForKey("campaign_description")
+        data.removeObject(forKey: "campaign_description")
         do {
             let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTAssertTrue(ad.campaignDescription == "")
@@ -84,7 +84,7 @@ class NativeAdTest: XCTestCase {
     }
 
     func testInitId() {
-        data.removeObjectForKey("id")
+        data.removeObject(forKey: "id")
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTFail("Exception should have been thrown")
@@ -133,7 +133,7 @@ class NativeAdTest: XCTestCase {
         do {
             let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
 
-            if let expectedUrl = NSURL(string: expected) {
+            if let expectedUrl = URL(string: expected) {
                 XCTAssert(ad.campaignImage.isEqual(expectedUrl))
             } else {
                 XCTFail("Couldn't get the expected url")
@@ -147,7 +147,7 @@ class NativeAdTest: XCTestCase {
     func testInitImages() {
         do {
             let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
-            XCTAssertTrue(ad.images[EImageType.hqIcon]!.url.isEqual(NSURL(string: "http://google.co.uk/")!))
+            XCTAssertTrue(ad.images[EImageType.hqIcon]!.url.isEqual(URL(string: "http://google.co.uk/")!))
         } catch {
             XCTFail("Unexpected exception thrown")
         }

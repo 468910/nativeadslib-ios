@@ -15,22 +15,22 @@ import Foundation
  * @author Pocket Media
  */
 @objc
-public class NativeAdListing: NSObject {
+open class NativeAdListing: NSObject {
 
     /**
      * The ad that is added.
      */
-    public var ad: NativeAd
+    open var ad: NativeAd
 
     /**
      *  Position of where the add is added
      */
-    public var position: Int
+    open var position: Int
 
     /**
      *  The amount of adListings that have been added.
      */
-    public var numOfAdsBefore: Int
+    open var numOfAdsBefore: Int
 
     init(ad: NativeAd, position: Int, numOfAdsBefore: Int) {
         self.ad = ad
@@ -38,11 +38,11 @@ public class NativeAdListing: NSObject {
         self.numOfAdsBefore = numOfAdsBefore
     }
 
-    func getOriginalPosition(indexPath: NSIndexPath) -> NSIndexPath {
+    func getOriginalPosition(_ indexPath: IndexPath) -> IndexPath {
         let position = indexPath.row
         let normalizedPosition = position - self.numOfAdsBefore
 
-        return NSIndexPath(forRow: normalizedPosition, inSection: indexPath.section)
+        return IndexPath(row: normalizedPosition, section: indexPath.section)
     }
 }
 
@@ -50,28 +50,28 @@ public typealias AdListingsAndPositions = [Int: NativeAdListing]
 public typealias AdsForSectionMap = [Int: AdListingsAndPositions]
 
 @objc
-public class DataSource: NSObject, DataSourceProtocol {
+open class DataSource: NSObject, DataSourceProtocol {
 
-    public var adListingsPerSection: AdsForSectionMap = AdsForSectionMap()
+    open var adListingsPerSection: AdsForSectionMap = AdsForSectionMap()
 
-    public var ads: [NativeAd] = [NativeAd]()
+    open var ads: [NativeAd] = [NativeAd]()
 
     // The AdUnitType defines what kind of ad is shown.
-    public var adUnitType: AdUnitType = .Standard
+    open var adUnitType: AdUnitType = .standard
 
-    public func getNativeAdListing(indexPath: NSIndexPath) -> NativeAdListing? {
+    open func getNativeAdListing(_ indexPath: IndexPath) -> NativeAdListing? {
         if let val = adListingsPerSection[indexPath.section]?[indexPath.row] {
             return val
         }
         return nil
     }
 
-    public func getNativeAdListingHigherThan(indexRow: NSIndexPath) -> NativeAdListing? {
+    open func getNativeAdListingHigherThan(_ indexRow: IndexPath) -> NativeAdListing? {
         var result: NativeAdListing?
         let position = indexRow.row
 
         if let listings = adListingsPerSection[indexRow.section] {
-            for (_, listing) in listings.sort({ $0.0 < $1.0 }) {
+            for (_, listing) in listings.sorted(by: { $0.0 < $1.0 }) {
                 // if the iterated position is lower than the position we are looking for save it.
                 // So in the end we have the highest listing position for the position we are looking for. Aka the closest previous ad listing
                 if listing.position < position {
@@ -87,15 +87,15 @@ public class DataSource: NSObject, DataSourceProtocol {
     }
 
     // Abstract classes that a datasource should override
-    public func onAdRequestSuccess(newAds: [NativeAd]) {
+    open func onAdRequestSuccess(_ newAds: [NativeAd]) {
         preconditionFailure("This method must be overridden")
     }
 
-    public func getTruePositionInDataSource(indexPath: NSIndexPath) -> Int {
+    open func getTruePositionInDataSource(_ indexPath: IndexPath) -> Int {
         preconditionFailure("This method must be overridden")
     }
 
-    public func numberOfElements() -> Int {
+    open func numberOfElements() -> Int {
         preconditionFailure("This method must be overridden")
     }
 }

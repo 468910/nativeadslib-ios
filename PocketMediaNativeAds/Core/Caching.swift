@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class Caching {
-    static let sharedCache: NSCache = {
-        let cache = NSCache()
+    static let sharedCache: NSCache = { () -> NSCache<AnyObject, AnyObject> in
+        let cache = NSCache<AnyObject, AnyObject>()
         cache.name = "PocketMediaCache"
         //		cache.countLimit = 1000 // Max 20 images in memory.
         //		cache.totalCostLimit = 100 * 1024 * 1024 // Max 100MB used.
@@ -19,62 +19,62 @@ class Caching {
     }()
 }
 
-extension NSURL {
+extension URL {
 
-    typealias ImageCacheCompletion = UIImage -> Void
+    typealias ImageCacheCompletion = (UIImage) -> Void
 
-    private static var callbacks = [String: [ImageCacheCompletion]]()
+    fileprivate static var callbacks = [String: [ImageCacheCompletion]]()
 
     func getCacheKey() -> String {
-        return self.absoluteString! // self.lastPathComponent!
+        return self.absoluteString // self.lastPathComponent!
     }
 
     /// Retrieves a pre-cached image, or nil if it isn't cached.
     /// You should call this before calling fetchImage.
     var cachedImage: UIImage? {
-        return Caching.sharedCache.objectForKey(
-            getCacheKey()) as? UIImage
+        return Caching.sharedCache.object(
+            forKey: getCacheKey() as AnyObject) as? UIImage
     }
 
     /// Fetches the image from the network.
     /// Stores it in the cache if successful.
     /// Only calls completion on successful image download.
     /// Completion is called on the main thread.
-    func fetchImage(completion: ImageCacheCompletion) {
+    func fetchImage(_ completion: @escaping ImageCacheCompletion) {
 
-        if NSURL.callbacks[self.getCacheKey()] == nil {
+        if URL.callbacks[self.getCacheKey()] == nil {
             // create it.
-            NSURL.callbacks[self.getCacheKey()] = [ImageCacheCompletion]()
+            URL.callbacks[self.getCacheKey()] = [ImageCacheCompletion]()
 
-            let task = NSURLSession.sharedSession().dataTaskWithURL(self) {
+            let task = URLSession.shared.dataTask(with: self, completionHandler: {
                 data, response, error in
                 if error == nil {
-                    if let data = data, image = UIImage(data: data) {
+                    if let data = data, let image = UIImage(data: data) {
 
-                        dispatch_sync(dispatch_get_main_queue()) {
-                            Caching.sharedCache.setObject(image, forKey: self.getCacheKey(), cost: data.length)
+                        DispatchQueue.main.sync {
+                            Caching.sharedCache.setObject(image, forKey: self.getCacheKey() as AnyObject, cost: data.count)
 
-                            for callback in NSURL.callbacks[self.getCacheKey()]! {
+                            for callback in URL.callbacks[self.getCacheKey()]! {
                                 callback(image)
                             }
                             // Reset it. So that if the Cache decides the remove this image. We'll be able to download it again.
-                            NSURL.callbacks[self.getCacheKey()] = nil
+                            URL.callbacks[self.getCacheKey()] = nil
                         }
                     }
                 }
-            }
+            })
             task.resume()
         }
         // Add to the list of images we need to call when we have the requested result.
-        NSURL.callbacks[self.getCacheKey()]!.append(completion)
+        URL.callbacks[self.getCacheKey()]!.append(completion)
     }
 }
 
 public extension UIImageView {
     // The last url that an instance of the imageView has asked for.
-    private static var currentUrl = [UIImageView: NSURL]()
+    fileprivate static var currentUrl = [UIImageView: URL]()
 
-    func nativeSetImageFromURL(url: NSURL) {
+    func nativeSetImageFromURL(_ url: URL) {
 
         if UIImageView.currentUrl[self] != url {
             self.image = UIImage()
@@ -100,7 +100,7 @@ public extension UIImageView {
                 }
 
                 // Check the cell hasn't recycled while loading.
-                UIView.transitionWithView(self, duration: 0.3, options: .TransitionCrossDissolve, animations: {
+                UIView.transition(with: self, duration: 0.3, options: .transitionCrossDissolve, animations: {
                     self.image = downloadedImage
                 }, completion: nil)
             })

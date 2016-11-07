@@ -14,16 +14,16 @@ class testHelpers {
     static func getNativeAdsData() -> [NSMutableDictionary]? {
         if let file = Bundle(for: NativeAdsRequestTest.self).path(forResource: "Tests", ofType: "json") {
             do {
-                var data:Data
+                var data: Data
                 data = try Data(contentsOf: URL(fileURLWithPath: file))
-                
-                if let json: NSArray = (try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) ) as? NSArray {
+
+                if let json: NSArray = (try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSArray {
                     let ads = json.filter({
                         ($0 as? NSDictionary) != nil
                     })
                     return (ads as? [NSMutableDictionary])!
                 }
-            }catch let ex {
+            } catch let ex {
                 print("Error info: \(ex)")
             }
         }
@@ -38,7 +38,7 @@ class testHelpers {
         return nil
     }
 
-    private static func createNativeAd(dict: NSMutableDictionary) -> NativeAd! {
+    fileprivate static func createNativeAd(_ dict: NSMutableDictionary) -> NativeAd! {
         var nativeAd: NativeAd?
         do {
             nativeAd = try NativeAd(adDictionary: dict, adPlacementToken: "123")

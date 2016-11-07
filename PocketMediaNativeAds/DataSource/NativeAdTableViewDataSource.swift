@@ -8,12 +8,12 @@
 
 import UIKit
 
-public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
-    public var datasource: UITableViewDataSource
-    public var tableView: UITableView
-    public var delegate: NativeAdTableViewDelegate?
-    public var controller: UIViewController!
-    private var adPosition: AdPosition
+open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
+    open var datasource: UITableViewDataSource
+    open var tableView: UITableView
+    open var delegate: NativeAdTableViewDelegate?
+    open var controller: UIViewController!
+    fileprivate var adPosition: AdPosition
 
     deinit {
         self.tableView.dataSource = datasource
@@ -43,16 +43,16 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 
         // Check the kind of cell to use
         switch adUnitType {
-        case .Dynamic:
-            if tableView.dequeueReusableCellWithIdentifier("DynamicAdUnitTableViewCell") == nil {
+        case .dynamic:
+            if tableView.dequeueReusableCell(withIdentifier: "DynamicAdUnitTableViewCell") == nil {
                 let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-                tableView.registerNib(UINib(nibName: "DynamicAdUnitTableViewCell", bundle: bundle), forCellReuseIdentifier: "DynamicAdUnitTableViewCell")
+                tableView.register(UINib(nibName: "DynamicAdUnitTableViewCell", bundle: bundle), forCellReuseIdentifier: "DynamicAdUnitTableViewCell")
             }
             break
-        case .Custom:
-            if tableView.dequeueReusableCellWithIdentifier("CustomAdCell") == nil {
+        case .custom:
+            if tableView.dequeueReusableCell(withIdentifier: "CustomAdCell") == nil {
                 let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-                tableView.registerNib(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
+                tableView.register(UINib(nibName: "NativeAdView", bundle: bundle), forCellReuseIdentifier: "NativeAdTableViewCell")
             }
             break
             //            case .Big:
@@ -61,33 +61,33 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
             //                    tableView.registerNib(UINib(nibName: "BigNativeAdTableViewCell", bundle: bundle), forCellReuseIdentifier: "BigNativeAdTableViewCell")
             //                }
             //            break
-        case .Standard:
+        case .standard:
             fallthrough
         default:
-            if tableView.dequeueReusableCellWithIdentifier("StandardAdUnitTableViewCell") == nil {
+            if tableView.dequeueReusableCell(withIdentifier: "StandardAdUnitTableViewCell") == nil {
                 let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-                tableView.registerNib(UINib(nibName: "StandardAdUnitTableViewCell", bundle: bundle), forCellReuseIdentifier: "StandardAdUnitTableViewCell")
+                tableView.register(UINib(nibName: "StandardAdUnitTableViewCell", bundle: bundle), forCellReuseIdentifier: "StandardAdUnitTableViewCell")
             }
             break
         }
     }
 
-    public func getAdCell(nativeAd: NativeAd) -> AbstractAdUnitTableViewCell {
+    open func getAdCell(_ nativeAd: NativeAd) -> AbstractAdUnitTableViewCell {
         var cell: AbstractAdUnitTableViewCell?
         switch adUnitType {
-        case .Dynamic:
-            cell = tableView.dequeueReusableCellWithIdentifier("DynamicAdUnitTableViewCell") as? AbstractAdUnitTableViewCell
+        case .dynamic:
+            cell = tableView.dequeueReusableCell(withIdentifier: "DynamicAdUnitTableViewCell") as? AbstractAdUnitTableViewCell
             break
-        case .Custom:
-            cell = tableView.dequeueReusableCellWithIdentifier("CustomAdCell") as? AbstractAdUnitTableViewCell
+        case .custom:
+            cell = tableView.dequeueReusableCell(withIdentifier: "CustomAdCell") as? AbstractAdUnitTableViewCell
             break
             //            case .Big:
             //                cell = tableView.dequeueReusableCellWithIdentifier("BigNativeAdTableViewCell") as? AbstractAdUnitTableViewCell
             //                break
-        case .Standard:
+        case .standard:
             fallthrough
         default:
-            cell = tableView.dequeueReusableCellWithIdentifier("StandardAdUnitTableViewCell") as? AbstractAdUnitTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: "StandardAdUnitTableViewCell") as? AbstractAdUnitTableViewCell
         }
         cell?.render(nativeAd)
         return cell!
@@ -95,79 +95,79 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 
     // Data Source
     @objc
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let listing = getNativeAdListing(indexPath) {
             return getAdCell(listing.ad)
         }
-        return datasource.tableView(tableView, cellForRowAtIndexPath: getOriginalPositionForElement(indexPath))
+        return datasource.tableView(tableView, cellForRowAt: getOriginalPositionForElement(indexPath))
     }
 
     @objc
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let ads = adListingsPerSection[section]?.count {
             return datasource.tableView(tableView, numberOfRowsInSection: section) + ads
         }
         return datasource.tableView(tableView, numberOfRowsInSection: section)
     }
 
-    public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let string = datasource.tableView?(tableView, titleForHeaderInSection: section) {
             return string
         }
         return nil
     }
 
-    public func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    open func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if let string = datasource.tableView?(tableView, titleForFooterInSection: section) {
             return string
         }
         return nil
     }
 
-    public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if datasource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:canEditRowAtIndexPath:))) {
-            return datasource.tableView!(tableView, canEditRowAtIndexPath: indexPath)
+    open func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if datasource.responds(to: #selector(UITableViewDataSource.tableView(_:canEditRowAt:))) {
+            return datasource.tableView!(tableView, canEditRowAt: indexPath)
         }
         return true
     }
 
-    public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if datasource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:canMoveRowAtIndexPath:))) {
-            return datasource.tableView!(tableView, canMoveRowAtIndexPath: indexPath)
+    open func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        if datasource.responds(to: #selector(UITableViewDataSource.tableView(_:canMoveRowAt:))) {
+            return datasource.tableView!(tableView, canMoveRowAt: indexPath)
         }
         return true
     }
 
-    public func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-        if datasource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:sectionForSectionIndexTitle:atIndex:))) {
-            return datasource.tableView!(tableView, sectionForSectionIndexTitle: title, atIndex: index)
+    open func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        if datasource.responds(to: #selector(UITableViewDataSource.tableView(_:sectionForSectionIndexTitle:at:))) {
+            return datasource.tableView!(tableView, sectionForSectionIndexTitle: title, at: index)
         }
         return 0
     }
 
-    public func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        if datasource.respondsToSelector(#selector(UITableViewDataSource.tableView(_:moveRowAtIndexPath:toIndexPath:))) {
-            datasource.tableView?(tableView, moveRowAtIndexPath: sourceIndexPath, toIndexPath: destinationIndexPath)
+    open func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        if datasource.responds(to: #selector(UITableViewDataSource.tableView(_:moveRowAt:to:))) {
+            datasource.tableView?(tableView, moveRowAt: sourceIndexPath, to: destinationIndexPath)
         }
     }
 
-    public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        datasource.tableView?(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
+    open func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        datasource.tableView?(tableView, commit: editingStyle, forRowAt: indexPath)
     }
 
-    public override func onAdRequestSuccess(ads: [NativeAd]) {
+    open override func onAdRequestSuccess(_ ads: [NativeAd]) {
         Logger.debugf("Received %d ads", ads.count)
         self.ads = ads
         setAdPositions(ads)
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
         })
     }
 
-    public func setAdPositions(ads: [NativeAd]) {
+    open func setAdPositions(_ ads: [NativeAd]) {
         adPosition.reset()
         clear()
-        let maxSections = datasource.numberOfSectionsInTableView!(tableView)
+        let maxSections = datasource.numberOfSections!(in: tableView)
         var section = 0
         var adsInserted = 1
 
@@ -213,27 +213,27 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         Logger.debugf("Set %d section ad listings", adListingsPerSection.count)
     }
 
-    private func clear() {
+    fileprivate func clear() {
         adListingsPerSection.removeAll()
         Logger.debug("Cleared adListings.")
     }
 
     // Called everytime tableView.reloadData is called.
     // Like 'notifyDataSetChanged' in android
-    public func reload() {
+    open func reload() {
         setAdPositions(self.ads)
     }
 
     // The actual important to a UITableView functions are down below here.
     @objc
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let numOfSectionsFunc = datasource.numberOfSectionsInTableView {
+    open func numberOfSections(in tableView: UITableView) -> Int {
+        if let numOfSectionsFunc = datasource.numberOfSections(`in`:) {
             return numOfSectionsFunc(tableView)
         }
         return 1
     }
 
-    public func getOriginalPositionForElement(indexRow: NSIndexPath) -> NSIndexPath {
+    open func getOriginalPositionForElement(_ indexRow: IndexPath) -> IndexPath {
         if let listing = getNativeAdListingHigherThan(indexRow) {
             let normalizedIndexRow = listing.getOriginalPosition(indexRow)
             let maxRows = datasource.tableView(tableView, numberOfRowsInSection: normalizedIndexRow.section)
@@ -243,7 +243,7 @@ public class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
             if normalizedIndexRow.row >= maxRows || normalizedIndexRow.row < 0 {
                 print("[INDEX] Normalized row is invalid @ \(normalizedIndexRow.row)")
                 // We'll return 0. That one is probably available. Stops this unexpected behaviour from crashing the host app
-                return NSIndexPath(forRow: 0, inSection: indexRow.section)
+                return IndexPath(row: 0, section: indexRow.section)
             }
             return normalizedIndexRow
         }

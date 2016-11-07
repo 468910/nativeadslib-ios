@@ -10,11 +10,11 @@
 import UIKit
 
 @objc
-public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
+open class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
 
-    public var controller: UIViewController
-    public var delegate: UITableViewDelegate
-    public var datasource: NativeAdTableViewDataSource
+    open var controller: UIViewController
+    open var delegate: UITableViewDelegate
+    open var datasource: NativeAdTableViewDataSource
 
     internal static let heightForStandardAdUnit: CGFloat = 80
 
@@ -25,26 +25,26 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
     }
 
     // Patching of the delegate. Either replace certain calls to our library or do some checks and call the original implementation of the host
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let val = datasource.getNativeAdListing(indexPath) {
             val.ad.openAdUrl(FullscreenBrowser(parentViewController: controller))
             return
         }
-        delegate.tableView?(tableView, didSelectRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath))
+        delegate.tableView?(tableView, didSelectRowAt: self.datasource.getOriginalPositionForElement(indexPath))
     }
 
     @objc
-    public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if let heightForHeader = delegate.tableView?(tableView, heightForHeaderInSection: section) {
             return heightForHeader
         }
         return tableView.rowHeight
     }
 
-    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if datasource.getNativeAdListing(indexPath) != nil {
             return NativeAdTableViewDelegate.heightForStandardAdUnit
-        } else if let heightForRow = delegate.tableView?(tableView, heightForRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath)) {
+        } else if let heightForRow = delegate.tableView?(tableView, heightForRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return heightForRow
         }
         /* Instead of returning AutomaticDimension dont bother with esimatedHeight just return the
@@ -53,223 +53,223 @@ public class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
         return tableView.rowHeight
     }
 
-    public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return delegate.tableView?(tableView, viewForHeaderInSection: section)
     }
 
-    public func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+    open func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         if datasource.getNativeAdListing(indexPath) == nil {
-            delegate.tableView?(tableView, accessoryButtonTappedForRowWithIndexPath: self.datasource.getOriginalPositionForElement(indexPath))
+            delegate.tableView?(tableView, accessoryButtonTappedForRowWith: self.datasource.getOriginalPositionForElement(indexPath))
         }
     }
 
     // Default Value = TRUE/YES
     @available(iOS 9.0, *)
-    public func tableView(tableView: UITableView, canFocusRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
         if datasource.getNativeAdListing(indexPath) != nil {
             return true
-        } else if let canFocus = delegate.tableView?(tableView, canFocusRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath)) {
+        } else if let canFocus = delegate.tableView?(tableView, canFocusRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return canFocus
         }
         return true
     }
 
-    public func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    open func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if datasource.getNativeAdListing(indexPath) == nil {
-            delegate.tableView?(tableView, didDeselectRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath))
+            delegate.tableView?(tableView, didDeselectRowAt: self.datasource.getOriginalPositionForElement(indexPath))
         }
     }
 
-    public func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    open func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if datasource.getNativeAdListing(indexPath) == nil {
-            delegate.tableView?(tableView, didEndDisplayingCell: cell, forRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath))
+            delegate.tableView?(tableView, didEndDisplaying: cell, forRowAt: self.datasource.getOriginalPositionForElement(indexPath))
         }
     }
 
-    public func tableView(tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
+    open func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
         delegate.tableView?(tableView, didEndDisplayingFooterView: view, forSection: section)
     }
 
-    public func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath?) {
+    open func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         if datasource.getNativeAdListing(indexPath!) == nil {
-            delegate.tableView?(tableView, didEndEditingRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath!))
+            delegate.tableView?(tableView, didEndEditingRowAt: self.datasource.getOriginalPositionForElement(indexPath!))
         }
     }
 
-    public func tableView(tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
+    open func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
         delegate.tableView?(tableView, didEndDisplayingHeaderView: view, forSection: section)
     }
 
-    public func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
+    open func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         if datasource.getNativeAdListing(indexPath) != nil {
             return true
-        } else if let canPerform = delegate.tableView?(tableView, canPerformAction: action, forRowAtIndexPath: indexPath, withSender: sender) {
+        } else if let canPerform = delegate.tableView?(tableView, canPerformAction: action, forRowAt: indexPath, withSender: sender) {
             return canPerform
         }
         return true
     }
 
-    public func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
+    open func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         if datasource.getNativeAdListing(indexPath) == nil {
-            delegate.tableView?(tableView, didHighlightRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath))
+            delegate.tableView?(tableView, didHighlightRowAt: self.datasource.getOriginalPositionForElement(indexPath))
         }
     }
 
-    public func tableView(tableView: UITableView, didUnhighlightRowAtIndexPath indexPath: NSIndexPath) {
+    open func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         if datasource.getNativeAdListing(indexPath) == nil {
-            delegate.tableView?(tableView, didUnhighlightRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath))
+            delegate.tableView?(tableView, didUnhighlightRowAt: self.datasource.getOriginalPositionForElement(indexPath))
         }
     }
 
     @available(iOS 9, *)
-    public func tableView(tableView: UITableView, didUpdateFocusInContext context: UITableViewFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
-        delegate.tableView?(tableView, didUpdateFocusInContext: context, withAnimationCoordinator: coordinator)
+    open func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        delegate.tableView?(tableView, didUpdateFocusIn: context, with: coordinator)
     }
 
-    public func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if datasource.getNativeAdListing(indexPath) != nil {
             return nil
-        } else if let rowAction = delegate.tableView?(tableView, editActionsForRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath)) {
+        } else if let rowAction = delegate.tableView?(tableView, editActionsForRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return rowAction
         }
         return nil
     }
 
-    public func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    open func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         if datasource.getNativeAdListing(indexPath) != nil {
-            return UITableViewCellEditingStyle.None
-        } else if let editingStyle = delegate.tableView?(tableView, editingStyleForRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath)) {
+            return UITableViewCellEditingStyle.none
+        } else if let editingStyle = delegate.tableView?(tableView, editingStyleForRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return editingStyle
         }
-        return UITableViewCellEditingStyle.None
+        return UITableViewCellEditingStyle.none
     }
 
-    public func tableView(tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
         if let estimatedHeightForFooter = delegate.tableView?(tableView, estimatedHeightForFooterInSection: section) {
             return estimatedHeightForFooter
         }
         return UITableViewAutomaticDimension
     }
 
-    public func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         if let estimatedHeight = delegate.tableView?(tableView, estimatedHeightForHeaderInSection: section) {
             return estimatedHeight
         }
         return UITableViewAutomaticDimension
     }
 
-    public func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if datasource.getNativeAdListing(indexPath) != nil {
             return UITableViewAutomaticDimension
             // not an ad - let the original datasource handle it
-        } else if let estimatedHeightForRowAtIndexPath = delegate.tableView?(tableView, estimatedHeightForRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath)) {
+        } else if let estimatedHeightForRowAtIndexPath = delegate.tableView?(tableView, estimatedHeightForRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return estimatedHeightForRowAtIndexPath
         }
         return UITableViewAutomaticDimension
     }
 
-    public func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if let heightForFooter = delegate.tableView?(tableView, heightForFooterInSection: section) {
             return heightForFooter
         }
         return UITableViewAutomaticDimension
     }
 
-    public func tableView(tableView: UITableView, indentationLevelForRowAtIndexPath indexPath: NSIndexPath) -> Int {
+    open func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
         if datasource.getNativeAdListing(indexPath) != nil {
             return -1
-        } else if let indenLevel = delegate.tableView?(tableView, indentationLevelForRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath)) {
+        } else if let indenLevel = delegate.tableView?(tableView, indentationLevelForRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return indenLevel
         }
         return -1
     }
 
-    public func tableView(tableView: UITableView, performAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-        delegate.tableView?(tableView, performAction: action, forRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath), withSender: sender)
+    open func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+        delegate.tableView?(tableView, performAction: action, forRowAt: self.datasource.getOriginalPositionForElement(indexPath), withSender: sender)
     }
 
-    public func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if let shouldHighLight = delegate.tableView?(tableView, shouldHighlightRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath)) {
+    open func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if let shouldHighLight = delegate.tableView?(tableView, shouldHighlightRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return shouldHighLight
         }
         return true
     }
 
-    public func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         if datasource.getNativeAdListing(indexPath) != nil {
             return true
-        } else if let ShouldIndent = delegate.tableView?(tableView, shouldIndentWhileEditingRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath)) {
+        } else if let ShouldIndent = delegate.tableView?(tableView, shouldIndentWhileEditingRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return ShouldIndent
         }
         return true
     }
 
-    public func tableView(tableView: UITableView, shouldShowMenuForRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
         if datasource.getNativeAdListing(indexPath) != nil {
             return true
-        } else if let shouldShowMenu = delegate.tableView?(tableView, shouldShowMenuForRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath)) {
+        } else if let shouldShowMenu = delegate.tableView?(tableView, shouldShowMenuForRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return shouldShowMenu
         }
         return true
     }
 
-    public func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if let path = delegate.tableView?(tableView, willSelectRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath)) {
+    open func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if let path = delegate.tableView?(tableView, willSelectRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return path
         }
         return indexPath
     }
 
     @available(iOS 9.0, *)
-    public func tableView(tableView: UITableView, shouldUpdateFocusInContext context: UITableViewFocusUpdateContext) -> Bool {
-        if let shouldUpdateFocusInContext = delegate.tableView?(tableView, shouldUpdateFocusInContext: context) {
+    open func tableView(_ tableView: UITableView, shouldUpdateFocusIn context: UITableViewFocusUpdateContext) -> Bool {
+        if let shouldUpdateFocusInContext = delegate.tableView?(tableView, shouldUpdateFocusIn: context) {
             return shouldUpdateFocusInContext
         }
         return true
     }
 
-    public func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
-        if let path = delegate.tableView?(tableView, targetIndexPathForMoveFromRowAtIndexPath: sourceIndexPath, toProposedIndexPath: proposedDestinationIndexPath) {
+    open func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        if let path = delegate.tableView?(tableView, targetIndexPathForMoveFromRowAt: sourceIndexPath, toProposedIndexPath: proposedDestinationIndexPath) {
             return path
         }
         return proposedDestinationIndexPath
     }
 
-    public func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
-        if let title = delegate.tableView?(tableView, titleForDeleteConfirmationButtonForRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath)) {
+    open func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        if let title = delegate.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return title
         }
         return nil
     }
 
-    public func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return delegate.tableView?(tableView, viewForFooterInSection: section)
     }
 
-    public func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
+    open func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
         if datasource.getNativeAdListing(indexPath) != nil {
         }
-        delegate.tableView?(tableView, willBeginEditingRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath))
+        delegate.tableView?(tableView, willBeginEditingRowAt: self.datasource.getOriginalPositionForElement(indexPath))
     }
 
-    public func tableView(tableView: UITableView, willDeselectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if let path = delegate.tableView?(tableView, willDeselectRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath)) {
+    open func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        if let path = delegate.tableView?(tableView, willDeselectRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return path
         }
         return indexPath
     }
 
-    public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if datasource.getNativeAdListing(indexPath) == nil {
-            delegate.tableView?(tableView, willDisplayCell: cell, forRowAtIndexPath: self.datasource.getOriginalPositionForElement(indexPath))
+            delegate.tableView?(tableView, willDisplay: cell, forRowAt: self.datasource.getOriginalPositionForElement(indexPath))
         }
     }
 
-    public func tableView(tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+    open func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         delegate.tableView?(tableView, willDisplayFooterView: view, forSection: section)
     }
 
-    public func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    open func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         delegate.tableView?(tableView, willDisplayHeaderView: view, forSection: section)
     }
 }

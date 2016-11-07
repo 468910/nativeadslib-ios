@@ -9,8 +9,8 @@ import Foundation
 
 @objc
 public enum AdUnitType: Int {
-    case Standard
-    case Dynamic
-    case Big
-    case Custom // TODO: figure out what Kees was planning with this one?
+    case standard
+    case dynamic
+    case big
+    case custom // TODO: figure out what Kees was planning with this one?
 }

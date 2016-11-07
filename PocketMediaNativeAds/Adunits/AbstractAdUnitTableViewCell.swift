@@ -11,15 +11,15 @@ import UIKit
 /**
  Class to be subclassed for use with the AdStream.
  **/
-public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderProtocol {
-    private(set) public var ad: NativeAd?
+open class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderProtocol {
+    fileprivate(set) open var ad: NativeAd?
 
-    public func render(nativeAd: NativeAd) {
+    open func render(_ nativeAd: NativeAd) {
         self.ad = nativeAd
     }
 
     // After has been loaded from Nib
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
     }
 }

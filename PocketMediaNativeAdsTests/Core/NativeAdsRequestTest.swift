@@ -14,16 +14,16 @@ import AdSupport
 class SpyDelegate: NativeAdsConnectionDelegate {
 
     var didReceiveErrorExpectation: XCTestExpectation?
-    var didReceiveErrorResult: Bool? = .None
+    var didReceiveErrorResult: Bool? = .none
 
     var didReceiveResultsExpectation: XCTestExpectation?
-    var didReceiveResultsResult: Bool? = .None
+    var didReceiveResultsResult: Bool? = .none
 
     /**
      This method is invoked whenever while retrieving NativeAds an error has occured
      */
     @objc
-    func didReceiveError(error: NSError) {
+    func didReceiveError(_ error: NSError) {
         print("didReceiveError: \(error)")
         guard let expectation = didReceiveErrorExpectation else {
             XCTFail("SpyDelegate was not setup correctly. Missing XCTExpectation reference")
@@ -38,7 +38,7 @@ class SpyDelegate: NativeAdsConnectionDelegate {
      - nativeAds: Collection of NativeAds received after making a NativeAdRequest
      */
     @objc
-    func didReceiveResults(nativeAds: [NativeAd]) {
+    func didReceiveResults(_ nativeAds: [NativeAd]) {
         guard let expectation = didReceiveResultsExpectation else {
             XCTFail("SpyDelegate was not setup correctly. Missing XCTExpectation reference")
             return
@@ -48,19 +48,19 @@ class SpyDelegate: NativeAdsConnectionDelegate {
     }
 }
 
-class MockedNSURLSessionDataTask: NSURLSessionDataTask {
+class MockedNSURLSessionDataTask: URLSessionDataTask {
     var resumeCalled: Bool? = false
     override func resume() {
         resumeCalled = true
     }
 }
 
-class MockURLSession: URLSessionProtocol {
-    private(set) var lastURL: NSURL?
+class MockURLSession: URLSession {
+    fileprivate(set) var lastURL: URL?
     var task: MockedNSURLSessionDataTask = MockedNSURLSessionDataTask()
 
-    func dataTaskWithURL(url: NSURL, completionHandler: DataTaskResult)
-        -> NSURLSessionDataTask {
+    func dataTaskWithURL(_ url: URL, completionHandler: DataTaskResult)
+        -> URLSessionDataTask {
             lastURL = url
             return task
         }
@@ -68,12 +68,12 @@ class MockURLSession: URLSessionProtocol {
 
 class NativeAdsRequestTest: XCTestCase {
 
-    var testData: NSData!
+    var testData: Data!
 
     override func setUp() {
         super.setUp()
-        if let file = NSBundle(forClass: NativeAdsRequestTest.self).pathForResource("Tests", ofType: "json") {
-            self.testData = NSData(contentsOfFile: file)
+        if let file = Bundle(for: NativeAdsRequestTest.self).path(forResource: "Tests", ofType: "json") {
+            self.testData = try? Data(contentsOf: URL(fileURLWithPath: file))
         } else {
             XCTFail("Can't find the test JSON file")
         }
@@ -93,7 +93,7 @@ class NativeAdsRequestTest: XCTestCase {
 
         XCTAssert(session.task.resumeCalled!, "NativeAdsRequest should've called resume to actually do the network request.§")
 
-        if let expectedUrl = NSURL(string: expected) {
+        if let expectedUrl = URL(string: expected) {
             XCTAssert(session.lastURL!.isEqual(expectedUrl))
         } else {
             XCTFail("Couldn't get the expected url")
@@ -104,7 +104,7 @@ class NativeAdsRequestTest: XCTestCase {
         let delegate = SpyDelegate()
 
         // Pass an error
-        var expectation = expectationWithDescription("NativeAdsRequest calls the delegate didReceiveError method due to the fact that th ereceivedAds method receiving an error")
+        var expectation = self.expectation(description: "NativeAdsRequest calls the delegate didReceiveError method due to the fact that th ereceivedAds method receiving an error")
         delegate.didReceiveErrorExpectation = expectation
         delegate.didReceiveErrorResult = false
 
@@ -112,7 +112,7 @@ class NativeAdsRequestTest: XCTestCase {
 
         nativeAdsrequest.receivedAds(testData, response: nil, error: NSError(domain: "Example", code: 0, userInfo: nil))
 
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
@@ -126,13 +126,13 @@ class NativeAdsRequestTest: XCTestCase {
         }
 
         // Data is nil
-        expectation = expectationWithDescription("NativeAdsRequest calls the delegate didReceiveError method due to the fact that the data sent is a nil value.")
+        expectation = self.expectation(description: "NativeAdsRequest calls the delegate didReceiveError method due to the fact that the data sent is a nil value.")
         delegate.didReceiveErrorExpectation = expectation
         delegate.didReceiveErrorResult = false
 
         nativeAdsrequest.receivedAds(nil, response: nil, error: nil)
 
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
@@ -146,13 +146,13 @@ class NativeAdsRequestTest: XCTestCase {
         }
 
         // Invalid json
-        expectation = expectationWithDescription("NativeAdsRequest calls the delegate didReceiveError method due to the fact that the data sent is not json.")
+        expectation = self.expectation(description: "NativeAdsRequest calls the delegate didReceiveError method due to the fact that the data sent is not json.")
         delegate.didReceiveErrorExpectation = expectation
         delegate.didReceiveErrorResult = false
 
-        nativeAdsrequest.receivedAds("This is not a proper response. Not json ;(".dataUsingEncoding(NSUTF8StringEncoding), response: nil, error: nil)
+        nativeAdsrequest.receivedAds("This is not a proper response. Not json ;(".dataUsingEncoding(String.Encoding.utf8), response: nil, error: nil)
 
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
@@ -165,13 +165,13 @@ class NativeAdsRequestTest: XCTestCase {
             XCTAssertTrue(result)
         }
         // Incorrect
-        expectation = expectationWithDescription("NativeAdsRequest calls the delegate didReceiveError method due to the fact that the data sent is incomplete or incorrect json.")
+        expectation = self.expectation(description: "NativeAdsRequest calls the delegate didReceiveError method due to the fact that the data sent is incomplete or incorrect json.")
         delegate.didReceiveErrorExpectation = expectation
         delegate.didReceiveErrorResult = false
 
-        nativeAdsrequest.receivedAds("[{}]".dataUsingEncoding(NSUTF8StringEncoding), response: nil, error: nil)
+        nativeAdsrequest.receivedAds("[{}]".dataUsingEncoding(String.Encoding.utf8), response: nil, error: nil)
 
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
@@ -185,13 +185,13 @@ class NativeAdsRequestTest: XCTestCase {
         }
 
         // Zero ads
-        expectation = expectationWithDescription("NativeAdsRequest calls the delegate didReceiveError method due to the fact that the receivedAds has 0 offers to send back.")
+        expectation = self.expectation(description: "NativeAdsRequest calls the delegate didReceiveError method due to the fact that the receivedAds has 0 offers to send back.")
         delegate.didReceiveErrorExpectation = expectation
         delegate.didReceiveErrorResult = false
 
-        nativeAdsrequest.receivedAds("[]".dataUsingEncoding(NSUTF8StringEncoding), response: nil, error: nil)
+        nativeAdsrequest.receivedAds("[]".dataUsingEncoding(String.Encoding.utf8), response: nil, error: nil)
 
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
@@ -208,7 +208,7 @@ class NativeAdsRequestTest: XCTestCase {
     func testReceivedSuccess() {
         let delegate = SpyDelegate()
 
-        let expectation = expectationWithDescription("NativeAdsRequest calls the delegate didReceiveResults method due to the fact that it has received a proper response back from the server.")
+        let expectation = self.expectation(description: "NativeAdsRequest calls the delegate didReceiveResults method due to the fact that it has received a proper response back from the server.")
         delegate.didReceiveResultsExpectation = expectation
         delegate.didReceiveResultsResult = false
 
@@ -216,7 +216,7 @@ class NativeAdsRequestTest: XCTestCase {
 
         nativeAdsrequest.receivedAds(testData, response: nil, error: nil)
 
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
@@ -277,7 +277,7 @@ class NativeAdsRequestTest: XCTestCase {
 
         if let value = getQueryStringParameter(url, param: "model") {
 
-            let expected = UIDevice.currentDevice().model.characters.split { $0 == " " }.map { String($0) }[0]
+            let expected = UIDevice.current.model.characters.split { $0 == " " }.map { String($0) }[0]
             if value != expected {
                 XCTFail("model should be a iPhone")
             }
@@ -288,7 +288,7 @@ class NativeAdsRequestTest: XCTestCase {
 
         if let value = getQueryStringParameter(url, param: "token") {
 
-            let expected = ASIdentifierManager.sharedManager().advertisingIdentifier?.UUIDString
+            let expected = ASIdentifierManager.shared().advertisingIdentifier?.uuidString
 
             if value != expected {
                 XCTFail("token should be the advertisingIdentifier of the phone")
@@ -333,9 +333,9 @@ class NativeAdsRequestTest: XCTestCase {
     }
 }
 
-func getQueryStringParameter(url: String?, param: String) -> String? {
+func getQueryStringParameter(_ url: String?, param: String) -> String? {
     let url = url,
-        urlComponents = NSURLComponents(string: url!),
+        urlComponents = URLComponents(string: url!),
         queryItems = urlComponents!.queryItems!
     return queryItems.filter({ (item) in item.name == param }).first?.value!
 }
