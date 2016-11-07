@@ -25,7 +25,7 @@ class mocked2NativeAdsRequest: NativeAdsRequest {
 class mocked2NativeAdsConnection: NativeAdsConnectionDelegate {
 
     @objc
-    func didReceiveError(_ error: NSError) {
+    func didReceiveError(_ error: Error) {
     }
 
     @objc

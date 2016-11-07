@@ -23,7 +23,7 @@ class SpyDelegate: NativeAdsConnectionDelegate {
      This method is invoked whenever while retrieving NativeAds an error has occured
      */
     @objc
-    func didReceiveError(_ error: NSError) {
+    func didReceiveError(_ error: Error) {
         print("didReceiveError: \(error)")
         guard let expectation = didReceiveErrorExpectation else {
             XCTFail("SpyDelegate was not setup correctly. Missing XCTExpectation reference")
@@ -59,7 +59,7 @@ class MockURLSession: URLSession {
     fileprivate(set) var lastURL: URL?
     var task: MockedNSURLSessionDataTask = MockedNSURLSessionDataTask()
 
-    func dataTaskWithURL(_ url: URL, completionHandler: DataTaskResult)
+    override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Swift.Void)
         -> URLSessionDataTask {
             lastURL = url
             return task
@@ -94,7 +94,7 @@ class NativeAdsRequestTest: XCTestCase {
         XCTAssert(session.task.resumeCalled!, "NativeAdsRequest should've called resume to actually do the network request.§")
 
         if let expectedUrl = URL(string: expected) {
-            XCTAssert(session.lastURL!.isEqual(expectedUrl))
+            XCTAssert(session.lastURL! == expectedUrl)
         } else {
             XCTFail("Couldn't get the expected url")
         }
@@ -150,7 +150,7 @@ class NativeAdsRequestTest: XCTestCase {
         delegate.didReceiveErrorExpectation = expectation
         delegate.didReceiveErrorResult = false
 
-        nativeAdsrequest.receivedAds("This is not a proper response. Not json ;(".dataUsingEncoding(String.Encoding.utf8), response: nil, error: nil)
+        nativeAdsrequest.receivedAds("This is not a proper response. Not json ;(".data(using: String.Encoding.utf8), response: nil, error: nil)
 
         waitForExpectations(timeout: 1) { error in
             if let error = error {
@@ -169,7 +169,7 @@ class NativeAdsRequestTest: XCTestCase {
         delegate.didReceiveErrorExpectation = expectation
         delegate.didReceiveErrorResult = false
 
-        nativeAdsrequest.receivedAds("[{}]".dataUsingEncoding(String.Encoding.utf8), response: nil, error: nil)
+        nativeAdsrequest.receivedAds("[{}]".data(using: String.Encoding.utf8), response: nil, error: nil)
 
         waitForExpectations(timeout: 1) { error in
             if let error = error {
@@ -189,7 +189,7 @@ class NativeAdsRequestTest: XCTestCase {
         delegate.didReceiveErrorExpectation = expectation
         delegate.didReceiveErrorResult = false
 
-        nativeAdsrequest.receivedAds("[]".dataUsingEncoding(String.Encoding.utf8), response: nil, error: nil)
+        nativeAdsrequest.receivedAds("[]".data(using: String.Encoding.utf8), response: nil, error: nil)
 
         waitForExpectations(timeout: 1) { error in
             if let error = error {
@@ -310,7 +310,7 @@ class NativeAdsRequestTest: XCTestCase {
 
         if let value = getQueryStringParameter(url, param: "image_type") {
 
-            if value != String(EImageType.banner) {
+            if value != String(describing: EImageType.banner) {
                 XCTFail("placement_key should the test value sent along as a parameter.")
             }
 

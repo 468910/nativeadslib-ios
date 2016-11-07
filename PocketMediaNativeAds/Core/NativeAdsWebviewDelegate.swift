@@ -15,7 +15,7 @@ import Foundation
 @objc
 open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
     internal var loadingView: UIView?
-    open var webView: UIWebView?
+    open var wrappedWebView: UIWebView?
     open var nativeAdUnit: NativeAd?
     internal var loadStatusCheckTimer: Timer?
     fileprivate var delegate: NativeAdsWebviewRedirectionsDelegate?
@@ -24,7 +24,7 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
     public init(delegate: NativeAdsWebviewRedirectionsDelegate?, webView: UIWebView) {
         super.init()
         self.delegate = delegate
-        self.webView = webView
+        self.wrappedWebView = webView
     }
 
     fileprivate func checkSimulatorURL(_ url: URL) -> URL {
@@ -111,7 +111,7 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         self.nativeAdUnit = nativeAdUnit
         let url = nativeAdUnit.clickURL
         let request = URLRequest(url: url! as URL)
-        self.webView!.loadRequest(request)
+        self.wrappedWebView!.loadRequest(request)
         Logger.debug("webview LoadUrl Exited")
     }
 
@@ -146,13 +146,13 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 
         // Open the url that won't redirect to something proper.
         // Big chance its an app which is not available anymore in our region.
-        if self.webView?.request != nil {
-            openSystemBrowser((self.webView?.request?.url)!)
+        if self.wrappedWebView?.request != nil {
+            openSystemBrowser((self.wrappedWebView?.request?.url)!)
         }
     }
 
     fileprivate func constructDataBodyForNotifyingServerOfFalseRedirection() -> String {
-        let finalUrl: String = (webView != nil && webView!.request != nil) ? webView!.request!.url!.absoluteString : ""
+        let finalUrl: String = (wrappedWebView != nil && wrappedWebView!.request != nil) ? wrappedWebView!.request!.url!.absoluteString : ""
         let offerid = String(describing: nativeAdUnit?.offerId!)
         let adPlacementToken = nativeAdUnit?.adPlacementToken
         let dataBody = "offer_id=\(offerid)" + "&placement_id=\(adPlacementToken)" + "&final_url=\(finalUrl)"

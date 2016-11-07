@@ -16,7 +16,7 @@ class BaseMockedNativeAdDataSource: NativeAdTableViewDataSource {
     var isGetAdCellForTableViewCalled: Bool = false
     var adListing: NativeAdListing?
 
-    override func getNativeAdListing(_ indexPath: NSIndexPath) -> NativeAdListing? {
+    override func getNativeAdListing(_ indexPath: IndexPath) -> NativeAdListing? {
         getNativeAdListingCalled = true
         if returngetNativeAdListing {
             return adListing
@@ -79,9 +79,9 @@ open class NativeAdTableViewDatasourceTest: XCTestCase {
 
     func testcellForRowAtIndexPath() {
         class mockedDatasource: ExampleTableViewDataSource {
-            open var calledCellForRowAtIndexPath: Bool = false
+            open var calledCellForRowAt: Bool = false
             @objc override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                calledCellForRowAtIndexPath = true
+                calledCellForRowAt = true
                 return UITableViewCell()
             }
         }
@@ -92,14 +92,14 @@ open class NativeAdTableViewDatasourceTest: XCTestCase {
         // Test If Original IndexPathForRowAtIndexPath gets called
         subject.returngetNativeAdListing = false
         let indexPath = IndexPath(item: 0, section: 0)
-        subject.tableView(tableView, cellForRowAtIndexPath: indexPath)
-        let result = (originalDataSource as! mockedDatasource).calledCellForRowAtIndexPath
+        subject.tableView(tableView, cellForRowAt: indexPath)
+        let result = (originalDataSource as! mockedDatasource).calledCellForRowAt
         XCTAssert(result == true, "cellForRowAtIndexPath has been called in the original DataSource")
 
         // Test if NativeAdCell gets returned
         subject.returngetNativeAdListing = true
         subject.setup()
-        subject.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        subject.tableView(tableView, cellForRowAt: indexPath)
         XCTAssert(subject.isGetAdCellForTableViewCalled == true, "isGetAdCellForTableViewHasBeenCalled")
     }
 
@@ -148,7 +148,7 @@ open class NativeAdTableViewDatasourceTest: XCTestCase {
         }
         /*
          setUpDataSource(mockedDataSource())
-         subject.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAtIndexPath: NSIndexPath(forItem: 1, inSection: 1))
+         subject.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Insert, forRowAt: NSIndexPath(row: 1, section: 1))
          XCTAssert((originalDataSource as! mockedDataSource!).commitEditingStyleHasBeenCalled == true, "Called original commitEditingStyle")
          */
 
@@ -167,7 +167,7 @@ open class NativeAdTableViewDatasourceTest: XCTestCase {
         }
 
         setUpDataSource(mockedDataSource())
-        subject.tableView(tableView, moveRowAtIndexPath: IndexPath(), toIndexPath: IndexPath())
+        subject.tableView(tableView, moveRowAt: IndexPath(), to: IndexPath())
         XCTAssert((originalDataSource as! mockedDataSource).moveRowAtIndexPathHasBeenCalled == true, "MoveRowAtIndexPathHasBeenCalled")
 
         setUpDataSource(NonImplementedDatasource())
@@ -209,14 +209,14 @@ open class NativeAdTableViewDatasourceTest: XCTestCase {
         }
 
         setUpDataSource(mockedDataSource())
-        subject.tableView(tableView, canEditRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
+        subject.tableView(tableView, canEditRowAt: IndexPath(row: 1, section: 0))
         XCTAssert((originalDataSource as! mockedDataSource).canEditRowAtIndexPathHasBeenCalled == true, "CanEditRowAtIndexPath has been called!")
 
         setUpDataSource(NonImplementedDatasource())
         if originalDataSource.responds(to: #selector(UITableViewDataSource.tableView(_:canEditRowAt:))) {
             XCTFail("tableView:commitEditingStyle shouldnt be implemented")
         }
-        var result = subject.tableView(tableView, canEditRowAtIndexPath: IndexPath())
+        var result = subject.tableView(tableView, canEditRowAt: IndexPath())
         XCTAssert(result == true, "Can Edit Row At IndexPath returns default value which is TRUE")
     }
 
@@ -230,7 +230,7 @@ open class NativeAdTableViewDatasourceTest: XCTestCase {
         }
 
         setUpDataSource(mockedDataSource())
-        subject.tableView(tableView, canMoveRowAtIndexPath: IndexPath())
+        subject.tableView(tableView, canMoveRowAt: IndexPath())
         XCTAssert((originalDataSource as! mockedDataSource).canMoveRowAtIndexPathHasBeenCalled == true, "canMoveRowAtIndexPathHasBeenCalled has been called!")
 
         setUpDataSource(NonImplementedDatasource())
@@ -238,7 +238,7 @@ open class NativeAdTableViewDatasourceTest: XCTestCase {
             XCTFail("tableView:commitEditingStyle shouldnt be implemented")
         }
 
-        var result = subject.tableView(tableView, canMoveRowAtIndexPath: IndexPath())
+        var result = subject.tableView(tableView, canMoveRowAt: IndexPath())
         XCTAssert(result == true, "Can Move Row At Index Path returns default value which is True")
     }
 
@@ -251,7 +251,7 @@ open class NativeAdTableViewDatasourceTest: XCTestCase {
         }
 
         setUpDataSource(mockedDataSource())
-        subject.tableView(tableView, commitEditingStyle: UITableViewCellEditingStyle.Delete, forRowAtIndexPath: IndexPath())
+        subject.tableView(tableView, commit: UITableViewCellEditingStyle.delete, forRowAt: IndexPath())
         XCTAssert((originalDataSource as! mockedDataSource).commitEditingStyleHasBeenCommited == true, "CommitEditingStyle has been called!")
     }
 
@@ -295,13 +295,13 @@ open class NativeAdTableViewDatasourceTest: XCTestCase {
             ],
         ]
 
-        var result = subject.getOriginalPositionForElement(IndexPath(forRow: 1, inSection: 0))
+        var result = subject.getOriginalPositionForElement(IndexPath(row: 1, section: 0))
         XCTAssert(result.row == 1, "Because there is no ad listing on this row. We'll get the same row back we sent")
 
-        result = subject.getOriginalPositionForElement(IndexPath(forRow: 3, inSection: 0))
+        result = subject.getOriginalPositionForElement(IndexPath(row: 3, section: 0))
         XCTAssert(result.row == 3, "When we ask for 3. It is an ad, so we don't normalize")
 
-        result = subject.getOriginalPositionForElement(IndexPath(forRow: 4, inSection: 0))
+        result = subject.getOriginalPositionForElement(IndexPath(row: 4, section: 0))
         XCTAssert(result.row == 3, "When we ask for 4, we should get 3. Because there is an ad at 3")
     }
 

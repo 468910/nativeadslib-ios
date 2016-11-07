@@ -53,7 +53,7 @@ class MockedFullscreenBrowser: FullscreenBrowser {
     internal var dismissViewControllerAnimatedExpectation: XCTestExpectation?
     internal var dismissViewControllerAnimatedResult: Bool? = .none
 
-    internal override func dismissViewControllerAnimated(_ flag: Bool, completion: (() -> Void)?) {
+    internal override func dismiss(animated flag: Bool, completion: (() -> Void)?) {
         guard let expectation = dismissViewControllerAnimatedExpectation else {
             XCTFail("SpyDelegate was not setup correctly. Missing XCTExpectation reference")
             return
@@ -143,7 +143,7 @@ class FullscreenBrowserTest: XCTestCase {
             // Check if the close button was added
             var found = false
             for subview in (subject?.view.subviews)! {
-                if subview.isKindOfClass(UIButton) {
+                if subview is UIButton {
                     found = true
                 }
             }
@@ -253,7 +253,7 @@ class FullscreenBrowserTest: XCTestCase {
             }
         }
         subject?.webView = MockedUIWebView()
-        subject?.willMoveToParentViewController(nil)
+        subject?.willMove(toParentViewController: nil)
         XCTAssert((subject?.webView as! MockedUIWebView).stopLoadingCalled, "willMoveToParentViewController should've called stopLoadingCalled on the webview.")
     }
 }

@@ -22,6 +22,6 @@ class PocketMediaNativeAdsBundleTest: XCTestCase {
     }
 
     func testLoadBundle() {
-        XCTAssert(PocketMediaNativeAdsBundle.loadBundle() == Bundle(forClass: NativeAd.self))
+        XCTAssert(PocketMediaNativeAdsBundle.loadBundle() == Bundle(for: NativeAd.self))
     }
 }

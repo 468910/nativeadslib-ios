@@ -11,7 +11,7 @@ import UIKit
 @testable import PocketMediaNativeAds
 
 open class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
-    var didSelectRowAtIndexPath: Bool! = false
+    var didSelectRowAt: Bool! = false
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectRowAtIndexPath = true
     }
@@ -22,7 +22,7 @@ class mockedNativeAdTableViewDataSource: NativeAdTableViewDataSource {
     var getNativeAdListingCalled: Bool = false
     var adListing: NativeAdListing?
 
-    override func getNativeAdListing(_ indexPath: NSIndexPath) -> NativeAdListing? {
+    override func getNativeAdListing(_ indexPath: IndexPath) -> NativeAdListing? {
         getNativeAdListingCalled = true
         if returngetNativeAdListing {
             return adListing
@@ -94,7 +94,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
     func testdidSelectRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
-            var didSelectRowAtIndexPath: Bool! = false
+            var didSelectRowAt: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 didSelectRowAtIndexPath = true
@@ -104,7 +104,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
         datasource.returngetNativeAdListing = false
-        subject?.tableView(tableView, didSelectRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
+        subject?.tableView(tableView, didSelectRowAt: IndexPath(row: 1, section: 0))
         XCTAssert(mockedDelegate.didSelectRowAtIndexPath, "It should've called the orginal function")
         mockedDelegate.didSelectRowAtIndexPath = false
 
@@ -113,7 +113,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         ad.openAdUrlCalled = false
 
         datasource.returngetNativeAdListing = true
-        subject?.tableView(tableView, didSelectRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
+        subject?.tableView(tableView, didSelectRowAt: IndexPath(row: 1, section: 0))
         XCTAssert(mockedDelegate.didSelectRowAtIndexPath == false, "It should NOT have called the orginal function")
         XCTAssert(ad.openAdUrlCalled, "It should've called our function")
         mockedDelegate.didSelectRowAtIndexPath = false
@@ -123,7 +123,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         // If adsteam is weak + optional
         //        subject.datasource.adStream = nil
         //        datasource.returngetNativeAdListing = true
-        //        subject?.tableView(tableView, didSelectRowAtIndexPath: NSIndexPath(forItem: 1, inSection: 0))
+        //        subject?.tableView(tableView, didSelectRowAt: NSIndexPath(row: 1, section: 0))
         //        XCTAssert(mockedDelegate.didSelectRowAtIndexPath == false, "It should NOT have called the orginal function, since our adStream is nil")
     }
 
@@ -157,7 +157,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
     func testHeightForRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
             var expected = CGFloat(123)
-            var heightForRowAtIndexPath: Bool! = false
+            var heightForRowAt: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
                 heightForRowAtIndexPath = true
@@ -167,7 +167,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate())
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
-        var result = subject?.tableView(tableView, heightForRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
+        var result = subject?.tableView(tableView, heightForRowAt: IndexPath(row: 1, section: 0))
         XCTAssert(mockedDelegate.heightForRowAtIndexPath, "It should've called the orginal function")
         XCTAssert(result == mockedDelegate.expected, "Since the delegate has implemented the heightForHeaderInSection function we should return the value its returning.")
         mockedDelegate.heightForRowAtIndexPath = false
@@ -175,7 +175,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
         // Is an ad
         datasource.returngetNativeAdListing = true
-        result = subject?.tableView(tableView, heightForRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
+        result = subject?.tableView(tableView, heightForRowAt: IndexPath(row: 1, section: 0))
         XCTAssert(result == NativeAdTableViewDelegate.heightForStandardAdUnit, "Since the delegate has implemented the heightForHeaderInSection function we should return the value its returning.")
         XCTAssert(datasource.getNativeAdListingCalled, "The function checked if it was an ad.")
         datasource.returngetNativeAdListing = false
@@ -187,7 +187,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         self.delegate as! mockedUITableViewDelegate2
 
         datasource.getNativeAdListingCalled = false
-        result = subject?.tableView(tableView, heightForRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
+        result = subject?.tableView(tableView, heightForRowAt: IndexPath(row: 1, section: 0))
         XCTAssert(result == UITableViewAutomaticDimension, "Since the delegate has implemented the heightForHeaderInSection function we should return the value its returning.")
         XCTAssert(datasource.getNativeAdListingCalled, "The function checked if it was an ad.")
     }
@@ -220,20 +220,20 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
         datasource.returngetNativeAdListing = false
-        subject?.tableView(tableView, accessoryButtonTappedForRowWithIndexPath: IndexPath(forItem: 0, inSection: 0))
+        subject?.tableView(tableView, accessoryButtonTappedForRowWith: IndexPath(row: 0, section: 0))
         XCTAssert(datasource.getNativeAdListingCalled, "The function checked if it was an ad.")
         XCTAssert(mockedDelegate.AccessoryButtonTappedForRowWithIndexPath, "It should've called the orginal function")
         mockedDelegate.AccessoryButtonTappedForRowWithIndexPath = false
         datasource.getNativeAdListingCalled = false
 
         datasource.returngetNativeAdListing = true
-        subject?.tableView(tableView, accessoryButtonTappedForRowWithIndexPath: IndexPath(forItem: 0, inSection: 0))
+        subject?.tableView(tableView, accessoryButtonTappedForRowWith: IndexPath(row: 0, section: 0))
         XCTAssert(!mockedDelegate.AccessoryButtonTappedForRowWithIndexPath, "It should've called the orginal function")
     }
 
     func testCanFocusRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
-            var canFocusRowAtIndexPath: Bool! = false
+            var canFocusRowAt: Bool! = false
             var expected: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
@@ -246,7 +246,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
         // Implemented, no ads
         datasource.returngetNativeAdListing = false
-        var result = subject?.tableView(tableView, canFocusRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        var result = subject?.tableView(tableView, canFocusRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(datasource.getNativeAdListingCalled, "The function checked if it was an ad.")
         XCTAssert(mockedDelegate.canFocusRowAtIndexPath, "It should've called the orginal function")
         XCTAssert(result == mockedDelegate.expected, "Since the delegate has implemented the canFocusRowAtIndexPath function we should return the value its returning.")
@@ -256,7 +256,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
         // We have ad
         datasource.returngetNativeAdListing = true
-        result = subject?.tableView(tableView, canFocusRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        result = subject?.tableView(tableView, canFocusRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(result == true, "return value should be true since we have an ad.")
 
         class mockedUITableViewDelegate2: NSObject, UITableViewDelegate {}
@@ -265,13 +265,13 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
         // Not implemented and no ads means true
         datasource.getNativeAdListingCalled = false
-        result = subject?.tableView(tableView, canFocusRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        result = subject?.tableView(tableView, canFocusRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(result == true, "Return true since we the delegate hasn't got this function implemented.")
     }
 
     func testDidDeselectRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
-            var didDeselectRowAtIndexPath: Bool! = false
+            var didDeselectRowAt: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
                 didDeselectRowAtIndexPath = true
@@ -280,7 +280,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate())
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
         // We don't have an ad
-        subject?.tableView(tableView, didDeselectRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        subject?.tableView(tableView, didDeselectRowAt: IndexPath(row: 0, section: 0))
         datasource.returngetNativeAdListing = false
         XCTAssert(datasource.getNativeAdListingCalled, "The function checked if it was an ad.")
         XCTAssert(mockedDelegate.didDeselectRowAtIndexPath, "It should've called the orginal function")
@@ -300,14 +300,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         let uitableviewcell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: nil)
 
         // We don't have an ad
-        subject?.tableView(tableView, didEndDisplayingCell: uitableviewcell, forRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        subject?.tableView(tableView, didEndDisplayingCell: uitableviewcell, forRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(datasource.getNativeAdListingCalled, "The function checked if it was an ad.")
         XCTAssert(mockedDelegate.didEndDisplayingCell, "It should have called the orginal function")
         mockedDelegate.didEndDisplayingCell = false
 
         // We have ad
         datasource.returngetNativeAdListing = true
-        subject?.tableView(tableView, didEndEditingRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        subject?.tableView(tableView, didEndEditingRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.didEndDisplayingCell == false, "It should NOT have called the orginal function")
     }
 
@@ -329,7 +329,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
     func testDidEndEditingRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
-            var didEndEditingRowAtIndexPath: Bool! = false
+            var didEndEditingRowAt: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
                 didEndEditingRowAtIndexPath = true
@@ -340,14 +340,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: nil)
 
         // We don't have an ad
-        subject?.tableView(tableView, didEndEditingRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        subject?.tableView(tableView, didEndEditingRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(datasource.getNativeAdListingCalled, "The function checked if it was an ad.")
         XCTAssert(mockedDelegate.didEndEditingRowAtIndexPath, "It should've called the orginal function")
         mockedDelegate.didEndEditingRowAtIndexPath = false
 
         // We have an ad
         datasource.returngetNativeAdListing = true
-        subject?.tableView(tableView, didEndEditingRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        subject?.tableView(tableView, didEndEditingRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.didEndEditingRowAtIndexPath == false, "It should NOT have called the orginal function")
     }
 
@@ -382,7 +382,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
         // We don't have an ad
-        var result = subject?.tableView(tableView, canPerformAction: Selector(), forRowAtIndexPath: IndexPath(forItem: 0, inSection: 0), withSender: nil)
+        var result = subject?.tableView(tableView, canPerformAction: Selector(), forRowAt: IndexPath(row: 0, section: 0), withSender: nil)
         XCTAssert(datasource.getNativeAdListingCalled, "The function checked if it was an ad.")
         XCTAssert(mockedDelegate.canPerformAction, "It should have called the orginal function")
         XCTAssert(result == mockedDelegate.expected, "Since the delegate has implemented the canPerformAction function we should return the value its returning.")
@@ -390,7 +390,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
         // We have ad
         datasource.returngetNativeAdListing = true
-        result = subject?.tableView(tableView, canPerformAction: Selector(), forRowAtIndexPath: IndexPath(forItem: 0, inSection: 0), withSender: nil)
+        result = subject?.tableView(tableView, canPerformAction: Selector(), forRowAt: IndexPath(row: 0, section: 0), withSender: nil)
         XCTAssert(mockedDelegate.canPerformAction == false, "It should NOT have called the orginal function")
         XCTAssert(result == true, "If it is an ad return true")
 
@@ -401,13 +401,13 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
         // Not implemented and no ads means true
         datasource.getNativeAdListingCalled = false
-        result = subject?.tableView(tableView, canPerformAction: Selector(), forRowAtIndexPath: IndexPath(forItem: 0, inSection: 0), withSender: nil)
+        result = subject?.tableView(tableView, canPerformAction: Selector(), forRowAt: IndexPath(row: 0, section: 0), withSender: nil)
         XCTAssert(result == true, "Default value is true. Not implemented")
     }
 
     func testDidHighlightRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
-            var didHighlightRowAtIndexPath: Bool! = false
+            var didHighlightRowAt: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
                 didHighlightRowAtIndexPath = true
@@ -417,19 +417,19 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
         // We don't have an ad
-        subject?.tableView(tableView, didHighlightRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        subject?.tableView(tableView, didHighlightRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.didHighlightRowAtIndexPath, "It should've called the orginal function")
         mockedDelegate.didHighlightRowAtIndexPath = false
 
         // We have an ad
         datasource.returngetNativeAdListing = true
-        subject?.tableView(tableView, didHighlightRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        subject?.tableView(tableView, didHighlightRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.didHighlightRowAtIndexPath == false, "It should NOT have called the orginal function")
     }
 
     func testDidUnhighlightRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
-            var didUnhighlightRowAtIndexPath: Bool! = false
+            var didUnhighlightRowAt: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
                 didUnhighlightRowAtIndexPath = true
@@ -439,13 +439,13 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
         // We don't have an ad
-        subject?.tableView(tableView, didUnhighlightRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        subject?.tableView(tableView, didUnhighlightRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.didUnhighlightRowAtIndexPath, "It should've called the orginal function")
         mockedDelegate.didUnhighlightRowAtIndexPath = false
 
         // We have an ad
         datasource.returngetNativeAdListing = true
-        subject?.tableView(tableView, didUnhighlightRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        subject?.tableView(tableView, didUnhighlightRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.didUnhighlightRowAtIndexPath == false, "It should NOT have called the orginal function")
     }
 
@@ -466,7 +466,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
     func testEditActionsForRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
-            var editActionsForRowAtIndexPath: Bool! = false
+            var editActionsForRowAt: Bool! = false
             var expected: [UITableViewRowAction] = [UITableViewRowAction(), UITableViewRowAction()]
             @objc
             func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -478,14 +478,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
         // We don't have an ad
-        var result = subject?.tableView(tableView, editActionsForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        var result = subject?.tableView(tableView, editActionsForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.editActionsForRowAtIndexPath, "It should've called the orginal function")
         XCTAssert(result! == mockedDelegate.expected, "Since the delegate has implemented the editActionsForRowAtIndexPath function we should return the value its returning.")
         mockedDelegate.editActionsForRowAtIndexPath = false
 
         // We have an ad
         datasource.returngetNativeAdListing = true
-        result = subject?.tableView(tableView, editActionsForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        result = subject?.tableView(tableView, editActionsForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.editActionsForRowAtIndexPath == false, "It should NOT have called the orginal function")
         XCTAssert(result == nil, "When it is an ad. return nil")
 
@@ -495,13 +495,13 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
         // We don't have an ad and its not implemented
         datasource.getNativeAdListingCalled = false
-        result = subject?.tableView(tableView, editActionsForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        result = subject?.tableView(tableView, editActionsForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(result == nil, "Default value is nil. Not implemented")
     }
 
     func testEditingStyleForRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
-            var editingStyleForRowAtIndexPath: Bool! = false
+            var editingStyleForRowAt: Bool! = false
             var expected: UITableViewCellEditingStyle = UITableViewCellEditingStyle.insert
             @objc
             func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
@@ -513,14 +513,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
         // We don't have an ad
-        var result = subject?.tableView(tableView, editingStyleForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        var result = subject?.tableView(tableView, editingStyleForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.editingStyleForRowAtIndexPath, "It should've called the orginal function")
         XCTAssert(result! == mockedDelegate.expected, "Since the delegate has implemented the editingStyleForRowAtIndexPath function we should return the value its returning.")
         mockedDelegate.editingStyleForRowAtIndexPath = false
 
         // We have an ad
         datasource.returngetNativeAdListing = true
-        result = subject?.tableView(tableView, editingStyleForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        result = subject?.tableView(tableView, editingStyleForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.editingStyleForRowAtIndexPath == false, "It should NOT have called the orginal function")
         XCTAssert(result == UITableViewCellEditingStyle.None, "When it is an ad. return nil")
 
@@ -530,7 +530,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
         // We don't have an ad and its not implemented
         datasource.getNativeAdListingCalled = false
-        result = subject?.tableView(tableView, editingStyleForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        result = subject?.tableView(tableView, editingStyleForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(result == UITableViewCellEditingStyle.None, "Default value is nil. Not implemented")
     }
 
@@ -590,7 +590,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
     func testEstimatedHeightForRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
-            var estimatedHeightForRowAtIndexPath: Bool! = false
+            var estimatedHeightForRowAt: Bool! = false
             var expected: CGFloat = CGFloat(188)
             @objc
             func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -602,14 +602,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
         // We don't have an ad
-        var result = subject?.tableView(tableView, estimatedHeightForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        var result = subject?.tableView(tableView, estimatedHeightForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.estimatedHeightForRowAtIndexPath, "It should've called the orginal function")
         XCTAssert(result! == mockedDelegate.expected, "Since the delegate has implemented the estimatedHeightForRowAtIndexPath function we should return the value its returning.")
         mockedDelegate.estimatedHeightForRowAtIndexPath = false
 
         // We have an ad
         datasource.returngetNativeAdListing = true
-        result = subject?.tableView(tableView, estimatedHeightForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        result = subject?.tableView(tableView, estimatedHeightForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.estimatedHeightForRowAtIndexPath == false, "It should NOT have called the orginal function")
         XCTAssert(result == UITableViewAutomaticDimension, "When it is an ad. return nil")
 
@@ -619,7 +619,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
         // We don't have an ad and its not implemented
         datasource.getNativeAdListingCalled = false
-        result = subject?.tableView(tableView, estimatedHeightForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        result = subject?.tableView(tableView, estimatedHeightForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(result == UITableViewAutomaticDimension, "Default value is nil. Not implemented")
     }
 
@@ -652,7 +652,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
     func testIndentationLevelForRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
-            var indentationLevelForRowAtIndexPath: Bool! = false
+            var indentationLevelForRowAt: Bool! = false
             var expected: Int = 123 // This is magic ~ Harry Potter.
             @objc
             func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
@@ -664,14 +664,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
         // We don't have an ad
-        var result = subject?.tableView(tableView, indentationLevelForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        var result = subject?.tableView(tableView, indentationLevelForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.indentationLevelForRowAtIndexPath, "It should've called the orginal function")
         XCTAssert(result! == mockedDelegate.expected, "Since the delegate has implemented the indentationLevelForRowAtIndexPath function we should return the value its returning.")
         mockedDelegate.indentationLevelForRowAtIndexPath = false
 
         // We have an ad
         datasource.returngetNativeAdListing = true
-        result = subject?.tableView(tableView, indentationLevelForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        result = subject?.tableView(tableView, indentationLevelForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.indentationLevelForRowAtIndexPath == false, "It should NOT have called the orginal function")
         XCTAssert(result == -1, "When it is an ad. return nil")
 
@@ -681,7 +681,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
         // We don't have an ad and its not implemented
         datasource.getNativeAdListingCalled = false
-        result = subject?.tableView(tableView, indentationLevelForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        result = subject?.tableView(tableView, indentationLevelForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(result == -1, "Default value is nil. Not implemented")
     }
 
@@ -696,14 +696,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate())
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
-        subject?.tableView(tableView, performAction: Selector(), forRowAtIndexPath: IndexPath(forItem: 0, inSection: 0), withSender: nil)
+        subject?.tableView(tableView, performAction: Selector(), forRowAt: IndexPath(row: 0, section: 0), withSender: nil)
         XCTAssert(mockedDelegate.performAction, "It should've called the orginal function")
     }
 
     func testShouldHighlightRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
             var expected = true
-            var shouldHighlightRowAtIndexPath: Bool! = false
+            var shouldHighlightRowAt: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
                 shouldHighlightRowAtIndexPath = true
@@ -713,7 +713,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate())
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
-        var result = subject?.tableView(tableView, shouldHighlightRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        var result = subject?.tableView(tableView, shouldHighlightRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.shouldHighlightRowAtIndexPath, "It should've called the orginal function")
         XCTAssert(result == mockedDelegate.expected, "Since the delegate has implemented the shouldHighlightRowAtIndexPath function we should return the value its returning.")
         mockedDelegate.shouldHighlightRowAtIndexPath = false
@@ -723,14 +723,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate2())
         self.delegate as! mockedUITableViewDelegate2
 
-        result = subject?.tableView(tableView, shouldHighlightRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        result = subject?.tableView(tableView, shouldHighlightRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(result == true, "Since the delegate has implemented the shouldHighlightRowAtIndexPath function we should return the value its returning.")
     }
 
     func testShouldIndentWhileEditingRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
             var expected = true
-            var shouldIndentWhileEditingRowAtIndexPath: Bool! = false
+            var shouldIndentWhileEditingRowAt: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
                 shouldIndentWhileEditingRowAtIndexPath = true
@@ -740,14 +740,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate())
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
-        var result = subject?.tableView(tableView, shouldIndentWhileEditingRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        var result = subject?.tableView(tableView, shouldIndentWhileEditingRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.shouldIndentWhileEditingRowAtIndexPath, "It should've called the orginal function")
         XCTAssert(result == mockedDelegate.expected, "Since the delegate has implemented the shouldIndentWhileEditingRowAtIndexPath function we should return the value its returning.")
         mockedDelegate.shouldIndentWhileEditingRowAtIndexPath = false
 
         // Is an ad
         datasource.returngetNativeAdListing = true
-        result = subject?.tableView(tableView, shouldIndentWhileEditingRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
+        result = subject?.tableView(tableView, shouldIndentWhileEditingRowAt: IndexPath(row: 1, section: 0))
         XCTAssert(result == true, "Since the delegate has implemented the heightForHeaderInSection function we should return the value its returning.")
         XCTAssert(datasource.getNativeAdListingCalled, "The function checked if it was an ad.")
         datasource.returngetNativeAdListing = false
@@ -758,14 +758,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate2())
         self.delegate as! mockedUITableViewDelegate2
 
-        result = subject?.tableView(tableView, shouldIndentWhileEditingRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        result = subject?.tableView(tableView, shouldIndentWhileEditingRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(result == true, "Since the delegate has implemented the shouldIndentWhileEditingRowAtIndexPath function we should return the value its returning.")
     }
 
     func testShouldShowMenuForRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
             var expected = true
-            var shouldShowMenuForRowAtIndexPath: Bool! = false
+            var shouldShowMenuForRowAt: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
                 shouldShowMenuForRowAtIndexPath = true
@@ -775,14 +775,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate())
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
-        var result = subject?.tableView(tableView, shouldShowMenuForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        var result = subject?.tableView(tableView, shouldShowMenuForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(mockedDelegate.shouldShowMenuForRowAtIndexPath, "It should've called the orginal function")
         XCTAssert(result == mockedDelegate.expected, "Since the delegate has implemented the shouldShowMenuForRowAtIndexPath function we should return the value its returning.")
         mockedDelegate.shouldShowMenuForRowAtIndexPath = false
 
         // Is an ad
         datasource.returngetNativeAdListing = true
-        result = subject?.tableView(tableView, shouldShowMenuForRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
+        result = subject?.tableView(tableView, shouldShowMenuForRowAt: IndexPath(row: 1, section: 0))
         XCTAssert(result == true, "Since the delegate has implemented the heightForHeaderInSection function we should return the value its returning.")
         XCTAssert(datasource.getNativeAdListingCalled, "The function checked if it was an ad.")
         datasource.returngetNativeAdListing = false
@@ -793,14 +793,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate2())
         self.delegate as! mockedUITableViewDelegate2
 
-        result = subject?.tableView(tableView, shouldShowMenuForRowAtIndexPath: IndexPath(forItem: 0, inSection: 0))
+        result = subject?.tableView(tableView, shouldShowMenuForRowAt: IndexPath(row: 0, section: 0))
         XCTAssert(result == true, "Since the delegate has implemented the shouldShowMenuForRowAtIndexPath function we should return the value its returning.")
     }
 
     func testWillSelectRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
             var expected = IndexPath(item: 123, section: 144)
-            var willSelectRowAtIndexPath: Bool! = false
+            var willSelectRowAt: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
                 willSelectRowAtIndexPath = true
@@ -810,7 +810,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate())
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
-        var result = subject?.tableView(tableView, willSelectRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
+        var result = subject?.tableView(tableView, willSelectRowAt: IndexPath(row: 1, section: 0))
         XCTAssert(mockedDelegate.willSelectRowAtIndexPath, "It should've called the orginal function")
         XCTAssert(result == mockedDelegate.expected, "Since the delegate has implemented the willSelectRowAtIndexPath function we should return the value its returning.")
         mockedDelegate.willSelectRowAtIndexPath = false
@@ -821,7 +821,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         self.delegate as! mockedUITableViewDelegate2
 
         let expected = IndexPath(item: 1, section: 0)
-        result = subject?.tableView(tableView, willSelectRowAtIndexPath: expected)
+        result = subject?.tableView(tableView, willSelectRowAt: expected)
         XCTAssert(result == expected, "Since the delegate has implemented the willSelectRowAtIndexPath function we should return the value its returning.")
     }
 
@@ -865,7 +865,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate())
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
-        var result = subject?.tableView(tableView, targetIndexPathForMoveFromRowAtIndexPath: IndexPath(forItem: 1, inSection: 0), toProposedIndexPath: IndexPath(forItem: 123, inSection: 10))
+        var result = subject?.tableView(tableView, targetIndexPathForMoveFromRowAt: IndexPath(row: 1, section: 0), toProposedIndexPath: IndexPath(row: 123, inSection: 10))
 
         XCTAssert(mockedDelegate.shouldUpdateFocusInContext, "It should've called the orginal function")
         XCTAssert(result == mockedDelegate.expected, "Since the delegate has implemented the targetIndexPathForMoveFromRowAtIndexPath function we should return the value its returning.")
@@ -877,14 +877,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         self.delegate as! mockedUITableViewDelegate2
 
         let expected = IndexPath(index: 1)
-        result = subject?.tableView(tableView, targetIndexPathForMoveFromRowAtIndexPath: IndexPath(forItem: 1, inSection: 0), toProposedIndexPath: expected)
+        result = subject?.tableView(tableView, targetIndexPathForMoveFromRowAt: IndexPath(row: 1, section: 0), toProposedIndexPath: expected)
         XCTAssert(result == expected, "Since the delegate has implemented the targetIndexPathForMoveFromRowAtIndexPath function we should return the value its returning.")
     }
 
     func testTitleForDeleteConfirmationButtonForRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
             var expected: String! = "a test"
-            var titleForDeleteConfirmationButtonForRowAtIndexPath: Bool! = false
+            var titleForDeleteConfirmationButtonForRowAt: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
                 titleForDeleteConfirmationButtonForRowAtIndexPath = true
@@ -894,7 +894,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate())
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
-        var result = subject?.tableView(tableView, titleForDeleteConfirmationButtonForRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
+        var result = subject?.tableView(tableView, titleForDeleteConfirmationButtonForRowAt: IndexPath(row: 1, section: 0))
 
         XCTAssert(mockedDelegate.titleForDeleteConfirmationButtonForRowAtIndexPath, "It should've called the orginal function")
         XCTAssert(result == mockedDelegate.expected, "Since the delegate has implemented the titleForDeleteConfirmationButtonForRowAtIndexPath function we should return the value its returning.")
@@ -905,7 +905,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate2())
         self.delegate as! mockedUITableViewDelegate2
 
-        result = subject?.tableView(tableView, titleForDeleteConfirmationButtonForRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
+        result = subject?.tableView(tableView, titleForDeleteConfirmationButtonForRowAt: IndexPath(row: 1, section: 0))
         XCTAssert(result == nil, "Since the delegate has implemented the titleForDeleteConfirmationButtonForRowAtIndexPath function we should return the value its returning.")
     }
 
@@ -929,7 +929,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
 
     func testWillBeginEditingRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
-            var willBeginEditingRowAtIndexPath: Bool! = false
+            var willBeginEditingRowAt: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
                 willBeginEditingRowAtIndexPath = true
@@ -938,14 +938,14 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate())
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
-        subject?.tableView(tableView, willBeginEditingRowAtIndexPath: IndexPath(forItem: 123, inSection: 10))
+        subject?.tableView(tableView, willBeginEditingRowAt: IndexPath(row: 123, inSection: 10))
         XCTAssert(mockedDelegate.willBeginEditingRowAtIndexPath, "It should've called the orginal function")
     }
 
     func testWillDeselectRowAtIndexPath() {
         class mockedUITableViewDelegate: NSObject, UITableViewDelegate {
             var expected: IndexPath! = IndexPath(item: 10, section: 123)
-            var willDeselectRowAtIndexPath: Bool! = false
+            var willDeselectRowAt: Bool! = false
             @objc
             func tableView(_ tableView: UITableView, willDeselectRowAt sourceIndexPath: IndexPath) -> IndexPath? {
                 willDeselectRowAtIndexPath = true
@@ -955,7 +955,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         setup2(mockedUITableViewDelegate())
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
 
-        var result = subject?.tableView(tableView, willDeselectRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
+        var result = subject?.tableView(tableView, willDeselectRowAt: IndexPath(row: 1, section: 0))
 
         XCTAssert(mockedDelegate.willDeselectRowAtIndexPath, "It should've called the orginal function")
         XCTAssert(result == mockedDelegate.expected, "Since the delegate has implemented the willDeselectRowAtIndexPath function we should return the value its returning.")
@@ -967,7 +967,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         self.delegate as! mockedUITableViewDelegate2
 
         let expected = IndexPath(index: 1)
-        result = subject?.tableView(tableView, willDeselectRowAtIndexPath: expected)
+        result = subject?.tableView(tableView, willDeselectRowAt: expected)
         XCTAssert(result == expected, "Since the delegate has implemented the willDeselectRowAtIndexPath function we should return the value its returning.")
     }
 
@@ -983,7 +983,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         let mockedDelegate = self.delegate as! mockedUITableViewDelegate
         let uitableviewcell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: nil)
 
-        subject?.tableView(tableView, willDisplayCell: uitableviewcell, forRowAtIndexPath: IndexPath(forItem: 1, inSection: 0))
+        subject?.tableView(tableView, willDisplayCell: uitableviewcell, forRowAt: IndexPath(row: 1, section: 0))
         XCTAssert(mockedDelegate.willDisplayCell, "It should've called the orginal function")
     }
 

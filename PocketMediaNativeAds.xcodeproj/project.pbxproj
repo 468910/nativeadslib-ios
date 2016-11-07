@@ -79,7 +79,7 @@
 
 /* Begin PBXFileReference section */
 		03581B9D18BE8CA012B25B19 /* Pods-PocketMediaNativeAdsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAdsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAdsTests/Pods-PocketMediaNativeAdsTests.release.xcconfig"; sourceTree = "<group>"; };
-		18A792D31D917ACF00273E9B /* NativeAdTableViewDatasourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdTableViewDatasourceTest.swift; path = DataSource/NativeAdTableViewDatasourceTest.swift; sourceTree = "<group>"; };
+		18A792D31D917ACF00273E9B /* NativeAdTableViewDatasourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = NativeAdTableViewDatasourceTest.swift; path = DataSource/NativeAdTableViewDatasourceTest.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1C752A88E2857F6C3A349B6B /* Pods_PocketMediaNativeAds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		271E99B01D883CFB00FA001E /* NativeAdStreamTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdStreamTest.swift; path = DataSource/NativeAdStreamTest.swift; sourceTree = "<group>"; };
 		2723A4E81D7FF62700CB07E2 /* Tests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Tests.json; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 		2758CCAA1D8EE4C1000181CD /* ReferenceArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReferenceArray.swift; path = PocketMediaNativeAds/Util/ReferenceArray.swift; sourceTree = "<group>"; };
 		2758CCAD1D8EE4D6000181CD /* AbstractAdUnitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractAdUnitTableViewCell.swift; path = PocketMediaNativeAds/Adunits/AbstractAdUnitTableViewCell.swift; sourceTree = "<group>"; };
 		2758CCAE1D8EE4D6000181CD /* StandardAdUnitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StandardAdUnitTableViewCell.swift; path = PocketMediaNativeAds/Adunits/StandardAdUnitTableViewCell.swift; sourceTree = "<group>"; };
-		27613F561DCCAA7200BEDBD1 /* DataSourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSourceTest.swift; path = DataSource/DataSourceTest.swift; sourceTree = "<group>"; };
+		27613F561DCCAA7200BEDBD1 /* DataSourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = DataSourceTest.swift; path = DataSource/DataSourceTest.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		276B35991DCA514C00AA2559 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		276B359A1DCA514C00AA2559 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "Pods/../build/Debug-iphoneos/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		277F1C0B1D7EF51C00E14A68 /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PocketMediaNativeAds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,7 +133,7 @@
 		27C31D4C1DA407D300DE80C9 /* MarginAdPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarginAdPosition.swift; path = PocketMediaNativeAds/Core/AdPosition/MarginAdPosition.swift; sourceTree = "<group>"; };
 		27C31D4D1DA407D300DE80C9 /* PredefinedAdPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredefinedAdPosition.swift; path = PocketMediaNativeAds/Core/AdPosition/PredefinedAdPosition.swift; sourceTree = "<group>"; };
 		27C82FAF1D8816D100FE3E6D /* PocketMediaNativeAdsBundleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PocketMediaNativeAdsBundleTest.swift; path = Util/PocketMediaNativeAdsBundleTest.swift; sourceTree = "<group>"; };
-		27C82FB21D882B2300FE3E6D /* NativeAdTableViewDelegateTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAdTableViewDelegateTest.swift; path = DataSource/NativeAdTableViewDelegateTest.swift; sourceTree = "<group>"; };
+		27C82FB21D882B2300FE3E6D /* NativeAdTableViewDelegateTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = NativeAdTableViewDelegateTest.swift; path = DataSource/NativeAdTableViewDelegateTest.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		27C82FC31D882FA000FE3E6D /* ExampleTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleTableViewDataSource.swift; path = DataSource/Helpers/ExampleTableViewDataSource.swift; sourceTree = "<group>"; };
 		27C82FC41D882FA000FE3E6D /* ItemTableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemTableModel.swift; path = DataSource/Helpers/ItemTableModel.swift; sourceTree = "<group>"; };
 		27C82FCB1D88326900FE3E6D /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCell.swift; path = DataSource/Helpers/ItemCell.swift; sourceTree = "<group>"; };
@@ -558,7 +558,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect > /dev/null 2>&1\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect > /dev/null 2>&1\n#swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		27ECE08A1DCC9EDB001DCD10 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
