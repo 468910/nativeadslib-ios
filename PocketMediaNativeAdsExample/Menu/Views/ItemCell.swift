@@ -19,3 +19,12 @@ public class ItemCell: UITableViewCell {
   }
   
 }
+
+    @IBOutlet public weak var name: UILabel!
+    @IBOutlet public weak var artworkImageView: UIImageView!
+    @IBOutlet public weak var descriptionItem: UILabel!
+
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+}

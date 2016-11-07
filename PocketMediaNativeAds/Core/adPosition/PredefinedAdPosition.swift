@@ -8,41 +8,40 @@
 
 import Foundation
 
-public enum PredefinedAdPositionError: Error {
+public enum PredefinedAdPositionError: ErrorType {
     case notEnoughPositions
 }
 
 @objc
 public class PredefinedAdPosition: NSObject, AdPosition {
-    
-    fileprivate var positions: [Int] = []
-    fileprivate var adPositionOffset: Int = 0
-    fileprivate var currentIndex:Int = 0
-    
-    public init(positions:[Int], adPositionOffset: Int = 0) {
+
+    private var positions: [Int] = []
+    private var adPositionOffset: Int = 0
+    private var currentIndex: Int = 0
+
+    public init(positions: [Int], adPositionOffset: Int = 0) {
         super.init()
-        //Remove duplicates and sort in ascending order.
-        self.positions = Array(Set(positions)).sorted { $0 < $1 }
+        // Remove duplicates and sort in ascending order.
+        self.positions = Array(Set(positions)).sort { $0 < $1 }
         setadPositionOffset(adPositionOffset)
         reset()
     }
-    
+
     public func reset() {
         currentIndex = adPositionOffset
     }
-    
-    public func getAdPosition(_ maxSize: Int) throws -> NSNumber {
+
+    public func getAdPosition(maxSize: Int) throws -> NSNumber {
         if currentIndex >= positions.count {
             throw PredefinedAdPositionError.notEnoughPositions
         }
         let result = positions[currentIndex]
         currentIndex += 1
-        return NSNumber(value: result as Int)
+        return NSNumber(integer: result)
     }
-    
-    //Default is 0
-    public func setadPositionOffset(_ position : Int) {
+
+    // Default is 0
+    public func setadPositionOffset(position: Int) {
         self.adPositionOffset = position < 0 ? 0 : position
     }
-    
 }

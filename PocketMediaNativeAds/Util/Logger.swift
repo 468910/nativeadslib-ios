@@ -16,32 +16,37 @@ struct Logger {
         case Error = "[ERROR]"
     }
 
-    private static func log(_ level: Level, _ message: String, _ error: Error? = nil) {
+    private static func log(level: Level, @autoclosure _ message: () -> String, _ error: NSError? = nil) {
         if let error = error {
-//            NSLog("%@%@ %@ with error %@", Tag, level.rawValue, message, error)
+            NSLog("%@%@ %@ with error %@", Tag, level.rawValue, message(), error)
         } else {
-            NSLog("%@%@ %@", Tag, level.rawValue, message)
+            NSLog("%@%@ %@", Tag, level.rawValue, message())
         }
     }
 
-    public static func debug(_ message: String, _ error: Error? = nil) {
-        //#if DEBUG
-            log(.Debug, message, error)
-        //#endif
+    static func debug(@autoclosure message: () -> String, _ error: NSError? = nil) {
+        // #if DEBUG
+        log(.Debug, message, error)
+        // #endif
     }
 
-    public static func debugf(_ format: String, _ args: CVarArg...) {
+    static func debugf(format: String, _ args: CVarArgType...) {
         #if DEBUG
             log(.Debug, NSString(format, args), error)
         #endif
     }
 
-    public static func error(_ message: String, _ error: Error? = nil) {
+    static func error(@autoclosure message: () -> String, _ error: NSError? = nil) {
         log(.Error, message, error)
     }
-    
-    public static func error(_ error: Error? = nil) {
+
+    static func error(error: NSError? = nil) {
         log(.Error, "An error occured", error)
     }
 
+    static func errorf(format: String, _ args: CVarArgType...) {
+        #if DEBUG
+            log(.Error, NSString(format, args), error)
+        #endif
+    }
 }

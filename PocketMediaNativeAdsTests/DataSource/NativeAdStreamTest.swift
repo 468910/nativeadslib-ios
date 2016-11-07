@@ -10,16 +10,14 @@ import XCTest
 @testable import PocketMediaNativeAds
 
 class mocked2UIViewController: UIViewController {
-
 }
 
 class mocked2UITableView: UITableView {
-
 }
 
 class mocked2NativeAdsRequest: NativeAdsRequest {
     var limit: UInt! = 0
-    override func retrieveAds(_ limit: UInt, imageType: EImageType = EImageType.allImages) {
+    override func retrieveAds(limit: UInt, imageType: EImageType = EImageType.allImages) {
         self.limit = limit
     }
 }
@@ -27,13 +25,11 @@ class mocked2NativeAdsRequest: NativeAdsRequest {
 class mocked2NativeAdsConnection: NativeAdsConnectionDelegate {
 
     @objc
-    func didReceiveError(_ error: Error) {
-
+    func didReceiveError(error: NSError) {
     }
 
     @objc
-    func didReceiveResults(_ nativeAds: [NativeAd]) {
-
+    func didReceiveResults(nativeAds: [NativeAd]) {
     }
 }
 
@@ -64,10 +60,9 @@ class NativeAdStreamTest: XCTestCase {
     }
 
     func testInitRegisterNib() {
-
         class mockedUITableView: UITableView {
             var registerNibCalled: Bool = false
-            override func register(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
+            override func registerNib(nib: UINib?, forCellReuseIdentifier identifier: String) {
                 registerNibCalled = true
             }
         }
@@ -93,22 +88,21 @@ class NativeAdStreamTest: XCTestCase {
         }
 
         /*
-        subject.datasource.adPositionOffset = 1
-        subject.didReceiveResults(ads)
-        XCTAssert(subject.datasource.ads.count == ads.count, "Ads should've been added")
+         subject.datasource.adPositionOffset = 1
+         subject.didReceiveResults(ads)
+         XCTAssert(subject.datasource.ads.count == ads.count, "Ads should've been added")
 
-        //Higher adPositionOffset than we have ads
-        subject.datasource.adPositionOffset = 100
-        subject.didReceiveResults(ads)
-        XCTAssert(subject.datasource.ads.count == 0, "No Ads shoud've been added")
-        
-        
-        subject.datasource.adPositionOffset = 1
-        subject.adsPositions = [1, 0, 3]
-        XCTAssert(subject.adsPositions! == [0, 1, 3], "It should sort the adsPositions")
-        subject.didReceiveResults(ads)
-        XCTAssert((subject.datasource.ads) != nil)
- */
+         //Higher adPositionOffset than we have ads
+         subject.datasource.adPositionOffset = 100
+         subject.didReceiveResults(ads)
+         XCTAssert(subject.datasource.ads.count == 0, "No Ads shoud've been added")
+
+         subject.datasource.adPositionOffset = 1
+         subject.adsPositions = [1, 0, 3]
+         XCTAssert(subject.adsPositions! == [0, 1, 3], "It should sort the adsPositions")
+         subject.didReceiveResults(ads)
+         XCTAssert((subject.datasource.ads) != nil)
+        */
     }
 
     func testRequestAds() {
@@ -116,5 +110,4 @@ class NativeAdStreamTest: XCTestCase {
         subject.requestAds(expected)
         XCTAssert(requester.limit == expected, "The sent limit should be passed along to the requestAds function inside the requester.")
     }
-
 }

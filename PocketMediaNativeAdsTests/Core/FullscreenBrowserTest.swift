@@ -12,14 +12,13 @@ import UIKit
 @testable import PocketMediaNativeAds
 
 public class MockNativeAd: NativeAd {
-
 }
 
 class MockNavigationController: UINavigationController {
 
     var pushedViewController: UIViewController?
 
-    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+    override func pushViewController(viewController: UIViewController, animated: Bool) {
         pushedViewController = viewController
         super.pushViewController(viewController, animated: true)
     }
@@ -28,11 +27,11 @@ class MockNavigationController: UINavigationController {
 class MockedNativeAdsWebviewDelegate: NativeAdsWebviewDelegate {
 
     var loadUrlExpectation: XCTestExpectation?
-    var loadUrlErrorResult: Bool? = .none
+    var loadUrlErrorResult: Bool? = .None
     internal var sentNativeAdUnit: NativeAd?
 
     @objc
-    internal override func loadUrl(_ nativeAdUnit: NativeAd) {
+    internal override func loadUrl(nativeAdUnit: NativeAd) {
         guard let expectation = loadUrlExpectation else {
             XCTFail("SpyDelegate was not setup correctly. Missing XCTExpectation reference")
             return
@@ -45,16 +44,16 @@ class MockedNativeAdsWebviewDelegate: NativeAdsWebviewDelegate {
 }
 
 class MockedUIViewController: UIViewController {
-    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
+    override func presentViewController(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
         completion!()
     }
 }
 
 class MockedFullscreenBrowser: FullscreenBrowser {
     internal var dismissViewControllerAnimatedExpectation: XCTestExpectation?
-    internal var dismissViewControllerAnimatedResult: Bool? = .none
+    internal var dismissViewControllerAnimatedResult: Bool? = .None
 
-    internal override func dismiss(animated flag: Bool, completion: (() -> Void)?) {
+    internal override func dismissViewControllerAnimated(flag: Bool, completion: (() -> Void)?) {
         guard let expectation = dismissViewControllerAnimatedExpectation else {
             XCTFail("SpyDelegate was not setup correctly. Missing XCTExpectation reference")
             return
@@ -66,40 +65,40 @@ class MockedFullscreenBrowser: FullscreenBrowser {
 
 class FullscreenBrowserTest: XCTestCase {
 
-	var subject: FullscreenBrowser?
+    var subject: FullscreenBrowser?
     var viewController: UIViewController?
-	var data: NSDictionary!
+    var data: NSDictionary!
 
-	override func setUp() {
+    override func setUp() {
 
-		viewController = MockedUIViewController()
+        viewController = MockedUIViewController()
         viewController?.view = UIWebView(frame: CGRect.init(
             x: 0,
             y: 0,
             width: 112,
             height: 911
-            )
         )
-		subject = FullscreenBrowser(parentViewController: viewController!)
+        )
+        subject = FullscreenBrowser(parentViewController: viewController!)
 
-		data = testHelpers.getNativeAdData()
+        data = testHelpers.getNativeAdData()
 
-		super.setUp()
-	}
+        super.setUp()
+    }
 
-	override func tearDown() {
-		// Put teardown code here. This method is called after the invocation of each test method in the class.
-		super.tearDown()
-	}
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
+    }
 
-	func testSetupWebView() {
+    func testSetupWebView() {
         XCTAssert(subject?.webView != nil, "Webview should get initialized.")
-        XCTAssert(subject?.view! ==  subject?.webView, "view should be the same as webview.")
+        XCTAssert(subject?.view! == subject?.webView, "view should be the same as webview.")
         XCTAssert(viewController!.view.bounds.width == subject?.view!.bounds.width, "Width should be set to the width of the viewController")
         XCTAssert(viewController!.view.bounds.height == subject?.view!.bounds.height, "Height should be set to the width of the viewController")
         XCTAssert(subject!.webViewDelegate != nil, "webViewDelegate should be set.")
         XCTAssert(subject!.webView!.delegate === subject?.webViewDelegate, "the webview delegate should be set to the webViewDelegate.")
-	}
+    }
 
     func testSetupWithNavigationController() {
         viewController = UIViewController()
@@ -108,7 +107,7 @@ class FullscreenBrowserTest: XCTestCase {
             y: 0,
             width: 0,
             height: 0
-            )
+        )
         )
 
         let nav = MockNavigationController(rootViewController: viewController!)
@@ -116,35 +115,35 @@ class FullscreenBrowserTest: XCTestCase {
 
         XCTAssert(nav.pushedViewController is FullscreenBrowser, "The initializer should've pushed the viewController.")
         XCTAssert(subject?.webView != nil, "Webview should get initialized.")
-        XCTAssert(subject?.view! ==  subject?.webView, "view should be the same as webview.")
-        XCTAssert(UIScreen.main.bounds.width == subject?.view!.bounds.width, "Width should be set to the width of the viewController")
-        XCTAssert(UIScreen.main.bounds.height == subject?.view!.bounds.height, "Height should be set to the width of the viewController")
+        XCTAssert(subject?.view! == subject?.webView, "view should be the same as webview.")
+        XCTAssert(UIScreen.mainScreen().bounds.width == subject?.view!.bounds.width, "Width should be set to the width of the viewController")
+        XCTAssert(UIScreen.mainScreen().bounds.height == subject?.view!.bounds.height, "Height should be set to the width of the viewController")
         XCTAssert(subject!.webViewDelegate != nil, "webViewDelegate should be set.")
         XCTAssert(subject!.webView!.delegate === subject?.webViewDelegate, "the webview delegate should be set to the webViewDelegate.")
     }
 
-    func runLoadTests(_ runWithNavigationController: Bool) {
-		do {
-			let ad = try MockNativeAd(adDictionary: data, adPlacementToken: "test")
+    func runLoadTests(runWithNavigationController: Bool) {
+        do {
+            let ad = try MockNativeAd(adDictionary: data, adPlacementToken: "test")
 
-            //Set our mocked NativeAdsWebviewDelegate
+            // Set our mocked NativeAdsWebviewDelegate
             let mockedNativeAdsWebviewDelegate = MockedNativeAdsWebviewDelegate(delegate: subject, webView: subject!.webView!)
             subject!.setupWebView(0, height: 0, delegate: mockedNativeAdsWebviewDelegate)
 
-            //Setup our call expections
-            let expectation = self.expectation(description: "loadUrl should get called from show()")
+            // Setup our call expections
+            let expectation = expectationWithDescription("loadUrl should get called from show()")
             mockedNativeAdsWebviewDelegate.loadUrlExpectation = expectation
             mockedNativeAdsWebviewDelegate.loadUrlErrorResult = false
 
-            //sleep(10)
+            // sleep(10)
 
-            //Call the load function with our mocked ad.
-			subject?.load(ad)
+            // Call the load function with our mocked ad.
+            subject?.load(ad)
 
-            //Check if the close button was added
+            // Check if the close button was added
             var found = false
             for subview in (subject?.view.subviews)! {
-                if subview is UIButton {
+                if subview.isKindOfClass(UIButton) {
                     found = true
                 }
             }
@@ -153,8 +152,8 @@ class FullscreenBrowserTest: XCTestCase {
                 XCTAssert(found, "It should add a close button")
             }
 
-            //Check if loadUrl in the NativeAdsWebviewDelegate was called
-            waitForExpectations(timeout: 1) { error in
+            // Check if loadUrl in the NativeAdsWebviewDelegate was called
+            waitForExpectationsWithTimeout(1) { error in
 
                 if let error = error {
                     XCTFail("waitForExpectationsWithTimeout errored: \(error)")
@@ -168,20 +167,20 @@ class FullscreenBrowserTest: XCTestCase {
                 XCTAssert(mockedNativeAdsWebviewDelegate.sentNativeAdUnit == ad, "The ad that was sent should've been loaded")
             }
 
-		} catch {
-			XCTFail("MockNativeAd is throwing an ")
-		}
-	}
+        } catch {
+            XCTFail("MockNativeAd is throwing an ")
+        }
+    }
 
     func testLoadWithNavigationController() {
-        //Create a non mocked UIViewController. We don't want to use the mocked presentViewController()
+        // Create a non mocked UIViewController. We don't want to use the mocked presentViewController()
         viewController = UIViewController()
         viewController?.view = UIWebView(frame: CGRect.init(
             x: 0,
             y: 0,
             width: 0,
             height: 0
-            )
+        )
         )
         let nav = MockNavigationController(rootViewController: viewController!)
         subject = FullscreenBrowser(parentViewController: viewController!)
@@ -195,43 +194,43 @@ class FullscreenBrowserTest: XCTestCase {
     }
 
     func testFatalInit() {
-        /*expectFatalError("init(coder:) has not been implemented", testcase: {
-            FullscreenBrowser(coder: NSCoder())
-        })*/
+        /* expectFatalError("init(coder:) has not been implemented", testcase: {
+         FullscreenBrowser(coder: NSCoder())
+        }) */
     }
 
     func testDidOpenBrowser() {
-        //Expected outcome is that the pushedViewController is nolonger FullScreenBrowser
+        // Expected outcome is that the pushedViewController is nolonger FullScreenBrowser
         let nav = MockNavigationController(rootViewController: viewController!)
         subject = FullscreenBrowser(parentViewController: viewController!)
 
         XCTAssert(nav.pushedViewController is FullscreenBrowser, "The initializer should've pushed the viewController.")
-        subject?.didOpenBrowser(URL(string: "http://google.co.uk")!)
+        subject?.didOpenBrowser(NSURL(string: "http://google.co.uk")!)
         XCTAssert(nav.pushedViewController is FullscreenBrowser, "didOpenBrowser should've popped the viewController.")
     }
 
     func testDidOpenBrowserWithoutNavigationController() {
-        //Expected outcome is that the pushedViewController is nolonger FullScreenBrowser
+        // Expected outcome is that the pushedViewController is nolonger FullScreenBrowser
         viewController = UIViewController()
         viewController?.view = UIWebView(frame: CGRect.init(
             x: 0,
             y: 0,
             width: 112,
             height: 911
-            )
+        )
         )
         subject = MockedFullscreenBrowser(parentViewController: viewController!)
 
-        //Setup our call expections
-        let expectation = self.expectation(description: "didOpenBrowser should've eventually called dismissViewControllerAnimated()")
+        // Setup our call expections
+        let expectation = expectationWithDescription("didOpenBrowser should've eventually called dismissViewControllerAnimated()")
 
         (subject as! MockedFullscreenBrowser).dismissViewControllerAnimatedExpectation = expectation
         (subject as! MockedFullscreenBrowser).dismissViewControllerAnimatedResult = false
 
-        subject?.didOpenBrowser(URL(string: "http://google.co.uk")!)
+        subject?.didOpenBrowser(NSURL(string: "http://google.co.uk")!)
 
-        //Check if loadUrl in the NativeAdsWebviewDelegate was called
-        waitForExpectations(timeout: 1) { error in
+        // Check if loadUrl in the NativeAdsWebviewDelegate was called
+        waitForExpectationsWithTimeout(1) { error in
 
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
@@ -244,7 +243,6 @@ class FullscreenBrowserTest: XCTestCase {
 
             XCTAssert(true)
         }
-
     }
 
     func testWillMoveToParentViewController() {
@@ -255,7 +253,7 @@ class FullscreenBrowserTest: XCTestCase {
             }
         }
         subject?.webView = MockedUIWebView()
-        subject?.willMove(toParentViewController: nil)
+        subject?.willMoveToParentViewController(nil)
         XCTAssert((subject?.webView as! MockedUIWebView).stopLoadingCalled, "willMoveToParentViewController should've called stopLoadingCalled on the webview.")
     }
 }

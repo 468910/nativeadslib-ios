@@ -1,7 +1,8 @@
 # PocketMedia: iOS NativeAds library
 [![Code Climate](https://codeclimate.com/github/Pocketbrain/nativeadslib-ios/badges/gpa.svg)](https://codeclimate.com/github/Pocketbrain/nativeadslib-ios)
-[![Build Status](https://travis-ci.org/Pocketbrain/nativeadslib-ios.svg?branch=feature%2Fnew-structure-tests)](https://travis-ci.org/Pocketbrain/nativeadslib-ios)
-[![codecov](https://codecov.io/gh/Pocketbrain/nativeadslib-ios/branch/feature%2Fnew-structure-tests/graph/badge.svg)](https://codecov.io/gh/Pocketbrain/nativeadslib-ios)
+[![Build Status](https://travis-ci.org/Pocketbrain/nativeadslib-ios.svg?branch=master)](https://travis-ci.org/Pocketbrain/nativeadslib-ios)
+[![Build Status](https://www.bitrise.io/app/b7a8ab5efda24990.svg?token=n6H_COg_cUKeKnUEWEMJTw&branch=master)](https://www.bitrise.io/app/b7a8ab5efda24990)
+[![codecov](https://codecov.io/gh/Pocketbrain/nativeadslib-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/Pocketbrain/nativeadslib-ios)
 [![Gitter](https://badges.gitter.im/join_chat.svg)](https://gitter.im/Pocketbrain)
 [![CocoaPods](https://img.shields.io/cocoapods/at/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 [![Version](https://img.shields.io/cocoapods/v/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
@@ -35,6 +36,19 @@ it, simply add the following line to your Podfile:
 pod "PocketMediaNativeAds"
 ```
 
+Then run the following in your terminal:
+```ruby
+pod install
+```
+
+### Troubleshooting
+#### Problems with doing a pod install.
+Try the following:
+- gem install bundler
+- cd into the project files
+- bundle install
+Now try it again.
+
 ## Usage
 There are several ways to implement the native ads in your application. Firstly, there is the AdStream which will take care of the integration for you. For maximum customizability however there is always the option to manually integrate the NativeAds.
 
@@ -61,7 +75,7 @@ You can specify the positions by giving an Array with fixed positions or frequen
     stream?.requestAds(10)//Add 5 ads
 ```
 
-There is also the option to pass a custom XIB this has to be or a subclass of the corresponding  AbstractAdUnit for example ```AbstractAdUnitTableViewCell```. 
+There is also the option to pass a custom XIB this has to be or a subclass of the corresponding  AbstractAdUnit for example ```AbstractAdUnitTableViewCell```.
 Dont forget to link up the outlets to your xib!
 
 ### Manual Integration
@@ -74,14 +88,14 @@ You could also opt for just using the library to do the network request and manu
 
 ## App Transport Security
 
-**Important:** the server to download the ads is ```http://offerwall.12trackway.com```. This is not *yet* under https, so you will need to add certain values to your plist, to indicate App Transport Security. 
+**Important:** the server to download the ads is ```http://offerwall.12trackway.com```. This is not *yet* under https, so you will need to add certain values to your plist, to indicate App Transport Security.
 
 ![Info.plist â€” Edited 2016-02-21 18-14-09.png](https://bitbucket.org/repo/46g5gL/images/2846838342-Info.plist%20%E2%80%94%20Edited%202016-02-21%2018-14-09.png)
 
 In the future this will change to https, following Apple recommendations.
 
 ### Receiving the results
-After the request has started requesting adds it will call the following three methods to notify the delegate class (the host application) of the ad status: 
+After the request has started requesting adds it will call the following three methods to notify the delegate class (the host application) of the ad status:
 
 - ```didRecieveError```: compulsory method, to be invoked in case there is an error retrieving the ads. This can happen due to network conditions, some systems error, parsing error...
 - ```didRecieveResults```: when the library gets the JSON, parses it and delivers to your app, you will be notified with an Array of the NativeAd objects retrieved.
@@ -116,11 +130,11 @@ Together with the method were the table cell is displayed:
             let cell = tableView.dequeueReusableCellWithIdentifier("AdCell", forIndexPath:indexPath) as! AdCell
             cell.campaignNameLabel.text = ad.campaignName
             cell.campaignDescriptionLabel.text = ad.campaignDescription
-            
+
             if(ad.campaignImage != nil){
             loadImageAsynchronouslyFromUrl(ad.campaignImage, imageView: cell.campaignImageView)
             }
-            
+
             return cell
         default:
             return UITableViewCell()
@@ -152,7 +166,7 @@ One of the main objectives of these project is creating a easy to use library th
 
 ## Author
 
-Pocket Media Tech Team, [support@pocketmedia.mobi](mailto:support@pocketmedia.mobi). Feel free to contact us for any suggestion improvements you might have. 
+Pocket Media Tech Team, [support@pocketmedia.mobi](mailto:support@pocketmedia.mobi). Feel free to contact us for any suggestion improvements you might have.
 
 We work for you, we want you to be able to implement the ads in 5 minutes and start monetizing your audience with a totally native and tailored experience! Tell us what you are missing, what else you need our library to make for you - and it will happen.
 

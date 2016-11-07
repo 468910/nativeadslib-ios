@@ -10,20 +10,19 @@ import UIKit
 import PocketMediaNativeAds
 
 public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSource {
-    
+
     var collection: [AnyObject] = []
-    
-    public func numberOfSections(in tableView: UITableView) -> Int {
+
+    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
-    
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return collection.count
     }
-    
-    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch(section){
+
+    public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
         case 0:
             return "Section 1"
         case 1:
@@ -32,15 +31,15 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
             return "This is not a valid section?"
         }
     }
-    
+
     func loadLocalJSON() {
         do {
-            let path = Bundle.main.path(forResource: "DummyData", ofType: "json")
-            let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: path!))
+            let path = NSBundle.mainBundle().pathForResource("DummyData", ofType: "json")
+            let jsonData: NSData = NSData(contentsOfFile: path!)!
             var jsonArray: NSArray = NSArray()
-            jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSArray
+            jsonArray = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
             for itemJson in jsonArray {
-                if let itemDictionary = itemJson as? NSDictionary, let item = ItemTableModel(dictionary: itemDictionary) {
+                if let itemDictionary = itemJson as? NSDictionary, item = ItemTableModel(dictionary: itemDictionary) {
                     collection.append(item)
                 }
             }
@@ -48,21 +47,20 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
             print(error.localizedDescription)
         }
     }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let temp = (indexPath as NSIndexPath).row
-        
-        if((indexPath as NSIndexPath).row > 8 || (indexPath as NSIndexPath).row < 0){
+
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let temp = indexPath.row
+
+        if indexPath.row >= collection.count || indexPath.row < 0 {
             print("[INDEX] Wrongly indexed @ \(temp)")
             let x = UITableViewCell()
-                x.backgroundColor = UIColor.red
+            x.backgroundColor = UIColor.redColor()
             return x
         }
-       
-        
+
         switch collection[temp] {
         case let item as ItemTableModel:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
             cell.name.text = item.title
             cell.descriptionItem.text = item.descriptionItem
             cell.artworkImageView.nativeSetImageFromURL(item.imageURL)
@@ -70,15 +68,12 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
         default:
             return UITableViewCell()
         }
-        
     }
-    
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+
+    public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return CGFloat.leastNormalMagnitude
+            return CGFloat.min
         }
         return tableView.sectionHeaderHeight
     }
- 
-    
 }
