@@ -48,7 +48,7 @@ open class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
                 return cell
             }
         }
-        
+
         return UITableViewCell()
     }
 }

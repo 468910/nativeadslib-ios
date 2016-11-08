@@ -50,8 +50,8 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
             registerAdUnit(name: adUnitType.nibName)
         }
     }
-    
-    //This function checks if we have a cell registered with that name. If not we'll register it.
+
+    // This function checks if we have a cell registered with that name. If not we'll register it.
     private func registerAdUnit(name: String) {
         if tableView.dequeueReusableCell(withIdentifier: name) == nil {
             let bundle = PocketMediaNativeAdsBundle.loadBundle()!
@@ -61,13 +61,12 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 
     open func getAdCell(_ nativeAd: NativeAd) -> AbstractAdUnitTableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: adUnitType.nibName) as? AbstractAdUnitTableViewCell {
-            //Render it.
+            // Render it.
             cell.render(nativeAd)
             return cell
         }
         Logger.error("Ad unit wasn't registered? Or it changed halfway?")
-        return UITableViewCell() as! AbstractAdUnitTableViewCell
-        
+        return AbstractAdUnitTableViewCell()
     }
 
     // Data Source

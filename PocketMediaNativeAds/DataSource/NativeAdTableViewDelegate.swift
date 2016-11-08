@@ -240,12 +240,12 @@ open class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
         }
         return nil
     }
-    
+
     open func indexPathForPreferredFocusedView(in tableView: UITableView) -> IndexPath? {
         if let path = delegate.indexPathForPreferredFocusedView?(in: tableView) {
             return path
         }
-        return nil//TODO: default preferred focus view. instead nil (https://developer.apple.com/reference/uikit/uitableviewdelegate/1614929-indexpathforpreferredfocusedview)
+        return nil // TODO: default preferred focus view. instead nil (https://developer.apple.com/reference/uikit/uitableviewdelegate/1614929-indexpathforpreferredfocusedview)
     }
 
     open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
