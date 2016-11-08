@@ -23,7 +23,7 @@ class TableViewWithSectionsController: UITableViewController {
         tableViewDataSource = ExampleTableViewDataSourceWithSections()
         tableViewDataSource?.loadLocalJSON()
         tableView.dataSource = tableViewDataSource
-        self.refreshControl?.addTarget(self, action: Selector(("refresh:")), for: UIControlEvents.valueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(TableViewController.refresh(refreshControl:)), for: UIControlEvents.valueChanged)
 
         // PocketMedia add ads
         stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165") /* replace with your own token!! */

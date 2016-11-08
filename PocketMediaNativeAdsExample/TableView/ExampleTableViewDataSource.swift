@@ -49,6 +49,7 @@ open class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
             return cell
 
         default:
+            print("test")
             return UITableViewCell()
         }
     }

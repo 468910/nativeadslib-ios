@@ -69,6 +69,7 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
             return cell
 
         default:
+            print("test")
             return UITableViewCell()
         }
     }
