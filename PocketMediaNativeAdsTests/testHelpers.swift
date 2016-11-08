@@ -11,7 +11,7 @@ import PocketMediaNativeAds
 
 class testHelpers {
 
-    static func getNativeAdsData() -> [NSMutableDictionary]? {
+    static func getNativeAdsData() -> [Dictionary<String, Any>]? {
         if let file = Bundle(for: NativeAdsRequestTest.self).path(forResource: "Tests", ofType: "json") {
             do {
                 var data: Data
@@ -19,9 +19,9 @@ class testHelpers {
 
                 if let json: NSArray = (try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSArray {
                     let ads = json.filter({
-                        ($0 as? NSDictionary) != nil
+                        ($0 as? Dictionary<String, Any>) != nil
                     })
-                    return (ads as? [NSMutableDictionary])!
+                    return (ads as? [Dictionary<String, Any>])!
                 }
             } catch let ex {
                 print("Error info: \(ex)")
@@ -31,14 +31,14 @@ class testHelpers {
     }
 
     // Return a valid dict please.
-    static func getNativeAdData() -> NSMutableDictionary? {
+    static func getNativeAdData() -> Dictionary<String, Any>? {
         if let ads = getNativeAdsData() {
             return ads[0]
         }
         return nil
     }
 
-    fileprivate static func createNativeAd(_ dict: NSMutableDictionary) -> NativeAd! {
+    fileprivate static func createNativeAd(_ dict: Dictionary<String, Any>) -> NativeAd! {
         var nativeAd: NativeAd?
         do {
             nativeAd = try NativeAd(adDictionary: dict, adPlacementToken: "123")

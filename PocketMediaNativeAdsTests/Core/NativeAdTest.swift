@@ -23,7 +23,7 @@ open class MockOpener: NativeAdOpenerDelegate {
 }
 
 class NativeAdTest: XCTestCase {
-    var data: NSMutableDictionary!
+    var data: Dictionary<String, Any>!
 
     override func setUp() {
         super.setUp()
@@ -37,8 +37,7 @@ class NativeAdTest: XCTestCase {
     }
 
     func testInitCampaign_name() {
-
-        data.removeObject(forKey: "campaign_name")
+        data.removeValue(forKey: "campaign_name")
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTFail("Exception should have been thrown")
@@ -50,7 +49,7 @@ class NativeAdTest: XCTestCase {
     }
 
     func testInitClickUrl() {
-        data.removeObject(forKey: "click_url")
+        data.removeValue(forKey: "click_url")
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTFail("Exception should have been thrown")
@@ -72,7 +71,7 @@ class NativeAdTest: XCTestCase {
     }
 
     func testInitCampaignDescription() {
-        data.removeObject(forKey: "campaign_description")
+        data.removeValue(forKey: "campaign_description")
         do {
             let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTAssertTrue(ad.campaignDescription == "")
@@ -84,7 +83,7 @@ class NativeAdTest: XCTestCase {
     }
 
     func testInitId() {
-        data.removeObject(forKey: "id")
+        data.removeValue(forKey: "id")
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTFail("Exception should have been thrown")

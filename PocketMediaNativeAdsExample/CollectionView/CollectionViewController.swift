@@ -55,7 +55,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             jsonArray = try JSONSerialization.jsonObject(with: jsonData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSArray
 
             for itemJson in jsonArray {
-                if let itemDictionary = itemJson as? NSDictionary, let item = ItemTableModel(dictionary: itemDictionary) {
+                if let itemDictionary = itemJson as? Dictionary<String, Any>, let item = ItemTableModel(dictionary: itemDictionary) {
                     collection.append(item)
                 }
             }

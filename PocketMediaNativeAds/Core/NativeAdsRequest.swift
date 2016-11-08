@@ -87,12 +87,12 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
      */
     internal func mapAds(_ jsonArray: NSArray) {
         let ads = jsonArray.filter({
-            ($0 as? NSDictionary) != nil
+            ($0 as? Dictionary<String, Any>) != nil
         })
         var nativeAds: [NativeAd] = []
         for ad in ads {
             do {
-                if let adDict = ad as? NSDictionary {
+                if let adDict = ad as? Dictionary<String, Any> {
                     let ad = try NativeAd(adDictionary: adDict, adPlacementToken: self.adPlacementToken!)
                     nativeAds.append(ad)
                 }

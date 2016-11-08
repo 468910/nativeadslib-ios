@@ -200,10 +200,10 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
             "campaign_description": "",
             "id": "123",
             "default_icon": "http://google.co.uk",
-            "images": NSDictionary(),
+            "images": Dictionary<String, Any>(),
         ] as [String: Any]
         do {
-            let ad = try NativeAd(adDictionary: data as NSDictionary, adPlacementToken: "test")
+            let ad = try NativeAd(adDictionary: data as Dictionary<String, Any>, adPlacementToken: "test")
             subject?.loadUrl(ad)
             XCTAssert(webview!.loadRequestCalled, "loadRequest should have been called")
         } catch {

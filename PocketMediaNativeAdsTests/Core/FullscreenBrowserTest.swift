@@ -67,7 +67,7 @@ class FullscreenBrowserTest: XCTestCase {
 
     var subject: FullscreenBrowser?
     var viewController: UIViewController?
-    var data: NSDictionary!
+    var data: Dictionary<String, Any>!
 
     override func setUp() {
 

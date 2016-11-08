@@ -42,7 +42,7 @@ open class NativeAd: NSObject {
      - adDictionary: JSON containing NativeAd Data
      */
     @objc
-    public init(adDictionary: NSDictionary, adPlacementToken: String) throws {
+    public init(adDictionary: Dictionary<String, Any>, adPlacementToken: String) throws {
         // Swift Requires all properties to be initialized before its possible to return nil
         super.init()
 
@@ -55,7 +55,7 @@ open class NativeAd: NSObject {
         try parseImages(adDictionary)
     }
 
-    fileprivate func parseImages(_ adDictionary: NSDictionary) throws {
+    fileprivate func parseImages(_ adDictionary: Dictionary<String, Any>) throws {
         if let imageTypes = adDictionary["images"] as? [String: [String: String]] {
             for imageType in imageTypes {
                 let image = imageType.1
@@ -82,7 +82,7 @@ open class NativeAd: NSObject {
         }
     }
 
-    fileprivate func parseMainImage(_ adDictionary: NSDictionary) throws {
+    fileprivate func parseMainImage(_ adDictionary: Dictionary<String, Any>) throws {
         if let urlImage = adDictionary["default_icon"] as? String, let url = URL(string: urlImage) {
             self.campaignImage = url
         } else {
@@ -94,7 +94,7 @@ open class NativeAd: NSObject {
         }
     }
 
-    fileprivate func parseIds(_ adDictionary: NSDictionary) throws {
+    fileprivate func parseIds(_ adDictionary: Dictionary<String, Any>) throws {
         if let offerIdString = adDictionary["id"] as? String, let offerId = UInt(offerIdString) {
             self.offerId = offerId
         } else {
@@ -102,7 +102,7 @@ open class NativeAd: NSObject {
         }
     }
 
-    fileprivate func parseDescription(_ adDictionary: NSDictionary) throws {
+    fileprivate func parseDescription(_ adDictionary: Dictionary<String, Any>) throws {
         if let description = adDictionary["campaign_description"] as? String {
             self.campaignDescription = description
         } else {
@@ -110,7 +110,7 @@ open class NativeAd: NSObject {
         }
     }
 
-    fileprivate func parseURL(_ adDictionary: NSDictionary) throws {
+    fileprivate func parseURL(_ adDictionary: Dictionary<String, Any>) throws {
         if let urlClick = adDictionary["click_url"] as? String, let url = URL(string: urlClick) {
             self.clickURL = url
         } else {
@@ -118,7 +118,7 @@ open class NativeAd: NSObject {
         }
     }
 
-    fileprivate func parseName(_ adDictionary: NSDictionary) throws {
+    fileprivate func parseName(_ adDictionary: Dictionary<String, Any>) throws {
         if let name = adDictionary["campaign_name"] as? String {
             self.campaignName = name
         } else {

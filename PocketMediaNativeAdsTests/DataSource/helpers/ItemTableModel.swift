@@ -13,7 +13,7 @@ open class ItemTableModel {
     open var descriptionItem: String!
     open var imageURL: URL!
 
-    public init?(dictionary: NSDictionary) {
+    public init?(dictionary: Dictionary<String, Any>) {
         if let name = dictionary["name"] as? String {
             self.title = name
         } else {
