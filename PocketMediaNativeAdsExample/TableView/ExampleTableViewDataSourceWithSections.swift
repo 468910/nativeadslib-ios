@@ -60,18 +60,15 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
             return x
         }
 
-        switch collection[indexPath.row] {
-        case let item as ItemTableModel:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
-            cell.name.text = item.title
-            cell.descriptionItem.text = item.descriptionItem
-            cell.artworkImageView.nativeSetImageFromURL(item.imageURL)
-            return cell
-
-        default:
-            print("test")
-            return UITableViewCell()
+        if let item = collection[indexPath.row] as? ItemTableModel {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? ItemCell {
+                cell.name.text = item.title
+                cell.descriptionItem.text = item.descriptionItem
+                cell.artworkImageView.nativeSetImageFromURL(item.imageURL)
+                return cell
+            }
         }
+        return UITableViewCell()
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderIn section: Int) -> CGFloat {

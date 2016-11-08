@@ -16,8 +16,6 @@ open class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
     open var delegate: UITableViewDelegate
     open var datasource: NativeAdTableViewDataSource
 
-    internal static let heightForStandardAdUnit: CGFloat = 80
-
     public required init(datasource: NativeAdTableViewDataSource, controller: UIViewController, delegate: UITableViewDelegate) {
         self.datasource = datasource
         self.controller = controller
@@ -42,8 +40,9 @@ open class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
     }
 
     open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if datasource.getNativeAdListing(indexPath) != nil {
-            return NativeAdTableViewDelegate.heightForStandardAdUnit
+        if let listing = datasource.getNativeAdListing(indexPath) {
+            let cell = datasource.getAdCell(listing.ad)
+            return cell.frame.size.height
         } else if let heightForRow = delegate.tableView?(tableView, heightForRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return heightForRow
         }
@@ -240,6 +239,13 @@ open class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
             return title
         }
         return nil
+    }
+    
+    open func indexPathForPreferredFocusedView(in tableView: UITableView) -> IndexPath? {
+        if let path = delegate.indexPathForPreferredFocusedView?(in: tableView) {
+            return path
+        }
+        return nil//TODO: default preferred focus view. instead nil (https://developer.apple.com/reference/uikit/uitableviewdelegate/1614929-indexpathforpreferredfocusedview)
     }
 
     open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
