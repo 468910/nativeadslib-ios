@@ -166,8 +166,8 @@ class NativeAdTest: XCTestCase {
     func testDescriptions() {
         do {
             let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
-            XCTAssertTrue(ad.description == "NativeAd.LOVOO: Optional(http://offerwall.beta.pmgbrain.com/save-click.php?campaign=12486&impression=13829453&token=1234)")
-            XCTAssertTrue(ad.debugDescription == "NativeAd.LOVOO: Optional(http://offerwall.beta.pmgbrain.com/save-click.php?campaign=12486&impression=13829453&token=1234)")
+            XCTAssertTrue(ad.description == "NativeAd.Optional(\"LOVOO\"): http://offerwall.beta.pmgbrain.com/save-click.php?campaign=12486&impression=13829453&token=1234")
+            XCTAssertTrue(ad.debugDescription == ad.description) // For some reason someone thought this was a good idea?
             Logger.debug("test: \(ad.description)")
         } catch {
             XCTFail("Unexpected exception thrown")

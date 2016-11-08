@@ -240,7 +240,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
 
     func testNotifyServerOfFalseRedirection() {
 
-        class MockNSURLSessionDownloadTask: URLSessionDownloadTask {
+        class MockNSURLSessionDownloadTask: URLSessionDataTask {
 
             var resumeExpectation: XCTestExpectation?
             override func resume() {
@@ -256,11 +256,11 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
 
             var downloadTaskWithRequestCalled: Bool = false
             var downloadTask: MockNSURLSessionDownloadTask = MockNSURLSessionDownloadTask()
-            override func downloadTask(with request: URLRequest, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask {
+
+            override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
                 downloadTaskWithRequestCalled = true
 
-                let url = URL(string: "http://google.co.uk/")!
-                completionHandler(url, URLResponse(url: url, mimeType: "", expectedContentLength: 0, textEncodingName: ""), nil)
+                completionHandler(nil, URLResponse(url: URL(string: "http://google.co.uk/")!, mimeType: "", expectedContentLength: 0, textEncodingName: ""), nil)
                 return downloadTask
             }
         }

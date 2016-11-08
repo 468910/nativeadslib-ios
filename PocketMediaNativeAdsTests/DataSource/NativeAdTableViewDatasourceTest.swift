@@ -187,15 +187,15 @@ open class NativeAdTableViewDatasourceTest: XCTestCase {
         }
 
         setUpDataSource(mockedDataSource())
-        subject.tableView(tableView, sectionForSectionIndexTitle: "yay", atIndex: 0)
+        subject.tableView(tableView, sectionForSectionIndexTitle: "yay", at: 0)
         XCTAssert((originalDataSource as! mockedDataSource).sectionForSectionIndexTitleHasBeenCalled == true, "Section for Section Index title has been called!")
 
         setUpDataSource(NonImplementedDatasource())
-        if originalDataSource.responds(to: #selector(UITableViewDataSource.sectionIndexTitles(`for`:))) {
+        if originalDataSource.responds(to: #selector(UITableViewDataSource.sectionIndexTitles(for:))) {
             XCTFail("tableView:commitEditingStyle shouldnt be implemented")
         }
 
-        var result = subject.tableView(tableView, sectionForSectionIndexTitle: "yay", atIndex: 1)
+        var result = subject.tableView(tableView, sectionForSectionIndexTitle: "yay", at: 1)
         XCTAssert(result == 0, "Section for section index title has been called")
     }
 

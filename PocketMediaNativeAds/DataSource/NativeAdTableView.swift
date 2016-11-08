@@ -28,7 +28,7 @@ public extension UITableView {
     //            if let indexPath = super.indexPathForSelectedRow {
     //                if let source = GetNativeTableDataSource() {
     //                    let normalized = source.normalize(indexPath)
-    //                    return NSIndexPath(row: normalized, inSection: indexPath.section)
+    //                    return NSIndexPath(row: normalized, section: indexPath.section)
     //                }
     //            }
     //            return nil
