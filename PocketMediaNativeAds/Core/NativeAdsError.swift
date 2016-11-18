@@ -10,7 +10,7 @@ import Foundation
 
 /**
  Error types that are thrown when building an ad.
- 
+
  - InvalidAdNoCampaign: Thrown when the ad doesn't have name: campaign_name.
  - InvalidAdNoClickUrl: Thrown when the ad doesn't have a click URL: click_url.
  - InvalidAdNoCampaignDescription: Thrown when the ad doesn't have a description: campaign_description.
@@ -19,10 +19,10 @@ import Foundation
  - InvalidAdNoImages: Thrown when the ad doesn't have images.
  */
 enum NativeAdsError: ErrorType {
-	case InvalidAdNoCampaign
-	case InvalidAdNoClickUrl
-	case InvalidAdNoCampaignDescription
-	case InvalidAdNoId
-	case InvalidAdNoImage
-	case InvalidAdNoImages
+    case InvalidAdNoCampaign
+    case InvalidAdNoClickUrl
+    case InvalidAdNoCampaignDescription
+    case InvalidAdNoId
+    case InvalidAdNoImage
+    case InvalidAdNoImages
 }

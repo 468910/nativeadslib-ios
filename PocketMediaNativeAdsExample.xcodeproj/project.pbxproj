@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		271066BB1DA2B72800AFAC06 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DD16191D8ED5A100B31C6A /* close.png */; };
+		27D288111DD085440020EEAA /* DummyData.json in Resources */ = {isa = PBXBuildFile; fileRef = 27D2880F1DD085300020EEAA /* DummyData.json */; };
 		27DD16081D8ED10C00B31C6A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DD16071D8ED10C00B31C6A /* Images.xcassets */; };
 		27DD160B1D8ED56F00B31C6A /* CollectionAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16091D8ED56F00B31C6A /* CollectionAdCell.swift */; };
 		27DD160C1D8ED56F00B31C6A /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD160A1D8ED56F00B31C6A /* CollectionViewController.swift */; };
@@ -17,7 +18,6 @@
 		27DD16141D8ED57F00B31C6A /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16111D8ED57F00B31C6A /* ItemTableView.swift */; };
 		27DD16171D8ED58E00B31C6A /* ExampleTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16151D8ED58E00B31C6A /* ExampleTableViewDataSource.swift */; };
 		27DD16181D8ED58E00B31C6A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16161D8ED58E00B31C6A /* TableViewController.swift */; };
-		27DD16231D8ED5A100B31C6A /* DummyData.json in Resources */ = {isa = PBXBuildFile; fileRef = 27DD161A1D8ED5A100B31C6A /* DummyData.json */; };
 		27DD16241D8ED5A100B31C6A /* Highlight-St.-Barts-Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27DD161B1D8ED5A100B31C6A /* Highlight-St.-Barts-Image.jpg */; };
 		27DD16251D8ED5A100B31C6A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27DD161C1D8ED5A100B31C6A /* LaunchScreen.xib */; };
 		27DD16261D8ED5A100B31C6A /* Logo_Pocketmedia_horizontal_white-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DD161D1D8ED5A100B31C6A /* Logo_Pocketmedia_horizontal_white-3.png */; };
@@ -26,9 +26,9 @@
 		27DD16291D8ED5A100B31C6A /* questionMarkBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DD16201D8ED5A100B31C6A /* questionMarkBtn@3x.png */; };
 		27DD162C1D8ED5B100B31C6A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27DD162B1D8ED5B100B31C6A /* Info.plist */; };
 		27DD162E1D8ED5B500B31C6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD162D1D8ED5B500B31C6A /* AppDelegate.swift */; };
+		36E61EE057FCB781FB8F4958 /* Pods_PocketMediaNativeAdsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21342A6002AEB9EE10CFC580 /* Pods_PocketMediaNativeAdsExample.framework */; };
 		3A9F04EC1DA7F1C50014949F /* TableViewWithSectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F04EB1DA7F1C50014949F /* TableViewWithSectionsController.swift */; };
 		3A9F04EE1DA7F24C0014949F /* ExampleTableViewDataSourceWithSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F04ED1DA7F24C0014949F /* ExampleTableViewDataSourceWithSections.swift */; };
-		D8C16816C40535F3825BE64B /* Pods_PocketMediaNativeAdsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FC43FEEC9737DB395E7C4CF /* Pods_PocketMediaNativeAdsExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,18 +45,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		21342A6002AEB9EE10CFC580 /* Pods_PocketMediaNativeAdsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAdsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2736C9401DA4F469002D7BC9 /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "build/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		274D44F01D8EE24700654825 /* PocketMediaNativeAdsExample_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketMediaNativeAdsExample_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2789BFE71DA3FCC8008802FE /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "build/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
-		2789BFE91DA3FCD7008802FE /* Pods_PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_PocketMediaNativeAds.framework; path = "Pods/../build/Debug-iphoneos/Pods_PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		2789BFEC1DA3FD27008802FE /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "build/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
-		2789BFEE1DA3FD2F008802FE /* Pods_PocketMediaNativeAdsExample.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_PocketMediaNativeAdsExample.framework; path = "Pods/../build/Debug-iphoneos/Pods_PocketMediaNativeAdsExample.framework"; sourceTree = "<group>"; };
 		2789BFF01DA3FF1D008802FE /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "../../../Library/Developer/Xcode/DerivedData/PocketMediaNativeAds-gnigauuiuuimgbatvmuinnysmyto/Build/Products/Debug-iphoneos/PocketMediaNativeAds/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		2789BFF11DA3FF1D008802FE /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "build/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
-		2789BFF21DA3FF1D008802FE /* Pods_PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_PocketMediaNativeAds.framework; path = "Pods/../build/Debug-iphoneos/Pods_PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
-		2789BFF61DA3FF32008802FE /* Pods_PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_PocketMediaNativeAds.framework; path = "../../../Library/Developer/Xcode/DerivedData/PocketMediaNativeAds-gnigauuiuuimgbatvmuinnysmyto/Build/Products/Debug-iphoneos/Pods_PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		278C134C1DA2B4B700C604F0 /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "../../../Library/Developer/Xcode/DerivedData/PocketMediaNativeAds-gnigauuiuuimgbatvmuinnysmyto/Build/Products/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		27AF97781D8EEA91003B71D0 /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "build/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
+		27D2880F1DD085300020EEAA /* DummyData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = DummyData.json; path = PocketMediaNativeAdsExample/Resources/DummyData.json; sourceTree = "<group>"; };
 		27DD16021D8ED04500B31C6A /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "../../../Library/Developer/Xcode/DerivedData/PocketMediaNativeAds-gnigauuiuuimgbatvmuinnysmyto/Build/Products/Debug-iphonesimulator/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		27DD16071D8ED10C00B31C6A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PocketMediaNativeAdsExample/Images.xcassets; sourceTree = "<group>"; };
 		27DD16091D8ED56F00B31C6A /* CollectionAdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionAdCell.swift; path = PocketMediaNativeAdsExample/CollectionView/CollectionAdCell.swift; sourceTree = "<group>"; };
@@ -68,7 +66,6 @@
 		27DD16151D8ED58E00B31C6A /* ExampleTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleTableViewDataSource.swift; path = PocketMediaNativeAdsExample/TableView/ExampleTableViewDataSource.swift; sourceTree = "<group>"; };
 		27DD16161D8ED58E00B31C6A /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = PocketMediaNativeAdsExample/TableView/TableViewController.swift; sourceTree = "<group>"; };
 		27DD16191D8ED5A100B31C6A /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = close.png; path = PocketMediaNativeAdsExample/Resources/close.png; sourceTree = "<group>"; };
-		27DD161A1D8ED5A100B31C6A /* DummyData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = DummyData.json; path = PocketMediaNativeAdsExample/Resources/DummyData.json; sourceTree = "<group>"; };
 		27DD161B1D8ED5A100B31C6A /* Highlight-St.-Barts-Image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Highlight-St.-Barts-Image.jpg"; path = "PocketMediaNativeAdsExample/Resources/Highlight-St.-Barts-Image.jpg"; sourceTree = "<group>"; };
 		27DD161C1D8ED5A100B31C6A /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = PocketMediaNativeAdsExample/Resources/LaunchScreen.xib; sourceTree = "<group>"; };
 		27DD161D1D8ED5A100B31C6A /* Logo_Pocketmedia_horizontal_white-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_Pocketmedia_horizontal_white-3.png"; path = "PocketMediaNativeAdsExample/Resources/Logo_Pocketmedia_horizontal_white-3.png"; sourceTree = "<group>"; };
@@ -79,9 +76,8 @@
 		27DD162D1D8ED5B500B31C6A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PocketMediaNativeAdsExample/AppDelegate.swift; sourceTree = "<group>"; };
 		3A9F04EB1DA7F1C50014949F /* TableViewWithSectionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewWithSectionsController.swift; path = PocketMediaNativeAdsExample/TableView/TableViewWithSectionsController.swift; sourceTree = "<group>"; };
 		3A9F04ED1DA7F24C0014949F /* ExampleTableViewDataSourceWithSections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleTableViewDataSourceWithSections.swift; path = PocketMediaNativeAdsExample/TableView/ExampleTableViewDataSourceWithSections.swift; sourceTree = "<group>"; };
-		678902AC9779B71E647AC7B0 /* Pods-PocketMediaNativeAdsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAdsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAdsExample/Pods-PocketMediaNativeAdsExample.release.xcconfig"; sourceTree = "<group>"; };
-		8FC43FEEC9737DB395E7C4CF /* Pods_PocketMediaNativeAdsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAdsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD3E58CA9033557D8F191A5F /* Pods-PocketMediaNativeAdsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAdsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAdsExample/Pods-PocketMediaNativeAdsExample.debug.xcconfig"; sourceTree = "<group>"; };
+		C37754EA463A727C61BAD5AF /* Pods-PocketMediaNativeAdsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAdsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAdsExample/Pods-PocketMediaNativeAdsExample.debug.xcconfig"; sourceTree = "<group>"; };
+		F397DEFC5C14233311E47772 /* Pods-PocketMediaNativeAdsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketMediaNativeAdsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketMediaNativeAdsExample/Pods-PocketMediaNativeAdsExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8C16816C40535F3825BE64B /* Pods_PocketMediaNativeAdsExample.framework in Frameworks */,
+				36E61EE057FCB781FB8F4958 /* Pods_PocketMediaNativeAdsExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,10 +125,10 @@
 		27859FEB1D8ECEE400C85D7A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				27D2880F1DD085300020EEAA /* DummyData.json */,
 				27DD161F1D8ED5A100B31C6A /* Main.storyboard */,
 				27DD161C1D8ED5A100B31C6A /* LaunchScreen.xib */,
 				27DD16191D8ED5A100B31C6A /* close.png */,
-				27DD161A1D8ED5A100B31C6A /* DummyData.json */,
 				27DD161B1D8ED5A100B31C6A /* Highlight-St.-Barts-Image.jpg */,
 				27DD161D1D8ED5A100B31C6A /* Logo_Pocketmedia_horizontal_white-3.png */,
 				27DD161E1D8ED5A100B31C6A /* Logo_Pocketmedia_horizontal_white.png */,
@@ -171,15 +167,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4C87E44BD48E444572557A31 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				BD3E58CA9033557D8F191A5F /* Pods-PocketMediaNativeAdsExample.debug.xcconfig */,
-				678902AC9779B71E647AC7B0 /* Pods-PocketMediaNativeAdsExample.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -187,7 +174,7 @@
 				706B59302CE871EBDDBEE4B4 /* Frameworks */,
 				27F09FC91D8EDDF7006CFC19 /* Products */,
 				274D44F01D8EE24700654825 /* PocketMediaNativeAdsExample_Example.app */,
-				4C87E44BD48E444572557A31 /* Pods */,
+				867666BA7E4D8056F0D762EB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,20 +182,25 @@
 			isa = PBXGroup;
 			children = (
 				2736C9401DA4F469002D7BC9 /* PocketMediaNativeAds.framework */,
-				2789BFF61DA3FF32008802FE /* Pods_PocketMediaNativeAds.framework */,
 				2789BFF01DA3FF1D008802FE /* PocketMediaNativeAds.framework */,
 				2789BFF11DA3FF1D008802FE /* PocketMediaNativeAds.framework */,
-				2789BFF21DA3FF1D008802FE /* Pods_PocketMediaNativeAds.framework */,
-				2789BFEE1DA3FD2F008802FE /* Pods_PocketMediaNativeAdsExample.framework */,
 				2789BFEC1DA3FD27008802FE /* PocketMediaNativeAds.framework */,
-				2789BFE91DA3FCD7008802FE /* Pods_PocketMediaNativeAds.framework */,
 				2789BFE71DA3FCC8008802FE /* PocketMediaNativeAds.framework */,
 				278C134C1DA2B4B700C604F0 /* PocketMediaNativeAds.framework */,
 				27AF97781D8EEA91003B71D0 /* PocketMediaNativeAds.framework */,
 				27DD16021D8ED04500B31C6A /* PocketMediaNativeAds.framework */,
-				8FC43FEEC9737DB395E7C4CF /* Pods_PocketMediaNativeAdsExample.framework */,
+				21342A6002AEB9EE10CFC580 /* Pods_PocketMediaNativeAdsExample.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		867666BA7E4D8056F0D762EB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C37754EA463A727C61BAD5AF /* Pods-PocketMediaNativeAdsExample.debug.xcconfig */,
+				F397DEFC5C14233311E47772 /* Pods-PocketMediaNativeAdsExample.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,13 +210,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PocketMediaNativeAdsExample" */;
 			buildPhases = (
-				BB105E190C3371E7F4629637 /* [CP] Check Pods Manifest.lock */,
+				EC9E9AB05143E704796E9FB0 /* [CP] Check Pods Manifest.lock */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				27A2A8CD1D83073600BE8DFD /* Embed Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				F5538170FCDA9E4D0A16BCA5 /* [CP] Embed Pods Frameworks */,
-				8C5314D5B3C7730D95AA6357 /* [CP] Copy Pods Resources */,
+				A7743CE655DC9441A3AF3CAA /* [CP] Embed Pods Frameworks */,
+				85ED3F02AE681DFBEEE12D29 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,7 +234,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = PocketMedia;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -275,9 +267,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27D288111DD085440020EEAA /* DummyData.json in Resources */,
 				271066BB1DA2B72800AFAC06 /* close.png in Resources */,
 				27DD16251D8ED5A100B31C6A /* LaunchScreen.xib in Resources */,
-				27DD16231D8ED5A100B31C6A /* DummyData.json in Resources */,
 				27DD16281D8ED5A100B31C6A /* Main.storyboard in Resources */,
 				27DD16261D8ED5A100B31C6A /* Logo_Pocketmedia_horizontal_white-3.png in Resources */,
 				27DD16081D8ED10C00B31C6A /* Images.xcassets in Resources */,
@@ -291,7 +283,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8C5314D5B3C7730D95AA6357 /* [CP] Copy Pods Resources */ = {
+		85ED3F02AE681DFBEEE12D29 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -306,22 +298,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketMediaNativeAdsExample/Pods-PocketMediaNativeAdsExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BB105E190C3371E7F4629637 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F5538170FCDA9E4D0A16BCA5 /* [CP] Embed Pods Frameworks */ = {
+		A7743CE655DC9441A3AF3CAA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -334,6 +311,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PocketMediaNativeAdsExample/Pods-PocketMediaNativeAdsExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC9E9AB05143E704796E9FB0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -465,7 +457,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD3E58CA9033557D8F191A5F /* Pods-PocketMediaNativeAdsExample.debug.xcconfig */;
+			baseConfigurationReference = C37754EA463A727C61BAD5AF /* Pods-PocketMediaNativeAdsExample.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -490,7 +482,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 678902AC9779B71E647AC7B0 /* Pods-PocketMediaNativeAdsExample.release.xcconfig */;
+			baseConfigurationReference = F397DEFC5C14233311E47772 /* Pods-PocketMediaNativeAdsExample.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

@@ -10,15 +10,13 @@ import XCTest
 @testable import PocketMediaNativeAds
 
 class mocked2UIViewController: UIViewController {
-
 }
 
 class mocked2UITableView: UITableView {
-
 }
 
 class mocked2NativeAdsRequest: NativeAdsRequest {
-    var limit:UInt! = 0
+    var limit: UInt! = 0
     override func retrieveAds(limit: UInt, imageType: EImageType = EImageType.allImages) {
         self.limit = limit
     }
@@ -28,12 +26,10 @@ class mocked2NativeAdsConnection: NativeAdsConnectionDelegate {
 
     @objc
     func didReceiveError(error: NSError) {
-
     }
 
     @objc
     func didReceiveResults(nativeAds: [NativeAd]) {
-
     }
 }
 
@@ -90,30 +86,28 @@ class NativeAdStreamTest: XCTestCase {
                 XCTFail("Could not make ad")
             }
         }
-        
-        /*
-        subject.datasource.adPositionOffset = 1
-        subject.didReceiveResults(ads)
-        XCTAssert(subject.datasource.ads.count == ads.count, "Ads should've been added")
 
-        //Higher adPositionOffset than we have ads
-        subject.datasource.adPositionOffset = 100
-        subject.didReceiveResults(ads)
-        XCTAssert(subject.datasource.ads.count == 0, "No Ads shoud've been added")
-        
-        
-        subject.datasource.adPositionOffset = 1
-        subject.adsPositions = [1, 0, 3]
-        XCTAssert(subject.adsPositions! == [0, 1, 3], "It should sort the adsPositions")
-        subject.didReceiveResults(ads)
-        XCTAssert((subject.datasource.ads) != nil)
- */
+        /*
+         subject.datasource.adPositionOffset = 1
+         subject.didReceiveResults(ads)
+         XCTAssert(subject.datasource.ads.count == ads.count, "Ads should've been added")
+
+         //Higher adPositionOffset than we have ads
+         subject.datasource.adPositionOffset = 100
+         subject.didReceiveResults(ads)
+         XCTAssert(subject.datasource.ads.count == 0, "No Ads shoud've been added")
+
+         subject.datasource.adPositionOffset = 1
+         subject.adsPositions = [1, 0, 3]
+         XCTAssert(subject.adsPositions! == [0, 1, 3], "It should sort the adsPositions")
+         subject.didReceiveResults(ads)
+         XCTAssert((subject.datasource.ads) != nil)
+        */
     }
-    
+
     func testRequestAds() {
         let expected = UInt(80)
         subject.requestAds(expected)
         XCTAssert(requester.limit == expected, "The sent limit should be passed along to the requestAds function inside the requester.")
     }
-
 }

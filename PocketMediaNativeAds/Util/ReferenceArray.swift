@@ -10,8 +10,8 @@
 import UIKit
 
 /**
-  - Acessing the internal PocketMediaNativeAds Framework Bundle 
-**/
+ - Acessing the internal PocketMediaNativeAds Framework Bundle
+ **/
 @objc
 public class PocketMediaNativeAdsBundle: NSObject {
     public static func loadBundle() -> NSBundle? {
