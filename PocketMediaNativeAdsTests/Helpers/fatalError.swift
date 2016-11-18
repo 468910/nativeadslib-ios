@@ -19,7 +19,7 @@ import UIKit
 @noreturn func unreachable() {
     repeat {
         NSRunLoop.currentRunLoop().run()
-    } while (true)
+    } while true
 }
 
 /// Utility functions that can replace and restore the `fatalError` global function.

@@ -281,7 +281,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
         subject!.webViewDidStartLoad(parentView)
 
         var foundView: UIView? = nil
-        for subview in (parentView.subviews) {
+        for subview in parentView.subviews {
             if subview.isKindOfClass(UIView) && subview.frame.height == 80 && subview.frame.width == 80 {
                 foundView = subview
                 break
