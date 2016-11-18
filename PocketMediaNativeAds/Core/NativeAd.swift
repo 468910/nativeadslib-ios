@@ -75,7 +75,7 @@ public class NativeAd: NSObject {
                 if let sUrl = image["url"] {
                     url = NSURL(string: sUrl)!
                 }
-                self.images[EImageType(rawValue: imageType.0)!] = SImage(url: url, width: width, height: height)
+                self.images[EImageType(string: imageType.0)!] = SImage(url: url, width: width, height: height)
             }
         } else {
             throw NativeAdsError.InvalidAdNoImages

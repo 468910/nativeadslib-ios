@@ -9,13 +9,41 @@
 import UIKit
 import AdSupport
 
-public enum EImageType: String {
-    case allImages = ""
-    case icon = "icon"
-    case hqIcon = "hq_icon"
-    case banner = "banner"
-    case bigImages = "banner,hq_icon"
-    case bannerAndIcons = "banner,icon"
+@objc
+public enum EImageType: Int, CustomStringConvertible  {
+
+    case allImages =        0 // ""
+    case icon =             1 // "icon"
+    case hqIcon =           2 // "hq_icon"
+    case banner =           3 // "banner"
+    case bigImages =        4 // "banner,hq_icon"
+    case bannerAndIcons =   5 // "banner,icon"
+    
+    init?(string: String){
+        switch string{
+        case "allImages":       self = .allImages
+        case "icon":            self = .icon;
+        case "hqIcon":          self = .hqIcon;
+        case "banner":          self = .banner;
+        case "bigImages":       self = .bigImages;
+        case "bannerAndIcons":  self = .bannerAndIcons;
+        default:                self = .allImages
+        }
+    }
+    
+    public var description : String {
+        switch self {
+        // Use Internationalization, as appropriate.
+        case .allImages:        return "";
+        case .icon:             return "icon";
+        case .hqIcon:           return "hq_icon";
+        case .banner:           return "banner";
+        case .bigImages:        return "banner,hq_icon";
+        case .bannerAndIcons:   return "banner,icon";
+        default:                return "";
+        }
+    }
+
 }
 
 /**
@@ -32,6 +60,19 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
     /// URL session used to do network requests.
     public var session: URLSessionProtocol? = nil
 
+    @objc
+    public init(withAdPlacementToken: String?,
+                delegate: NativeAdsConnectionDelegate?
+    ) {
+        super.init()
+        self.adPlacementToken = withAdPlacementToken
+        self.delegate = delegate
+        self.advertisingTrackingEnabled = ASIdentifierManager.sharedManager().advertisingTrackingEnabled
+        self.session = NSURLSession.sharedSession()
+
+    }
+
+    // not objc compatible because of the usage of URLSessionProtocol
     public init(adPlacementToken: String?,
                 delegate: NativeAdsConnectionDelegate?,
                 advertisingTrackingEnabled: Bool = ASIdentifierManager.sharedManager().advertisingTrackingEnabled,
@@ -49,6 +90,7 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
      - limit: Limit on how many native ads are to be retrieved.
      -  imageType: Image Type is used to specify what kind of image type will get requested.
      */
+    @objc
     public func retrieveAds(limit: UInt, imageType: EImageType = EImageType.allImages) {
         let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit, imageType: imageType)
         Logger.debugf("Invoking: %@", nativeAdURL)
