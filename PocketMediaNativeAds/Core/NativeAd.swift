@@ -101,10 +101,10 @@ public class NativeAd: NSObject {
     }
 
     private func parseMainImage(adDictionary: NSDictionary) throws {
-        if let urlImage = adDictionary["default_icon"] as? String, url = NSURL(string: urlImage) {
+        if let urlImage = adDictionary["default_icon"] as? String, let url = NSURL(string: urlImage) {
             self.campaignImage = url
         } else {
-            if let urlImage = adDictionary["campaign_image"] as? String, url = NSURL(string: urlImage) {
+            if let urlImage = adDictionary["campaign_image"] as? String, let url = NSURL(string: urlImage) {
                 self.campaignImage = url
             } else {
                 throw NativeAdsError.InvalidAdNoImage
@@ -176,6 +176,22 @@ public class NativeAd: NSObject {
         var url : NSURL?
         if (images[EImageType.banner] != nil){
             url = images[EImageType.banner]?.url
+        }
+        return url
+    }
+
+    public func hqIconUrl() -> NSURL?{
+        var url : NSURL?
+        if (images[EImageType.hqIcon] != nil){
+            url = images[EImageType.hqIcon]?.url
+        }
+        return url
+    }
+    
+    public func iconUrl() -> NSURL?{
+        var url : NSURL?
+        if (images[EImageType.icon] != nil){
+            url = images[EImageType.icon]?.url
         }
         return url
     }
