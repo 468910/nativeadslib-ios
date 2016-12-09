@@ -42,10 +42,9 @@ public struct NativeAdsConstants {
         public static let tokenAdKey = "nativeAdToken"
         public static let notifyBadAdsUrl = "http://nativeadsapi.pocketmedia.mobi/api.php"
         #if BETA
-            public static let baseURL = "http://offerwall.beta.pmgbrain.com/ow.php?output=json"
-            // public static let baseURL = "http://offerwall.kinson.sandbox.pmgbrain.com/ow.php?output=json"
+            public static let baseURL = "https://getnativebeta.pocketmedia.mobi/ow.php?output=json"
         #else
-            public static let baseURL = "http://offerwall.12trackway.com/ow.php?output=json"
+            public static let baseURL = "https://getnative.pocketmedia.mobi/ow.php?output=json"
         #endif
     }
 }
