@@ -143,8 +143,7 @@ public class NativeAd: NSObject {
             throw NativeAdsError.InvalidAdNoCampaign
         }
     }
-    
-    
+
     private func parseCallToAction(adDictionary: NSDictionary) throws {
         if let callToActionText = adDictionary["action_text"] as? String {
             self.callToActionText = callToActionText
@@ -160,7 +159,7 @@ public class NativeAd: NSObject {
             self.shouldBeManagedExternally = true
         }
     }
-    
+
     private func parsePreviewURL(adDictionary: NSDictionary) throws {
         if let previewURL = adDictionary["app_store_url"] as? String, let url = NSURL(string: previewURL) {
             self.previewURL = url
@@ -168,34 +167,34 @@ public class NativeAd: NSObject {
             throw NativeAdsError.InvalidAdNoClickUrl
         }
     }
-    
+
     public override var description: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }
     public override var debugDescription: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }
 
-    public func bannerUrl() -> NSURL?{
-        var url : NSURL?
-        if (images[EImageType.banner] != nil){
+    public func bannerUrl() -> NSURL? {
+        var url: NSURL?
+        if images[EImageType.banner] != nil {
             url = images[EImageType.banner]?.url
         }
         return url
     }
 
-    public func hqIconUrl() -> NSURL?{
-        var url : NSURL?
-        if (images[EImageType.hqIcon] != nil){
+    public func hqIconUrl() -> NSURL? {
+        var url: NSURL?
+        if images[EImageType.hqIcon] != nil {
             url = images[EImageType.hqIcon]?.url
         }
         return url
     }
-    
-    public func iconUrl() -> NSURL?{
-        var url : NSURL?
-        if (images[EImageType.icon] != nil){
+
+    public func iconUrl() -> NSURL? {
+        var url: NSURL?
+        if images[EImageType.icon] != nil {
             url = images[EImageType.icon]?.url
         }
         return url
     }
-    
+
     /**
      Opens Native Ad in an View handled by the NativeAdOpener
      - opener: NativeAdOpener instance handling the opening of the view where the NativeAd will be displayed.
