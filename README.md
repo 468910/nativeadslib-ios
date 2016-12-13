@@ -66,13 +66,13 @@ You can specify the positions by giving an Array with fixed positions or frequen
 #### AdStream - Ad margin
 ```swift
     stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165", adPosition: MarginAdPosition(margin: 2, adPositionOffset: 0)) /* replace with your own token!! */
-    stream?.requestAds(10)//Add 5 ads
+    stream?.requestAds(10)//Add 10 ads
 ```
 
 #### AdStream - Fixed positions
 ```swift
     stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165", adPosition: PredefinedAdPosition(positions: [1, 3, 8], adPositionOffset: 0)) /* replace with your own token!! */
-    stream?.requestAds(10)//Add 5 ads
+    stream?.requestAds(10)//Add 10 ads
 ```
 
 There is also the option to pass a custom XIB this has to be or a subclass of the corresponding  AbstractAdUnit for example ```AbstractAdUnitTableViewCell```.
