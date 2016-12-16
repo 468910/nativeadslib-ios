@@ -11,7 +11,7 @@ import XCTest
 
 @testable import PocketMediaNativeAds
 
-//class CachingTest: XCTestCase {
+// class CachingTest: XCTestCase {
 //
 //    var subject: UIView!
 //    var url: NSURL!
@@ -49,4 +49,4 @@ import XCTest
 //            }
 //        }
 //    }
-//}
+// }

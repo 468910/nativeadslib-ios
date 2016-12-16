@@ -10,20 +10,19 @@ import UIKit
 import PocketMediaNativeAds
 
 public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSource {
-    
+
     var collection: [AnyObject] = []
-    
+
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
-    
-    
+
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return collection.count
     }
-    
+
     public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch(section){
+        switch section {
         case 0:
             return "Section 1"
         case 1:
@@ -32,7 +31,7 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
             return "This is not a valid section?"
         }
     }
-    
+
     func loadLocalJSON() {
         do {
             let path = NSBundle.mainBundle().pathForResource("DummyData", ofType: "json")
@@ -48,18 +47,17 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
             print(error.localizedDescription)
         }
     }
-    
+
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let temp = indexPath.row
-        
-        if(indexPath.row > 8 || indexPath.row < 0){
+
+        if indexPath.row >= collection.count || indexPath.row < 0 {
             print("[INDEX] Wrongly indexed @ \(temp)")
             let x = UITableViewCell()
-                x.backgroundColor = UIColor.redColor()
+            x.backgroundColor = UIColor.redColor()
             return x
         }
-       
-        
+
         switch collection[temp] {
         case let item as ItemTableModel:
             let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
@@ -70,15 +68,12 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
         default:
             return UITableViewCell()
         }
-        
     }
-    
+
     public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return CGFloat.min
         }
         return tableView.sectionHeaderHeight
     }
- 
-    
 }

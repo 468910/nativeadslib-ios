@@ -1,7 +1,8 @@
 # PocketMedia: iOS NativeAds library
 [![Code Climate](https://codeclimate.com/github/Pocketbrain/nativeadslib-ios/badges/gpa.svg)](https://codeclimate.com/github/Pocketbrain/nativeadslib-ios)
-[![Build Status](https://travis-ci.org/Pocketbrain/nativeadslib-ios.svg?branch=feature%2Fnew-structure-tests)](https://travis-ci.org/Pocketbrain/nativeadslib-ios)
-[![codecov](https://codecov.io/gh/Pocketbrain/nativeadslib-ios/branch/feature%2Fnew-structure-tests/graph/badge.svg)](https://codecov.io/gh/Pocketbrain/nativeadslib-ios)
+[![Build Status](https://travis-ci.org/Pocketbrain/nativeadslib-ios.svg?branch=master)](https://travis-ci.org/Pocketbrain/nativeadslib-ios)
+[![Build Status](https://www.bitrise.io/app/b7a8ab5efda24990.svg?token=n6H_COg_cUKeKnUEWEMJTw&branch=master)](https://www.bitrise.io/app/b7a8ab5efda24990)
+[![codecov](https://codecov.io/gh/Pocketbrain/nativeadslib-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/Pocketbrain/nativeadslib-ios)
 [![Gitter](https://badges.gitter.im/join_chat.svg)](https://gitter.im/Pocketbrain)
 [![CocoaPods](https://img.shields.io/cocoapods/at/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 [![Version](https://img.shields.io/cocoapods/v/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
