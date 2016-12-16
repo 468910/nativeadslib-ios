@@ -61,9 +61,9 @@ class MockURLSession: URLSessionProtocol {
 
     func dataTaskWithURL(url: NSURL, completionHandler: DataTaskResult)
         -> NSURLSessionDataTask {
-        lastURL = url
-        return task
-    }
+            lastURL = url
+            return task
+        }
 }
 
 class NativeAdsRequestTest: XCTestCase {
