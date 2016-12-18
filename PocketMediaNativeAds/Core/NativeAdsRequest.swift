@@ -33,14 +33,12 @@ public enum EImageType: Int, CustomStringConvertible {
 
     public var description: String {
         switch self {
-            // Use Internationalization, as appropriate.
         case .allImages: return ""
         case .icon: return "icon"
         case .hqIcon: return "hq_icon"
         case .banner: return "banner"
         case .bigImages: return "banner,hq_icon"
         case .bannerAndIcons: return "banner,icon"
-        default: return ""
         }
     }
 }
@@ -57,7 +55,7 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
     /// Check whether advertising tracking is limited
     public var advertisingTrackingEnabled: Bool? = false
     /// URL session used to do network requests.
-    public var session: URLSessionProtocol? = nil
+    public var session: URLSessionProtocol?
 
     @objc
     public init(withAdPlacementToken: String?,
