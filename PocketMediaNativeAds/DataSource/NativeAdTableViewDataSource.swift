@@ -203,7 +203,7 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     // The actual important to a UITableView functions are down below here.
     @objc
     open func numberOfSections(in tableView: UITableView) -> Int {
-        if let numOfSectionsFunc = datasource.numberOfSections(`in`:) {
+        if let numOfSectionsFunc = datasource.numberOfSections(in:) {
             return numOfSectionsFunc(tableView)
         }
         return 1
