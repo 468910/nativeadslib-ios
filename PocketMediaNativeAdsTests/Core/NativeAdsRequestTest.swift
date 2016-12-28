@@ -61,9 +61,9 @@ class MockURLSession: URLSession {
 
     override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Swift.Void)
         -> URLSessionDataTask {
-            lastURL = url
-            return task
-        }
+        lastURL = url
+        return task
+    }
 }
 
 class NativeAdsRequestTest: XCTestCase {
@@ -337,5 +337,5 @@ func getQueryStringParameter(_ url: String?, param: String) -> String? {
     let url = url,
         urlComponents = URLComponents(string: url!),
         queryItems = urlComponents!.queryItems!
-    return queryItems.filter({ (item) in item.name == param }).first?.value!
+    return queryItems.filter({ item in item.name == param }).first?.value!
 }
