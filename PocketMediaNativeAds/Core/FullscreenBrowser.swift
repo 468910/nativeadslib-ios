@@ -109,7 +109,7 @@ open class FullscreenBrowser: UIViewController, NativeAdOpenerDelegate {
     @objc
     open func didOpenBrowser(_ url: URL) {
         if let _ = self.originalViewController?.navigationController {
-            self.originalViewController?.navigationController?.popViewController(animated: true)
+            _ = self.originalViewController?.navigationController?.popViewController(animated: true)
         } else {
             self.closeAction()
         }
