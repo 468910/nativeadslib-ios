@@ -115,7 +115,7 @@ class NativeAdTest: XCTestCase {
             XCTFail("Wrong exception thrown")
         }
 
-        data["campaign_image"] = "http://google.co.uk/"
+        data["campaign_image"] = "https://google.co.uk/"
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTAssertTrue(true)
@@ -126,9 +126,9 @@ class NativeAdTest: XCTestCase {
         }
 
         // Always prefer default_icon
-        let expected = "http://google.com/"
+        let expected = "https://google.com/"
         data["default_icon"] = expected
-        data["campaign_image"] = "http://bing.com/" // Don't prefer bing now ;)
+        data["campaign_image"] = "https://bing.com/" // Don't prefer bing now ;)
         do {
             let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
 
@@ -146,7 +146,7 @@ class NativeAdTest: XCTestCase {
     func testInitImages() {
         do {
             let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
-            XCTAssertTrue(ad.images[EImageType.hqIcon]!.url == URL(string: "http://google.co.uk/")!)
+            XCTAssertTrue(ad.images[EImageType.hqIcon]!.url == URL(string: "https://google.co.uk/")!)
         } catch {
             XCTFail("Unexpected exception thrown")
         }
@@ -165,7 +165,7 @@ class NativeAdTest: XCTestCase {
     func testDescriptions() {
         do {
             let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
-            XCTAssertTrue(ad.description == "NativeAd.Optional(\"LOVOO\"): http://offerwall.beta.pmgbrain.com/save-click.php?campaign=12486&impression=13829453&token=1234")
+            XCTAssertTrue(ad.description == "NativeAd.Optional(\"LOVOO\"): https://getnativebeta.pocketmedia.mobi/save-click.php?campaign=12486&impression=13829453&token=1234")
             XCTAssertTrue(ad.debugDescription == ad.description) // For some reason someone thought this was a good idea?
             Logger.debug("test: \(ad.description)")
         } catch {

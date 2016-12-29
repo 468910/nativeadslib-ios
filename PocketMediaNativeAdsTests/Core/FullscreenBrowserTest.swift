@@ -205,7 +205,7 @@ class FullscreenBrowserTest: XCTestCase {
         subject = FullscreenBrowser(parentViewController: viewController!)
 
         XCTAssert(nav.pushedViewController is FullscreenBrowser, "The initializer should've pushed the viewController.")
-        subject?.didOpenBrowser(URL(string: "http://google.co.uk")!)
+        subject?.didOpenBrowser(URL(string: "https://google.co.uk")!)
         XCTAssert(nav.pushedViewController is FullscreenBrowser, "didOpenBrowser should've popped the viewController.")
     }
 
@@ -227,7 +227,7 @@ class FullscreenBrowserTest: XCTestCase {
         (subject as! MockedFullscreenBrowser).dismissViewControllerAnimatedExpectation = expectation
         (subject as! MockedFullscreenBrowser).dismissViewControllerAnimatedResult = false
 
-        subject?.didOpenBrowser(URL(string: "http://google.co.uk")!)
+        subject?.didOpenBrowser(URL(string: "https://google.co.uk")!)
 
         // Check if loadUrl in the NativeAdsWebviewDelegate was called
         waitForExpectations(timeout: 1) { error in

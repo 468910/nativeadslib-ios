@@ -105,7 +105,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
     //        let spyWebViewDelegate = SpyWebViewDelegate()
     //        spyWebViewDelegate.finishLoadExpectation = expectation(description: "Wait for request attribute")
     //        webview?.delegate = spyWebViewDelegate
-    //        webview?.loadHTMLString("<html>test</html>", baseURL: URL(string: "http://google.co.uk")!)
+    //        webview?.loadHTMLString("<html>test</html>", baseURL: URL(string: "https://google.co.uk")!)
     //
     //        // wait for webview.request
     //        self.waitForExpectations(timeout: 5) { error in
@@ -130,7 +130,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
     //        let spyWebViewDelegate = SpyWebViewDelegate()
     //        spyWebViewDelegate.finishLoadExpectation = expectationWithDescription("Wait for request attribute")
     //        webview?.delegate = spyWebViewDelegate
-    //        webview?.loadHTMLString("<html>test</html>", baseURL: NSURL(string: "http://google.co.uk")!)
+    //        webview?.loadHTMLString("<html>test</html>", baseURL: NSURL(string: "https://google.co.uk")!)
     //
     //        //wait for webview.request
     //        self.waitForExpectationsWithTimeout(5) { error in
@@ -188,7 +188,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
         XCTAssert(subject!.checkIfAppStoreUrl(URLRequest(url: URL(string: "https://itunes.apple.com/us/app/2048/id839720238?mt=8")!)), "A valid itunes link")
         XCTAssert(!subject!.checkIfAppStoreUrl(URLRequest(url: URL(string: "https://itunes.apple123.com/us/app/2048/id839720238?mt=8")!)), "A invalid itunes link")
         // XCTAssert(!subject!.checkIfAppStoreUrl(NSURLRequest(URL: NSURL(string: "https://itunes.apple.com/us/id000?mt=8")!)), "A invalid itunes link")
-        XCTAssert(!subject!.checkIfAppStoreUrl(URLRequest(url: URL(string: "http://pocketmedia.mobi")!)), "A invalid link")
+        XCTAssert(!subject!.checkIfAppStoreUrl(URLRequest(url: URL(string: "https://pocketmedia.mobi")!)), "A invalid link")
         XCTAssert(subject!.checkIfAppStoreUrl(URLRequest(url: URL(string: "itms-apps://itunes.com/app/123123")!)), "A valid itms link")
         XCTAssert(subject!.checkIfAppStoreUrl(URLRequest(url: URL(string: "itms://app/123123")!)), "A valid itms link")
     }
@@ -196,10 +196,10 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
     func testLoadUrl() {
         let data = [
             "campaign_name": "tests",
-            "click_url": "http://PocketMedia.mobi/lovely/tests",
+            "click_url": "https://PocketMedia.mobi/lovely/tests",
             "campaign_description": "",
             "id": "123",
-            "default_icon": "http://google.co.uk",
+            "default_icon": "https://google.co.uk",
             "images": Dictionary<String, Any>(),
         ] as [String: Any]
         do {
@@ -212,7 +212,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
 
     func testOpenSystemBrowser() {
         // Is not testable due to: There can only be one UIApplication instance.
-        // http://stackoverflow.com/questions/3265969/how-to-mock-property-internal-value-of-uiapplication
+        // https://stackoverflow.com/questions/3265969/how-to-mock-property-internal-value-of-uiapplication
         //        class MockUIApplication : UIApplication {
         //            var canOpenURLCalled: Bool = false
         //            var openURLCalled: Bool = false
@@ -229,12 +229,12 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
         //
         //        }
         //        let app = MockUIApplication()
-        //        subject?.openSystemBrowser(NSURL(string: "http://google.co.uk")!, application: app)
+        //        subject?.openSystemBrowser(NSURL(string: "https://google.co.uk")!, application: app)
         //
         //        XCTAssert(app.canOpenURLCalled, "CanOpenUrl should have been called.")
         //        XCTAssert(app.openURLCalled, "openURL should have been called.")
 
-        subject?.openSystemBrowser(URL(string: "http://google.co.uk")!)
+        subject?.openSystemBrowser(URL(string: "https://google.co.uk")!)
         XCTAssert((delegate?.didOpenBrowserCalled)!, "openSystemBrowser should call didOpenBrowserCalled with the final url")
     }
 
@@ -260,7 +260,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
             override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
                 downloadTaskWithRequestCalled = true
 
-                completionHandler(nil, URLResponse(url: URL(string: "http://google.co.uk/")!, mimeType: "", expectedContentLength: 0, textEncodingName: ""), nil)
+                completionHandler(nil, URLResponse(url: URL(string: "https://google.co.uk/")!, mimeType: "", expectedContentLength: 0, textEncodingName: ""), nil)
                 return downloadTask
             }
         }

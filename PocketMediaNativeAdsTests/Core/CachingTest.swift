@@ -18,7 +18,7 @@ import XCTest
 //
 //    override func setUp() {
 //        subject = UIView()
-//        url = NSURL(string: "http://placehold.it/350x150")
+//        url = NSURL(string: "https://placehold.it/350x150")
 //        super.setUp()
 //    }
 //

@@ -28,7 +28,7 @@ target 'PocketMediaNativeAdsExample' do
 		pod 'PocketMediaNativeAds', :path => './'
 end
 
-# http://stackoverflow.com/a/38466703/570087
+# https://stackoverflow.com/a/38466703/570087
 post_install do |installer|
   installer.pods_project.targets.each  do |target|
       target.build_configurations.each  do |config| config.build_settings['SWIFT_VERSION'] = '3.0'
