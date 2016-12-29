@@ -143,7 +143,11 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     open func setAdPositions(_ ads: [NativeAd]) {
         adPosition.reset()
         clear()
-        let maxSections = datasource.numberOfSections!(in: tableView)
+        var maxSections = 0
+        if (datasource.responds(to: Selector("numberOfSections:"))){
+            maxSections =
+                datasource.numberOfSections!(in: tableView)
+        }
         var section = 0
         var adsInserted = 1
 
