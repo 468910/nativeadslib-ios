@@ -43,7 +43,7 @@ open class StandardAdUnitTableViewCell: AbstractAdUnitTableViewCell {
             if let image = adImage {
                 iButton.layer.cornerRadius = image.frame.width / 20
             }
-            iButton.titleLabel?.text = ad!.callToActionText
+            iButton.setTitle(ad!.callToActionText, for: .normal)
         }
 
         if let image = adImage {
