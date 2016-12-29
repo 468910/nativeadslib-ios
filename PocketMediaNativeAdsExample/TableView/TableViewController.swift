@@ -27,7 +27,7 @@ class TableViewController: UITableViewController {
 
         // PocketMedia add ads
         stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165", adPosition: MarginAdPosition()) /* replace with your own token!! */
-        stream?.requestAds(10) // Add 5 ads
+        stream?.requestAds(10) // Add 10 ads
 
         super.viewDidLoad()
     }
