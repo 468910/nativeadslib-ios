@@ -43,21 +43,23 @@ pod install
 
 ### Troubleshooting
 #### Problems with doing a pod install.
+
 Try the following:
+
 - gem install bundler
 - cd into the project files
 - bundle install
 Now try it again.
 
 ## Usage
-There are several ways to implement the native ads in your application. Firstly, there is the AdStream which will take care of the integration for you. For maximum customizability however there is always the option to manually integrate the NativeAds.
+There are several ways to implement the native ads in your application. Firstly, there is the AdStream which will take care of the integration for you in UITableViews where the ads fit naturally as content cells. For maximum customizability however there is always the option to manually integrate the NativeAds with a custom view - and that will allow you to shape and place the ads in any way you can think of in your app.
 
 For both methods the parameters used are:
 
-- placement token, to be generated in the [user dashboard](http://third-party.pmgbrain.com/)
-- delegate, to receive the event callbacks as the ads are ready
+- **placement token**, to be generated in the [user dashboard](http://third-party.pmgbrain.com/)
+- **delegate**, to receive the event callbacks as the ads are ready
 
-[Docs](https://htmlpreview.github.io/?https://github.com/Pocketbrain/nativeadslib-ios/feature/new-structure-tests/docs/index.html)
+API documentation is avaibale in in a [web version](https://htmlpreview.github.io/?https://github.com/Pocketbrain/nativeadslib-ios/feature/new-structure-tests/docs/index.html), as well as in the code.
 
 ### AdStream
 The Adstream allows to easily show native ads in your UITableView and or UICollectionView.
@@ -86,20 +88,15 @@ You could also opt for just using the library to do the network request and manu
     adRequest.retrieveAds(5)//The amount of ads you want to receive.
 ```
 
-## App Transport Security
+## Receiving the results
 
-**Important:** the server to download the ads is ```http://offerwall.12trackway.com```. This is not *yet* under https, so you will need to add certain values to your plist, to indicate App Transport Security.
+**Important:** the server to download the ads is ```getnative.pocketmedia.mobi```. This endpoint is compatible with https, so you don't need to add any specific values to your app plist. This change is made since the version 0.4.2 of the library.
 
-![Info.plist â€” Edited 2016-02-21 18-14-09.png](https://bitbucket.org/repo/46g5gL/images/2846838342-Info.plist%20%E2%80%94%20Edited%202016-02-21%2018-14-09.png)
-
-In the future this will change to https, following Apple recommendations.
-
-### Receiving the results
-After the request has started requesting adds it will call the following three methods to notify the delegate class (the host application) of the ad status:
+After the request has started requesting ads it will call the following three methods to notify the delegate class (the host application) of the ad status:
 
 - ```didRecieveError```: compulsory method, to be invoked in case there is an error retrieving the ads. This can happen due to network conditions, some systems error, parsing error...
-- ```didRecieveResults```: when the library gets the JSON, parses it and delivers to your app, you will be notified with an Array of the NativeAd objects retrieved.
-- ```didUpdateNativeAd```: not required method. In case some of the ads is modified after it has been delivered, your class will be notified trough this method.
+- ```didRecieveResults```: when the library gets the JSON, parses it and delivers to your app, you will be notified with an Array of the NativeAd objects retrieved. This is the moment when you can display the ads.
+- ```didUpdateNativeAd```: legacy method, not used anymore.
 
 ### Displaying the ads
 This is the protocol method invoked when the ads are available. In our example, we add the ads to our datasource and display it:
@@ -166,7 +163,7 @@ One of the main objectives of these project is creating a easy to use library th
 
 ## Author
 
-Pocket Media Tech Team, [support@pocketmedia.mobi](mailto:support@pocketmedia.mobi). Feel free to contact us for any suggestion improvements you might have.
+Pocket Media Tech Team, [support@pocketmedia.mobi](mailto:support@pocketmedia.mobi). Feel free to contact us for any suggestion improvements, doubts or questions you might have. We will also assist you with the implementation.
 
 We work for you, we want you to be able to implement the ads in 5 minutes and start monetizing your audience with a totally native and tailored experience! Tell us what you are missing, what else you need our library to make for you - and it will happen.
 
