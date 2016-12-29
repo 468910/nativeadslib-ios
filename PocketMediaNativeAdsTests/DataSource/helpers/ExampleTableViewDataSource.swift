@@ -19,7 +19,6 @@ open class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
     }
 
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count = self.collection.count
         return self.collection.count
     }
 
