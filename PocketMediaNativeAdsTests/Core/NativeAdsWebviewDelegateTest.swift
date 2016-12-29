@@ -160,7 +160,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
         webview?.loadHTMLString("<html>test</html>", baseURL: URL(string: "https://itunes.apple.com/us/app/2048/id839720238?mt=8")!)
 
         // wait for webview.request
-        self.waitForExpectations(timeout: 5) { error in
+        self.waitForExpectations(timeout: 10) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
