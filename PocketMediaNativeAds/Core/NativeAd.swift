@@ -80,7 +80,7 @@ open class NativeAd: NSObject {
 
                 var width = UInt(0),
                     height = UInt(0),
-                    url = URL(string: "http://pocketmedia.mobi/")
+                    url = URL(string: "https://pocketmedia.mobi/")
 
                 if let sWidth = image["width"] {
                     width = UInt(sWidth)!
@@ -143,7 +143,7 @@ open class NativeAd: NSObject {
             throw NativeAdsError.invalidAdNoCampaign
         }
     }
-    
+
     private func parseCallToAction(_ adDictionary: NSDictionary) throws {
         if let callToActionText = adDictionary["action_text"] as? String {
             self.callToActionText = callToActionText
@@ -151,7 +151,7 @@ open class NativeAd: NSObject {
             self.callToActionText = ""
         }
     }
-    
+
     private func parseShouldBeManagedExternally(_ adDictionary: NSDictionary) throws {
         if let open_in_browser = adDictionary["open_in_browser"] as? Bool {
             self.shouldBeManagedExternally = open_in_browser
@@ -159,7 +159,7 @@ open class NativeAd: NSObject {
             self.shouldBeManagedExternally = true
         }
     }
-    
+
     private func parsePreviewURL(_ adDictionary: NSDictionary) throws {
         if let previewURL = adDictionary["app_store_url"] as? String, let url = NSURL(string: previewURL) {
             self.previewURL = url
@@ -177,7 +177,7 @@ open class NativeAd: NSObject {
         }
         return url
     }
-    
+
     @objc
     public func hqIconUrl() -> URL? {
         var url: URL?
@@ -186,7 +186,7 @@ open class NativeAd: NSObject {
         }
         return url
     }
-    
+
     @objc
     public func iconUrl() -> URL? {
         var url: URL?
@@ -195,7 +195,7 @@ open class NativeAd: NSObject {
         }
         return url
     }
-    
+
     /**
      Opens Native Ad in an View handled by the NativeAdOpener
      - opener: NativeAdOpener instance handling the opening of the view where the NativeAd will be displayed.
@@ -204,18 +204,16 @@ open class NativeAd: NSObject {
     open func openAdUrl(_ opener: NativeAdOpenerDelegate) {
         opener.load(self)
     }
-    
-
 }
 
-fileprivate extension URL
-{
-    func getSecureUrl() -> URL{
-        let secureString = self.absoluteString.replacingOccurrences(of: "http", with: "https")
-        if let secureUrl = URL(string: secureString){
-            return secureUrl
-        }else{
-            return self
+fileprivate extension URL {
+    func getSecureUrl() -> URL {
+        if self.scheme != "https" {
+            let secureString = self.absoluteString.replacingOccurrences(of: "http", with: "https")
+            if let secureUrl = URL(string: secureString) {
+                return secureUrl
+            }
         }
+        return self
     }
 }
