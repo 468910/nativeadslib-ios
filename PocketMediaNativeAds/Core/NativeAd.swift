@@ -21,18 +21,33 @@ public struct SImage {
  NativeAd model object
  It contains the attributes received from the API, and allows to open the click URL
  */
+@objc
 open class NativeAd: NSObject {
     /// Name of the ad, the title to be displayed.
+    @objc
     fileprivate(set) open var campaignName: String!
     /// Long description of the ad, with a description
+    @objc
     fileprivate(set) open var campaignDescription: String!
+    /// Action text (like "Install", "Read more" and so on)
+    @objc
+    fileprivate(set) public var callToActionText: String! = ""
+    /// Boolean to indicate if the ad should be opened in the browser or use the internal one
+    @objc
+    fileprivate(set) public var shouldBeManagedExternally: Bool = false
     /// URL to be opened when the user interacts with the ad
+    @objc
     fileprivate(set) open var clickURL: URL!
+    /// Preview URL. Might be empty.
+    @objc
+    fileprivate(set) public var previewURL: NSURL!
     /// URL for the campaign icon
+    @objc
     fileprivate(set) open var campaignImage: URL!
     /// PocketMedia's Offer ID the ad is linked to
     fileprivate(set) var offerId: UInt?
     /// Ad Placement token the ad is linked to (via the ads request)
+    @objc
     fileprivate(set) var adPlacementToken: String!
     /// Images including hq_icon , banners and icon
     fileprivate(set) var images = [EImageType: SImage]()
@@ -53,6 +68,9 @@ open class NativeAd: NSObject {
         try parseIds(adDictionary)
         try parseMainImage(adDictionary)
         try parseImages(adDictionary)
+        try parseCallToAction(adDictionary as NSDictionary)
+        try parseShouldBeManagedExternally(adDictionary as NSDictionary)
+        try parsePreviewURL(adDictionary as NSDictionary)
     }
 
     fileprivate func parseImages(_ adDictionary: Dictionary<String, Any>) throws {
@@ -125,10 +143,59 @@ open class NativeAd: NSObject {
             throw NativeAdsError.invalidAdNoCampaign
         }
     }
+    
+    private func parseCallToAction(_ adDictionary: NSDictionary) throws {
+        if let callToActionText = adDictionary["action_text"] as? String {
+            self.callToActionText = callToActionText
+        } else {
+            self.callToActionText = ""
+        }
+    }
+    
+    private func parseShouldBeManagedExternally(_ adDictionary: NSDictionary) throws {
+        if let open_in_browser = adDictionary["open_in_browser"] as? Bool {
+            self.shouldBeManagedExternally = open_in_browser
+        } else {
+            self.shouldBeManagedExternally = true
+        }
+    }
+    
+    private func parsePreviewURL(_ adDictionary: NSDictionary) throws {
+        if let previewURL = adDictionary["app_store_url"] as? String, let url = NSURL(string: previewURL) {
+            self.previewURL = url
+        }
+    }
 
     open override var description: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }
     open override var debugDescription: String { return "NativeAd.\(campaignName): \(clickURL.absoluteURL)" }
 
+    @objc
+    public func bannerUrl() -> URL? {
+        var url: URL?
+        if images[EImageType.hqIcon] != nil {
+            url = images[EImageType.banner]?.url
+        }
+        return url
+    }
+    
+    @objc
+    public func hqIconUrl() -> URL? {
+        var url: URL?
+        if images[EImageType.hqIcon] != nil {
+            url = images[EImageType.hqIcon]?.url
+        }
+        return url
+    }
+    
+    @objc
+    public func iconUrl() -> URL? {
+        var url: URL?
+        if images[EImageType.icon] != nil {
+            url = images[EImageType.icon]?.url
+        }
+        return url
+    }
+    
     /**
      Opens Native Ad in an View handled by the NativeAdOpener
      - opener: NativeAdOpener instance handling the opening of the view where the NativeAd will be displayed.
