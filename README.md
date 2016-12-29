@@ -13,7 +13,7 @@ This open-source (Swift/Objective-c) library allows developers to easily show ad
 
 The library comes with standard ad units (ways of displaying the ad). You are encouraged to extend/copy these into project and and customize them to your liking, specially to match your application look and feel. This method is called using the adStream - and requires just a few lines of code to start using it.
 
-The alternative solution is using the library to just do the network calls and use the NativeAd (Class) model. Using these core functionalities, you are able to write your own custom ad units and manipulate them in any way that fits your app. This method is called manual integration.
+The alternative solution is using the library to just do the network calls and use the ```NativeAd``` (Class) model. Using these core functionalities, you are able to write your own custom ad units and manipulate them in any way that fits your app. This method is called manual integration.
 
 ## Requirements
 
