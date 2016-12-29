@@ -144,7 +144,8 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         adPosition.reset()
         clear()
         var maxSections = 1
-        if datasource.responds(to: Selector("numberOfSections:")) {
+
+        if let _ = datasource.numberOfSections?(in: tableView) {
             maxSections =
                 datasource.numberOfSections!(in: tableView)
         }
