@@ -87,6 +87,7 @@ open class NativeAd: NSObject {
             self.campaignImage = url
         } else {
             if let urlImage = adDictionary["campaign_image"] as? String, let url = URL(string: urlImage) {
+                
                 self.campaignImage = url
             } else {
                 throw NativeAdsError.invalidAdNoImage
@@ -112,7 +113,7 @@ open class NativeAd: NSObject {
 
     fileprivate func parseURL(_ adDictionary: Dictionary<String, Any>) throws {
         if let urlClick = adDictionary["click_url"] as? String, let url = URL(string: urlClick) {
-            self.clickURL = url
+            self.clickURL = url.getSecureUrl()
         } else {
             throw NativeAdsError.invalidAdNoClickUrl
         }
@@ -136,5 +137,19 @@ open class NativeAd: NSObject {
     @objc
     open func openAdUrl(_ opener: NativeAdOpenerDelegate) {
         opener.load(self)
+    }
+    
+
+}
+
+fileprivate extension URL
+{
+    func getSecureUrl() -> URL{
+        let secureString = self.absoluteString.replacingOccurrences(of: "http", with: "https")
+        if let secureUrl = URL(string: secureString){
+            return secureUrl
+        }else{
+            return self
+        }
     }
 }
