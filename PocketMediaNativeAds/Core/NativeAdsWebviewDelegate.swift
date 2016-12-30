@@ -123,6 +123,12 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         self.nativeAdUnit = nativeAdUnit
         let url = nativeAdUnit.clickURL
         let request = URLRequest(url: url! as URL)
+
+        if nativeAdUnit.shouldBeManagedExternally{
+            Logger.debug("AdUnit will open in external browser.")
+            openSystemBrowser((request.url!))
+        }
+        
         self.wrappedWebView!.loadRequest(request)
         Logger.debug("webview LoadUrl Exited")
     }
