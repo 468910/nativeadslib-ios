@@ -40,7 +40,7 @@ public struct NativeAdsConstants {
 
     public struct NativeAds {
         public static let tokenAdKey = "nativeAdToken"
-        public static let notifyBadAdsUrl = "https://getnative.pocketmedia.mobi/api.php"
+        public static let notifyBadAdsUrl = "https://nativeadsapi.pocketmedia.mobi/api.php"
         #if BETA
             public static let baseURL = "https://getnativebeta.pocketmedia.mobi/ow.php?output=json"
         #else
