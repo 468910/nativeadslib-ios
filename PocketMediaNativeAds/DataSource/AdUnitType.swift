@@ -7,7 +7,18 @@
 //
 import Foundation
 
+// Types of Ad Units to be handled by the library
 @objc
+
+/**
+ Types of ads
+
+ - standard: for regular UITableViewCell ads.
+ - dynamic: for UITableViewCell ads where an UI will be provided.
+ - big: for larger UITableViewCell ads.
+ - custom: for ads where the implementation will be provided.
+
+ */
 public enum AdUnitType: Int {
     case standard
     case dynamic
