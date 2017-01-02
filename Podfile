@@ -4,7 +4,7 @@ inhibit_all_warnings!
 platform :ios, '9.0'
 
 source 'https://github.com/CocoaPods/Specs.git'
-source 'https://bitbucket.org/pocketbrain/pocketmedia-podspecs.git'
+source 'https://github.com/Pocketbrain/nativeadslib-ios.git'
 use_frameworks!
 
 target 'PocketMediaNativeAds' do
