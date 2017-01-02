@@ -27,6 +27,10 @@ To run the example project, clone the repo, and run `pod install` then open the 
 
 The project is developed in Swift but contains bridging headers to also work with Objective-C.
 
+## Sample projects
+
+In the project you have a Native Ads demo project, and we have also integrated Native Ads in [this HackerNews client](https://github.com/Pocketbrain/HackerNews), with [barely 5 lines of code](https://github.com/Pocketbrain/HackerNews/commit/54c6a670d304c0d614ba14e9ff75a38a4c87a67c).
+
 ## Installation
 
 PocketMediaNativeAds is available through [CocoaPods](http://cocoapods.org). To install
@@ -49,7 +53,8 @@ Try the following:
 - gem install bundler
 - cd into the project files
 - bundle install
-Now try it again.
+
+Now try it again. If the problem persist, [contact us](mailto:support@pocketmedia.mobi).
 
 ## Usage
 There are several ways to implement the native ads in your application. Firstly, there is the AdStream which will take care of the integration for you in UITableViews where the ads fit naturally as content cells. For maximum customizability however there is always the option to manually integrate the NativeAds with a custom view - and that will allow you to shape and place the ads in any way you can think of in your app.
@@ -157,9 +162,9 @@ Alternatively you can use ```openAdUrlInForeground()``` to open the URL directly
 
 ## Look and feel
 
-One of the main objectives of these project is creating a easy to use library that allowes the ads to be totally customisable. An example of this is the Adstream UITableView example. All you have to provide is an existing UITableView and the placement token and you are good to go!
+One of the main objectives of these project is creating a easy to use library that allowes the ads to be totally customisable. An example of this is contained in the HackerNews repo. All you have to provide is an existing UITableView and the placement token and you are good to go!
 
-![Simulator Screen Shot 22 Jan 2016 15.26.27.png](https://bitbucket.org/repo/46g5gL/images/3807516826-Simulator%20Screen%20Shot%2022%20Jan%202016%2015.26.27.png)
+![Alt text](https://monosnap.com/file/vYqy1GYoVBBLsnfCHRTiTFCmWS53Aa.png)
 
 ## Author
 
