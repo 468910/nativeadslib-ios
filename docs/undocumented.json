@@ -1,0 +1,1013 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Adunits/AbstractAdUnitTableViewCell.swift",
+      "line": 15,
+      "symbol": "AbstractAdUnitTableViewCell.ad",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Adunits/AbstractAdUnitTableViewCell.swift",
+      "line": 17,
+      "symbol": "AbstractAdUnitTableViewCell.render(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Adunits/AbstractAdUnitTableViewCell.swift",
+      "line": 22,
+      "symbol": "AbstractAdUnitTableViewCell.awakeFromNib()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Adunits/StandardAdUnitTableViewCell.swift",
+      "line": 22,
+      "symbol": "StandardAdUnitTableViewCell.render(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/Caching.swift",
+      "line": 77,
+      "symbol": "UIImageView.nativeSetImageFromURL(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/FullscreenBrowser.swift",
+      "line": 27,
+      "symbol": "FullscreenBrowser.init(parentViewController:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/FullscreenBrowser.swift",
+      "line": 44,
+      "symbol": "FullscreenBrowser.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/FullscreenBrowser.swift",
+      "line": 118,
+      "symbol": "FullscreenBrowser.viewDidDisappear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/FullscreenBrowser.swift",
+      "line": 122,
+      "symbol": "FullscreenBrowser.willMove(toParentViewController:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAd.swift",
+      "line": 169,
+      "symbol": "NativeAd.description",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAd.swift",
+      "line": 170,
+      "symbol": "NativeAd.debugDescription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAd.swift",
+      "line": 173,
+      "symbol": "NativeAd.bannerUrl()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAd.swift",
+      "line": 182,
+      "symbol": "NativeAd.hqIconUrl()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAd.swift",
+      "line": 191,
+      "symbol": "NativeAd.iconUrl()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdOpenerProtocol.swift",
+      "line": 11,
+      "symbol": "NativeAdOpenerDelegate",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsConstants.swift",
+      "line": 36,
+      "symbol": "NativeAdsConstants.Device",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsConstants.swift",
+      "line": 41,
+      "symbol": "NativeAdsConstants.NativeAds",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsConstants.swift",
+      "line": 42,
+      "symbol": "NativeAdsConstants.NativeAds.tokenAdKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsConstants.swift",
+      "line": 43,
+      "symbol": "NativeAdsConstants.NativeAds.notifyBadAdsUrl",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsConstants.swift",
+      "line": 47,
+      "symbol": "NativeAdsConstants.NativeAds.baseURL",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsRequest.swift",
+      "line": 12,
+      "symbol": "EImageType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsRequest.swift",
+      "line": 13,
+      "symbol": "EImageType.allImages",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsRequest.swift",
+      "line": 14,
+      "symbol": "EImageType.icon",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsRequest.swift",
+      "line": 15,
+      "symbol": "EImageType.hqIcon",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsRequest.swift",
+      "line": 16,
+      "symbol": "EImageType.banner",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsRequest.swift",
+      "line": 17,
+      "symbol": "EImageType.bigImages",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsRequest.swift",
+      "line": 18,
+      "symbol": "EImageType.bannerAndIcons",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsRequest.swift",
+      "line": 35,
+      "symbol": "NativeAdsRequest.init(adPlacementToken:delegate:advertisingTrackingEnabled:session:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsWebviewDelegate.swift",
+      "line": 18,
+      "symbol": "NativeAdsWebviewDelegate.wrappedWebView",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsWebviewDelegate.swift",
+      "line": 19,
+      "symbol": "NativeAdsWebviewDelegate.nativeAdUnit",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsWebviewDelegate.swift",
+      "line": 25,
+      "symbol": "NativeAdsWebviewDelegate.init(delegate:webView:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsWebviewDelegate.swift",
+      "line": 44,
+      "symbol": "NativeAdsWebviewDelegate.webView(_:didFailLoadWithError:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsWebviewDelegate.swift",
+      "line": 76,
+      "symbol": "NativeAdsWebviewDelegate.webView(_:shouldStartLoadWith:navigationType:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsWebviewDelegate.swift",
+      "line": 90,
+      "symbol": "NativeAdsWebviewDelegate.checkIfAppStoreUrl(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsWebviewDelegate.swift",
+      "line": 108,
+      "symbol": "NativeAdsWebviewDelegate.webViewDidStartLoad(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsWebviewDelegate.swift",
+      "line": 115,
+      "symbol": "NativeAdsWebviewDelegate.webViewDidFinishLoad(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/NativeAdsWebviewDelegate.swift",
+      "line": 138,
+      "symbol": "NativeAdsWebviewDelegate.timeout()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/AdPosition.swift",
+      "line": 11,
+      "symbol": "AdPosition",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/AdPosition.swift",
+      "line": 13,
+      "symbol": "AdPosition.setadPositionOffset(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/AdPosition.swift",
+      "line": 16,
+      "symbol": "AdPosition.reset()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/AdPosition.swift",
+      "line": 19,
+      "symbol": "AdPosition.getAdPosition(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/MarginAdPosition.swift",
+      "line": 11,
+      "symbol": "MarginAdPositionError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/MarginAdPosition.swift",
+      "line": 12,
+      "symbol": "MarginAdPositionError.invalidmargin",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/MarginAdPosition.swift",
+      "line": 16,
+      "symbol": "MarginAdPosition",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/MarginAdPosition.swift",
+      "line": 22,
+      "symbol": "MarginAdPosition.init(margin:adPositionOffset:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/MarginAdPosition.swift",
+      "line": 29,
+      "symbol": "MarginAdPosition.reset()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/MarginAdPosition.swift",
+      "line": 33,
+      "symbol": "MarginAdPosition.getAdPosition(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/MarginAdPosition.swift",
+      "line": 42,
+      "symbol": "MarginAdPosition.setadPositionOffset(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/PredefinedAdPosition.swift",
+      "line": 11,
+      "symbol": "PredefinedAdPositionError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/PredefinedAdPosition.swift",
+      "line": 12,
+      "symbol": "PredefinedAdPositionError.notEnoughPositions",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/PredefinedAdPosition.swift",
+      "line": 16,
+      "symbol": "PredefinedAdPosition",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/PredefinedAdPosition.swift",
+      "line": 22,
+      "symbol": "PredefinedAdPosition.init(positions:adPositionOffset:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/PredefinedAdPosition.swift",
+      "line": 30,
+      "symbol": "PredefinedAdPosition.reset()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/PredefinedAdPosition.swift",
+      "line": 34,
+      "symbol": "PredefinedAdPosition.getAdPosition(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Core/adPosition/PredefinedAdPosition.swift",
+      "line": 44,
+      "symbol": "PredefinedAdPosition.setadPositionOffset(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/AdUnitType.swift",
+      "line": 23,
+      "symbol": "AdUnitType.standard",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/AdUnitType.swift",
+      "line": 24,
+      "symbol": "AdUnitType.dynamic",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/AdUnitType.swift",
+      "line": 25,
+      "symbol": "AdUnitType.big",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/AdUnitType.swift",
+      "line": 26,
+      "symbol": "AdUnitType.custom",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSource.swift",
+      "line": 18,
+      "symbol": "NativeAdListing",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSource.swift",
+      "line": 53,
+      "symbol": "DataSource",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSource.swift",
+      "line": 55,
+      "symbol": "DataSource.adListingsPerSection",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSource.swift",
+      "line": 57,
+      "symbol": "DataSource.ads",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSource.swift",
+      "line": 60,
+      "symbol": "DataSource.adUnitType",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSource.swift",
+      "line": 62,
+      "symbol": "DataSource.getNativeAdListing(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSource.swift",
+      "line": 69,
+      "symbol": "DataSource.getNativeAdListingHigherThan(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSource.swift",
+      "line": 90,
+      "symbol": "DataSource.onAdRequestSuccess(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSource.swift",
+      "line": 94,
+      "symbol": "DataSource.getTruePositionInDataSource(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSource.swift",
+      "line": 98,
+      "symbol": "DataSource.numberOfElements()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSourceProtocol.swift",
+      "line": 12,
+      "symbol": "DataSourceProtocol",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSourceProtocol.swift",
+      "line": 13,
+      "symbol": "DataSourceProtocol.onAdRequestSuccess(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSourceProtocol.swift",
+      "line": 14,
+      "symbol": "DataSourceProtocol.getNativeAdListing(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSourceProtocol.swift",
+      "line": 17,
+      "symbol": "NativeAdTableViewDataSourceProtocol",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/DataSourceProtocol.swift",
+      "line": 18,
+      "symbol": "NativeAdTableViewDataSourceProtocol.getNumberOfRowsInSection(numberOfRowsInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdStream.swift",
+      "line": 16,
+      "symbol": "NativeAdStream.view",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdStream.swift",
+      "line": 17,
+      "symbol": "NativeAdStream.datasource",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdStream.swift",
+      "line": 22,
+      "symbol": "NativeAdStream.init(controller:view:adPlacementToken:customXib:adPosition:requester:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdStream.swift",
+      "line": 86,
+      "symbol": "NativeAdStream.reloadAds()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableView.swift",
+      "line": 16,
+      "symbol": "UITableView.nativeAdsReloadData()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableView.swift",
+      "line": 38,
+      "symbol": "UITableView.swizzleNativeAds(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 11,
+      "symbol": "NativeAdTableViewDataSource",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 12,
+      "symbol": "NativeAdTableViewDataSource.datasource",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 13,
+      "symbol": "NativeAdTableViewDataSource.tableView",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 14,
+      "symbol": "NativeAdTableViewDataSource.delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 15,
+      "symbol": "NativeAdTableViewDataSource.controller",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 23,
+      "symbol": "NativeAdTableViewDataSource.init(controller:tableView:adPosition:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 62,
+      "symbol": "NativeAdTableViewDataSource.getAdCell(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 74,
+      "symbol": "NativeAdTableViewDataSource.tableView(_:cellForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 82,
+      "symbol": "NativeAdTableViewDataSource.tableView(_:numberOfRowsInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 89,
+      "symbol": "NativeAdTableViewDataSource.tableView(_:titleForHeaderInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 96,
+      "symbol": "NativeAdTableViewDataSource.tableView(_:titleForFooterInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 103,
+      "symbol": "NativeAdTableViewDataSource.tableView(_:canEditRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 110,
+      "symbol": "NativeAdTableViewDataSource.tableView(_:canMoveRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 117,
+      "symbol": "NativeAdTableViewDataSource.tableView(_:sectionForSectionIndexTitle:at:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 124,
+      "symbol": "NativeAdTableViewDataSource.tableView(_:moveRowAt:to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 130,
+      "symbol": "NativeAdTableViewDataSource.tableView(_:commit:forRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 134,
+      "symbol": "NativeAdTableViewDataSource.onAdRequestSuccess(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 143,
+      "symbol": "NativeAdTableViewDataSource.setAdPositions(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 204,
+      "symbol": "NativeAdTableViewDataSource.reload()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 210,
+      "symbol": "NativeAdTableViewDataSource.numberOfSections(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDataSource.swift",
+      "line": 217,
+      "symbol": "NativeAdTableViewDataSource.getOriginalPositionForElement(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 13,
+      "symbol": "NativeAdTableViewDelegate",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 15,
+      "symbol": "NativeAdTableViewDelegate.controller",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 16,
+      "symbol": "NativeAdTableViewDelegate.delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 17,
+      "symbol": "NativeAdTableViewDelegate.datasource",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 19,
+      "symbol": "NativeAdTableViewDelegate.init(datasource:controller:delegate:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 26,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:didSelectRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 35,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:heightForHeaderInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 42,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:heightForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 55,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:viewForHeaderInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 59,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:accessoryButtonTappedForRowWith:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 67,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:canFocusRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 76,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:didDeselectRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 82,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:didEndDisplaying:forRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 88,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:didEndDisplayingFooterView:forSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 92,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:didEndEditingRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 98,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:didEndDisplayingHeaderView:forSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 102,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:canPerformAction:forRowAt:withSender:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 111,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:didHighlightRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 117,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:didUnhighlightRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 124,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:didUpdateFocusIn:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 128,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:editActionsForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 137,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:editingStyleForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 146,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:estimatedHeightForFooterInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 153,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:estimatedHeightForHeaderInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 160,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:estimatedHeightForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 170,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:heightForFooterInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 177,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:indentationLevelForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 186,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:performAction:forRowAt:withSender:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 190,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:shouldHighlightRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 197,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:shouldIndentWhileEditingRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 206,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:shouldShowMenuForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 215,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:willSelectRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 223,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:shouldUpdateFocusIn:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 230,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:targetIndexPathForMoveFromRowAt:toProposedIndexPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 237,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:titleForDeleteConfirmationButtonForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 244,
+      "symbol": "NativeAdTableViewDelegate.indexPathForPreferredFocusedView(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 251,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:viewForFooterInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 255,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:willBeginEditingRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 261,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:willDeselectRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 268,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:willDisplay:forRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 274,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:willDisplayFooterView:forSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/DataSource/NativeAdTableViewDelegate.swift",
+      "line": 278,
+      "symbol": "NativeAdTableViewDelegate.tableView(_:willDisplayHeaderView:forSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/iain17/PocketMedia/project/nativeadslib-ios/PocketMediaNativeAds/Util/ReferenceArray.swift",
+      "line": 17,
+      "symbol": "PocketMediaNativeAdsBundle.loadBundle()",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/iain17/PocketMedia/project/nativeadslib-ios"
+}
