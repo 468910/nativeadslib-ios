@@ -7,7 +7,7 @@
 //
 import Foundation
 
-// Types of Ad Units to be handled by the library
+/// Types of Ad Units to be handled by the library
 @objc
 
 /**
