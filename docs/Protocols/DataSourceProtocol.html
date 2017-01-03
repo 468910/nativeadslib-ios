@@ -14,7 +14,7 @@
     <a title="DataSourceProtocol Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (53% documented)</p>
+        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/Pocketbrain/nativeadslib-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -152,6 +152,9 @@
               <li class="nav-group-task">
                 <a href="../Typealiases.html#/s:20PocketMediaNativeAds16AdsForSectionMap">AdsForSectionMap</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:E20PocketMediaNativeAdsV10Foundation3URL20ImageCacheCompletion">ImageCacheCompletion</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -160,7 +163,13 @@
         <section>
           <section class="section">
             <h1>DataSourceProtocol</h1>
-            <p>Undocumented</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DataSourceProtocol</span></code></pre>
+
+                </div>
+              </div>
+            <p>A protocol that eacha datasource will need to conform to in order to be notified of new ads.</p>
 
           </section>
           <section class="section task-group-section">
@@ -179,8 +188,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Method that dictates what happens when a ad network request resulted successful. It should kick off what to do with this list of ads.
+- important:
+Abstract classes that a datasource should override. It&rsquo;s specific to the type of data source.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">onAdRequestSuccess</span><span class="p">(</span><span class="n">_</span> <span class="nv">newAds</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/NativeAd.html">NativeAd</a></span><span class="p">])</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -198,7 +217,23 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Finds an ad listing which is lower than the index path of the given one.
+So in other words it finds the last ad listing before this indexRow.
+- returns:
+A native ad listing. With a lower index path than the one given.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getNativeAdListing</span><span class="p">(</span><span class="n">_</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/NativeAdListing.html">NativeAdListing</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A native ad listing. With a lower index path than the one given.</p>
 
                       </div>
                     </section>

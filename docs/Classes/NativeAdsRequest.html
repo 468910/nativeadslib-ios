@@ -14,7 +14,7 @@
     <a title="NativeAdsRequest Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (53% documented)</p>
+        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/Pocketbrain/nativeadslib-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -152,6 +152,9 @@
               <li class="nav-group-task">
                 <a href="../Typealiases.html#/s:20PocketMediaNativeAds16AdsForSectionMap">AdsForSectionMap</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:E20PocketMediaNativeAdsV10Foundation3URL20ImageCacheCompletion">ImageCacheCompletion</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -166,7 +169,7 @@
 
                 </div>
               </div>
-            <p>Object which is used to make a NativeAdsRequest has to be used in combination with the NativeAdsConnectionDelegate</p>
+            <p>NativeAdsRequest is a controller class that will do a network request and call a instance of NativeAdsConnectionDelegate based on the results.</p>
 
           </section>
           <section class="section task-group-section">
@@ -283,9 +286,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds16NativeAdsRequestcFT16adPlacementTokenGSqSS_8delegateGSqPS_27NativeAdsConnectionDelegate__26advertisingTrackingEnabledSb7sessionCSo10URLSession_S0_"></a>
+                    <a name="/s:FC20PocketMediaNativeAds16NativeAdsRequestcFT16adPlacementTokenSS8delegateGSqPS_27NativeAdsConnectionDelegate__26advertisingTrackingEnabledSb7sessionCSo10URLSession_S0_"></a>
                     <a name="//apple_ref/swift/Method/init(adPlacementToken:delegate:advertisingTrackingEnabled:session:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds16NativeAdsRequestcFT16adPlacementTokenGSqSS_8delegateGSqPS_27NativeAdsConnectionDelegate__26advertisingTrackingEnabledSb7sessionCSo10URLSession_S0_">init(adPlacementToken:delegate:advertisingTrackingEnabled:session:)</a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds16NativeAdsRequestcFT16adPlacementTokenSS8delegateGSqPS_27NativeAdsConnectionDelegate__26advertisingTrackingEnabledSb7sessionCSo10URLSession_S0_">init(adPlacementToken:delegate:advertisingTrackingEnabled:session:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -293,16 +296,70 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>NativeAdsRequest is a controller class that will do a network request and call a instance of NativeAdsConnectionDelegate based on the results.
+- parameter adPlacementToken: The placement token received from <a href="http://third-party.pmgbrain.com/">http://third-party.pmgbrain.com/</a>
+- paramter delegate: instance of NativeAdsConnectionDelegate that will be informed about the network call results.
+- parameter advertisingTrackingEnabled: Boolean defining if the tracking token is enabled. If none specified system boolean is used.
+- parameter session: A instance of URLSession to the network requests with.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdsRequest</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSURLConnectionDelegate</span><span class="p">,</span> <span class="kt">UIWebViewDelegate</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">adPlacementToken</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a></span><span class="p">?,</span>
+                <span class="nv">advertisingTrackingEnabled</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kt">ASIdentifierManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">isAdvertisingTrackingEnabled</span><span class="p">,</span>
+                <span class="nv">session</span><span class="p">:</span> <span class="kt">URLSession</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span>
+    <span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>adPlacementToken</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The placement token received from <a href="http://third-party.pmgbrain.com/">http://third-party.pmgbrain.com/</a></p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>advertisingTrackingEnabled</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Boolean defining if the tracking token is enabled. If none specified system boolean is used.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>session</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A instance of URLSession to the network requests with.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -321,8 +378,8 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Method used to retrieve native ads which are later accessed by using the delegate.
-- limit: Limit on how many native ads are to be retrieved.
--  imageType: Image Type is used to specify what kind of image type will get requested.</p>
+- parameter limit: Limit on how many native ads are to be retrieved.
+- parameter imageType: Image Type is used to specify what kind of image type will get requested.</p>
 
                       </div>
                       <div class="declaration">
@@ -332,6 +389,39 @@
                           <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">retrieveAds</span><span class="p">(</span><span class="n">_</span> <span class="nv">limit</span><span class="p">:</span> <span class="kt">UInt</span><span class="p">,</span> <span class="nv">imageType</span><span class="p">:</span> <span class="kt"><a href="../Enums/EImageType.html">EImageType</a></span> <span class="o">=</span> <span class="kt"><a href="../Enums/EImageType.html">EImageType</a></span><span class="o">.</span><span class="n">allImages</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>limit</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Limit on how many native ads are to be retrieved.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>imageType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Image Type is used to specify what kind of image type will get requested.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

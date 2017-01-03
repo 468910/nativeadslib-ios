@@ -13,7 +13,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">PocketMediaNativeAds Docs</a> (53% documented)</p>
+        <p><a href="index.html">PocketMediaNativeAds Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/Pocketbrain/nativeadslib-ios"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -151,6 +151,9 @@
               <li class="nav-group-task">
                 <a href="Typealiases.html#/s:20PocketMediaNativeAds16AdsForSectionMap">AdsForSectionMap</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:E20PocketMediaNativeAdsV10Foundation3URL20ImageCacheCompletion">ImageCacheCompletion</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -274,9 +277,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Wraps around a UITableViewDelegate delegate and adds the ad logic.
+Patching of the delegate and replaces some calls if the subject is an ad. Otherwise it&rsquo;ll call the original implementation.</p>
 
                         <a href="Classes/NativeAdTableViewDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdTableViewDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -397,9 +409,17 @@ The idea is that we find the last adListing in the shown list, and based on that
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This ad position implementation makes the ads show up at certain predefined positions.</p>
 
                         <a href="Classes/PredefinedAdPosition.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">PredefinedAdPosition</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/AdPosition.html">AdPosition</a></span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -421,7 +441,7 @@ The idea is that we find the last adListing in the shown list, and based on that
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Object which is used to make a NativeAdsRequest has to be used in combination with the NativeAdsConnectionDelegate</p>
+                        <p>NativeAdsRequest is a controller class that will do a network request and call a instance of NativeAdsConnectionDelegate based on the results.</p>
 
                         <a href="Classes/NativeAdsRequest.html" class="slightly-smaller">See more</a>
                       </div>
@@ -453,7 +473,8 @@ The idea is that we find the last adListing in the shown list, and based on that
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creates a webview with a native load indicator to tell the user we are loading some content</p>
+                        <p>Controls an instance of a webview. Adds a load indicator to give feedback back to the user.
+It follows each redirect until it reaches the app store or website. Then we&rsquo;ll call the delegate</p>
 
                         <a href="Classes/NativeAdsWebviewDelegate.html" class="slightly-smaller">See more</a>
                       </div>

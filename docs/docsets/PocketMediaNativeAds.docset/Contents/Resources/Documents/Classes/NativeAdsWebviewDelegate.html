@@ -14,7 +14,7 @@
     <a title="NativeAdsWebviewDelegate Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (53% documented)</p>
+        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/Pocketbrain/nativeadslib-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -152,6 +152,9 @@
               <li class="nav-group-task">
                 <a href="../Typealiases.html#/s:20PocketMediaNativeAds16AdsForSectionMap">AdsForSectionMap</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:E20PocketMediaNativeAdsV10Foundation3URL20ImageCacheCompletion">ImageCacheCompletion</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -166,7 +169,8 @@
 
                 </div>
               </div>
-            <p>Creates a webview with a native load indicator to tell the user we are loading some content</p>
+            <p>Controls an instance of a webview. Adds a load indicator to give feedback back to the user.
+It follows each redirect until it reaches the app store or website. Then we&rsquo;ll call the delegate</p>
 
           </section>
           <section class="section task-group-section">
@@ -175,9 +179,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC20PocketMediaNativeAds24NativeAdsWebviewDelegate14wrappedWebViewGSqCSo9UIWebView_"></a>
+                    <a name="/s:vC20PocketMediaNativeAds24NativeAdsWebviewDelegate14wrappedWebViewCSo9UIWebView"></a>
                     <a name="//apple_ref/swift/Property/wrappedWebView" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC20PocketMediaNativeAds24NativeAdsWebviewDelegate14wrappedWebViewGSqCSo9UIWebView_">wrappedWebView</a>
+                    <a class="token" href="#/s:vC20PocketMediaNativeAds24NativeAdsWebviewDelegate14wrappedWebViewCSo9UIWebView">wrappedWebView</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -185,14 +189,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The UIWebView we&rsquo;re controlling.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdsWebviewDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIWebViewDelegate</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">wrappedWebView</span><span class="p">:</span> <span class="kt">UIWebView</span></code></pre>
 
                         </div>
                       </div>
@@ -212,14 +216,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The ad we&rsquo;re showing.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdsWebviewDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIWebViewDelegate</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">nativeAdUnit</span><span class="p">:</span> <span class="kt"><a href="../Classes/NativeAd.html">NativeAd</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -229,9 +233,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds24NativeAdsWebviewDelegatecFT8delegateGSqPS_36NativeAdsWebviewRedirectionsDelegate__7webViewCSo9UIWebView_S0_"></a>
+                    <a name="/s:FC20PocketMediaNativeAds24NativeAdsWebviewDelegatecFT8delegatePS_36NativeAdsWebviewRedirectionsDelegate_7webViewCSo9UIWebView_S0_"></a>
                     <a name="//apple_ref/swift/Method/init(delegate:webView:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds24NativeAdsWebviewDelegatecFT8delegateGSqPS_36NativeAdsWebviewRedirectionsDelegate__7webViewCSo9UIWebView_S0_">init(delegate:webView:)</a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds24NativeAdsWebviewDelegatecFT8delegatePS_36NativeAdsWebviewRedirectionsDelegate_7webViewCSo9UIWebView_S0_">init(delegate:webView:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -239,16 +243,51 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initializer.
+- parameter delegate: delegate it needs to inform
+- parameter webView: Instance of the webView it will use.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdsWebviewDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIWebViewDelegate</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/NativeAdsWebviewRedirectionsDelegate.html">NativeAdsWebviewRedirectionsDelegate</a></span><span class="p">,</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">UIWebView</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>delegate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>delegate it needs to inform</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>webView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Instance of the webView it will use.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -266,14 +305,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Sent if a web view failed to load a frame.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdsWebviewDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIWebViewDelegate</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span><span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">UIWebView</span><span class="p">,</span> <span class="n">didFailLoadWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -293,16 +332,23 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Sent before a web view begins loading a frame.
+- Returns:
+False if the requests seems to go in the App Store. True if it isn&rsquo;t.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdsWebviewDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIWebViewDelegate</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span><span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">UIWebView</span><span class="p">,</span> <span class="n">shouldStartLoadWith</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">navigationType</span><span class="p">:</span> <span class="kt">UIWebViewNavigationType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>False if the requests seems to go in the App Store. True if it isn’t.</p>
+
                       </div>
                     </section>
                   </div>
@@ -320,14 +366,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Returns true or false if the <code>request</code> contains a app store uri.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdsWebviewDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIWebViewDelegate</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">checkIfAppStoreUrl</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -347,14 +393,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Sent after a web view starts loading a frame. Creates the loading indicator.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdsWebviewDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIWebViewDelegate</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">webViewDidStartLoad</span><span class="p">(</span><span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">UIWebView</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -374,14 +420,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Sent after a web view finishes loading a frame.
+Sets loadStatusCheckTimer so it times out if it takes too long.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdsWebviewDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIWebViewDelegate</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">webViewDidFinishLoad</span><span class="p">(</span><span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">UIWebView</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -401,14 +448,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Called when a redirect takes too long.
+- Important:
+We can&rsquo;t instantly call notifyServerOfFalseRedirection from scheduledTimerWithTimeInterval. It throws an exception.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdsWebviewDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIWebViewDelegate</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">timeout</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>

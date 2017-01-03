@@ -9,18 +9,20 @@ import Foundation
 
 /**
  Types of Ad Units to be handled by the library
- - standard: for regular UITableViewCell ads.
- - dynamic: for UITableViewCell ads where an UI will be provided.
- - big: for larger UITableViewCell ads.
- - custom: for ads where the implementation will be provided.
  */
 @objc
 public enum AdUnitType: Int {
+    /// for regular UITableViewCell ads.
     case standard
+    /// for UITableViewCell ads where an UI will be provided.
     case dynamic
+    /// for larger UITableViewCell ads.
     case big
+    /// for ads where the implementation will be provided.
     case custom
-
+    /**
+     Returns a string of the nib
+     */
     var nibName: String {
         switch self {
         case .standard: return "StandardAdUnitTableViewCell"

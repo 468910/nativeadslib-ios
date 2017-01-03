@@ -7,6 +7,9 @@
 //
 
 import Foundation
+/**
+ An ad opener is a class responsible for opening an ad.
+ */
 @objc
 public protocol NativeAdOpenerDelegate: NativeAdsWebviewRedirectionsDelegate {
     /**

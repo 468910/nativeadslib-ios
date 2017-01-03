@@ -8,7 +8,11 @@
 
 import Foundation
 
+/**
+ Error this the MarginAdPosition can throw if asked for a position
+ */
 public enum MarginAdPositionError: Error {
+    /// Invalid margin is set.
     case invalidmargin
 }
 

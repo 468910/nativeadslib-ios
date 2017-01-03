@@ -33,17 +33,21 @@ struct Platform {
  Contains constants for the NativeAds
  */
 public struct NativeAdsConstants {
+    /// Holds device information, about the device running this app.
     public struct Device {
         static let iosVersion = NSString(string: UIDevice.current.systemVersion).doubleValue
         static let model = UIDevice.current.model.characters.split { $0 == " " }.map { String($0) }[0]
     }
 
+    /// Some config.
     public struct NativeAds {
-        public static let tokenAdKey = "nativeAdToken"
+        /// URL called to inform us about ads with bad end urls. Ones that make the user end up nowhere.
         public static let notifyBadAdsUrl = "https://nativeadsapi.pocketmedia.mobi/api.php"
         #if BETA
+            /// The URL used to fetch the ads from.
             public static let baseURL = "https://getnativebeta.pocketmedia.mobi/ow.php?output=json"
         #else
+            /// The URL used to fetch the ads from.
             public static let baseURL = "https://getnative.pocketmedia.mobi/ow.php?output=json"
         #endif
     }

@@ -9,17 +9,8 @@
 import UIKit
 import AdSupport
 
-public enum EImageType: String {
-    case allImages = ""
-    case icon = "icon"
-    case hqIcon = "hq_icon"
-    case banner = "banner"
-    case bigImages = "banner,hq_icon"
-    case bannerAndIcons = "banner,icon"
-}
-
 /**
- Object which is used to make a NativeAdsRequest has to be used in combination with the NativeAdsConnectionDelegate
+ NativeAdsRequest is a controller class that will do a network request and call a instance of NativeAdsConnectionDelegate based on the results.
  */
 open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegate {
 
@@ -32,7 +23,14 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
     /// URL session used to do network requests.
     open var session: URLSession? = nil
 
-    public init(adPlacementToken: String?,
+    /**
+     NativeAdsRequest is a controller class that will do a network request and call a instance of NativeAdsConnectionDelegate based on the results.
+     - parameter adPlacementToken: The placement token received from http://third-party.pmgbrain.com/
+     - paramter delegate: instance of NativeAdsConnectionDelegate that will be informed about the network call results.
+     - parameter advertisingTrackingEnabled: Boolean defining if the tracking token is enabled. If none specified system boolean is used.
+     - parameter session: A instance of URLSession to the network requests with.
+     */
+    public init(adPlacementToken: String,
                 delegate: NativeAdsConnectionDelegate?,
                 advertisingTrackingEnabled: Bool = ASIdentifierManager.shared().isAdvertisingTrackingEnabled,
                 session: URLSession = URLSession.shared
@@ -46,8 +44,8 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
 
     /**
      Method used to retrieve native ads which are later accessed by using the delegate.
-     - limit: Limit on how many native ads are to be retrieved.
-     -  imageType: Image Type is used to specify what kind of image type will get requested.
+     - parameter limit: Limit on how many native ads are to be retrieved.
+     - parameter imageType: Image Type is used to specify what kind of image type will get requested.
      */
     open func retrieveAds(_ limit: UInt, imageType: EImageType = EImageType.allImages) {
         let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit, imageType: imageType)
@@ -60,9 +58,9 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
 
     /**
      Method is called as a completionHandler when we hear back from the server
-     - data: The NSData object which contains the server response
-     - response: The NSURLResponse type which indicates what type of response we got back.
-     - error: The error object tells us if there was an error during the external request.
+     - parameter data: The NSData object which contains the server response
+     - parameter response: The NSURLResponse type which indicates what type of response we got back.
+     - parameter error: The error object tells us if there was an error during the external request.
      */
     internal func receivedAds(_ data: Data?, response: URLResponse?, error: Error?) {
         if error != nil {

@@ -13,7 +13,3 @@ FOUNDATION_EXPORT double PocketMediaNativeAdsVersionNumber;
 
 //! Project version string for PocketMediaNativeAds.
 FOUNDATION_EXPORT const unsigned char PocketMediaNativeAdsVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <PocketMediaNativeAds/PublicHeader.h>
-
-

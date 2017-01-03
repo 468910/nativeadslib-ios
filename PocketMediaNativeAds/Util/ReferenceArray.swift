@@ -11,6 +11,9 @@
  */
 @objc
 open class PocketMediaNativeAdsBundle: NSObject {
+    /**
+     Returns the Bundle of the PocketMediaNativeAds framework.
+     */
     open static func loadBundle() -> Bundle? {
         return Bundle(for: NativeAd.self)
     }

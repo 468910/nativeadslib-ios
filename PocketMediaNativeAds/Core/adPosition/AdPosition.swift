@@ -7,6 +7,9 @@
 //
 import Foundation
 
+/**
+ A class that conforms to this protocol is responsible to containing the logic of where an ad should be positioned.
+ */
 @objc
 public protocol AdPosition {
 

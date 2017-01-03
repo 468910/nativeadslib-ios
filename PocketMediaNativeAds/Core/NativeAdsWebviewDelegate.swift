@@ -10,24 +10,39 @@ import UIKit
 import Foundation
 
 /**
- Creates a webview with a native load indicator to tell the user we are loading some content
+ Controls an instance of a webview. Adds a load indicator to give feedback back to the user.
+ It follows each redirect until it reaches the app store or website. Then we'll call the delegate
  */
 @objc
 open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
+    /// Spinning loading view.
     internal var loadingView: UIView?
-    open var wrappedWebView: UIWebView?
+    /// The UIWebView we're controlling.
+    open var wrappedWebView: UIWebView
+    /// The ad we're showing.
     open var nativeAdUnit: NativeAd?
+    /// The time since the last redirect.
     internal var loadStatusCheckTimer: Timer?
-    fileprivate var delegate: NativeAdsWebviewRedirectionsDelegate?
+    /// Delegate to inform once we've hit the final url.
+    fileprivate var delegate: NativeAdsWebviewRedirectionsDelegate
+    /// The last request we went through.
     fileprivate var lastRequest: URLRequest?
 
+    /**
+     Initializer.
+     - parameter delegate: delegate it needs to inform
+     - parameter webView: Instance of the webView it will use.
+     */
     @objc
-    public init(delegate: NativeAdsWebviewRedirectionsDelegate?, webView: UIWebView) {
-        super.init()
+    public init(delegate: NativeAdsWebviewRedirectionsDelegate, webView: UIWebView) {
         self.delegate = delegate
         self.wrappedWebView = webView
+        super.init()
     }
 
+    /**
+     Returns a valid URL. If it is a simulator we'll use the http version.
+     */
     fileprivate func checkSimulatorURL(_ url: URL) -> URL {
         #if DEBUG
             if Platform.isSimulator {
@@ -41,6 +56,9 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         return url
     }
 
+    /**
+     Sent if a web view failed to load a frame.
+     */
     open func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         // Ignore NSURLErrorDomain error -999.
         if error._code == NSURLErrorCancelled {
@@ -73,6 +91,11 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         Logger.debugf("DidFailLoadWithError: %@", description)
     }
 
+    /**
+     Sent before a web view begins loading a frame.
+     - Returns:
+     False if the requests seems to go in the App Store. True if it isn't.
+     */
     open func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         loadStatusCheckTimer?.invalidate()
         loadStatusCheckTimer = nil
@@ -87,6 +110,9 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         }
     }
 
+    /**
+     Returns true or false if the `request` contains a app store uri.
+     */
     open func checkIfAppStoreUrl(_ request: URLRequest) -> Bool {
         //		Logger.debug(request.URL!.absoluteString!)
         if let finalUrl = request.url?.absoluteString {
@@ -105,6 +131,9 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         return false
     }
 
+    /**
+     Sent after a web view starts loading a frame. Creates the loading indicator.
+     */
     open func webViewDidStartLoad(_ webView: UIWebView) {
         Logger.debug("webViewDidStartLoad")
         if loadingView == nil {
@@ -112,12 +141,19 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         }
     }
 
+    /**
+     Sent after a web view finishes loading a frame.
+     Sets loadStatusCheckTimer so it times out if it takes too long.
+     */
     open func webViewDidFinishLoad(_ webView: UIWebView) {
         if loadStatusCheckTimer == nil {
             self.loadStatusCheckTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(timeout), userInfo: nil, repeats: false)
         }
     }
 
+    /**
+     Entry point to this class. Will trigger the actual load of an ad.
+     */
     @objc
     internal func loadUrl(_ nativeAdUnit: NativeAd) {
         self.nativeAdUnit = nativeAdUnit
@@ -128,17 +164,23 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
             openSystemBrowser((request.url!))
         }
 
-        self.wrappedWebView!.loadRequest(request)
+        self.wrappedWebView.loadRequest(request)
         Logger.debug("webview LoadUrl Exited")
     }
 
-    // Called when a redirect takes too long.
-    // We can't instantly call notifyServerOfFalseRedirection from scheduledTimerWithTimeInterval. It throws an exception.
+    /**
+     Called when a redirect takes too long.
+     - Important:
+     We can't instantly call notifyServerOfFalseRedirection from scheduledTimerWithTimeInterval. It throws an exception.
+     */
     open func timeout() {
         Logger.debug("Timed out")
         self.notifyServerOfFalseRedirection()
     }
 
+    /**
+     This method takes care of informing our backend if an ad doesn't take the user anywhere.
+     */
     @objc
     internal func notifyServerOfFalseRedirection(_ session: URLSession = URLSession.shared) {
         let url = URL(string: NativeAdsConstants.NativeAds.notifyBadAdsUrl)
@@ -165,14 +207,17 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 
         // Open the url that won't redirect to something proper.
         // Big chance its an app which is not available anymore in our region.
-        if self.wrappedWebView?.request != nil {
+        if self.wrappedWebView.request != nil {
             Logger.debug("Opening system browser after error")
-            openSystemBrowser((self.wrappedWebView?.request?.url)!)
+            openSystemBrowser((self.wrappedWebView.request?.url)!)
         }
     }
 
+    /**
+     This method will construct the get parameters sent in our notify server of false redirection request.
+     */
     fileprivate func constructDataBodyForNotifyingServerOfFalseRedirection() -> String {
-        let finalUrl: String = (wrappedWebView != nil && wrappedWebView!.request != nil) ? wrappedWebView!.request!.url!.absoluteString : ""
+        let finalUrl: String = (wrappedWebView != nil && wrappedWebView.request != nil) ? wrappedWebView.request!.url!.absoluteString : ""
         let offerid = String(describing: nativeAdUnit?.offerId)
         let adPlacementToken = nativeAdUnit?.adPlacementToken
         let dataBody = "offer_id=\(offerid)" + "&placement_id=\(adPlacementToken)" + "&final_url=\(finalUrl)"
@@ -188,9 +233,12 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.openURL(url)
         }
-        delegate?.didOpenBrowser(url)
+        delegate.didOpenBrowser(url)
     }
 
+    /**
+     Creates the loading indicator.
+     */
     fileprivate func createLoadingIndicator(_ parentView: UIView) {
         // Box config:
         loadingView = UIView(frame: CGRect(x: 115, y: 110, width: 80, height: 80))

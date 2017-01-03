@@ -11,9 +11,13 @@ import Foundation
  Errors that can be thrown by this positioner.
  */
 public enum PredefinedAdPositionError: Error {
+    /// If there are no positions left.
     case notEnoughPositions
 }
 
+/**
+ This ad position implementation makes the ads show up at certain predefined positions.
+ */
 @objc
 open class PredefinedAdPosition: NSObject, AdPosition {
     /// array of positions where ads should be.

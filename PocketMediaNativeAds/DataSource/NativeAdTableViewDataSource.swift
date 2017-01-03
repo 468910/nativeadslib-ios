@@ -74,7 +74,7 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         }
     }
 
-    /*
+    /**
      Gets the view cell for this ad.
      - Returns:
      View cell of this ad.
@@ -186,6 +186,11 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         datasource.tableView?(tableView, commit: editingStyle, forRowAt: indexPath)
     }
 
+    /**
+     Method that dictates what happens when a ad network request resulted successful. It should kick off what to do with this list of ads.
+     - important:
+     Abstract classes that a datasource should override. It's specific to the type of data source.
+     */
     open override func onAdRequestSuccess(_ ads: [NativeAd]) {
         Logger.debugf("Received %d ads", ads.count)
         self.ads = ads

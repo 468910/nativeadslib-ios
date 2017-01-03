@@ -257,8 +257,8 @@ open class NativeAd: NSObject {
     }
 
     /**
-     Opens Native Ad in an View handled by the NativeAdOpener
-     - opener: NativeAdOpener instance handling the opening of the view where the NativeAd will be displayed.
+     Opens this ad in a new view handled by an instance that conforms to the NativeAdOpenerDelegate protocol.
+     - parameter opener: NativeAdOpener instance handling the opening of the view where the NativeAd will be displayed.
      */
     @objc
     open func openAdUrl(_ opener: NativeAdOpenerDelegate) {

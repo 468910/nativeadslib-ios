@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
+/**
+ This class contains the sharedCache used for the images.
+ */
 class Caching {
+    /// Static constant variable with our cache.
     static let sharedCache: NSCache = { () -> NSCache<AnyObject, AnyObject> in
         let cache = NSCache<AnyObject, AnyObject>()
         cache.name = "PocketMediaCache"
@@ -19,12 +23,15 @@ class Caching {
     }()
 }
 
+/**
+ This extension is used to cache the ad images.
+ */
 extension URL {
-
+    /// Defines the method signature of the on completion methods.
     typealias ImageCacheCompletion = (UIImage) -> Void
-
+    /// Holds the callbacks. URI as key.
     fileprivate static var callbacks = [String: [ImageCacheCompletion]]()
-
+    /// Returns the cache key of a URL instance.
     func getCacheKey() -> String {
         return self.absoluteString // self.lastPathComponent!
     }
@@ -36,10 +43,12 @@ extension URL {
             forKey: getCacheKey() as AnyObject) as? UIImage
     }
 
-    /// Fetches the image from the network.
-    /// Stores it in the cache if successful.
-    /// Only calls completion on successful image download.
-    /// Completion is called on the main thread.
+    /**
+     Fetches the image from the network.
+     Stores it in the cache if successful.
+     Only calls completion on successful image download.
+     Completion is called on the main thread.
+     */
     func fetchImage(_ completion: @escaping ImageCacheCompletion) {
 
         if URL.callbacks[self.getCacheKey()] == nil {
@@ -70,10 +79,16 @@ extension URL {
     }
 }
 
+/**
+ This extension is used to cache the ad images.
+ */
 public extension UIImageView {
-    // The last url that an instance of the imageView has asked for.
+    /// The last url that an instance of the imageView has asked for.
     fileprivate static var currentUrl = [UIImageView: URL]()
 
+    /**
+     This method will kick off the caching process. It will start fetching the image if it isn't already being downloaded or in the cache and eventually call set the self.image.
+     */
     func nativeSetImageFromURL(_ url: URL) {
 
         if UIImageView.currentUrl[self] != url {
