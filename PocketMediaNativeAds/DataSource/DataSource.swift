@@ -8,57 +8,35 @@
 
 import Foundation
 
-/*
- * Wraps around the native ad. It represents an ad displayed in a collection.
- * Contains all the logic of the position of the original host array.
- * The idea is that we find the last adListing in the shown list, and based on that figure out what the original position was of a non ad view.
- * @author Pocket Media
- */
-@objc
-open class NativeAdListing: NSObject {
-
-    /**
-     * The ad that is added.
-     */
-    open var ad: NativeAd
-
-    /**
-     *  Position of where the add is added
-     */
-    open var position: Int
-
-    /**
-     *  The amount of adListings that have been added.
-     */
-    open var numOfAdsBefore: Int
-
-    init(ad: NativeAd, position: Int, numOfAdsBefore: Int) {
-        self.ad = ad
-        self.position = position
-        self.numOfAdsBefore = numOfAdsBefore
-    }
-
-    func getOriginalPosition(_ indexPath: IndexPath) -> IndexPath {
-        let position = indexPath.row
-        let normalizedPosition = position - self.numOfAdsBefore
-
-        return IndexPath(row: normalizedPosition, section: indexPath.section)
-    }
-}
-
+/// Ad listings per position
 public typealias AdListingsAndPositions = [Int: NativeAdListing]
+/// Adlistings and their position per section.
 public typealias AdsForSectionMap = [Int: AdListingsAndPositions]
 
+/**
+ Abstract class that defines the bare datasource functionality.
+ */
 @objc
 open class DataSource: NSObject, DataSourceProtocol {
 
+    /// Adlistings and their position per section.
     open var adListingsPerSection: AdsForSectionMap = AdsForSectionMap()
 
+    /// Ads shown in this data source.
     open var ads: [NativeAd] = [NativeAd]()
 
-    // The AdUnitType defines what kind of ad is shown.
+    /**
+     The AdUnitType defines what kind of ad is shown.
+     */
     open var adUnitType: AdUnitType = .standard
 
+    /**
+     Finds an ad listing for a given index path.
+     - returns:
+     a native ad listing. based on the index path.
+     - important:
+     If we don't have a ad listing on that index Path. This method will return nil.s
+     */
     open func getNativeAdListing(_ indexPath: IndexPath) -> NativeAdListing? {
         if let val = adListingsPerSection[indexPath.section]?[indexPath.row] {
             return val
@@ -66,6 +44,12 @@ open class DataSource: NSObject, DataSourceProtocol {
         return nil
     }
 
+    /**
+     Finds an ad listing which is lower than the index path of the given one.
+     So in other words it finds the last ad listing before this indexRow.
+     - returns:
+     A native ad listing. With a lower index path than the one given.
+     */
     open func getNativeAdListingHigherThan(_ indexRow: IndexPath) -> NativeAdListing? {
         var result: NativeAdListing?
         let position = indexRow.row
@@ -86,16 +70,12 @@ open class DataSource: NSObject, DataSourceProtocol {
         return result
     }
 
-    // Abstract classes that a datasource should override
+    /**
+     Method that dictates what happens when a ad network request resulted successful. It should kick off what to do with this list of ads.
+     - important:
+     Abstract classes that a datasource should override. It's specific to the type of data source.
+     */
     open func onAdRequestSuccess(_ newAds: [NativeAd]) {
-        preconditionFailure("This method must be overridden")
-    }
-
-    open func getTruePositionInDataSource(_ indexPath: IndexPath) -> Int {
-        preconditionFailure("This method must be overridden")
-    }
-
-    open func numberOfElements() -> Int {
         preconditionFailure("This method must be overridden")
     }
 }

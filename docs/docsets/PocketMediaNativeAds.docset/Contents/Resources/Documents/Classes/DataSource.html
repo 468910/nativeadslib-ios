@@ -14,7 +14,7 @@
     <a title="DataSource Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (21% documented)</p>
+        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (53% documented)</p>
         <p class="header-right"><a href="https://github.com/Pocketbrain/nativeadslib-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -143,13 +143,30 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:20PocketMediaNativeAds22AdListingsAndPositions">AdListingsAndPositions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:20PocketMediaNativeAds16AdsForSectionMap">AdsForSectionMap</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
         <section>
           <section class="section">
             <h1>DataSource</h1>
-            <p>Undocumented</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">DataSource</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/DataSourceProtocol.html">DataSourceProtocol</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Abstract class that defines the bare datasource functionality.</p>
 
           </section>
           <section class="section task-group-section">
@@ -168,8 +185,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Adlistings and their position per section.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">adListingsPerSection</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:20PocketMediaNativeAds16AdsForSectionMap">AdsForSectionMap</a></span> <span class="o">=</span> <span class="kt"><a href="../Typealiases.html#/s:20PocketMediaNativeAds16AdsForSectionMap">AdsForSectionMap</a></span><span class="p">()</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -187,8 +212,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Ads shown in this data source.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">ads</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/NativeAd.html">NativeAd</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt"><a href="../Classes/NativeAd.html">NativeAd</a></span><span class="p">]()</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -206,8 +239,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The AdUnitType defines what kind of ad is shown.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">adUnitType</span><span class="p">:</span> <span class="kt"><a href="../Enums/AdUnitType.html">AdUnitType</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">standard</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -225,7 +266,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Finds an ad listing for a given index path.
+- returns:
+a native ad listing. based on the index path.
+- important:
+If we don&rsquo;t have a ad listing on that index Path. This method will return nil.s</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">getNativeAdListing</span><span class="p">(</span><span class="n">_</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/NativeAdListing.html">NativeAdListing</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a native ad listing. based on the index path.</p>
 
                       </div>
                     </section>
@@ -244,7 +302,23 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Finds an ad listing which is lower than the index path of the given one.
+So in other words it finds the last ad listing before this indexRow.
+- returns:
+A native ad listing. With a lower index path than the one given.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">getNativeAdListingHigherThan</span><span class="p">(</span><span class="n">_</span> <span class="nv">indexRow</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/NativeAdListing.html">NativeAdListing</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A native ad listing. With a lower index path than the one given.</p>
 
                       </div>
                     </section>
@@ -263,46 +337,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Method that dictates what happens when a ad network request resulted successful. It should kick off what to do with this list of ads.
+- important:
+Abstract classes that a datasource should override. It&rsquo;s specific to the type of data source.</p>
 
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC20PocketMediaNativeAds10DataSource27getTruePositionInDataSourceFV10Foundation9IndexPathSi"></a>
-                    <a name="//apple_ref/swift/Method/getTruePositionInDataSource(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds10DataSource27getTruePositionInDataSourceFV10Foundation9IndexPathSi">getTruePositionInDataSource(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">onAdRequestSuccess</span><span class="p">(</span><span class="n">_</span> <span class="nv">newAds</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/NativeAd.html">NativeAd</a></span><span class="p">])</span></code></pre>
 
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC20PocketMediaNativeAds10DataSource16numberOfElementsFT_Si"></a>
-                    <a name="//apple_ref/swift/Method/numberOfElements()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds10DataSource16numberOfElementsFT_Si">numberOfElements()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
+                        </div>
                       </div>
                     </section>
                   </div>

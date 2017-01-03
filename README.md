@@ -172,6 +172,17 @@ Pocket Media Tech Team, [support@pocketmedia.mobi](mailto:support@pocketmedia.mo
 
 We work for you, we want you to be able to implement the ads in 5 minutes and start monetizing your audience with a totally native and tailored experience! Tell us what you are missing, what else you need our library to make for you - and it will happen.
 
+## Contributing
+
+If you'd like to contribute to this project. Please feel free to fork it and bring over your changes in the form of a pull request.
+Keep in mind that any change of file structure will require you to do a ```pod install```
+
+### Running project locally
+- Clone the repo.
+- Install coacapods.
+- ```pod install```
+- Open the workspace file.
+
 ## License
 
 PocketMediaNativeAds is available under the MIT license. See the LICENSE file for more info.

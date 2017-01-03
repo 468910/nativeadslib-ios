@@ -13,7 +13,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">PocketMediaNativeAds Docs</a> (21% documented)</p>
+        <p><a href="index.html">PocketMediaNativeAds Docs</a> (53% documented)</p>
         <p class="header-right"><a href="https://github.com/Pocketbrain/nativeadslib-ios"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -142,6 +142,17 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:20PocketMediaNativeAds22AdListingsAndPositions">AdListingsAndPositions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:20PocketMediaNativeAds16AdsForSectionMap">AdsForSectionMap</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -157,9 +168,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C20PocketMediaNativeAds27StandardAdUnitTableViewCell"></a>
-                    <a name="//apple_ref/swift/Class/StandardAdUnitTableViewCell" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C20PocketMediaNativeAds27StandardAdUnitTableViewCell">StandardAdUnitTableViewCell</a>
+                    <a name="/s:C20PocketMediaNativeAds26PocketMediaNativeAdsBundle"></a>
+                    <a name="//apple_ref/swift/Class/PocketMediaNativeAdsBundle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C20PocketMediaNativeAds26PocketMediaNativeAdsBundle">PocketMediaNativeAdsBundle</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -167,16 +178,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Standard AdUnit for TableView
-*</p>
+                        <p>Accessing the internal PocketMediaNativeAds Framework Bundle</p>
 
-                        <a href="Classes/StandardAdUnitTableViewCell.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/PocketMediaNativeAdsBundle.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">StandardAdUnitTableViewCell</span><span class="p">:</span> <span class="kt"><a href="Classes/AbstractAdUnitTableViewCell.html">AbstractAdUnitTableViewCell</a></span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">PocketMediaNativeAdsBundle</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -187,26 +197,6 @@
             </div>
             <div class="task-group">
               <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C20PocketMediaNativeAds15NativeAdListing"></a>
-                    <a name="//apple_ref/swift/Class/NativeAdListing" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C20PocketMediaNativeAds15NativeAdListing">NativeAdListing</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Classes/NativeAdListing.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -220,99 +210,17 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Abstract class that defines the bare datasource functionality.</p>
 
                         <a href="Classes/DataSource.html" class="slightly-smaller">See more</a>
                       </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C20PocketMediaNativeAds27AbstractAdUnitTableViewCell"></a>
-                    <a name="//apple_ref/swift/Class/AbstractAdUnitTableViewCell" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C20PocketMediaNativeAds27AbstractAdUnitTableViewCell">AbstractAdUnitTableViewCell</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Class to be subclassed for use with the AdStream.
-*</p>
-
-                        <a href="Classes/AbstractAdUnitTableViewCell.html" class="slightly-smaller">See more</a>
-                      </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">AbstractAdUnitTableViewCell</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span> <span class="kt">NativeAdViewBinderProtocol</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">DataSource</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/DataSourceProtocol.html">DataSourceProtocol</a></span></code></pre>
 
                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C20PocketMediaNativeAds14NativeAdStream"></a>
-                    <a name="//apple_ref/swift/Class/NativeAdStream" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C20PocketMediaNativeAds14NativeAdStream">NativeAdStream</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Used for loading Ads into an UIView.
-*</p>
-
-                        <a href="Classes/NativeAdStream.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdStream</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C20PocketMediaNativeAds16MarginAdPosition"></a>
-                    <a name="//apple_ref/swift/Class/MarginAdPosition" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C20PocketMediaNativeAds16MarginAdPosition">MarginAdPosition</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Classes/MarginAdPosition.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>
@@ -334,33 +242,17 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Wraps around a datasource so it contains both a mix of ads and none ads.</p>
 
                         <a href="Classes/NativeAdTableViewDataSource.html" class="slightly-smaller">See more</a>
                       </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C20PocketMediaNativeAds20PredefinedAdPosition"></a>
-                    <a name="//apple_ref/swift/Class/PredefinedAdPosition" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C20PocketMediaNativeAds20PredefinedAdPosition">PredefinedAdPosition</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdTableViewDataSource</span><span class="p">:</span> <span class="kt"><a href="Classes/DataSource.html">DataSource</a></span><span class="p">,</span> <span class="kt">UITableViewDataSource</span></code></pre>
 
-                        <a href="Classes/PredefinedAdPosition.html" class="slightly-smaller">See more</a>
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -396,9 +288,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C20PocketMediaNativeAds26PocketMediaNativeAdsBundle"></a>
-                    <a name="//apple_ref/swift/Class/PocketMediaNativeAdsBundle" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C20PocketMediaNativeAds26PocketMediaNativeAdsBundle">PocketMediaNativeAdsBundle</a>
+                    <a name="/s:C20PocketMediaNativeAds14NativeAdStream"></a>
+                    <a name="//apple_ref/swift/Class/NativeAdStream" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C20PocketMediaNativeAds14NativeAdStream">NativeAdStream</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -406,18 +298,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <ul>
-<li>Acessing the internal PocketMediaNativeAds Framework Bundle
-*</li>
-</ul>
+                        <p>This class is the entry point of easily integrating nativeAds in existing UI elements of the host.</p>
 
-                        <a href="Classes/PocketMediaNativeAdsBundle.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/NativeAdStream.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">PocketMediaNativeAdsBundle</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdStream</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a></span></code></pre>
 
                         </div>
                       </div>
@@ -431,9 +320,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C20PocketMediaNativeAds17FullscreenBrowser"></a>
-                    <a name="//apple_ref/swift/Class/FullscreenBrowser" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C20PocketMediaNativeAds17FullscreenBrowser">FullscreenBrowser</a>
+                    <a name="/s:C20PocketMediaNativeAds15NativeAdListing"></a>
+                    <a name="//apple_ref/swift/Class/NativeAdListing" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C20PocketMediaNativeAds15NativeAdListing">NativeAdListing</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -441,17 +330,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Class that is used to open the NativeAd in An FullScreen Embedded WebView.
-Default implementation for the NativeAdOpenerDelegate
-*</p>
+                        <p>Wraps around the native ad. It represents an ad displayed in a collection.
+Contains all the logic of the position of the original host array.
+The idea is that we find the last adListing in the shown list, and based on that figure out what the original position was of a non ad view.
+@author Pocket Media</p>
 
-                        <a href="Classes/FullscreenBrowser.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/NativeAdListing.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">FullscreenBrowser</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt"><a href="Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a></span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdListing</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -465,9 +355,9 @@ Default implementation for the NativeAdOpenerDelegate
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C20PocketMediaNativeAds8NativeAd"></a>
-                    <a name="//apple_ref/swift/Class/NativeAd" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C20PocketMediaNativeAds8NativeAd">NativeAd</a>
+                    <a name="/s:C20PocketMediaNativeAds16MarginAdPosition"></a>
+                    <a name="//apple_ref/swift/Class/MarginAdPosition" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C20PocketMediaNativeAds16MarginAdPosition">MarginAdPosition</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -475,18 +365,41 @@ Default implementation for the NativeAdOpenerDelegate
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>NativeAd model object
-It contains the attributes received from the API, and allows to open the click URL</p>
+                        <p>This ad position implementation makes the ads show up at a set interval (margin).</p>
 
-                        <a href="Classes/NativeAd.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/MarginAdPosition.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAd</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">MarginAdPosition</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/AdPosition.html">AdPosition</a></span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C20PocketMediaNativeAds20PredefinedAdPosition"></a>
+                    <a name="//apple_ref/swift/Class/PredefinedAdPosition" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C20PocketMediaNativeAds20PredefinedAdPosition">PredefinedAdPosition</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/PredefinedAdPosition.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>
@@ -549,6 +462,136 @@ It contains the attributes received from the API, and allows to open the click U
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdsWebviewDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UIWebViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C20PocketMediaNativeAds17FullscreenBrowser"></a>
+                    <a name="//apple_ref/swift/Class/FullscreenBrowser" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C20PocketMediaNativeAds17FullscreenBrowser">FullscreenBrowser</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Controller class that is used to open the NativeAd in An FullScreen Embedded WebView.
+Default implementation for the NativeAdOpenerDelegate</p>
+
+                        <a href="Classes/FullscreenBrowser.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">FullscreenBrowser</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt"><a href="Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C20PocketMediaNativeAds8NativeAd"></a>
+                    <a name="//apple_ref/swift/Class/NativeAd" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C20PocketMediaNativeAds8NativeAd">NativeAd</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Model class. It contains all the attributes received from the API, and allows to open the click URL with a specific opener.</p>
+
+                        <a href="Classes/NativeAd.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAd</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C20PocketMediaNativeAds27AbstractAdUnitTableViewCell"></a>
+                    <a name="//apple_ref/swift/Class/AbstractAdUnitTableViewCell" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C20PocketMediaNativeAds27AbstractAdUnitTableViewCell">AbstractAdUnitTableViewCell</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Class to be subclassed for use with the AdStream.</p>
+
+                        <a href="Classes/AbstractAdUnitTableViewCell.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">AbstractAdUnitTableViewCell</span><span class="p">:</span> <span class="kt">UITableViewCell</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C20PocketMediaNativeAds27StandardAdUnitTableViewCell"></a>
+                    <a name="//apple_ref/swift/Class/StandardAdUnitTableViewCell" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C20PocketMediaNativeAds27StandardAdUnitTableViewCell">StandardAdUnitTableViewCell</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Standard AdUnit for TableView
+*</p>
+
+                        <a href="Classes/StandardAdUnitTableViewCell.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">StandardAdUnitTableViewCell</span><span class="p">:</span> <span class="kt"><a href="Classes/AbstractAdUnitTableViewCell.html">AbstractAdUnitTableViewCell</a></span></code></pre>
 
                         </div>
                       </div>

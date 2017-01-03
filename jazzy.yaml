@@ -6,7 +6,7 @@ clean: true
 xcodebuild_arguments: [-project,PocketMediaNativeAds.xcodeproj]
 #podspec: PocketMediaNativeAds.podspec
 docset_icon: PocketMediaNativeAdsExample/Images.xcassets/AppIcon.appiconset/Icon-512@2x.png
-exclude: Example/
+exclude: [PocketMediaNativeAdsExample/*,PocketMediaNativeAdsTests/*]
 #swift_version: 3.0
 copyright: '© 2017 [PocketMedia](http://pocketmedia.mobi).'
 readme: README.md

@@ -121,8 +121,7 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
     @objc
     internal func loadUrl(_ nativeAdUnit: NativeAd) {
         self.nativeAdUnit = nativeAdUnit
-        let url = nativeAdUnit.clickURL
-        let request = URLRequest(url: url! as URL)
+        let request = URLRequest(url: nativeAdUnit.clickURL as URL)
 
         if nativeAdUnit.shouldBeManagedExternally {
             Logger.debug("AdUnit will open in external browser.")
@@ -174,7 +173,7 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 
     fileprivate func constructDataBodyForNotifyingServerOfFalseRedirection() -> String {
         let finalUrl: String = (wrappedWebView != nil && wrappedWebView!.request != nil) ? wrappedWebView!.request!.url!.absoluteString : ""
-        let offerid = String(describing: nativeAdUnit?.offerId!)
+        let offerid = String(describing: nativeAdUnit?.offerId)
         let adPlacementToken = nativeAdUnit?.adPlacementToken
         let dataBody = "offer_id=\(offerid)" + "&placement_id=\(adPlacementToken)" + "&final_url=\(finalUrl)"
         return dataBody

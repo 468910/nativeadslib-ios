@@ -14,7 +14,7 @@
     <a title="NativeAdStream Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (21% documented)</p>
+        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (53% documented)</p>
         <p class="header-right"><a href="https://github.com/Pocketbrain/nativeadslib-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -143,6 +143,17 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:20PocketMediaNativeAds22AdListingsAndPositions">AdListingsAndPositions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:20PocketMediaNativeAds16AdsForSectionMap">AdsForSectionMap</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -155,8 +166,7 @@
 
                 </div>
               </div>
-            <p>Used for loading Ads into an UIView.
-*</p>
+            <p>This class is the entry point of easily integrating nativeAds in existing UI elements of the host.</p>
 
           </section>
           <section class="section task-group-section">
@@ -175,14 +185,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The view we&rsquo;re going to integrate the native ads in.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdStream</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a></span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">view</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -202,14 +212,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The mixed datasource</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdStream</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a></span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">datasource</span><span class="p">:</span> <span class="kt"><a href="../Classes/DataSource.html">DataSource</a></span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -229,16 +239,102 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initializer of the Native Ad Stream way of implementing ads in existing UI Views.
+The following UI elements are supported:
+- parameter controller: Current controller. So we have context of where the ad click is coming from. (Used for example to get from an ad click)
+- parameter view: The actual view that needs to integrate the ads.
+- paramater adPlacementToken: The placement token received from <a href="http://third-party.pmgbrain.com/">http://third-party.pmgbrain.com/</a>
+- parameter customXib: UINib instance that will be used instead of the StandardAdUnitTableViewCell.
+- parameter adPosition: Instance that conforms to the AdPosition protocol. Dictating where an ad should show.
+- parameter requester: Instance of NativeAdsRequest. We&rsquo;ll create a new instance if nil</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdStream</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">(</span>
+        <span class="nv">controller</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
+        <span class="nv">view</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span>
+        <span class="nv">adPlacementToken</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+        <span class="nv">customXib</span><span class="p">:</span> <span class="kt">UINib</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+        <span class="nv">adPosition</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AdPosition.html">AdPosition</a></span><span class="p">?</span> <span class="o">=</span> <span class="kt"><a href="../Classes/MarginAdPosition.html">MarginAdPosition</a></span><span class="p">(</span><span class="nv">margin</span><span class="p">:</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="nv">requester</span><span class="p">:</span> <span class="kt"><a href="../Classes/NativeAdsRequest.html">NativeAdsRequest</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+    <span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>controller</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Current controller. So we have context of where the ad click is coming from. (Used for example to get from an ad click)</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>view</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The actual view that needs to integrate the ads.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>customXib</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>UINib instance that will be used instead of the StandardAdUnitTableViewCell.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>adPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Instance that conforms to the AdPosition protocol. Dictating where an ad should show.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>requester</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Instance of NativeAdsRequest. We’ll create a new instance if nil</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -256,7 +352,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>This method is called if something goes wrong retrieving the ads.s</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -272,9 +369,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP20PocketMediaNativeAds27NativeAdsConnectionDelegate17didReceiveResultsFGSaCS_8NativeAd_T_"></a>
+                    <a name="/s:FC20PocketMediaNativeAds14NativeAdStream17didReceiveResultsFGSaCS_8NativeAd_T_"></a>
                     <a name="//apple_ref/swift/Method/didReceiveResults(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP20PocketMediaNativeAds27NativeAdsConnectionDelegate17didReceiveResultsFGSaCS_8NativeAd_T_">didReceiveResults(_:)</a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds14NativeAdStream17didReceiveResultsFGSaCS_8NativeAd_T_">didReceiveResults(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -282,7 +379,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>This method is called when we hear back from the server.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -308,14 +406,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This method reloads the known ads.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdStream</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">func</span> <span class="nf">reloadAds</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Enums  Reference</title>
+    <title>Typealiases  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,7 +10,7 @@
     
   </head>
   <body>
-    <a title="Enums  Reference"></a>
+    <a title="Typealiases  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">PocketMediaNativeAds Docs</a> (53% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="index.html">PocketMediaNativeAds Reference</a>
         <img id="carat" src="img/carat.png" />
-        Enums  Reference
+        Typealiases  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -158,8 +158,8 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Enums</h1>
-            <p>The following enums are available globally.</p>
+            <h1>Typealiases</h1>
+            <p>The following typealiases are available globally.</p>
 
           </section>
           <section class="section task-group-section">
@@ -168,9 +168,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:O20PocketMediaNativeAds10AdUnitType"></a>
-                    <a name="//apple_ref/swift/Enum/AdUnitType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:O20PocketMediaNativeAds10AdUnitType">AdUnitType</a>
+                    <a name="/s:20PocketMediaNativeAds16AdsForSectionMap"></a>
+                    <a name="//apple_ref/swift/Alias/AdsForSectionMap" class="dashAnchor"></a>
+                    <a class="token" href="#/s:20PocketMediaNativeAds16AdsForSectionMap">AdsForSectionMap</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -178,35 +178,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Types of Ad Units to be handled by the library
-- standard: for regular UITableViewCell ads.
-- dynamic: for UITableViewCell ads where an UI will be provided.
-- big: for larger UITableViewCell ads.
-- custom: for ads where the implementation will be provided.</p>
+                        <p>Adlistings and their position per section.</p>
 
-                        <a href="Enums/AdUnitType.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">AdUnitType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">AdsForSectionMap</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">:</span> <span class="kt"><a href="Typealiases.html#/s:20PocketMediaNativeAds22AdListingsAndPositions">AdListingsAndPositions</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:O20PocketMediaNativeAds21MarginAdPositionError"></a>
-                    <a name="//apple_ref/swift/Enum/MarginAdPositionError" class="dashAnchor"></a>
-                    <a class="token" href="#/s:O20PocketMediaNativeAds21MarginAdPositionError">MarginAdPositionError</a>
+                    <a name="/s:20PocketMediaNativeAds22AdListingsAndPositions"></a>
+                    <a name="//apple_ref/swift/Alias/AdListingsAndPositions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:20PocketMediaNativeAds22AdListingsAndPositions">AdListingsAndPositions</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -214,65 +205,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Ad listings per position</p>
 
-                        <a href="Enums/MarginAdPositionError.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:O20PocketMediaNativeAds25PredefinedAdPositionError"></a>
-                    <a name="//apple_ref/swift/Enum/PredefinedAdPositionError" class="dashAnchor"></a>
-                    <a class="token" href="#/s:O20PocketMediaNativeAds25PredefinedAdPositionError">PredefinedAdPositionError</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Errors that can be thrown by this positioner.</p>
-
-                        <a href="Enums/PredefinedAdPositionError.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">PredefinedAdPositionError</span><span class="p">:</span> <span class="kt">Error</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">AdListingsAndPositions</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">:</span> <span class="kt"><a href="Classes/NativeAdListing.html">NativeAdListing</a></span><span class="p">]</span></code></pre>
 
                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:O20PocketMediaNativeAds10EImageType"></a>
-                    <a name="//apple_ref/swift/Enum/EImageType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:O20PocketMediaNativeAds10EImageType">EImageType</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Enums/EImageType.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>

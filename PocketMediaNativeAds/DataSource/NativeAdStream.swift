@@ -2,22 +2,35 @@
 //  Pods
 //
 //  Created by Pocket Media on 25/05/16.
-//  This class is the entry point of easily integrating nativeAds in existing UI elements of the host.
 //
 
 import UIKit
 
 /**
- Used for loading Ads into an UIView.
- **/
+ This class is the entry point of easily integrating nativeAds in existing UI elements of the host.
+ */
 @objc
 open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
 
+    /// The view we're going to integrate the native ads in.
     open var view: UIView?
+    /// The mixed datasource
     open var datasource: DataSource!
+    /// The instance of a requester which we'll use to do the network requests.
     fileprivate var requester: NativeAdsRequest!
+    /// The amount of ads previously requested. (Due to the fact that we can reload without redefining the amount)
     fileprivate var limit: UInt = 2
 
+    /**
+     Initializer of the Native Ad Stream way of implementing ads in existing UI Views.
+     The following UI elements are supported:
+     - parameter controller: Current controller. So we have context of where the ad click is coming from. (Used for example to get from an ad click)
+     - parameter view: The actual view that needs to integrate the ads.
+     - paramater adPlacementToken: The placement token received from http://third-party.pmgbrain.com/
+     - parameter customXib: UINib instance that will be used instead of the StandardAdUnitTableViewCell.
+     - parameter adPosition: Instance that conforms to the AdPosition protocol. Dictating where an ad should show.
+     - parameter requester: Instance of NativeAdsRequest. We'll create a new instance if nil
+     */
     @objc
     public required init(
         controller: UIViewController,
@@ -36,6 +49,8 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
             self.requester = requester
         }
 
+        self.view = view
+
         // Depending on the view that was sent along, use one of our known implementations.
         switch view {
         case let tableView as UITableView:
@@ -47,7 +62,6 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
                 }
             }
 
-            self.view = tableView
             datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adPosition: adPosition!)
             break
             //            case let collectionView as UICollectionView:
@@ -64,11 +78,14 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     }
 
     @objc
+    /**
+     This method is called if something goes wrong retrieving the ads.s
+     */
     open func didReceiveError(_ error: Error) {
-        Logger.debug("There was an Error Retrieving ads", error)
+        Logger.debug("There was an error retrieving ads", error)
     }
 
-    /*
+    /**
      * This method is called when we hear back from the server.
      */
     @objc
@@ -80,7 +97,7 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
         datasource!.onAdRequestSuccess(newAds)
     }
 
-    /*
+    /**
      * This method reloads the known ads.
      */
     @objc open func reloadAds() {

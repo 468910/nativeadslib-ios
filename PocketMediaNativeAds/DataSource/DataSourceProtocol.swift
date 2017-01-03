@@ -3,7 +3,7 @@
 //  PocketMediaNativeAds
 //
 //  Created by Pocket Media on 02/03/16.
-//  Copyright © 2016 CocoaPods. All rights reserved.
+//  Copyright © 2016 PocketMedia. All rights reserved.
 //
 
 import Foundation

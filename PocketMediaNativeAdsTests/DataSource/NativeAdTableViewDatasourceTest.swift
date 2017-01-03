@@ -3,7 +3,7 @@
 //  PocketMediaNativeAds
 //
 //  Created by Kees Bank on 20/09/16.
-//
+//  Copyright © 2016 PocketMedia. All rights reserved.
 //
 
 import XCTest
