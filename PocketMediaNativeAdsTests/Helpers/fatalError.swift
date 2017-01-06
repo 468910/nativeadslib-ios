@@ -53,6 +53,7 @@ extension XCTestCase {
         FatalErrorUtil.replaceFatalError { message, _, _ in
             assertionMessage = message
             expect.fulfill()
+            abort()
         }
 
         // act, perform on separate thead because a call to fatalError pauses forever
