@@ -283,7 +283,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
         let parentView = UIWebView()
         subject!.webViewDidStartLoad(parentView)
 
-        var foundView: UIView? = nil
+        var foundView: UIView?
         for subview in parentView.subviews {
             if subview.isKind(of: UIView.self) && subview.frame.height == 80 && subview.frame.width == 80 {
                 foundView = subview

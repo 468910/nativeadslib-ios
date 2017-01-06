@@ -9,6 +9,9 @@
 import UIKit
 import AdSupport
 
+/**
+ Types of images for the ads we want to receive. If an ad doesn't have the required image type it won't be returned.
+ */
 @objc
 public enum EImageType: Int, CustomStringConvertible {
 
@@ -57,7 +60,7 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
     /// Check whether advertising tracking is limited
     open var advertisingTrackingEnabled: Bool? = false
     /// URL session used to do network requests.
-    open var session: URLSession? = nil
+    open var session: URLSession?
 
     /**
      NativeAdsRequest is a controller class that will do a network request and call a instance of NativeAdsConnectionDelegate based on the results.
@@ -73,8 +76,8 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
         super.init()
         self.adPlacementToken = withAdPlacementToken
         self.delegate = delegate
-        self.advertisingTrackingEnabled = ASIdentifierManager.sharedManager().advertisingTrackingEnabled
-        self.session = NSURLSession.sharedSession()
+        self.advertisingTrackingEnabled = ASIdentifierManager.shared().isAdvertisingTrackingEnabled
+        self.session = URLSession.shared
     }
 
     // not objc compatible because of the usage of URLSessionProtocol
@@ -96,7 +99,7 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
      - parameter imageType: Image Type is used to specify what kind of image type will get requested.
      */
     @objc
-  open func retrieveAds(_ limit: UInt, imageType: EImageType = EImageType.allImages) {
+    open func retrieveAds(_ limit: UInt, imageType: EImageType = EImageType.allImages) {
         let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit, imageType: imageType)
         Logger.debugf("Invoking: %@", nativeAdURL)
         if let url = URL(string: nativeAdURL) {

@@ -61,10 +61,9 @@ class MockURLSession: URLSession {
 
     override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Swift.Void)
         -> URLSessionDataTask {
-            lastURL = url
-            return task
-        }
-
+        lastURL = url
+        return task
+    }
 }
 
 class NativeAdsRequestTest: XCTestCase {

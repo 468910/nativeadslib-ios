@@ -102,7 +102,7 @@ class NativeAdStreamTest: XCTestCase {
          XCTAssert(subject.adsPositions! == [0, 1, 3], "It should sort the adsPositions")
          subject.didReceiveResults(ads)
          XCTAssert((subject.datasource.ads) != nil)
-        */
+         */
     }
 
     func testRequestAds() {
