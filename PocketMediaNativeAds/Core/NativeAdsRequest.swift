@@ -43,7 +43,6 @@ public enum EImageType: Int, CustomStringConvertible {
         case .banner: return "banner"
         case .bigImages: return "banner,hq_icon"
         case .bannerAndIcons: return "banner,icon"
-        default: return ""
         }
     }
 }

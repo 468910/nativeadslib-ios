@@ -217,7 +217,7 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
      This method will construct the get parameters sent in our notify server of false redirection request.
      */
     fileprivate func constructDataBodyForNotifyingServerOfFalseRedirection() -> String {
-        let finalUrl: String = (wrappedWebView != nil && wrappedWebView.request != nil) ? wrappedWebView.request!.url!.absoluteString : ""
+        let finalUrl: String = (wrappedWebView.request != nil) ? wrappedWebView.request!.url!.absoluteString : ""
         let offerid = String(describing: nativeAdUnit?.offerId)
         let adPlacementToken = nativeAdUnit?.adPlacementToken
         let dataBody = "offer_id=\(offerid)" + "&placement_id=\(adPlacementToken)" + "&final_url=\(finalUrl)"
