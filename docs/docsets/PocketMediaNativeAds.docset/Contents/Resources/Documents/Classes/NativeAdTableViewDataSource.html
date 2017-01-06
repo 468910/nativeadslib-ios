@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NativeAdTableViewDataSource Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/NativeAdTableViewDataSource" class="dashAnchor"></a>
+    <a title="NativeAdTableViewDataSource Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/Pocketbrain/nativeadslib-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">PocketMediaNativeAds Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        NativeAdTableViewDataSource Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AbstractAdUnitTableViewCell.html">AbstractAdUnitTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DataSource.html">DataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FullscreenBrowser.html">FullscreenBrowser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MarginAdPosition.html">MarginAdPosition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAd.html">NativeAd</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdListing.html">NativeAdListing</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdStream.html">NativeAdStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdTableViewDataSource.html">NativeAdTableViewDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdTableViewDelegate.html">NativeAdTableViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdsRequest.html">NativeAdsRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdsWebviewDelegate.html">NativeAdsWebviewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketMediaNativeAdsBundle.html">PocketMediaNativeAdsBundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PredefinedAdPosition.html">PredefinedAdPosition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StandardAdUnitTableViewCell.html">StandardAdUnitTableViewCell</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/AdUnitType.html">AdUnitType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/EImageType.html">EImageType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MarginAdPositionError.html">MarginAdPositionError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PredefinedAdPositionError.html">PredefinedAdPositionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImageView.html">UIImageView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableView.html">UITableView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/AdPosition.html">AdPosition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DataSourceProtocol.html">DataSourceProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdTableViewDataSourceProtocol.html">NativeAdTableViewDataSourceProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdsWebviewRedirectionsDelegate.html">NativeAdsWebviewRedirectionsDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/NativeAdsConstants.html">NativeAdsConstants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NativeAdsConstants.html#/s:VV20PocketMediaNativeAds18NativeAdsConstants6Device">– Device</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NativeAdsConstants/NativeAds.html">– NativeAds</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V20PocketMediaNativeAds6SImage">SImage</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:20PocketMediaNativeAds22AdListingsAndPositions">AdListingsAndPositions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:20PocketMediaNativeAds16AdsForSectionMap">AdsForSectionMap</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:E20PocketMediaNativeAdsV10Foundation3URL20ImageCacheCompletion">ImageCacheCompletion</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>NativeAdTableViewDataSource</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">NativeAdTableViewDataSource</span><span class="p">:</span> <span class="kt"><a href="../Classes/DataSource.html">DataSource</a></span><span class="p">,</span> <span class="kt">UITableViewDataSource</span></code></pre>
+
+                </div>
+              </div>
+            <p>Wraps around a datasource so it contains both a mix of ads and none ads.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC20PocketMediaNativeAds27NativeAdTableViewDataSource10datasourcePSo21UITableViewDataSource_"></a>
+                    <a name="//apple_ref/swift/Property/datasource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC20PocketMediaNativeAds27NativeAdTableViewDataSource10datasourcePSo21UITableViewDataSource_">datasource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Original datasource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">datasource</span><span class="p">:</span> <span class="kt">UITableViewDataSource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewCSo11UITableView"></a>
+                    <a name="//apple_ref/swift/Property/tableView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewCSo11UITableView">tableView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Original tableView.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC20PocketMediaNativeAds27NativeAdTableViewDataSource8delegateGSqCS_25NativeAdTableViewDelegate_"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC20PocketMediaNativeAds27NativeAdTableViewDataSource8delegateGSqCS_25NativeAdTableViewDelegate_">delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Original deglegate.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Classes/NativeAdTableViewDelegate.html">NativeAdTableViewDelegate</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSourcecFT10controllerCSo16UIViewController9tableViewCSo11UITableView10adPositionPS_10AdPosition__S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(controller:tableView:adPosition:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSourcecFT10controllerCSo16UIViewController9tableViewCSo11UITableView10adPositionPS_10AdPosition__S0_">init(controller:tableView:adPosition:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Hijacks the sent delegate and datasource and make it use our wrapper. Also registers the ad unit we&rsquo;ll be using.
+- parameter controller: The controller to create NativeAdTableViewDelegate
+- parameter tableView: The tableView this datasource is attached to.
+- parameter adPosition: The instance that will define where ads are positioned.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">(</span><span class="nv">controller</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="nv">adPosition</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AdPosition.html">AdPosition</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>controller</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The controller to create NativeAdTableViewDelegate</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tableView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tableView this datasource is attached to.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>adPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The instance that will define where ads are positioned.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9getAdCellFCS_8NativeAdCS_27AbstractAdUnitTableViewCell"></a>
+                    <a name="//apple_ref/swift/Method/getAdCell(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9getAdCellFCS_8NativeAdCS_27AbstractAdUnitTableViewCell">getAdCell(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the view cell for this ad.
+- Returns:
+View cell of this ad.
+- Important:
+If we can&rsquo;t find the adUnitType.nibname and it isn&rsquo;t of the instance AbstractAdUnitTableViewCell we&rsquo;ll return a AbstractAdUnitTableViewCell so it doesn&rsquo;t crash.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">getAdCell</span><span class="p">(</span><span class="n">_</span> <span class="nv">nativeAd</span><span class="p">:</span> <span class="kt"><a href="../Classes/NativeAd.html">NativeAd</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/AbstractAdUnitTableViewCell.html">AbstractAdUnitTableViewCell</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>View cell of this ad.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView12cellForRowAtV10Foundation9IndexPath_CSo15UITableViewCell"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:cellForRowAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView12cellForRowAtV10Foundation9IndexPath_CSo15UITableViewCell">tableView(_:cellForRowAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Required. Asks the data source for a cell to insert in a particular location of the table view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">cellForRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UITableViewCell</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView21numberOfRowsInSectionSi_Si"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:numberOfRowsInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView21numberOfRowsInSectionSi_Si">tableView(_:numberOfRowsInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the number of rows (table cells) in a specified section.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">numberOfRowsInSection</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView23titleForHeaderInSectionSi_GSqSS_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:titleForHeaderInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView23titleForHeaderInSectionSi_GSqSS_">tableView(_:titleForHeaderInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the data source for the title of the header of the specified section of the table view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">titleForHeaderInSection</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView23titleForFooterInSectionSi_GSqSS_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:titleForFooterInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView23titleForFooterInSectionSi_GSqSS_">tableView(_:titleForFooterInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the data source for the title of the footer of the specified section of the table view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">titleForFooterInSection</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView12canEditRowAtV10Foundation9IndexPath_Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:canEditRowAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView12canEditRowAtV10Foundation9IndexPath_Sb">tableView(_:canEditRowAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the data source to verify that the given row is editable.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">canEditRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView12canMoveRowAtV10Foundation9IndexPath_Sb"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:canMoveRowAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView12canMoveRowAtV10Foundation9IndexPath_Sb">tableView(_:canMoveRowAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the data source whether a given row can be moved to another location in the table view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">canMoveRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView27sectionForSectionIndexTitleSS2atSi_Si"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:sectionForSectionIndexTitle:at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView27sectionForSectionIndexTitleSS2atSi_Si">tableView(_:sectionForSectionIndexTitle:at:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the data source to return the index of the section having the given title and section title index.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">sectionForSectionIndexTitle</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView9moveRowAtV10Foundation9IndexPath2toS3__T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:moveRowAt:to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView9moveRowAtV10Foundation9IndexPath2toS3__T_">tableView(_:moveRowAt:to:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells the data source to move a row at a specific location in the table view to another location.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">moveRowAt</span> <span class="nv">sourceIndexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">,</span> <span class="n">to</span> <span class="nv">destinationIndexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView6commitOSC27UITableViewCellEditingStyle8forRowAtV10Foundation9IndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:commit:forRowAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource9tableViewFTCSo11UITableView6commitOSC27UITableViewCellEditingStyle8forRowAtV10Foundation9IndexPath_T_">tableView(_:commit:forRowAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>default is UITableViewCellEditingStyleNone. This is set by UITableView using the delegate&rsquo;s value for cells who customize their appearance</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">commit</span> <span class="nv">editingStyle</span><span class="p">:</span> <span class="kt">UITableViewCellEditingStyle</span><span class="p">,</span> <span class="n">forRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource18onAdRequestSuccessFGSaCS_8NativeAd_T_"></a>
+                    <a name="//apple_ref/swift/Method/onAdRequestSuccess(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource18onAdRequestSuccessFGSaCS_8NativeAd_T_">onAdRequestSuccess(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Method that dictates what happens when a ad network request resulted successful. It should kick off what to do with this list of ads.
+- important:
+Abstract classes that a datasource should override. It&rsquo;s specific to the type of data source.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">onAdRequestSuccess</span><span class="p">(</span><span class="n">_</span> <span class="nv">ads</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/NativeAd.html">NativeAd</a></span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource14setAdPositionsFGSaCS_8NativeAd_T_"></a>
+                    <a name="//apple_ref/swift/Method/setAdPositions(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource14setAdPositionsFGSaCS_8NativeAd_T_">setAdPositions(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method is responsible for going through a list of new ads and populating self.adListingsPerSection.
+- parameter ads: Array of ads that should be add.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">setAdPositions</span><span class="p">(</span><span class="n">_</span> <span class="nv">ads</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/NativeAd.html">NativeAd</a></span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ads</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Array of ads that should be add.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource6reloadFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/reload()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource6reloadFT_T_">reload()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called everytime tableView.reloadData is called.
+Just like &lsquo;notifyDataSetChanged&rsquo; in android</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">reload</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource16numberOfSectionsFT2inCSo11UITableView_Si"></a>
+                    <a name="//apple_ref/swift/Method/numberOfSections(in:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource16numberOfSectionsFT2inCSo11UITableView_Si">numberOfSections(in:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The actual important to a UITableView functions are down below here.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">numberOfSections</span><span class="p">(</span><span class="k">in</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource29getOriginalPositionForElementFV10Foundation9IndexPathS2_"></a>
+                    <a name="//apple_ref/swift/Method/getOriginalPositionForElement(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds27NativeAdTableViewDataSource29getOriginalPositionForElementFV10Foundation9IndexPathS2_">getOriginalPositionForElement(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the original position of a element on that indexRow. If we have an ad listed before this position normalize.
+- Returns:
+A normalized indexPath.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">getOriginalPositionForElement</span><span class="p">(</span><span class="n">_</span> <span class="nv">indexRow</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IndexPath</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A normalized indexPath.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>© 2017 <a class="link" href="http://pocketmedia.mobi" target="_blank" rel="external">PocketMedia</a>.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -7,6 +7,9 @@
 //
 
 import Foundation
+/**
+ An ad opener is a class responsible for opening an ad.
+ */
 @objc
 public protocol NativeAdOpenerDelegate: NativeAdsWebviewRedirectionsDelegate {
     /**
@@ -14,5 +17,5 @@ public protocol NativeAdOpenerDelegate: NativeAdsWebviewRedirectionsDelegate {
      - adUnit: adUnit whose ad we want to display
      */
     @objc
-    func load(adUnit: NativeAd)
+    func load(_ adUnit: NativeAd)
 }

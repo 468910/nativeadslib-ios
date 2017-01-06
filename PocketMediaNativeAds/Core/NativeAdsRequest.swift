@@ -9,6 +9,9 @@
 import UIKit
 import AdSupport
 
+/**
+ Types of images for the ads we want to receive. If an ad doesn't have the required image type it won't be returned.
+ */
 @objc
 public enum EImageType: Int, CustomStringConvertible {
 
@@ -46,19 +49,26 @@ public enum EImageType: Int, CustomStringConvertible {
 }
 
 /**
- Object which is used to make a NativeAdsRequest has to be used in combination with the NativeAdsConnectionDelegate
+ NativeAdsRequest is a controller class that will do a network request and call a instance of NativeAdsConnectionDelegate based on the results.
  */
-public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegate {
+open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegate {
 
     /// Object to notify about the updates related with the ad request
-    public var delegate: NativeAdsConnectionDelegate?
+    open var delegate: NativeAdsConnectionDelegate?
     /// Needed to identify the ad requests to the server
-    public var adPlacementToken: String?
+    open var adPlacementToken: String?
     /// Check whether advertising tracking is limited
-    public var advertisingTrackingEnabled: Bool? = false
+    open var advertisingTrackingEnabled: Bool? = false
     /// URL session used to do network requests.
-    public var session: URLSessionProtocol? = nil
+    open var session: URLSession?
 
+    /**
+     NativeAdsRequest is a controller class that will do a network request and call a instance of NativeAdsConnectionDelegate based on the results.
+     - parameter withAdPlacementToken: The placement token received from http://third-party.pmgbrain.com/
+     - paramter delegate: instance of NativeAdsConnectionDelegate that will be informed about the network call results.
+     - parameter advertisingTrackingEnabled: Boolean defining if the tracking token is enabled. If none specified system boolean is used.
+     - parameter session: A instance of URLSession to the network requests with.
+     */
     @objc
     public init(withAdPlacementToken: String?,
                 delegate: NativeAdsConnectionDelegate?
@@ -66,15 +76,15 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
         super.init()
         self.adPlacementToken = withAdPlacementToken
         self.delegate = delegate
-        self.advertisingTrackingEnabled = ASIdentifierManager.sharedManager().advertisingTrackingEnabled
-        self.session = NSURLSession.sharedSession()
+        self.advertisingTrackingEnabled = ASIdentifierManager.shared().isAdvertisingTrackingEnabled
+        self.session = URLSession.shared
     }
 
     // not objc compatible because of the usage of URLSessionProtocol
     public init(adPlacementToken: String?,
                 delegate: NativeAdsConnectionDelegate?,
-                advertisingTrackingEnabled: Bool = ASIdentifierManager.sharedManager().advertisingTrackingEnabled,
-                session: URLSessionProtocol = NSURLSession.sharedSession()
+                advertisingTrackingEnabled: Bool = ASIdentifierManager.shared().isAdvertisingTrackingEnabled,
+                session: URLSession = URLSession.shared
     ) {
         super.init()
         self.adPlacementToken = adPlacementToken
@@ -85,26 +95,26 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
 
     /**
      Method used to retrieve native ads which are later accessed by using the delegate.
-     - limit: Limit on how many native ads are to be retrieved.
-     -  imageType: Image Type is used to specify what kind of image type will get requested.
+     - parameter limit: Limit on how many native ads are to be retrieved.
+     - parameter imageType: Image Type is used to specify what kind of image type will get requested.
      */
     @objc
-    public func retrieveAds(limit: UInt, imageType: EImageType = EImageType.allImages) {
+    open func retrieveAds(_ limit: UInt, imageType: EImageType = EImageType.allImages) {
         let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit, imageType: imageType)
         Logger.debugf("Invoking: %@", nativeAdURL)
-        if let url = NSURL(string: nativeAdURL) {
-            let task = self.session!.dataTaskWithURL(url, completionHandler: receivedAds)
+        if let url = URL(string: nativeAdURL) {
+            let task = self.session!.dataTask(with: url, completionHandler: receivedAds)
             task.resume()
         }
     }
 
     /**
      Method is called as a completionHandler when we hear back from the server
-     - data: The NSData object which contains the server response
-     - response: The NSURLResponse type which indicates what type of response we got back.
-     - error: The error object tells us if there was an error during the external request.
+     - parameter data: The NSData object which contains the server response
+     - parameter response: The NSURLResponse type which indicates what type of response we got back.
+     - parameter error: The error object tells us if there was an error during the external request.
      */
-    internal func receivedAds(data: NSData?, response: NSURLResponse?, error: NSError?) {
+    internal func receivedAds(_ data: Data?, response: URLResponse?, error: Error?) {
         if error != nil {
             self.delegate?.didReceiveError(error!)
             return
@@ -113,7 +123,7 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
             self.delegate?.didReceiveError(NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: ["Invalid server response received: data is a nil value.": NSLocalizedDescriptionKey]))
             return
         }
-        if let json: NSArray = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? NSArray {
+        if let json: NSArray = (try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSArray {
             mapAds(json)
         } else {
             self.delegate?.didReceiveError(NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: ["Invalid server response received: Not json.": NSLocalizedDescriptionKey]))
@@ -125,14 +135,14 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
      Called from receivedAds.
      - jsonArray: The json array.
      */
-    internal func mapAds(jsonArray: NSArray) {
+    internal func mapAds(_ jsonArray: NSArray) {
         let ads = jsonArray.filter({
-            ($0 as? NSDictionary) != nil
+            ($0 as? Dictionary<String, Any>) != nil
         })
         var nativeAds: [NativeAd] = []
         for ad in ads {
             do {
-                if let adDict = ad as? NSDictionary {
+                if let adDict = ad as? Dictionary<String, Any> {
                     let ad = try NativeAd(adDictionary: adDict, adPlacementToken: self.adPlacementToken!)
                     nativeAds.append(ad)
                 }
@@ -153,14 +163,14 @@ public class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDeleg
     /**
      This method returns the UUID of the device.
      */
-    private func provideIdentifierForAdvertisingIfAvailable() -> String? {
-        return ASIdentifierManager.sharedManager().advertisingIdentifier?.UUIDString
+    fileprivate func provideIdentifierForAdvertisingIfAvailable() -> String? {
+        return ASIdentifierManager.shared().advertisingIdentifier?.uuidString
     }
 
     /**
      Returns the API URL to invoke to retrieve ads
      */
-    internal func getNativeAdsURL(placementKey: String?, limit: UInt, imageType: EImageType = EImageType.allImages) -> String {
+    internal func getNativeAdsURL(_ placementKey: String?, limit: UInt, imageType: EImageType = EImageType.allImages) -> String {
         let token = provideIdentifierForAdvertisingIfAvailable()
 
         let baseUrl = NativeAdsConstants.NativeAds.baseURL

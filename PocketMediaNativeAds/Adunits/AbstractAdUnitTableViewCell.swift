@@ -3,23 +3,25 @@
 //  PocketMediaNativeAds
 //
 //  Created by Pocket Media on 03/03/16.
-//  Copyright © 2016 CocoaPods. All rights reserved.
+//  Copyright © 2016 PocketMedia. All rights reserved.
 //
 
 import UIKit
 
 /**
  Class to be subclassed for use with the AdStream.
- **/
-public class AbstractAdUnitTableViewCell: UITableViewCell, NativeAdViewBinderProtocol {
-    private(set) public var ad: NativeAd?
+ */
+open class AbstractAdUnitTableViewCell: UITableViewCell {
+    /// The ad shown in this cell.
+    fileprivate(set) open var ad: NativeAd?
 
-    public func render(nativeAd: NativeAd) {
+    /// Called to define what ad should be shown.
+    open func render(_ nativeAd: NativeAd) {
         self.ad = nativeAd
     }
 
-    // After has been loaded from Nib
-    public override func awakeFromNib() {
+    /// After has been loaded from Nib
+    open override func awakeFromNib() {
         super.awakeFromNib()
     }
 }

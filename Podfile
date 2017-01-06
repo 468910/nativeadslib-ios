@@ -4,7 +4,7 @@ inhibit_all_warnings!
 platform :ios, '9.0'
 
 source 'https://github.com/CocoaPods/Specs.git'
-source 'https://bitbucket.org/pocketbrain/pocketmedia-podspecs.git'
+source 'https://github.com/Pocketbrain/nativeadslib-ios.git'
 use_frameworks!
 
 target 'PocketMediaNativeAds' do
@@ -28,11 +28,10 @@ target 'PocketMediaNativeAdsExample' do
 		pod 'PocketMediaNativeAds', :path => './'
 end
 
-#Swift 2.3 compatiblity thingy
+# https://stackoverflow.com/a/38466703/570087
 post_install do |installer|
-	installer.pods_project.targets.each do |target|
-	  target.build_configurations.each do |config|
-	    config.build_settings['SWIFT_VERSION'] = '2.3'
-	  end
-	end
+  installer.pods_project.targets.each  do |target|
+      target.build_configurations.each  do |config| config.build_settings['SWIFT_VERSION'] = '3.0'
+      end
+   end
 end

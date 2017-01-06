@@ -13,26 +13,30 @@ extension Selector {
 }
 
 /**
- Class that is used to open the NativeAd in An FullScreen Embedded WebView.
+ Controller class that is used to open the NativeAd in An FullScreen Embedded WebView.
  Default implementation for the NativeAdOpenerDelegate
- **/
-public class FullscreenBrowser: UIViewController, NativeAdOpenerDelegate {
-
+ */
+open class FullscreenBrowser: UIViewController, NativeAdOpenerDelegate {
+    /// The original viewController. To give some context of where we are.
     internal var originalViewController: UIViewController?
-
+    /// The actual webView we are controlling here.
     internal var webView: UIWebView?
+    /// Instance of the delegate we need to inform about events happening here.
     internal var webViewDelegate: NativeAdsWebviewDelegate?
 
+    /**
+     Initializes the FullScreen Embedded WebView native ad opener.
+     */
     @objc
     public init(parentViewController: UIViewController) {
-        super.init(nibName: nil, bundle: NSBundle.mainBundle())
+        super.init(nibName: nil, bundle: Bundle.main)
 
         self.originalViewController = parentViewController
         let bounds = self.originalViewController!.view.bounds
         if bounds.width != 0 && bounds.height != 0 {
             setupWebView(bounds.width, height: bounds.height)
         } else {
-            setupWebView(UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
+            setupWebView(UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         }
         addSubView()
 
@@ -41,12 +45,21 @@ public class FullscreenBrowser: UIViewController, NativeAdOpenerDelegate {
         }
     }
 
+    /**
+     Required to be implemented. Do not use this initializer.
+     */
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /**
+     Called at initialization to setup the webView and set self.webView and self.webViewDelegate
+     - parameter: width: The width of the webView. (The initializer will use the bounds of a sent viewController, otherwise revert back to the bounds of the device)
+     - parameter: height: The height of the webView. (The initializer will use the bounds of a sent viewController, otherwise revert back to the bounds of the device)
+     - parameter: the delegate used with this webView. If none specified we'll create a new instance.
+     */
     internal func setupWebView(
-        width: CGFloat,
+        _ width: CGFloat,
         height: CGFloat,
         delegate: NativeAdsWebviewDelegate? = nil
     ) {
@@ -63,26 +76,31 @@ public class FullscreenBrowser: UIViewController, NativeAdOpenerDelegate {
         self.webView!.delegate = self.webViewDelegate
     }
 
+    /**
+     Add black background view in the webview.
+     */
     internal func addSubView() {
-        let blackView = UIView(frame: CGRect.init(x: 0, y: 0, width: webView!.bounds.width, height: webView!.bounds.height))
-        blackView.backgroundColor = UIColor.whiteColor()
-        webView!.addSubview(blackView)
+        if let webView = self.webView {
+            let blackView = UIView(frame: CGRect.init(x: 0, y: 0, width: webView.bounds.width, height: webView.bounds.height))
+            blackView.backgroundColor = UIColor.white
+            webView.addSubview(blackView)
+        }
     }
 
-    private func addCloseButton() {
-        let button = UIButton(type: UIButtonType.System)
-        button.frame = CGRectMake(
-            UIScreen.mainScreen().bounds.width - UIScreen.mainScreen().bounds.width * 0.10, 0,
-            UIScreen.mainScreen().bounds.width * 0.10,
-            UIScreen.mainScreen().bounds.height * 0.10
+    fileprivate func addCloseButton() {
+        let button = UIButton(type: UIButtonType.system)
+        button.frame = CGRect(
+            x: UIScreen.main.bounds.width - UIScreen.main.bounds.width * 0.10, y: 0,
+            width: UIScreen.main.bounds.width * 0.10,
+            height: UIScreen.main.bounds.height * 0.10
         )
-        button.backgroundColor = UIColor.clearColor()
-        button.setImage(UIImage(named: "close"), forState: UIControlState.Normal)
-        button.addTarget(self, action: .closeAction, forControlEvents: UIControlEvents.TouchUpInside)
+        button.backgroundColor = UIColor.clear
+        button.setImage(UIImage(named: "close"), for: UIControlState())
+        button.addTarget(self, action: .closeAction, for: UIControlEvents.touchUpInside)
         self.view.addSubview(button)
     }
 
-    private func show(adUnit: NativeAd) {
+    fileprivate func show(_ adUnit: NativeAd) {
         self.webViewDelegate!.loadUrl(adUnit)
     }
 
@@ -91,7 +109,7 @@ public class FullscreenBrowser: UIViewController, NativeAdOpenerDelegate {
      - adUnit: adUnit whose ad we want to display
      */
     @objc
-    public func load(adUnit: NativeAd) {
+    open func load(_ adUnit: NativeAd) {
         // In case the original controller is attached to a UINavigationController, we use it
         // to push our new fullscreen browser
         if self.originalViewController!.navigationController != nil {
@@ -100,33 +118,39 @@ public class FullscreenBrowser: UIViewController, NativeAdOpenerDelegate {
             // If the original view controller doesn't have an UINavigationController
             // we will display a new view
             addCloseButton()
-            self.originalViewController!.presentViewController(self, animated: true, completion: { () -> Void in
+            self.originalViewController!.present(self, animated: true, completion: { () -> Void in
                 self.show(adUnit)
             })
         }
     }
 
+    /**
+     Invoked when the external browser is opened with the final URL
+     */
     @objc
-    public func didOpenBrowser(url: NSURL) {
+    open func didOpenBrowser(_ url: URL) {
         if let _ = self.originalViewController?.navigationController {
-            self.originalViewController?.navigationController?.popViewControllerAnimated(true)
+            _ = self.originalViewController?.navigationController?.popViewController(animated: true)
         } else {
             self.closeAction()
         }
     }
 
-    public override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
+    /**
+     Tells the view that its superview is about to change to the specified superview.
+     */
+    open override func willMove(toParentViewController parent: UIViewController?) {
 
-    public override func willMoveToParentViewController(parent: UIViewController?) {
         if parent == nil {
             self.webView!.stopLoading()
         }
     }
 
+    /**
+     Invoked when the user clicks on the close button.
+     */
     internal func closeAction() {
         self.webView!.stopLoading()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

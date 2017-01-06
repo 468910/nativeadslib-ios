@@ -10,24 +10,40 @@ import UIKit
 import Foundation
 
 /**
- Creates a webview with a native load indicator to tell the user we are loading some content
+ Controls an instance of a webview. Adds a load indicator to give feedback back to the user.
+ It follows each redirect until it reaches the app store or website. Then we'll call the delegate
  */
 @objc
-public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
+open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
+    /// Spinning loading view.
     internal var loadingView: UIView?
-    public var webView: UIWebView?
-    public var nativeAdUnit: NativeAd?
-    internal var loadStatusCheckTimer: NSTimer?
-    private var delegate: NativeAdsWebviewRedirectionsDelegate?
+    /// The UIWebView we're controlling.
+    open var wrappedWebView: UIWebView
+    /// The ad we're showing.
+    open var nativeAdUnit: NativeAd?
+    /// The time since the last redirect.
+    internal var loadStatusCheckTimer: Timer?
+    /// Delegate to inform once we've hit the final url.
+    fileprivate var delegate: NativeAdsWebviewRedirectionsDelegate
+    /// The last request we went through.
+    fileprivate var lastRequest: URLRequest?
 
+    /**
+     Initializer.
+     - parameter delegate: delegate it needs to inform
+     - parameter webView: Instance of the webView it will use.
+     */
     @objc
-    public init(delegate: NativeAdsWebviewRedirectionsDelegate?, webView: UIWebView) {
-        super.init()
+    public init(delegate: NativeAdsWebviewRedirectionsDelegate, webView: UIWebView) {
         self.delegate = delegate
-        self.webView = webView
+        self.wrappedWebView = webView
+        super.init()
     }
 
-    private func checkSimulatorURL(url: NSURL) -> NSURL {
+    /**
+     Returns a valid URL. If it is a simulator we'll use the http version.
+     */
+    fileprivate func checkSimulatorURL(_ url: URL) -> URL {
         #if DEBUG
             if Platform.isSimulator {
                 if url.scheme != "http" &&
@@ -40,21 +56,34 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         return url
     }
 
-    public func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+    /**
+     Sent if a web view failed to load a frame.
+     */
+    open func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         // Ignore NSURLErrorDomain error -999.
-        if error.code == NSURLErrorCancelled {
+        if error._code == NSURLErrorCancelled {
             return
         }
 
+        // The resource could not be loaded because the App Transport Security
+        // policy requires the use of a secure connection
+        if error._code == -1022 {
+            Logger.debug("Error opening insecure URL")
+            if let currentUrl = lastRequest?.url {
+                Logger.debug("Opening url in browser: \(currentUrl.absoluteString)")
+                openSystemBrowser(currentUrl)
+            }
+        }
+
         // Ignore "Frame Load Interrupted" errors. Seen after app store links.
-        if error.code == 102 {
+        if error._code == 102 {
             Logger.debug("FrameLoad Error supressed")
             return
         }
 
         if webView.request != nil && checkIfAppStoreUrl(webView.request!) {
-            Logger.debug("Could not open URL. Opening in system browser: \(webView.request?.URL?.absoluteString)")
-            self.openSystemBrowser(webView.request!.URL!)
+            Logger.debug("Could not open URL. Opening in system browser: \(webView.request?.url?.absoluteString)")
+            self.openSystemBrowser(webView.request!.url!)
         } else if loadStatusCheckTimer == nil {
             notifyServerOfFalseRedirection()
         }
@@ -62,83 +91,115 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         Logger.debugf("DidFailLoadWithError: %@", description)
     }
 
-    public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    /**
+     Sent before a web view begins loading a frame.
+     - Returns:
+     False if the requests seems to go in the App Store. True if it isn't.
+     */
+    open func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         loadStatusCheckTimer?.invalidate()
         loadStatusCheckTimer = nil
+        lastRequest = request
         if checkIfAppStoreUrl(request) {
             webView.stopLoading()
-            Logger.debugf("Url is final for itunes. Opening in the browser: %@", (request.URL?.absoluteString)!)
-            openSystemBrowser((request.URL!))
+            Logger.debugf("Url is final for itunes. Opening in the browser: %@", (request.url?.absoluteString)!)
+            openSystemBrowser((request.url!))
             return false
         } else {
             return true
         }
     }
 
-    public func checkIfAppStoreUrl(request: NSURLRequest) -> Bool {
+    /**
+     Returns true or false if the `request` contains a app store uri.
+     */
+    open func checkIfAppStoreUrl(_ request: URLRequest) -> Bool {
         //		Logger.debug(request.URL!.absoluteString!)
-        if let finalUrl = request.URL?.absoluteString {
-            if finalUrl.lowercaseString.hasPrefix("itms") {
+        if let finalUrl = request.url?.absoluteString {
+            if finalUrl.lowercased().hasPrefix("itms") {
                 Logger.debug("has prefix itms")
                 return true
             }
-            if let host = request.URL?.host {
+            if let host = request.url?.host {
                 if host.hasPrefix("itunes.apple.com") || host.hasPrefix("appstore.com") {
                     Logger.debug("Has prefix itunes.apple.com or appstore.com")
                     return true
                 }
             }
         }
-        Logger.debug(request.URL!.absoluteString! + " Returned false")
+        Logger.debug(request.url!.absoluteString + ": not an appstore url.")
         return false
     }
 
-    public func webViewDidStartLoad(webView: UIWebView) {
+    /**
+     Sent after a web view starts loading a frame. Creates the loading indicator.
+     */
+    open func webViewDidStartLoad(_ webView: UIWebView) {
         Logger.debug("webViewDidStartLoad")
         if loadingView == nil {
             self.createLoadingIndicator(webView)
         }
     }
 
-    public func webViewDidFinishLoad(webView: UIWebView) {
+    /**
+     Sent after a web view finishes loading a frame.
+     Sets loadStatusCheckTimer so it times out if it takes too long.
+     */
+    open func webViewDidFinishLoad(_ webView: UIWebView) {
         if loadStatusCheckTimer == nil {
-            self.loadStatusCheckTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(timeout), userInfo: nil, repeats: false)
+            self.loadStatusCheckTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(timeout), userInfo: nil, repeats: false)
         }
     }
 
+    /**
+     Entry point to this class. Will trigger the actual load of an ad.
+     */
     @objc
-    internal func loadUrl(nativeAdUnit: NativeAd) {
+    internal func loadUrl(_ nativeAdUnit: NativeAd) {
         self.nativeAdUnit = nativeAdUnit
-        let url = nativeAdUnit.clickURL
-        let request = NSURLRequest(URL: url!)
-        self.webView!.loadRequest(request)
+        let request = URLRequest(url: nativeAdUnit.clickURL as URL)
+
+        if nativeAdUnit.shouldBeManagedExternally {
+            Logger.debug("AdUnit will open in external browser.")
+            openSystemBrowser((request.url!))
+        }
+
+        self.wrappedWebView.loadRequest(request)
         Logger.debug("webview LoadUrl Exited")
     }
 
-    // Called when a redirect takes too long.
-    // We can't instantly call notifyServerOfFalseRedirection from scheduledTimerWithTimeInterval. It throws an exception.
-    public func timeout() {
+    /**
+     Called when a redirect takes too long.
+     - Important:
+     We can't instantly call notifyServerOfFalseRedirection from scheduledTimerWithTimeInterval. It throws an exception.
+     */
+    open func timeout() {
         Logger.debug("Timed out")
         self.notifyServerOfFalseRedirection()
     }
 
+    /**
+     This method takes care of informing our backend if an ad doesn't take the user anywhere.
+     */
     @objc
-    internal func notifyServerOfFalseRedirection(session: NSURLSession = NSURLSession.sharedSession()) {
-        let url = NSURL(string: NativeAdsConstants.NativeAds.notifyBadAdsUrl)
-        let req = NSMutableURLRequest(URL: url!)
+    internal func notifyServerOfFalseRedirection(_ session: URLSession = URLSession.shared) {
+        let url = URL(string: NativeAdsConstants.NativeAds.notifyBadAdsUrl)
+        let req = NSMutableURLRequest(url: url!)
         let dataBody = constructDataBodyForNotifyingServerOfFalseRedirection()
 
-        req.HTTPMethod = "POST"
-        req.HTTPBody = dataBody.dataUsingEncoding(NSUTF8StringEncoding)
+        req.httpMethod = "POST"
+        req.httpBody = dataBody.data(using: String.Encoding.utf8)
 
-        let dataTask = session.downloadTaskWithRequest(req, completionHandler: { data, response, error in
+        let dataTask = session.dataTask(with: url!, completionHandler: { data, response, error in
             if error != nil {
                 Logger.error("error", error!)
             }
-            if let httpResponse = response as? NSHTTPURLResponse {
+            if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode != 200 {
                     Logger.debug("response was not 200: \(response)")
                     return
+                } else {
+                    Logger.debug("wrong redirection notified")
                 }
             }
         })
@@ -146,14 +207,18 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
 
         // Open the url that won't redirect to something proper.
         // Big chance its an app which is not available anymore in our region.
-        if self.webView?.request != nil {
-            openSystemBrowser((self.webView?.request?.URL)!)
+        if self.wrappedWebView.request != nil {
+            Logger.debug("Opening system browser after error")
+            openSystemBrowser((self.wrappedWebView.request?.url)!)
         }
     }
 
-    private func constructDataBodyForNotifyingServerOfFalseRedirection() -> String {
-        let finalUrl: String = (webView != nil && webView!.request != nil) ? webView!.request!.URL!.absoluteString! : ""
-        let offerid = String(nativeAdUnit?.offerId!)
+    /**
+     This method will construct the get parameters sent in our notify server of false redirection request.
+     */
+    fileprivate func constructDataBodyForNotifyingServerOfFalseRedirection() -> String {
+        let finalUrl: String = (wrappedWebView != nil && wrappedWebView.request != nil) ? wrappedWebView.request!.url!.absoluteString : ""
+        let offerid = String(describing: nativeAdUnit?.offerId)
         let adPlacementToken = nativeAdUnit?.adPlacementToken
         let dataBody = "offer_id=\(offerid)" + "&placement_id=\(adPlacementToken)" + "&final_url=\(finalUrl)"
         return dataBody
@@ -162,32 +227,35 @@ public class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
     /**
      Opens the system URL, will be invoked when we must not display the URL in the webview.
      */
-    public func openSystemBrowser(url: NSURL) {
-        let urlToOpen: NSURL = checkSimulatorURL(url)
-        Logger.debugf("\n\nRequesting to Safari: %@\n\n", urlToOpen.absoluteString!)
-        if UIApplication.sharedApplication().canOpenURL(url) {
-            UIApplication.sharedApplication().openURL(url)
+    open func openSystemBrowser(_ url: URL) {
+        let urlToOpen: URL = checkSimulatorURL(url)
+        Logger.debugf("\n\nRequesting to Safari: %@\n\n", urlToOpen.absoluteString)
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.openURL(url)
         }
-        delegate?.didOpenBrowser(url)
+        delegate.didOpenBrowser(url)
     }
 
-    private func createLoadingIndicator(parentView: UIView) {
+    /**
+     Creates the loading indicator.
+     */
+    fileprivate func createLoadingIndicator(_ parentView: UIView) {
         // Box config:
         loadingView = UIView(frame: CGRect(x: 115, y: 110, width: 80, height: 80))
         loadingView!.center = parentView.center
-        loadingView!.backgroundColor = UIColor.blackColor()
+        loadingView!.backgroundColor = UIColor.black
         loadingView!.alpha = 0.9
         loadingView!.layer.cornerRadius = 10
 
         // Spin config:
-        let activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        let activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
         activityView.frame = CGRect(x: 20, y: 12, width: 40, height: 40)
         activityView.startAnimating()
 
         // Text config:
         let textLabel = UILabel(frame: CGRect(x: 0, y: 50, width: 80, height: 30))
-        textLabel.textColor = UIColor.whiteColor()
-        textLabel.textAlignment = .Center
+        textLabel.textColor = UIColor.white
+        textLabel.textAlignment = .center
         textLabel.font = UIFont(name: textLabel.font.fontName, size: 13)
         textLabel.text = "Loading..."
 

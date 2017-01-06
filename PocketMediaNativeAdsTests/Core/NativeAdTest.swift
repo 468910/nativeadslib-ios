@@ -9,21 +9,21 @@
 import XCTest
 @testable import PocketMediaNativeAds
 
-public class MockOpener: NativeAdOpenerDelegate {
-    private(set) var loadCalled: Bool = false
+open class MockOpener: NativeAdOpenerDelegate {
+    fileprivate(set) var loadCalled: Bool = false
 
     @objc
-    public func load(adUnit: NativeAd) {
+    open func load(_ adUnit: NativeAd) {
         loadCalled = true
     }
 
     @objc
-    public func didOpenBrowser(url: NSURL) {
+    open func didOpenBrowser(_ url: URL) {
     }
 }
 
 class NativeAdTest: XCTestCase {
-    var data: NSMutableDictionary!
+    var data: Dictionary<String, Any>!
 
     override func setUp() {
         super.setUp()
@@ -37,12 +37,11 @@ class NativeAdTest: XCTestCase {
     }
 
     func testInitCampaign_name() {
-
-        data.removeObjectForKey("campaign_name")
+        data.removeValue(forKey: "campaign_name")
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTFail("Exception should have been thrown")
-        } catch NativeAdsError.InvalidAdNoCampaign {
+        } catch NativeAdsError.invalidAdNoCampaign {
             XCTAssertTrue(true)
         } catch {
             XCTFail("Wrong exception thrown")
@@ -50,11 +49,11 @@ class NativeAdTest: XCTestCase {
     }
 
     func testInitClickUrl() {
-        data.removeObjectForKey("click_url")
+        data.removeValue(forKey: "click_url")
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTFail("Exception should have been thrown")
-        } catch NativeAdsError.InvalidAdNoClickUrl {
+        } catch NativeAdsError.invalidAdNoClickUrl {
             XCTAssertTrue(true)
         } catch {
             XCTFail("Wrong exception thrown")
@@ -64,7 +63,7 @@ class NativeAdTest: XCTestCase {
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTFail("Exception should have been thrown")
-        } catch NativeAdsError.InvalidAdNoClickUrl {
+        } catch NativeAdsError.invalidAdNoClickUrl {
             XCTAssertTrue(true)
         } catch {
             XCTFail("Wrong exception thrown")
@@ -72,11 +71,11 @@ class NativeAdTest: XCTestCase {
     }
 
     func testInitCampaignDescription() {
-        data.removeObjectForKey("campaign_description")
+        data.removeValue(forKey: "campaign_description")
         do {
             let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTAssertTrue(ad.campaignDescription == "")
-        } catch NativeAdsError.InvalidAdNoId {
+        } catch NativeAdsError.invalidAdNoId {
             XCTFail("Exception should not have been thrown")
         } catch {
             XCTFail("Exception should not have been thrown")
@@ -84,11 +83,11 @@ class NativeAdTest: XCTestCase {
     }
 
     func testInitId() {
-        data.removeObjectForKey("id")
+        data.removeValue(forKey: "id")
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTFail("Exception should have been thrown")
-        } catch NativeAdsError.InvalidAdNoId {
+        } catch NativeAdsError.invalidAdNoId {
             XCTAssertTrue(true)
         } catch {
             XCTFail("Wrong exception thrown")
@@ -97,7 +96,7 @@ class NativeAdTest: XCTestCase {
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTFail("Exception should have been thrown")
-        } catch NativeAdsError.InvalidAdNoId {
+        } catch NativeAdsError.invalidAdNoId {
             XCTAssertTrue(true)
         } catch {
             XCTFail("Wrong exception thrown")
@@ -110,31 +109,31 @@ class NativeAdTest: XCTestCase {
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTFail("Exception should have been thrown")
-        } catch NativeAdsError.InvalidAdNoImage {
+        } catch NativeAdsError.invalidAdNoImage {
             XCTAssertTrue(true)
         } catch {
             XCTFail("Wrong exception thrown")
         }
 
-        data["campaign_image"] = "http://google.co.uk/"
+        data["campaign_image"] = "https://google.co.uk/"
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTAssertTrue(true)
-        } catch NativeAdsError.InvalidAdNoId {
+        } catch NativeAdsError.invalidAdNoId {
             XCTFail("Exception should have been thrown")
         } catch {
             XCTFail("Wrong exception thrown")
         }
 
         // Always prefer default_icon
-        let expected = "http://google.com/"
+        let expected = "https://google.com/"
         data["default_icon"] = expected
-        data["campaign_image"] = "http://bing.com/" // Don't prefer bing now ;)
+        data["campaign_image"] = "https://bing.com/" // Don't prefer bing now ;)
         do {
             let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
 
-            if let expectedUrl = NSURL(string: expected) {
-                XCTAssert(ad.campaignImage.isEqual(expectedUrl))
+            if let expectedUrl = URL(string: expected) {
+                XCTAssert(ad.campaignImage == expectedUrl)
             } else {
                 XCTFail("Couldn't get the expected url")
             }
@@ -147,7 +146,7 @@ class NativeAdTest: XCTestCase {
     func testInitImages() {
         do {
             let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
-            XCTAssertTrue(ad.images[EImageType.hqIcon]!.url.isEqual(NSURL(string: "http://google.co.uk/")!))
+            XCTAssertTrue(ad.images[EImageType.hqIcon]!.url == URL(string: "https://google.co.uk/")!)
         } catch {
             XCTFail("Unexpected exception thrown")
         }
@@ -156,7 +155,7 @@ class NativeAdTest: XCTestCase {
         do {
             try NativeAd(adDictionary: data, adPlacementToken: "none")
             XCTFail("Exception should have been thrown")
-        } catch NativeAdsError.InvalidAdNoImages {
+        } catch NativeAdsError.invalidAdNoImages {
             XCTAssertTrue(true)
         } catch {
             XCTFail("Wrong exception thrown")
@@ -166,8 +165,8 @@ class NativeAdTest: XCTestCase {
     func testDescriptions() {
         do {
             let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
-            XCTAssertTrue(ad.description == "NativeAd.LOVOO: Optional(http://offerwall.beta.pmgbrain.com/save-click.php?campaign=12486&impression=13829453&token=1234)")
-            XCTAssertTrue(ad.debugDescription == "NativeAd.LOVOO: Optional(http://offerwall.beta.pmgbrain.com/save-click.php?campaign=12486&impression=13829453&token=1234)")
+            XCTAssertTrue(ad.description == "NativeAd.Optional(\"LOVOO\"): https://getnativebeta.pocketmedia.mobi/save-click.php?campaign=12486&impression=13829453&token=1234")
+            XCTAssertTrue(ad.debugDescription == ad.description) // For some reason someone thought this was a good idea?
             Logger.debug("test: \(ad.description)")
         } catch {
             XCTFail("Unexpected exception thrown")
