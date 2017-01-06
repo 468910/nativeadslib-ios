@@ -127,7 +127,7 @@ class FullscreenBrowserTest: XCTestCase {
             let ad = try MockNativeAd(adDictionary: data, adPlacementToken: "test")
 
             // Set our mocked NativeAdsWebviewDelegate
-            let mockedNativeAdsWebviewDelegate = MockedNativeAdsWebviewDelegate(delegate: subject, webView: subject!.webView!)
+            let mockedNativeAdsWebviewDelegate = MockedNativeAdsWebviewDelegate(delegate: subject!, webView: subject!.webView!)
             subject!.setupWebView(0, height: 0, delegate: mockedNativeAdsWebviewDelegate)
 
             // Setup our call expections

@@ -68,7 +68,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
         webview = MockUIWebView()
         delegate = MockNativeAdsWebviewRedirectionsDelegate()
 
-        subject = NativeAdsWebviewDelegate(delegate: delegate, webView: webview!)
+        subject = NativeAdsWebviewDelegate(delegate: delegate!, webView: webview!)
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -81,7 +81,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
     func testWebViewFailError() {
         // If we pass certain errors it should return and not continue
         // NSURLErrorCancelled
-        subject = MockNativeAdsWebviewDelegate(delegate: delegate, webView: webview!)
+        subject = MockNativeAdsWebviewDelegate(delegate: delegate!, webView: webview!)
         let mockedSubject = subject as! MockNativeAdsWebviewDelegate
 
         var error: NSError
@@ -151,7 +151,7 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
     //    }
 
     func testWebViewSuccess() {
-        subject = MockNativeAdsWebviewDelegate(delegate: delegate, webView: webview!)
+        subject = MockNativeAdsWebviewDelegate(delegate: delegate!, webView: webview!)
         let mockedSubject = subject as! MockNativeAdsWebviewDelegate
 
         let spyWebViewDelegate = SpyWebViewDelegate()
