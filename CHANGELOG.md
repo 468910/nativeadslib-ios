@@ -2,9 +2,13 @@ Pocket Media Native Ads iOS library Changelog
 
 * 1.0.0: Swift 3.0 compatibility.
 * 0.4.2: ATS Compatibility, connecting by default to HTTPs encrypted endpoints.
-* 0.4.1: Improved objective-c compatibility of the library.
-* 0.4.0: Improved performance and stability. Code quality improved. Code is now covered by unit tests. For upgrade process check [upgrade documentation](UPGRADE.md)
-* 0.3.0: Implemented ```AdStream``` for the simplest implementation of ads in UITableViews and CollectionViews.
+* 0.4.1: Improved objective-c compatibility of the library, solved bugs in the way ads are inserted in the UITableView.
+* 0.4.0: we've redone many parts of the library to improve its overall quality:
+	* Improved performance and stability
+	* Code quality improved. 
+	* Code is now covered by unit tests. 
+	* For upgrade process check [upgrade documentation](UPGRADE.md)
+* 0.3.0: implemented ```AdStream``` for the simplest implementation of ads in UITableViews and CollectionViews.
 * 0.2.2: implemented Quality Service - to improve the user experience while opening the ads.
 * 0.2.1: removed app token, replaced by ad placement token.
 * 0.2.0: renamed classes and re-structured internal code to make it cleaner.

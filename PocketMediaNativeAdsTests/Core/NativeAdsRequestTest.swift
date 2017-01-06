@@ -64,6 +64,7 @@ class MockURLSession: URLSession {
             lastURL = url
             return task
         }
+
 }
 
 class NativeAdsRequestTest: XCTestCase {

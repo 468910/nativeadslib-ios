@@ -9,6 +9,42 @@
 import UIKit
 import AdSupport
 
+@objc
+public enum EImageType: Int, CustomStringConvertible {
+
+    case allImages = 0 // ""
+    case icon = 1 // "icon"
+    case hqIcon = 2 // "hq_icon"
+    case banner = 3 // "banner"
+    case bigImages = 4 // "banner,hq_icon"
+    case bannerAndIcons = 5 // "banner,icon"
+
+    init?(string: String) {
+        switch string {
+        case "allImages": self = .allImages
+        case "icon": self = .icon
+        case "hq_icon": self = .hqIcon
+        case "banner": self = .banner
+        case "bigImages": self = .bigImages
+        case "bannerAndIcons": self = .bannerAndIcons
+        default: self = .allImages
+        }
+    }
+
+    public var description: String {
+        switch self {
+            // Use Internationalization, as appropriate.
+        case .allImages: return ""
+        case .icon: return "icon"
+        case .hqIcon: return "hq_icon"
+        case .banner: return "banner"
+        case .bigImages: return "banner,hq_icon"
+        case .bannerAndIcons: return "banner,icon"
+        default: return ""
+        }
+    }
+}
+
 /**
  NativeAdsRequest is a controller class that will do a network request and call a instance of NativeAdsConnectionDelegate based on the results.
  */
@@ -25,12 +61,24 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
 
     /**
      NativeAdsRequest is a controller class that will do a network request and call a instance of NativeAdsConnectionDelegate based on the results.
-     - parameter adPlacementToken: The placement token received from http://third-party.pmgbrain.com/
+     - parameter withAdPlacementToken: The placement token received from http://third-party.pmgbrain.com/
      - paramter delegate: instance of NativeAdsConnectionDelegate that will be informed about the network call results.
      - parameter advertisingTrackingEnabled: Boolean defining if the tracking token is enabled. If none specified system boolean is used.
      - parameter session: A instance of URLSession to the network requests with.
      */
-    public init(adPlacementToken: String,
+    @objc
+    public init(withAdPlacementToken: String?,
+                delegate: NativeAdsConnectionDelegate?
+    ) {
+        super.init()
+        self.adPlacementToken = withAdPlacementToken
+        self.delegate = delegate
+        self.advertisingTrackingEnabled = ASIdentifierManager.sharedManager().advertisingTrackingEnabled
+        self.session = NSURLSession.sharedSession()
+    }
+
+    // not objc compatible because of the usage of URLSessionProtocol
+    public init(adPlacementToken: String?,
                 delegate: NativeAdsConnectionDelegate?,
                 advertisingTrackingEnabled: Bool = ASIdentifierManager.shared().isAdvertisingTrackingEnabled,
                 session: URLSession = URLSession.shared
@@ -47,7 +95,8 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
      - parameter limit: Limit on how many native ads are to be retrieved.
      - parameter imageType: Image Type is used to specify what kind of image type will get requested.
      */
-    open func retrieveAds(_ limit: UInt, imageType: EImageType = EImageType.allImages) {
+    @objc
+  open func retrieveAds(_ limit: UInt, imageType: EImageType = EImageType.allImages) {
         let nativeAdURL = getNativeAdsURL(self.adPlacementToken, limit: limit, imageType: imageType)
         Logger.debugf("Invoking: %@", nativeAdURL)
         if let url = URL(string: nativeAdURL) {
@@ -137,7 +186,7 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
         // Placement key
         apiUrl += "&placement_key=\(placementKey!)"
         // Image type
-        apiUrl += "&image_type=\(imageType.rawValue)"
+        apiUrl += "&image_type=\(imageType.description)"
 
         if advertisingTrackingEnabled == nil || advertisingTrackingEnabled == false {
             apiUrl = apiUrl + "&optout=1"
