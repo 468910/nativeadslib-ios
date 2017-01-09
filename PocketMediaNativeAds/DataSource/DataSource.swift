@@ -1,4 +1,4 @@
-//
+
 //  DataSource.swift
 //  PocketMediaNativeAds
 //
@@ -28,7 +28,22 @@ open class DataSource: NSObject, DataSourceProtocol {
     /**
      The AdUnitType defines what kind of ad is shown.
      */
-    open var adUnitType: AdUnitType = .standard
+    open var adUnitType: AdUnitType!
+
+    init(adUnitType: AdUnitType) {
+        self.adUnitType = adUnitType
+        super.init()
+
+        // Register the ad unit we'll be using.
+        // Custom xib's are registered at NativeAdStream or in the host app if they're doing the manual integration.
+        if adUnitType != .customXib {
+            registerCell(adUnitType.nibName)
+        }
+
+        if checkCell(AdUnitType.customXib.nibName) == nil {
+            preconditionFailure("Something went wrong here. The custom xib should've already been registered at the NativeAdStream class or when doing a custom integration by the host app.")
+        }
+    }
 
     /**
      Finds an ad listing for a given index path.
@@ -73,9 +88,21 @@ open class DataSource: NSObject, DataSourceProtocol {
     /**
      Method that dictates what happens when a ad network request resulted successful. It should kick off what to do with this list of ads.
      - important:
-     Abstract classes that a datasource should override. It's specific to the type of data source.
+     Abstract method that a datasource should override. It's specific to the type of data source.
      */
     open func onAdRequestSuccess(_ newAds: [NativeAd]) {
         preconditionFailure("This method must be overridden")
+    }
+
+    /**
+     This function checks if we have a cell registered with that name. If not we'll register it.
+     */
+    public func registerCell(_ identifier: String) {
+        //        preconditionFailure("This method must be overridden")
+    }
+
+    public func checkCell(_ identifier: String) -> Bool {
+        //        preconditionFailure("This method must be overridden")
+        return false
     }
 }

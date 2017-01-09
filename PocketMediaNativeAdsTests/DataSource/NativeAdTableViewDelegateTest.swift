@@ -178,8 +178,8 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         result = subject?.tableView(tableView, heightForRowAt: IndexPath(row: 1, section: 0))
 
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-        let nib = bundle.loadNibNamed("StandardAdUnitTableViewCell", owner: nil, options: nil)!.first!
-        let view = nib as! StandardAdUnitTableViewCell
+        let nib = bundle.loadNibNamed(AdUnitType.tableViewRegular.nibName, owner: nil, options: nil)!.first!
+        let view = nib as! NativeAdTableViewCell
         XCTAssert(result == view.frame.size.height, "Since the delegate has implemented the heightForHeaderInSection function we should return the value its returning.")
         XCTAssert(datasource.getNativeAdListingCalled, "The function checked if it was an ad.")
         datasource.returngetNativeAdListing = false

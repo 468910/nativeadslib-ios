@@ -11,7 +11,9 @@ import UIKit
 /**
  Protocol to define what each ad unit cell should contain method wise.
  */
-open protocol NativeViewCell: UIView {
-    /// Called to define what ad should be shown.
-    open func render(_ nativeAd: NativeAd)
+public protocol NativeViewCell {
+    /**
+     Called to define what ad should be shown.
+     */
+    func render(_ nativeAd: NativeAd)
 }

@@ -26,6 +26,10 @@ public protocol DataSourceProtocol {
      A native ad listing. With a lower index path than the one given.
      */
     func getNativeAdListing(_ indexPath: IndexPath) -> NativeAdListing?
+
+    func registerCell(_ identifier: String)
+
+    func checkCell(_ identifier: String) -> Bool
 }
 
 /**

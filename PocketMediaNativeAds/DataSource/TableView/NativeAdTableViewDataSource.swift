@@ -35,16 +35,13 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
      */
     @objc
     public required init(controller: UIViewController, tableView: UITableView, adPosition: AdPosition) {
-        if tableView.dataSource != nil {
-            self.datasource = tableView.dataSource!
-        } else {
+        if tableView.dataSource == nil {
             preconditionFailure("Your tableview must have a dataSource set before use.")
         }
-
-        self.adPosition = adPosition
+        self.datasource = tableView.dataSource!
         self.adPosition = adPosition
         self.tableView = tableView
-        super.init()
+        super.init(adUnitType: AdUnitType.tableViewRegular)
         UITableView.swizzleNativeAds(tableView)
 
         // Hijack the delegate and datasource and make it use our wrapper.
@@ -53,25 +50,21 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
             tableView.delegate = self.delegate
         }
         tableView.dataSource = self
-
-        if adUnitType == .custom {
-            if tableView.dequeueReusableCell(withIdentifier: "CustomAdCell") == nil {
-                preconditionFailure("Something went wrong here. CustomAdCell should've already been registered at the NativeAdStream class or when doing a custom integration by the host app.")
-            }
-        } else {
-            // Register the ad unit we'll be using.
-            registerAdUnit(name: adUnitType.nibName)
-        }
     }
 
     /**
      This function checks if we have a cell registered with that name. If not we'll register it.
      */
-    private func registerAdUnit(name: String) {
-        if tableView.dequeueReusableCell(withIdentifier: name) == nil {
-            let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-            tableView.register(UINib(nibName: name, bundle: bundle), forCellReuseIdentifier: name)
+    public override func registerCell(_ identifier: String) {
+        if checkCell(identifier) {
+            return
         }
+        let bundle = PocketMediaNativeAdsBundle.loadBundle()!
+        tableView.register(UINib(nibName: identifier, bundle: bundle), forCellReuseIdentifier: identifier)
+    }
+
+    public override func checkCell(_ identifier: String) -> Bool {
+        return tableView.dequeueReusableCell(withIdentifier: AdUnitType.customXib.nibName) != nil
     }
 
     /**
@@ -79,16 +72,16 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
      - Returns:
      View cell of this ad.
      - Important:
-     If we can't find the adUnitType.nibname and it isn't of the instance AbstractAdUnitTableViewCell we'll return a AbstractAdUnitTableViewCell so it doesn't crash.
+     If we can't find the adUnitType.nibname and it isn't of the instance NativeAdTableViewCell we'll return a UITableViewCell so it doesn't crash.
      */
-    open func getAdCell(_ nativeAd: NativeAd) -> AbstractAdUnitTableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: adUnitType.nibName) as? AbstractAdUnitTableViewCell {
+    open func getAdCell(_ nativeAd: NativeAd) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: adUnitType.nibName) as? NativeAdTableViewCell {
             // Render it.
             cell.render(nativeAd)
             return cell
         }
         Logger.error("Ad unit wasn't registered? Or it changed halfway?")
-        return AbstractAdUnitTableViewCell()
+        return UITableViewCell()
     }
 
     /**

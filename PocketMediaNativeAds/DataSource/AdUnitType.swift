@@ -12,23 +12,23 @@ import Foundation
  */
 @objc
 public enum AdUnitType: Int {
-    /// for regular UITableViewCell ads.
-    case standard
-    /// for UITableViewCell ads where an UI will be provided.
-    case dynamic
-    /// for larger UITableViewCell ads.
-    case big
-    /// for ads where the implementation will be provided.
-    case custom
+    /// for regular UITableViewCell.
+    case tableViewRegular
+    /// for larger UITableViewCell.
+    //    case tableViewBig
+    /// for regular UICollectionItemCell.
+    case collectionViewRegular
+    /// When the xib is provided by the host app.
+    case customXib
     /**
      Returns a string of the nib
      */
     var nibName: String {
         switch self {
-        case .standard: return "StandardAdUnitTableViewCell"
-        case .dynamic: return "DynamicAdUnitTableViewCell"
-        case .big: return "BigNativeAdTableViewCell"
-        case .custom: return "CustomAdCell"
+        case .tableViewRegular: return "NativeAdTableViewCell"
+            //      case .tableViewBig: return "NativeAdTableViewBigCell"
+        case .collectionViewRegular: return "NativeAdCollectionViewCell"
+        case .customXib: return "CustomAdCell"
         }
     }
 }

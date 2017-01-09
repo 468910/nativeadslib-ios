@@ -7,18 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27066B911E23AE3000989475 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27066B901E23AE3000989475 /* CollectionViewController.swift */; };
 		272B90141E2388770016A8D9 /* CustomIntegrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272B90131E2388770016A8D9 /* CustomIntegrationViewController.swift */; };
-		2738F2AB1DD0D27D00779073 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD160D1D8ED57900B31C6A /* MenuViewController.swift */; };
-		2738F2AC1DD0D27D00779073 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD160F1D8ED57F00B31C6A /* AdCell.swift */; };
-		2738F2AD1DD0D27D00779073 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16101D8ED57F00B31C6A /* ItemCell.swift */; };
-		2738F2AE1DD0D27D00779073 /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16111D8ED57F00B31C6A /* ItemTableView.swift */; };
-		2738F2AF1DD0D27D00779073 /* CollectionAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16091D8ED56F00B31C6A /* CollectionAdCell.swift */; };
-		2738F2B01DD0D27D00779073 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD160A1D8ED56F00B31C6A /* CollectionViewController.swift */; };
+		2738F2AF1DD0D27D00779073 /* CollectionItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16091D8ED56F00B31C6A /* CollectionItemCell.swift */; };
 		2738F2B11DD0D27D00779073 /* ExampleTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16151D8ED58E00B31C6A /* ExampleTableViewDataSource.swift */; };
 		2738F2B21DD0D27D00779073 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16161D8ED58E00B31C6A /* TableViewController.swift */; };
 		2738F2B31DD0D27D00779073 /* TableViewWithSectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F04EB1DA7F1C50014949F /* TableViewWithSectionsController.swift */; };
 		2738F2B41DD0D27D00779073 /* ExampleTableViewDataSourceWithSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F04ED1DA7F24C0014949F /* ExampleTableViewDataSourceWithSections.swift */; };
 		2738F2B51DD0D27D00779073 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD162D1D8ED5B500B31C6A /* AppDelegate.swift */; };
+		27B866251E23A9360000FE3D /* ItemTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B866241E23A9360000FE3D /* ItemTableModel.swift */; };
+		27B866291E23AA0B0000FE3D /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B866281E23AA0B0000FE3D /* ItemCell.swift */; };
 		27D288111DD085440020EEAA /* DummyData.json in Resources */ = {isa = PBXBuildFile; fileRef = 27D2880F1DD085300020EEAA /* DummyData.json */; };
 		27DD16081D8ED10C00B31C6A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DD16071D8ED10C00B31C6A /* Images.xcassets */; };
 		27DD16251D8ED5A100B31C6A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27DD161C1D8ED5A100B31C6A /* LaunchScreen.xib */; };
@@ -43,25 +41,23 @@
 
 /* Begin PBXFileReference section */
 		21342A6002AEB9EE10CFC580 /* Pods_PocketMediaNativeAdsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAdsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27066B901E23AE3000989475 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = PocketMediaNativeAdsExample/CollectionView/CollectionViewController.swift; sourceTree = "<group>"; };
 		272B90131E2388770016A8D9 /* CustomIntegrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomIntegrationViewController.swift; path = PocketMediaNativeAdsExample/CustomIntegration/CustomIntegrationViewController.swift; sourceTree = "<group>"; };
 		2736C9401DA4F469002D7BC9 /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "build/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		274E413B1DD1E2C0003DEFDA /* DummyData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = DummyData.json; path = PocketMediaNativeAdsExample/Resources/DummyData.json; sourceTree = "<group>"; };
-		2781C48A1E23A32A00B05ACF /* PocketMediaNativeAdsExample_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PocketMediaNativeAdsExample_Example.app; path = "/Users/iain17/PocketMedia/project/nativeadslib-ios/build/Debug-iphoneos/PocketMediaNativeAdsExample_Example.app"; sourceTree = "<absolute>"; };
 		2789BFE71DA3FCC8008802FE /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "build/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		2789BFEC1DA3FD27008802FE /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "build/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		2789BFF01DA3FF1D008802FE /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "../../../Library/Developer/Xcode/DerivedData/PocketMediaNativeAds-gnigauuiuuimgbatvmuinnysmyto/Build/Products/Debug-iphoneos/PocketMediaNativeAds/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		2789BFF11DA3FF1D008802FE /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "build/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		278C134C1DA2B4B700C604F0 /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "../../../Library/Developer/Xcode/DerivedData/PocketMediaNativeAds-gnigauuiuuimgbatvmuinnysmyto/Build/Products/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		27AF97781D8EEA91003B71D0 /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "build/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
+		27B866231E23A84C0000FE3D /* PocketMediaNativeAdsExample_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketMediaNativeAdsExample_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27B866241E23A9360000FE3D /* ItemTableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemTableModel.swift; path = PocketMediaNativeAdsExample/ItemTableModel.swift; sourceTree = "<group>"; };
+		27B866281E23AA0B0000FE3D /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCell.swift; path = PocketMediaNativeAdsExample/TableView/ItemCell.swift; sourceTree = "<group>"; };
 		27D2880F1DD085300020EEAA /* DummyData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = DummyData.json; path = PocketMediaNativeAdsExample/Resources/DummyData.json; sourceTree = "<group>"; };
 		27DD16021D8ED04500B31C6A /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "../../../Library/Developer/Xcode/DerivedData/PocketMediaNativeAds-gnigauuiuuimgbatvmuinnysmyto/Build/Products/Debug-iphonesimulator/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
 		27DD16071D8ED10C00B31C6A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PocketMediaNativeAdsExample/Images.xcassets; sourceTree = "<group>"; };
-		27DD16091D8ED56F00B31C6A /* CollectionAdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionAdCell.swift; path = PocketMediaNativeAdsExample/CollectionView/CollectionAdCell.swift; sourceTree = "<group>"; };
-		27DD160A1D8ED56F00B31C6A /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = PocketMediaNativeAdsExample/CollectionView/CollectionViewController.swift; sourceTree = "<group>"; };
-		27DD160D1D8ED57900B31C6A /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = PocketMediaNativeAdsExample/Menu/MenuViewController.swift; sourceTree = "<group>"; };
-		27DD160F1D8ED57F00B31C6A /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdCell.swift; path = PocketMediaNativeAdsExample/Menu/Views/AdCell.swift; sourceTree = "<group>"; };
-		27DD16101D8ED57F00B31C6A /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCell.swift; path = PocketMediaNativeAdsExample/Menu/Views/ItemCell.swift; sourceTree = "<group>"; };
-		27DD16111D8ED57F00B31C6A /* ItemTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemTableView.swift; path = PocketMediaNativeAdsExample/Menu/Views/ItemTableView.swift; sourceTree = "<group>"; };
+		27DD16091D8ED56F00B31C6A /* CollectionItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionItemCell.swift; path = PocketMediaNativeAdsExample/CollectionView/CollectionItemCell.swift; sourceTree = "<group>"; };
 		27DD16151D8ED58E00B31C6A /* ExampleTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleTableViewDataSource.swift; path = PocketMediaNativeAdsExample/TableView/ExampleTableViewDataSource.swift; sourceTree = "<group>"; };
 		27DD16161D8ED58E00B31C6A /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = PocketMediaNativeAdsExample/TableView/TableViewController.swift; sourceTree = "<group>"; };
 		27DD161C1D8ED5A100B31C6A /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = PocketMediaNativeAdsExample/Resources/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -95,16 +91,6 @@
 			name = CustomIntegration;
 			sourceTree = "<group>";
 		};
-		27859FD01D8ECE8E00C85D7A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				27DD160F1D8ED57F00B31C6A /* AdCell.swift */,
-				27DD16101D8ED57F00B31C6A /* ItemCell.swift */,
-				27DD16111D8ED57F00B31C6A /* ItemTableView.swift */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
 		27859FD71D8ECEA300C85D7A /* TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +98,7 @@
 				27DD16161D8ED58E00B31C6A /* TableViewController.swift */,
 				3A9F04EB1DA7F1C50014949F /* TableViewWithSectionsController.swift */,
 				3A9F04ED1DA7F24C0014949F /* ExampleTableViewDataSourceWithSections.swift */,
+				27B866281E23AA0B0000FE3D /* ItemCell.swift */,
 			);
 			name = TableView;
 			sourceTree = "<group>";
@@ -119,8 +106,8 @@
 		27859FE21D8ECEC200C85D7A /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				27DD16091D8ED56F00B31C6A /* CollectionAdCell.swift */,
-				27DD160A1D8ED56F00B31C6A /* CollectionViewController.swift */,
+				27DD16091D8ED56F00B31C6A /* CollectionItemCell.swift */,
+				27066B901E23AE3000989475 /* CollectionViewController.swift */,
 			);
 			name = CollectionView;
 			sourceTree = "<group>";
@@ -140,7 +127,6 @@
 			children = (
 				272B90121E2386840016A8D9 /* CustomIntegration */,
 				274E413B1DD1E2C0003DEFDA /* DummyData.json */,
-				27A8EB2E1D8ECD4500F4C90B /* Menu */,
 				27859FE21D8ECEC200C85D7A /* CollectionView */,
 				27859FD71D8ECEA300C85D7A /* TableView */,
 				27859FEB1D8ECEE400C85D7A /* Resources */,
@@ -148,17 +134,9 @@
 				27DD162D1D8ED5B500B31C6A /* AppDelegate.swift */,
 				27DD16071D8ED10C00B31C6A /* Images.xcassets */,
 				27F1E2D71E20018200297D5F /* TabBarController.swift */,
+				27B866241E23A9360000FE3D /* ItemTableModel.swift */,
 			);
 			name = PocketMediaNativeAdsExample;
-			sourceTree = "<group>";
-		};
-		27A8EB2E1D8ECD4500F4C90B /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				27DD160D1D8ED57900B31C6A /* MenuViewController.swift */,
-				27859FD01D8ECE8E00C85D7A /* Views */,
-			);
-			name = Menu;
 			sourceTree = "<group>";
 		};
 		27F09FC91D8EDDF7006CFC19 /* Products */ = {
@@ -175,6 +153,7 @@
 				706B59302CE871EBDDBEE4B4 /* Frameworks */,
 				27F09FC91D8EDDF7006CFC19 /* Products */,
 				867666BA7E4D8056F0D762EB /* Pods */,
+				27B866231E23A84C0000FE3D /* PocketMediaNativeAdsExample_Example.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -224,7 +203,7 @@
 			);
 			name = PocketMediaNativeAdsExample;
 			productName = PocketMediaNativeAds;
-			productReference = 2781C48A1E23A32A00B05ACF /* PocketMediaNativeAdsExample_Example.app */;
+			productReference = 27B866231E23A84C0000FE3D /* PocketMediaNativeAdsExample_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -331,18 +310,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				272B90141E2388770016A8D9 /* CustomIntegrationViewController.swift in Sources */,
-				2738F2AB1DD0D27D00779073 /* MenuViewController.swift in Sources */,
 				27F1E2D81E20018200297D5F /* TabBarController.swift in Sources */,
-				2738F2AC1DD0D27D00779073 /* AdCell.swift in Sources */,
-				2738F2AD1DD0D27D00779073 /* ItemCell.swift in Sources */,
-				2738F2AE1DD0D27D00779073 /* ItemTableView.swift in Sources */,
-				2738F2AF1DD0D27D00779073 /* CollectionAdCell.swift in Sources */,
-				2738F2B01DD0D27D00779073 /* CollectionViewController.swift in Sources */,
+				2738F2AF1DD0D27D00779073 /* CollectionItemCell.swift in Sources */,
+				27B866291E23AA0B0000FE3D /* ItemCell.swift in Sources */,
 				2738F2B11DD0D27D00779073 /* ExampleTableViewDataSource.swift in Sources */,
 				2738F2B21DD0D27D00779073 /* TableViewController.swift in Sources */,
 				2738F2B31DD0D27D00779073 /* TableViewWithSectionsController.swift in Sources */,
 				2738F2B41DD0D27D00779073 /* ExampleTableViewDataSourceWithSections.swift in Sources */,
 				2738F2B51DD0D27D00779073 /* AppDelegate.swift in Sources */,
+				27B866251E23A9360000FE3D /* ItemTableModel.swift in Sources */,
+				27066B911E23AE3000989475 /* CollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

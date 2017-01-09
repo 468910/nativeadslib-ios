@@ -8,11 +8,10 @@
 
 import UIKit
 
-public class CollectionAdCell: UICollectionViewCell {
+public class CollectionItemCell: UICollectionViewCell {
     @IBOutlet weak var appIcon: UIImageView!
-    
+
     public func setData(item: ItemTableModel) {
         appIcon.nativeSetImageFromURL(item.imageURL)
     }
-    
 }

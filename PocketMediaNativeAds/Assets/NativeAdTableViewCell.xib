@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -13,7 +14,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="med-7r-ffj" customClass="StandardAdUnitTableViewCell" customModule="PocketMediaNativeAds">
+        <view contentMode="scaleToFill" restorationIdentifier="NativeAdTableViewCell" id="med-7r-ffj" customClass="NativeAdTableViewCell" customModule="PocketMediaNativeAds">
             <rect key="frame" x="0.0" y="0.0" width="619" height="89"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -68,13 +69,13 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="wgD-AA-UAq"/>
+                            <exclude reference="yOb-Qk-S7I"/>
                             <exclude reference="086-Dk-W3C"/>
                             <exclude reference="8Un-Fp-XaG"/>
                             <exclude reference="Xfo-Ql-Tnd"/>
                             <exclude reference="lRN-uT-WDg"/>
                             <exclude reference="zdd-1r-7yU"/>
-                            <exclude reference="wgD-AA-UAq"/>
-                            <exclude reference="yOb-Qk-S7I"/>
                         </mask>
                     </variation>
                 </view>
@@ -147,9 +148,6 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="5YW-2O-bnT"/>
-                            <exclude reference="Rve-G6-bQK"/>
-                            <exclude reference="efe-dy-XTy"/>
                             <exclude reference="07I-NT-mJl"/>
                             <exclude reference="3KS-J8-5fz"/>
                             <exclude reference="62N-2a-n2a"/>
@@ -160,6 +158,9 @@
                             <exclude reference="i2T-DG-CoE"/>
                             <exclude reference="pMY-xd-Hxo"/>
                             <exclude reference="qqT-sn-Shr"/>
+                            <exclude reference="5YW-2O-bnT"/>
+                            <exclude reference="Rve-G6-bQK"/>
+                            <exclude reference="efe-dy-XTy"/>
                         </mask>
                     </variation>
                 </view>
@@ -271,6 +272,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="F9u-GZ-r2V"/>
+                    <exclude reference="LSw-Iv-dxK"/>
+                    <exclude reference="bow-1E-noV"/>
                     <exclude reference="3WO-XC-Oxp"/>
                     <exclude reference="7Eb-94-u1t"/>
                     <exclude reference="Aac-8d-O4d"/>
@@ -283,17 +287,14 @@
                     <exclude reference="tid-fw-AHT"/>
                     <exclude reference="wGZ-Ry-Bzt"/>
                     <exclude reference="wqn-qm-cTF"/>
-                    <exclude reference="qIL-aK-O5D"/>
-                    <exclude reference="XjI-63-r6S"/>
                     <exclude reference="W1x-GR-7dE"/>
-                    <exclude reference="Csr-xH-8g4"/>
-                    <exclude reference="xnE-nE-JAc"/>
+                    <exclude reference="qIL-aK-O5D"/>
                     <exclude reference="3XX-nS-gGs"/>
                     <exclude reference="cKR-wi-JEO"/>
                     <exclude reference="vOc-e2-gkF"/>
-                    <exclude reference="F9u-GZ-r2V"/>
-                    <exclude reference="LSw-Iv-dxK"/>
-                    <exclude reference="bow-1E-noV"/>
+                    <exclude reference="Csr-xH-8g4"/>
+                    <exclude reference="xnE-nE-JAc"/>
+                    <exclude reference="XjI-63-r6S"/>
                 </mask>
             </variation>
             <connections>

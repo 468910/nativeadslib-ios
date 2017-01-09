@@ -14,7 +14,7 @@ open class DataSourceTest: XCTestCase {
     var subject: DataSource!
 
     open override func setUp() {
-        subject = DataSource()
+        subject = DataSource(adUnitType: AdUnitType.tableViewRegular)
 
         let ad = testHelpers.getNativeAd()
 

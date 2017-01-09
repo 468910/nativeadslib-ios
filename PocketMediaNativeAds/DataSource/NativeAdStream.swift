@@ -15,7 +15,7 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     /// The view we're going to integrate the native ads in.
     open var view: UIView?
     /// The mixed datasource
-    open var datasource: DataSource!
+    open var datasource: DataSource?
     /// The instance of a requester which we'll use to do the network requests.
     fileprivate var requester: NativeAdsRequest!
     /// The amount of ads previously requested. (Due to the fact that we can reload without redefining the amount)
@@ -27,9 +27,11 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
      - parameter controller: Current controller. So we have context of where the ad click is coming from. (Used for example to get from an ad click)
      - parameter view: The actual view that needs to integrate the ads.
      - paramater adPlacementToken: The placement token received from http://third-party.pmgbrain.com/
-     - parameter customXib: UINib instance that will be used instead of the StandardAdUnitTableViewCell.
+     - parameter customXib: UINib instance that will be used instead of the NativeAdTableViewCell.
      - parameter adPosition: Instance that conforms to the AdPosition protocol. Dictating where an ad should show.
      - parameter requester: Instance of NativeAdsRequest. We'll create a new instance if nil
+     - important:
+     For custom xib's you can also set a identifier to 'CustomAdCell'.
      */
     @objc
     public required init(
@@ -50,30 +52,38 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
         }
 
         self.view = view
+        var customXibView = false
 
         // Depending on the view that was sent along, use one of our known implementations.
         switch view {
         case let tableView as UITableView:
+            datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adPosition: adPosition!)
 
             // If a custom xib was sent. Register it.
-            if customXib != nil {
-                if tableView.dequeueReusableCell(withIdentifier: "CustomAdCell") == nil {
-                    tableView.register(customXib, forCellReuseIdentifier: "CustomAdCell")
-                }
+            if customXib != nil && tableView.dequeueReusableCell(withIdentifier: AdUnitType.customXib.nibName) == nil {
+                tableView.register(customXib, forCellReuseIdentifier: AdUnitType.customXib.nibName)
             }
+            customXibView = tableView.dequeueReusableCell(withIdentifier: AdUnitType.customXib.nibName) != nil
 
-            datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adPosition: adPosition!)
             break
             //            case let collectionView as UICollectionView:
-            //                break
+            //                datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adPosition: adPosition!)
+            //
+            //                // If a custom xib was sent. Register it.
+            //                if customXib != nil && collectionView.dequeueReusableCell(withIdentifier: AdUnitType.customXib.nibName) == nil {
+            //                    collectionView.register(customXib, forCellReuseIdentifier: AdUnitType.customXib.nibName)
+            //                }
+            //                customXibView = collectionView.dequeueReusableCell(withIdentifier: AdUnitType.customXib.nibName) != nil
+            //
+            //            break
         default:
-            datasource = DataSource()
+            Logger.error("Unsupported UI element specified.")
             break
         }
 
         // If a custom XIB was sent along. Set the adUnitType to custom
-        if customXib != nil {
-            datasource?.adUnitType = AdUnitType.custom
+        if customXibView {
+            datasource?.adUnitType = AdUnitType.customXib
         }
     }
 
@@ -94,7 +104,7 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
             Logger.debug("Received no Ads")
         }
         Logger.debug("Received \(newAds.count) new ads.")
-        datasource!.onAdRequestSuccess(newAds)
+        datasource?.onAdRequestSuccess(newAds)
     }
 
     /**
@@ -108,19 +118,19 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
      Method used to load native ads.
      - limit: Limit on how many native ads are to be retrieved.
      */
-    @objc open func requestAds(_ limit: UInt, adUnitType: AdUnitType = AdUnitType.standard) {
+    @objc open func requestAds(_ limit: UInt, adUnitType: AdUnitType = AdUnitType.tableViewRegular) {
         // Set the limit so that when the user does a reloadAds call we know what limit they want.
         self.limit = limit
 
-        if self.datasource.adUnitType != AdUnitType.custom {
-            self.datasource.adUnitType = adUnitType
+        if self.datasource?.adUnitType != AdUnitType.customXib {
+            self.datasource?.adUnitType = adUnitType
         }
 
         Logger.debug("Requesting ads (\(limit)) for affiliate id \(requester.adPlacementToken)")
 
         var imageType = EImageType.allImages
         // If our adunit is of the type Big. Then let us ask our api to send back banner like images
-        if self.datasource.adUnitType == AdUnitType.big {
+        if self.datasource?.adUnitType == AdUnitType.tableViewRegular {
             imageType = EImageType.banner
         }
 

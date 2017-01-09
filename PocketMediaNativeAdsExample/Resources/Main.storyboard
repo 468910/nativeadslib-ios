@@ -25,11 +25,61 @@
                         <segue destination="4XU-81-jBI" kind="relationship" relationship="viewControllers" id="JhM-sw-ih2"/>
                         <segue destination="ntO-zd-uYh" kind="relationship" relationship="viewControllers" id="sEq-ew-LIN"/>
                         <segue destination="VF1-C3-xSy" kind="relationship" relationship="viewControllers" id="stH-Hn-kwO"/>
+                        <segue destination="Bj3-L1-1V4" kind="relationship" relationship="viewControllers" id="YQV-aE-e6a"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zwY-Re-OmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1704" y="530"/>
+        </scene>
+        <!--Collection View-->
+        <scene sceneID="HVq-L8-4Hw">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PuW-Ni-olr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <collectionViewController id="Bj3-L1-1V4" customClass="CollectionViewController" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lPV-LO-mdR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="c4f-JG-flK">
+                            <size key="itemSize" width="100" height="100"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="JJh-mV-mcd" customClass="CollectionItemCell" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fEh-eU-vEu">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="fEh-eU-vEu" firstAttribute="leading" secondItem="JJh-mV-mcd" secondAttribute="leading" id="8xe-XO-fcS"/>
+                                    <constraint firstItem="fEh-eU-vEu" firstAttribute="top" secondItem="JJh-mV-mcd" secondAttribute="top" id="M8O-2l-yRP"/>
+                                    <constraint firstAttribute="bottom" secondItem="fEh-eU-vEu" secondAttribute="bottom" id="hGT-76-lq3"/>
+                                    <constraint firstAttribute="trailing" secondItem="fEh-eU-vEu" secondAttribute="trailing" id="oQ1-FL-XhG"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="appIcon" destination="fEh-eU-vEu" id="Zap-SM-eb7"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Bj3-L1-1V4" id="NRL-Nw-EI4"/>
+                            <outlet property="delegate" destination="Bj3-L1-1V4" id="Mzw-RA-Ji0"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="Collection View" selectedImage="collectionview" id="mFX-c4-1tI"/>
+                </collectionViewController>
+            </objects>
+            <point key="canvasLocation" x="-3154.4000000000001" y="1244.527736131934"/>
         </scene>
         <!--Custom integration-->
         <scene sceneID="Iia-6n-pT6">
@@ -299,6 +349,7 @@
     </scenes>
     <resources>
         <image name="PocketMedia" width="512" height="512"/>
+        <image name="collectionview" width="25" height="25"/>
         <image name="custom" width="25" height="25"/>
         <image name="tableview" width="25" height="25"/>
         <image name="tableview-sections" width="25" height="25"/>

@@ -17,7 +17,7 @@ class NativeAdTableViewCellTest: XCTestCase {
         super.setUp()
 
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-        let nib = bundle.loadNibNamed("NativeAdTableViewCell", owner: nil, options: nil)!.first!
+        let nib = bundle.loadNibNamed(AdUnitType.tableViewRegular.nibName, owner: nil, options: nil)!.first!
         subject = nib as! NativeAdTableViewCell
     }
 

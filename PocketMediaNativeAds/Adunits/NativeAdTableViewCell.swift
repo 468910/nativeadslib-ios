@@ -11,7 +11,7 @@ import UIKit
 /**
  Standard AdUnit for TableView
  **/
-open class StandardAdUnitTableViewCell: AbstractAdUnitTableViewCell {
+open class NativeAdTableViewCell: UITableViewCell, NativeViewCell {
 
     @IBOutlet weak var speakerPhone: UIImageView?
     @IBOutlet weak var adImage: UIImageView?
@@ -19,8 +19,14 @@ open class StandardAdUnitTableViewCell: AbstractAdUnitTableViewCell {
     @IBOutlet weak var adDescription: UILabel?
     @IBOutlet weak var installButton: UIButton?
 
-    open override func render(_ nativeAd: NativeAd) {
-        super.render(nativeAd)
+    /// The ad shown in this cell.
+    fileprivate(set) open var ad: NativeAd?
+
+    /**
+     Called to define what ad should be shown.
+     */
+    open func render(_ nativeAd: NativeAd) {
+        self.ad = nativeAd
 
         if let iButton = installButton {
             iButton.layer.borderColor = self.tintColor.cgColor
@@ -69,6 +75,9 @@ open class StandardAdUnitTableViewCell: AbstractAdUnitTableViewCell {
         self.selectionStyle = UITableViewCellSelectionStyle.none
     }
 
+    /**
+     Called when the user presses on the call to action button
+     */
     @IBAction func install(_ sender: AnyObject) {
         if let viewController = UIApplication.shared.delegate?.window??.rootViewController {
             self.ad?.openAdUrl(FullscreenBrowser(parentViewController: viewController))

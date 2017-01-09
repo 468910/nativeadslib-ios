@@ -32,18 +32,6 @@ public extension UITableView {
         self.nativeAdsReloadData()
     }
 
-    //    var indexPathForSelectedRow: NSIndexPath? {
-    //        get {
-    //            if let indexPath = super.indexPathForSelectedRow {
-    //                if let source = GetNativeTableDataSource() {
-    //                    let normalized = source.normalize(indexPath)
-    //                    return NSIndexPath(row: normalized, section: indexPath.section)
-    //                }
-    //            }
-    //            return nil
-    //        }
-    //    }
-
     /**
      Starts the swizzling of the datasource.
      */
