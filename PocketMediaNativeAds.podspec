@@ -19,7 +19,7 @@ s.homepage         = "http://pocketmedia.mobi"
   s.screenshots    = "https://bitbucket.org/repo/46g5gL/images/3807516826-Simulator%20Screen%20Shot%2022%20Jan%202016%2015.26.27.png"
   s.license          = 'MIT'
   s.author           = { "Pocket Media Tech Team" => "techteam@pocketmedia.mobi" }
-  s.source           = { :git => "https://bitbucket.org/pocketbrain/nativeadslib-ios.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/Pocketbrain/nativeadslib-ios.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/PocketMediaBV'
 
   s.platform     = :ios, '9.0'
@@ -31,5 +31,4 @@ s.homepage         = "http://pocketmedia.mobi"
   #s.public_header_files = 'PocketMediaNativeAds/*.h'
   s.frameworks = 'UIKit'
 
-  #s.dependency 'Render', '~> 0.5.2'
 end

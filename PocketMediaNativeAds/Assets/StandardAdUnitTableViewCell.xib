@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -15,8 +18,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MD6-t4-976" userLabel="AdInfoView">
+                    <rect key="frame" x="105.5" y="0.0" width="415.5" height="89"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HdH-M1-9kX" userLabel="MiddleView">
+                            <rect key="frame" x="0.0" y="25" width="415.5" height="0.0"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" id="7GV-x5-cBs"/>
@@ -29,11 +34,13 @@
                             </variation>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AdName" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cU1-hR-AOS" userLabel="AdName">
+                            <rect key="frame" x="8" y="7" width="478.5" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AdDescription" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Spt-Fz-sOx" userLabel="AdDescription">
+                            <rect key="frame" x="8" y="25" width="374.5" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -72,8 +79,10 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRJ-ce-gbH" userLabel="Install">
+                    <rect key="frame" x="526" y="0.0" width="93" height="89"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loud_Speaker_64.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z0j-F3-XlP" userLabel="SpeakerPhone">
+                            <rect key="frame" x="71" y="9" width="14" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Z0j-F3-XlP" secondAttribute="height" multiplier="1:1" id="4Ah-RT-1Ee"/>
                                 <constraint firstAttribute="width" secondItem="Z0j-F3-XlP" secondAttribute="height" multiplier="1:1" id="BKP-Wa-cLU"/>
@@ -89,11 +98,13 @@
                             </variation>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ad" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fMi-IE-VLB" userLabel="LabelThatDisplaysAd">
+                            <rect key="frame" x="52" y="9" width="14" height="14"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="DG0-n3-u0P">
+                            <rect key="frame" x="-2" y="27" width="74" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="DG0-n3-u0P" secondAttribute="height" multiplier="15 : 9" id="30w-W2-EIK"/>
                                 <constraint firstAttribute="width" secondItem="DG0-n3-u0P" secondAttribute="height" multiplier="6:2" id="7P9-3F-4em"/>
@@ -153,9 +164,10 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xct-uV-WqM" userLabel="AdImageView">
+                    <rect key="frame" x="-18.5" y="0.0" width="124" height="89"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsE-td-uYg">
-                            <frame key="frameInset" minX="28" minY="9" width="70" height="70"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dsE-td-uYg">
+                            <rect key="frame" x="26.5" y="8.5" width="71" height="71"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="dsE-td-uYg" secondAttribute="height" multiplier="1:1" id="CwW-hm-cNS"/>
                                 <constraint firstAttribute="width" secondItem="dsE-td-uYg" secondAttribute="height" multiplier="1:1" id="Dl7-bP-oC0"/>

@@ -43,7 +43,6 @@ public enum EImageType: Int, CustomStringConvertible {
         case .banner: return "banner"
         case .bigImages: return "banner,hq_icon"
         case .bannerAndIcons: return "banner,icon"
-        default: return ""
         }
     }
 }
@@ -116,17 +115,37 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
      */
     internal func receivedAds(_ data: Data?, response: URLResponse?, error: Error?) {
         if error != nil {
-            self.delegate?.didReceiveError(error!)
+            delegateDidReceiveError(error!)
             return
         }
         if data == nil {
-            self.delegate?.didReceiveError(NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: ["Invalid server response received: data is a nil value.": NSLocalizedDescriptionKey]))
+            delegateDidReceiveError(NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: ["Invalid server response received: data is a nil value.": NSLocalizedDescriptionKey]))
             return
         }
         if let json: NSArray = (try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSArray {
             mapAds(json)
         } else {
-            self.delegate?.didReceiveError(NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: ["Invalid server response received: Not json.": NSLocalizedDescriptionKey]))
+            delegateDidReceiveError(NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: ["Invalid server response received: Not json.": NSLocalizedDescriptionKey]))
+        }
+    }
+
+    /**
+     This function wraps around the call to the delegate. It will make sure that the call to delegate is called on the main thread. Because there is a high likelyhood that the user will do UI changes the moment the call comes in.
+     - parameter error: The error sent to the delegate.
+     */
+    private func delegateDidReceiveError(_ error: Error) {
+        DispatchQueue.main.async {
+            self.delegate?.didReceiveError(error)
+        }
+    }
+
+    /**
+     This function wraps around the call to the delegate. It will make sure that the call to delegate is called on the main thread. Because there is a high likelyhood that the user will do UI changes the moment the call comes in.
+     - parameter nativeads: The result of ads sent to the delegate.
+     */
+    private func delegateDidReceiveResults(_ nativeAds: [NativeAd]) {
+        DispatchQueue.main.async {
+            self.delegate?.didReceiveResults(nativeAds)
         }
     }
 
@@ -147,16 +166,16 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
                     nativeAds.append(ad)
                 }
             } catch let error as NSError {
-                self.delegate?.didReceiveError(error)
+                delegateDidReceiveError(error)
                 return
             }
         }
         if nativeAds.count > 0 {
-            self.delegate?.didReceiveResults(nativeAds)
+            delegateDidReceiveResults(nativeAds)
         } else {
             let userInfo = ["No ads available from server": NSLocalizedDescriptionKey]
             let error = NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: userInfo)
-            self.delegate?.didReceiveError(error)
+            delegateDidReceiveError(error)
         }
     }
 

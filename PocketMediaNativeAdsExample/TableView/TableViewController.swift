@@ -18,7 +18,6 @@ class TableViewController: UITableViewController {
     var stream: NativeAdStream?
 
     override func viewDidLoad() {
-        self.title = "TableView"
 
         tableViewDataSource = ExampleTableViewDataSource()
         tableViewDataSource?.loadLocalJSON()

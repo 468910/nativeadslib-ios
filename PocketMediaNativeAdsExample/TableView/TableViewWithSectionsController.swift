@@ -18,8 +18,6 @@ class TableViewWithSectionsController: UITableViewController {
     var stream: NativeAdStream?
 
     override func viewDidLoad() {
-        self.title = "TableView"
-
         tableViewDataSource = ExampleTableViewDataSourceWithSections()
         tableViewDataSource?.loadLocalJSON()
         tableView.dataSource = tableViewDataSource
@@ -27,7 +25,7 @@ class TableViewWithSectionsController: UITableViewController {
 
         // PocketMedia add ads
         stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165") /* replace with your own token!! */
-        stream?.requestAds(10) // Add 5 ads
+        stream?.requestAds(10) // Add 10 ads
 
         super.viewDidLoad()
     }

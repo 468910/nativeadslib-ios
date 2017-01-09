@@ -147,7 +147,7 @@ open class NativeAd: NSObject {
      Goes through the ad dictionary and parses it for the description of this offer. Defines self.campaignDescription. (default empty)
      - parameter adDictionary: JSON object containing NativeAd Data.
      */
-    private func parseDescription(_ adDictionary: Dictionary<String, Any>) {
+    private func parseDescription(_ adDictionary: Dictionary<String, Any>) throws {
         if let description = adDictionary["campaign_description"] as? String {
             self.campaignDescription = description
         } else {
@@ -187,7 +187,7 @@ open class NativeAd: NSObject {
      Goes through the ad dictionary and parses it for the call to action of this offer (The button). Defines self.callToActionText (default empty)
      - parameter adDictionary: JSON object containing NativeAd Data.
      */
-    private func parseCallToAction(_ adDictionary: NSDictionary) {
+    private func parseCallToAction(_ adDictionary: NSDictionary) throws {
         if let callToActionText = adDictionary["action_text"] as? String {
             self.callToActionText = callToActionText
         } else {
@@ -199,7 +199,7 @@ open class NativeAd: NSObject {
      Goes through the ad dictionary and parses it for the boolean if this ad should be externally managed. Defines self.shouldBeManagedExternally (default false)
      - parameter adDictionary: JSON object containing NativeAd Data.
      */
-    private func parseShouldBeManagedExternally(_ adDictionary: NSDictionary) {
+    private func parseShouldBeManagedExternally(_ adDictionary: NSDictionary) throws {
         if let open_in_browser = adDictionary["open_in_browser"] as? Bool {
             self.shouldBeManagedExternally = open_in_browser
         } else {
