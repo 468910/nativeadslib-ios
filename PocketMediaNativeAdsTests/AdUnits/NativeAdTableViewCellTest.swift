@@ -9,16 +9,16 @@
 import XCTest
 @testable import PocketMediaNativeAds
 
-class StandardAdUnitTableViewCellTest: XCTestCase {
+class NativeAdTableViewCellTest: XCTestCase {
 
-    var subject: StandardAdUnitTableViewCell!
+    var subject: NativeAdTableViewCell!
 
     override func setUp() {
         super.setUp()
 
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-        let nib = bundle.loadNibNamed("StandardAdUnitTableViewCell", owner: nil, options: nil)!.first!
-        subject = nib as! StandardAdUnitTableViewCell
+        let nib = bundle.loadNibNamed("NativeAdTableViewCell", owner: nil, options: nil)!.first!
+        subject = nib as! NativeAdTableViewCell
     }
 
     override func tearDown() {

@@ -1,5 +1,5 @@
 //
-//  CollectionViewController.swift
+//  ItemTableModel.swift
 //  PocketMediaNativeAdsExample
 //
 //  Created by Iain Munro on 09/01/2017.
