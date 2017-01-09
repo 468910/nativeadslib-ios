@@ -21,13 +21,6 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     fileprivate var adPosition: AdPosition
 
     /**
-     Reset the datasource. if this wrapper is deinitialized.
-     */
-    deinit {
-        self.tableView.dataSource = datasource
-    }
-
-    /**
      Hijacks the sent delegate and datasource and make it use our wrapper. Also registers the ad unit we'll be using.
      - parameter controller: The controller to create NativeAdTableViewDelegate
      - parameter tableView: The tableView this datasource is attached to.
@@ -41,7 +34,7 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         self.datasource = tableView.dataSource!
         self.adPosition = adPosition
         self.tableView = tableView
-        super.init(adUnitType: AdUnitType.tableViewRegular)
+        super.init(adUnitType: AdUnitType.tableViewRegular, adPosition: adPosition)
         UITableView.swizzleNativeAds(tableView)
 
         // Hijack the delegate and datasource and make it use our wrapper.
@@ -50,6 +43,13 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
             tableView.delegate = self.delegate
         }
         tableView.dataSource = self
+    }
+    
+    /**
+     Reset the datasource. if this wrapper is deinitialized.
+     */
+    deinit {
+        self.tableView.dataSource = datasource
     }
 
     /**
@@ -185,86 +185,10 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
      Abstract classes that a datasource should override. It's specific to the type of data source.
      */
     open override func onAdRequestSuccess(_ ads: [NativeAd]) {
-        Logger.debugf("Received %d ads", ads.count)
-        self.ads = ads
-        setAdPositions(ads)
+        super.onAdRequestSuccess(ads)
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
         })
-    }
-
-    /**
-     This method is responsible for going through a list of new ads and populating self.adListingsPerSection.
-     - parameter ads: Array of ads that should be add.
-     */
-    open func setAdPositions(_ ads: [NativeAd]) {
-        adPosition.reset()
-        clear()
-        var maxSections = 1
-
-        if let _ = datasource.numberOfSections?(in: tableView) {
-            maxSections =
-                datasource.numberOfSections!(in: tableView)
-        }
-        var section = 0
-        var adsInserted = 1
-
-        for ad in ads {
-            var numOfRowsInCurrentSection = datasource.tableView(tableView, numberOfRowsInSection: section)
-            let limit = numOfRowsInCurrentSection + adsInserted
-            var position: Int
-            // try and get an ad position
-            do {
-                position = try Int(adPosition.getAdPosition(numOfRowsInCurrentSection))
-            } catch let err as NSError {
-                Logger.error(err)
-                continue
-            }
-            // If we're out of positions move up a section.
-            if position >= limit {
-                adPosition.reset()
-                section += 1
-                adsInserted = 1
-
-                numOfRowsInCurrentSection = datasource.tableView(tableView, numberOfRowsInSection: section)
-                // Get a new position
-                do {
-                    position = try Int(adPosition.getAdPosition(numOfRowsInCurrentSection))
-                } catch let err as NSError {
-                    Logger.error(err)
-                    continue
-                }
-            }
-            // If that new section doesn't exist. Stop adding ads.
-            if section >= maxSections {
-                break
-            }
-            if adListingsPerSection[section] == nil {
-                adListingsPerSection[section] = [:]
-            }
-
-            // Add the ad
-            adListingsPerSection[section]![position] = NativeAdListing(ad: ad, position: position, numOfAdsBefore: adsInserted)
-            adsInserted += 1
-        }
-
-        Logger.debugf("Set %d section ad listings", adListingsPerSection.count)
-    }
-
-    /**
-     Call if you want to clear all the ads from the datasource.
-     */
-    fileprivate func clear() {
-        adListingsPerSection.removeAll()
-        Logger.debug("Cleared adListings.")
-    }
-
-    /**
-     Called everytime tableView.reloadData is called.
-     Just like 'notifyDataSetChanged' in android
-     */
-    open func reload() {
-        setAdPositions(self.ads)
     }
 
     /**
@@ -272,31 +196,18 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
      */
     @objc
     open func numberOfSections(in tableView: UITableView) -> Int {
-        if let numOfSectionsFunc = datasource.numberOfSections(in:) {
-            return numOfSectionsFunc(tableView)
+        if let result = datasource.numberOfSections?(in: tableView) {
+            return result
         }
         return 1
     }
-
-    /**
-     Get the original position of a element on that indexRow. If we have an ad listed before this position normalize.
-     - Returns:
-     A normalized indexPath.
-     */
-    open func getOriginalPositionForElement(_ indexRow: IndexPath) -> IndexPath {
-        if let listing = getNativeAdListingHigherThan(indexRow) {
-            let normalizedIndexRow = listing.getOriginalPosition(indexRow)
-            let maxRows = datasource.tableView(tableView, numberOfRowsInSection: normalizedIndexRow.section)
-
-            // Because we really never want to be responsible for a crash :-(
-            // We'll just do a quick fail safe. So we can all sleep at night: the normalizedIndexRow.row may not be higher than the the amount of rows we have for this section.
-            if normalizedIndexRow.row >= maxRows || normalizedIndexRow.row < 0 {
-                print("[INDEX] Normalized row is invalid @ \(normalizedIndexRow.row)")
-                // We'll return 0. That one is probably available. Stops this unexpected behaviour from crashing the host app
-                return IndexPath(row: 0, section: indexRow.section)
-            }
-            return normalizedIndexRow
-        }
-        return indexRow
+    
+    public override func numberOfSections() -> Int {
+        return numberOfSections(in: self.tableView)
     }
+    
+    public override func numberOfRowsInSection(section: Int) -> Int {
+        return datasource.tableView(tableView, numberOfRowsInSection: section)
+    }
+    
 }

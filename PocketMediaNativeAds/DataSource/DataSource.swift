@@ -21,6 +21,9 @@ open class DataSource: NSObject, DataSourceProtocol {
 
     /// Adlistings and their position per section.
     open var adListingsPerSection: AdsForSectionMap = AdsForSectionMap()
+    
+    // Ad position logic.
+    fileprivate var adPosition: AdPosition
 
     /// Ads shown in this data source.
     open var ads: [NativeAd] = [NativeAd]()
@@ -30,8 +33,9 @@ open class DataSource: NSObject, DataSourceProtocol {
      */
     open var adUnitType: AdUnitType!
 
-    init(adUnitType: AdUnitType) {
+    init(adUnitType: AdUnitType, adPosition: AdPosition) {
         self.adUnitType = adUnitType
+        self.adPosition = adPosition
         super.init()
 
         // Register the ad unit we'll be using.
@@ -88,10 +92,12 @@ open class DataSource: NSObject, DataSourceProtocol {
     /**
      Method that dictates what happens when a ad network request resulted successful. It should kick off what to do with this list of ads.
      - important:
-     Abstract method that a datasource should override. It's specific to the type of data source.
+     This method should be called if overriden.
      */
     open func onAdRequestSuccess(_ newAds: [NativeAd]) {
-        preconditionFailure("This method must be overridden")
+        Logger.debugf("Received %d ads", ads.count)
+        self.ads = ads
+        setAdPositions(ads)
     }
 
     /**
@@ -105,4 +111,106 @@ open class DataSource: NSObject, DataSourceProtocol {
         //        preconditionFailure("This method must be overridden")
         return false
     }
+    
+    public func numberOfSections() -> Int {
+        preconditionFailure("This method must be overridden")
+        return 1
+    }
+    
+    public func numberOfRowsInSection(section: Int) -> Int {
+        preconditionFailure("This method must be overridden")
+        return 0
+    }
+    
+    /**
+     This method is responsible for going through a list of new ads and populating self.adListingsPerSection.
+     - parameter ads: Array of ads that should be add.
+     */
+    open func setAdPositions(_ ads: [NativeAd]) {
+        adPosition.reset()
+        clear()
+        var maxSections = numberOfSections()
+        var section = 0
+        var adsInserted = 1
+        
+        for ad in ads {
+            var numOfRowsInCurrentSection = numberOfRowsInSection(section: section)
+            let limit = numOfRowsInCurrentSection + adsInserted
+            var position: Int
+            // try and get an ad position
+            do {
+                position = try Int(adPosition.getAdPosition(numOfRowsInCurrentSection))
+            } catch let err as NSError {
+                Logger.error(err)
+                continue
+            }
+            // If we're out of positions move up a section.
+            if position >= limit {
+                adPosition.reset()
+                section += 1
+                adsInserted = 1
+                
+                numOfRowsInCurrentSection = numberOfRowsInSection(section: section)
+                // Get a new position
+                do {
+                    position = try Int(adPosition.getAdPosition(numOfRowsInCurrentSection))
+                } catch let err as NSError {
+                    Logger.error(err)
+                    continue
+                }
+            }
+            // If that new section doesn't exist. Stop adding ads.
+            if section >= maxSections {
+                break
+            }
+            if adListingsPerSection[section] == nil {
+                adListingsPerSection[section] = [:]
+            }
+            
+            // Add the ad
+            adListingsPerSection[section]![position] = NativeAdListing(ad: ad, position: position, numOfAdsBefore: adsInserted)
+            adsInserted += 1
+        }
+        
+        Logger.debugf("Set %d section ad listings", adListingsPerSection.count)
+    }
+    
+    /**
+     Call if you want to clear all the ads from the datasource.
+     */
+    public func clear() {
+        adListingsPerSection.removeAll()
+        Logger.debug("Cleared adListings.")
+    }
+    
+    /**
+     Called everytime tableView.reloadData is called.
+     Just like 'notifyDataSetChanged' in android
+     */
+    open func reload() {
+        setAdPositions(self.ads)
+    }
+    
+    /**
+     Get the original position of a element on that indexRow. If we have an ad listed before this position normalize.
+     - Returns:
+     A normalized indexPath.
+     */
+    open func getOriginalPositionForElement(_ indexRow: IndexPath) -> IndexPath {
+        if let listing = getNativeAdListingHigherThan(indexRow) {
+            let normalizedIndexRow = listing.getOriginalPosition(indexRow)
+            let maxRows = numberOfRowsInSection(section: normalizedIndexRow.section)
+            
+            // Because we really never want to be responsible for a crash :-(
+            // We'll just do a quick fail safe. So we can all sleep at night: the normalizedIndexRow.row may not be higher than the the amount of rows we have for this section.
+            if normalizedIndexRow.row >= maxRows || normalizedIndexRow.row < 0 {
+                print("[INDEX] Normalized row is invalid @ \(normalizedIndexRow.row)")
+                // We'll return 0. That one is probably available. Stops this unexpected behaviour from crashing the host app
+                return IndexPath(row: 0, section: indexRow.section)
+            }
+            return normalizedIndexRow
+        }
+        return indexRow
+    }
+    
 }

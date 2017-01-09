@@ -27,9 +27,29 @@ public protocol DataSourceProtocol {
      */
     func getNativeAdListing(_ indexPath: IndexPath) -> NativeAdListing?
 
+    /**
+     Register a xib
+    */
     func registerCell(_ identifier: String)
 
+    /**
+     Check if a xib is registered.
+    */
     func checkCell(_ identifier: String) -> Bool
+    
+    /**
+     Return the number of sections. If you're implementing a datasource that doesn't support sections, just return 1.
+     - Important:
+     Call the original data source to get the count. Do NOT sum the original amount + ads
+     */
+    func numberOfSections() -> Int
+    
+    /**
+     Return the number of rows in a particular section. If you're implementing a datasource that doesn't support sections, just ignore the section parameter.
+     - Important:
+        Call the original data source to get the count. Do NOT sum the original amount + ads
+    */
+    func numberOfRowsInSection(section: Int) -> Int
 }
 
 /**
