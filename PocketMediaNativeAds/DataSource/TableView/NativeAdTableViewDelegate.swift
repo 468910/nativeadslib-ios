@@ -5,7 +5,7 @@
 //
 //  Created by Kees Bank on 18/04/16.
 //
-//
+// Interesting source: https://github.com/edopelawi/CascadingTableDelegate/blob/master/Documentation/DefaultReturnValues.md#height-support
 
 import UIKit
 
@@ -53,7 +53,10 @@ open class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
         if let heightForHeader = delegate.tableView?(tableView, heightForHeaderInSection: section) {
             return heightForHeader
         }
-        return tableView.rowHeight
+        if datasource.numberOfSections(in: tableView) > 1 {
+            return CGFloat(30)
+        }
+        return CGFloat(0)
     }
 
     /**
@@ -227,7 +230,7 @@ open class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
         if let estimatedHeightForFooter = delegate.tableView?(tableView, estimatedHeightForFooterInSection: section) {
             return estimatedHeightForFooter
         }
-        return UITableViewAutomaticDimension
+        return CGFloat(0)
     }
 
     /**
@@ -238,7 +241,7 @@ open class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
         if let estimatedHeight = delegate.tableView?(tableView, estimatedHeightForHeaderInSection: section) {
             return estimatedHeight
         }
-        return UITableViewAutomaticDimension
+        return self.tableView(tableView, heightForHeaderInSection: section)
     }
 
     /**

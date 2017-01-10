@@ -21,13 +21,13 @@ open class DataSource: NSObject, DataSourceProtocol {
 
     /// Adlistings and their position per section.
     open var adListingsPerSection: AdsForSectionMap = AdsForSectionMap()
-    
+
     // Ad position logic.
     fileprivate var adPosition: AdPosition
 
     /// Ads shown in this data source.
     open var ads: [NativeAd] = [NativeAd]()
-    
+
     private let customXib: UINib?
 
     /**
@@ -85,7 +85,7 @@ open class DataSource: NSObject, DataSourceProtocol {
         }
         return result
     }
-    
+
     /**
      Gets the view cell for this ad.
      - Returns:
@@ -94,18 +94,20 @@ open class DataSource: NSObject, DataSourceProtocol {
      If we can't find the adUnitType.nibname and it isn't of the instance NativeViewCell we'll return a UITableViewCell just be sure it doesn't crash.
      */
     open func getAdCell(_ nativeAd: NativeAd, indexPath: IndexPath) -> UIView {
-        if let cell = getCell(nativeAd: nativeAd, indexPath: indexPath) as? NativeViewCell {
+        if let nativeAdCell = getCell(nativeAd: nativeAd, indexPath: indexPath) as? NativeViewCell {
             // Render it.
-            cell.render(nativeAd)
-            return cell as! UIView
+            nativeAdCell.render(nativeAd)
+            if let cell = nativeAdCell as? UIView {
+                return cell
+            }
         }
         Logger.error("Ad unit wasn't registered? Or it changed halfway?")
         return UITableViewCell()
     }
-    
+
     private func getCell(nativeAd: NativeAd, indexPath: IndexPath) -> UIView? {
         let identifier = adUnit.getNibIdentifier(ad: nativeAd)
-        //No we can't check first if it hasn't already been registered. In a collectionView this seems to be absent, it will throw a terrible non catchable error instead of just returning nil if it hasn't been registered like in the tableView. Performance wise nothing seems to have changed registering it everytime.
+        // No we can't check first if it hasn't already been registered. In a collectionView this seems to be absent, it will throw a terrible non catchable error instead of just returning nil if it hasn't been registered like in the tableView. Performance wise nothing seems to have changed registering it everytime.
         registerNib(nib: customXib, identifier: identifier)
         return dequeueReusableCell(identifier: identifier, indexPath: indexPath)
     }
@@ -125,24 +127,24 @@ open class DataSource: NSObject, DataSourceProtocol {
      This function checks if we have a cell registered with that name. If not we'll register it.
      */
     public func registerNib(nib: UINib?, identifier: String) {
-         preconditionFailure("This method must be overridden")
+        preconditionFailure("This method must be overridden")
     }
 
     public func dequeueReusableCell(identifier: String, indexPath: IndexPath? = nil) -> UIView? {
         preconditionFailure("This method must be overridden")
         return nil
     }
-    
+
     public func numberOfSections() -> Int {
         preconditionFailure("This method must be overridden")
         return 1
     }
-    
+
     public func numberOfRowsInSection(section: Int) -> Int {
         preconditionFailure("This method must be overridden")
         return 0
     }
-    
+
     /**
      This method is responsible for going through a list of new ads and populating self.adListingsPerSection.
      - parameter ads: Array of ads that should be add.
@@ -153,7 +155,7 @@ open class DataSource: NSObject, DataSourceProtocol {
         var maxSections = numberOfSections()
         var section = 0
         var adsInserted = 1
-        
+
         for ad in ads {
             var numOfRowsInCurrentSection = numberOfRowsInSection(section: section)
             let limit = numOfRowsInCurrentSection + adsInserted
@@ -170,7 +172,7 @@ open class DataSource: NSObject, DataSourceProtocol {
                 adPosition.reset()
                 section += 1
                 adsInserted = 1
-                
+
                 numOfRowsInCurrentSection = numberOfRowsInSection(section: section)
                 // Get a new position
                 do {
@@ -187,15 +189,15 @@ open class DataSource: NSObject, DataSourceProtocol {
             if adListingsPerSection[section] == nil {
                 adListingsPerSection[section] = [:]
             }
-            
+
             // Add the ad
             adListingsPerSection[section]![position] = NativeAdListing(ad: ad, position: position, numOfAdsBefore: adsInserted)
             adsInserted += 1
         }
-        
+
         Logger.debugf("Set %d section ad listings", adListingsPerSection.count)
     }
-    
+
     /**
      Call if you want to clear all the ads from the datasource.
      */
@@ -203,7 +205,7 @@ open class DataSource: NSObject, DataSourceProtocol {
         adListingsPerSection.removeAll()
         Logger.debug("Cleared adListings.")
     }
-    
+
     /**
      Called everytime tableView.reloadData is called.
      Just like 'notifyDataSetChanged' in android
@@ -211,7 +213,7 @@ open class DataSource: NSObject, DataSourceProtocol {
     open func reload() {
         setAdPositions(self.ads)
     }
-    
+
     /**
      Get the original position of a element on that indexRow. If we have an ad listed before this position normalize.
      - Returns:
@@ -221,7 +223,7 @@ open class DataSource: NSObject, DataSourceProtocol {
         if let listing = getNativeAdListingHigherThan(indexRow) {
             let normalizedIndexRow = listing.getOriginalPosition(indexRow)
             let maxRows = numberOfRowsInSection(section: normalizedIndexRow.section)
-            
+
             // Because we really never want to be responsible for a crash :-(
             // We'll just do a quick fail safe. So we can all sleep at night: the normalizedIndexRow.row may not be higher than the the amount of rows we have for this section.
             if normalizedIndexRow.row >= maxRows || normalizedIndexRow.row < 0 {
@@ -233,5 +235,4 @@ open class DataSource: NSObject, DataSourceProtocol {
         }
         return indexRow
     }
-    
 }

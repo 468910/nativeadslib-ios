@@ -12,7 +12,7 @@ import Foundation
 /**
  Wraps around a datasource so it contains both a mix of ads and none ads.
  */
- @objc
+@objc
 public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataSource, UICollectionViewDataSourceWrapper {
     /// Original datasource.
     open var datasource: UICollectionViewDataSource
@@ -38,7 +38,7 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
         self.adPosition = adPosition
         self.collectionView = collectionView
         super.init(type: AdUnit.UIType.CollectionView, customXib: customXib, adPosition: adPosition)
-        //TODO: Swizzle
+        // TODO: Swizzle
 
         // Hijack the delegate and datasource and make it use our wrapper.
         if collectionView.delegate != nil {
@@ -47,15 +47,14 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
         }
         collectionView.dataSource = self
     }
-    
+
     /**
      Reset the datasource. if this wrapper is deinitialized.
      */
     deinit {
         self.collectionView.dataSource = datasource
     }
-    
-    
+
     /**
      This function checks if we have a cell registered with that name. If not we'll register it.
      */
@@ -64,14 +63,14 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
         let registerNib = nib == nil ? UINib(nibName: identifier, bundle: bundle) : nib
         collectionView.register(registerNib, forCellWithReuseIdentifier: identifier)
     }
-    
+
     /**
      Return the cell of a identifier.
      */
     public override func dequeueReusableCell(identifier: String, indexPath: IndexPath? = nil) -> UIView? {
         return collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath!)
     }
-    
+
     /**
      Required. Asks your data source object for the number of items in the specified section.
      */
@@ -82,27 +81,27 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
         }
         return value
     }
-    
+
     /**
      From: DataSourceProtocol
      Return the number of rows in a particular section. If you're implementing a datasource that doesn't support sections, just ignore the section parameter.
      - Important:
      Call the original data source to get the count. Do NOT sum the original amount + ads
      */
-    public override func numberOfRowsInSection(section: Int) -> Int{
+    public override func numberOfRowsInSection(section: Int) -> Int {
         return datasource.collectionView(collectionView, numberOfItemsInSection: section)
     }
-    
+
     /**
-        Asks your data source object for the number of sections in the collection view.
-    */
+     Asks your data source object for the number of sections in the collection view.
+     */
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         if let result = datasource.numberOfSections?(in: collectionView) {
             return result
         }
         return 1
     }
-    
+
     /**
      From: DataSourceProtocol
      Return the number of sections. If you're implementing a datasource that doesn't support sections, just return 1.
@@ -112,7 +111,7 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
     public override func numberOfSections() -> Int {
         return numberOfSections(in: collectionView)
     }
-    
+
     /**
      Asks your data source object for the cell that corresponds to the specified item in the collection view.
      */
@@ -122,7 +121,7 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
         }
         return datasource.collectionView(collectionView, cellForItemAt: getOriginalPositionForElement(indexPath))
     }
-    
+
     /**
      Asks your data source object to provide a supplementary view to display in the collection view.
      */
@@ -132,7 +131,7 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
         }
         return UICollectionReusableView()
     }
-    
+
     /**
      Asks your data source object whether the specified item can be moved to another location in the collection view.
      */
@@ -142,14 +141,14 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
         }
         return false
     }
-    
+
     /**
      Tells your data source object to move the specified item to its new location.
      */
     public func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         datasource.collectionView?(collectionView, moveItemAt: sourceIndexPath, to: destinationIndexPath)
     }
-    
+
     /**
      Method that dictates what happens when a ad network request resulted successful. It should kick off what to do with this list of ads.
      - important:
@@ -161,5 +160,4 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
             self.collectionView.reloadData()
         })
     }
-    
- }
+}

@@ -52,14 +52,14 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
         }
 
         self.view = view
-        
+
         // Depending on the view that was sent along, use one of our known implementations.
         switch view {
-            case let tableView as UITableView:
-                datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adPosition: adPosition!, customXib: customXib)
+        case let tableView as UITableView:
+            datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adPosition: adPosition!, customXib: customXib)
             break
-            case let collectionView as UICollectionView:
-                datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adPosition: adPosition!)
+        case let collectionView as UICollectionView:
+            datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adPosition: adPosition!)
             break
         default:
             Logger.error("Unsupported UI element specified.")
@@ -102,7 +102,7 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
         // Set the limit so that when the user does a reloadAds call we know what limit they want.
         self.limit = limit
         self.datasource?.adUnit.setPreference(size: preference)
-        
+
         Logger.debug("Requesting ads (\(limit)) for affiliate id \(requester.adPlacementToken)")
         requester.retrieveAds(limit, imageType: (self.datasource?.adUnit.getImageType())!)
     }

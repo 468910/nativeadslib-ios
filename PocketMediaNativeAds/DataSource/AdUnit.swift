@@ -12,7 +12,7 @@ import Foundation
  */
 @objc
 public class AdUnit: NSObject {
-    //This is not a string enum because of compatibility reasons with Objective-c
+    // This is not a string enum because of compatibility reasons with Objective-c
     @objc
     public enum UIType: Int {
         case TableView
@@ -26,6 +26,7 @@ public class AdUnit: NSObject {
             }
         }
     }
+
     @objc
     public enum Flavour: Int {
         case Regular
@@ -37,41 +38,42 @@ public class AdUnit: NSObject {
             }
         }
     }
+
     private let type: UIType
     private var preference: Flavour = Flavour.Regular
-    
+
     init(type: UIType) {
         self.type = type
     }
-    
+
     public func setPreference(size: Flavour) {
         preference = size
     }
- 
+
     private func getFlavour(ad: NativeAd) -> Flavour {
-        switch(preference) {
+        switch preference {
         case .Big:
             if ad.bannerUrl() != nil {
                 return preference
             }
-        break
+            break
         default: break
         }
         return Flavour.Regular
     }
-    
+
     /**
      Returns a identifier of a nib file
      */
     func getNibIdentifier(ad: NativeAd) -> String {
         return self.type.name + getFlavour(ad: ad).name
     }
-    
+
     func getImageType() -> EImageType {
-        switch(preference) {
+        switch preference {
         case .Big:
             return EImageType.bigImages
-        break
+            break
         default:
             return EImageType.allImages
         }

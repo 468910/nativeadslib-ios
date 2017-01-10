@@ -10,7 +10,7 @@ import Foundation
 
 public class NativeAdCollectionViewCellRegular: UICollectionViewCell, NativeViewCell {
     @IBOutlet weak var adImage: UIImageView!
-    
+
     /**
      Called to define what ad should be shown.
      */

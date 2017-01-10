@@ -35,7 +35,8 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         self.adPosition = adPosition
         self.tableView = tableView
         super.init(type: AdUnit.UIType.TableView, customXib: customXib, adPosition: adPosition)
-        
+        self.tableView.contentInset = UIEdgeInsets.zero
+
         UITableView.swizzleNativeAds(tableView)
 
         // Hijack the delegate and datasource and make it use our wrapper.
@@ -45,7 +46,7 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         }
         tableView.dataSource = self
     }
-    
+
     /**
      Reset the datasource. if this wrapper is deinitialized.
      */
@@ -61,7 +62,7 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         let registerNib = nib == nil ? UINib(nibName: identifier, bundle: bundle) : nib
         tableView.register(registerNib, forCellReuseIdentifier: identifier)
     }
-    
+
     /**
      Return the cell of a identifier.
      */
@@ -186,13 +187,12 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         }
         return 1
     }
-    
+
     public override func numberOfSections() -> Int {
         return numberOfSections(in: self.tableView)
     }
-    
+
     public override func numberOfRowsInSection(section: Int) -> Int {
         return datasource.tableView(tableView, numberOfRowsInSection: section)
     }
-    
 }

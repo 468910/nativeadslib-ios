@@ -31,9 +31,9 @@ public protocol DataSourceProtocol {
 
     /**
      Registers a nib object containing a cell with the table view under a specified identifier.
-    */
+     */
     func registerNib(nib: UINib?, identifier: String)
-    
+
     /**
      From: DataSourceProtocol
      Return the cell of a identifier.
@@ -43,7 +43,7 @@ public protocol DataSourceProtocol {
      The index path specifying the location of the cell. The data source receives this information when it is asked for the cell and should just pass it along. This method uses the index path to perform additional configuration based on the cell’s position in the collection view.
      */
     func dequeueReusableCell(identifier: String, indexPath: IndexPath) -> UIView?
-    
+
     /**
      From: DataSourceProtocol
      Return the number of sections. If you're implementing a datasource that doesn't support sections, just return 1.
@@ -51,12 +51,12 @@ public protocol DataSourceProtocol {
      Call the original data source to get the count.
      */
     func numberOfSections() -> Int
-    
+
     /**
      From: DataSourceProtocol
      Return the number of rows in a particular section. If you're implementing a datasource that doesn't support sections, just ignore the section parameter.
      - Important:
-        Call the original data source to get the count. Do NOT sum the original amount + ads
-    */
+     Call the original data source to get the count. Do NOT sum the original amount + ads
+     */
     func numberOfRowsInSection(section: Int) -> Int
 }

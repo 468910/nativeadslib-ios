@@ -13,14 +13,14 @@ import Foundation
  */
 @objc
 public enum EImageType: Int, CustomStringConvertible {
-    
+
     case allImages = 0 // ""
     case icon = 1 // "icon"
     case hqIcon = 2 // "hq_icon"
     case banner = 3 // "banner"
     case bigImages = 4 // "banner,hq_icon"
     case bannerAndIcons = 5 // "banner,icon"
-    
+
     init?(string: String) {
         switch string {
         case "allImages": self = .allImages
@@ -32,7 +32,7 @@ public enum EImageType: Int, CustomStringConvertible {
         default: self = .allImages
         }
     }
-    
+
     public var description: String {
         switch self {
         case .allImages: return ""
