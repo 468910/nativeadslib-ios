@@ -11,7 +11,7 @@ import UIKit
 /**
  Standard AdUnit for TableView
  **/
-open class NativeAdTableViewCell: UITableViewCell, NativeViewCell {
+open class NativeAdTableViewCellRegular: UITableViewCell, NativeViewCell {
 
     @IBOutlet weak var speakerPhone: UIImageView?
     @IBOutlet weak var adImage: UIImageView?
