@@ -10,26 +10,27 @@ import Foundation
 
 import UIKit
 
-// @objc
-// public class NativeAdCollectionViewDelegate: NSObject, UICollectionViewDelegate {
-//
-//    public var controller: UIViewController
-//    public var delegate: UICollectionViewDelegate
-//    public var datasource: NativeAdCollectionViewDataSource
-//
-//    required public init(datasource: NativeAdCollectionViewDataSource, controller: UIViewController, delegate: UICollectionViewDelegate) {
-//        self.datasource = datasource
-//        self.controller = controller
-//        self.delegate = delegate
-//    }
-//
-//    public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//
-//        if let val = datasource.adStream.isAdAtposition(indexPath.row) {
-//            val.openAdUrl(controller)
-//        } else {
-//            return delegate.collectionView!(collectionView, didSelectItemAtIndexPath: indexPath)
-//        }
-//    }
-//
-// }
+@objc
+public class NativeAdCollectionViewDelegate: NSObject, UICollectionViewDelegate {
+
+    public var controller: UIViewController
+    public var delegate: UICollectionViewDelegate
+    public var datasource: NativeAdCollectionViewDataSource
+
+    required public init(datasource: NativeAdCollectionViewDataSource, controller: UIViewController, delegate: UICollectionViewDelegate) {
+        self.datasource = datasource
+        self.controller = controller
+        self.delegate = delegate
+    }
+    
+    /**
+     Tells the delegate that the item at the specified index path was selected.
+    */
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        if let val = datasource.getNativeAdListing(indexPath) {
+            val.ad.openAdUrl(FullscreenBrowser(parentViewController: controller))
+            return
+        }
+        delegate.collectionView?(collectionView, didSelectItemAt: self.datasource.getOriginalPositionForElement(indexPath))
+    }
+ }

@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="NativeAdCollectionViewCell" id="4s4-tl-vbA" userLabel="NativeAdCollectionCell" customClass="NativeAdCollectionViewCell" customModule="PocketMediaNativeAds">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="NativeAdCollectionViewCellRegular" reuseIdentifier="NativeAdCollectionViewCellRegular" id="4s4-tl-vbA" userLabel="Native Ad Collection View Cell Regular" customClass="NativeAdCollectionViewCellRegular" customModule="PocketMediaNativeAds">
             <rect key="frame" x="0.0" y="0.0" width="165" height="116"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

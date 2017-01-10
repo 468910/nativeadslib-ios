@@ -27,14 +27,15 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
      - parameter adPosition: The instance that will define where ads are positioned.
      */
     @objc
-    public required init(controller: UIViewController, tableView: UITableView, adPosition: AdPosition) {
+    public required init(controller: UIViewController, tableView: UITableView, adPosition: AdPosition, customXib: UINib? = nil) {
         if tableView.dataSource == nil {
             preconditionFailure("Your tableview must have a dataSource set before use.")
         }
         self.datasource = tableView.dataSource!
         self.adPosition = adPosition
         self.tableView = tableView
-        super.init(adUnitType: AdUnitType.tableViewRegular, adPosition: adPosition)
+        super.init(type: AdUnit.UIType.TableView, customXib: customXib, adPosition: adPosition)
+        
         UITableView.swizzleNativeAds(tableView)
 
         // Hijack the delegate and datasource and make it use our wrapper.
@@ -55,33 +56,17 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     /**
      This function checks if we have a cell registered with that name. If not we'll register it.
      */
-    public override func registerCell(_ identifier: String) {
-        if checkCell(identifier) {
-            return
-        }
+    public override func registerNib(nib: UINib?, identifier: String) {
         let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-        tableView.register(UINib(nibName: identifier, bundle: bundle), forCellReuseIdentifier: identifier)
+        let registerNib = nib == nil ? UINib(nibName: identifier, bundle: bundle) : nib
+        tableView.register(registerNib, forCellReuseIdentifier: identifier)
     }
-
-    public override func checkCell(_ identifier: String) -> Bool {
-        return tableView.dequeueReusableCell(withIdentifier: AdUnitType.customXib.nibName) != nil
-    }
-
+    
     /**
-     Gets the view cell for this ad.
-     - Returns:
-     View cell of this ad.
-     - Important:
-     If we can't find the adUnitType.nibname and it isn't of the instance NativeAdTableViewCell we'll return a UITableViewCell so it doesn't crash.
+     Return the cell of a identifier.
      */
-    open func getAdCell(_ nativeAd: NativeAd) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: adUnitType.nibName) as? NativeAdTableViewCell {
-            // Render it.
-            cell.render(nativeAd)
-            return cell
-        }
-        Logger.error("Ad unit wasn't registered? Or it changed halfway?")
-        return UITableViewCell()
+    public override func dequeueReusableCell(identifier: String, indexPath: IndexPath? = nil) -> UIView? {
+        return tableView.dequeueReusableCell(withIdentifier: identifier)
     }
 
     /**
@@ -90,7 +75,7 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     @objc
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let listing = getNativeAdListing(indexPath) {
-            return getAdCell(listing.ad)
+            return getAdCell(listing.ad, indexPath: indexPath) as! UITableViewCell
         }
         return datasource.tableView(tableView, cellForRowAt: getOriginalPositionForElement(indexPath))
     }

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -14,7 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="NativeAdTableViewCell" id="med-7r-ffj" customClass="NativeAdTableViewCell" customModule="PocketMediaNativeAds">
+        <view contentMode="scaleToFill" restorationIdentifier="NativeAdTableViewCell" id="med-7r-ffj" customClass="NativeAdTableViewCellRegular" customModule="PocketMediaNativeAds">
             <rect key="frame" x="0.0" y="0.0" width="619" height="89"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>

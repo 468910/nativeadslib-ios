@@ -27,26 +27,23 @@ open class DataSource: NSObject, DataSourceProtocol {
 
     /// Ads shown in this data source.
     open var ads: [NativeAd] = [NativeAd]()
+    
+    private let customXib: UINib?
 
     /**
      The AdUnitType defines what kind of ad is shown.
      */
-    open var adUnitType: AdUnitType!
+    open let adUnit: AdUnit!
 
-    init(adUnitType: AdUnitType, adPosition: AdPosition) {
-        self.adUnitType = adUnitType
+    init(type: AdUnit.UIType, customXib: UINib?, adPosition: AdPosition) {
+        var uiType = type
+        if customXib != nil {
+            uiType = AdUnit.UIType.CustomView
+        }
+        self.adUnit = AdUnit(type: uiType)
         self.adPosition = adPosition
+        self.customXib = customXib
         super.init()
-
-        // Register the ad unit we'll be using.
-        // Custom xib's are registered at NativeAdStream or in the host app if they're doing the manual integration.
-        if adUnitType != .customXib {
-            registerCell(adUnitType.nibName)
-        }
-
-        if checkCell(AdUnitType.customXib.nibName) == nil {
-            preconditionFailure("Something went wrong here. The custom xib should've already been registered at the NativeAdStream class or when doing a custom integration by the host app.")
-        }
     }
 
     /**
@@ -88,6 +85,30 @@ open class DataSource: NSObject, DataSourceProtocol {
         }
         return result
     }
+    
+    /**
+     Gets the view cell for this ad.
+     - Returns:
+     View cell of this ad.
+     - Important:
+     If we can't find the adUnitType.nibname and it isn't of the instance NativeViewCell we'll return a UITableViewCell just be sure it doesn't crash.
+     */
+    open func getAdCell(_ nativeAd: NativeAd, indexPath: IndexPath) -> UIView {
+        if let cell = getCell(nativeAd: nativeAd, indexPath: indexPath) as? NativeViewCell {
+            // Render it.
+            cell.render(nativeAd)
+            return cell as! UIView
+        }
+        Logger.error("Ad unit wasn't registered? Or it changed halfway?")
+        return UITableViewCell()
+    }
+    
+    private func getCell(nativeAd: NativeAd, indexPath: IndexPath) -> UIView? {
+        let identifier = adUnit.getNibIdentifier(ad: nativeAd)
+        //No we can't check first if it hasn't already been registered. In a collectionView this seems to be absent, it will throw a terrible non catchable error instead of just returning nil if it hasn't been registered like in the tableView. Performance wise nothing seems to have changed registering it everytime.
+        registerNib(nib: customXib, identifier: identifier)
+        return dequeueReusableCell(identifier: identifier, indexPath: indexPath)
+    }
 
     /**
      Method that dictates what happens when a ad network request resulted successful. It should kick off what to do with this list of ads.
@@ -96,20 +117,20 @@ open class DataSource: NSObject, DataSourceProtocol {
      */
     open func onAdRequestSuccess(_ newAds: [NativeAd]) {
         Logger.debugf("Received %d ads", ads.count)
-        self.ads = ads
+        ads = newAds
         setAdPositions(ads)
     }
 
     /**
      This function checks if we have a cell registered with that name. If not we'll register it.
      */
-    public func registerCell(_ identifier: String) {
-        //        preconditionFailure("This method must be overridden")
+    public func registerNib(nib: UINib?, identifier: String) {
+         preconditionFailure("This method must be overridden")
     }
 
-    public func checkCell(_ identifier: String) -> Bool {
-        //        preconditionFailure("This method must be overridden")
-        return false
+    public func dequeueReusableCell(identifier: String, indexPath: IndexPath? = nil) -> UIView? {
+        preconditionFailure("This method must be overridden")
+        return nil
     }
     
     public func numberOfSections() -> Int {

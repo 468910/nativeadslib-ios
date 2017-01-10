@@ -62,7 +62,7 @@ open class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
     @objc
     open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let listing = datasource.getNativeAdListing(indexPath) {
-            let cell = datasource.getAdCell(listing.ad)
+            let cell = datasource.getAdCell(listing.ad, indexPath: indexPath)
             return cell.frame.size.height
         } else if let heightForRow = delegate.tableView?(tableView, heightForRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return heightForRow

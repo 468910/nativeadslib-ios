@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+/**
+ Image model object
+ It contains the attributes that every image in an ad has.
+ */
+public struct SImage {
+    var url: URL!
+    var width: UInt!
+    var height: UInt!
+}

@@ -1,21 +1,12 @@
 //
 //  NativeAd.swift
-//  Pods
+//  PocketMediaNativeAds
 //
-//  Created by Adrián Moreno Peña | Pocket Media on 14/01/16.
+//  Created by Pocket Media on 02/03/16.
+//  Copyright © 2016 PocketMedia. All rights reserved.
 //
-//
-import UIKit
 
-/**
- Image model object
- It contains the attributes that every image in an ad has.
- */
-public struct SImage {
-    var url: URL!
-    var width: UInt!
-    var height: UInt!
-}
+import UIKit
 
 /**
  Model class. It contains all the attributes received from the API, and allows to open the click URL with a specific opener.
