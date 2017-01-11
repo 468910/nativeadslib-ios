@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27043CFD1E25352B00DFC1B4 /* CustomAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27043CFB1E25352B00DFC1B4 /* CustomAd.swift */; };
+		27043CFE1E25352B00DFC1B4 /* CustomAd.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27043CFC1E25352B00DFC1B4 /* CustomAd.xib */; };
+		27043D011E25453700DFC1B4 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27043D001E25453700DFC1B4 /* AboutUsViewController.swift */; };
 		27066B911E23AE3000989475 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27066B901E23AE3000989475 /* CollectionViewController.swift */; };
 		272B90141E2388770016A8D9 /* CustomIntegrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272B90131E2388770016A8D9 /* CustomIntegrationViewController.swift */; };
 		2738F2AF1DD0D27D00779073 /* CollectionItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD16091D8ED56F00B31C6A /* CollectionItemCell.swift */; };
@@ -41,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		21342A6002AEB9EE10CFC580 /* Pods_PocketMediaNativeAdsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketMediaNativeAdsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27043CFB1E25352B00DFC1B4 /* CustomAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomAd.swift; path = PocketMediaNativeAdsExample/TableView/customAd/CustomAd.swift; sourceTree = "<group>"; };
+		27043CFC1E25352B00DFC1B4 /* CustomAd.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomAd.xib; path = PocketMediaNativeAdsExample/TableView/customAd/CustomAd.xib; sourceTree = "<group>"; };
+		27043D001E25453700DFC1B4 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutUsViewController.swift; path = PocketMediaNativeAdsExample/AboutUs/AboutUsViewController.swift; sourceTree = "<group>"; };
 		27066B901E23AE3000989475 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = PocketMediaNativeAdsExample/CollectionView/CollectionViewController.swift; sourceTree = "<group>"; };
 		272B90131E2388770016A8D9 /* CustomIntegrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomIntegrationViewController.swift; path = PocketMediaNativeAdsExample/CustomIntegration/CustomIntegrationViewController.swift; sourceTree = "<group>"; };
 		2736C9401DA4F469002D7BC9 /* PocketMediaNativeAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PocketMediaNativeAds.framework; path = "build/Debug-iphoneos/PocketMediaNativeAds.framework"; sourceTree = "<group>"; };
@@ -83,6 +89,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27043CF91E2534EF00DFC1B4 /* sections + custom ad */ = {
+			isa = PBXGroup;
+			children = (
+				3A9F04EB1DA7F1C50014949F /* TableViewWithSectionsController.swift */,
+				3A9F04ED1DA7F24C0014949F /* ExampleTableViewDataSourceWithSections.swift */,
+				27043CFB1E25352B00DFC1B4 /* CustomAd.swift */,
+				27043CFC1E25352B00DFC1B4 /* CustomAd.xib */,
+			);
+			name = "sections + custom ad";
+			sourceTree = "<group>";
+		};
+		27043CFF1E25452000DFC1B4 /* AboutUs */ = {
+			isa = PBXGroup;
+			children = (
+				27043D001E25453700DFC1B4 /* AboutUsViewController.swift */,
+			);
+			name = AboutUs;
+			sourceTree = "<group>";
+		};
 		272B90121E2386840016A8D9 /* CustomIntegration */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,10 +119,9 @@
 		27859FD71D8ECEA300C85D7A /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				27043CF91E2534EF00DFC1B4 /* sections + custom ad */,
 				27DD16151D8ED58E00B31C6A /* ExampleTableViewDataSource.swift */,
 				27DD16161D8ED58E00B31C6A /* TableViewController.swift */,
-				3A9F04EB1DA7F1C50014949F /* TableViewWithSectionsController.swift */,
-				3A9F04ED1DA7F24C0014949F /* ExampleTableViewDataSourceWithSections.swift */,
 				27B866281E23AA0B0000FE3D /* ItemCell.swift */,
 			);
 			name = TableView;
@@ -125,6 +149,7 @@
 		278CE88D1D8EDDA200F6CF8A /* PocketMediaNativeAdsExample */ = {
 			isa = PBXGroup;
 			children = (
+				27043CFF1E25452000DFC1B4 /* AboutUs */,
 				272B90121E2386840016A8D9 /* CustomIntegration */,
 				274E413B1DD1E2C0003DEFDA /* DummyData.json */,
 				27859FE21D8ECEC200C85D7A /* CollectionView */,
@@ -247,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27D288111DD085440020EEAA /* DummyData.json in Resources */,
+				27043CFE1E25352B00DFC1B4 /* CustomAd.xib in Resources */,
 				27DD16251D8ED5A100B31C6A /* LaunchScreen.xib in Resources */,
 				27DD16281D8ED5A100B31C6A /* Main.storyboard in Resources */,
 				27DD16081D8ED10C00B31C6A /* Images.xcassets in Resources */,
@@ -310,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				272B90141E2388770016A8D9 /* CustomIntegrationViewController.swift in Sources */,
+				27043D011E25453700DFC1B4 /* AboutUsViewController.swift in Sources */,
 				27F1E2D81E20018200297D5F /* TabBarController.swift in Sources */,
 				2738F2AF1DD0D27D00779073 /* CollectionItemCell.swift in Sources */,
 				27B866291E23AA0B0000FE3D /* ItemCell.swift in Sources */,
@@ -318,6 +345,7 @@
 				2738F2B31DD0D27D00779073 /* TableViewWithSectionsController.swift in Sources */,
 				2738F2B41DD0D27D00779073 /* ExampleTableViewDataSourceWithSections.swift in Sources */,
 				2738F2B51DD0D27D00779073 /* AppDelegate.swift in Sources */,
+				27043CFD1E25352B00DFC1B4 /* CustomAd.swift in Sources */,
 				27B866251E23A9360000FE3D /* ItemTableModel.swift in Sources */,
 				27066B911E23AE3000989475 /* CollectionViewController.swift in Sources */,
 			);

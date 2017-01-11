@@ -21,7 +21,7 @@ class CollectionViewController: UICollectionViewController {
         loadLocalJSON()
 
         stream = NativeAdStream(controller: self, view: self.collectionView!, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165", customXib: nil, adPosition: PredefinedAdPosition(positions: [2, 3, 8, 9])) /* replace with your own token!! */
-        stream?.requestAds(10) // Add 10 ads
+        stream?.requestAds(4)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

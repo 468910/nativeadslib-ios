@@ -28,51 +28,66 @@ open class NativeAdTableViewCellRegular: UITableViewCell, NativeViewCell {
     open func render(_ nativeAd: NativeAd) {
         self.ad = nativeAd
 
-        if let iButton = installButton {
-            iButton.layer.borderColor = self.tintColor.cgColor
-            iButton.layer.borderWidth = 1
-            iButton.layer.masksToBounds = true
-            iButton.titleLabel?.baselineAdjustment = .alignCenters
-            iButton.titleLabel?.textAlignment = .center
-            iButton.titleLabel?.minimumScaleFactor = 0.1
-            let color = UIColor(
-                red: 17.0 / 255.0,
-                green: 147.0 / 255.0,
-                blue: 67.0 / 255.0,
-                alpha: 1)
-            iButton.setTitleColor(color, for: UIControlState())
-            iButton.layer.borderColor = color.cgColor
-            iButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-            iButton.titleLabel?.minimumScaleFactor = 0.50
-            iButton.titleLabel?.adjustsFontSizeToFitWidth = true
-
-            if let image = adImage {
-                iButton.layer.cornerRadius = image.frame.width / 20
-            }
-            iButton.setTitle(ad!.callToActionText, for: .normal)
+        if let button = installButton {
+            setupInstallButton(button)
         }
 
         if let image = adImage {
-            image.nativeSetImageFromURL(ad!.campaignImage)
-            image.layer.cornerRadius = image.frame.width / 10
-            image.layer.masksToBounds = true
+            setupAdImage(image)
         }
 
         if let ad_description = adDescription {
-            ad_description.text = ad!.campaignDescription
-            ad_description.numberOfLines = 0
-            ad_description.lineBreakMode = .byTruncatingTail
-            ad_description.preferredMaxLayoutWidth = UIScreen.main.bounds.width * 0.80
-            ad_description.preferredMaxLayoutWidth = UIScreen.main.bounds.width * 0.70
+            setupDescription(ad_description)
         }
 
         if let title = adTitle {
-            title.text = ad!.campaignName
-            title.numberOfLines = 0
-            title.lineBreakMode = .byTruncatingTail
+            setupTitle(title)
         }
 
         self.selectionStyle = UITableViewCellSelectionStyle.none
+    }
+    
+    internal func setupTitle(_ title: UILabel) {
+        title.text = ad!.campaignName
+        title.numberOfLines = 0
+        title.lineBreakMode = .byTruncatingTail
+    }
+    
+    internal func setupDescription(_ description: UILabel) {
+        description.text = ad!.campaignDescription
+        description.numberOfLines = 0
+        description.lineBreakMode = .byTruncatingTail
+        description.preferredMaxLayoutWidth = UIScreen.main.bounds.width * 0.70
+    }
+    
+    internal func setupAdImage(_ image: UIImageView) {
+        image.nativeSetImageFromURL(ad!.campaignImage)
+        image.layer.cornerRadius = image.frame.width / 10
+        image.layer.masksToBounds = true
+    }
+    
+    internal func setupInstallButton(_ button: UIButton) {
+        button.layer.borderColor = self.tintColor.cgColor
+        button.layer.borderWidth = 1
+        button.layer.masksToBounds = true
+        button.titleLabel?.baselineAdjustment = .alignCenters
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.minimumScaleFactor = 0.1
+        let color = UIColor(
+            red: 17.0 / 255.0,
+            green: 147.0 / 255.0,
+            blue: 67.0 / 255.0,
+            alpha: 1)
+        button.setTitleColor(color, for: UIControlState())
+        button.layer.borderColor = color.cgColor
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        button.titleLabel?.minimumScaleFactor = 0.50
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        if let image = adImage {
+            button.layer.cornerRadius = image.frame.width / 20
+        }
+        button.setTitle(ad!.callToActionText, for: .normal)
     }
 
     /**

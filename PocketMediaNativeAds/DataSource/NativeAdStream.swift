@@ -59,7 +59,7 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
             datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adPosition: adPosition!, customXib: customXib)
             break
         case let collectionView as UICollectionView:
-            datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adPosition: adPosition!)
+            datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adPosition: adPosition!, customXib: customXib)
             break
         default:
             Logger.error("Unsupported UI element specified.")

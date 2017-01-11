@@ -32,6 +32,14 @@ class CustomIntegrationController: UIViewController, NativeAdsConnectionDelegate
 
     override func viewDidLoad() {
         requester = NativeAdsRequest(adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165", delegate: self)
+        
+        let click = UITapGestureRecognizer(target: self, action: #selector(tap(_:)) )
+        adImage.addGestureRecognizer(click)
+        adTitle.addGestureRecognizer(click)
+    }
+    
+    func tap(_ gestureRecognizer: UITapGestureRecognizer) {
+        ad?.openAdUrl(FullscreenBrowser(parentViewController: self))
     }
 
     /**

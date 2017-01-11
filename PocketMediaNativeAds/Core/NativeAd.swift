@@ -215,7 +215,7 @@ open class NativeAd: NSObject {
     @objc
     open func bannerUrl() -> URL? {
         var url: URL?
-        if images[EImageType.hqIcon] != nil {
+        if images[EImageType.banner] != nil {
             url = images[EImageType.banner]?.url
         }
         return url

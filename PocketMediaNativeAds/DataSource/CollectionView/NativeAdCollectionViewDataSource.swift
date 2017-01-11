@@ -30,7 +30,7 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
      - parameter adPosition: The instance that will define where ads are positioned.
      */
     @objc
-    public required init(controller: UIViewController, collectionView: UICollectionView, adPosition: AdPosition, customXib: UINib? = nil) {
+    public required init(controller: UIViewController, collectionView: UICollectionView, adPosition: AdPosition, customXib: UINib?) {
         if collectionView.dataSource == nil {
             preconditionFailure("Your tableview must have a dataSource set before use.")
         }
