@@ -25,7 +25,8 @@ class NativeAdTableViewCellBig: NativeAdTableViewCellRegular {
         if let bannerUrl = nativeAd.bannerUrl() {
             banner.nativeSetImageFromURL(bannerUrl)
             bannerUrl.fetchImage({ downloadedImage in
-                
+//                self.setNeedsLayout()
+//                self.sizeToFit()
             })
         }
     }

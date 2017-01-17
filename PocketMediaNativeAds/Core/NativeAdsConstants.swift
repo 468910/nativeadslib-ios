@@ -48,7 +48,8 @@ public struct NativeAdsConstants {
             public static let baseURL = "https://getnativebeta.pocketmedia.mobi/ow.php?output=json"
         #else
             /// The URL used to fetch the ads from.
-            public static let baseURL = "https://getnative.pocketmedia.mobi/ow.php?output=json"
+        //IAINDEV: CHANGE
+            public static let baseURL = "http://getnative.pocketmedia.mobi/ow.php?output=json"
         #endif
     }
 }

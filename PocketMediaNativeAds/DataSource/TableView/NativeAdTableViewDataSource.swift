@@ -35,7 +35,8 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         self.adPosition = adPosition
         self.tableView = tableView
         super.init(type: AdUnit.UIType.TableView, customXib: customXib, adPosition: adPosition)
-        self.tableView.contentInset = UIEdgeInsets.zero
+        self.tableView.estimatedRowHeight = 300
+        self.tableView.rowHeight = UITableViewAutomaticDimension
 
         UITableView.swizzleNativeAds(tableView)
 
@@ -66,8 +67,9 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     /**
      Return the cell of a identifier.
      */
-    public override func dequeueReusableCell(identifier: String, indexPath: IndexPath? = nil) -> UIView? {
-        return tableView.dequeueReusableCell(withIdentifier: identifier)
+    public override func dequeueReusableCell(identifier: String, indexPath: IndexPath) -> UIView {
+        return tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        //collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
     }
 
     /**

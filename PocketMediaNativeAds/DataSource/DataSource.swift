@@ -28,7 +28,11 @@ open class DataSource: NSObject, DataSourceProtocol {
     /// Ads shown in this data source.
     open var ads: [NativeAd] = [NativeAd]()
 
+    /// Custom xib
     private let customXib: UINib?
+    
+    /// Nibs registered
+    private var nibsRegistered = [String:Bool]()
 
     /**
      The AdUnitType defines what kind of ad is shown.
@@ -94,7 +98,7 @@ open class DataSource: NSObject, DataSourceProtocol {
      If we can't find the adUnitType.nibname and it isn't of the instance NativeViewCell we'll return a UITableViewCell just be sure it doesn't crash.
      */
     open func getAdCell(_ nativeAd: NativeAd, indexPath: IndexPath) -> UIView {
-        if let nativeAdCell = getCell(nativeAd: nativeAd, indexPath: indexPath) as? NativeViewCell {
+        if let nativeAdCell = getCell(nativeAd: nativeAd, indexPath: indexPath) {
             // Render it.
             nativeAdCell.render(nativeAd)
             if let cell = nativeAdCell as? UIView {
@@ -104,12 +108,15 @@ open class DataSource: NSObject, DataSourceProtocol {
         Logger.error("Ad unit wasn't registered? Or it changed halfway?")
         return UITableViewCell()
     }
-
-    private func getCell(nativeAd: NativeAd, indexPath: IndexPath) -> UIView? {
+    
+    private func getCell(nativeAd: NativeAd, indexPath: IndexPath) -> NativeViewCell? {
         let identifier = adUnit.getNibIdentifier(ad: nativeAd)
-        // No we can't check first if it hasn't already been registered. In a collectionView this seems to be absent, it will throw a terrible non catchable error instead of just returning nil if it hasn't been registered like in the tableView. Performance wise nothing seems to have changed registering it everytime.
-        registerNib(nib: customXib, identifier: identifier)
-        return dequeueReusableCell(identifier: identifier, indexPath: indexPath)
+        //Only register nib if it wasn't already registered.
+        if nibsRegistered[identifier] == nil {
+            registerNib(nib: customXib, identifier: identifier)
+            nibsRegistered[identifier] = true
+        }
+        return dequeueReusableCell(identifier: identifier, indexPath: indexPath) as? NativeViewCell
     }
 
     /**
@@ -130,9 +137,8 @@ open class DataSource: NSObject, DataSourceProtocol {
         preconditionFailure("This method must be overridden")
     }
 
-    public func dequeueReusableCell(identifier: String, indexPath: IndexPath? = nil) -> UIView? {
+    public func dequeueReusableCell(identifier: String, indexPath: IndexPath) -> UIView {
         preconditionFailure("This method must be overridden")
-        return nil
     }
 
     public func numberOfSections() -> Int {

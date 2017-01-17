@@ -151,7 +151,7 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
     /**
      Returns the API URL to invoke to retrieve ads
      */
-    internal func getNativeAdsURL(_ placementKey: String?, limit: UInt, imageType: EImageType = EImageType.allImages) -> String {
+    internal func getNativeAdsURL(_ placementKey: String?, limit: UInt, imageType: EImageType) -> String {
         let token = provideIdentifierForAdvertisingIfAvailable()
 
         let baseUrl = NativeAdsConstants.NativeAds.baseURL

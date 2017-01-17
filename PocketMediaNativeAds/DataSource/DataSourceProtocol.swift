@@ -42,7 +42,7 @@ public protocol DataSourceProtocol {
      - parameter: indexPath
      The index path specifying the location of the cell. The data source receives this information when it is asked for the cell and should just pass it along. This method uses the index path to perform additional configuration based on the cell’s position in the collection view.
      */
-    func dequeueReusableCell(identifier: String, indexPath: IndexPath) -> UIView?
+    func dequeueReusableCell(identifier: String, indexPath: IndexPath) -> UIView
 
     /**
      From: DataSourceProtocol

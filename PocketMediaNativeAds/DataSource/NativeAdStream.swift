@@ -19,7 +19,9 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     /// The instance of a requester which we'll use to do the network requests.
     fileprivate var requester: NativeAdsRequest!
     /// The amount of ads previously requested. (Due to the fact that we can reload without redefining the amount)
-    fileprivate var limit: UInt = 2
+    fileprivate var limit: UInt = 10
+    /// The amount of ads previously requested. (Due to the fact that we can reload without redefining the amount)
+    fileprivate var preference: AdUnit.Flavour = AdUnit.Flavour.Regular
 
     /**
      Initializer of the Native Ad Stream way of implementing ads in existing UI Views.
@@ -91,7 +93,7 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
      * This method reloads the known ads.
      */
     @objc open func reloadAds() {
-        self.requestAds(self.limit)
+        self.requestAds(self.limit, preference: self.preference)
     }
 
     /**
@@ -101,6 +103,7 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     @objc open func requestAds(_ limit: UInt, preference: AdUnit.Flavour = AdUnit.Flavour.Regular) {
         // Set the limit so that when the user does a reloadAds call we know what limit they want.
         self.limit = limit
+        self.preference = preference
         self.datasource?.adUnit.setPreference(size: preference)
 
         Logger.debug("Requesting ads (\(limit)) for affiliate id \(requester.adPlacementToken)")

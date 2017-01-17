@@ -37,27 +37,14 @@ open class NativeAdTableViewCellRegular: UITableViewCell, NativeViewCell {
         }
 
         if let ad_description = adDescription {
-            setupDescription(ad_description)
+            ad_description.text = ad!.campaignDescription
         }
 
         if let title = adTitle {
-            setupTitle(title)
+            title.text = ad!.campaignName
         }
 
         self.selectionStyle = UITableViewCellSelectionStyle.none
-    }
-    
-    internal func setupTitle(_ title: UILabel) {
-        title.text = ad!.campaignName
-        title.numberOfLines = 0
-        title.lineBreakMode = .byTruncatingTail
-    }
-    
-    internal func setupDescription(_ description: UILabel) {
-        description.text = ad!.campaignDescription
-        description.numberOfLines = 0
-        description.lineBreakMode = .byTruncatingTail
-        description.preferredMaxLayoutWidth = UIScreen.main.bounds.width * 0.70
     }
     
     internal func setupAdImage(_ image: UIImageView) {

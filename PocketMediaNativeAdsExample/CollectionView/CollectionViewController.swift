@@ -29,11 +29,9 @@ class CollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ cellForItemAtcollectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let item = collection[indexPath.row] as? ItemTableModel {
-            if let cell = collectionView?.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? CollectionItemCell {
-                cell.setData(item: item)
-                return cell
-            }
+        if let cell = collectionView?.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? CollectionItemCell {
+            cell.setData(item: collection[indexPath.row])
+            return cell
         }
         return UICollectionViewCell()
     }

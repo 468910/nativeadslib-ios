@@ -86,16 +86,19 @@ public extension UIImageView {
     /// The last url that an instance of the imageView has asked for.
     fileprivate static var currentUrl = [UIImageView: URL]()
 
+    private static func drawPlaceHolder(size: CGSize = CGSize(width: 1, height: 1)) -> UIImage? {
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
     /**
      This method will kick off the caching process. It will start fetching the image if it isn't already being downloaded or in the cache and eventually call set the self.image.
      */
     func nativeSetImageFromURL(_ url: URL) {
 
-        if UIImageView.currentUrl[self] != url {
-            self.image = UIImage()
-        }
-
-        // self.image = drawCustomImage(CGSize(width: 100, height: 100))
         if let campaignImage = url.cachedImage {
             // Cached
             self.image = campaignImage
@@ -115,9 +118,14 @@ public extension UIImageView {
                 }
 
                 // Check the cell hasn't recycled while loading.
-                UIView.transition(with: self, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                if self.image == nil {
+                    UIView.transition(with: self, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                        self.image = downloadedImage
+                    }, completion: nil)
+                } else {
                     self.image = downloadedImage
-                }, completion: nil)
+                }
+                
             })
         }
     }

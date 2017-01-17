@@ -67,8 +67,8 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
     /**
      Return the cell of a identifier.
      */
-    public override func dequeueReusableCell(identifier: String, indexPath: IndexPath? = nil) -> UIView? {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath!)
+    public override func dequeueReusableCell(identifier: String, indexPath: IndexPath) -> UIView {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
     }
 
     /**
