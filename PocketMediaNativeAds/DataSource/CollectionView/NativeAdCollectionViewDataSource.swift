@@ -160,4 +160,8 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
             self.collectionView.reloadData()
         })
     }
+    
+    open override func reloadRowsAtIndexPaths(indexPaths: [IndexPath], animation: Bool) {
+        
+    }
 }

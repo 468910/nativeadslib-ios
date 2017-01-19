@@ -35,8 +35,6 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         self.adPosition = adPosition
         self.tableView = tableView
         super.init(type: AdUnit.UIType.TableView, customXib: customXib, adPosition: adPosition)
-        self.tableView.estimatedRowHeight = 300
-        self.tableView.rowHeight = UITableViewAutomaticDimension
 
         UITableView.swizzleNativeAds(tableView)
 
@@ -69,7 +67,6 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
      */
     public override func dequeueReusableCell(identifier: String, indexPath: IndexPath) -> UIView {
         return tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        //collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
     }
 
     /**
@@ -78,7 +75,10 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     @objc
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let listing = getNativeAdListing(indexPath) {
-            return getAdCell(listing.ad, indexPath: indexPath) as! UITableViewCell
+            if let cell =  getAdCell(listing.ad, indexPath: indexPath) as? UITableViewCell {
+                return cell
+            }
+            return UITableViewCell()
         }
         return datasource.tableView(tableView, cellForRowAt: getOriginalPositionForElement(indexPath))
     }
@@ -174,9 +174,9 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
      */
     open override func onAdRequestSuccess(_ ads: [NativeAd]) {
         super.onAdRequestSuccess(ads)
-        DispatchQueue.main.async(execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.tableView.reloadData()
-        })
+        }
     }
 
     /**
@@ -196,5 +196,13 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
 
     public override func numberOfRowsInSection(section: Int) -> Int {
         return datasource.tableView(tableView, numberOfRowsInSection: section)
+    }
+    
+    open override func reloadRowsAtIndexPaths(indexPaths: [IndexPath], animation: Bool) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.tableView.beginUpdates()
+            self.tableView.reloadRows(at: indexPaths, with: animation ? UITableViewRowAnimation.automatic : UITableViewRowAnimation.none )
+            self.tableView.endUpdates()
+        }
     }
 }

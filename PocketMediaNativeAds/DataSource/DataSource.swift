@@ -100,13 +100,19 @@ open class DataSource: NSObject, DataSourceProtocol {
     open func getAdCell(_ nativeAd: NativeAd, indexPath: IndexPath) -> UIView {
         if let nativeAdCell = getCell(nativeAd: nativeAd, indexPath: indexPath) {
             // Render it.
-            nativeAdCell.render(nativeAd)
+            nativeAdCell.render(nativeAd, completion: { (success: Bool) in
+                self.reloadRowsAtIndexPaths(indexPaths: [indexPath], animation: true)
+            })
             if let cell = nativeAdCell as? UIView {
                 return cell
             }
         }
         Logger.error("Ad unit wasn't registered? Or it changed halfway?")
-        return UITableViewCell()
+        return UIView()
+    }
+    
+    open func reloadRowsAtIndexPaths(indexPaths: [IndexPath], animation: Bool) {
+        preconditionFailure("This method must be overridden")
     }
     
     private func getCell(nativeAd: NativeAd, indexPath: IndexPath) -> NativeViewCell? {

@@ -169,7 +169,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xct-uV-WqM" userLabel="AdImageView">
                             <rect key="frame" x="2" y="0.0" width="83" height="90"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dsE-td-uYg">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dsE-td-uYg">
                                     <rect key="frame" x="6" y="9" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="dsE-td-uYg" secondAttribute="height" multiplier="1:1" id="Dl7-bP-oC0"/>
@@ -298,21 +298,24 @@
                         <outlet property="adImage" destination="dsE-td-uYg" id="556-A2-wbq"/>
                     </connections>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NKW-Oy-hdJ" userLabel="Banner">
-                    <rect key="frame" x="0.0" y="85" width="415" height="308"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NKW-Oy-hdJ" userLabel="Banner">
+                    <rect key="frame" x="0.0" y="85" width="415" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="U31-aG-FCg"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="NKW-Oy-hdJ" firstAttribute="top" secondItem="med-7r-ffj" secondAttribute="bottom" id="0oP-8I-9by"/>
                 <constraint firstAttribute="trailing" secondItem="med-7r-ffj" secondAttribute="trailing" id="1pa-iz-R6q"/>
+                <constraint firstItem="NKW-Oy-hdJ" firstAttribute="centerX" secondItem="xgB-Tw-h48" secondAttribute="centerX" id="B9G-mi-9Rg"/>
                 <constraint firstItem="NKW-Oy-hdJ" firstAttribute="leading" secondItem="xgB-Tw-h48" secondAttribute="leading" id="NKp-FE-0p5"/>
                 <constraint firstItem="med-7r-ffj" firstAttribute="leading" secondItem="xgB-Tw-h48" secondAttribute="leading" id="X9k-DP-ZIv"/>
                 <constraint firstItem="NKW-Oy-hdJ" firstAttribute="top" secondItem="xgB-Tw-h48" secondAttribute="top" constant="85" id="fB9-Mw-BDE"/>
                 <constraint firstAttribute="trailing" secondItem="NKW-Oy-hdJ" secondAttribute="trailing" id="gUC-Es-cGM"/>
                 <constraint firstItem="med-7r-ffj" firstAttribute="top" secondItem="xgB-Tw-h48" secondAttribute="top" priority="500" id="mbQ-fM-nQf"/>
                 <constraint firstAttribute="bottom" secondItem="NKW-Oy-hdJ" secondAttribute="bottom" id="stb-CS-TXD"/>
-                <constraint firstItem="med-7r-ffj" firstAttribute="width" secondItem="xgB-Tw-h48" secondAttribute="width" id="uqH-AD-ijH"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

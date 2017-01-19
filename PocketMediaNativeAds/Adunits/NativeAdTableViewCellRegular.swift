@@ -25,7 +25,7 @@ open class NativeAdTableViewCellRegular: UITableViewCell, NativeViewCell {
     /**
      Called to define what ad should be shown.
      */
-    open func render(_ nativeAd: NativeAd) {
+    open func render(_ nativeAd: NativeAd, completion handler: @escaping ((Bool) -> Swift.Void)) {
         self.ad = nativeAd
 
         if let button = installButton {

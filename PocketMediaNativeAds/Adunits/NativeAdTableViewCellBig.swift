@@ -19,15 +19,11 @@ class NativeAdTableViewCellBig: NativeAdTableViewCellRegular {
     /**
      Called to define what ad should be shown.
      */
-    open override func render(_ nativeAd: NativeAd) {
-        super.render(nativeAd)
+    open override func render(_ nativeAd: NativeAd, completion handler: @escaping ((Bool) -> Swift.Void)) {
+        super.render(nativeAd, completion: handler)
         
         if let bannerUrl = nativeAd.bannerUrl() {
-            banner.nativeSetImageFromURL(bannerUrl)
-            bannerUrl.fetchImage({ downloadedImage in
-//                self.setNeedsLayout()
-//                self.sizeToFit()
-            })
+            banner.nativeSetImageFromURL(bannerUrl, completion: handler)
         }
     }
 

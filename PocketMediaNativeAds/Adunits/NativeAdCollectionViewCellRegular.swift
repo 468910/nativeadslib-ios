@@ -14,7 +14,7 @@ public class NativeAdCollectionViewCellRegular: UICollectionViewCell, NativeView
     /**
      Called to define what ad should be shown.
      */
-    public func render(_ nativeAd: NativeAd) {
-        self.adImage?.nativeSetImageFromURL(nativeAd.campaignImage)
+    open func render(_ nativeAd: NativeAd, completion handler: @escaping ((Bool) -> Swift.Void)) {
+        self.adImage?.nativeSetImageFromURL(nativeAd.campaignImage, completion: handler)
     }
 }

@@ -21,6 +21,7 @@ open class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
     open var delegate: UITableViewDelegate
     /// Instance of NativeAdTableViewDataSource. That is also creating this instance.
     open var datasource: NativeAdTableViewDataSource
+    
     /**
      Initializer.
      - parameter datasource: Instance of NativeAdTableViewDataSource.

@@ -60,7 +60,7 @@ extension URL {
                 if error == nil {
                     if let data = data, let image = UIImage(data: data) {
 
-                        DispatchQueue.main.sync {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             Caching.sharedCache.setObject(image, forKey: self.getCacheKey() as AnyObject, cost: data.count)
 
                             for callback in URL.callbacks[self.getCacheKey()]! {
@@ -85,19 +85,15 @@ extension URL {
 public extension UIImageView {
     /// The last url that an instance of the imageView has asked for.
     fileprivate static var currentUrl = [UIImageView: URL]()
-
-    private static func drawPlaceHolder(size: CGSize = CGSize(width: 1, height: 1)) -> UIImage? {
-        let rect = CGRect(origin: .zero, size: size)
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
-    }
     
     /**
      This method will kick off the caching process. It will start fetching the image if it isn't already being downloaded or in the cache and eventually call set the self.image.
      */
-    func nativeSetImageFromURL(_ url: URL) {
+    func nativeSetImageFromURL(_ url: URL, completion handler: ((Bool) -> Swift.Void)? = nil) {
+        
+        if UIImageView.currentUrl[self] == url {
+            return
+        }
 
         if let campaignImage = url.cachedImage {
             // Cached
@@ -116,16 +112,14 @@ public extension UIImageView {
                 if UIImageView.currentUrl[self] != url {
                     return
                 }
-
-                // Check the cell hasn't recycled while loading.
-                if self.image == nil {
-                    UIView.transition(with: self, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                        self.image = downloadedImage
-                    }, completion: nil)
-                } else {
-                    self.image = downloadedImage
-                }
                 
+                self.image = downloadedImage
+                handler?(true)
+                
+                // Check the cell hasn't recycled while loading.
+//                UIView.transition(with: self, duration: 0.3, options: .transitionCrossDissolve, animations: {
+//                    self.image = downloadedImage
+//                }, completion: handler)
             })
         }
     }
