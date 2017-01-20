@@ -10,7 +10,7 @@ import UIKit
 /**
  Wraps around a datasource so it contains both a mix of ads and none ads.
  */
-open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
+open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, UITableViewDataSourceWrapper {
     /// Original datasource.
     open var datasource: UITableViewDataSource
     /// Original tableView.
@@ -157,6 +157,13 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
         if datasource.responds(to: #selector(UITableViewDataSource.tableView(_:moveRowAt:to:))) {
             datasource.tableView?(tableView, moveRowAt: sourceIndexPath, to: destinationIndexPath)
         }
+    }
+    
+    /**
+     Asks the data source to return the titles for the sections for a table view.
+     */
+    public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return datasource.sectionIndexTitles?(for: tableView)
     }
 
     /**

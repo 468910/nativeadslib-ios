@@ -51,6 +51,7 @@
                 <constraint firstItem="CW6-z1-Du8" firstAttribute="centerX" secondItem="Ddd-lx-tTc" secondAttribute="centerX" id="XD2-dQ-hLN"/>
                 <constraint firstItem="c5Z-Rr-pDN" firstAttribute="width" secondItem="Ddd-lx-tTc" secondAttribute="width" id="g7a-vI-ylz"/>
                 <constraint firstItem="c5Z-Rr-pDN" firstAttribute="centerX" secondItem="CW6-z1-Du8" secondAttribute="centerX" id="hge-yc-1gg"/>
+                <constraint firstItem="4lG-SS-axS" firstAttribute="top" secondItem="EaU-4l-Jgi" secondAttribute="bottom" constant="12" id="j9d-sD-Zmz"/>
                 <constraint firstAttribute="bottom" secondItem="c5Z-Rr-pDN" secondAttribute="bottom" constant="5" id="tj5-3Z-pkO"/>
                 <constraint firstItem="EaU-4l-Jgi" firstAttribute="centerX" secondItem="Ddd-lx-tTc" secondAttribute="centerX" id="zAz-5h-En6"/>
             </constraints>
