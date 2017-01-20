@@ -158,7 +158,7 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource, UITab
             datasource.tableView?(tableView, moveRowAt: sourceIndexPath, to: destinationIndexPath)
         }
     }
-    
+
     /**
      Asks the data source to return the titles for the sections for a table view.
      */
