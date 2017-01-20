@@ -8,8 +8,7 @@
 
 import UIKit
 import AdSupport
-
-/**
+/*
  NativeAdsRequest is a controller class that will do a network request and call a instance of NativeAdsConnectionDelegate based on the results.
  */
 open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegate {
