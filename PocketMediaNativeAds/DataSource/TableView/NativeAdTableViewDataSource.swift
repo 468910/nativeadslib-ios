@@ -75,7 +75,7 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     @objc
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let listing = getNativeAdListing(indexPath) {
-            if let cell =  getAdCell(listing.ad, indexPath: indexPath) as? UITableViewCell {
+            if let cell = getAdCell(listing.ad, indexPath: indexPath) as? UITableViewCell {
                 return cell
             }
             return UITableViewCell()
@@ -197,11 +197,11 @@ open class NativeAdTableViewDataSource: DataSource, UITableViewDataSource {
     public override func numberOfRowsInSection(section: Int) -> Int {
         return datasource.tableView(tableView, numberOfRowsInSection: section)
     }
-    
+
     open override func reloadRowsAtIndexPaths(indexPaths: [IndexPath], animation: Bool) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.tableView.beginUpdates()
-            self.tableView.reloadRows(at: indexPaths, with: animation ? UITableViewRowAnimation.automatic : UITableViewRowAnimation.none )
+            self.tableView.reloadRows(at: indexPaths, with: animation ? UITableViewRowAnimation.automatic : UITableViewRowAnimation.none)
             self.tableView.endUpdates()
         }
     }

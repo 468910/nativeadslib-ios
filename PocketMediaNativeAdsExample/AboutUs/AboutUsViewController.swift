@@ -12,9 +12,8 @@ import UIKit
 class AboutUsViewController: UIViewController {
 
     override func viewDidLoad() {
-        
     }
-    
+
     @IBAction func openRepo(_ sender: Any) {
         UIApplication.shared.openURL(URL(string: "http://github.com/Pocketbrain/nativeadslib-ios")!)
     }
@@ -22,5 +21,4 @@ class AboutUsViewController: UIViewController {
     @IBAction func openWebsite(_ sender: Any) {
         UIApplication.shared.openURL(URL(string: "http://nativeads.pocketmedia.mobi")!)
     }
-    
 }

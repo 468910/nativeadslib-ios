@@ -89,7 +89,7 @@ class NativeAdsRequestTest: XCTestCase {
         let session = MockURLSession()
         let nativeAdsrequest = NativeAdsRequest(adPlacementToken: "test", delegate: delegate, session: session)
         nativeAdsrequest.retrieveAds(10)
-        let expected = nativeAdsrequest.getNativeAdsURL("test", limit: 10)
+        let expected = nativeAdsrequest.getNativeAdsURL("test", limit: 10, imageType: EImageType.allImages)
 
         XCTAssert(session.task.resumeCalled!, "NativeAdsRequest should've called resume to actually do the network request.§")
 
@@ -319,7 +319,7 @@ class NativeAdsRequestTest: XCTestCase {
         }
 
         nativeAdsrequest = NativeAdsRequest(adPlacementToken: "test", delegate: nil, advertisingTrackingEnabled: false)
-        url = nativeAdsrequest.getNativeAdsURL(placement_key, limit: 123)
+        url = nativeAdsrequest.getNativeAdsURL(placement_key, limit: 123, imageType: EImageType.allImages)
 
         if let value = getQueryStringParameter(url, param: "optout") {
 

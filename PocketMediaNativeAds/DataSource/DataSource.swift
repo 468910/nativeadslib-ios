@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// Ad listings per position
 public typealias AdListingsAndPositions = [Int: NativeAdListing]
@@ -30,9 +31,9 @@ open class DataSource: NSObject, DataSourceProtocol {
 
     /// Custom xib
     private let customXib: UINib?
-    
+
     /// Nibs registered
-    private var nibsRegistered = [String:Bool]()
+    private var nibsRegistered = [String: Bool]()
 
     /**
      The AdUnitType defines what kind of ad is shown.
@@ -110,14 +111,14 @@ open class DataSource: NSObject, DataSourceProtocol {
         Logger.error("Ad unit wasn't registered? Or it changed halfway?")
         return UIView()
     }
-    
+
     open func reloadRowsAtIndexPaths(indexPaths: [IndexPath], animation: Bool) {
         preconditionFailure("This method must be overridden")
     }
-    
+
     private func getCell(nativeAd: NativeAd, indexPath: IndexPath) -> NativeViewCell? {
         let identifier = adUnit.getNibIdentifier(ad: nativeAd)
-        //Only register nib if it wasn't already registered.
+        // Only register nib if it wasn't already registered.
         if nibsRegistered[identifier] == nil {
             registerNib(nib: customXib, identifier: identifier)
             nibsRegistered[identifier] = true

@@ -21,7 +21,7 @@ open class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
     open var delegate: UITableViewDelegate
     /// Instance of NativeAdTableViewDataSource. That is also creating this instance.
     open var datasource: NativeAdTableViewDataSource
-    
+
     /**
      Initializer.
      - parameter datasource: Instance of NativeAdTableViewDataSource.
@@ -67,14 +67,14 @@ open class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
     open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let listing = datasource.getNativeAdListing(indexPath) {
             return UITableViewAutomaticDimension
-/*          This creates a never ending loop with the latest dequeueCell
-            let cell = datasource.getAdCell(listing.ad, indexPath: indexPath)
-            return cell.frame.size.height
-*/
+            /*          This creates a never ending loop with the latest dequeueCell
+             let cell = datasource.getAdCell(listing.ad, indexPath: indexPath)
+             return cell.frame.size.height
+            */
         } else if let heightForRow = delegate.tableView?(tableView, heightForRowAt: self.datasource.getOriginalPositionForElement(indexPath)) {
             return heightForRow
         }
-        return tableView.rowHeight//Which could be UITableViewAutomaticDimension
+        return tableView.rowHeight // Which could be UITableViewAutomaticDimension
     }
 
     /**

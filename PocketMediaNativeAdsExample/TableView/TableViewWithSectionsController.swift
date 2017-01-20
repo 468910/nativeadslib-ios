@@ -24,7 +24,7 @@ class TableViewWithSectionsController: UITableViewController {
         self.refreshControl?.addTarget(self, action: #selector(TableViewController.refresh(refreshControl:)), for: UIControlEvents.valueChanged)
 
         let customXib = UINib.init(nibName: "CustomAd", bundle: nil)
-        
+
         // PocketMedia add ads
         stream = NativeAdStream(controller: self, view: self.tableView, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165", customXib: customXib, adPosition: MarginAdPosition(margin: 4)) /* replace with your own token!! */
         stream?.requestAds(10) // Add 10 ads

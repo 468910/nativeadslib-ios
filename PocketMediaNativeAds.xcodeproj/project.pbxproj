@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18FA16431D942ABF000787DC /* NativeAdTableViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27402DED1D8ADAA4002B3747 /* NativeAdTableViewCellTest.swift */; };
+		18FA16431D942ABF000787DC /* NativeAdTableViewCellRegularTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27402DED1D8ADAA4002B3747 /* NativeAdTableViewCellRegularTest.swift */; };
 		18FA16451D942ABF000787DC /* PocketMediaNativeAdsBundleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C82FAF1D8816D100FE3E6D /* PocketMediaNativeAdsBundleTest.swift */; };
 		18FA16461D942ABF000787DC /* fatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F57AC81D86B55C000438CE /* fatalError.swift */; };
 		18FA16471D942ABF000787DC /* testHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F9020A1D884CFF006569A7 /* testHelpers.swift */; };
@@ -37,6 +37,8 @@
 		274C71971D8EE5AC007F0B27 /* Loud_Speaker_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 274C718F1D8EE5AC007F0B27 /* Loud_Speaker_64.png */; };
 		274C71991D8EE5AC007F0B27 /* NativeAdCollectionViewCellRegular.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274C71911D8EE5AC007F0B27 /* NativeAdCollectionViewCellRegular.xib */; };
 		274C719A1D8EE5AC007F0B27 /* NativeAdTableViewCellRegular.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274C71921D8EE5AC007F0B27 /* NativeAdTableViewCellRegular.xib */; };
+		274F8B831E3125CA00AC0D01 /* EImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DB54B1E25100E00FC3FC2 /* EImageType.swift */; };
+		274F8B841E3125CD00AC0D01 /* SImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DB54D1E25109800FC3FC2 /* SImage.swift */; };
 		275DB5461E24EA6E00FC3FC2 /* UICollectionViewDataSourceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DB5451E24EA6E00FC3FC2 /* UICollectionViewDataSourceWrapper.swift */; };
 		275DB5471E24EA6E00FC3FC2 /* UICollectionViewDataSourceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DB5451E24EA6E00FC3FC2 /* UICollectionViewDataSourceWrapper.swift */; };
 		275DB54C1E25100E00FC3FC2 /* EImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DB54B1E25100E00FC3FC2 /* EImageType.swift */; };
@@ -73,6 +75,7 @@
 		2764DE871E23DC1000D3B65C /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 274C718B1D8EE5AC007F0B27 /* close.png */; };
 		2764DE881E23DC1000D3B65C /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 274C718C1D8EE5AC007F0B27 /* close@2x.png */; };
 		2764DE891E23DC1000D3B65C /* Loud_Speaker_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 274C718F1D8EE5AC007F0B27 /* Loud_Speaker_64.png */; };
+		27701C471E31236000E64009 /* PocketMediaNativeAds.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CE85A1D8EDD2E00F6CF8A /* PocketMediaNativeAds.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2776346C1E24E4EE005F80F3 /* NativeAdCollectionViewCellRegular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2776346B1E24E4EE005F80F3 /* NativeAdCollectionViewCellRegular.swift */; };
 		2776346D1E24E4EE005F80F3 /* NativeAdCollectionViewCellRegular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2776346B1E24E4EE005F80F3 /* NativeAdCollectionViewCellRegular.swift */; };
 		27B6C0F81E1AC0610062F933 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2758CCA91D8EE4C1000181CD /* Logger.swift */; };
@@ -134,7 +137,7 @@
 		272C861C1E2569A1000560DD /* NativeAdTableViewCellBig.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NativeAdTableViewCellBig.xib; path = PocketMediaNativeAds/Assets/NativeAdTableViewCellBig.xib; sourceTree = "<group>"; };
 		273A4C0C1D81A9A100513F81 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		273A4C0E1D81A9A800513F81 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		27402DED1D8ADAA4002B3747 /* NativeAdTableViewCellTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = NativeAdTableViewCellTest.swift; path = Adunits/NativeAdTableViewCellTest.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		27402DED1D8ADAA4002B3747 /* NativeAdTableViewCellRegularTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = NativeAdTableViewCellRegularTest.swift; path = Adunits/NativeAdTableViewCellRegularTest.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		274C718B1D8EE5AC007F0B27 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = close.png; path = PocketMediaNativeAds/Assets/close.png; sourceTree = "<group>"; };
 		274C718C1D8EE5AC007F0B27 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "PocketMediaNativeAds/Assets/close@2x.png"; sourceTree = "<group>"; };
 		274C718F1D8EE5AC007F0B27 /* Loud_Speaker_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Loud_Speaker_64.png; path = PocketMediaNativeAds/Assets/Loud_Speaker_64.png; sourceTree = "<group>"; };
@@ -248,7 +251,7 @@
 		27402DEC1D8AD823002B3747 /* AdUnits */ = {
 			isa = PBXGroup;
 			children = (
-				27402DED1D8ADAA4002B3747 /* NativeAdTableViewCellTest.swift */,
+				27402DED1D8ADAA4002B3747 /* NativeAdTableViewCellRegularTest.swift */,
 			);
 			name = AdUnits;
 			sourceTree = "<group>";
@@ -476,6 +479,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		27701C461E31235800E64009 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27701C471E31236000E64009 /* PocketMediaNativeAds.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		277F1C081D7EF51C00E14A68 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -496,6 +507,7 @@
 				3EBB77DD567779FA91CF4C85 /* [CP] Check Pods Manifest.lock */,
 				2723A4FB1D7FFD1F00CB07E2 /* Sources */,
 				2723A4FC1D7FFD1F00CB07E2 /* Frameworks */,
+				27701C461E31235800E64009 /* Headers */,
 				2723A4FD1D7FFD1F00CB07E2 /* Resources */,
 				2A9CD9B5594478306F0B6F58 /* [CP] Embed Pods Frameworks */,
 				CEBEAFBF2A9980B838E0103C /* [CP] Copy Pods Resources */,
@@ -716,7 +728,7 @@
 				275DB5471E24EA6E00FC3FC2 /* UICollectionViewDataSourceWrapper.swift in Sources */,
 				2764DE701E23D76300D3B65C /* NativeAdTableView.swift in Sources */,
 				2764DE6E1E23D76300D3B65C /* DataSource.swift in Sources */,
-				18FA16431D942ABF000787DC /* NativeAdTableViewCellTest.swift in Sources */,
+				18FA16431D942ABF000787DC /* NativeAdTableViewCellRegularTest.swift in Sources */,
 				27043D051E25489300DFC1B4 /* NativeAdTableViewCellBig.swift in Sources */,
 				18FA16451D942ABF000787DC /* PocketMediaNativeAdsBundleTest.swift in Sources */,
 				18FA16461D942ABF000787DC /* fatalError.swift in Sources */,
@@ -742,6 +754,7 @@
 				2764DE6D1E23D76300D3B65C /* NativeAdCollectionViewDelegate.swift in Sources */,
 				2764DE721E23D76300D3B65C /* NativeAdTableViewDelegate.swift in Sources */,
 				2764DE791E23D76300D3B65C /* NativeAdsConnectionProtocol.swift in Sources */,
+				274F8B831E3125CA00AC0D01 /* EImageType.swift in Sources */,
 				2764DE821E23D76300D3B65C /* NativeAdsError.swift in Sources */,
 				2764DE801E23D76300D3B65C /* NativeAd.swift in Sources */,
 				18FA164E1D942ABF000787DC /* NativeAdTableViewDatasourceTest.swift in Sources */,
@@ -751,6 +764,7 @@
 				18FA16511D942ABF000787DC /* NativeAdsRequestTest.swift in Sources */,
 				2764DE7D1E23D76300D3B65C /* FullscreenBrowser.swift in Sources */,
 				2764DE7A1E23D76300D3B65C /* NativeAdsRequest.swift in Sources */,
+				274F8B841E3125CD00AC0D01 /* SImage.swift in Sources */,
 				18FA16521D942ABF000787DC /* NativeAdTest.swift in Sources */,
 				18FA16531D942ABF000787DC /* NativeAdsWebviewDelegateTest.swift in Sources */,
 				2764DE851E23D76300D3B65C /* NativeViewCell.swift in Sources */,
@@ -834,6 +848,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = L7E3AY2W7R;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -894,6 +909,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = L7E3AY2W7R;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

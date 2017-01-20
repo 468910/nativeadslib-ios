@@ -24,6 +24,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EaU-4l-Jgi">
                     <rect key="frame" x="70.5" y="31" width="150" height="120"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="120" id="pGj-HQ-FhP"/>
                         <constraint firstAttribute="width" constant="150" id="zbB-2c-r63"/>
                     </constraints>
                 </imageView>
@@ -35,7 +36,7 @@
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check out CustomAd.xib" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lG-SS-axS">
-                    <rect key="frame" x="50.5" y="165" width="190" height="21"/>
+                    <rect key="frame" x="50.5" y="163" width="190" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -44,14 +45,13 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="EaU-4l-Jgi" firstAttribute="top" secondItem="CW6-z1-Du8" secondAttribute="bottom" constant="5" id="5AC-fB-LjM"/>
-                <constraint firstItem="c5Z-Rr-pDN" firstAttribute="top" secondItem="4lG-SS-axS" secondAttribute="bottom" constant="-2" id="KOk-E7-AZ5"/>
+                <constraint firstItem="c5Z-Rr-pDN" firstAttribute="top" secondItem="4lG-SS-axS" secondAttribute="bottom" id="KOk-E7-AZ5"/>
                 <constraint firstItem="4lG-SS-axS" firstAttribute="centerX" secondItem="EaU-4l-Jgi" secondAttribute="centerX" id="Nak-bv-ibe"/>
                 <constraint firstItem="CW6-z1-Du8" firstAttribute="top" secondItem="Ddd-lx-tTc" secondAttribute="top" constant="5" id="S36-HE-J6C"/>
                 <constraint firstItem="CW6-z1-Du8" firstAttribute="centerX" secondItem="Ddd-lx-tTc" secondAttribute="centerX" id="XD2-dQ-hLN"/>
                 <constraint firstItem="c5Z-Rr-pDN" firstAttribute="width" secondItem="Ddd-lx-tTc" secondAttribute="width" id="g7a-vI-ylz"/>
                 <constraint firstItem="c5Z-Rr-pDN" firstAttribute="centerX" secondItem="CW6-z1-Du8" secondAttribute="centerX" id="hge-yc-1gg"/>
                 <constraint firstAttribute="bottom" secondItem="c5Z-Rr-pDN" secondAttribute="bottom" constant="5" id="tj5-3Z-pkO"/>
-                <constraint firstItem="4lG-SS-axS" firstAttribute="top" secondItem="EaU-4l-Jgi" secondAttribute="bottom" constant="14" id="xXg-m8-kV8"/>
                 <constraint firstItem="EaU-4l-Jgi" firstAttribute="centerX" secondItem="Ddd-lx-tTc" secondAttribute="centerX" id="zAz-5h-En6"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

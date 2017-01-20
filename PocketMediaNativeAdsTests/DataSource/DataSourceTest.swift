@@ -14,7 +14,7 @@ open class DataSourceTest: XCTestCase {
     var subject: DataSource!
 
     open override func setUp() {
-        subject = DataSource(adUnitType: AdUnitType.tableViewRegular)
+        subject = DataSource(type: AdUnit.UIType.TableView, customXib: nil, adPosition: MarginAdPosition())
 
         let ad = testHelpers.getNativeAd()
 
@@ -59,5 +59,22 @@ open class DataSourceTest: XCTestCase {
         XCTAssertNotNil(result, "Because row 3 in section 0 exists")
         result = subject.getNativeAdListing(IndexPath(row: 7, section: 0))
         XCTAssertNil(result, "Because row 8 in section 0 does NOT exists")
+    }
+
+    func testInitRegisterNib() {
+        //        class mockedUITableView: UITableView {
+        //            var registerNibCalled: Bool = false
+        //            override func register(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
+        //                registerNibCalled = true
+        //            }
+        //        }
+        //
+        //        let tableView = mockedUITableView()
+        //        let tableViewDataSource = ExampleTableViewDataSource()
+        //        tableViewDataSource.loadLocalJSON()
+        //        tableView.dataSource = tableViewDataSource
+        //
+        //        subject = NativeAdStream(controller: controller, view: tableView, adPlacementToken: "test123", customXib: UINib(), requester: requester)
+        //        XCTAssert(tableView.registerNibCalled, "registerNib called")
     }
 }

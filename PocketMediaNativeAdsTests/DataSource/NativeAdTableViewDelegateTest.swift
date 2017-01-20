@@ -151,7 +151,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         self.delegate as! mockedUITableViewDelegate2
 
         result = subject?.tableView(tableView, heightForHeaderInSection: 0)
-        XCTAssert(result == UITableViewAutomaticDimension, "Since the delegate has implemented the heightForHeaderInSection function we should return the value its returning.")
+        XCTAssert(result == 0, "Since the delegate has NOT implemented the heightForHeaderInSection function we should return the default value.")
     }
 
     func testHeightForRowAtIndexPath() {
@@ -177,10 +177,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         datasource.returngetNativeAdListing = true
         result = subject?.tableView(tableView, heightForRowAt: IndexPath(row: 1, section: 0))
 
-        let bundle = PocketMediaNativeAdsBundle.loadBundle()!
-        let nib = bundle.loadNibNamed(AdUnitType.tableViewRegular.nibName, owner: nil, options: nil)!.first!
-        let view = nib as! NativeAdTableViewCell
-        XCTAssert(result == view.frame.size.height, "Since the delegate has implemented the heightForHeaderInSection function we should return the value its returning.")
+        XCTAssert(result == UITableViewAutomaticDimension, "Since the delegate has implemented the heightForHeaderInSection function we should return the value its returning.")
         XCTAssert(datasource.getNativeAdListingCalled, "The function checked if it was an ad.")
         datasource.returngetNativeAdListing = false
         datasource.getNativeAdListingCalled = false
@@ -562,7 +559,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         self.delegate as! mockedUITableViewDelegate2
 
         result = subject?.tableView(tableView, estimatedHeightForFooterInSection: 0)
-        XCTAssert(result == UITableViewAutomaticDimension, "Since the delegate has implemented the estimatedHeightForFooterInSection function we should return the value its returning.")
+        XCTAssert(result == 0, "Since the delegate has NOT implemented the estimatedHeightForFooterInSection function we should return the default value its returning.")
     }
 
     func testEstimatedHeightForHeaderInSection() {
@@ -589,7 +586,7 @@ class NativeAdTableViewDelegateTest: XCTestCase {
         self.delegate as! mockedUITableViewDelegate2
 
         result = subject?.tableView(tableView, estimatedHeightForHeaderInSection: 0)
-        XCTAssert(result == UITableViewAutomaticDimension, "Since the delegate has implemented the estimatedHeightForFooterInSection function we should return the value its returning.")
+        XCTAssert(result == 0, "Since the delegate has NOT implemented the estimatedHeightForFooterInSection function we should return the default value its returning.")
     }
 
     func testEstimatedHeightForRowAtIndexPath() {

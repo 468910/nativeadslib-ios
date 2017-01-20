@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class NativeAdCollectionViewCellRegular: UICollectionViewCell, NativeViewCell {
     @IBOutlet weak var adImage: UIImageView!

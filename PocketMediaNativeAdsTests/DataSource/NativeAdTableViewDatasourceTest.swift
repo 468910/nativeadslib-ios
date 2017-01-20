@@ -24,9 +24,9 @@ class BaseMockedNativeAdDataSource: NativeAdTableViewDataSource {
         return nil
     }
 
-    override func getAdCell(_ nativeAd: NativeAd) -> UITableViewCell {
+    override func getAdCell(_ nativeAd: NativeAd, indexPath: IndexPath) -> UIView {
         isGetAdCellForTableViewCalled = true
-        return NativeAdTableViewCell() as NativeAdTableViewCell
+        return NativeAdTableViewCellRegular()
     }
 
     func setup() {
@@ -274,8 +274,8 @@ open class NativeAdTableViewDatasourceTest: XCTestCase {
         var data = testHelpers.getNativeAdData()!
         var ad = try! NativeAd(adDictionary: data, adPlacementToken: "test")
 
-        var result = localsubject.getAdCell(ad)
-        XCTAssert(result is NativeAdTableViewCell, "Succesfully return NativeAdTableViewCell")
+        var result = localsubject.getAdCell(ad, indexPath: IndexPath())
+        XCTAssert(result is UITableViewCell, "Succesfully return NativeAdTableViewCell")
     }
 
     func testGetOriginalPositionForElement() {

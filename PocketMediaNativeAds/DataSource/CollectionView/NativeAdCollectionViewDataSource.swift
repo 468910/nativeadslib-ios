@@ -117,7 +117,9 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
      */
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let listing = getNativeAdListing(indexPath) {
-            return getAdCell(listing.ad, indexPath: indexPath) as! UICollectionViewCell
+            if let cell = getAdCell(listing.ad, indexPath: indexPath) as? UICollectionViewCell {
+                return cell
+            }
         }
         return datasource.collectionView(collectionView, cellForItemAt: getOriginalPositionForElement(indexPath))
     }
@@ -160,8 +162,7 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
             self.collectionView.reloadData()
         })
     }
-    
+
     open override func reloadRowsAtIndexPaths(indexPaths: [IndexPath], animation: Bool) {
-        
     }
 }

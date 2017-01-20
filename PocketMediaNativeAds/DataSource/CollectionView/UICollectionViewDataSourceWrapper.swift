@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  This procol defines what Apple requires us to implement. Based on https://developer.apple.com/reference/uikit/uicollectionviewdatasource

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  A protocol that eacha datasource will need to conform to in order to be notified of new ads.

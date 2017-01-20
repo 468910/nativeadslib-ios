@@ -46,13 +46,13 @@ open class NativeAdTableViewCellRegular: UITableViewCell, NativeViewCell {
 
         self.selectionStyle = UITableViewCellSelectionStyle.none
     }
-    
+
     internal func setupAdImage(_ image: UIImageView) {
         image.nativeSetImageFromURL(ad!.campaignImage)
         image.layer.cornerRadius = image.frame.width / 10
         image.layer.masksToBounds = true
     }
-    
+
     internal func setupInstallButton(_ button: UIButton) {
         button.layer.borderColor = self.tintColor.cgColor
         button.layer.borderWidth = 1
@@ -70,7 +70,7 @@ open class NativeAdTableViewCellRegular: UITableViewCell, NativeViewCell {
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         button.titleLabel?.minimumScaleFactor = 0.50
         button.titleLabel?.adjustsFontSizeToFitWidth = true
-        
+
         if let image = adImage {
             button.layer.cornerRadius = image.frame.width / 20
         }
