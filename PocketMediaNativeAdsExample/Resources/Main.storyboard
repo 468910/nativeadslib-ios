@@ -24,8 +24,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAh-cg-FyB" userLabel="description">
-                                <rect key="frame" x="9" y="211" width="357" height="162.5"/>
-                                <string key="text">Pocket Media Native Ads is a totally customizable, yet easy to use, solution to monetize your app. You can use our pre-made ad units (as a reference or a plug&amp;play code, or take them as reference for your application. In this app you can find some example ad units, as well as the example for the source code to implement it.</string>
+                                <rect key="frame" x="9" y="211" width="357" height="325"/>
+                                <mutableString key="text">Pocket Media Native Ads is a totally customizable, yet easy to use, solution to monetize your app.   We offer you this iOS sample app using our open source library to showcase (some of) its possibilities. It integrates seamlesly in your standard components (such as TableView and CollectionView), and in any other part of the app.  You can use our pre-made ad units, or create your own, to fit your app.  The app and the library are open source, so feel free to get inspiration in the code.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -37,14 +37,14 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plt-yQ-PeU" userLabel="open repo">
-                                <rect key="frame" x="16" y="381.5" width="136" height="30"/>
+                                <rect key="frame" x="16" y="544" width="136" height="30"/>
                                 <state key="normal" title="OPEN REPOSITORY"/>
                                 <connections>
                                     <action selector="openRepo:" destination="SrP-sj-3my" eventType="touchUpInside" id="Jql-sA-irU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oD1-dy-NzX" userLabel="open website">
-                                <rect key="frame" x="244" y="381.5" width="115" height="30"/>
+                                <rect key="frame" x="244" y="544" width="115" height="30"/>
                                 <state key="normal" title="GO TO WEBSITE"/>
                                 <connections>
                                     <action selector="openWebsite:" destination="SrP-sj-3my" eventType="touchUpInside" id="U0d-vI-5AR"/>
@@ -98,7 +98,7 @@
         <scene sceneID="HVq-L8-4Hw">
             <objects>
                 <collectionViewController id="Bj3-L1-1V4" customClass="CollectionViewController" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="lPV-LO-mdR">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lPV-LO-mdR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -238,7 +238,7 @@
                                 <rect key="frame" x="0.0" y="30" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wLs-Ze-839" id="pCJ-SA-CqR">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldj-Ln-pvM">
@@ -340,7 +340,7 @@
                                 <rect key="frame" x="0.0" y="30" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Fa-27-r3J" id="PKI-uH-2HI">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90b-UL-l0e">
@@ -425,7 +425,7 @@
                                 <rect key="frame" x="0.0" y="30" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sRm-Et-5i9" id="J7h-tN-XU2">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wK-XU-fLn">
