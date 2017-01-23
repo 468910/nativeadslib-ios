@@ -4,10 +4,10 @@
 [![Build Status](https://www.bitrise.io/app/b7a8ab5efda24990.svg?token=n6H_COg_cUKeKnUEWEMJTw&branch=master)](https://www.bitrise.io/app/b7a8ab5efda24990)
 [![codecov](https://codecov.io/gh/Pocketbrain/nativeadslib-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/Pocketbrain/nativeadslib-ios)
 [![Gitter](https://badges.gitter.im/join_chat.svg)](https://gitter.im/Pocketbrain)
-[![CocoaPods](https://img.shields.io/cocoapods/at/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
-[![Version](https://img.shields.io/cocoapods/v/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
-[![License](https://img.shields.io/cocoapods/l/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
-[![Platform](https://img.shields.io/cocoapods/p/PocketMediaNativeAds.svg?maxAge=2592000&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
+[![CocoaPods](https://img.shields.io/cocoapods/at/PocketMediaNativeAds.svg?maxAge=3600&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
+[![Version](https://img.shields.io/cocoapods/v/PocketMediaNativeAds.svg?maxAge=3600&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
+[![License](https://img.shields.io/cocoapods/l/PocketMediaNativeAds.svg?maxAge=3600&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
+[![Platform](https://img.shields.io/cocoapods/p/PocketMediaNativeAds.svg?maxAge=3600&style=flat)](http://cocoapods.org/pods/PocketMediaNativeAds)
 
 This open-source (Swift/Objective-c) library allows developers to easily show ads provided by PocketMedia natively in their apps. While the traditional way of advertising in mobile applications usually involves a disruption in natural user-flow to show the ad (Interstitial ads, banners, etc.) this native solution allows the ads to be integrated in the context where they will be displayed. That in turn makes it less intrusive for the user experience.
 
