@@ -94,11 +94,11 @@
             </objects>
             <point key="canvasLocation" x="-1704" y="530"/>
         </scene>
-        <!--Collection View-->
+        <!--Collection-->
         <scene sceneID="HVq-L8-4Hw">
             <objects>
                 <collectionViewController id="Bj3-L1-1V4" customClass="CollectionViewController" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lPV-LO-mdR">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="lPV-LO-mdR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -137,7 +137,7 @@
                             <outlet property="delegate" destination="Bj3-L1-1V4" id="Mzw-RA-Ji0"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Collection View" image="collectionview" id="mFX-c4-1tI"/>
+                    <tabBarItem key="tabBarItem" title="Collection" image="collectionview" id="mFX-c4-1tI"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PuW-Ni-olr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -213,7 +213,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Custom integration" image="custom" selectedImage="custom" id="Quk-Fb-ncH"/>
+                    <tabBarItem key="tabBarItem" title="Custom" image="custom" selectedImage="custom" id="Quk-Fb-ncH"/>
                     <connections>
                         <outlet property="adDescription" destination="Qec-LL-2my" id="7pC-Ob-IiG"/>
                         <outlet property="adImage" destination="Vdl-uM-xsq" id="iqU-zm-0Am"/>
@@ -238,7 +238,7 @@
                                 <rect key="frame" x="0.0" y="30" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wLs-Ze-839" id="pCJ-SA-CqR">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldj-Ln-pvM">
@@ -298,7 +298,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Table View" image="tableview" id="Q9q-sn-oCg"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="tableview" id="Q9q-sn-oCg"/>
                     <navigationItem key="navigationItem" id="uf4-9F-Wbv"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="uoI-8G-c5y">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -340,7 +340,7 @@
                                 <rect key="frame" x="0.0" y="30" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Fa-27-r3J" id="PKI-uH-2HI">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90b-UL-l0e">
@@ -400,7 +400,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Table View sections" image="tableview-sections" id="Tht-vE-LSj"/>
+                    <tabBarItem key="tabBarItem" title="Sections" image="tableview-sections" id="Tht-vE-LSj"/>
                     <navigationItem key="navigationItem" id="4eW-Ld-GXs"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="GsX-iP-sSR">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -425,7 +425,7 @@
                                 <rect key="frame" x="0.0" y="30" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sRm-Et-5i9" id="J7h-tN-XU2">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wK-XU-fLn">
