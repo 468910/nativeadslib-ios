@@ -30,5 +30,4 @@ s.homepage         = "http://pocketmedia.mobi"
 
   #s.public_header_files = 'PocketMediaNativeAds/*.h'
   s.frameworks = 'UIKit'
-
 end

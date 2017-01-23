@@ -51,15 +51,6 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
     }
 
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let temp = indexPath.row
-
-        if indexPath.row >= collection.count || indexPath.row < 0 {
-            print("[INDEX] Wrongly indexed @ \(temp)")
-            let x = UITableViewCell()
-            x.backgroundColor = UIColor.red
-            return x
-        }
-
         if let item = collection[indexPath.row] as? ItemTableModel {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? ItemCell {
                 cell.name.text = item.title

@@ -8,46 +8,7 @@
 
 import UIKit
 import AdSupport
-
-/**
- Types of images for the ads we want to receive. If an ad doesn't have the required image type it won't be returned.
- */
-@objc
-public enum EImageType: Int, CustomStringConvertible {
-
-    case allImages = 0 // ""
-    case icon = 1 // "icon"
-    case hqIcon = 2 // "hq_icon"
-    case banner = 3 // "banner"
-    case bigImages = 4 // "banner,hq_icon"
-    case bannerAndIcons = 5 // "banner,icon"
-
-    init?(string: String) {
-        switch string {
-        case "allImages": self = .allImages
-        case "icon": self = .icon
-        case "hq_icon": self = .hqIcon
-        case "banner": self = .banner
-        case "bigImages": self = .bigImages
-        case "bannerAndIcons": self = .bannerAndIcons
-        default: self = .allImages
-        }
-    }
-
-    public var description: String {
-        switch self {
-            // Use Internationalization, as appropriate.
-        case .allImages: return ""
-        case .icon: return "icon"
-        case .hqIcon: return "hq_icon"
-        case .banner: return "banner"
-        case .bigImages: return "banner,hq_icon"
-        case .bannerAndIcons: return "banner,icon"
-        }
-    }
-}
-
-/**
+/*
  NativeAdsRequest is a controller class that will do a network request and call a instance of NativeAdsConnectionDelegate based on the results.
  */
 open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegate {
@@ -115,17 +76,37 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
      */
     internal func receivedAds(_ data: Data?, response: URLResponse?, error: Error?) {
         if error != nil {
-            self.delegate?.didReceiveError(error!)
+            delegateDidReceiveError(error!)
             return
         }
         if data == nil {
-            self.delegate?.didReceiveError(NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: ["Invalid server response received: data is a nil value.": NSLocalizedDescriptionKey]))
+            delegateDidReceiveError(NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: ["Invalid server response received: data is a nil value.": NSLocalizedDescriptionKey]))
             return
         }
         if let json: NSArray = (try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSArray {
             mapAds(json)
         } else {
-            self.delegate?.didReceiveError(NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: ["Invalid server response received: Not json.": NSLocalizedDescriptionKey]))
+            delegateDidReceiveError(NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: ["Invalid server response received: Not json.": NSLocalizedDescriptionKey]))
+        }
+    }
+
+    /**
+     This function wraps around the call to the delegate. It will make sure that the call to delegate is called on the main thread. Because there is a high likelyhood that the user will do UI changes the moment the call comes in.
+     - parameter error: The error sent to the delegate.
+     */
+    private func delegateDidReceiveError(_ error: Error) {
+        DispatchQueue.main.async {
+            self.delegate?.didReceiveError(error)
+        }
+    }
+
+    /**
+     This function wraps around the call to the delegate. It will make sure that the call to delegate is called on the main thread. Because there is a high likelyhood that the user will do UI changes the moment the call comes in.
+     - parameter nativeads: The result of ads sent to the delegate.
+     */
+    private func delegateDidReceiveResults(_ nativeAds: [NativeAd]) {
+        DispatchQueue.main.async {
+            self.delegate?.didReceiveResults(nativeAds)
         }
     }
 
@@ -146,16 +127,16 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
                     nativeAds.append(ad)
                 }
             } catch let error as NSError {
-                self.delegate?.didReceiveError(error)
+                delegateDidReceiveError(error)
                 return
             }
         }
         if nativeAds.count > 0 {
-            self.delegate?.didReceiveResults(nativeAds)
+            delegateDidReceiveResults(nativeAds)
         } else {
             let userInfo = ["No ads available from server": NSLocalizedDescriptionKey]
             let error = NSError(domain: "mobi.pocketmedia.nativeads", code: -1, userInfo: userInfo)
-            self.delegate?.didReceiveError(error)
+            delegateDidReceiveError(error)
         }
     }
 
@@ -169,7 +150,7 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
     /**
      Returns the API URL to invoke to retrieve ads
      */
-    internal func getNativeAdsURL(_ placementKey: String?, limit: UInt, imageType: EImageType = EImageType.allImages) -> String {
+    internal func getNativeAdsURL(_ placementKey: String?, limit: UInt, imageType: EImageType) -> String {
         let token = provideIdentifierForAdvertisingIfAvailable()
 
         let baseUrl = NativeAdsConstants.NativeAds.baseURL

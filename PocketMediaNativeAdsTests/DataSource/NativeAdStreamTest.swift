@@ -59,23 +59,6 @@ class NativeAdStreamTest: XCTestCase {
         super.tearDown()
     }
 
-    func testInitRegisterNib() {
-        class mockedUITableView: UITableView {
-            var registerNibCalled: Bool = false
-            override func register(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
-                registerNibCalled = true
-            }
-        }
-
-        let tableView = mockedUITableView()
-        let tableViewDataSource = ExampleTableViewDataSource()
-        tableViewDataSource.loadLocalJSON()
-        tableView.dataSource = tableViewDataSource
-
-        subject = NativeAdStream(controller: controller, view: tableView, adPlacementToken: "test123", customXib: UINib(), requester: requester)
-        XCTAssert(tableView.registerNibCalled, "registerNib called")
-    }
-
     func testDidReceiveResults() {
         var ads: [NativeAd] = [NativeAd]()
         for adDict in testHelpers.getNativeAdsData()! {
@@ -102,7 +85,7 @@ class NativeAdStreamTest: XCTestCase {
          XCTAssert(subject.adsPositions! == [0, 1, 3], "It should sort the adsPositions")
          subject.didReceiveResults(ads)
          XCTAssert((subject.datasource.ads) != nil)
-         */
+        */
     }
 
     func testRequestAds() {

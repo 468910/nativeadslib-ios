@@ -1,21 +1,12 @@
 //
 //  NativeAd.swift
-//  Pods
+//  PocketMediaNativeAds
 //
-//  Created by Adrián Moreno Peña | Pocket Media on 14/01/16.
+//  Created by Pocket Media on 02/03/16.
+//  Copyright © 2016 PocketMedia. All rights reserved.
 //
-//
-import UIKit
 
-/**
- Image model object
- It contains the attributes that every image in an ad has.
- */
-public struct SImage {
-    var url: URL!
-    var width: UInt!
-    var height: UInt!
-}
+import UIKit
 
 /**
  Model class. It contains all the attributes received from the API, and allows to open the click URL with a specific opener.
@@ -187,7 +178,7 @@ open class NativeAd: NSObject {
      Goes through the ad dictionary and parses it for the call to action of this offer (The button). Defines self.callToActionText (default empty)
      - parameter adDictionary: JSON object containing NativeAd Data.
      */
-    private func parseCallToAction(_ adDictionary: NSDictionary) throws{
+    private func parseCallToAction(_ adDictionary: NSDictionary) throws {
         if let callToActionText = adDictionary["action_text"] as? String {
             self.callToActionText = callToActionText
         } else {
@@ -199,7 +190,7 @@ open class NativeAd: NSObject {
      Goes through the ad dictionary and parses it for the boolean if this ad should be externally managed. Defines self.shouldBeManagedExternally (default false)
      - parameter adDictionary: JSON object containing NativeAd Data.
      */
-    private func parseShouldBeManagedExternally(_ adDictionary: NSDictionary) throws{
+    private func parseShouldBeManagedExternally(_ adDictionary: NSDictionary) throws {
         if let open_in_browser = adDictionary["open_in_browser"] as? Bool {
             self.shouldBeManagedExternally = open_in_browser
         } else {
@@ -224,7 +215,7 @@ open class NativeAd: NSObject {
     @objc
     open func bannerUrl() -> URL? {
         var url: URL?
-        if images[EImageType.hqIcon] != nil {
+        if images[EImageType.banner] != nil {
             url = images[EImageType.banner]?.url
         }
         return url

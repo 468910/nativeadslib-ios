@@ -60,7 +60,7 @@ extension URL {
                 if error == nil {
                     if let data = data, let image = UIImage(data: data) {
 
-                        DispatchQueue.main.sync {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             Caching.sharedCache.setObject(image, forKey: self.getCacheKey() as AnyObject, cost: data.count)
 
                             for callback in URL.callbacks[self.getCacheKey()]! {
@@ -89,13 +89,12 @@ public extension UIImageView {
     /**
      This method will kick off the caching process. It will start fetching the image if it isn't already being downloaded or in the cache and eventually call set the self.image.
      */
-    func nativeSetImageFromURL(_ url: URL) {
+    func nativeSetImageFromURL(_ url: URL, completion handler: ((Bool) -> Swift.Void)? = nil) {
 
-        if UIImageView.currentUrl[self] != url {
-            self.image = UIImage()
+        if UIImageView.currentUrl[self] == url {
+            return
         }
 
-        // self.image = drawCustomImage(CGSize(width: 100, height: 100))
         if let campaignImage = url.cachedImage {
             // Cached
             self.image = campaignImage
@@ -114,10 +113,13 @@ public extension UIImageView {
                     return
                 }
 
+                self.image = downloadedImage
+                handler?(true)
+
                 // Check the cell hasn't recycled while loading.
-                UIView.transition(with: self, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                    self.image = downloadedImage
-                }, completion: nil)
+                //                UIView.transition(with: self, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                //                    self.image = downloadedImage
+                //                }, completion: handler)
             })
         }
     }

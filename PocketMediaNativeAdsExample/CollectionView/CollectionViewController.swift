@@ -1,48 +1,39 @@
 //
 //  CollectionViewController.swift
-//  PocketMediaNativeAds
+//  PocketMediaNativeAdsExample
 //
-//  Created by Pocket Media on 20/06/16.
-//  Copyright © 2016 PocketMedia. All rights reserved.
+//  Created by Iain Munro on 09/01/2017.
+//  Copyright © 2017 PocketMedia. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import PocketMediaNativeAds
 
 /**
  Example of the AdStream with an CollectionView
  **/
-class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    @IBOutlet weak var collectionView: UICollectionView!
+class CollectionViewController: UICollectionViewController {
+    var collection: [ItemTableModel] = []
+    var stream: NativeAdStream?
 
     override func viewDidLoad() {
+        loadLocalJSON()
 
-        //		self.title = "CollectionView"
-        //		loadLocalJSON()
-        //		collectionView?.delegate = self
-        //		collectionView?.dataSource = self
-        //
-        //		self.collectionView.backgroundColor = UIColor.whiteColor()
-        //		collectionView.collectionViewLayout = NativeAdCollectionViewLayout()
-        //
-        //		let adPos = [5, 2, 4]
-        //		let stream = NativeAdStream(controller: self, mainView: self.collectionView, adsPositions: adPos)
-        //		stream.requestAds("d5737f99307e376c635bcbd13b308decda8e46b8", limit: 10)
+        stream = NativeAdStream(controller: self, view: self.collectionView!, adPlacementToken: "894d2357e086434a383a1c29868a0432958a3165", customXib: nil, adPosition: PredefinedAdPosition(positions: [2, 3, 8, 9])) /* replace with your own token!! */
+        stream?.requestAds(4)
     }
 
-    // --Delegate--
-
-    // --DataSource--
-
-    var collection: [AnyObject] = []
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collection.count
     }
 
-    func collectionView(_ cellForItemAtcollectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TestCell", for: indexPath) as! CollectionAdCell
-        return cell
+    override func collectionView(_ cellForItemAtcollectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView?.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? CollectionItemCell {
+            cell.setData(item: collection[indexPath.row])
+            return cell
+        }
+        return UICollectionViewCell()
     }
 
     func loadLocalJSON() {

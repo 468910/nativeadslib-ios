@@ -15,11 +15,13 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
     /// The view we're going to integrate the native ads in.
     open var view: UIView?
     /// The mixed datasource
-    open var datasource: DataSource!
+    open var datasource: DataSource?
     /// The instance of a requester which we'll use to do the network requests.
     fileprivate var requester: NativeAdsRequest!
     /// The amount of ads previously requested. (Due to the fact that we can reload without redefining the amount)
-    fileprivate var limit: UInt = 2
+    fileprivate var limit: UInt = 10
+    /// The amount of ads previously requested. (Due to the fact that we can reload without redefining the amount)
+    fileprivate var preference: AdUnit.Flavour = AdUnit.Flavour.Regular
 
     /**
      Initializer of the Native Ad Stream way of implementing ads in existing UI Views.
@@ -27,9 +29,11 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
      - parameter controller: Current controller. So we have context of where the ad click is coming from. (Used for example to get from an ad click)
      - parameter view: The actual view that needs to integrate the ads.
      - paramater adPlacementToken: The placement token received from http://third-party.pmgbrain.com/
-     - parameter customXib: UINib instance that will be used instead of the StandardAdUnitTableViewCell.
+     - parameter customXib: UINib instance that will be used instead of the NativeAdTableViewCell.
      - parameter adPosition: Instance that conforms to the AdPosition protocol. Dictating where an ad should show.
      - parameter requester: Instance of NativeAdsRequest. We'll create a new instance if nil
+     - important:
+     For custom xib's you can also set a identifier to 'CustomAdCell'.
      */
     @objc
     public required init(
@@ -54,26 +58,14 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
         // Depending on the view that was sent along, use one of our known implementations.
         switch view {
         case let tableView as UITableView:
-
-            // If a custom xib was sent. Register it.
-            if customXib != nil {
-                if tableView.dequeueReusableCell(withIdentifier: "CustomAdCell") == nil {
-                    tableView.register(customXib, forCellReuseIdentifier: "CustomAdCell")
-                }
-            }
-
-            datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adPosition: adPosition!)
+            datasource = NativeAdTableViewDataSource(controller: controller, tableView: tableView, adPosition: adPosition!, customXib: customXib)
             break
-            //            case let collectionView as UICollectionView:
-            //                break
+        case let collectionView as UICollectionView:
+            datasource = NativeAdCollectionViewDataSource(controller: controller, collectionView: collectionView, adPosition: adPosition!, customXib: customXib)
+            break
         default:
-            datasource = DataSource()
+            Logger.error("Unsupported UI element specified.")
             break
-        }
-
-        // If a custom XIB was sent along. Set the adUnitType to custom
-        if customXib != nil {
-            datasource?.adUnitType = AdUnitType.custom
         }
     }
 
@@ -94,36 +86,27 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
             Logger.debug("Received no Ads")
         }
         Logger.debug("Received \(newAds.count) new ads.")
-        datasource!.onAdRequestSuccess(newAds)
+        datasource?.onAdRequestSuccess(newAds)
     }
 
     /**
      * This method reloads the known ads.
      */
     @objc open func reloadAds() {
-        self.requestAds(self.limit)
+        self.requestAds(self.limit, preference: self.preference)
     }
 
     /**
      Method used to load native ads.
      - limit: Limit on how many native ads are to be retrieved.
      */
-    @objc open func requestAds(_ limit: UInt, adUnitType: AdUnitType = AdUnitType.standard) {
+    @objc open func requestAds(_ limit: UInt, preference: AdUnit.Flavour = AdUnit.Flavour.Regular) {
         // Set the limit so that when the user does a reloadAds call we know what limit they want.
         self.limit = limit
-
-        if self.datasource.adUnitType != AdUnitType.custom {
-            self.datasource.adUnitType = adUnitType
-        }
+        self.preference = preference
+        self.datasource?.adUnit.setPreference(size: preference)
 
         Logger.debug("Requesting ads (\(limit)) for affiliate id \(requester.adPlacementToken)")
-
-        var imageType = EImageType.allImages
-        // If our adunit is of the type Big. Then let us ask our api to send back banner like images
-        if self.datasource.adUnitType == AdUnitType.big {
-            imageType = EImageType.banner
-        }
-
-        requester.retrieveAds(limit, imageType: imageType)
+        requester.retrieveAds(limit, imageType: (self.datasource?.adUnit.getImageType())!)
     }
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="NativeAdCollectionViewCellRegular" reuseIdentifier="NativeAdCollectionViewCellRegular" id="4s4-tl-vbA" userLabel="Native Ad Collection View Cell Regular" customClass="NativeAdCollectionViewCellRegular" customModule="PocketMediaNativeAds">
+            <rect key="frame" x="0.0" y="0.0" width="368" height="153"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="368" height="153"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FnD-dO-2UX">
+                        <rect key="frame" x="0.0" y="0.0" width="368" height="153"/>
+                    </imageView>
+                    <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoK-OS-j37" userLabel="Ad">
+                        <rect key="frame" x="327" y="2" width="39" height="16"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ad" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EvI-6Z-V5P" userLabel="LabelThatDisplaysAd">
+                                <rect key="frame" x="0.0" y="0.0" width="19" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loud_Speaker_64.png" translatesAutoresizingMaskIntoConstraints="NO" id="DlH-oz-mn2" userLabel="SpeakerPhone">
+                                <rect key="frame" x="20" y="0.0" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="DlH-oz-mn2" secondAttribute="height" multiplier="1:1" id="SaJ-j5-c2i"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="EvI-6Z-V5P" secondAttribute="trailing" constant="20" id="9NV-fI-NZF"/>
+                            <constraint firstItem="DlH-oz-mn2" firstAttribute="top" secondItem="EoK-OS-j37" secondAttribute="top" id="Euk-FV-bSO"/>
+                            <constraint firstAttribute="trailing" secondItem="DlH-oz-mn2" secondAttribute="trailing" constant="3" id="FyY-C9-ave"/>
+                            <constraint firstItem="DlH-oz-mn2" firstAttribute="leading" secondItem="EoK-OS-j37" secondAttribute="leading" constant="20" id="KEP-9V-sw6"/>
+                            <constraint firstAttribute="width" secondItem="EoK-OS-j37" secondAttribute="height" multiplier="39:16" id="QDG-H4-dgX"/>
+                            <constraint firstItem="EvI-6Z-V5P" firstAttribute="leading" secondItem="EoK-OS-j37" secondAttribute="leading" id="c1p-v8-E3x"/>
+                            <constraint firstItem="EvI-6Z-V5P" firstAttribute="top" secondItem="EoK-OS-j37" secondAttribute="top" id="ca2-Rf-e6V"/>
+                            <constraint firstAttribute="bottom" secondItem="EvI-6Z-V5P" secondAttribute="bottom" id="e5y-nB-HrF"/>
+                            <constraint firstItem="DlH-oz-mn2" firstAttribute="leading" secondItem="EvI-6Z-V5P" secondAttribute="trailing" constant="1" id="pCu-AZ-KSL"/>
+                            <constraint firstAttribute="bottom" secondItem="DlH-oz-mn2" secondAttribute="bottom" id="wUC-ab-duW"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="FnD-dO-2UX" firstAttribute="width" secondItem="4s4-tl-vbA" secondAttribute="width" id="Co5-xB-nAn"/>
+                <constraint firstItem="FnD-dO-2UX" firstAttribute="centerY" secondItem="4s4-tl-vbA" secondAttribute="centerY" id="LKO-vD-gEm"/>
+                <constraint firstItem="FnD-dO-2UX" firstAttribute="height" secondItem="4s4-tl-vbA" secondAttribute="height" id="byG-Tr-TKh"/>
+                <constraint firstItem="FnD-dO-2UX" firstAttribute="centerX" secondItem="4s4-tl-vbA" secondAttribute="centerX" id="lrQ-XC-qGa"/>
+                <constraint firstAttribute="trailing" secondItem="EoK-OS-j37" secondAttribute="trailing" constant="2" id="nn5-B4-dlg"/>
+                <constraint firstItem="EoK-OS-j37" firstAttribute="top" secondItem="4s4-tl-vbA" secondAttribute="top" constant="2" id="rBn-35-08J"/>
+            </constraints>
+            <size key="customSize" width="368" height="153"/>
+            <connections>
+                <outlet property="adImage" destination="FnD-dO-2UX" id="KoM-jr-u2b"/>
+            </connections>
+            <point key="canvasLocation" x="145" y="112.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Loud_Speaker_64.png" width="64" height="64"/>
+    </resources>
+</document>
