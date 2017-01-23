@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "tableview-sections-25-25.png",
+      "filename" : "custom.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "1485206035_edit.png",
       "scale" : "2x"
     },
     {
