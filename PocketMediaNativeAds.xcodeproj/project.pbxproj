@@ -835,7 +835,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC41FAA594AE6C2CA0D77A78 /* Pods-PocketMediaNativeAdsTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -896,7 +895,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 03581B9D18BE8CA012B25B19 /* Pods-PocketMediaNativeAdsTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
