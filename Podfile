@@ -24,7 +24,8 @@ target 'PocketMediaNativeAdsExample' do
 		project 'PocketMediaNativeAdsExample.xcodeproj'
 		workspace 'PocketMediaNativeAds.xcworkspace'
 		use_frameworks!
-
+		pod 'mopub-ios-sdk'
+		
 		pod 'PocketMediaNativeAds', :path => './'
 end
 

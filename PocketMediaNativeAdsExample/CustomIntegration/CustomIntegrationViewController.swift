@@ -39,7 +39,7 @@ class CustomIntegrationController: UIViewController, NativeAdsConnectionDelegate
     }
 
     func tap(_ gestureRecognizer: UITapGestureRecognizer) {
-        ad?.openAdUrl(FullscreenBrowser(parentViewController: self))
+        ad?.openAdUrl(opener: FullScreenBrowser(parent: self))
     }
 
     /**

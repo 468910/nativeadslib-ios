@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FullScreenBrowser">
+            <connections>
+                <outlet property="closeButton" destination="67u-sz-NVo" id="FpS-JX-3Um"/>
+                <outlet property="view" destination="YIH-WG-W5v" id="luV-LN-l85"/>
+                <outlet property="webView" destination="zo9-GE-aYl" id="ZWs-Jf-4Td"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="YIH-WG-W5v">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zo9-GE-aYl" userLabel="WebView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iGg-Rt-VCq" userLabel="Loading">
+                    <rect key="frame" x="147.5" y="230" width="24" height="20"/>
+                </activityIndicatorView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67u-sz-NVo" userLabel="Close">
+                    <rect key="frame" x="284" y="33" width="20" height="22"/>
+                    <state key="normal" image="close.png"/>
+                    <connections>
+                        <action selector="Close:" destination="-1" eventType="touchUpInside" id="I3m-uc-9A1"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="67u-sz-NVo" secondAttribute="trailing" constant="16" id="1qW-Fl-Rmz"/>
+                <constraint firstItem="zo9-GE-aYl" firstAttribute="width" secondItem="YIH-WG-W5v" secondAttribute="width" id="ARU-ky-ZO7"/>
+                <constraint firstItem="zo9-GE-aYl" firstAttribute="top" secondItem="YIH-WG-W5v" secondAttribute="top" id="H8a-9o-sYO"/>
+                <constraint firstItem="iGg-Rt-VCq" firstAttribute="centerX" secondItem="YIH-WG-W5v" secondAttribute="centerX" id="IQb-Bl-uIg"/>
+                <constraint firstItem="67u-sz-NVo" firstAttribute="top" secondItem="YIH-WG-W5v" secondAttribute="top" constant="33" id="QfZ-e5-gr9"/>
+                <constraint firstItem="zo9-GE-aYl" firstAttribute="height" secondItem="YIH-WG-W5v" secondAttribute="height" id="Rsg-HH-uu8"/>
+                <constraint firstItem="iGg-Rt-VCq" firstAttribute="width" secondItem="YIH-WG-W5v" secondAttribute="height" multiplier="1:20" id="fdE-Le-hs4"/>
+                <constraint firstItem="iGg-Rt-VCq" firstAttribute="centerY" secondItem="YIH-WG-W5v" secondAttribute="centerY" id="oJK-RR-wk9"/>
+                <constraint firstItem="zo9-GE-aYl" firstAttribute="leading" secondItem="YIH-WG-W5v" secondAttribute="leading" id="pXF-vv-QO7"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close.png" width="20" height="20"/>
+    </resources>
+</document>

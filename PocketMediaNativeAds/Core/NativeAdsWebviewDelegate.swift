@@ -15,8 +15,6 @@ import Foundation
  */
 @objc
 open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
-    /// Spinning loading view.
-    internal var loadingView: UIView?
     /// The UIWebView we're controlling.
     open var wrappedWebView: UIWebView
     /// The ad we're showing.
@@ -27,6 +25,7 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
     fileprivate var delegate: NativeAdsWebviewRedirectionsDelegate
     /// The last request we went through.
     fileprivate var lastRequest: URLRequest?
+    private var running = false
 
     /**
      Initializer.
@@ -60,6 +59,10 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
      Sent if a web view failed to load a frame.
      */
     open func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        if !running {
+            return
+        }
+
         // Ignore NSURLErrorDomain error -999.
         if error._code == NSURLErrorCancelled {
             return
@@ -136,9 +139,6 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
      */
     open func webViewDidStartLoad(_ webView: UIWebView) {
         Logger.debug("webViewDidStartLoad")
-        if loadingView == nil {
-            self.createLoadingIndicator(webView)
-        }
     }
 
     /**
@@ -155,17 +155,24 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
      Entry point to this class. Will trigger the actual load of an ad.
      */
     @objc
-    internal func loadUrl(_ nativeAdUnit: NativeAd) {
+    public func loadUrl(_ nativeAdUnit: NativeAd) {
+        running = true
         self.nativeAdUnit = nativeAdUnit
         let request = URLRequest(url: nativeAdUnit.clickURL as URL)
 
-        if nativeAdUnit.shouldBeManagedExternally {
-            Logger.debug("AdUnit will open in external browser.")
-            openSystemBrowser((request.url!))
-        }
+        //if nativeAdUnit.shouldBeManagedExternally {
+        //    Logger.debug("AdUnit will open in external browser.")
+        //    openSystemBrowser((request.url!))
+        //}
 
         self.wrappedWebView.loadRequest(request)
-        Logger.debug("webview LoadUrl Exited")
+    }
+    
+    public func stop() {
+        self.wrappedWebView.stopLoading()
+        running = false
+        self.nativeAdUnit = nil
+        Logger.debug("Stopped.")
     }
 
     /**
@@ -228,7 +235,12 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
      Opens the system URL, will be invoked when we must not display the URL in the webview.
      */
     open func openSystemBrowser(_ url: URL) {
+        if !running {
+            return
+        }
+        
         let urlToOpen: URL = checkSimulatorURL(url)
+        self.loadStatusCheckTimer?.invalidate()
         Logger.debugf("\n\nRequesting to Safari: %@\n\n", urlToOpen.absoluteString)
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.openURL(url)
@@ -236,32 +248,4 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         delegate.didOpenBrowser(url)
     }
 
-    /**
-     Creates the loading indicator.
-     */
-    fileprivate func createLoadingIndicator(_ parentView: UIView) {
-        // Box config:
-        loadingView = UIView(frame: CGRect(x: 115, y: 110, width: 80, height: 80))
-        loadingView!.center = parentView.center
-        loadingView!.backgroundColor = UIColor.black
-        loadingView!.alpha = 0.9
-        loadingView!.layer.cornerRadius = 10
-
-        // Spin config:
-        let activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
-        activityView.frame = CGRect(x: 20, y: 12, width: 40, height: 40)
-        activityView.startAnimating()
-
-        // Text config:
-        let textLabel = UILabel(frame: CGRect(x: 0, y: 50, width: 80, height: 30))
-        textLabel.textColor = UIColor.white
-        textLabel.textAlignment = .center
-        textLabel.font = UIFont(name: textLabel.font.fontName, size: 13)
-        textLabel.text = "Loading..."
-
-        // Activate:
-        loadingView!.addSubview(activityView)
-        loadingView!.addSubview(textLabel)
-        parentView.addSubview(loadingView!)
-    }
 }

@@ -81,6 +81,8 @@ open class NativeAdTableViewCellRegular: UITableViewCell, NativeViewCell {
      Called when the user presses on the call to action button
      */
     @IBAction func install(_ sender: AnyObject) {
-        self.ad?.openAdUrl()
+        if let viewController = UIApplication.shared.delegate?.window??.rootViewController {
+            self.ad?.openAdUrl(FullscreenBrowser(parentViewController: viewController))
+        }
     }
 }
