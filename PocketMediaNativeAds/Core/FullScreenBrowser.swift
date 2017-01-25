@@ -13,7 +13,7 @@ import UIKit
  Default implementation for the NativeAdOpenerDelegate
  */
 @objc(FullScreenBrowser)
-public class FullScreenBrowser: UIViewController, NativeAdOpenerDelegate {
+public class FullScreenBrowser: UIViewController, NativeAdOpener {
     /// Instance of the delegate we need to inform about events happening here.
     internal var webViewDelegate: NativeAdsWebviewDelegate?
     /// The original viewController. To give some context of where we were, so if the user cancels we can go back.
@@ -23,12 +23,14 @@ public class FullScreenBrowser: UIViewController, NativeAdOpenerDelegate {
     ///The close button.
     @IBOutlet weak var closeButton: UIButton?
     private var ad: NativeAd?
+    private var delegate : NativeAdOpenerDelegate?
     
     /**
      Initializes the FullScreen Embedded WebView native ad opener.
      */
     @objc
-    public init(parent viewController: UIViewController? = UIApplication.shared.delegate?.window??.rootViewController) {
+    public init(delegate: NativeAdOpenerDelegate? = nil, parent viewController: UIViewController? = UIApplication.shared.delegate?.window??.rootViewController) {
+        self.delegate = delegate
         super.init(nibName: "FullScreenBrowser", bundle: PocketMediaNativeAdsBundle.loadBundle()!)
         //Does the given viewController have a navigationController?
         if viewController?.navigationController != nil {
@@ -48,6 +50,7 @@ public class FullScreenBrowser: UIViewController, NativeAdOpenerDelegate {
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         webViewDelegate?.stop()
+        delegate?.openerStopped()
     }
     
     open override func viewDidLoad()  {
@@ -103,6 +106,7 @@ public class FullScreenBrowser: UIViewController, NativeAdOpenerDelegate {
         
         if let ad = self.ad {
             self.webViewDelegate!.loadUrl(ad)
+            delegate?.openerStarted()
         } else {
             hide()
         }

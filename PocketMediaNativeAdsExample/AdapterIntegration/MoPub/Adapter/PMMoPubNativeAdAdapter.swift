@@ -16,7 +16,7 @@ import PocketMediaNativeAds
  See: https://github.com/mopub/mopub-ios-sdk/wiki/Custom-Events#quick-start-for-native-ads
  */
 @objc(PMMoPubNativeAdAdapter)
-open class PMMoPubNativeAdAdapter: NSObject, MPNativeAdAdapter {
+open class PMMoPubNativeAdAdapter: NSObject, MPNativeAdAdapter, NativeAdOpenerDelegate {
     /**
      * Provides a dictionary of all publicly accessible assets (such as title and text) for the
      * native ad.
@@ -77,8 +77,7 @@ open class PMMoPubNativeAdAdapter: NSObject, MPNativeAdAdapter {
     }
     
     public func trackClick() {
-        registerClickToMopub()
-        self.ad.openAdUrl()
+        self.ad.openAdUrl(opener: FullScreenBrowser(delegate: self))
         //registerFinishHandlingClickToMopub()
     }
     
@@ -109,6 +108,14 @@ open class PMMoPubNativeAdAdapter: NSObject, MPNativeAdAdapter {
      */
     open func registerFinishHandlingClickToMopub() {
         delegate.nativeAdDidDismissModal(for: self)
+    }
+    
+    public func openerStopped() {
+        registerFinishHandlingClickToMopub()
+    }
+    
+    public func openerStarted() {
+        registerClickToMopub()
     }
     
 //    /*
