@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "tableview-25-25.png",
+      "filename" : "collectionview.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "1485205935_editor-grid-view-block-outline-stroke.png",
       "scale" : "2x"
     },
     {
