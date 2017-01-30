@@ -38,7 +38,7 @@ public class NativeAdCollectionViewDataSource: DataSource, UICollectionViewDataS
         self.adPosition = adPosition
         self.collectionView = collectionView
         super.init(type: AdUnit.UIType.CollectionView, customXib: customXib, adPosition: adPosition)
-        // TODO: Swizzle
+        // TODO: Swizzle reloadData
 
         // Hijack the delegate and datasource and make it use our wrapper.
         if collectionView.delegate != nil {

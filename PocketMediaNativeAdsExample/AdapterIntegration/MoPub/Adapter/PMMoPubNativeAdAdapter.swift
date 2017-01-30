@@ -24,24 +24,23 @@ open class PMMoPubNativeAdAdapter: NSObject, MPNativeAdAdapter, NativeAdOpenerDe
      * When possible, you should place values in the returned dictionary such that they correspond to
      * the pre-defined keys in the MPNativeAdConstants header file.
      */
-    public var properties: [AnyHashable : Any]
+    public var properties: [AnyHashable: Any]
 
-    
-    weak open var delegate: MPNativeAdAdapterDelegate!
-    
+    open weak var delegate: MPNativeAdAdapterDelegate!
+
     let ad: NativeAd
     public init(ad: NativeAd) {
-        
+
         self.ad = ad
-        self.properties = [String : String]()
+        self.properties = [String: String]()
         properties[kAdTitleKey] = ad.campaignName
         properties[kAdTextKey] = ad.campaignDescription
         properties[kAdIconImageKey] = ad.campaignImage.absoluteString
         properties[kAdMainImageKey] = ad.bannerUrl()?.absoluteString
         properties[kAdCTATextKey] = ad.callToActionText
-//        properties[kAdStarRatingKey] = 5
+        //        properties[kAdStarRatingKey] = 5
     }
-    
+
     /**
      * The default click-through URL for the ad.
      *
@@ -49,7 +48,7 @@ open class PMMoPubNativeAdAdapter: NSObject, MPNativeAdAdapter, NativeAdOpenerDe
      * provide a method to handle a click, lacking another for retrieving the URL itself).
      */
     open let defaultActionURL: URL? = nil
-    
+
     /**
      * Determines whether MPNativeAd should track clicks
      *
@@ -60,9 +59,9 @@ open class PMMoPubNativeAdAdapter: NSObject, MPNativeAdAdapter, NativeAdOpenerDe
     open func enableThirdPartyClickTracking() -> Bool {
         return false
     }
-    
+
     /** @name Responding to an Ad Being Attached to a View */
-    
+
     /**
      * This method will be called when your ad's content is about to be loaded into a view.
      *
@@ -71,16 +70,16 @@ open class PMMoPubNativeAdAdapter: NSObject, MPNativeAdAdapter, NativeAdOpenerDe
      * You should implement this method if the underlying third-party ad object needs to be informed
      * of this event.
      */
-    
+
     public func willAttach(to view: UIView!) {
         registerImpressionToMopub()
     }
-    
+
     public func trackClick() {
         self.ad.openAdUrl(opener: FullScreenBrowser(delegate: self))
-        //registerFinishHandlingClickToMopub()
+        // registerFinishHandlingClickToMopub()
     }
-    
+
     /*
      Informs Mopub for the clicked registered
      */
@@ -91,7 +90,7 @@ open class PMMoPubNativeAdAdapter: NSObject, MPNativeAdAdapter, NativeAdOpenerDe
             print("Delegate does not implement the click tracking callback. Clicks are likely not tracked.")
         }
     }
-    
+
     /*
      Informs Mopub for the impression registered
      */
@@ -102,32 +101,31 @@ open class PMMoPubNativeAdAdapter: NSObject, MPNativeAdAdapter, NativeAdOpenerDe
             print("Delegate does not implement the impression tracking callback. Impressions are likely not tracked.")
         }
     }
-    
+
     /*
      Informs Mopub that the web view is closed
      */
     open func registerFinishHandlingClickToMopub() {
         delegate.nativeAdDidDismissModal(for: self)
     }
-    
+
     public func openerStopped() {
         registerFinishHandlingClickToMopub()
     }
-    
+
     public func openerStarted() {
         registerClickToMopub()
     }
-    
-//    /*
-//     Provides the adchoices view to mopub
-//     */
-//    open func privacyInformationIconView() -> UIView! {
-//        let adChoicesView = UIImageView()
-//        if let adChoices = ad.getAdChoices() {
-//            adChoicesView.loadImage(adChoices.getIconUrl())
-//            ad.registerAdChoicesListener(adChoicesView, ad: ad)
-//        }
-//        return adChoicesView
-//    }
-    
+
+    //    /*
+    //     Provides the adchoices view to mopub
+    //     */
+    //    open func privacyInformationIconView() -> UIView! {
+    //        let adChoicesView = UIImageView()
+    //        if let adChoices = ad.getAdChoices() {
+    //            adChoicesView.loadImage(adChoices.getIconUrl())
+    //            ad.registerAdChoicesListener(adChoicesView, ad: ad)
+    //        }
+    //        return adChoicesView
+    //    }
 }

@@ -160,14 +160,14 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         self.nativeAdUnit = nativeAdUnit
         let request = URLRequest(url: nativeAdUnit.clickURL as URL)
 
-        //if nativeAdUnit.shouldBeManagedExternally {
+        // if nativeAdUnit.shouldBeManagedExternally {
         //    Logger.debug("AdUnit will open in external browser.")
         //    openSystemBrowser((request.url!))
-        //}
+        // }
 
         self.wrappedWebView.loadRequest(request)
     }
-    
+
     public func stop() {
         self.wrappedWebView.stopLoading()
         running = false
@@ -238,7 +238,7 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         if !running {
             return
         }
-        
+
         let urlToOpen: URL = checkSimulatorURL(url)
         self.loadStatusCheckTimer?.invalidate()
         Logger.debugf("\n\nRequesting to Safari: %@\n\n", urlToOpen.absoluteString)
@@ -247,5 +247,4 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         }
         delegate.didOpenBrowser(url)
     }
-
 }

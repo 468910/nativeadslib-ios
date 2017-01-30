@@ -210,34 +210,6 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
         }
     }
 
-    func testOpenSystemBrowser() {
-        // Is not testable due to: There can only be one UIApplication instance.
-        // https://stackoverflow.com/questions/3265969/how-to-mock-property-internal-value-of-uiapplication
-        //        class MockUIApplication : UIApplication {
-        //            var canOpenURLCalled: Bool = false
-        //            var openURLCalled: Bool = false
-        //
-        //            override func canOpenURL(url: NSURL) -> Bool {
-        //                canOpenURLCalled = true
-        //                return true
-        //            }
-        //
-        //            override func openURL(url: NSURL) -> Bool {
-        //                openURLCalled = true
-        //                return true
-        //            }
-        //
-        //        }
-        //        let app = MockUIApplication()
-        //        subject?.openSystemBrowser(NSURL(string: "https://google.co.uk")!, application: app)
-        //
-        //        XCTAssert(app.canOpenURLCalled, "CanOpenUrl should have been called.")
-        //        XCTAssert(app.openURLCalled, "openURL should have been called.")
-
-        subject?.openSystemBrowser(URL(string: "https://google.co.uk")!)
-        XCTAssert((delegate?.didOpenBrowserCalled)!, "openSystemBrowser should call didOpenBrowserCalled with the final url")
-    }
-
     func testNotifyServerOfFalseRedirection() {
 
         class MockNSURLSessionDownloadTask: URLSessionDataTask {
@@ -277,20 +249,5 @@ class NativeAdsWebviewDelegateTest: XCTestCase {
             }
             XCTAssert(session.downloadTaskWithRequestCalled, "downloadTaskWithRequest should have been called")
         }
-    }
-
-    func testWebViewDidStartLoad() {
-        let parentView = UIWebView()
-        subject!.webViewDidStartLoad(parentView)
-
-        var foundView: UIView?
-        for subview in parentView.subviews {
-            if subview.isKind(of: UIView.self) && subview.frame.height == 80 && subview.frame.width == 80 {
-                foundView = subview
-                break
-            }
-        }
-
-        XCTAssert(subject!.loadingView === foundView, "It should add a loading view")
     }
 }

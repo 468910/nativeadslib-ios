@@ -9,7 +9,7 @@
 import XCTest
 @testable import PocketMediaNativeAds
 
-open class MockOpener: NativeAdOpenerDelegate {
+open class MockOpener: NativeAdOpener {
     fileprivate(set) var loadCalled: Bool = false
 
     @objc
@@ -177,7 +177,7 @@ class NativeAdTest: XCTestCase {
         do {
             let ad = try NativeAd(adDictionary: data, adPlacementToken: "none")
             let opener = MockOpener()
-            ad.openAdUrl(opener)
+            ad.openAdUrl(opener: opener)
             XCTAssertTrue(opener.loadCalled)
         } catch {
             XCTFail("Unexpected exception thrown")

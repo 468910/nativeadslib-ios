@@ -13,8 +13,8 @@ import Foundation
  */
 @objc
 public protocol NativeAdOpenerDelegate {
-    //Called when the opener starts
+    // Called when the opener starts
     func openerStarted()
-    //Called when the opener stops
+    // Called when the opener stops
     func openerStopped()
 }

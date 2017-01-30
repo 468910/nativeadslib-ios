@@ -6,61 +6,59 @@ import MoPub
  */
 class MoPubNativeAdCell: UITableViewCell, MPNativeAdRendering {
 
-	// MARK: Properties
+    // MARK: Properties
 
-	@IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
 
-	@IBOutlet weak var mainTextLabel: UILabel!
+    @IBOutlet weak var mainTextLabel: UILabel!
 
     @IBOutlet weak var callToActionLabel: UILabel!
-    
-	@IBOutlet weak var mainImageView: UIImageView!
 
-	@IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var mainImageView: UIImageView!
 
-	@IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var videoView: UIView!
 
-	@IBOutlet weak var privacyInformationIconImageView: UIImageView!
+    @IBOutlet weak var iconImageView: UIImageView!
 
-	@IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var privacyInformationIconImageView: UIImageView!
 
-	override func awakeFromNib() {
+    @IBOutlet weak var containerView: UIView!
 
-	}
+    override func awakeFromNib() {
+    }
 
-	// MARK: MPNativeAdRendering
+    // MARK: MPNativeAdRendering
 
-	func nativeMainTextLabel() -> UILabel! {
-		return self.mainTextLabel
-	}
+    func nativeMainTextLabel() -> UILabel! {
+        return self.mainTextLabel
+    }
 
-	func nativeTitleTextLabel() -> UILabel! {
-		return self.titleLabel
-	}
+    func nativeTitleTextLabel() -> UILabel! {
+        return self.titleLabel
+    }
 
-	func nativeCallToActionTextLabel() -> UILabel! {
-		return self.callToActionLabel
-	}
+    func nativeCallToActionTextLabel() -> UILabel! {
+        return self.callToActionLabel
+    }
 
-	func nativeIconImageView() -> UIImageView! {
-		return self.iconImageView
-	}
+    func nativeIconImageView() -> UIImageView! {
+        return self.iconImageView
+    }
 
-	func nativeMainImageView() -> UIImageView! {
-		return self.mainImageView
-	}
+    func nativeMainImageView() -> UIImageView! {
+        return self.mainImageView
+    }
 
-	func nativeVideoView() -> UIView! {
-		return self.videoView
-	}
+    func nativeVideoView() -> UIView! {
+        return self.videoView
+    }
 
-	func nativePrivacyInformationIconImageView() -> UIImageView! {
-		return self.privacyInformationIconImageView
-	}
+    func nativePrivacyInformationIconImageView() -> UIImageView! {
+        return self.privacyInformationIconImageView
+    }
 
-	// Return the nib used for the native ad.
-	class func nibForAd() -> UINib! {
-		return UINib(nibName: "MoPubNativeAdCell", bundle: nil)
-	}
-
+    // Return the nib used for the native ad.
+    class func nibForAd() -> UINib! {
+        return UINib(nibName: "MoPubNativeAdCell", bundle: nil)
+    }
 }

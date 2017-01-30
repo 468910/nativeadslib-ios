@@ -37,7 +37,7 @@ class mockedUIViewController: UIViewController {
 class mockedNativeAd: NativeAd {
     var openAdUrlCalled: Bool = false
 
-    override func openAdUrl(_ opener: NativeAdOpenerDelegate) {
+    open override func openAdUrl(opener delegate: NativeAdOpener = FullScreenBrowser()) {
         openAdUrlCalled = true
     }
 }
