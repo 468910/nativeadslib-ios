@@ -73,12 +73,19 @@ public class FullScreenBrowser: UIViewController, NativeAdOpener {
     }
 
     /**
+     Returns if the view is ready.
+     */
+    internal func ready() -> Bool {
+        return self.isViewLoaded
+    }
+
+    /**
      Attach delegate to the webview.
      - Important:
      WebView must already be defined at this stage.
      */
     internal func setupWebView(delegate: NativeAdsWebviewDelegate? = nil) {
-        guard self.webView != nil else {
+        guard ready() else {
             return
         }
         self.webViewDelegate = delegate != nil ? delegate : NativeAdsWebviewDelegate(delegate: self, webView: self.webView!)
@@ -91,9 +98,9 @@ public class FullScreenBrowser: UIViewController, NativeAdOpener {
     internal func show(animate: Bool = true) {
         if self.parentController?.navigationController != nil {
             self.parentController?.navigationController?.pushViewController(self, animated: animate)
-        } else {
-            self.setRootView(view: self)
+            return
         }
+        self.setRootView(view: self)
     }
 
     /**
@@ -102,16 +109,16 @@ public class FullScreenBrowser: UIViewController, NativeAdOpener {
     internal func hide(animate: Bool = true) {
         if self.parentController?.navigationController != nil {
             self.parentController?.navigationController?.popViewController(animated: animate)
-        } else {
-            self.setRootView(view: self.parentController!)
+            return
         }
+        self.setRootView(view: self.parentController!)
     }
 
     /**
      Inform the webviewDelegate to start loading the ad.
      */
     internal func run() {
-        if !self.isViewLoaded {
+        guard ready() else {
             show()
             return
         }

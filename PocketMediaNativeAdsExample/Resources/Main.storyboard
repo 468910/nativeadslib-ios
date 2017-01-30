@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RES-G5-GkF">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,31 +20,31 @@
                         <viewControllerLayoutGuide type="bottom" id="rYm-Ja-Rrf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LNn-db-yXy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAh-cg-FyB" userLabel="description">
-                                <rect key="frame" x="9" y="211" width="357" height="186.5"/>
-                                <mutableString key="text">Pocket Media Native Ads is a totally customizable, yet easy to use, solution to monetize your app.   We offer you this iOS sample app using our open source library to showcase (some of) its possibilities. It integrates seamlesly in your standard components (such as TableView and CollectionView), and in any other part of the app.  You can use our pre-made ad units, or create your own, to fit your app.  The app and the library are open source, so feel free to get inspiration in the code.</mutableString>
+                                <rect key="frame" x="9" y="211" width="302" height="200.5"/>
+                                <string key="text">Pocket Media Native Ads is a totally customizable, yet easy to use, solution to monetize your app.   We offer you this iOS sample app using our open source library to showcase (some of) its possibilities. It integrates seamlesly in your standard components (such as TableView and CollectionView), and in any other part of the app.  You can use our pre-made ad units, or create your own, to fit your app.  The app and the library are open source, so feel free to get inspiration in the code.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PocketMedia" translatesAutoresizingMaskIntoConstraints="NO" id="2h2-Ni-3MP" userLabel="logo">
-                                <rect key="frame" x="-121.5" y="86" width="618" height="100"/>
+                                <rect key="frame" x="-99.5" y="86" width="519" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="NGh-la-C0W"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plt-yQ-PeU" userLabel="open repo">
-                                <rect key="frame" x="16" y="405.5" width="136" height="30"/>
+                                <rect key="frame" x="16" y="419.5" width="136" height="30"/>
                                 <state key="normal" title="OPEN REPOSITORY"/>
                                 <connections>
                                     <action selector="openRepo:" destination="SrP-sj-3my" eventType="touchUpInside" id="Jql-sA-irU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oD1-dy-NzX" userLabel="open website">
-                                <rect key="frame" x="244" y="405.5" width="115" height="30"/>
+                                <rect key="frame" x="189" y="419.5" width="115" height="30"/>
                                 <state key="normal" title="GO TO WEBSITE"/>
                                 <connections>
                                     <action selector="openWebsite:" destination="SrP-sj-3my" eventType="touchUpInside" id="U0d-vI-5AR"/>
@@ -107,8 +107,8 @@
         <scene sceneID="HVq-L8-4Hw">
             <objects>
                 <collectionViewController title="Collection view" id="Bj3-L1-1V4" customClass="CollectionViewController" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="lPV-LO-mdR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lPV-LO-mdR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="c4f-JG-flK">
@@ -161,65 +161,54 @@
                         <viewControllerLayoutGuide type="bottom" id="RPm-pd-Axt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="v8U-ra-XbU">
-                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClT-PE-31h">
-                                <rect key="frame" x="148" y="118" width="79" height="30"/>
-                                <state key="normal" title="GET AN AD"/>
-                                <connections>
-                                    <action selector="getAd:" destination="VF1-C3-xSy" eventType="touchUpInside" id="JZB-Oy-M7B"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGw-Ga-hpp" userLabel="description">
-                                <rect key="frame" x="16" y="8" width="343" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="tmu-Bu-hec"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGw-Ga-hpp" userLabel="Description">
+                                <rect key="frame" x="15" y="8" width="290" height="93.5"/>
                                 <string key="text">Press the button down below to fetch an ad. This is an example called custom integration. Here only the core classes in the most basic example to an ad. Once we've received the ad data, we'll display it in any way we want. This allows you to create impressive integrations!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClT-PE-31h">
+                                <rect key="frame" x="120.5" y="131.5" width="79" height="30"/>
+                                <state key="normal" title="GET AN AD"/>
+                                <connections>
+                                    <action selector="getAd:" destination="VF1-C3-xSy" eventType="touchUpInside" id="JZB-Oy-M7B"/>
+                                </connections>
+                            </button>
+                            <imageView contentMode="scaleAspectFit" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="PocketMedia" translatesAutoresizingMaskIntoConstraints="NO" id="Vdl-uM-xsq" userLabel="adImage">
+                                <rect key="frame" x="-96" y="171.5" width="512" height="168"/>
+                            </imageView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ja7-9j-KMH" userLabel="adTitle">
-                                <rect key="frame" x="67" y="315" width="241" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="gQU-Wd-xok"/>
-                                </constraints>
+                                <rect key="frame" x="0.5" y="347.5" width="320" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad Description" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qec-LL-2my" userLabel="adDescription">
-                                <rect key="frame" x="67" y="344" width="241" height="14"/>
+                                <rect key="frame" x="121" y="366.5" width="78" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PocketMedia" translatesAutoresizingMaskIntoConstraints="NO" id="Vdl-uM-xsq" userLabel="adImage">
-                                <rect key="frame" x="67" y="178" width="241" height="129"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Vdl-uM-xsq" secondAttribute="height" multiplier="15:8" id="exG-v2-ioy"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ClT-PE-31h" firstAttribute="top" secondItem="zGw-Ga-hpp" secondAttribute="bottom" constant="30" id="3Ph-dq-qrJ"/>
-                            <constraint firstItem="Vdl-uM-xsq" firstAttribute="leading" secondItem="v8U-ra-XbU" secondAttribute="leadingMargin" constant="51" id="7ZG-io-8au"/>
-                            <constraint firstItem="Vdl-uM-xsq" firstAttribute="trailing" secondItem="ja7-9j-KMH" secondAttribute="trailing" id="9un-x8-Atq"/>
-                            <constraint firstItem="Vdl-uM-xsq" firstAttribute="leading" secondItem="ja7-9j-KMH" secondAttribute="leading" id="QNd-OE-U24"/>
-                            <constraint firstItem="zGw-Ga-hpp" firstAttribute="top" secondItem="nuh-r2-16U" secondAttribute="bottom" constant="8" id="RC8-cl-ns2"/>
-                            <constraint firstItem="Vdl-uM-xsq" firstAttribute="leading" secondItem="Qec-LL-2my" secondAttribute="leading" id="Xaq-rt-HgC"/>
-                            <constraint firstItem="Vdl-uM-xsq" firstAttribute="centerX" secondItem="v8U-ra-XbU" secondAttribute="centerX" id="aEY-RA-SFu"/>
-                            <constraint firstItem="ja7-9j-KMH" firstAttribute="top" secondItem="Vdl-uM-xsq" secondAttribute="bottom" constant="8" symbolic="YES" id="arG-ty-dVD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="zGw-Ga-hpp" secondAttribute="trailing" id="b9g-gH-VBZ"/>
-                            <constraint firstItem="zGw-Ga-hpp" firstAttribute="centerX" secondItem="v8U-ra-XbU" secondAttribute="centerX" id="fY1-qn-O80"/>
-                            <constraint firstItem="Qec-LL-2my" firstAttribute="centerX" secondItem="v8U-ra-XbU" secondAttribute="centerX" id="pjt-jg-026"/>
-                            <constraint firstItem="Vdl-uM-xsq" firstAttribute="top" secondItem="ClT-PE-31h" secondAttribute="bottom" constant="30" id="qav-Lm-QIZ"/>
-                            <constraint firstItem="Qec-LL-2my" firstAttribute="top" secondItem="ja7-9j-KMH" secondAttribute="bottom" constant="8" id="rWD-IN-Bsh"/>
-                            <constraint firstItem="ClT-PE-31h" firstAttribute="centerX" secondItem="v8U-ra-XbU" secondAttribute="centerX" id="v3i-Cf-cK4"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="zGw-Ga-hpp" secondAttribute="leading" id="wDq-Ev-89V"/>
+                            <constraint firstItem="zGw-Ga-hpp" firstAttribute="width" secondItem="v8U-ra-XbU" secondAttribute="width" constant="-30" id="45t-zK-Phu"/>
+                            <constraint firstItem="Qec-LL-2my" firstAttribute="centerX" secondItem="v8U-ra-XbU" secondAttribute="centerX" id="7qw-A7-fnk"/>
+                            <constraint firstItem="Qec-LL-2my" firstAttribute="top" secondItem="ja7-9j-KMH" secondAttribute="bottom" constant="1" id="G90-Nj-xFz"/>
+                            <constraint firstItem="ja7-9j-KMH" firstAttribute="top" secondItem="Vdl-uM-xsq" secondAttribute="bottom" constant="8" id="GPn-c0-7hK"/>
+                            <constraint firstItem="zGw-Ga-hpp" firstAttribute="centerX" secondItem="v8U-ra-XbU" secondAttribute="centerX" id="PGe-9a-7dj"/>
+                            <constraint firstItem="Vdl-uM-xsq" firstAttribute="centerX" secondItem="v8U-ra-XbU" secondAttribute="centerX" id="Pa1-US-tg9"/>
+                            <constraint firstItem="RPm-pd-Axt" firstAttribute="top" secondItem="Qec-LL-2my" secondAttribute="bottom" constant="75" id="UyV-ia-hc8"/>
+                            <constraint firstItem="Vdl-uM-xsq" firstAttribute="top" secondItem="ClT-PE-31h" secondAttribute="bottom" constant="10" id="WuU-tN-oQJ"/>
+                            <constraint firstItem="zGw-Ga-hpp" firstAttribute="top" secondItem="nuh-r2-16U" secondAttribute="bottom" constant="8" id="XUj-mx-uLI"/>
+                            <constraint firstItem="ja7-9j-KMH" firstAttribute="centerX" secondItem="v8U-ra-XbU" secondAttribute="centerX" id="YPD-tF-j30"/>
+                            <constraint firstItem="ClT-PE-31h" firstAttribute="top" secondItem="zGw-Ga-hpp" secondAttribute="bottom" constant="30" id="hcM-ZV-1uX"/>
+                            <constraint firstItem="ClT-PE-31h" firstAttribute="centerX" secondItem="v8U-ra-XbU" secondAttribute="centerX" id="lRD-2O-WVW"/>
+                            <constraint firstItem="ja7-9j-KMH" firstAttribute="width" secondItem="v8U-ra-XbU" secondAttribute="width" id="wHM-bw-gnB"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -233,35 +222,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rja-ch-NRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1662" y="1435"/>
+            <point key="canvasLocation" x="-1663.125" y="1434.5070422535211"/>
         </scene>
         <!--Table view-->
         <scene sceneID="SpK-UO-TR8">
             <objects>
                 <tableViewController title="Table view" id="4XU-81-jBI" customClass="TableViewController" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="30" sectionFooterHeight="22" id="b0h-jd-yck">
-                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="80" id="wLs-Ze-839" customClass="ItemCell" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="30" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="30" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wLs-Ze-839" id="pCJ-SA-CqR">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldj-Ln-pvM">
-                                            <rect key="frame" x="80" y="19.5" width="254" height="40"/>
+                                            <rect key="frame" x="80" y="19.5" width="199" height="40"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFX-jN-4W4">
-                                                    <rect key="frame" x="0.0" y="26" width="254" height="14"/>
+                                                    <rect key="frame" x="0.0" y="26" width="199" height="14"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5h-pN-8dy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="254" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="199" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -331,7 +320,7 @@
         <scene sceneID="ano-k7-hkb">
             <objects>
                 <navigationController id="RES-G5-GkF" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0sy-9I-752">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0sy-9I-752">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -354,28 +343,28 @@
             <objects>
                 <tableViewController title="Sectioned tableview" id="ntO-zd-uYh" customClass="TableViewWithSectionsController" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="6" sectionHeaderHeight="30" sectionFooterHeight="30" id="EBf-PB-vyI">
-                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="80" id="6Fa-27-r3J" customClass="ItemCell" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="30" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="30" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Fa-27-r3J" id="PKI-uH-2HI">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90b-UL-l0e">
-                                            <rect key="frame" x="80" y="19.5" width="254" height="40"/>
+                                            <rect key="frame" x="80" y="19.5" width="199" height="40"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EV4-kx-rxh">
-                                                    <rect key="frame" x="0.0" y="26" width="254" height="14"/>
+                                                    <rect key="frame" x="0.0" y="26" width="199" height="14"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ieb-hG-MsC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="254" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="199" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -439,28 +428,28 @@
             <objects>
                 <tableViewController title="Table view" id="j1K-In-8Xy" customClass="TableViewController" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="30" sectionFooterHeight="22" id="9uB-k8-xLp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="80" id="sRm-Et-5i9" customClass="ItemCell" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="30" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="30" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sRm-Et-5i9" id="J7h-tN-XU2">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wK-XU-fLn">
-                                            <rect key="frame" x="80" y="19" width="254" height="41"/>
+                                            <rect key="frame" x="80" y="19" width="199" height="41"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl1-wl-Kk3">
-                                                    <rect key="frame" x="0.0" y="26" width="254" height="15"/>
+                                                    <rect key="frame" x="0.0" y="26" width="199" height="15"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xkb-eN-dlI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="254" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="199" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -523,28 +512,28 @@
             <objects>
                 <tableViewController title="Table view sections" id="zLc-k0-oq5" customClass="TableViewWithSectionsController" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="6" sectionHeaderHeight="30" sectionFooterHeight="30" id="pqE-ZQ-hXa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="80" id="Buf-63-z84" customClass="ItemCell" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="30" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="30" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Buf-63-z84" id="xul-4x-pCy">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8O-wJ-fEW">
-                                            <rect key="frame" x="80" y="19" width="254" height="41"/>
+                                            <rect key="frame" x="80" y="19" width="199" height="41"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJI-gr-4m0">
-                                                    <rect key="frame" x="0.0" y="26" width="254" height="15"/>
+                                                    <rect key="frame" x="0.0" y="26" width="199" height="15"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92m-b3-Pkc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="254" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="199" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -608,28 +597,28 @@
             <objects>
                 <tableViewController title="Table view" id="sZi-sI-mgK" customClass="TableViewController" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="30" sectionFooterHeight="22" id="tmr-sI-0DO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="80" id="npc-CW-v3i" customClass="ItemCell" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="30" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="30" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="npc-CW-v3i" id="o1Y-YH-gOJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4Y-aA-rEe">
-                                            <rect key="frame" x="80" y="19" width="254" height="41"/>
+                                            <rect key="frame" x="80" y="19" width="199" height="41"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U27-BB-xyU">
-                                                    <rect key="frame" x="0.0" y="26" width="254" height="15"/>
+                                                    <rect key="frame" x="0.0" y="26" width="199" height="15"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VA9-fO-D2g">
-                                                    <rect key="frame" x="0.0" y="0.0" width="254" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="199" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -692,28 +681,28 @@
             <objects>
                 <tableViewController title="Table view sections" id="Bxu-Qq-zfJ" customClass="MoPubTableViewController" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="6" sectionHeaderHeight="30" sectionFooterHeight="30" id="gvS-OL-yxo">
-                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="80" id="geK-Wh-v2V" customClass="ItemCell" customModule="PocketMediaNativeAdsExample_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="30" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="30" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="geK-Wh-v2V" id="qzE-aX-uOK">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAC-z0-hyi">
-                                            <rect key="frame" x="80" y="19" width="254" height="41"/>
+                                            <rect key="frame" x="80" y="19" width="199" height="41"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IB-JT-NZ0">
-                                                    <rect key="frame" x="0.0" y="26" width="254" height="15"/>
+                                                    <rect key="frame" x="0.0" y="26" width="199" height="15"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rev-hY-BBJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="254" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="199" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>

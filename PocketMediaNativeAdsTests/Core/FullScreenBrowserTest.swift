@@ -44,19 +44,26 @@ class MockedNativeAdsWebviewDelegate: NativeAdsWebviewDelegate {
     }
 }
 
+class TestFullScreenBrowser: FullScreenBrowser {
+    //Because self.isViewLoaded is read only.
+    override func ready() -> Bool {
+        return self.webView != nil
+    }
+}
+
 class FullScreenBrowserTest: XCTestCase {
 
-    var subject: FullScreenBrowser?
+    var subject: TestFullScreenBrowser?
     var ad: NativeAd?
 
     override func setUp() {
-        self.subject = FullScreenBrowser()
+        self.subject = TestFullScreenBrowser()
         self.ad = testHelpers.getNativeAd()
     }
 
     func testInit() {
         // The subject. But some methods overriden
-        class MockedFullScreenBrowser: FullScreenBrowser {
+        class MockedFullScreenBrowser: TestFullScreenBrowser {
             public let testRootView = mockedUIViewController()
 
             override func getRootView() -> UIViewController? {
@@ -77,10 +84,7 @@ class FullScreenBrowserTest: XCTestCase {
 
     func testViewWillDisappear() {
         class testDelegate: NativeAdOpenerDelegate {
-            public var openerStartedCalled = false
-            func openerStarted() {
-                openerStartedCalled = true
-            }
+            func openerStarted() {}
 
             public var openerStoppedCalled = false
             func openerStopped() {
@@ -103,11 +107,12 @@ class FullScreenBrowserTest: XCTestCase {
         subject?.webViewDelegate = webDelegate(delegate: self.subject!)
         subject?.viewWillDisappear(false)
 
-        XCTAssertTrue((subject?.delegate as! testDelegate).openerStartedCalled)
+        XCTAssertTrue((subject?.webViewDelegate as! webDelegate).stopCalled, "Should've instructed the webdelegate to stop.")
+        XCTAssertTrue((subject?.delegate as! testDelegate).openerStoppedCalled)
     }
 
     func testViewDidLoad() {
-        class MockedFullScreenBrowser: FullScreenBrowser {
+        class MockedFullScreenBrowser: TestFullScreenBrowser {
 
             var setupCloseButtonLoaded = false
             override func setupCloseButton() {
@@ -130,6 +135,27 @@ class FullScreenBrowserTest: XCTestCase {
         XCTAssertTrue(mockedSubject.setupCloseButtonLoaded, "It should've called this method")
         XCTAssertTrue(mockedSubject.setupWebViewLoaded, "It should've called this method")
         XCTAssertTrue(mockedSubject.runLoaded, "It should've called this method")
+    }
+
+    func testSetupWebView() {
+        // Setup
+        let webview = UIWebView(frame: CGRect.init(x: 0, y: 0, width: 112, height: 911))
+        let delegate = NativeAdsWebviewDelegate(delegate: self.subject!, webView: webview)
+
+        // Call
+        // Without a webview
+        self.subject?.setupWebView()
+        XCTAssertNil(self.subject?.webView?.delegate)
+
+        self.subject?.webView = webview
+        // Passed along delegate
+        self.subject?.setupWebView(delegate: delegate)
+        XCTAssertTrue(self.subject?.webView?.delegate === delegate, "We specified a delegate. Use that one!")
+
+        // No delegate.
+        self.subject?.setupWebView()
+        XCTAssertNotNil(self.subject?.webView?.delegate)
+        XCTAssertTrue(self.subject?.webView?.delegate !== delegate)
     }
 
     //    func runLoadTests(_ runWithNavigationController: Bool) {
