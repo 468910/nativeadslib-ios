@@ -28,7 +28,7 @@ public class NativeAdCollectionViewDelegate: NSObject, UICollectionViewDelegate 
      */
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let val = datasource.getNativeAdListing(indexPath) {
-            val.ad.openAdUrl(opener: FullScreenBrowser(parent: controller))
+            val.ad.openAdUrl(opener: FullscreenBrowser(parent: controller))
             return
         }
         delegate.collectionView?(collectionView, didSelectItemAt: self.datasource.getOriginalPositionForElement(indexPath))

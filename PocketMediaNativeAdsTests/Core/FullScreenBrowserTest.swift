@@ -44,40 +44,40 @@ class MockedNativeAdsWebviewDelegate: NativeAdsWebviewDelegate {
     }
 }
 
-class TestFullScreenBrowser: FullScreenBrowser {
+class TestFullscreenBrowser: FullscreenBrowser {
     // Because self.isViewLoaded is read only.
     override func ready() -> Bool {
         return self.webView != nil
     }
 }
 
-class FullScreenBrowserTest: XCTestCase {
+class FullscreenBrowserTest: XCTestCase {
 
-    var subject: TestFullScreenBrowser?
+    var subject: TestFullscreenBrowser?
     var ad: NativeAd?
 
     override func setUp() {
-        self.subject = TestFullScreenBrowser()
+        self.subject = TestFullscreenBrowser()
         self.ad = testHelpers.getNativeAd()
     }
 
     func testInit() {
         // The subject. But some methods overriden
-        class MockedFullScreenBrowser: TestFullScreenBrowser {
+        class MockedFullscreenBrowser: TestFullscreenBrowser {
             public let testRootView = mockedUIViewController()
 
             override func getRootView() -> UIViewController? {
                 return testRootView
             }
         }
-        subject = MockedFullScreenBrowser()
-        let mockedSubject = subject as! MockedFullScreenBrowser
+        subject = MockedFullscreenBrowser()
+        let mockedSubject = subject as! MockedFullscreenBrowser
         XCTAssertTrue(mockedSubject.testRootView == mockedSubject.parentController, "Because there isn't a navigation controller it should use the rootView.")
     }
 
     //    func testInitWithNav() {
     //        let nav = MockNavigationController(rootViewController: UIViewController())
-    //        subject = TestFullScreenBrowser(parent: nav)
+    //        subject = TestFullscreenBrowser(parent: nav)
     //
     //        XCTAssertTrue(nav == subject?.parentController, "Because there is a navigation controller it should not use the root one.")
     //    }
@@ -112,7 +112,7 @@ class FullScreenBrowserTest: XCTestCase {
     }
 
     func testViewDidLoad() {
-        class MockedFullScreenBrowser: TestFullScreenBrowser {
+        class MockedFullscreenBrowser: TestFullscreenBrowser {
 
             var setupCloseButtonLoaded = false
             override func setupCloseButton() {
@@ -129,8 +129,8 @@ class FullScreenBrowserTest: XCTestCase {
                 runLoaded = true
             }
         }
-        subject = MockedFullScreenBrowser()
-        let mockedSubject = subject as! MockedFullScreenBrowser
+        subject = MockedFullscreenBrowser()
+        let mockedSubject = subject as! MockedFullscreenBrowser
         subject?.viewDidLoad()
         XCTAssertTrue(mockedSubject.setupCloseButtonLoaded, "It should've called this method")
         XCTAssertTrue(mockedSubject.setupWebViewLoaded, "It should've called this method")
@@ -159,7 +159,7 @@ class FullScreenBrowserTest: XCTestCase {
     }
 
     func testRunMethod() {
-        class MockedFullScreenBrowser: TestFullScreenBrowser {
+        class MockedFullscreenBrowser: TestFullscreenBrowser {
             var showCalled = false
             override func show(animate: Bool = true) {
                 showCalled = true
@@ -175,8 +175,8 @@ class FullScreenBrowserTest: XCTestCase {
             }
         }
         // Setup
-        subject = MockedFullScreenBrowser()
-        let mockedSubject = subject as! MockedFullScreenBrowser
+        subject = MockedFullscreenBrowser()
+        let mockedSubject = subject as! MockedFullscreenBrowser
         let webview = UIWebView(frame: CGRect.init(x: 0, y: 0, width: 112, height: 911))
 
         // Not ready

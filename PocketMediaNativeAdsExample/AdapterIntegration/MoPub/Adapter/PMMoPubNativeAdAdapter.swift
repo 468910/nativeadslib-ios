@@ -76,7 +76,7 @@ open class PMMoPubNativeAdAdapter: NSObject, MPNativeAdAdapter, NativeAdOpenerDe
     }
 
     public func trackClick() {
-        self.ad.openAdUrl(opener: FullScreenBrowser(delegate: self))
+        self.ad.openAdUrl(opener: FullscreenBrowser(delegate: self))
         // registerFinishHandlingClickToMopub()
     }
 

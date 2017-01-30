@@ -9,11 +9,11 @@
 import UIKit
 
 /**
- Default controller class that is used to open the NativeAd in An FullScreen Embedded WebView.
+ Default controller class that is used to open the NativeAd in An Fullscreen Embedded WebView.
  Default implementation for the NativeAdOpener
  */
-@objc(FullScreenBrowser)
-public class FullScreenBrowser: UIViewController, NativeAdOpener {
+@objc(FullscreenBrowser)
+public class FullscreenBrowser: UIViewController, NativeAdOpener {
     /// Instance of the delegate we need to inform about events happening here.
     internal var webViewDelegate: NativeAdsWebviewDelegate?
     /// The original viewController. To give some context of where we were, so if the user cancels we can go back.
@@ -28,12 +28,12 @@ public class FullScreenBrowser: UIViewController, NativeAdOpener {
     internal var delegate: NativeAdOpenerDelegate?
 
     /**
-     Initializes the FullScreen Embedded WebView native ad opener.
+     Initializes the Fullscreen Embedded WebView native ad opener.
      */
     @objc
     public init(delegate: NativeAdOpenerDelegate? = nil, parent viewController: UIViewController? = nil) {
         self.delegate = delegate
-        super.init(nibName: "FullScreenBrowser", bundle: PocketMediaNativeAdsBundle.loadBundle()!)
+        super.init(nibName: "FullscreenBrowser", bundle: PocketMediaNativeAdsBundle.loadBundle()!)
         // Does the given viewController have a navigationController?
         if viewController?.navigationController != nil {
             self.parentController = viewController

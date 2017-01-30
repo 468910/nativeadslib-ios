@@ -1,4 +1,12 @@
 # PocketMedia: iOS NativeAds library
+##Upgrade Notice 1.1.0
+
+- The MoPub third party integration has been added. In order to allow this the FullscreenBrowser ad opener has been refactored. What was called before ```NativeAdOpenerDelegate``` is now called ```NativeAdOpener```.  The NativeAdOpenerDelegate class still exists but is used for delegation classes that make use of the FullscreenBrowser ad opener. Now events such as ```openerStarted``` and ```openerStopped``` are called.
+
+**Any implementations from 1.0.x should not require any change.**
+
+Please see the [MoPub + Pocketmedia integration](mopub.md) documentation for more information.
+
 ##Upgrade Notice 0.4.0
 - The api has changed in version 0.4.0. Both implementation strategies have been renewed (adstream and custom implementation using adRequest).
 

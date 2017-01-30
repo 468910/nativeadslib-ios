@@ -93,6 +93,9 @@ You could also opt for just using the library to do the network request and manu
     adRequest.retrieveAds(5)//The amount of ads you want to receive.
 ```
 
+### MoPuB's Network Mediation
+If you've already got the [MoPub SDK](http://www.mopub.com/) integrated, you can easily make use of this library. Do this by following the [MoPub+PocketMedia instructions](mopub.md)
+
 ## Receiving the results
 
 **Important:** the server to download the ads is ```getnative.pocketmedia.mobi```. This endpoint is compatible with https, so you don't need to add any specific values to your app plist. This change is made since the version 0.4.2 of the library.

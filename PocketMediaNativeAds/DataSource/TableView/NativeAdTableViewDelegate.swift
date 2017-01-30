@@ -40,7 +40,7 @@ open class NativeAdTableViewDelegate: NSObject, UITableViewDelegate {
     @objc
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let val = datasource.getNativeAdListing(indexPath) {
-            val.ad.openAdUrl(opener: FullScreenBrowser(delegate: nil, parent: controller))
+            val.ad.openAdUrl(opener: FullscreenBrowser(delegate: nil, parent: controller))
             return
         }
         delegate.tableView?(tableView, didSelectRowAt: self.datasource.getOriginalPositionForElement(indexPath))

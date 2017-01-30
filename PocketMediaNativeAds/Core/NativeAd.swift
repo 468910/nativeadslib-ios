@@ -252,7 +252,7 @@ open class NativeAd: NSObject {
      - parameter opener: NativeAdOpener instance handling the opening of the view where the NativeAd will be displayed.
      */
     @objc
-    open func openAdUrl(opener delegate: NativeAdOpener = FullScreenBrowser()) {
+    open func openAdUrl(opener delegate: NativeAdOpener = FullscreenBrowser()) {
         delegate.load(self)
     }
 }
