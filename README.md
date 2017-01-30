@@ -61,7 +61,7 @@ There are several ways to implement the native ads in your application. Firstly,
 
 For both methods the parameters used are:
 
-- **placement token**, to be generated in the [user dashboard](http://third-party.pmgbrain.com/)
+- **placement key**, to be generated in the [user dashboard](http://third-party.pmgbrain.com/)
 - **delegate**, to receive the event callbacks as the ads are ready
 
 API documentation is avaibale in in a [web version](https://htmlpreview.github.io/?https://github.com/Pocketbrain/nativeadslib-ios/feature/new-structure-tests/docs/index.html), as well as in the code.
@@ -94,7 +94,7 @@ You could also opt for just using the library to do the network request and manu
 ```
 
 ### MoPuB's Network Mediation
-If you've already got the [MoPub SDK](http://www.mopub.com/) integrated, you can easily make use of this library. Do this by following the [MoPub+PocketMedia instructions](mopub.md)
+If you've already got the [MoPub SDK](http://www.mopub.com/) integrated, you can easily make use of this library. Do this by following the plug-and-play [MoPub+PocketMedia instructions](mopub.md).
 
 ## Receiving the results
 
