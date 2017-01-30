@@ -45,7 +45,7 @@ class MockedNativeAdsWebviewDelegate: NativeAdsWebviewDelegate {
 }
 
 class TestFullScreenBrowser: FullScreenBrowser {
-    //Because self.isViewLoaded is read only.
+    // Because self.isViewLoaded is read only.
     override func ready() -> Bool {
         return self.webView != nil
     }
@@ -77,7 +77,7 @@ class FullScreenBrowserTest: XCTestCase {
 
     //    func testInitWithNav() {
     //        let nav = MockNavigationController(rootViewController: UIViewController())
-    //        subject = MockedFullScreenBrowser(parent: nav)
+    //        subject = TestFullScreenBrowser(parent: nav)
     //
     //        XCTAssertTrue(nav == subject?.parentController, "Because there is a navigation controller it should not use the root one.")
     //    }
@@ -158,39 +158,70 @@ class FullScreenBrowserTest: XCTestCase {
         XCTAssertTrue(self.subject?.webView?.delegate !== delegate)
     }
 
-    //    func runLoadTests(_ runWithNavigationController: Bool) {
-    //        do {
-    //
-    //            // Set our mocked NativeAdsWebviewDelegate
-    //            let mockedNativeAdsWebviewDelegate = MockedNativeAdsWebviewDelegate(delegate: subject!)
-    //
-    //            subject!.setupWebView(delegate: mockedNativeAdsWebviewDelegate)
-    //
-    //            // Setup our call expections
-    //            let expectation = self.expectation(description: "loadUrl should get called from show()")
-    //            mockedNativeAdsWebviewDelegate.loadUrlExpectation = expectation
-    //            mockedNativeAdsWebviewDelegate.loadUrlErrorResult = false
-    //
-    //            // Call the load function with our mocked ad.
-    //            subject?.load(ad!)
-    //
-    //            // Check if loadUrl in the NativeAdsWebviewDelegate was called
-    //            waitForExpectations(timeout: 1) { error in
-    //
-    //                if let error = error {
-    //                    XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-    //                }
-    //
-    //                guard let result = mockedNativeAdsWebviewDelegate.loadUrlErrorResult else {
-    //                    XCTFail("Expected delegate to be called")
-    //                    return
-    //                }
-    //
-    //                XCTAssert(mockedNativeAdsWebviewDelegate.sentNativeAdUnit == self.ad, "The ad that was sent should've been loaded")
-    //            }
-    //
-    //        } catch {
-    //            XCTFail("MockNativeAd is throwing an ")
-    //        }
-    //    }
+    func testRunMethod() {
+        class MockedFullScreenBrowser: TestFullScreenBrowser {
+            var showCalled = false
+            override func show(animate: Bool = true) {
+                showCalled = true
+            }
+
+            var hideExpectation: XCTestExpectation?
+            override func hide(animate: Bool = true) {
+                guard let expectation = hideExpectation else {
+                    XCTFail("SpyDelegate was not setup correctly. Missing XCTExpectation reference")
+                    return
+                }
+                expectation.fulfill()
+            }
+        }
+        // Setup
+        subject = MockedFullScreenBrowser()
+        let mockedSubject = subject as! MockedFullScreenBrowser
+        let webview = UIWebView(frame: CGRect.init(x: 0, y: 0, width: 112, height: 911))
+
+        // Not ready
+        subject?.run()
+        XCTAssertTrue(mockedSubject.showCalled, "Show should be called.")
+
+        // Setup our call expections
+        let expectation = self.expectation(description: "Hide should have been caled()")
+        mockedSubject.hideExpectation = expectation
+
+        // Ready no ad.
+        subject?.webView = webview
+        subject?.run()
+        waitForExpectations(timeout: 1) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+        }
+
+        // Ready ad.
+        class testDelegate: NativeAdOpenerDelegate {
+            public var openerStartedCalled = false
+            func openerStarted() {
+                openerStartedCalled = true
+            }
+
+            func openerStopped() {}
+        }
+
+        class webDelegate: NativeAdsWebviewDelegate {
+            init(delegate: NativeAdsWebviewRedirectionsDelegate) {
+                super.init(delegate: delegate, webView: UIWebView())
+            }
+
+            public var loadUrlCalled = false
+            public override func loadUrl(_ nativeAdUnit: NativeAd) {
+                loadUrlCalled = true
+            }
+        }
+
+        subject?.delegate = testDelegate()
+        subject?.webView = webview
+        subject?.webViewDelegate = webDelegate(delegate: self.subject!)
+        subject?.load(ad!)
+        XCTAssertTrue((subject?.delegate as! testDelegate).openerStartedCalled, "Delegate should be informec once we start loading")
+        XCTAssertTrue((subject?.webViewDelegate as! webDelegate).loadUrlCalled, "web delegate should be informec to start loading an url")
+    }
 }

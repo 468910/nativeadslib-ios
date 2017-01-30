@@ -124,7 +124,7 @@ public class FullScreenBrowser: UIViewController, NativeAdOpener {
         }
 
         if let ad = self.ad {
-            self.webViewDelegate!.loadUrl(ad)
+            self.webViewDelegate?.loadUrl(ad)
             delegate?.openerStarted()
         } else {
             DispatchQueue.main.async {
