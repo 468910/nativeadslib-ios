@@ -168,6 +168,9 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
         self.wrappedWebView.loadRequest(request)
     }
 
+    /**
+     This will stop the webview.
+     */
     public func stop() {
         self.wrappedWebView.stopLoading()
         running = false

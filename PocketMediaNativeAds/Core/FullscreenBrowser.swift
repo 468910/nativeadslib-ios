@@ -93,7 +93,7 @@ public class FullscreenBrowser: UIViewController, NativeAdOpener {
     }
 
     /**
-     Show this uiViewController
+     Show this UIViewController
      */
     internal func show(animate: Bool = true) {
         if self.parentController?.navigationController != nil {
@@ -104,7 +104,7 @@ public class FullscreenBrowser: UIViewController, NativeAdOpener {
     }
 
     /**
-     Hides this uiViewController
+     Hides this UIViewController
      */
     internal func hide(animate: Bool = true) {
         if self.parentController?.navigationController != nil {

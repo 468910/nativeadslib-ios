@@ -9,7 +9,9 @@
 import Foundation
 import MoPub
 import PocketMediaNativeAds
-
+/**
+ This enum contains all the errors this integration can return.
+*/
 enum PMMoPubNativeError: String, Error {
     case NoPlacementKey = "No placement key submitted"
 }
@@ -108,14 +110,7 @@ open class PMMoPubNativeCustomEvent: MPNativeCustomEvent, NativeAdsConnectionDel
         if let banner = pmAd.bannerUrl() {
             images.append(banner as NSURL)
         }
-
-        super.precacheImages(withURLs: images, completionBlock: { (error: [Any]?) in
-            if (error) != nil {
-                self.delegate.nativeCustomEvent(self, didFailToLoadAdWithError: MPNativeAdNSErrorForImageDownloadFailure())
-            } else {
-                self.delegate.nativeCustomEvent(self, didLoad: ad)
-            }
-        })
+        self.delegate.nativeCustomEvent(self, didLoad: ad)
     }
 
     /**
