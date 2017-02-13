@@ -11,7 +11,7 @@ import MoPub
 import PocketMediaNativeAds
 /**
  This enum contains all the errors this integration can return.
-*/
+ */
 enum PMMoPubNativeError: String, Error {
     case NoPlacementKey = "No placement key submitted"
 }
