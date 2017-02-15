@@ -29,7 +29,7 @@ The project is developed in Swift but contains bridging headers to also work wit
 
 ## Sample projects
 
-In the project you have a Native Ads demo project, and we have also integrated Native Ads in [this HackerNews client](https://github.com/Pocketbrain/HackerNews), with [barely 5 lines of code](https://github.com/Pocketbrain/HackerNews/commit/54c6a670d304c0d614ba14e9ff75a38a4c87a67c).
+In the project you have a Native Ads demo project, and we have also integrated Native Ads in [this HackerNews client](https://github.com/Pocketbrain/HackerNews), with [just 5 lines of code!](https://github.com/Pocketbrain/HackerNews/commit/54c6a670d304c0d614ba14e9ff75a38a4c87a67c)
 
 ## Installation
 
@@ -57,16 +57,16 @@ Try the following:
 Now try it again. If the problem persist, [contact us](mailto:support@pocketmedia.mobi).
 
 ## Usage
-There are several ways to implement the native ads in your application. Firstly, there is the AdStream which will take care of the integration for you in UITableViews where the ads fit naturally as content cells. For maximum customizability however there is always the option to manually integrate the NativeAds with a custom view - and that will allow you to shape and place the ads in any way you can think of in your app.
+There are several ways to implement native ads in your application. Firstly, there is the AdStream which will take care of the integration for you in UITableViews where the ads fit naturally as content cells. For maximum customizability however there is always the option to manually integrate the NativeAds with a custom view - and that will allow you to shape and place the ads in any way you can think of in your app.
 
 For both methods the parameters used are:
 
 - **placement key**, to be generated in the [user dashboard](http://third-party.pmgbrain.com/)
 - **delegate**, to receive the event callbacks as the ads are ready
 
-API documentation is avaibale in in a [web version](https://htmlpreview.github.io/?https://github.com/Pocketbrain/nativeadslib-ios/feature/new-structure-tests/docs/index.html), as well as in the code.
+API documentation is available in in a [web version](https://htmlpreview.github.io/?https://github.com/Pocketbrain/nativeadslib-ios/feature/new-structure-tests/docs/index.html), as well as in the code.
 
-### AdStream
+### AdStream Integration
 The Adstream allows to easily show native ads in your UITableView and or UICollectionView.
 You can specify the positions by giving an Array with fixed positions or frequency. Simply add the following code in your UIViewController and your ads will be automatically loaded into your view.
 
@@ -93,61 +93,13 @@ You could also opt for just using the library to do the network request and manu
     adRequest.retrieveAds(5)//The amount of ads you want to receive.
 ```
 
-### MoPuB's Network Mediation
-If you've already got the [MoPub SDK](http://www.mopub.com/) integrated, you can easily make use of this library. Do this by following the plug-and-play [MoPub+PocketMedia instructions](mopub.md).
-
-## Receiving the results
-
-**Important:** the server to download the ads is ```getnative.pocketmedia.mobi```. This endpoint is compatible with https, so you don't need to add any specific values to your app plist. This change is made since the version 0.4.2 of the library.
-
 After the request has started requesting ads it will call the following three methods to notify the delegate class (the host application) of the ad status:
 
 - ```didRecieveError```: compulsory method, to be invoked in case there is an error retrieving the ads. This can happen due to network conditions, some systems error, parsing error...
-- ```didRecieveResults```: when the library gets the JSON, parses it and delivers to your app, you will be notified with an Array of the NativeAd objects retrieved. This is the moment when you can display the ads.
+- ```didReceiveResults```: when the library gets the JSON, parses it and delivers to your app, you will be notified with an Array of the NativeAd objects retrieved. This is the moment when you can display the ads.
 - ```didUpdateNativeAd```: legacy method, not used anymore.
 
-### Displaying the ads
-This is the protocol method invoked when the ads are available. In our example, we add the ads to our datasource and display it:
-```swift
-    func didRecieveResults(nativeAds: [NativeAd]){
-        self.nativeAds = nativeAds
-        if itemsTable.count > 0 {
-            for ad in nativeAds {
-                itemsTable.insert(ad, atIndex: Int(arc4random_uniform(UInt32(itemsTable.count))))
-            }
-            tableView.reloadData()
-        }
-    }
-```
-
-Together with the method were the table cell is displayed:
-```swift
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch itemsTable[indexPath.row] {
-        case let item as ItemTableView :
-            let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath:indexPath) as! ItemCell
-            cell.name.text = item.title
-            cell.descriptionItem.text = item.descriptionItem
-            loadImageAsynchronouslyFromUrl(item.imageURL, imageView: cell.artworkImageView)
-            return cell
-        case let ad as NativeAd :
-            let cell = tableView.dequeueReusableCellWithIdentifier("AdCell", forIndexPath:indexPath) as! AdCell
-            cell.campaignNameLabel.text = ad.campaignName
-            cell.campaignDescriptionLabel.text = ad.campaignDescription
-
-            if(ad.campaignImage != nil){
-            loadImageAsynchronouslyFromUrl(ad.campaignImage, imageView: cell.campaignImageView)
-            }
-
-            return cell
-        default:
-            return UITableViewCell()
-        }
-    }
-```
-
-### Opening the URL
+#### Opening an ad link
 When a user clicks on one of the ads it will open a third party link. In other ad solutions this usually creates a bad experience for the user. However this library comes with a solution to circumvent this experience and avoid the user clicking away. Each NativeAd instance comes with a method called ```openAdUrl``` which using the FullScreenBrowser opener creates a smooth transition to the publisher.
 
 ```swift
@@ -161,11 +113,21 @@ When a user clicks on one of the ads it will open a third party link. In other a
     }
 ```
 
-Alternatively you can use ```openAdUrlInForeground()``` to open the URL directly in the browser.
+### MoPuB's Network Mediation
+If you've already got the [MoPub SDK](http://www.mopub.com/) integrated, you can easily make use of this library. Do this by following the plug-and-play [MoPub+PocketMedia instructions](mopub.md).
 
-## Look and feel
+## Displaying an ad
 
 One of the main objectives of these project is creating a easy to use library that allowes the ads to be totally customisable. An example of this is contained in the HackerNews repo. All you have to provide is an existing UITableView and the placement token and you are good to go!
+
+- ```campaignName```: the title of the campaign, usually a few words.
+- ```campaignDescription```: the description of the campaign, usually a short paragraph with a few lines of text.
+- ```clickURL```: the URL that must be opened when the user clicks in the ad
+- ```appStoreUrl```: the preview URL, where the user will be taken. It could be empty (it's just the preview, you must not open this URL but the click url).
+- ```actionText```: the text that the "action" button should have. It will be something like "Install", "Get now", "Get offer",...
+- ```campaignImage```: this property should be accessed trough the ```getImageUrl()```, as the field can come in two different attributes from the API (```campaignImage``` and ```defaultIcon```). It's the default icon.
+- ```images```: an object holding the different assets a campaign might have (icons, high resolution icons, banners, and bigger images).
+- ```shouldBeManagedExernally```: indicates if the offer should be taken directly to the browser (usually, because it's not an app install offer, but a campaign leading to a landing page).
 
 ![Alt text](https://monosnap.com/file/vYqy1GYoVBBLsnfCHRTiTFCmWS53Aa.png)
 
@@ -175,16 +137,15 @@ Pocket Media Tech Team, [support@pocketmedia.mobi](mailto:support@pocketmedia.mo
 
 We work for you, we want you to be able to implement the ads in 5 minutes and start monetizing your audience with a totally native and tailored experience! Tell us what you are missing, what else you need our library to make for you - and it will happen.
 
+* Via email in [support@pocketmedia.mobi](mailto:support@pocketmedia.mobi)
+* Via Twitter: [PocketMediaTech](http://twitter.com/PocketMediaTech)
+
 ## Contributing
 
 If you'd like to contribute to this project. Please feel free to fork it and bring over your changes in the form of a pull request.
 Keep in mind that any change of file structure will require you to do a ```pod install```
 
-### Running project locally
-- Clone the repo.
-- Install coacapods.
-- ```pod install```
-- Open the workspace file.
+If you don't feel like solving the problem yourself, feel free to report it to us, and we will take it to our backlog and try to solve it as soon as possible.
 
 ## License
 
