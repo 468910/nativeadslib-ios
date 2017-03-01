@@ -59,7 +59,6 @@ open class NativeAdTableViewCellRegular: UITableViewCell, NativeViewCell {
         button.layer.masksToBounds = true
         button.titleLabel?.baselineAdjustment = .alignCenters
         button.titleLabel?.textAlignment = .center
-        button.titleLabel?.minimumScaleFactor = 0.1
         let color = UIColor(
             red: 17.0 / 255.0,
             green: 147.0 / 255.0,
@@ -67,8 +66,8 @@ open class NativeAdTableViewCellRegular: UITableViewCell, NativeViewCell {
             alpha: 1)
         button.setTitleColor(color, for: UIControlState())
         button.layer.borderColor = color.cgColor
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        button.titleLabel?.minimumScaleFactor = 0.50
+        button.titleEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        button.titleLabel?.minimumScaleFactor = 0.80
         button.titleLabel?.adjustsFontSizeToFitWidth = true
 
         if let image = adImage {
