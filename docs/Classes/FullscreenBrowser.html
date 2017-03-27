@@ -14,7 +14,7 @@
     <a title="FullscreenBrowser Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (100% documented)</p>
+        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (88% documented)</p>
         <p class="header-right"><a href="https://github.com/Pocketbrain/nativeadslib-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -32,7 +32,13 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/AbstractAdUnitTableViewCell.html">AbstractAdUnitTableViewCell</a>
+                <a href="../Classes/AdUnit.html">AdUnit</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AdUnit/UIType.html">– UIType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AdUnit/Flavour.html">– Flavour</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/DataSource.html">DataSource</a>
@@ -47,10 +53,22 @@
                 <a href="../Classes/NativeAd.html">NativeAd</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/NativeAdCollectionViewCellRegular.html">NativeAdCollectionViewCellRegular</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdCollectionViewDataSource.html">NativeAdCollectionViewDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdCollectionViewDelegate.html">NativeAdCollectionViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/NativeAdListing.html">NativeAdListing</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NativeAdStream.html">NativeAdStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdTableViewCellRegular.html">NativeAdTableViewCellRegular</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NativeAdTableViewDataSource.html">NativeAdTableViewDataSource</a>
@@ -70,17 +88,11 @@
               <li class="nav-group-task">
                 <a href="../Classes/PredefinedAdPosition.html">PredefinedAdPosition</a>
               </li>
-              <li class="nav-group-task">
-                <a href="../Classes/StandardAdUnitTableViewCell.html">StandardAdUnitTableViewCell</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="../Enums.html">Enums</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Enums/AdUnitType.html">AdUnitType</a>
-              </li>
               <li class="nav-group-task">
                 <a href="../Enums/EImageType.html">EImageType</a>
               </li>
@@ -101,6 +113,9 @@
               <li class="nav-group-task">
                 <a href="../Extensions/UITableView.html">UITableView</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIViewController.html">UIViewController</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -113,16 +128,25 @@
                 <a href="../Protocols/DataSourceProtocol.html">DataSourceProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a>
+                <a href="../Protocols/NativeAdOpener.html">NativeAdOpener</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/NativeAdTableViewDataSourceProtocol.html">NativeAdTableViewDataSourceProtocol</a>
+                <a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/NativeAdsWebviewRedirectionsDelegate.html">NativeAdsWebviewRedirectionsDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeViewCell.html">NativeViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UICollectionViewDataSourceWrapper.html">UICollectionViewDataSourceWrapper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UITableViewDataSourceWrapper.html">UITableViewDataSourceWrapper</a>
               </li>
             </ul>
           </li>
@@ -165,12 +189,12 @@
             <h1>FullscreenBrowser</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">FullscreenBrowser</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt"><a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a></span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FullscreenBrowser</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt"><a href="../Protocols/NativeAdOpener.html">NativeAdOpener</a></span></code></pre>
 
                 </div>
               </div>
-            <p>Controller class that is used to open the NativeAd in An FullScreen Embedded WebView.
-Default implementation for the NativeAdOpenerDelegate</p>
+            <p>Default controller class that is used to open the NativeAd in An Fullscreen Embedded WebView.
+Default implementation for the NativeAdOpener</p>
 
           </section>
           <section class="section task-group-section">
@@ -179,9 +203,9 @@ Default implementation for the NativeAdOpenerDelegate</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds17FullscreenBrowsercFT20parentViewControllerCSo16UIViewController_S0_"></a>
-                    <a name="//apple_ref/swift/Method/init(parentViewController:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds17FullscreenBrowsercFT20parentViewControllerCSo16UIViewController_S0_">init(parentViewController:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds17FullscreenBrowsercFT8delegateGSqPS_22NativeAdOpenerDelegate__6parentGSqCSo16UIViewController__S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(delegate:parent:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds17FullscreenBrowsercFT8delegateGSqPS_22NativeAdOpenerDelegate__6parentGSqCSo16UIViewController__S0_">init(delegate:parent:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -189,14 +213,14 @@ Default implementation for the NativeAdOpenerDelegate</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initializes the FullScreen Embedded WebView native ad opener.</p>
+                        <p>Initializes the Fullscreen Embedded WebView native ad opener.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">parentViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">parent</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -233,6 +257,60 @@ Default implementation for the NativeAdOpenerDelegate</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:FC20PocketMediaNativeAds17FullscreenBrowser17viewWillDisappearFSbT_"></a>
+                    <a name="//apple_ref/swift/Method/viewWillDisappear(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds17FullscreenBrowser17viewWillDisappearFSbT_">viewWillDisappear(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called when the view dissapears.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewWillDisappear</span><span class="p">(</span><span class="n">_</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds17FullscreenBrowser11viewDidLoadFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/viewDidLoad()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds17FullscreenBrowser11viewDidLoadFT_T_">viewDidLoad()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called once the view loaded.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:FC20PocketMediaNativeAds17FullscreenBrowser4loadFCS_8NativeAdT_"></a>
                     <a name="//apple_ref/swift/Method/load(_:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:FC20PocketMediaNativeAds17FullscreenBrowser4loadFCS_8NativeAdT_">load(_:)</a>
@@ -251,7 +329,7 @@ Default implementation for the NativeAdOpenerDelegate</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">load</span><span class="p">(</span><span class="n">_</span> <span class="nv">adUnit</span><span class="p">:</span> <span class="kt"><a href="../Classes/NativeAd.html">NativeAd</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">load</span><span class="p">(</span><span class="n">_</span> <span class="nv">ad</span><span class="p">:</span> <span class="kt"><a href="../Classes/NativeAd.html">NativeAd</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -271,41 +349,14 @@ Default implementation for the NativeAdOpenerDelegate</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Invoked when the external browser is opened with the final URL</p>
+                        <p>Will be invoked when the external browser is opened with the final URL</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">didOpenBrowser</span><span class="p">(</span><span class="n">_</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC20PocketMediaNativeAds17FullscreenBrowser8willMoveFT22toParentViewControllerGSqCSo16UIViewController__T_"></a>
-                    <a name="//apple_ref/swift/Method/willMove(toParentViewController:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds17FullscreenBrowser8willMoveFT22toParentViewControllerGSqCSo16UIViewController__T_">willMove(toParentViewController:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Tells the view that its superview is about to change to the specified superview.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">willMove</span><span class="p">(</span><span class="n">toParentViewController</span> <span class="nv">parent</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">?)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">didOpenBrowser</span><span class="p">(</span><span class="n">_</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -318,7 +369,7 @@ Default implementation for the NativeAdOpenerDelegate</p>
         </section>
         <section id="footer">
           <p>© 2017 <a class="link" href="http://pocketmedia.mobi" target="_blank" rel="external">PocketMedia</a>.</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

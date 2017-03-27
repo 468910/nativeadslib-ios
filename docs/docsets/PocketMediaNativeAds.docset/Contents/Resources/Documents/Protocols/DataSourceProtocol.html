@@ -14,7 +14,7 @@
     <a title="DataSourceProtocol Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (100% documented)</p>
+        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (88% documented)</p>
         <p class="header-right"><a href="https://github.com/Pocketbrain/nativeadslib-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -32,7 +32,13 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/AbstractAdUnitTableViewCell.html">AbstractAdUnitTableViewCell</a>
+                <a href="../Classes/AdUnit.html">AdUnit</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AdUnit/UIType.html">– UIType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AdUnit/Flavour.html">– Flavour</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/DataSource.html">DataSource</a>
@@ -47,10 +53,22 @@
                 <a href="../Classes/NativeAd.html">NativeAd</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/NativeAdCollectionViewCellRegular.html">NativeAdCollectionViewCellRegular</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdCollectionViewDataSource.html">NativeAdCollectionViewDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdCollectionViewDelegate.html">NativeAdCollectionViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/NativeAdListing.html">NativeAdListing</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NativeAdStream.html">NativeAdStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdTableViewCellRegular.html">NativeAdTableViewCellRegular</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NativeAdTableViewDataSource.html">NativeAdTableViewDataSource</a>
@@ -70,17 +88,11 @@
               <li class="nav-group-task">
                 <a href="../Classes/PredefinedAdPosition.html">PredefinedAdPosition</a>
               </li>
-              <li class="nav-group-task">
-                <a href="../Classes/StandardAdUnitTableViewCell.html">StandardAdUnitTableViewCell</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="../Enums.html">Enums</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Enums/AdUnitType.html">AdUnitType</a>
-              </li>
               <li class="nav-group-task">
                 <a href="../Enums/EImageType.html">EImageType</a>
               </li>
@@ -101,6 +113,9 @@
               <li class="nav-group-task">
                 <a href="../Extensions/UITableView.html">UITableView</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIViewController.html">UIViewController</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -113,16 +128,25 @@
                 <a href="../Protocols/DataSourceProtocol.html">DataSourceProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a>
+                <a href="../Protocols/NativeAdOpener.html">NativeAdOpener</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/NativeAdTableViewDataSourceProtocol.html">NativeAdTableViewDataSourceProtocol</a>
+                <a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/NativeAdsWebviewRedirectionsDelegate.html">NativeAdsWebviewRedirectionsDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeViewCell.html">NativeViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UICollectionViewDataSourceWrapper.html">UICollectionViewDataSourceWrapper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UITableViewDataSourceWrapper.html">UITableViewDataSourceWrapper</a>
               </li>
             </ul>
           </li>
@@ -188,7 +212,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Method that dictates what happens when a ad network request resulted successful. It should kick off what to do with this list of ads.
+                        <p>From: DataSourceProtocol
+Method that dictates what happens when a ad network request resulted successful. It should kick off what to do with this list of ads.
 - important:
 Abstract classes that a datasource should override. It&rsquo;s specific to the type of data source.</p>
 
@@ -217,7 +242,8 @@ Abstract classes that a datasource should override. It&rsquo;s specific to the t
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Finds an ad listing which is lower than the index path of the given one.
+                        <p>From: DataSourceProtocol
+Finds an ad listing which is lower than the index path of the given one.
 So in other words it finds the last ad listing before this indexRow.
 - returns:
 A native ad listing. With a lower index path than the one given.</p>
@@ -239,13 +265,132 @@ A native ad listing. With a lower index path than the one given.</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP20PocketMediaNativeAds18DataSourceProtocol11registerNibFT3nibGSqCSo5UINib_10identifierSS_T_"></a>
+                    <a name="//apple_ref/swift/Method/registerNib(nib:identifier:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP20PocketMediaNativeAds18DataSourceProtocol11registerNibFT3nibGSqCSo5UINib_10identifierSS_T_">registerNib(nib:identifier:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Registers a nib object containing a cell with the table view under a specified identifier.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">registerNib</span><span class="p">(</span><span class="nv">nib</span><span class="p">:</span> <span class="kt">UINib</span><span class="p">?,</span> <span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP20PocketMediaNativeAds18DataSourceProtocol19dequeueReusableCellFT10identifierSS9indexPathV10Foundation9IndexPath_CSo6UIView"></a>
+                    <a name="//apple_ref/swift/Method/dequeueReusableCell(identifier:indexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP20PocketMediaNativeAds18DataSourceProtocol19dequeueReusableCellFT10identifierSS9indexPathV10Foundation9IndexPath_CSo6UIView">dequeueReusableCell(identifier:indexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>From: DataSourceProtocol
+Return the cell of a identifier.
+- parameter: adType
+The type of ad which holds the reuse identifier for the specified cell. This parameter must not be nil.
+- parameter: indexPath
+The index path specifying the location of the cell. The data source receives this information when it is asked for the cell and should just pass it along. This method uses the index path to perform additional configuration based on the cell’s position in the collection view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">dequeueReusableCell</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP20PocketMediaNativeAds18DataSourceProtocol16numberOfSectionsFT_Si"></a>
+                    <a name="//apple_ref/swift/Method/numberOfSections()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP20PocketMediaNativeAds18DataSourceProtocol16numberOfSectionsFT_Si">numberOfSections()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>From: DataSourceProtocol
+Return the number of sections. If you&rsquo;re implementing a datasource that doesn&rsquo;t support sections, just return 1.
+- Important:
+Call the original data source to get the count.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">numberOfSections</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP20PocketMediaNativeAds18DataSourceProtocol21numberOfRowsInSectionFT7sectionSi_Si"></a>
+                    <a name="//apple_ref/swift/Method/numberOfRowsInSection(section:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP20PocketMediaNativeAds18DataSourceProtocol21numberOfRowsInSectionFT7sectionSi_Si">numberOfRowsInSection(section:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>From: DataSourceProtocol
+Return the number of rows in a particular section. If you&rsquo;re implementing a datasource that doesn&rsquo;t support sections, just ignore the section parameter.
+- Important:
+Call the original data source to get the count. Do NOT sum the original amount + ads</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">numberOfRowsInSection</span><span class="p">(</span><span class="nv">section</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
           <p>© 2017 <a class="link" href="http://pocketmedia.mobi" target="_blank" rel="external">PocketMedia</a>.</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

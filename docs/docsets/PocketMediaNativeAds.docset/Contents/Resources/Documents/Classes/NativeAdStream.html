@@ -14,7 +14,7 @@
     <a title="NativeAdStream Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (100% documented)</p>
+        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (88% documented)</p>
         <p class="header-right"><a href="https://github.com/Pocketbrain/nativeadslib-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -32,7 +32,13 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/AbstractAdUnitTableViewCell.html">AbstractAdUnitTableViewCell</a>
+                <a href="../Classes/AdUnit.html">AdUnit</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AdUnit/UIType.html">– UIType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AdUnit/Flavour.html">– Flavour</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/DataSource.html">DataSource</a>
@@ -47,10 +53,22 @@
                 <a href="../Classes/NativeAd.html">NativeAd</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/NativeAdCollectionViewCellRegular.html">NativeAdCollectionViewCellRegular</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdCollectionViewDataSource.html">NativeAdCollectionViewDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdCollectionViewDelegate.html">NativeAdCollectionViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/NativeAdListing.html">NativeAdListing</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NativeAdStream.html">NativeAdStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdTableViewCellRegular.html">NativeAdTableViewCellRegular</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NativeAdTableViewDataSource.html">NativeAdTableViewDataSource</a>
@@ -70,17 +88,11 @@
               <li class="nav-group-task">
                 <a href="../Classes/PredefinedAdPosition.html">PredefinedAdPosition</a>
               </li>
-              <li class="nav-group-task">
-                <a href="../Classes/StandardAdUnitTableViewCell.html">StandardAdUnitTableViewCell</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="../Enums.html">Enums</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Enums/AdUnitType.html">AdUnitType</a>
-              </li>
               <li class="nav-group-task">
                 <a href="../Enums/EImageType.html">EImageType</a>
               </li>
@@ -101,6 +113,9 @@
               <li class="nav-group-task">
                 <a href="../Extensions/UITableView.html">UITableView</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIViewController.html">UIViewController</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -113,16 +128,25 @@
                 <a href="../Protocols/DataSourceProtocol.html">DataSourceProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a>
+                <a href="../Protocols/NativeAdOpener.html">NativeAdOpener</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/NativeAdTableViewDataSourceProtocol.html">NativeAdTableViewDataSourceProtocol</a>
+                <a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/NativeAdsWebviewRedirectionsDelegate.html">NativeAdsWebviewRedirectionsDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeViewCell.html">NativeViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UICollectionViewDataSourceWrapper.html">UICollectionViewDataSourceWrapper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UITableViewDataSourceWrapper.html">UITableViewDataSourceWrapper</a>
               </li>
             </ul>
           </li>
@@ -205,9 +229,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC20PocketMediaNativeAds14NativeAdStream10datasourceGSQCS_10DataSource_"></a>
+                    <a name="/s:vC20PocketMediaNativeAds14NativeAdStream10datasourceGSqCS_10DataSource_"></a>
                     <a name="//apple_ref/swift/Property/datasource" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC20PocketMediaNativeAds14NativeAdStream10datasourceGSQCS_10DataSource_">datasource</a>
+                    <a class="token" href="#/s:vC20PocketMediaNativeAds14NativeAdStream10datasourceGSqCS_10DataSource_">datasource</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -222,7 +246,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">datasource</span><span class="p">:</span> <span class="kt"><a href="../Classes/DataSource.html">DataSource</a></span><span class="o">!</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">datasource</span><span class="p">:</span> <span class="kt"><a href="../Classes/DataSource.html">DataSource</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -247,9 +271,11 @@ The following UI elements are supported:
 - parameter controller: Current controller. So we have context of where the ad click is coming from. (Used for example to get from an ad click)
 - parameter view: The actual view that needs to integrate the ads.
 - paramater adPlacementToken: The placement token received from <a href="http://third-party.pmgbrain.com/">http://third-party.pmgbrain.com/</a>
-- parameter customXib: UINib instance that will be used instead of the StandardAdUnitTableViewCell.
+- parameter customXib: UINib instance that will be used instead of the NativeAdTableViewCell.
 - parameter adPosition: Instance that conforms to the AdPosition protocol. Dictating where an ad should show.
-- parameter requester: Instance of NativeAdsRequest. We&rsquo;ll create a new instance if nil</p>
+- parameter requester: Instance of NativeAdsRequest. We&rsquo;ll create a new instance if nil
+- important:
+For custom xib&rsquo;s you can also set a identifier to &lsquo;CustomAdCell&rsquo;.</p>
 
                       </div>
                       <div class="declaration">
@@ -305,7 +331,7 @@ The following UI elements are supported:
                               </td>
                               <td>
                                 <div>
-                                  <p>UINib instance that will be used instead of the StandardAdUnitTableViewCell.</p>
+                                  <p>UINib instance that will be used instead of the NativeAdTableViewCell.</p>
 
                                 </div>
                               </td>
@@ -426,9 +452,9 @@ The following UI elements are supported:
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC20PocketMediaNativeAds14NativeAdStream10requestAdsFTSu10adUnitTypeOS_10AdUnitType_T_"></a>
-                    <a name="//apple_ref/swift/Method/requestAds(_:adUnitType:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC20PocketMediaNativeAds14NativeAdStream10requestAdsFTSu10adUnitTypeOS_10AdUnitType_T_">requestAds(_:adUnitType:)</a>
+                    <a name="/s:FC20PocketMediaNativeAds14NativeAdStream10requestAdsFTSu10preferenceOCS_6AdUnit7Flavour_T_"></a>
+                    <a name="//apple_ref/swift/Method/requestAds(_:preference:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds14NativeAdStream10requestAdsFTSu10preferenceOCS_6AdUnit7Flavour_T_">requestAds(_:preference:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -444,7 +470,7 @@ The following UI elements are supported:
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">func</span> <span class="nf">requestAds</span><span class="p">(</span><span class="n">_</span> <span class="nv">limit</span><span class="p">:</span> <span class="kt">UInt</span><span class="p">,</span> <span class="nv">adUnitType</span><span class="p">:</span> <span class="kt"><a href="../Enums/AdUnitType.html">AdUnitType</a></span> <span class="o">=</span> <span class="kt"><a href="../Enums/AdUnitType.html">AdUnitType</a></span><span class="o">.</span><span class="n">standard</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="kd">func</span> <span class="nf">requestAds</span><span class="p">(</span><span class="n">_</span> <span class="nv">limit</span><span class="p">:</span> <span class="kt">UInt</span><span class="p">,</span> <span class="nv">preference</span><span class="p">:</span> <span class="kt"><a href="../Classes/AdUnit.html">AdUnit</a></span><span class="o">.</span><span class="kt">Flavour</span> <span class="o">=</span> <span class="kt"><a href="../Classes/AdUnit.html">AdUnit</a></span><span class="o">.</span><span class="kt">Flavour</span><span class="o">.</span><span class="kt">Regular</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -457,7 +483,7 @@ The following UI elements are supported:
         </section>
         <section id="footer">
           <p>© 2017 <a class="link" href="http://pocketmedia.mobi" target="_blank" rel="external">PocketMedia</a>.</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NativeAdCollectionViewDataSource Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/NativeAdCollectionViewDataSource" class="dashAnchor"></a>
+    <a title="NativeAdCollectionViewDataSource Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">PocketMediaNativeAds Docs</a> (88% documented)</p>
+        <p class="header-right"><a href="https://github.com/Pocketbrain/nativeadslib-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">PocketMediaNativeAds Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        NativeAdCollectionViewDataSource Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AdUnit.html">AdUnit</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AdUnit/UIType.html">– UIType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AdUnit/Flavour.html">– Flavour</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DataSource.html">DataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FullscreenBrowser.html">FullscreenBrowser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MarginAdPosition.html">MarginAdPosition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAd.html">NativeAd</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdCollectionViewCellRegular.html">NativeAdCollectionViewCellRegular</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdCollectionViewDataSource.html">NativeAdCollectionViewDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdCollectionViewDelegate.html">NativeAdCollectionViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdListing.html">NativeAdListing</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdStream.html">NativeAdStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdTableViewCellRegular.html">NativeAdTableViewCellRegular</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdTableViewDataSource.html">NativeAdTableViewDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdTableViewDelegate.html">NativeAdTableViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdsRequest.html">NativeAdsRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NativeAdsWebviewDelegate.html">NativeAdsWebviewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketMediaNativeAdsBundle.html">PocketMediaNativeAdsBundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PredefinedAdPosition.html">PredefinedAdPosition</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/EImageType.html">EImageType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MarginAdPositionError.html">MarginAdPositionError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PredefinedAdPositionError.html">PredefinedAdPositionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImageView.html">UIImageView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableView.html">UITableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIViewController.html">UIViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/AdPosition.html">AdPosition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DataSourceProtocol.html">DataSourceProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdOpener.html">NativeAdOpener</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdOpenerDelegate.html">NativeAdOpenerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdsConnectionDelegate.html">NativeAdsConnectionDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeAdsWebviewRedirectionsDelegate.html">NativeAdsWebviewRedirectionsDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NativeViewCell.html">NativeViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UICollectionViewDataSourceWrapper.html">UICollectionViewDataSourceWrapper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UITableViewDataSourceWrapper.html">UITableViewDataSourceWrapper</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/NativeAdsConstants.html">NativeAdsConstants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NativeAdsConstants.html#/s:VV20PocketMediaNativeAds18NativeAdsConstants6Device">– Device</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NativeAdsConstants/NativeAds.html">– NativeAds</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V20PocketMediaNativeAds6SImage">SImage</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:20PocketMediaNativeAds22AdListingsAndPositions">AdListingsAndPositions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:20PocketMediaNativeAds16AdsForSectionMap">AdsForSectionMap</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:E20PocketMediaNativeAdsV10Foundation3URL20ImageCacheCompletion">ImageCacheCompletion</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>NativeAdCollectionViewDataSource</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">NativeAdCollectionViewDataSource</span><span class="p">:</span> <span class="kt"><a href="../Classes/DataSource.html">DataSource</a></span><span class="p">,</span> <span class="kt">UICollectionViewDataSource</span><span class="p">,</span> <span class="kt"><a href="../Protocols/UICollectionViewDataSourceWrapper.html">UICollectionViewDataSourceWrapper</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Wraps around a datasource so it contains both a mix of ads and none ads.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC20PocketMediaNativeAds32NativeAdCollectionViewDataSource10datasourcePSo26UICollectionViewDataSource_"></a>
+                    <a name="//apple_ref/swift/Property/datasource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC20PocketMediaNativeAds32NativeAdCollectionViewDataSource10datasourcePSo26UICollectionViewDataSource_">datasource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Original datasource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">datasource</span><span class="p">:</span> <span class="kt">UICollectionViewDataSource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC20PocketMediaNativeAds32NativeAdCollectionViewDataSource14collectionViewCSo16UICollectionView"></a>
+                    <a name="//apple_ref/swift/Property/collectionView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC20PocketMediaNativeAds32NativeAdCollectionViewDataSource14collectionViewCSo16UICollectionView">collectionView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Original tableView.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">collectionView</span><span class="p">:</span> <span class="kt">UICollectionView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC20PocketMediaNativeAds32NativeAdCollectionViewDataSource8delegateGSqPSo24UICollectionViewDelegate__"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC20PocketMediaNativeAds32NativeAdCollectionViewDataSource8delegateGSqPSo24UICollectionViewDelegate__">delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Original deglegate.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">UICollectionViewDelegate</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSourcecFT10controllerCSo16UIViewController14collectionViewCSo16UICollectionView10adPositionPS_10AdPosition_9customXibGSqCSo5UINib__S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(controller:collectionView:adPosition:customXib:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSourcecFT10controllerCSo16UIViewController14collectionViewCSo16UICollectionView10adPositionPS_10AdPosition_9customXibGSqCSo5UINib__S0_">init(controller:collectionView:adPosition:customXib:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Hijacks the sent delegate and datasource and make it use our wrapper. Also registers the ad unit we&rsquo;ll be using.
+- parameter controller: The controller to create NativeAdTableViewDelegate
+- parameter tableView: The tableView this datasource is attached to.
+- parameter adPosition: The instance that will define where ads are positioned.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">(</span><span class="nv">controller</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">collectionView</span><span class="p">:</span> <span class="kt">UICollectionView</span><span class="p">,</span> <span class="nv">adPosition</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AdPosition.html">AdPosition</a></span><span class="p">,</span> <span class="nv">customXib</span><span class="p">:</span> <span class="kt">UINib</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>controller</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The controller to create NativeAdTableViewDelegate</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tableView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tableView this datasource is attached to.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>adPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The instance that will define where ads are positioned.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource11registerNibFT3nibGSqCSo5UINib_10identifierSS_T_"></a>
+                    <a name="//apple_ref/swift/Method/registerNib(nib:identifier:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource11registerNibFT3nibGSqCSo5UINib_10identifierSS_T_">registerNib(nib:identifier:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This function checks if we have a cell registered with that name. If not we&rsquo;ll register it.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">registerNib</span><span class="p">(</span><span class="nv">nib</span><span class="p">:</span> <span class="kt">UINib</span><span class="p">?,</span> <span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource19dequeueReusableCellFT10identifierSS9indexPathV10Foundation9IndexPath_CSo6UIView"></a>
+                    <a name="//apple_ref/swift/Method/dequeueReusableCell(identifier:indexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource19dequeueReusableCellFT10identifierSS9indexPathV10Foundation9IndexPath_CSo6UIView">dequeueReusableCell(identifier:indexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return the cell of a identifier.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">dequeueReusableCell</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource14collectionViewFTCSo16UICollectionView22numberOfItemsInSectionSi_Si"></a>
+                    <a name="//apple_ref/swift/Method/collectionView(_:numberOfItemsInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource14collectionViewFTCSo16UICollectionView22numberOfItemsInSectionSi_Si">collectionView(_:numberOfItemsInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Required. Asks your data source object for the number of items in the specified section.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">collectionView</span><span class="p">(</span><span class="n">_</span> <span class="nv">collectionView</span><span class="p">:</span> <span class="kt">UICollectionView</span><span class="p">,</span> <span class="n">numberOfItemsInSection</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource21numberOfRowsInSectionFT7sectionSi_Si"></a>
+                    <a name="//apple_ref/swift/Method/numberOfRowsInSection(section:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource21numberOfRowsInSectionFT7sectionSi_Si">numberOfRowsInSection(section:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>From: DataSourceProtocol
+Return the number of rows in a particular section. If you&rsquo;re implementing a datasource that doesn&rsquo;t support sections, just ignore the section parameter.
+- Important:
+Call the original data source to get the count. Do NOT sum the original amount + ads</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">numberOfRowsInSection</span><span class="p">(</span><span class="nv">section</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource16numberOfSectionsFT2inCSo16UICollectionView_Si"></a>
+                    <a name="//apple_ref/swift/Method/numberOfSections(in:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource16numberOfSectionsFT2inCSo16UICollectionView_Si">numberOfSections(in:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks your data source object for the number of sections in the collection view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">numberOfSections</span><span class="p">(</span><span class="k">in</span> <span class="nv">collectionView</span><span class="p">:</span> <span class="kt">UICollectionView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource16numberOfSectionsFT_Si"></a>
+                    <a name="//apple_ref/swift/Method/numberOfSections()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource16numberOfSectionsFT_Si">numberOfSections()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>From: DataSourceProtocol
+Return the number of sections. If you&rsquo;re implementing a datasource that doesn&rsquo;t support sections, just return 1.
+- Important:
+Call the original data source to get the count.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">numberOfSections</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource14collectionViewFTCSo16UICollectionView13cellForItemAtV10Foundation9IndexPath_CSo20UICollectionViewCell"></a>
+                    <a name="//apple_ref/swift/Method/collectionView(_:cellForItemAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource14collectionViewFTCSo16UICollectionView13cellForItemAtV10Foundation9IndexPath_CSo20UICollectionViewCell">collectionView(_:cellForItemAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks your data source object for the cell that corresponds to the specified item in the collection view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">collectionView</span><span class="p">(</span><span class="n">_</span> <span class="nv">collectionView</span><span class="p">:</span> <span class="kt">UICollectionView</span><span class="p">,</span> <span class="n">cellForItemAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UICollectionViewCell</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource14collectionViewFTCSo16UICollectionView33viewForSupplementaryElementOfKindSS2atV10Foundation9IndexPath_CSo24UICollectionReusableView"></a>
+                    <a name="//apple_ref/swift/Method/collectionView(_:viewForSupplementaryElementOfKind:at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource14collectionViewFTCSo16UICollectionView33viewForSupplementaryElementOfKindSS2atV10Foundation9IndexPath_CSo24UICollectionReusableView">collectionView(_:viewForSupplementaryElementOfKind:at:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks your data source object to provide a supplementary view to display in the collection view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">collectionView</span><span class="p">(</span><span class="n">_</span> <span class="nv">collectionView</span><span class="p">:</span> <span class="kt">UICollectionView</span><span class="p">,</span> <span class="n">viewForSupplementaryElementOfKind</span> <span class="nv">kind</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">at</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UICollectionReusableView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource14collectionViewFTCSo16UICollectionView13canMoveItemAtV10Foundation9IndexPath_Sb"></a>
+                    <a name="//apple_ref/swift/Method/collectionView(_:canMoveItemAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource14collectionViewFTCSo16UICollectionView13canMoveItemAtV10Foundation9IndexPath_Sb">collectionView(_:canMoveItemAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks your data source object whether the specified item can be moved to another location in the collection view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">collectionView</span><span class="p">(</span><span class="n">_</span> <span class="nv">collectionView</span><span class="p">:</span> <span class="kt">UICollectionView</span><span class="p">,</span> <span class="n">canMoveItemAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource14collectionViewFTCSo16UICollectionView10moveItemAtV10Foundation9IndexPath2toS3__T_"></a>
+                    <a name="//apple_ref/swift/Method/collectionView(_:moveItemAt:to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource14collectionViewFTCSo16UICollectionView10moveItemAtV10Foundation9IndexPath2toS3__T_">collectionView(_:moveItemAt:to:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells your data source object to move the specified item to its new location.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">collectionView</span><span class="p">(</span><span class="n">_</span> <span class="nv">collectionView</span><span class="p">:</span> <span class="kt">UICollectionView</span><span class="p">,</span> <span class="n">moveItemAt</span> <span class="nv">sourceIndexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">,</span> <span class="n">to</span> <span class="nv">destinationIndexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource18onAdRequestSuccessFGSaCS_8NativeAd_T_"></a>
+                    <a name="//apple_ref/swift/Method/onAdRequestSuccess(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource18onAdRequestSuccessFGSaCS_8NativeAd_T_">onAdRequestSuccess(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Method that dictates what happens when a ad network request resulted successful. It should kick off what to do with this list of ads.
+- important:
+Abstract classes that a datasource should override. It&rsquo;s specific to the type of data source.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">onAdRequestSuccess</span><span class="p">(</span><span class="n">_</span> <span class="nv">ads</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/NativeAd.html">NativeAd</a></span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource22reloadRowsAtIndexPathsFT10indexPathsGSaV10Foundation9IndexPath_9animationSb_T_"></a>
+                    <a name="//apple_ref/swift/Method/reloadRowsAtIndexPaths(indexPaths:animation:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC20PocketMediaNativeAds32NativeAdCollectionViewDataSource22reloadRowsAtIndexPathsFT10indexPathsGSaV10Foundation9IndexPath_9animationSb_T_">reloadRowsAtIndexPaths(indexPaths:animation:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">NativeAdCollectionViewDataSource</span><span class="p">:</span> <span class="kt"><a href="../Classes/DataSource.html">DataSource</a></span><span class="p">,</span> <span class="kt">UICollectionViewDataSource</span><span class="p">,</span> <span class="kt"><a href="../Protocols/UICollectionViewDataSourceWrapper.html">UICollectionViewDataSourceWrapper</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>© 2017 <a class="link" href="http://pocketmedia.mobi" target="_blank" rel="external">PocketMedia</a>.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
