@@ -8,4 +8,4 @@ gem "rake", "0.8.7"
 # gem 'jazzy', '~> 0.6.0'
 
 gem "cocoapods", "1.2.1.beta.1"
-gem "xcodeproj", "1.4.0"
+gem "xcodeproj", "1.4.2"
