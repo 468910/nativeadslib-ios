@@ -1,4 +1,19 @@
 # PocketMedia: iOS NativeAds library
+
+##Upgrade Notice 1.1.0
+
+- The MoPub third party integration has been added. In order to allow this the FullscreenBrowser ad opener has been refactored.
+- The ```NativeAdOpenerDelegate``` now has a new purpose. When instantiating a ```NativeAdOpener``` like the ```FullscreenBrowser``` you can send along a ```NativeAdOpenerDelegate``` delegation class so it gets informed when the opener starts and stops.
+- Custom Ad units (xib) extending AbstractAdUnitTableViewCell class should make changes:
+	- instead of ```open class CustomAd: AbstractAdUnitTableViewCell``` change to ```open class CustomAd: UITableViewCell, NativeViewCell```
+	- change ```open override func render(_ nativeAd: NativeAd)``` to ```public func render(_ nativeAd: NativeAd, completion handler: @escaping ((Bool) -> Void))```
+
+The render method now passes along a completion handler. Call this once you've downloaded any external material and are ready to show the ad.
+
+**Any implementations from 1.0.x should not require any change.**
+
+Please see the [MoPub + Pocketmedia integration](mopub.md) documentation for more information.
+
 ##Upgrade Notice 0.4.0
 - The api has changed in version 0.4.0. Both implementation strategies have been renewed (adstream and custom implementation using adRequest).
 

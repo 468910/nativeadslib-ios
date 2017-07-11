@@ -15,5 +15,5 @@ import Foundation
 @objc
 public protocol NativeAdsWebviewRedirectionsDelegate {
     /// Will be invoked when the external browser is opened with the final URL
-    func didOpenBrowser(url: NSURL)
+    func didOpenBrowser(_ url: URL)
 }

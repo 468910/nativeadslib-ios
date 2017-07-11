@@ -4,7 +4,7 @@ language: objective-c
 # - master
 xcode_workspace: PocketMediaNativeAds.xcworkspace
 xcode_scheme: PocketMediaNativeAdsTests
-osx_image: xcode8
+osx_image: xcode8.2
 cache: false
 xcode_sdk: iphonesimulator10.0
 #cache: cocoapods

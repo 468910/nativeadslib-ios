@@ -10,28 +10,27 @@ import Foundation
 import UIKit
 import PocketMediaNativeAds
 
-public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
+open class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 
     var collection: [AnyObject] = []
 
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count = self.collection.count
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.collection.count
     }
 
     func loadLocalJSON() {
         do {
-            let path = NSBundle(forClass: NativeAdsRequestTest.self).pathForResource("DummyData", ofType: "json")
-            let jsonData: NSData = NSData(contentsOfFile: path!)!
+            let path = Bundle(for: NativeAdsRequestTest.self).path(forResource: "DummyData", ofType: "json")
+            let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: path!))
             var jsonArray: NSArray = NSArray()
-            jsonArray = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+            jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSArray
 
             for itemJson in jsonArray {
-                if let itemDictionary = itemJson as? NSDictionary, item = ItemTableModel(dictionary: itemDictionary) {
+                if let itemDictionary = itemJson as? Dictionary<String, Any>, let item = ItemTableModel(dictionary: itemDictionary) {
                     collection.append(item)
                 }
             }
@@ -41,10 +40,10 @@ public class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
         }
     }
 
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch collection[indexPath.row] {
         case let item as ItemTableModel:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
             cell.name.text = item.title
             cell.descriptionItem.text = item.descriptionItem
             cell.artworkImageView.nativeSetImageFromURL(item.imageURL)

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFit" restorationIdentifier="CustomAdCellRegular" id="Ddd-lx-tTc" userLabel="Custom ad nib" customClass="CustomAd" customModule="PocketMediaNativeAdsExample_Example">
+            <rect key="frame" x="0.0" y="0.0" width="291" height="219"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campaign name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CW6-z1-Du8" userLabel="Campaign title">
+                    <rect key="frame" x="83" y="5" width="125" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EaU-4l-Jgi">
+                    <rect key="frame" x="70.5" y="31" width="150" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="pGj-HQ-FhP"/>
+                        <constraint firstAttribute="width" constant="150" id="zbB-2c-r63"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="c5Z-Rr-pDN" userLabel="Call to action">
+                    <rect key="frame" x="0.5" y="184" width="291" height="30"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="call to action">
+                        <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check out CustomAd.xib" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lG-SS-axS">
+                    <rect key="frame" x="50.5" y="163" width="190" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="EaU-4l-Jgi" firstAttribute="top" secondItem="CW6-z1-Du8" secondAttribute="bottom" constant="5" id="5AC-fB-LjM"/>
+                <constraint firstItem="c5Z-Rr-pDN" firstAttribute="top" secondItem="4lG-SS-axS" secondAttribute="bottom" id="KOk-E7-AZ5"/>
+                <constraint firstItem="4lG-SS-axS" firstAttribute="centerX" secondItem="EaU-4l-Jgi" secondAttribute="centerX" id="Nak-bv-ibe"/>
+                <constraint firstItem="CW6-z1-Du8" firstAttribute="top" secondItem="Ddd-lx-tTc" secondAttribute="top" constant="5" id="S36-HE-J6C"/>
+                <constraint firstItem="CW6-z1-Du8" firstAttribute="centerX" secondItem="Ddd-lx-tTc" secondAttribute="centerX" id="XD2-dQ-hLN"/>
+                <constraint firstItem="c5Z-Rr-pDN" firstAttribute="width" secondItem="Ddd-lx-tTc" secondAttribute="width" id="g7a-vI-ylz"/>
+                <constraint firstItem="c5Z-Rr-pDN" firstAttribute="centerX" secondItem="CW6-z1-Du8" secondAttribute="centerX" id="hge-yc-1gg"/>
+                <constraint firstItem="4lG-SS-axS" firstAttribute="top" secondItem="EaU-4l-Jgi" secondAttribute="bottom" constant="12" id="j9d-sD-Zmz"/>
+                <constraint firstAttribute="bottom" secondItem="c5Z-Rr-pDN" secondAttribute="bottom" constant="5" id="tj5-3Z-pkO"/>
+                <constraint firstItem="EaU-4l-Jgi" firstAttribute="centerX" secondItem="Ddd-lx-tTc" secondAttribute="centerX" id="zAz-5h-En6"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="adImage" destination="EaU-4l-Jgi" id="9Hz-Wd-rdN"/>
+                <outlet property="adName" destination="CW6-z1-Du8" id="VjA-22-jPj"/>
+                <outlet property="callToAction" destination="c5Z-Rr-pDN" id="Fur-I6-dhQ"/>
+            </connections>
+            <point key="canvasLocation" x="-298.5" y="534.5"/>
+        </view>
+    </objects>
+</document>

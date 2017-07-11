@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFit" id="xgB-Tw-h48" userLabel="Native Ad TableView Cell Big" customClass="NativeAdTableViewCellBig" customModule="PocketMediaNativeAds" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="538" height="237"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HPY-gb-Oqp">
+                    <rect key="frame" x="10" y="5" width="54" height="54"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="9xN-R4-sfs"/>
+                        <constraint firstAttribute="width" constant="54" id="lsU-iv-o0v"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Der-LB-0Mu" userLabel="Content">
+                    <rect key="frame" x="72" y="5" width="367" height="35.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campaign name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nd-hU-F3K" userLabel="Campaign title">
+                            <rect key="frame" x="0.0" y="0.0" width="367" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="240" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kuE-uU-v3C">
+                            <rect key="frame" x="0.0" y="21" width="367" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="0nd-hU-F3K" secondAttribute="trailing" id="47u-N3-2Gc"/>
+                        <constraint firstItem="kuE-uU-v3C" firstAttribute="leading" secondItem="Der-LB-0Mu" secondAttribute="leading" id="5MP-DI-fXt"/>
+                        <constraint firstItem="0nd-hU-F3K" firstAttribute="leading" secondItem="Der-LB-0Mu" secondAttribute="leading" id="Mct-If-zDw"/>
+                        <constraint firstItem="0nd-hU-F3K" firstAttribute="top" secondItem="Der-LB-0Mu" secondAttribute="top" id="Wju-aF-jsp"/>
+                        <constraint firstItem="0nd-hU-F3K" firstAttribute="top" secondItem="Der-LB-0Mu" secondAttribute="top" id="g3t-cL-we9"/>
+                        <constraint firstItem="kuE-uU-v3C" firstAttribute="top" secondItem="0nd-hU-F3K" secondAttribute="bottom" id="hpE-3r-1Pp"/>
+                        <constraint firstAttribute="trailing" secondItem="kuE-uU-v3C" secondAttribute="trailing" id="hwK-1j-isv"/>
+                        <constraint firstAttribute="bottom" secondItem="kuE-uU-v3C" secondAttribute="bottom" id="oOr-Ke-7vR"/>
+                        <constraint firstItem="0nd-hU-F3K" firstAttribute="leading" secondItem="Der-LB-0Mu" secondAttribute="leading" id="sdw-lO-1DK"/>
+                        <constraint firstAttribute="width" secondItem="0nd-hU-F3K" secondAttribute="width" id="ub6-Av-08f"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrR-Ut-FbD" userLabel="Call to action">
+                    <rect key="frame" x="447" y="20" width="86" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="86" id="B5e-a1-I0H"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="Install">
+                        <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uja-Dh-urs" userLabel="Ad">
+                    <rect key="frame" x="504" y="0.0" width="29" height="14"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ad" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Bwv-2h-uhW" userLabel="LabelThatDisplaysAd">
+                            <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="14" id="qzC-eE-2fo"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loud_Speaker_64.png" translatesAutoresizingMaskIntoConstraints="NO" id="XbS-j1-i4n" userLabel="SpeakerPhone">
+                            <rect key="frame" x="14" y="0.0" width="13" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="XbS-j1-i4n" secondAttribute="height" multiplier="13:14" id="rjb-kH-hdh"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Bwv-2h-uhW" firstAttribute="top" secondItem="XbS-j1-i4n" secondAttribute="bottom" constant="-13.5" id="DSY-wE-qfL"/>
+                        <constraint firstItem="Bwv-2h-uhW" firstAttribute="top" secondItem="uja-Dh-urs" secondAttribute="top" id="J7T-Gs-VKi"/>
+                        <constraint firstItem="Bwv-2h-uhW" firstAttribute="bottom" secondItem="XbS-j1-i4n" secondAttribute="bottom" id="cSz-sU-kr9"/>
+                        <constraint firstItem="Bwv-2h-uhW" firstAttribute="leading" secondItem="uja-Dh-urs" secondAttribute="leading" id="dYY-ch-fdu"/>
+                        <constraint firstItem="Bwv-2h-uhW" firstAttribute="top" secondItem="XbS-j1-i4n" secondAttribute="top" id="q3j-0p-3dT"/>
+                        <constraint firstItem="XbS-j1-i4n" firstAttribute="leading" secondItem="Bwv-2h-uhW" secondAttribute="trailing" id="sFz-wA-fwI"/>
+                        <constraint firstAttribute="trailing" secondItem="XbS-j1-i4n" secondAttribute="trailing" constant="2" id="vbZ-2U-VVV"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NKW-Oy-hdJ" userLabel="Banner">
+                    <rect key="frame" x="5" y="67" width="528" height="160"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="U31-aG-FCg"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="uja-Dh-urs" firstAttribute="leading" secondItem="Der-LB-0Mu" secondAttribute="trailing" constant="65" id="56F-pG-Sbr"/>
+                <constraint firstItem="NKW-Oy-hdJ" firstAttribute="top" secondItem="xgB-Tw-h48" secondAttribute="top" constant="67" id="79z-z9-th7"/>
+                <constraint firstItem="jrR-Ut-FbD" firstAttribute="top" secondItem="xgB-Tw-h48" secondAttribute="top" constant="20" id="8fw-cL-nEy"/>
+                <constraint firstItem="uja-Dh-urs" firstAttribute="top" secondItem="xgB-Tw-h48" secondAttribute="top" id="ATF-Fg-CS4"/>
+                <constraint firstItem="jrR-Ut-FbD" firstAttribute="leading" secondItem="Der-LB-0Mu" secondAttribute="trailing" constant="8" id="B8A-gL-nSk"/>
+                <constraint firstItem="NKW-Oy-hdJ" firstAttribute="centerX" secondItem="xgB-Tw-h48" secondAttribute="centerX" id="B9G-mi-9Rg"/>
+                <constraint firstItem="HPY-gb-Oqp" firstAttribute="centerY" secondItem="jrR-Ut-FbD" secondAttribute="centerY" id="Knc-we-x8Y"/>
+                <constraint firstItem="NKW-Oy-hdJ" firstAttribute="leading" secondItem="xgB-Tw-h48" secondAttribute="leading" constant="5" id="NKp-FE-0p5"/>
+                <constraint firstItem="uja-Dh-urs" firstAttribute="trailing" secondItem="NKW-Oy-hdJ" secondAttribute="trailing" id="ZDX-FX-r42"/>
+                <constraint firstItem="jrR-Ut-FbD" firstAttribute="top" secondItem="uja-Dh-urs" secondAttribute="bottom" constant="6" id="cPl-8A-LzT"/>
+                <constraint firstItem="HPY-gb-Oqp" firstAttribute="top" secondItem="Der-LB-0Mu" secondAttribute="top" id="chk-Ka-54k"/>
+                <constraint firstAttribute="trailing" secondItem="NKW-Oy-hdJ" secondAttribute="trailing" constant="5" id="gUC-Es-cGM"/>
+                <constraint firstItem="Der-LB-0Mu" firstAttribute="leading" secondItem="HPY-gb-Oqp" secondAttribute="trailing" constant="8" symbolic="YES" id="gum-NS-8R1"/>
+                <constraint firstItem="Der-LB-0Mu" firstAttribute="top" secondItem="xgB-Tw-h48" secondAttribute="top" constant="5" id="kIR-5R-Oyo"/>
+                <constraint firstAttribute="bottom" secondItem="NKW-Oy-hdJ" secondAttribute="bottom" constant="10" id="stb-CS-TXD"/>
+                <constraint firstItem="HPY-gb-Oqp" firstAttribute="leading" secondItem="xgB-Tw-h48" secondAttribute="leading" constant="10" id="vjL-85-ZNt"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="adDescription" destination="kuE-uU-v3C" id="ewE-z9-kXq"/>
+                <outlet property="adImage" destination="HPY-gb-Oqp" id="heB-FI-83M"/>
+                <outlet property="adTitle" destination="0nd-hU-F3K" id="nYp-fp-sUg"/>
+                <outlet property="banner" destination="NKW-Oy-hdJ" id="ISj-gD-3SI"/>
+                <outlet property="installButton" destination="jrR-Ut-FbD" id="td2-vf-hcQ"/>
+            </connections>
+            <point key="canvasLocation" x="-1046" y="118.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Loud_Speaker_64.png" width="64" height="64"/>
+    </resources>
+</document>

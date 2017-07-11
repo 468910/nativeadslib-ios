@@ -17,7 +17,7 @@ class mocked2UITableView: UITableView {
 
 class mocked2NativeAdsRequest: NativeAdsRequest {
     var limit: UInt! = 0
-    override func retrieveAds(limit: UInt, imageType: EImageType = EImageType.allImages) {
+    override func retrieveAds(_ limit: UInt, imageType: EImageType = EImageType.allImages) {
         self.limit = limit
     }
 }
@@ -25,11 +25,11 @@ class mocked2NativeAdsRequest: NativeAdsRequest {
 class mocked2NativeAdsConnection: NativeAdsConnectionDelegate {
 
     @objc
-    func didReceiveError(error: NSError) {
+    func didReceiveError(_ error: Error) {
     }
 
     @objc
-    func didReceiveResults(nativeAds: [NativeAd]) {
+    func didReceiveResults(_ nativeAds: [NativeAd]) {
     }
 }
 
@@ -57,23 +57,6 @@ class NativeAdStreamTest: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-    }
-
-    func testInitRegisterNib() {
-        class mockedUITableView: UITableView {
-            var registerNibCalled: Bool = false
-            override func registerNib(nib: UINib?, forCellReuseIdentifier identifier: String) {
-                registerNibCalled = true
-            }
-        }
-
-        let tableView = mockedUITableView()
-        let tableViewDataSource = ExampleTableViewDataSource()
-        tableViewDataSource.loadLocalJSON()
-        tableView.dataSource = tableViewDataSource
-
-        subject = NativeAdStream(controller: controller, view: tableView, adPlacementToken: "test123", customXib: UINib(), requester: requester)
-        XCTAssert(tableView.registerNibCalled, "registerNib called")
     }
 
     func testDidReceiveResults() {
