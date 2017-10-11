@@ -22,7 +22,7 @@ public extension UITableView {
     /**
      If we have our data source. Inform it that we're reloading the data. (Different positions and such)
      */
-    func nativeAdsReloadData() {
+    @objc func nativeAdsReloadData() {
         // If we have our data source. Inform it!
         if let source = GetNativeTableDataSource() {
             source.reload()
@@ -39,6 +39,6 @@ public extension UITableView {
         let aClass: AnyClass! = object_getClass(instance)
         let originalMethod = class_getInstanceMethod(aClass, #selector(UICollectionView.reloadData))
         let swizzledMethod = class_getInstanceMethod(aClass, #selector(UITableView.nativeAdsReloadData))
-        method_exchangeImplementations(originalMethod, swizzledMethod)
+        method_exchangeImplementations(originalMethod!, swizzledMethod!)
     }
 }

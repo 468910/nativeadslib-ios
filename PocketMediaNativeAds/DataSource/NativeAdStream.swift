@@ -74,7 +74,7 @@ open class NativeAdStream: NSObject, NativeAdsConnectionDelegate {
      This method is called if something goes wrong retrieving the ads.s
      */
     open func didReceiveError(_ error: Error) {
-        Logger.debug("There was an error retrieving ads", error)
+        Logger.error("There was an error retrieving ads", error)
     }
 
     /**

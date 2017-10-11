@@ -2,7 +2,8 @@ import UIKit
 import MoPub
 
 /**
- Example of a default MoPub integration. No reference to PocketMedia. This is all done in the MoPub web dashboard
+ Example of a default MoPub integration. No direct reference to PocketMedia, but will fill up ads from PocketMedia.
+ This config is all done in the MoPub web dashboard. In other words, if you've implemented MoPub you can make use of PocketMedia's ads.
  */
 class MoPubNativeAdCell: UITableViewCell, MPNativeAdRendering {
 

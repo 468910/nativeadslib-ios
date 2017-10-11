@@ -1,11 +1,12 @@
 //
 //  Log.swift
-//  PocketMediaNativeAds, originally from Haneke
+//  PocketMediaNativeAds
 //
-//  Created by Hermes Pique on 11/10/14.
-//  Copyright (c) 2014 Haneke. All rights reserved.
+//  Created by Iain Munro on 11/10/17.
+//  Copyright (c) 2017 Pocket Media. All rights reserved.
 //
 import Foundation
+import SwiftyBeaver
 
 /**
  A simple logger.
@@ -13,51 +14,43 @@ import Foundation
 struct Logger {
 
     /// The tag prefix each log entry will have.
-    fileprivate static let Tag = "[PocketMediaNativeAds]"
+    static let logger = SwiftyBeaver.self
+    static let console = ConsoleDestination()
 
-    /// The log levels
-    fileprivate enum Level: String {
-        case Debug = "[DEBUG]"
-        case Error = "[ERROR]"
-    }
-
-    /// Write the std using NSLOG.
-    fileprivate static func log(_ level: Level, _ message: @autoclosure () -> String, _ error: Error? = nil) {
-        if let nsError = error as? NSError {
-            NSLog("%@%@ %@ with error %@", Tag, level.rawValue, message(), nsError)
-        } else {
-            NSLog("%@%@ %@", Tag, level.rawValue, message())
-        }
-    }
-
-    /// Debug log method
-    static func debug(_ message: @autoclosure () -> String, _ error: Error? = nil) {
+    static func setup() {
         #if DEBUG
-            log(.Debug, message, error)
+            console.minLevel = logger.Level.debug
+        #else
+            console.minLevel = logger.Level.info
         #endif
+        console.format = "[PocketMediaNativeAds] $DHH:mm:ss$d $L $M"
     }
 
-    /// Debug format log method
+    static func debug(_ message: String) {
+        logger.debug(message)
+    }
+    
     static func debugf(_ format: String, _ args: CVarArg...) {
-        #if DEBUG
-            log(.Debug, NSString(format, args), error)
-        #endif
+        logger.debug(String(format: format, args))
     }
+
 
     /// Error log method
-    static func error(_ message: @autoclosure () -> String, _ error: Error? = nil) {
-        log(.Error, message, error)
+    static func error(_ message: String) {
+        logger.error(message)
+    }
+    
+    static func error(_ message: String, _ error: Error) {
+        logger.error(String(format: "%s: %s", message, error.localizedDescription))
+    }
+    
+    static func errorf(_ format: String, _ args: CVarArg...) {
+        logger.error(String(format: format, args))
     }
 
     /// Error log method with Swift.Error type.
-    static func error(_ error: Error? = nil) {
-        log(.Error, "An error occured", error)
+    static func error(_ error: Error) {
+        logger.error(String(format: "An error occured: %s", error.localizedDescription))
     }
-
-    /// Error format log method
-    static func errorf(_ format: String, _ args: CVarArg...) {
-        #if DEBUG
-            log(.Error, NSString(format, args), error)
-        #endif
-    }
+    
 }

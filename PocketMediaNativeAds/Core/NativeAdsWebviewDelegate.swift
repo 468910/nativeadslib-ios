@@ -47,8 +47,7 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
             if Platform.isSimulator {
                 if url.scheme != "http" &&
                     url.scheme != "https" {
-                    let modifiedUrl: NSURL = NSURL(string: url.absoluteString.stringByReplacingOccurrencesOfString("itms-apps", withString: "http"))!
-                    return modifiedUrl
+                    return URL.init(string: url.absoluteString.replacingOccurrences(of: "itms-apps", with: "http"))!
                 }
             }
         #endif
@@ -183,7 +182,7 @@ open class NativeAdsWebviewDelegate: NSObject, UIWebViewDelegate {
      - Important:
      We can't instantly call notifyServerOfFalseRedirection from scheduledTimerWithTimeInterval. It throws an exception.
      */
-    open func timeout() {
+    @objc open func timeout() {
         Logger.debug("Timed out")
         self.notifyServerOfFalseRedirection()
     }

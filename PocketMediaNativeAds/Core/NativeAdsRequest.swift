@@ -144,7 +144,7 @@ open class NativeAdsRequest: NSObject, NSURLConnectionDelegate, UIWebViewDelegat
      This method returns the UUID of the device.
      */
     fileprivate func provideIdentifierForAdvertisingIfAvailable() -> String? {
-        return ASIdentifierManager.shared().advertisingIdentifier?.uuidString
+        return ASIdentifierManager.shared().advertisingIdentifier.uuidString
     }
 
     /**
