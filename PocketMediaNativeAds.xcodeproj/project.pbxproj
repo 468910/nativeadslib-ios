@@ -1012,7 +1012,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A1E8CD11EE7F84BEFF30B04 /* Pods-PocketMediaNativeAds.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
@@ -1080,7 +1080,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 36E76FEFA5A975280E6438B8 /* Pods-PocketMediaNativeAds.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
