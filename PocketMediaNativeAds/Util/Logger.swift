@@ -1,56 +1,138 @@
-//
-//  Log.swift
-//  PocketMediaNativeAds
-//
-//  Created by Iain Munro on 11/10/17.
-//  Copyright (c) 2017 Pocket Media. All rights reserved.
-//
-import Foundation
-import SwiftyBeaver
-
 /**
  A simple logger.
  */
-struct Logger {
-
-    /// The tag prefix each log entry will have.
-    static let logger = SwiftyBeaver.self
-    static let console = ConsoleDestination()
-
-    static func setup() {
+class Logger {
+    
+    // Enum for showing the type of Log Types
+    enum LogEvent: String {
+        case error = "[‼️]" // error
+        case info = "[ℹ️]" // info
+        case debug = "[💬]" // debug
+        case verbose = "[🔬]" // verbose
+        case warning = "[⚠️]" // warning
+        case severe = "[🔥]" // severe
+    }
+    
+    static var dateFormat = "yyyy-MM-dd hh:mm:ssSSS"
+    static var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = dateFormat
+        formatter.locale = Locale.current
+        formatter.timeZone = TimeZone.current
+        return formatter
+    }
+    
+    private class func log(message: String,
+                           event: LogEvent,
+                           fileName: String = #file,
+                           line: Int = #line,
+                           column: Int = #column,
+                           funcName: String = #function) {
         #if DEBUG
-            console.minLevel = logger.Level.debug
+            
         #else
-            console.minLevel = logger.Level.info
+            if event == .debug {
+                return
+            }
         #endif
-        console.format = "[PocketMediaNativeAds] $DHH:mm:ss$d $L $M"
-    }
-
-    static func debug(_ message: String) {
-        logger.debug(message)
+        print("[PocketMediaNativeAds] \(Date().toString()) \(event.rawValue)[\(sourceFileName(filePath: fileName))]:\(line) \(column) \(funcName) -> \(message)")
     }
     
-    static func debugf(_ format: String, _ args: CVarArg...) {
-        logger.debug(String(format: format, args))
-    }
-
-
-    /// Error log method
-    static func error(_ message: String) {
-        logger.error(message)
+    private class func sourceFileName(filePath: String) -> String {
+        let components = filePath.components(separatedBy: "/")
+        return components.isEmpty ? "" : components.last!
     }
     
-    static func error(_ message: String, _ error: Error) {
-        logger.error(String(format: "%s: %s", message, error.localizedDescription))
+    class func debug(_ message: String,
+                     fileName: String = #file,
+                     line: Int = #line,
+                     column: Int = #column,
+                     funcName: String = #function) {
+        Logger.log(
+            message: message,
+            event: .debug,
+            fileName: fileName,
+            line: line,
+            column: column,
+            funcName: funcName)
     }
     
-    static func errorf(_ format: String, _ args: CVarArg...) {
-        logger.error(String(format: format, args))
+    class func debugf(fileName: String = #file,
+                      line: Int = #line,
+                      column: Int = #column,
+                      funcName: String = #function,
+                      _ format: String,
+                      _ args: CVarArg...) {
+        Logger.log(
+            message: String(format: format, args),
+            event: .debug,
+            fileName: fileName,
+            line: line,
+            column: column,
+            funcName: funcName)
     }
+    
+    class func error(_ message: String,
+                     fileName: String = #file,
+                     line: Int = #line,
+                     column: Int = #column,
+                     funcName: String = #function) {
+        Logger.log(
+            message: message,
+            event: .error,
+            fileName: fileName,
+            line: line,
+            column: column,
+            funcName: funcName)
+    }
+    
+    class func errorf(fileName: String = #file,
+                      line: Int = #line,
+                      column: Int = #column,
+                      funcName: String = #function,
+                      _ format: String,
+                      _ args: CVarArg...) {
+        Logger.log(
+            message: String(format: format, args),
+            event: .error,
+            fileName: fileName,
+            line: line,
+            column: column,
+            funcName: funcName)
+    }
+    
+    class func error(_ message: String,
+                     _ error: Error,
+                     fileName: String = #file,
+                     line: Int = #line,
+                     column: Int = #column,
+                     funcName: String = #function) {
+        Logger.log(
+            message: String(format: "%s: %s", message, error.localizedDescription),
+            event: .error,
+            fileName: fileName,
+            line: line,
+            column: column,
+            funcName: funcName)
+    }
+    
+    class func error(_ error: Error,
+                     fileName: String = #file,
+                     line: Int = #line,
+                     column: Int = #column,
+                     funcName: String = #function) {
+        Logger.log(
+            message: String(format: "An error occured: %s", error.localizedDescription),
+            event: .error,
+            fileName: fileName,
+            line: line,
+            column: column,
+            funcName: funcName)
+    }
+}
 
-    /// Error log method with Swift.Error type.
-    static func error(_ error: Error) {
-        logger.error(String(format: "An error occured: %s", error.localizedDescription))
+internal extension Date {
+    func toString() -> String {
+        return Logger.dateFormatter.string(from: self as Date)
     }
-    
 }
