@@ -52,7 +52,7 @@ public class ExampleTableViewDataSourceWithSections: NSObject, UITableViewDataSo
 
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let item = collection[indexPath.row] as? ItemTableModel {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? ItemCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as? ItemCell {
                 cell.name.text = item.title
                 cell.descriptionItem.text = item.descriptionItem
                 cell.artworkImageView.nativeSetImageFromURL(item.imageURL)

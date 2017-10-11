@@ -41,7 +41,7 @@ open class ExampleTableViewDataSource: NSObject, UITableViewDataSource {
 
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let item = collection[indexPath.row] as? ItemTableModel {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? ItemCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as? ItemCell {
                 cell.setData(item: item)
                 return cell
             }
